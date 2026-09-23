@@ -1,11 +1,13 @@
 ---
-title: Unity HTN Plugin
+title: HTN Plugin for Unity & Unreal
 tracks: [gamedev, research]
 summary:
-  en: Work in progress — bringing hierarchical task network planning into Unity as a reusable plugin for NPC behaviour.
-  pt: Em desenvolvimento — levando planejamento por hierarquia de tarefas (HTN) para dentro da Unity como plugin reutilizável de comportamento de NPC.
+  en: Planned — packaging the HTN method-selection work from the research into a reusable NPC behaviour plugin, first for Unity, then for Unreal.
+  pt: Planejado — empacotar o trabalho de seleção de métodos HTN da pesquisa num plugin reutilizável de comportamento de NPC, primeiro para Unity, depois para Unreal.
 repo: Unity-HTN-Plugin
-tech: [Unity, C#, HTN Planning]
+tech: [Unity, Unreal Engine, C#, C++, HTN Planning]
+detail: /research
+status: planned
 featured: true
 order: 3
 ---

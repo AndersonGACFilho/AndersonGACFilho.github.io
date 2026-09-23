@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import CvPage from '../components/pages/CvPage.astro';
+const lang = 'en' as const;
+---
+<Base
+  title="CV — Anderson Gonçalves"
+  description="Experience, teaching and education: backend and gameplay engineering, plus MSc research on Game AI at UFRGS."
+  lang={lang}
+>
+  <CvPage lang={lang} />
+</Base>

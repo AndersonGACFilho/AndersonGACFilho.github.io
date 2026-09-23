@@ -10,6 +10,7 @@ export const ui = {
     'nav.research': 'Research',
     'nav.articles': 'Articles',
     'nav.teaching': 'Teaching',
+    'nav.cv': 'CV',
     'site.tagline': 'Gameplay programmer, backend engineer and Game AI researcher',
     'hero.role': 'Gameplay Programmer · Backend Engineer · Game AI Researcher',
     'hero.blurb':
@@ -37,6 +38,8 @@ export const ui = {
     'cta.read': 'Read',
     'cta.back': 'Back',
     'label.private': 'Private repo',
+    'status.planned': 'Planned',
+    'status.wip': 'In progress',
     'label.stars': 'stars',
     'label.updated': 'Updated',
     'label.soon': 'Build coming soon',
@@ -72,6 +75,7 @@ export const ui = {
     'nav.research': 'Pesquisa',
     'nav.articles': 'Artigos',
     'nav.teaching': 'Aulas',
+    'nav.cv': 'Currículo',
     'site.tagline': 'Programador de gameplay, engenheiro de backend e pesquisador de IA para jogos',
     'hero.role': 'Programador de Gameplay · Engenheiro de Backend · Pesquisador de IA para Jogos',
     'hero.blurb':
@@ -99,6 +103,8 @@ export const ui = {
     'cta.read': 'Ler',
     'cta.back': 'Voltar',
     'label.private': 'Repositório privado',
+    'status.planned': 'Planejado',
+    'status.wip': 'Em andamento',
     'label.stars': 'estrelas',
     'label.updated': 'Atualizado',
     'label.soon': 'Build em breve',

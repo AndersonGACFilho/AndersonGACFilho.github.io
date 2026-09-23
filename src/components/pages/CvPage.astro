@@ -1,0 +1,127 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+import {
+  headline, profile, experience, teaching, education,
+  certifications, languages, skills, links, pick, type Entry,
+} from '../../i18n/cv';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const section = {
+  experience: { en: 'Experience', pt: 'Experiência' },
+  teaching: { en: 'Teaching', pt: 'Ensino' },
+  education: { en: 'Education', pt: 'Formação' },
+  skills: { en: 'Skills', pt: 'Competências' },
+  certifications: { en: 'Certifications', pt: 'Certificações' },
+  languages: { en: 'Languages', pt: 'Idiomas' },
+};
+
+const groups: [keyof typeof section, Entry[]][] = [
+  ['experience', experience],
+  ['teaching', teaching],
+  ['education', education],
+];
+---
+
+<header class="head">
+  <h1>Anderson Gonçalves</h1>
+  <p class="headline">{pick(headline, lang)}</p>
+  <p class="links">
+    {links.map((link) => <a href={link.url}>{link.label}</a>)}
+  </p>
+  <p class="profile">{pick(profile, lang)}</p>
+</header>
+
+{
+  groups.map(([key, entries]) => (
+    <section>
+      <div class="section-head"><h2>{pick(section[key], lang)}</h2></div>
+      <ol class="timeline">
+        {entries.map((entry) => (
+          <li>
+            <div class="when">
+              <span class="period">{pick(entry.period, lang)}</span>
+              <span class="place">{pick(entry.place, lang)}</span>
+            </div>
+            <div class="what">
+              <h3>{pick(entry.role, lang)}</h3>
+              <p class="org">{entry.url ? <a href={entry.url}>{entry.org}</a> : entry.org}</p>
+              <ul>
+                {pick(entry.bullets, lang).map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+              {entry.tech && (
+                <div class="badge-row">
+                  {entry.tech.map((item) => (
+                    <span class="tag">{item}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))
+}
+
+<section>
+  <div class="section-head"><h2>{pick(section.skills, lang)}</h2></div>
+  <dl class="skills">
+    {
+      skills.map((group) => (
+        <div>
+          <dt>{pick(group.label, lang)}</dt>
+          <dd class="badge-row">
+            {group.items.map((item) => (
+              <span class="tag">{item}</span>
+            ))}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>
+
+<section class="grid grid-3 closing">
+  <div>
+    <h2>{pick(section.certifications, lang)}</h2>
+    <ul>{certifications.map((item) => <li>{pick(item, lang)}</li>)}</ul>
+  </div>
+  <div>
+    <h2>{pick(section.languages, lang)}</h2>
+    <ul>{languages.map((item) => <li>{pick(item, lang)}</li>)}</ul>
+  </div>
+</section>
+
+<style>
+  .head { margin-block: 28px 8px; max-width: 70ch; }
+  .headline { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.92rem; margin-bottom: 20px; }
+  .links a { color: var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+  .profile { color: var(--text-dim); }
+
+  .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 30px; }
+  .timeline > li { display: grid; gap: 4px 28px; grid-template-columns: minmax(0, 190px) 1fr; }
+  .when { font-family: var(--mono); font-size: 0.78rem; color: var(--text-faint); display: grid; align-content: start; gap: 2px; padding-top: 4px; }
+  .what h3 { margin: 0; font-size: 1.05rem; }
+  .org { margin: 2px 0 8px; color: var(--text-dim); font-size: 0.95rem; }
+  .what ul { margin: 0 0 10px; padding-left: 18px; color: var(--text-dim); font-size: 0.93rem; }
+  .what li + li { margin-top: 3px; }
+
+  .skills { margin: 0; display: grid; gap: 14px; }
+  .skills > div { display: grid; gap: 6px 28px; grid-template-columns: minmax(0, 190px) 1fr; align-items: start; }
+  .skills dt { font-family: var(--mono); font-size: 0.78rem; color: var(--text-faint); padding-top: 3px; }
+  .skills dd { margin: 0; }
+
+  .closing h2 { font-size: 1.05rem; }
+  .closing ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 0.93rem; }
+
+  @media (max-width: 640px) {
+    .timeline > li, .skills > div { grid-template-columns: 1fr; }
+    .when { flex-direction: row; display: flex; gap: 10px; padding-top: 0; }
+  }
+</style>

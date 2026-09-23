@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import CvPage from '../../components/pages/CvPage.astro';
+const lang = 'pt' as const;
+---
+<Base
+  title="Currículo — Anderson Gonçalves"
+  description="Experiência, ensino e formação: engenharia de backend e de gameplay, mais a pesquisa de mestrado em IA para jogos na UFRGS."
+  lang={lang}
+>
+  <CvPage lang={lang} />
+</Base>

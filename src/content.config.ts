@@ -17,6 +17,7 @@ const projects = defineCollection({
     tech: z.array(z.string()).default([]),
     cover: z.string().optional(),   // /covers/<file>, optional
     year: z.number().optional(),
+    status: z.enum(['planned', 'wip']).optional(),  // omit for finished work
     featured: z.boolean().default(false),
     private: z.boolean().default(false),
     order: z.number().default(100),

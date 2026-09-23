@@ -245,6 +245,10 @@ section { margin-block: 64px; }
 .site-footer a { color: var(--text-dim); }
 
 /* ---------- utils ---------- */
+/* .card sets display:flex, which beats the browser's own [hidden] rule —
+   without this, hiding a filtered-out card does nothing. */
+[hidden] { display: none !important; }
+
 .muted { color: var(--text-dim); }
 .mono { font-family: var(--mono); }
 .empty {

@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import TrackBadge from './TrackBadge.astro';
-import { useTranslations, localize, formatDate, type Lang } from '../i18n/ui';
+import { useTranslations, localize, formatDate, type Lang, type UIKey } from '../i18n/ui';
 import { trackColor, pick } from '../lib/tracks';
 import { repoInfo, repoUrl } from '../lib/github';
 
@@ -19,7 +19,7 @@ const meta = await repoInfo(d.repo);
     {d.tracks.map((track) => <TrackBadge track={track} lang={lang} />)}
   </div>
 
-  <h3>{d.title}</h3>
+  <h3>{d.title}{d.status && <span class="status">{t(`status.${d.status}` as UIKey)}</span>}</h3>
   <p>{pick(d.summary, lang)}</p>
 
   {
@@ -47,3 +47,19 @@ const meta = await repoInfo(d.repo);
     {d.itch && <a href={d.itch}>{t('cta.itch')}</a>}
   </div>
 </article>
+
+<style>
+  .status {
+    margin-left: 8px;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    border: 1px dashed var(--border);
+    border-radius: 999px;
+    padding: 2px 8px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+</style>
