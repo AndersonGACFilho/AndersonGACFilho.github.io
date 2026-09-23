@@ -42,6 +42,7 @@ const meta = await repoInfo(d.repo);
 
   <div class="card-links">
     {d.play && <a href={localize(`/play/${d.play}`, lang)}>▶ {t('cta.play')}</a>}
+    {d.detail && <a href={localize(d.detail, lang)}>{t('cta.read')} →</a>}
     {d.repo && <a href={repoUrl(d.repo)}>{t('cta.source')}</a>}
     {d.itch && <a href={d.itch}>{t('cta.itch')}</a>}
   </div>

@@ -13,6 +13,7 @@ const projects = defineCollection({
     repo: z.string().optional(),      // owner/name on GitHub
     itch: z.string().url().optional(),
     play: z.string().optional(),      // slug of a game in src/content/games
+    detail: z.string().optional(),    // root-relative page with the long version, e.g. /research
     tech: z.array(z.string()).default([]),
     cover: z.string().optional(),   // /covers/<file>, optional
     year: z.number().optional(),

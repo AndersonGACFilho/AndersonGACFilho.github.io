@@ -1,0 +1,163 @@
+---
+import { getCollection } from 'astro:content';
+import { useTranslations, localize, type Lang, type UIKey } from '../../i18n/ui';
+import { research, experiments, paperTitle, authors, affiliation } from '../../i18n/research';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const copy = research[lang];
+const evaluation = experiments[lang];
+
+// The ERAMIA entry is a reserved draft until the paper is out: link it only
+// once it is published, and otherwise show where it stands.
+const eramia = (await getCollection('articles')).find((entry) => entry.id === `${lang}/eramia-rs`);
+const eramiaLive = eramia && !eramia.data.draft;
+const eramiaStatus = eramia?.data.venue?.status ?? 'in-preparation';
+---
+
+<header class="head">
+  <p class="mono kicker">{copy.kicker}</p>
+  <h1>{paperTitle}</h1>
+  <p class="authors">
+    {
+      authors.map((author, i) => (
+        <>
+          {i > 0 && <span class="sep">·</span>}
+          {author.url ? (
+            <a href={author.url}>{author.name}</a>
+          ) : (
+            <span class={author.self ? 'self' : ''}>{author.name}</span>
+          )}
+        </>
+      ))
+    }
+  </p>
+  <p class="affiliation">{affiliation}</p>
+</header>
+
+<blockquote class="thesis">
+  {copy.thesis.map((line) => <p>{line}</p>)}
+</blockquote>
+
+<p class="intro">{copy.intro}</p>
+
+<section class="blocks">
+  {
+    copy.blocks.map((block) => (
+      <article>
+        <h2>{block.heading}</h2>
+        {block.body.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </article>
+    ))
+  }
+</section>
+
+<section>
+  <div class="section-head"><h2>{evaluation.heading}</h2></div>
+  <div class="grid grid-3">
+    {
+      evaluation.columns.map((column) => (
+        <div class="card" style="--track: var(--research)">
+          <h3>{column.title}</h3>
+          <ul>
+            {column.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><h2>{copy.materials}</h2></div>
+  <p class="muted">{copy.materialsIntro}</p>
+
+  <figure class="poster">
+    <a href="/research/poster-htn-morl.pdf">
+      <img src="/research/poster-htn-morl.jpg" alt={paperTitle} loading="lazy" width="1490" height="2107" />
+    </a>
+    <figcaption>{copy.posterCaption}</figcaption>
+  </figure>
+
+  <ul class="materials">
+    <li>
+      <a href="/research/poster-htn-morl.pdf">{copy.posterLabel}</a>
+      <span class="muted">{copy.posterMeta}</span>
+    </li>
+    <li>
+      {
+        eramiaLive ? (
+          <a href={localize('/articles/eramia-rs', lang)}>{copy.paperPending}</a>
+        ) : (
+          <>
+            <span>{copy.paperPending}</span>
+            <span class="muted">{t(`venue.${eramiaStatus}` as UIKey)} ERAMIA-RS</span>
+          </>
+        )
+      }
+    </li>
+    <li>
+      <span>{copy.codeLabel}</span>
+      <span class="muted">{copy.codeNote}</span>
+    </li>
+  </ul>
+</section>
+
+<style>
+  .head { margin-block: 28px 32px; max-width: 34ch; }
+  .head h1 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); max-width: 22ch; }
+  .kicker { color: var(--research); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+  .authors { margin: 0 0 4px; color: var(--text-dim); }
+  .authors .self { color: var(--text); font-weight: 600; }
+  .authors a { border-bottom: 1px solid var(--border); }
+  .sep { color: var(--text-faint); margin-inline: 6px; }
+  .affiliation { color: var(--text-faint); font-size: 0.9rem; }
+
+  .thesis {
+    margin: 0 0 32px;
+    padding: 20px 24px;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--research);
+    border-radius: var(--radius);
+    background: var(--bg-elev);
+  }
+  .thesis p { margin: 0; font-size: 1.05rem; }
+  .thesis p + p { margin-top: 2px; }
+
+  .intro { max-width: 68ch; font-size: 1.05rem; color: var(--text-dim); }
+
+  .blocks { display: grid; gap: 28px 36px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-block: 48px; }
+  .blocks h2 { font-size: 1.12rem; margin-bottom: 8px; }
+  .blocks p { color: var(--text-dim); margin: 0; }
+
+  .card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 0.93rem; }
+  .card li + li { margin-top: 4px; }
+
+  .poster { margin: 28px 0 32px; }
+  .poster img {
+    display: block;
+    width: 100%;
+    max-width: 620px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+  }
+  .poster figcaption { margin-top: 10px; color: var(--text-faint); font-size: 0.88rem; }
+
+  .materials { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .materials li {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: baseline;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .materials a { color: var(--accent); }
+  .materials .muted { font-size: 0.9rem; flex: 1 1 320px; }
+</style>

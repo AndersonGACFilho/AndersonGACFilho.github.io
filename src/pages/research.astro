@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import ResearchPage from '../components/pages/ResearchPage.astro';
+const lang = 'en' as const;
+---
+<Base
+  title="Research — HTN method selection guided by multi-objective RL"
+  description="MSc research at UFRGS: HTN filters what is valid, preference-conditioned MORL learns what is preferable, and dynamic preferences decide what matters now."
+  lang={lang}
+>
+  <ResearchPage lang={lang} />
+</Base>

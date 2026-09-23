@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import ResearchPage from '../../components/pages/ResearchPage.astro';
+const lang = 'pt' as const;
+---
+<Base
+  title="Pesquisa — seleção de métodos HTN guiada por RL multiobjetivo"
+  description="Pesquisa de mestrado na UFRGS: o HTN filtra o que é válido, o MORL condicionado a preferências aprende o que é preferível, e as preferências dinâmicas decidem o que importa agora."
+  lang={lang}
+>
+  <ResearchPage lang={lang} />
+</Base>
