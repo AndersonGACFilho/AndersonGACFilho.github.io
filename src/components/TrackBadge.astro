@@ -1,0 +1,10 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+import { trackColor, trackLabelKey, type Track } from '../lib/tracks';
+
+interface Props { track: Track; lang: Lang; }
+const { track, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<span class="badge" style={`--track: ${trackColor[track]}`}>{t(trackLabelKey(track))}</span>

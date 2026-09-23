@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import GameFrame from '../GameFrame.astro';
+import { useTranslations, localize, type Lang } from '../../i18n/ui';
+import { pick } from '../../lib/tracks';
+
+interface Props { game: CollectionEntry<'games'>; lang: Lang; }
+const { game, lang } = Astro.props;
+const t = useTranslations(lang);
+const d = game.data;
+---
+
+<p><a class="muted" href={localize('/games', lang)}>← {t('nav.games')}</a></p>
+<h1>{d.title}</h1>
+<p class="muted">{pick(d.tagline, lang)}</p>
+
+<GameFrame game={game} lang={lang} />
+
+<div class="card-links play-links">
+  {d.itch && <a href={d.itch}>{t('cta.itch')} →</a>}
+  {d.repo && <a href={`https://github.com/AndersonGACFilho/${d.repo}`}>{t('cta.source')} →</a>}
+</div>
+
+<style>
+  h1 { margin: 12px 0 4px; }
+  .play-links { margin-top: 20px; }
+</style>

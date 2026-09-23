@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Modular-Audio-Pipeline",
+    "description": "Modular Python audio pipeline for end-to-end processing—FFmpeg conversion, denoising, Spleeter vocal separation, WebRTC VAD speech cutting, OpenAI Whisper transcription, Pyannote speaker diarization, and redundancy filtering.",
+    "language": "Python",
+    "stars": 4,
+    "pushedAt": "2026-09-11T19:36:35Z",
+    "url": "https://github.com/AndersonGACFilho/Modular-Audio-Pipeline"
+  },
+  {
+    "name": "Grocery-Shopping-List-App",
+    "description": null,
+    "language": "TypeScript",
+    "stars": 1,
+    "pushedAt": "2026-08-29T23:16:17Z",
+    "url": "https://github.com/AndersonGACFilho/Grocery-Shopping-List-App"
+  },
+  {
+    "name": "Vampires--Don-t--bite-me",
+    "description": "A Unity/C# 3D Doom-like survival stealth prototype about surviving a vampire-filled mansion using masks, inventory management and enemy disguise mechanics.",
+    "language": "ShaderLab",
+    "stars": 1,
+    "pushedAt": "2026-06-29T12:11:08Z",
+    "url": "https://github.com/AndersonGACFilho/Vampires--Don-t--bite-me"
+  },
+  {
+    "name": "Unity-HTN-Plugin",
+    "description": null,
+    "language": null,
+    "stars": 0,
+    "pushedAt": "2026-06-18T22:26:27Z",
+    "url": "https://github.com/AndersonGACFilho/Unity-HTN-Plugin"
+  },
+  {
+    "name": "Starlight-Protocol",
+    "description": "Starlight Protocol is a 2D arcade space shooter developed in Unity. The player controls a spaceship that rotates toward the mouse and moves using forward thrust, creating inertia-based movement instead of standard WASD movement.",
+    "language": "C#",
+    "stars": 1,
+    "pushedAt": "2026-05-20T22:30:37Z",
+    "url": "https://github.com/AndersonGACFilho/Starlight-Protocol"
+  },
+  {
+    "name": "AndersonGACFilho",
+    "description": null,
+    "language": null,
+    "stars": 2,
+    "pushedAt": "2026-05-18T20:17:42Z",
+    "url": "https://github.com/AndersonGACFilho/AndersonGACFilho"
+  },
+  {
+    "name": "Andy-s-Dungeon",
+    "description": "First-person interactive portfolio built in Unity WebGL — explore a dungeon, play minigames, and discover Anderson Filho's gameplay programming, software engineering, and AI research through arcade machines, a holographic dungeon generator, and a persistent grimoire CV.",
+    "language": null,
+    "stars": 1,
+    "pushedAt": "2026-05-18T20:15:34Z",
+    "url": "https://github.com/AndersonGACFilho/Andy-s-Dungeon"
+  },
+  {
+    "name": "The-Invasion-Game",
+    "description": "A retro arcade space shooter built from scratch in C/C++ with Allegro, featuring player movement, shooting, enemy waves, collision, score and dynamic difficulty.",
+    "language": "C++",
+    "stars": 2,
+    "pushedAt": "2026-05-16T20:54:41Z",
+    "url": "https://github.com/AndersonGACFilho/The-Invasion-Game"
+  },
+  {
+    "name": "Ashvault",
+    "description": "VR/Flatscreen dungeon crawler GDD focused on vertical exploration, systemic gameplay, recoverable risk, and emergent progression.",
+    "language": null,
+    "stars": 1,
+    "pushedAt": "2026-05-16T04:30:11Z",
+    "url": "https://github.com/AndersonGACFilho/Ashvault"
+  },
+  {
+    "name": "TheInvasionReforged",
+    "description": "A 2D Unity/C# arcade shooter remake focused on rebuilding my first game with modern gameplay architecture, modular systems, improved game feel, enemy waves, upgrades and progression.",
+    "language": "C++",
+    "stars": 1,
+    "pushedAt": "2025-12-06T20:14:31Z",
+    "url": "https://github.com/AndersonGACFilho/TheInvasionReforged"
+  },
+  {
+    "name": "Game-Insight",
+    "description": "A  smart recommendation engine that unifies your Steam, PlayStation, and Xbox libraries into a single profile. It analyzes your unique playtime and achievement data—not just genre tags—to provide truly personal suggestions on what to play next.",
+    "language": "Go",
+    "stars": 1,
+    "pushedAt": "2025-08-25T18:52:57Z",
+    "url": "https://github.com/AndersonGACFilho/Game-Insight"
+  },
+  {
+    "name": "Stardew-Valley-Mod-Translator",
+    "description": "Translates tool JSON files to any language using Google Cloud.",
+    "language": "Python",
+    "stars": 1,
+    "pushedAt": "2024-08-14T21:15:53Z",
+    "url": "https://github.com/AndersonGACFilho/Stardew-Valley-Mod-Translator"
+  },
+  {
+    "name": "RPG-Character-Sheet-Manager",
+    "description": null,
+    "language": "Java",
+    "stars": 1,
+    "pushedAt": "2024-08-07T03:35:00Z",
+    "url": "https://github.com/AndersonGACFilho/RPG-Character-Sheet-Manager"
+  },
+  {
+    "name": "inconsistencia-de-dados-em-multicast-sem-ordenacao",
+    "description": "A intenção, com esta tarefa, é demonstrar o efeito da recepção (e processamento) de mensagens fora de ordem nos diferentes processos sobre o estado dos processos. Ou seja, queremos demonstrar a necessidade de ordenar corretamente as mensagens (o que será feito em uma tarefa posterior). ",
+    "language": "Python",
+    "stars": 1,
+    "pushedAt": "2024-01-16T02:15:04Z",
+    "url": "https://github.com/AndersonGACFilho/inconsistencia-de-dados-em-multicast-sem-ordenacao"
+  },
+  {
+    "name": "Screen-Sound-2",
+    "description": "Este é um projeto que fiz durante o meu aprendizado em C# na Alura",
+    "language": "C#",
+    "stars": 0,
+    "pushedAt": "2023-09-04T21:12:52Z",
+    "url": "https://github.com/AndersonGACFilho/Screen-Sound-2"
+  },
+  {
+    "name": "Screen-Sound",
+    "description": "Este é o meu primeiro projeto que fiz durante o meu aprendizado em C# na Alura",
+    "language": "C#",
+    "stars": 0,
+    "pushedAt": "2023-08-31T20:56:22Z",
+    "url": "https://github.com/AndersonGACFilho/Screen-Sound"
+  },
+  {
+    "name": "Enhanced-Shots",
+    "description": null,
+    "language": null,
+    "stars": 0,
+    "pushedAt": "2023-08-30T00:01:58Z",
+    "url": "https://github.com/AndersonGACFilho/Enhanced-Shots"
+  },
+  {
+    "name": "The-Bacterial-World",
+    "description": "It is a program that execute a simulation of bacterial cultures. I made this little project in my second period of University than I frequent",
+    "language": "C",
+    "stars": 1,
+    "pushedAt": "2022-01-16T18:21:23Z",
+    "url": "https://github.com/AndersonGACFilho/The-Bacterial-World"
+  },
+  {
+    "name": "Quiz-World",
+    "description": "There are two programs, which I made in my second period. One is a game, it is a quiz that reads a .txt, named as \"bank\", and you play with the questions from that .txt and the other is a question bank editor.",
+    "language": "C",
+    "stars": 1,
+    "pushedAt": "2021-08-11T18:33:30Z",
+    "url": "https://github.com/AndersonGACFilho/Quiz-World"
+  }
+]

@@ -1,0 +1,35 @@
+---
+import GameFrame from '../GameFrame.astro';
+import { useTranslations, localize, type Lang } from '../../i18n/ui';
+import { pick } from '../../lib/tracks';
+import { getGames } from '../../lib/content';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const games = await getGames();
+---
+
+<h1>{t('nav.games')}</h1>
+<p class="muted">{t('games.intro')}</p>
+
+{
+  games.map((game) => (
+    <section class="game-block">
+      <div class="section-head">
+        <h2><a href={localize(`/play/${game.id}`, lang)}>{game.data.title}</a></h2>
+        <span class="more card-links">
+          {game.data.itch && <a href={game.data.itch}>{t('cta.itch')}</a>}
+          {game.data.repo && <a href={`https://github.com/AndersonGACFilho/${game.data.repo}`}>{t('cta.source')}</a>}
+        </span>
+      </div>
+      <p class="section-sub">{pick(game.data.tagline, lang)}</p>
+      <GameFrame game={game} lang={lang} />
+    </section>
+  ))
+}
+
+<style>
+  h1 { margin-top: 24px; }
+  .game-block { margin-block: 48px; }
+</style>

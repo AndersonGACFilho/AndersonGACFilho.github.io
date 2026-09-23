@@ -1,0 +1,147 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { useTranslations, type Lang } from '../i18n/ui';
+import { pick } from '../lib/tracks';
+
+interface Props { game: CollectionEntry<'games'>; lang: Lang; }
+const { game, lang } = Astro.props;
+const d = game.data;
+const t = useTranslations(lang);
+
+// Builds live in the sibling `webgl-builds` repo, served from the same origin.
+const base = import.meta.env.PUBLIC_GAMES_BASE ?? '/webgl-builds';
+const src = `${base}/${d.buildPath}/`;
+const id = `game-${game.id}`;
+---
+
+<figure class="game" id={id} style={`--ratio: ${d.ratio}`}>
+  {
+    d.live ? (
+      <div class="game-stage" data-src={src}>
+        {/* The build is only fetched on click: a Unity bundle is tens of MB. */}
+        <button class="game-poster" type="button" data-play>
+          {d.cover && <img src={d.cover} alt="" loading="lazy" />}
+          <span class="game-poster-inner">
+            <span class="play-icon" aria-hidden="true">▶</span>
+            <strong>{d.title}</strong>
+            <small>{pick(d.tagline, lang)}</small>
+          </span>
+        </button>
+      </div>
+    ) : (
+      <div class="game-stage game-stage-empty">
+        <p>{t('label.soon')}</p>
+        {d.itch && (
+          <p class="muted">
+            {t('play.fallback')} <a href={d.itch}>itch.io →</a>
+          </p>
+        )}
+      </div>
+    )
+  }
+
+  <figcaption>
+    <span>
+      {d.controls && <><strong>{t('label.controls')}:</strong> {pick(d.controls, lang)}</>}
+    </span>
+    {d.live && <button class="btn" type="button" data-fullscreen>⛶ {t('label.fullscreen')}</button>}
+  </figcaption>
+</figure>
+
+<style>
+  .game { margin: 0; }
+  .game-stage {
+    position: relative;
+    aspect-ratio: var(--ratio);
+    width: 100%;
+    background: radial-gradient(circle at 50% 30%, var(--bg-hover), var(--bg-elev));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .game-stage :global(iframe) { width: 100%; height: 100%; border: 0; display: block; }
+  .game-stage-empty {
+    aspect-ratio: auto;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    gap: 4px;
+  }
+  .game-stage-empty p { margin: 0; }
+  .game-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background: none;
+    border: 0;
+    color: var(--text);
+    cursor: pointer;
+    padding: 0;
+  }
+  .game-poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.55; }
+  .game-poster-inner {
+    position: relative;
+    display: grid;
+    gap: 4px;
+    justify-items: center;
+    padding: 20px;
+  }
+  .game-poster strong { font-size: 1.15rem; }
+  .game-poster small { color: var(--text-dim); }
+  .play-icon {
+    display: grid;
+    place-items: center;
+    width: 62px;
+    height: 62px;
+    margin-bottom: 8px;
+    border-radius: 50%;
+    background: var(--gamedev);
+    color: #14161c;
+    font-size: 1.4rem;
+    padding-left: 4px;
+    transition: transform 0.18s ease;
+  }
+  .game-poster:hover .play-icon { transform: scale(1.08); }
+  figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+  }
+  .game:fullscreen { background: #000; display: grid; place-items: center; }
+  .game:fullscreen .game-stage { height: 100%; width: auto; aspect-ratio: var(--ratio); }
+  .game:fullscreen figcaption { display: none; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.game').forEach((root) => {
+    const stage = root.querySelector<HTMLElement>('.game-stage');
+    const poster = root.querySelector<HTMLButtonElement>('[data-play]');
+
+    poster?.addEventListener('click', () => {
+      const src = stage?.dataset.src;
+      if (!stage || !src) return;
+      const frame = document.createElement('iframe');
+      frame.src = src;
+      frame.title = root.querySelector('strong')?.textContent ?? 'game';
+      frame.allow = 'autoplay; fullscreen; gamepad; cross-origin-isolated';
+      frame.setAttribute('allowfullscreen', '');
+      stage.replaceChildren(frame);
+    });
+
+    root.querySelector<HTMLButtonElement>('[data-fullscreen]')?.addEventListener('click', () => {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else root.requestFullscreen?.();
+    });
+  });
+</script>

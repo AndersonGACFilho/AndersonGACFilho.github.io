@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { useTranslations } from '../i18n/ui';
+const lang = 'en' as const;
+const t = useTranslations(lang);
+---
+<Base title="404 — Anderson Gonçalves" lang={lang} altPath="/pt">
+  <section class="prose">
+    <h1>{t('notfound.title')}</h1>
+    <p>{t('notfound.body')}</p>
+    <p><a class="btn" href="/">{t('nav.home')}</a></p>
+  </section>
+</Base>

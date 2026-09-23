@@ -1,0 +1,98 @@
+---
+import GameFrame from '../GameFrame.astro';
+import ProjectCard from '../ProjectCard.astro';
+import ArticleCard from '../ArticleCard.astro';
+import { useTranslations, localize, type Lang } from '../../i18n/ui';
+import { TRACKS, trackColor, trackLabelKey, trackDescKey } from '../../lib/tracks';
+import { getArticles, getProjects, getFeaturedGame, SLIDES_URL } from '../../lib/content';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const projects = (await getProjects()).filter((p) => p.data.featured);
+const articles = (await getArticles(lang)).slice(0, 3);
+const game = await getFeaturedGame();
+const trackCount = (track: string) =>
+  projects.filter((p) => (p.data.tracks as string[]).includes(track)).length;
+---
+
+<section class="hero">
+  <p class="mono hero-role">{t('hero.role')}</p>
+  <h1>Anderson Gonçalves</h1>
+  <p class="hero-blurb">{t('hero.blurb')}</p>
+  <div class="btn-row">
+    <a class="btn btn-primary" href={localize('/games', lang)}>▶ {t('hero.cta.play')}</a>
+    <a class="btn" href={localize('/projects', lang)}>{t('hero.cta.projects')}</a>
+  </div>
+</section>
+
+{
+  game && (
+    <section>
+      <div class="section-head">
+        <h2>{t('section.play')}</h2>
+        <a class="more" href={localize('/games', lang)}>{t('cta.all.games')} →</a>
+      </div>
+      <p class="section-sub">{t('section.play.sub')}</p>
+      <GameFrame game={game} lang={lang} />
+    </section>
+  )
+}
+
+<section>
+  <div class="section-head"><h2>{t('section.tracks')}</h2></div>
+  <div class="grid grid-3">
+    {
+      TRACKS.map((track) => (
+        <a class="card track-card" href={`${localize('/projects', lang)}#${track}`} style={`--track: ${trackColor[track]}`}>
+          <h3>{t(trackLabelKey(track))}</h3>
+          <p>{t(trackDescKey(track))}</p>
+          <div class="card-meta">
+            <span>{trackCount(track)} {t('nav.projects').toLowerCase()}</span>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>{t('section.projects')}</h2>
+    <a class="more" href={localize('/projects', lang)}>{t('cta.all.projects')} →</a>
+  </div>
+  <div class="grid">
+    {projects.map((project) => <ProjectCard project={project} lang={lang} />)}
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>{t('section.articles')}</h2>
+    <a class="more" href={localize('/articles', lang)}>{t('cta.all.articles')} →</a>
+  </div>
+  {
+    articles.length > 0 ? (
+      <div class="grid">
+        {articles.map((article) => <ArticleCard article={article} lang={lang} />)}
+      </div>
+    ) : (
+      <p class="empty">{t('articles.empty')}</p>
+    )
+  }
+</section>
+
+<section>
+  <div class="section-head"><h2>{t('section.teaching')}</h2></div>
+  <p class="muted">{t('teaching.intro')}</p>
+  <a class="btn" href={SLIDES_URL}>{t('teaching.cta')} →</a>
+</section>
+
+<style>
+  .hero { margin-block: 32px 72px; max-width: 62ch; }
+  .hero-role { color: var(--text-faint); font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+  .hero h1 { margin-bottom: 16px; }
+  .hero-blurb { font-size: 1.08rem; color: var(--text-dim); margin-bottom: 26px; }
+  .track-card h3 { color: var(--track); }
+</style>

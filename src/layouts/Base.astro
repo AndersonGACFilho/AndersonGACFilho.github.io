@@ -1,0 +1,88 @@
+---
+import '../styles/global.css';
+import LangSwitch from '../components/LangSwitch.astro';
+import { useTranslations, localize, type Lang } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang: Lang;
+  /** Path in the *other* language; defaults to the mirrored route. */
+  altPath?: string;
+}
+
+const { title, description, lang, altPath } = Astro.props;
+const t = useTranslations(lang);
+const desc = description ?? t('site.tagline');
+const here = Astro.url.pathname;
+
+const nav = [
+  { href: localize('/projects', lang), label: t('nav.projects') },
+  { href: localize('/games', lang), label: t('nav.games') },
+  { href: localize('/articles', lang), label: t('nav.articles') },
+  { href: localize('/teaching', lang), label: t('nav.teaching') },
+];
+
+const isCurrent = (href: string) => here === href || here === `${href}/`;
+const canonical = new URL(here, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang={lang === 'pt' ? 'pt-BR' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href={localize('/', lang)}>Anderson Filho <span>/ dev · games · AI</span></a>
+        <nav class="site-nav" aria-label="Main">
+          {
+            nav.map((item) => (
+              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+        <LangSwitch lang={lang} altPath={altPath} />
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>© {new Date().getFullYear()} Anderson Gonçalves · {t('footer.built')}</span>
+        <span class="card-links">
+          <a href="https://github.com/AndersonGACFilho">GitHub</a>
+          <a href="https://www.linkedin.com/in/agacf/">LinkedIn</a>
+          <a href="https://vertex-shift.itch.io">itch.io</a>
+          <a href="mailto:andersonfilho09@gmail.com">E-mail</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

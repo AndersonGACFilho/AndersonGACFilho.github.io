@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import PlayPage from '../../components/pages/PlayPage.astro';
+import { pick } from '../../lib/tracks';
+import { getGames } from '../../lib/content';
+
+const lang = 'en' as const;
+
+export async function getStaticPaths() {
+  const games = await getGames();
+  return games.map((game) => ({ params: { slug: game.id }, props: { game } }));
+}
+
+const { game } = Astro.props;
+---
+
+<Base
+  title={`${game.data.title} — play in your browser`}
+  description={pick(game.data.tagline, lang)}
+  lang={lang}
+>
+  <PlayPage game={game} lang={lang} />
+</Base>

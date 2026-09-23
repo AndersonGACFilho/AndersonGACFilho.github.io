@@ -1,0 +1,28 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+import { SLIDES_URL } from '../../lib/content';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<h1>{t('nav.teaching')}</h1>
+<p class="muted">{t('teaching.intro')}</p>
+
+<article class="card" style="--track: var(--fullstack)">
+  <h3>UC2 — Implementar Banco de Dados · Senac RS</h3>
+  <p>
+    {lang === 'pt'
+      ? '19 aulas em Marp, com diagramas gerados a partir de Mermaid e tema próprio. Publicadas em HTML, navegáveis no browser.'
+      : '19 Marp decks with diagrams generated from Mermaid and a custom theme. Published as HTML, navigable in the browser.'}
+  </p>
+  <div class="card-links">
+    <a href={SLIDES_URL}>{t('teaching.cta')} →</a>
+  </div>
+</article>
+
+<style>
+  h1 { margin-top: 24px; }
+  .card { margin-top: 28px; }
+</style>

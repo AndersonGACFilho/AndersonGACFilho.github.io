@@ -1,0 +1,17 @@
+---
+import { useTranslations, localize, stripLocale, otherLang, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  /** Explicit target when the mirrored route does not exist in the other language. */
+  altPath?: string;
+}
+
+const { lang, altPath } = Astro.props;
+const target = otherLang(lang);
+// The label names the language you switch TO, so it comes from the current dictionary.
+const t = useTranslations(lang);
+const href = altPath ?? localize(stripLocale(Astro.url.pathname), target);
+---
+
+<a class="lang-switch" href={href} hreflang={target} rel="alternate">{t('lang.switch')}</a>

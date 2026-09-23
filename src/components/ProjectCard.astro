@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import TrackBadge from './TrackBadge.astro';
+import { useTranslations, localize, formatDate, type Lang } from '../i18n/ui';
+import { trackColor, pick } from '../lib/tracks';
+import { repoInfo, repoUrl } from '../lib/github';
+
+interface Props { project: CollectionEntry<'projects'>; lang: Lang; }
+const { project, lang } = Astro.props;
+const d = project.data;
+const t = useTranslations(lang);
+
+// Live numbers come from GitHub; the description in the .md stays the human pitch.
+const meta = await repoInfo(d.repo);
+---
+
+<article class="card" style={`--track: ${trackColor[d.tracks[0]]}`} data-tracks={d.tracks.join(' ')}>
+  <div class="badge-row">
+    {d.tracks.map((track) => <TrackBadge track={track} lang={lang} />)}
+  </div>
+
+  <h3>{d.title}</h3>
+  <p>{pick(d.summary, lang)}</p>
+
+  {
+    d.tech.length > 0 && (
+      <div class="badge-row">
+        {d.tech.map((item) => (
+          <span class="tag">{item}</span>
+        ))}
+      </div>
+    )
+  }
+
+  <div class="card-meta">
+    {meta?.language && <span>{meta.language}</span>}
+    {meta && meta.stars > 0 && <span>★ {meta.stars}</span>}
+    {meta && <span>{t('label.updated')} {formatDate(new Date(meta.pushedAt), lang)}</span>}
+    {d.private && <span>{t('label.private')}</span>}
+    {!meta && d.year && <span>{d.year}</span>}
+  </div>
+
+  <div class="card-links">
+    {d.play && <a href={localize(`/play/${d.play}`, lang)}>▶ {t('cta.play')}</a>}
+    {d.repo && <a href={repoUrl(d.repo)}>{t('cta.source')}</a>}
+    {d.itch && <a href={d.itch}>{t('cta.itch')}</a>}
+  </div>
+</article>
