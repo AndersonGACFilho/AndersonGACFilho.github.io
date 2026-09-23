@@ -19,20 +19,19 @@ const eramiaStatus = eramia?.data.venue?.status ?? 'in-preparation';
 <header class="head">
   <p class="mono kicker">{copy.kicker}</p>
   <h1>{paperTitle}</h1>
-  <p class="authors">
+  <ul class="authors">
     {
-      authors.map((author, i) => (
-        <>
-          {i > 0 && <span class="sep">·</span>}
+      authors.map((author) => (
+        <li>
           {author.url ? (
             <a href={author.url}>{author.name}</a>
           ) : (
             <span class={author.self ? 'self' : ''}>{author.name}</span>
           )}
-        </>
+        </li>
       ))
     }
-  </p>
+  </ul>
   <p class="affiliation">{affiliation}</p>
 </header>
 
@@ -109,16 +108,28 @@ const eramiaStatus = eramia?.data.venue?.status ?? 'in-preparation';
 </section>
 
 <style>
-  .head { margin-block: 28px 32px; max-width: 34ch; }
-  .head h1 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); max-width: 22ch; }
+  /* One measure for the whole header block, so title, authors and affiliation
+     line up instead of each wrapping at its own width. */
+  .head { margin-block: 28px 32px; max-width: 46rem; }
+  .head h1 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); text-wrap: balance; }
   .kicker { color: var(--research); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
-  .authors { margin: 0 0 4px; color: var(--text-dim); }
+  .authors {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    margin: 14px 0 6px;
+    padding: 0;
+    color: var(--text-dim);
+  }
+  .authors li { white-space: nowrap; }
+  .authors li + li::before { content: '·'; color: var(--text-faint); margin-inline: 10px; }
   .authors .self { color: var(--text); font-weight: 600; }
   .authors a { border-bottom: 1px solid var(--border); }
-  .sep { color: var(--text-faint); margin-inline: 6px; }
-  .affiliation { color: var(--text-faint); font-size: 0.9rem; }
+  .affiliation { color: var(--text-faint); font-size: 0.9rem; margin: 0; }
 
   .thesis {
+    max-width: 46rem;
     margin: 0 0 32px;
     padding: 20px 24px;
     border: 1px solid var(--border);
@@ -129,7 +140,7 @@ const eramiaStatus = eramia?.data.venue?.status ?? 'in-preparation';
   .thesis p { margin: 0; font-size: 1.05rem; }
   .thesis p + p { margin-top: 2px; }
 
-  .intro { max-width: 68ch; font-size: 1.05rem; color: var(--text-dim); }
+  .intro { max-width: 46rem; font-size: 1.05rem; color: var(--text-dim); }
 
   .blocks { display: grid; gap: 28px 36px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-block: 48px; }
   .blocks h2 { font-size: 1.12rem; margin-bottom: 8px; }
