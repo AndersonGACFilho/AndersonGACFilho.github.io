@@ -9,8 +9,10 @@ const d = game.data;
 const t = useTranslations(lang);
 
 // Builds live in the sibling `webgl-builds` repo, served from the same origin.
+// The language rides along so a build with its own strings can match the
+// page it is embedded in. Builds that ignore it are unaffected.
 const base = import.meta.env.PUBLIC_GAMES_BASE ?? '/webgl-builds';
-const src = `${base}/${d.buildPath}/`;
+const src = `${base}/${d.buildPath}/?lang=${lang}`;
 const id = `game-${game.id}`;
 ---
 

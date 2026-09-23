@@ -6,6 +6,7 @@ summary:
   pt: Shooter arcade retrô escrito do zero em C/C++ com Allegro — ondas, colisão, pontuação e dificuldade dinâmica, feito no meu primeiro semestre.
 repo: The-Invasion-Game
 itch: https://vertex-shift.itch.io/the-invasion
-tech: [C++, Allegro]
+play: the-invasion
+tech: [C++, Allegro, WebAssembly, Emscripten]
 order: 9
 ---
