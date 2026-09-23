@@ -49,6 +49,15 @@ const articles = defineCollection({
     tracks: z.array(track).default(['research']),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    // Present when the text is a paper: renders under Publications instead of Notes.
+    venue: z
+      .object({
+        name: z.string(),                 // 'ERAMIA-RS 2026'
+        full: z.string().optional(),      // nome por extenso do evento
+        url: z.string().url().optional(), // anais, DOI ou pagina do artigo
+        status: z.enum(['published', 'accepted', 'submitted', 'in-preparation']).default('published'),
+      })
+      .optional(),
     // Slug of the same article in the other language, when it exists.
     translationOf: z.string().optional(),
     pdf: z.string().optional(),

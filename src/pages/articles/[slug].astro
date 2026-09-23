@@ -2,10 +2,11 @@
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import TrackBadge from '../../components/TrackBadge.astro';
-import { formatDate, localize } from '../../i18n/ui';
+import { formatDate, localize, useTranslations, type UIKey } from '../../i18n/ui';
 import { getArticles, articleSlug, articleAltPath } from '../../lib/content';
 
 const lang = 'en' as const;
+const t = useTranslations(lang);
 
 export async function getStaticPaths() {
   const articles = await getArticles('en');
@@ -29,6 +30,20 @@ const { Content } = await render(entry);
     </div>
     <h1>{entry.data.title}</h1>
     <p class="muted mono">{formatDate(entry.data.date, lang)}</p>
+    {
+      entry.data.venue && (
+        <p class="venue">
+          {t(`venue.${entry.data.venue.status}` as UIKey)} <strong>{entry.data.venue.name}</strong>
+          {entry.data.venue.full && <span class="venue-full">{entry.data.venue.full}</span>}
+          {entry.data.venue.url && <a href={entry.data.venue.url}>{t('cta.proceedings')} →</a>}
+        </p>
+      )
+    }
     <Content />
   </article>
 </Base>
+
+<style>
+  .venue { font-size: 0.92rem; color: var(--text-dim); }
+  .venue-full { display: block; color: var(--text-faint); font-size: 0.85rem; }
+</style>

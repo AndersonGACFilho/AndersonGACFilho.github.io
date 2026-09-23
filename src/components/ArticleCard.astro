@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import TrackBadge from './TrackBadge.astro';
-import { useTranslations, localize, formatDate, type Lang } from '../i18n/ui';
+import { useTranslations, localize, formatDate, type Lang, type UIKey } from '../i18n/ui';
 import { trackColor } from '../lib/tracks';
 
 interface Props { article: CollectionEntry<'articles'>; lang: Lang; }
@@ -10,6 +10,7 @@ const d = article.data;
 const t = useTranslations(lang);
 // Collection ids carry the language folder: "en/my-post" -> "my-post".
 const slug = article.id.replace(/^(en|pt)\//, '');
+const venue = d.venue;
 ---
 
 <article class="card" style={`--track: ${trackColor[d.tracks[0]]}`}>
@@ -17,7 +18,19 @@ const slug = article.id.replace(/^(en|pt)\//, '');
     {d.tracks.map((track) => <TrackBadge track={track} lang={lang} />)}
   </div>
   <h3><a href={localize(`/articles/${slug}`, lang)}>{d.title}</a></h3>
+
+  {
+    venue && (
+      <p class="venue">
+        <span class="venue-status">{t(`venue.${venue.status}` as UIKey)}</span>{' '}
+        <strong>{venue.name}</strong>
+        {venue.full && <span class="venue-full">{venue.full}</span>}
+      </p>
+    )
+  }
+
   <p>{d.summary}</p>
+
   <div class="card-meta">
     <span>{formatDate(d.date, lang)}</span>
     {d.tags.map((tag) => <span>#{tag}</span>)}
@@ -25,5 +38,12 @@ const slug = article.id.replace(/^(en|pt)\//, '');
   <div class="card-links">
     <a href={localize(`/articles/${slug}`, lang)}>{t('cta.read')} →</a>
     {d.pdf && <a href={d.pdf}>PDF</a>}
+    {venue?.url && <a href={venue.url}>{t('cta.proceedings')}</a>}
   </div>
 </article>
+
+<style>
+  .venue { margin: 0; font-size: 0.88rem; }
+  .venue-status { color: var(--text-faint); }
+  .venue-full { display: block; color: var(--text-faint); font-size: 0.82rem; }
+</style>

@@ -44,6 +44,12 @@ stars, language and last-push date are filled in at build time.
 `template.md`. `draft: true` keeps it out of the build — but **not** out of this public
 repository, so keep unpublished writing elsewhere until it is ready.
 
+**A paper** — same thing plus a `venue` block, which moves the entry from *Notes* to
+*Publications* and prints the venue line. `status` walks from `in-preparation` to
+`submitted`, `accepted` and `published`; fill `url` with the SBC OpenLib link and drop the
+camera-ready in `public/papers/`. `eramia-rs.md` is already there as a reserved slot for the
+ERAMIA-RS proceedings — flip its `draft` when it is ready.
+
 **A game** — create `src/content/games/<slug>.md`, commit the WebGL build to the
 [`webgl-builds`](https://github.com/AndersonGACFilho/webgl-builds) repository under the
 folder named in `buildPath`, then flip `live: true`. Builds are only downloaded when the
