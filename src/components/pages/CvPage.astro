@@ -1,8 +1,9 @@
 ---
+import PageHeader from '../PageHeader.astro';
 import { useTranslations, type Lang } from '../../i18n/ui';
 import {
   headline, profile, experience, teaching, education,
-  certifications, languages, skills, links, pick, type Entry,
+  certifications, languages, skills, links, availability, pick, type Entry,
 } from '../../i18n/cv';
 
 interface Props { lang: Lang; }
@@ -25,14 +26,14 @@ const groups: [keyof typeof section, Entry[]][] = [
 ];
 ---
 
-<header class="head">
-  <h1>Anderson Gonçalves</h1>
+<PageHeader kicker={t('kicker.cv')} title="Anderson Gonçalves" accent="var(--gamedev)">
   <p class="headline">{pick(headline, lang)}</p>
   <p class="links">
     {links.map((link) => <a href={link.url}>{link.label}</a>)}
   </p>
   <p class="profile">{pick(profile, lang)}</p>
-</header>
+  <p class="availability">{pick(availability, lang)}</p>
+</PageHeader>
 
 {
   groups.map(([key, entries]) => (
@@ -47,7 +48,10 @@ const groups: [keyof typeof section, Entry[]][] = [
             </div>
             <div class="what">
               <h3>{pick(entry.role, lang)}</h3>
-              <p class="org">{entry.url ? <a href={entry.url}>{entry.org}</a> : entry.org}</p>
+              <p class="org">
+                {entry.url ? <a href={entry.url}>{entry.org}</a> : entry.org}
+                {entry.kind && <span class="kind">{pick(entry.kind, lang)}</span>}
+              </p>
               <ul>
                 {pick(entry.bullets, lang).map((bullet) => (
                   <li>{bullet}</li>
@@ -98,11 +102,18 @@ const groups: [keyof typeof section, Entry[]][] = [
 </section>
 
 <style>
-  .head { margin-block: 28px 8px; max-width: 70ch; }
   .headline { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 10px; }
   .links { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.92rem; margin-bottom: 20px; }
   .links a { color: var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
   .profile { color: var(--text-dim); }
+  .availability {
+    color: var(--text-faint);
+    font-size: 0.9rem;
+    border-left: 2px solid var(--border);
+    padding-left: 12px;
+  }
+  .kind { color: var(--text-faint); font-size: 0.85rem; }
+  .kind::before { content: '·'; margin-inline: 6px; }
 
   .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 30px; }
   .timeline > li { display: grid; gap: 4px 28px; grid-template-columns: minmax(0, 190px) 1fr; }

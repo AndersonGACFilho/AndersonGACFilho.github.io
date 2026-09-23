@@ -1,0 +1,32 @@
+---
+/** The header every section page shares: kicker, title, intro, optional extras. */
+interface Props {
+  kicker?: string;
+  title: string;
+  intro?: string;
+  /** CSS colour for the kicker — usually a track colour. */
+  accent?: string;
+}
+const { kicker, title, intro, accent = 'var(--text-faint)' } = Astro.props;
+---
+
+<header class="page-head">
+  {kicker && <p class="kicker" style={`--kicker: ${accent}`}>{kicker}</p>}
+  <h1>{title}</h1>
+  {intro && <p class="intro">{intro}</p>}
+  <slot />
+</header>
+
+<style>
+  .page-head { margin-block: 28px 40px; max-width: 46rem; }
+  .kicker {
+    font-family: var(--mono);
+    color: var(--kicker);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  .page-head h1 { margin-bottom: 12px; text-wrap: balance; }
+  .intro { color: var(--text-dim); font-size: 1.05rem; margin: 0; }
+</style>

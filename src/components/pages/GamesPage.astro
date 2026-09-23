@@ -1,5 +1,6 @@
 ---
 import GameFrame from '../GameFrame.astro';
+import PageHeader from '../PageHeader.astro';
 import { useTranslations, localize, type Lang } from '../../i18n/ui';
 import { pick } from '../../lib/tracks';
 import { getGames } from '../../lib/content';
@@ -10,8 +11,9 @@ const t = useTranslations(lang);
 const games = await getGames();
 ---
 
-<h1>{t('nav.games')}</h1>
-<p class="muted">{t('games.intro')}</p>
+<PageHeader kicker={t('kicker.games')} title={t('nav.games')} intro={t('games.intro')} accent="var(--gamedev)">
+  <p class="count mono">{games.length} {t('games.count')} · itch.io: <a href="https://vertex-shift.itch.io">Vertex Shift</a></p>
+</PageHeader>
 
 {
   games.map((game) => (
@@ -30,6 +32,7 @@ const games = await getGames();
 }
 
 <style>
-  h1 { margin-top: 24px; }
   .game-block { margin-block: 48px; }
+  .count { font-size: 0.82rem; color: var(--text-faint); margin: 14px 0 0; }
+  .count a { color: var(--gamedev); }
 </style>

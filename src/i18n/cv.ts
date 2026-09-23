@@ -1,7 +1,7 @@
 /**
  * Career data for the CV page, in both languages.
- * Source: Anderson's own CV (Sep 2026). Phone number deliberately left out —
- * the site is public.
+ * Source: Anderson's LinkedIn profile (Sep 2026) and his own CV.
+ * Phone number deliberately left out — the site is public.
  */
 import type { Lang } from './ui';
 
@@ -9,6 +9,7 @@ type Bi = { en: string; pt: string };
 export type Entry = {
   role: Bi;
   org: string;
+  kind?: Bi;
   url?: string;
   period: Bi;
   place: Bi;
@@ -17,70 +18,122 @@ export type Entry = {
 };
 
 export const headline: Bi = {
-  en: 'Software developer · MSc candidate in AI · Teaching programming',
-  pt: 'Desenvolvedor de software · Mestrando em IA · Ensino de programação',
+  en: 'Gameplay Programmer · Unreal Engine 5/C++ & Unity/C# · Game AI, gameplay systems and multiplayer',
+  pt: 'Gameplay Programmer · Unreal Engine 5/C++ e Unity/C# · IA para jogos, sistemas de gameplay e multiplayer',
 };
 
 export const profile: Bi = {
-  en: 'BSc in Information Systems from UFG and MSc candidate in Computer Science / AI at UFRGS. Four-plus years building corporate systems and software products across backend, frontend, databases, testing, architecture and integrations — plus three academic teaching-assistant terms at UFG and a year writing gameplay systems in Unreal Engine 5.',
-  pt: 'Bacharel em Sistemas de Informação pela UFG e mestrando em Ciência da Computação / IA na UFRGS. Mais de quatro anos construindo sistemas corporativos e produtos de software entre backend, frontend, bancos de dados, testes, arquitetura e integrações — somados a três vínculos de monitoria na UFG e um ano escrevendo sistemas de gameplay em Unreal Engine 5.',
+  en: 'Gameplay programmer and Game AI researcher building modular, data-driven systems in Unity/C# and Unreal Engine 5/C++. MSc candidate at UFRGS researching adaptive NPC behaviour with reinforcement learning, HTN and GOAP. Four-plus years of professional software engineering — Python, FastAPI, Java, PostgreSQL, Redis, RabbitMQ, Docker, automated testing and CI/CD — shape how I write gameplay code: clear ownership, maintainable architecture, reliable integrations and performance awareness.',
+  pt: 'Programador de gameplay e pesquisador de IA para jogos, construindo sistemas modulares e data-driven em Unity/C# e Unreal Engine 5/C++. Mestrando na UFRGS pesquisando comportamento adaptativo de NPC com aprendizado por reforço, HTN e GOAP. Mais de quatro anos de engenharia de software — Python, FastAPI, Java, PostgreSQL, Redis, RabbitMQ, Docker, testes automatizados e CI/CD — moldam como escrevo código de gameplay: responsabilidade clara, arquitetura sustentável, integrações confiáveis e atenção a desempenho.',
 };
 
 export const experience: Entry[] = [
   {
-    role: { en: 'Full Stack Developer', pt: 'Desenvolvedor Full Stack' },
-    org: 'econtrole — waste management software',
-    period: { en: 'Nov 2025 – Jul 2026', pt: 'nov 2025 – jul 2026' },
-    place: { en: 'Remote', pt: 'Remoto' },
-    tech: ['Python', 'FastAPI', 'Angular', 'PostgreSQL', 'Redis', 'RabbitMQ', 'Docker'],
+    role: { en: 'Game AI Researcher — gameplay AI & NPC behaviour', pt: 'Pesquisador de IA para Jogos — IA de gameplay e comportamento de NPC' },
+    org: 'Universidade Federal do Rio Grande do Sul',
+    kind: { en: 'Fixed term', pt: 'Temporário' },
+    period: { en: 'Mar 2026 – present', pt: 'mar 2026 – o momento' },
+    place: { en: 'Porto Alegre, BR · Remote', pt: 'Porto Alegre, RS · Remoto' },
+    tech: ['Reinforcement Learning', 'HTN', 'GOAP', 'Multi-agent', 'Python'],
     bullets: {
       en: [
-        'Built a production platform end to end, from the Angular front end to asynchronous workers behind RabbitMQ.',
-        'Applied DDD, modular architecture and SOLID, with automated tests, external integrations and async processing.',
-        'Took part in technical documentation, code review, CI/CD, troubleshooting and architectural evolution.',
+        'Research and implement adaptive NPC decision-making with reinforcement learning, hierarchical task networks and goal-oriented action planning.',
+        'Design hybrid architectures where HTN handles strategic decomposition, GOAP handles contextual goal selection and multi-objective RL improves execution policies.',
+        'Build simulated environments and controlled experiments measuring responsiveness, adaptability, computational cost, scalability and behavioural interpretability.',
+        'Translate research into modular architectures and implementation patterns fit for commercial engines.',
       ],
       pt: [
-        'Construí uma plataforma de produção ponta a ponta, do front em Angular aos workers assíncronos atrás do RabbitMQ.',
-        'Apliquei DDD, arquitetura modular e SOLID, com testes automatizados, integrações externas e processamento assíncrono.',
-        'Participei de documentação técnica, revisão de código, CI/CD, troubleshooting e evolução arquitetural.',
+        'Pesquiso e implemento tomada de decisão adaptativa de NPC com aprendizado por reforço, redes hierárquicas de tarefas e planejamento orientado a objetivos.',
+        'Projeto arquiteturas híbridas em que o HTN cuida da decomposição estratégica, o GOAP da seleção contextual de objetivos e o RL multiobjetivo melhora as políticas de execução.',
+        'Construo ambientes simulados e experimentos controlados medindo responsividade, adaptabilidade, custo computacional, escalabilidade e interpretabilidade do comportamento.',
+        'Traduzo a pesquisa em arquiteturas modulares e padrões de implementação viáveis em engines comerciais.',
       ],
     },
   },
   {
-    role: { en: 'Backend Software Engineer — AI systems', pt: 'Engenheiro de Software Backend — Sistemas de IA' },
-    org: 'CEIA',
-    period: { en: 'Apr 2025 – Apr 2026', pt: 'abr 2025 – abr 2026' },
-    place: { en: 'Goiânia, BR', pt: 'Goiânia, GO' },
-    tech: ['Python', 'FastAPI', 'Docker', 'Clean Architecture', 'TDD'],
+    role: { en: 'Solo Gameplay Programmer', pt: 'Solo Gameplay Programmer' },
+    org: 'Vertex Shift',
+    kind: { en: 'Self-employed', pt: 'Autônomo' },
+    url: 'https://vertex-shift.itch.io',
+    period: { en: 'Nov 2025 – present', pt: 'nov 2025 – o momento' },
+    place: { en: 'Remote', pt: 'Remoto' },
+    tech: ['Unity', 'C#', 'Game Architecture', 'Data-driven Design'],
     bullets: {
       en: [
-        'Wrote APIs and asynchronous services in Python/FastAPI for AI-driven platforms.',
-        'Worked with clean and hexagonal architecture, DDD, TDD, static analysis and API versioning.',
-        'Turned research and product requirements into production software alongside multidisciplinary teams.',
+        'Ship independent game projects under the Vertex Shift label, from prototype to playable release.',
+        'Implement enemy behaviour, state machines, progression, inventory, combat, wave spawning and dynamic difficulty.',
+        'Run the whole pipeline solo: design, architecture, testing, version control, builds, documentation and portfolio presentation.',
       ],
       pt: [
-        'Escrevi APIs e serviços assíncronos em Python/FastAPI para plataformas orientadas a IA.',
-        'Trabalhei com arquitetura limpa e hexagonal, DDD, TDD, análise estática e versionamento de APIs.',
+        'Publico projetos independentes sob o selo Vertex Shift, do protótipo à versão jogável.',
+        'Implemento comportamento de inimigos, máquinas de estado, progressão, inventário, combate, ondas e dificuldade dinâmica.',
+        'Toco o pipeline inteiro sozinho: design, arquitetura, testes, versionamento, builds, documentação e apresentação de portfólio.',
+      ],
+    },
+  },
+  {
+    role: { en: 'Full Stack Developer', pt: 'Desenvolvedor Full Stack' },
+    org: 'econtrole — waste management software',
+    kind: { en: 'Freelance', pt: 'Freelance' },
+    period: { en: 'Nov 2025 – present', pt: 'nov 2025 – o momento' },
+    place: { en: 'Remote', pt: 'Remoto' },
+    tech: ['Python', 'FastAPI', 'Angular', 'PostgreSQL', 'Redis', 'RabbitMQ', 'Docker', 'Grafana', 'Jaeger'],
+    bullets: {
+      en: [
+        'Engineer a production platform for environmental compliance, tax, financial and logistics operations.',
+        'Restructure a complex business platform with DDD and a modular-monolith-first strategy — bounded contexts and stable contracts that keep service extraction an option rather than a rewrite.',
+        'Design event-driven workflows with transactional consistency, idempotency, retry policies and the transactional outbox pattern.',
+        'Maintain 1,000+ passing automated tests across domain rules, use cases, APIs, persistence, workers and integrations.',
+        'Built the observability stack — Grafana dashboards, Jaeger tracing and correlation IDs that follow a request across asynchronous flows.',
+      ],
+      pt: [
+        'Construo uma plataforma de produção para compliance ambiental, fiscal, financeiro e logística.',
+        'Reestruturo uma plataforma complexa com DDD e estratégia de monólito modular primeiro — contextos delimitados e contratos estáveis que mantêm a extração de serviços como opção, não como reescrita.',
+        'Projeto fluxos orientados a eventos com consistência transacional, idempotência, políticas de retry e transactional outbox.',
+        'Mantenho mais de mil testes automatizados passando, cobrindo regras de domínio, casos de uso, APIs, persistência, workers e integrações.',
+        'Montei a stack de observabilidade — dashboards no Grafana, tracing no Jaeger e correlation IDs que seguem a requisição pelos fluxos assíncronos.',
+      ],
+    },
+  },
+  {
+    role: { en: 'Mid Level Backend Software Engineer', pt: 'Engenheiro de Software Backend Pleno' },
+    org: 'Centro de Excelência em Inteligência Artificial (CEIA)',
+    kind: { en: 'Full time', pt: 'Tempo integral' },
+    period: { en: 'Apr 2025 – Apr 2026', pt: 'abr 2025 – abr 2026' },
+    place: { en: 'Goiânia, BR · Remote', pt: 'Goiânia, GO · Remoto' },
+    tech: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Hexagonal Architecture', 'TDD'],
+    bullets: {
+      en: [
+        'Engineered asynchronous REST APIs and backend services for AI-driven platforms.',
+        'Applied DDD, hexagonal architecture and strict separation between domain, application and infrastructure.',
+        'Wrote automated tests across domain rules, use cases, API contracts, persistence and integration scenarios.',
+        'Turned AI research and product requirements into reliable production software with multidisciplinary teams.',
+      ],
+      pt: [
+        'Desenvolvi APIs REST assíncronas e serviços de backend para plataformas orientadas a IA.',
+        'Apliquei DDD, arquitetura hexagonal e separação estrita entre domínio, aplicação e infraestrutura.',
+        'Escrevi testes automatizados cobrindo regras de domínio, casos de uso, contratos de API, persistência e integração.',
         'Transformei requisitos de pesquisa e de produto em software de produção com equipes multidisciplinares.',
       ],
     },
   },
   {
-    role: { en: 'Full Stack Developer', pt: 'Desenvolvedor Full Stack' },
+    role: { en: 'Mid Level Fullstack Developer', pt: 'Desenvolvedor Full Stack Pleno' },
     org: 'TOTVS Brasil Central',
+    kind: { en: 'Full time', pt: 'Tempo integral' },
     period: { en: 'Nov 2024 – Apr 2025', pt: 'nov 2024 – abr 2025' },
-    place: { en: 'Goiânia, BR', pt: 'Goiânia, GO' },
-    tech: ['Python', 'Java', 'TypeScript', 'Angular', 'React', 'Spring Boot', 'MongoDB'],
+    place: { en: 'Goiânia, BR · Hybrid', pt: 'Goiânia, GO · Híbrido' },
+    tech: ['Python', 'Java', 'TypeScript', 'Angular', 'React', 'Spring Boot', 'MongoDB', 'n8n'],
     bullets: {
       en: [
-        'Built internal tools and features across a polyglot stack, from Spring Boot services to Angular and React front ends.',
-        'Shipped an internal assistant using RAG/LLM, plus process automations.',
-        'Contributed to testing, documentation and support.',
+        'Built an internal RAG assistant indexing 10+ GitLab repositories into a MongoDB-backed vector database, for code discovery and onboarding.',
+        'Automated Jira time-entry synchronisation and recurring reporting with n8n, cutting manual work.',
+        'Developed licence-management tools and internal integrations across engineering and business operations.',
       ],
       pt: [
-        'Construí ferramentas e funcionalidades internas numa stack poliglota, de serviços Spring Boot a front-ends Angular e React.',
-        'Entreguei um assistente interno com RAG/LLM, além de automações de processos.',
-        'Contribuí em testes, documentação e suporte.',
+        'Construí um assistente interno com RAG indexando mais de 10 repositórios GitLab num banco vetorial sobre MongoDB, para busca de código e onboarding.',
+        'Automatizei a sincronização de apontamentos no Jira e relatórios recorrentes com n8n, cortando trabalho manual.',
+        'Desenvolvi ferramentas de gestão de licenças e integrações internas entre engenharia e operações.',
       ],
     },
   },
@@ -89,15 +142,15 @@ export const experience: Entry[] = [
     org: 'LabTIME / UFG',
     period: { en: 'Nov 2023 – Nov 2024', pt: 'nov 2023 – nov 2024' },
     place: { en: 'Goiânia, BR', pt: 'Goiânia, GO' },
-    tech: ['Unreal Engine 5', 'C++'],
+    tech: ['Unreal Engine 5', 'C++', 'Plugins'],
     bullets: {
       en: [
-        'Wrote gameplay systems in C++/Unreal Engine 5, with reusable components and modular features.',
-        'Took part in architecture, debugging, technical documentation and code review.',
+        'Wrote gameplay systems in C++/Unreal Engine 5, including a plugin built for modularity and reuse across projects.',
+        'Took part in architecture, debugging, technical documentation and code review with a multidisciplinary team.',
       ],
       pt: [
-        'Escrevi sistemas de gameplay em C++/Unreal Engine 5, com componentes reutilizáveis e funcionalidades modulares.',
-        'Participei de arquitetura, debugging, documentação técnica e revisão de código.',
+        'Escrevi sistemas de gameplay em C++/Unreal Engine 5, incluindo um plugin feito para modularidade e reuso entre projetos.',
+        'Participei de arquitetura, debugging, documentação técnica e revisão de código com equipe multidisciplinar.',
       ],
     },
   },
@@ -138,12 +191,12 @@ export const teaching: Entry[] = [
     place: { en: 'Goiânia, BR', pt: 'Goiânia, GO' },
     bullets: {
       en: [
-        'Twelve weekly hours per term supporting students, including learners with disabilities and students facing difficulty.',
-        'Backed the supervising professor in preparing and running class activities, through Moodle and Teams.',
+        'Twelve weekly hours per term, including a volunteer term teaching Introduction to Computing for Electrical Engineering.',
+        'Supported students one to one — including learners with disabilities — and backed the supervising professor through Moodle and Teams.',
       ],
       pt: [
-        'Doze horas semanais por vínculo acompanhando estudantes, incluindo alunos com deficiência e com dificuldade de aprendizagem.',
-        'Apoiei o professor orientador na organização e execução das atividades didáticas, via Moodle e Teams.',
+        'Doze horas semanais por vínculo, incluindo uma monitoria voluntária de Introdução à Computação para a Engenharia Elétrica.',
+        'Acompanhei estudantes individualmente — incluindo alunos com deficiência — e apoiei o professor orientador via Moodle e Teams.',
       ],
     },
   },
@@ -151,13 +204,19 @@ export const teaching: Entry[] = [
 
 export const education: Entry[] = [
   {
-    role: { en: 'MSc in Computer Science / Artificial Intelligence', pt: 'Mestrado em Ciência da Computação / Inteligência Artificial' },
+    role: { en: "Master's degree — Artificial Intelligence", pt: 'Mestrado — Inteligência Artificial' },
     org: 'Universidade Federal do Rio Grande do Sul (UFRGS)',
-    period: { en: 'Feb 2026 – Mar 2028 (expected)', pt: 'fev 2026 – mar 2028 (previsto)' },
+    period: { en: 'Feb 2026 – Mar 2028', pt: 'fev 2026 – mar 2028' },
     place: { en: 'Porto Alegre, BR', pt: 'Porto Alegre, RS' },
     bullets: {
-      en: ['Research on reinforcement learning, hierarchical planning and multi-agent systems.'],
-      pt: ['Pesquisa em aprendizado por reforço, planejamento hierárquico e sistemas multiagentes.'],
+      en: [
+        'Institute of Informatics, track: Planning, Multi-Agent Systems and Robotics, supervised by Prof. Lucas N. Alegre.',
+        'Research: reinforcement learning combined with GOAP and HTN for believable NPC behaviour and modular gameplay architectures.',
+      ],
+      pt: [
+        'Instituto de Informática, linha de Planejamento, Sistemas Multiagentes e Robótica, sob orientação do Prof. Lucas N. Alegre.',
+        'Pesquisa: aprendizado por reforço combinado a GOAP e HTN para comportamento crível de NPC e arquiteturas modulares de gameplay.',
+      ],
     },
   },
   {
@@ -166,16 +225,26 @@ export const education: Entry[] = [
     period: { en: 'Feb 2020 – Jun 2025', pt: 'fev 2020 – jun 2025' },
     place: { en: 'Goiânia, BR', pt: 'Goiânia, GO' },
     bullets: {
-      en: ['Emphasis on software engineering, backend development, AI and computing fundamentals.'],
-      pt: ['Ênfase em engenharia de software, desenvolvimento backend, IA e fundamentos de computação.'],
+      en: [
+        '3,000-hour interdisciplinary degree across computer science, management and IT: requirements engineering, software architecture, databases, security and human-computer interaction.',
+        'Includes a practical residency project and complementary activities. Final average 8.5.',
+      ],
+      pt: [
+        'Curso interdisciplinar de 3.000 horas entre computação, administração e TI: engenharia de requisitos, arquitetura de software, bancos de dados, segurança e interação humano-computador.',
+        'Inclui projeto de residência prática e atividades complementares. Média final 8,5.',
+      ],
     },
   },
 ];
 
 export const certifications: Bi[] = [
   {
-    en: 'Advanced Topics on Software Testing and Quality Assurance — UFG / Penn State University',
-    pt: 'Advanced Topics on Software Testing and Quality Assurance — UFG / Penn State University',
+    en: 'Game Design and Development 1: 2D Shooter — Michigan State University (May 2026)',
+    pt: 'Game Design and Development 1: 2D Shooter — Michigan State University (mai 2026)',
+  },
+  {
+    en: 'Advanced Topics on Software Testing and Quality Assurance — UFG (Aug 2024)',
+    pt: 'Advanced Topics on Software Testing and Quality Assurance — UFG (ago 2024)',
   },
 ];
 
@@ -185,13 +254,13 @@ export const languages: Bi[] = [
 ];
 
 export const skills: { label: Bi; items: string[] }[] = [
-  { label: { en: 'Languages', pt: 'Linguagens' }, items: ['Python', 'Java', 'TypeScript', 'C#', 'C++'] },
-  { label: { en: 'Backend', pt: 'Backend' }, items: ['FastAPI', 'Spring Boot', 'REST APIs', 'RabbitMQ', 'Redis'] },
-  { label: { en: 'Frontend', pt: 'Frontend' }, items: ['Angular', 'React', 'TypeScript', 'SPA'] },
-  { label: { en: 'Data', pt: 'Dados' }, items: ['PostgreSQL', 'SQL Server', 'MongoDB', 'Redis'] },
-  { label: { en: 'Games', pt: 'Jogos' }, items: ['Unity', 'Unreal Engine 5', 'C#', 'C++', 'Gameplay Ability System'] },
-  { label: { en: 'AI', pt: 'IA' }, items: ['Reinforcement Learning', 'HTN', 'GOAP', 'Behavior Trees', 'Multi-agent'] },
-  { label: { en: 'DevOps', pt: 'DevOps' }, items: ['Git', 'Docker', 'CI/CD', 'GCP', 'Azure DevOps', 'Terraform'] },
+  { label: { en: 'Games', pt: 'Jogos' }, items: ['Unity', 'Unreal Engine 5', 'C#', 'C++', 'Gameplay Ability System', 'State Machines', 'Data-driven Design'] },
+  { label: { en: 'Game AI', pt: 'IA para jogos' }, items: ['HTN', 'GOAP', 'Behavior Trees', 'Reinforcement Learning', 'Multi-agent', 'Pathfinding'] },
+  { label: { en: 'Backend', pt: 'Backend' }, items: ['Python', 'FastAPI', 'Java', 'Spring Boot', 'REST APIs', 'RabbitMQ', 'Redis'] },
+  { label: { en: 'Frontend', pt: 'Frontend' }, items: ['TypeScript', 'Angular', 'React'] },
+  { label: { en: 'Data', pt: 'Dados' }, items: ['PostgreSQL', 'SQL Server', 'MongoDB'] },
+  { label: { en: 'Architecture', pt: 'Arquitetura' }, items: ['DDD', 'Clean Architecture', 'Hexagonal', 'SOLID', 'Event-driven', 'TDD'] },
+  { label: { en: 'DevOps', pt: 'DevOps' }, items: ['Git', 'Docker', 'CI/CD', 'GCP', 'Azure DevOps', 'Terraform', 'Grafana', 'Jaeger'] },
 ];
 
 export const links = [
@@ -200,5 +269,10 @@ export const links = [
   { label: 'itch.io', url: 'https://vertex-shift.itch.io' },
   { label: 'E-mail', url: 'mailto:andersonfilho09@gmail.com' },
 ];
+
+export const availability: Bi = {
+  en: 'Based in Porto Alegre, Brazil (UTC−3). Open to remote contracts and relocation, targeting gameplay programmer and Game AI roles.',
+  pt: 'Baseado em Porto Alegre (UTC−3). Aberto a contratos remotos e mudança de cidade ou país, mirando vagas de gameplay programmer e IA para jogos.',
+};
 
 export const pick = <T,>(value: { en: T; pt: T }, lang: Lang): T => value[lang] ?? value.en;
