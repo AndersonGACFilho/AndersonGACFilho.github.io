@@ -16,6 +16,15 @@ const d = game.data;
 
 <GameFrame game={game} lang={lang} />
 
+{
+  d.about && (
+    <section class="about">
+      <h2>{t('label.about')}</h2>
+      <p>{pick(d.about, lang)}</p>
+    </section>
+  )
+}
+
 <div class="card-links play-links">
   {d.itch && <a href={d.itch}>{t('cta.itch')} →</a>}
   {d.repo && <a href={`https://github.com/AndersonGACFilho/${d.repo}`}>{t('cta.source')} →</a>}
@@ -24,4 +33,7 @@ const d = game.data;
 <style>
   h1 { margin: 12px 0 4px; }
   .play-links { margin-top: 20px; }
+  .about { margin-top: 28px; max-width: 68ch; }
+  .about h2 { font-size: 1rem; margin: 0 0 6px; color: var(--text-dim); }
+  .about p { margin: 0; line-height: 1.7; }
 </style>

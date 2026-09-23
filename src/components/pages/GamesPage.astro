@@ -27,12 +27,14 @@ const games = await getGames();
       </div>
       <p class="section-sub">{pick(game.data.tagline, lang)}</p>
       <GameFrame game={game} lang={lang} />
+      {game.data.about && <p class="game-about">{pick(game.data.about, lang)}</p>}
     </section>
   ))
 }
 
 <style>
   .game-block { margin-block: 48px; }
+  .game-about { margin: 16px 0 0; max-width: 68ch; line-height: 1.7; color: var(--text-dim); }
   .count { font-size: 0.82rem; color: var(--text-faint); margin: 14px 0 0; }
   .count a { color: var(--gamedev); }
 </style>

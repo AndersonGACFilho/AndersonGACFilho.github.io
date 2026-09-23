@@ -34,6 +34,8 @@ const games = defineCollection({
     ratio: z.string().default('16 / 9'),
     cover: z.string().optional(),   // shown before the build loads
     controls: z.object({ en: z.string(), pt: z.string() }).optional(),
+    // The longer story: where it came from, why it exists.
+    about: z.object({ en: z.string(), pt: z.string() }).optional(),
     itch: z.string().url().optional(),
     repo: z.string().optional(),
     // Flip to true once the WebGL build is committed to webgl-builds.

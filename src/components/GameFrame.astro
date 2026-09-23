@@ -14,9 +14,15 @@ const t = useTranslations(lang);
 const base = import.meta.env.PUBLIC_GAMES_BASE ?? '/webgl-builds';
 const src = `${base}/${d.buildPath}/?lang=${lang}`;
 const id = `game-${game.id}`;
+
+// Cinema mode has to fit the frame inside the viewport on both axes.
+// `aspect-ratio` alone only ever constrains one of them, so the ratio is
+// also exposed as a plain number the width calculation can use.
+const [ratioW, ratioH] = d.ratio.split('/').map((part) => Number(part.trim()));
+const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
 ---
 
-<figure class="game" id={id} style={`--ratio: ${d.ratio}`}>
+<figure class="game" id={id} style={`--ratio: ${d.ratio}; --ratio-num: ${ratioNum}`}>
   {
     d.live ? (
       <div class="game-stage" data-src={src}>
@@ -42,11 +48,22 @@ const id = `game-${game.id}`;
     )
   }
 
+  {d.live && (
+    <button class="cinema-close" type="button" data-cinema-close aria-label={t('label.close')}>
+      ✕ <span>{t('label.close')}</span>
+    </button>
+  )}
+
   <figcaption>
     <span>
       {d.controls && <><strong>{t('label.controls')}:</strong> {pick(d.controls, lang)}</>}
     </span>
-    {d.live && <button class="btn" type="button" data-fullscreen>⛶ {t('label.fullscreen')}</button>}
+    {d.live && (
+      <span class="game-actions">
+        <button class="btn" type="button" data-cinema>▭ {t('label.cinema')}</button>
+        <button class="btn" type="button" data-fullscreen>⛶ {t('label.fullscreen')}</button>
+      </span>
+    )}
   </figcaption>
 </figure>
 
@@ -120,6 +137,51 @@ const id = `game-${game.id}`;
     font-size: 0.88rem;
     color: var(--text-dim);
   }
+  .game-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Cinema mode is pure CSS on purpose: moving the iframe in the DOM
+     reloads it, and a running game would restart. */
+  .cinema-close { display: none; }
+  .game.cinema {
+    --cinema-chrome: 150px;   /* top bar, caption and padding */
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    margin: 0;
+    padding: 56px 24px 24px;
+    background: rgba(2, 3, 8, 0.96);
+    backdrop-filter: blur(3px);
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 14px;
+    place-items: center;
+  }
+  .game.cinema .game-stage {
+    /* Whichever axis runs out first wins. */
+    width: min(100%, calc((100vh - var(--cinema-chrome)) * var(--ratio-num)));
+    height: auto;
+    aspect-ratio: var(--ratio);
+  }
+  .game.cinema figcaption { margin: 0; max-width: 1100px; }
+  .game.cinema .cinema-close {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: var(--bg-elev);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 6px 12px;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .game.cinema .cinema-close:hover { background: var(--bg-hover); }
+  :global(body.cinema-open) { overflow: hidden; }
+
   .game:fullscreen { background: #000; display: grid; place-items: center; }
   .game:fullscreen .game-stage { height: 100%; width: auto; aspect-ratio: var(--ratio); }
   .game:fullscreen figcaption { display: none; }
@@ -139,6 +201,25 @@ const id = `game-${game.id}`;
       frame.allow = 'autoplay; fullscreen; gamepad; cross-origin-isolated';
       frame.setAttribute('allowfullscreen', '');
       stage.replaceChildren(frame);
+    });
+
+    const exitCinema = () => {
+      root.classList.remove('cinema');
+      document.body.classList.remove('cinema-open');
+    };
+
+    root.querySelector<HTMLButtonElement>('[data-cinema]')?.addEventListener('click', () => {
+      root.classList.add('cinema');
+      document.body.classList.add('cinema-open');
+      root.querySelector<HTMLIFrameElement>('iframe')?.focus();
+    });
+
+    root.querySelector<HTMLButtonElement>('[data-cinema-close]')?.addEventListener('click', exitCinema);
+
+    // Esc reaches us only when focus is outside the iframe; the close
+    // button is the reliable way out while the game holds the keyboard.
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && root.classList.contains('cinema')) exitCinema();
     });
 
     root.querySelector<HTMLButtonElement>('[data-fullscreen]')?.addEventListener('click', () => {
