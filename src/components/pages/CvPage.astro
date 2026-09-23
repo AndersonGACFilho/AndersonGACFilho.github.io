@@ -3,7 +3,8 @@ import PageHeader from '../PageHeader.astro';
 import { useTranslations, type Lang } from '../../i18n/ui';
 import {
   headline, profile, experience, teaching, education,
-  certifications, languages, skills, links, availability, pick, type Entry,
+  certifications, languages, skills, links, availability,
+  recommendations, recommendationsNote, pick, type Entry,
 } from '../../i18n/cv';
 
 interface Props { lang: Lang; }
@@ -17,6 +18,7 @@ const section = {
   skills: { en: 'Skills', pt: 'Competências' },
   certifications: { en: 'Certifications', pt: 'Certificações' },
   languages: { en: 'Languages', pt: 'Idiomas' },
+  recommendations: { en: 'Recommendations', pt: 'Recomendações' },
 };
 
 const groups: [keyof typeof section, Entry[]][] = [
@@ -73,6 +75,27 @@ const groups: [keyof typeof section, Entry[]][] = [
 }
 
 <section>
+  <div class="section-head">
+    <h2>{pick(section.recommendations, lang)}</h2>
+    <span class="more">{pick(recommendationsNote, lang)}</span>
+  </div>
+  <div class="grid recs">
+    {
+      recommendations.map((rec) => (
+        <figure class="card rec" style="--track: var(--fullstack)">
+          <blockquote>{pick(rec.text, lang)}</blockquote>
+          <figcaption>
+            <a href={rec.url}>{rec.author}</a>
+            <span class="rec-role">{pick(rec.role, lang)}</span>
+            <span class="rec-rel">{pick(rec.relation, lang)} · {pick(rec.date, lang)}</span>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</section>
+
+<section>
   <div class="section-head"><h2>{pick(section.skills, lang)}</h2></div>
   <dl class="skills">
     {
@@ -127,6 +150,20 @@ const groups: [keyof typeof section, Entry[]][] = [
   .skills > div { display: grid; gap: 6px 28px; grid-template-columns: minmax(0, 190px) 1fr; align-items: start; }
   .skills dt { font-family: var(--mono); font-size: 0.78rem; color: var(--text-faint); padding-top: 3px; }
   .skills dd { margin: 0; }
+
+  .recs { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .rec { margin: 0; gap: 14px; }
+  .rec blockquote {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .rec blockquote::before { content: '\201C'; color: var(--fullstack); font-size: 1.6rem; line-height: 0; vertical-align: -0.35em; margin-right: 2px; }
+  .rec figcaption { display: grid; gap: 2px; margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); }
+  .rec figcaption a { font-weight: 600; }
+  .rec-role { color: var(--text-dim); font-size: 0.85rem; }
+  .rec-rel { color: var(--text-faint); font-family: var(--mono); font-size: 0.72rem; }
 
   .closing h2 { font-size: 1.05rem; }
   .closing ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 0.93rem; }

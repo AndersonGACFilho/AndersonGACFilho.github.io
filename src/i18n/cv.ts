@@ -275,4 +275,59 @@ export const availability: Bi = {
   pt: 'Baseado em Porto Alegre (UTC−3). Aberto a contratos remotos e mudança de cidade ou país, mirando vagas de gameplay programmer e IA para jogos.',
 };
 
+/**
+ * Recommendations written on LinkedIn. The originals are in Portuguese —
+ * the English column is a translation, and the page says so.
+ */
+export type Recommendation = {
+  author: string;
+  url: string;
+  role: Bi;
+  relation: Bi;
+  date: Bi;
+  text: Bi;
+};
+
+export const recommendations: Recommendation[] = [
+  {
+    author: 'Daniel Henrique Pinheiro',
+    url: 'https://www.linkedin.com/in/danielpinheirohs/',
+    role: {
+      en: 'AI Specialist & Software Engineer · AI Architect',
+      pt: 'Especialista em IA & Engenheiro de Software · Arquiteto de IA',
+    },
+    relation: {
+      en: 'Directly supervised Anderson at CEIA',
+      pt: 'Supervisionou Anderson diretamente no CEIA',
+    },
+    date: { en: '30 Oct 2025', pt: '30 de outubro de 2025' },
+    text: {
+      en: 'I had the pleasure of working directly with Anderson at CEIA during 2025, and my recommendation is absolute. He is the kind of developer who raises the level of the team. Beyond his excellent command of the technologies we used (Python and FastAPI), what really sets him apart is his initiative and his commitment to good architecture and clean code. He is proactive, communicative, and was constantly looking for ways to actively improve the structure of our codebase. He is a professional who cares about product quality in the long run. I strongly recommend him.',
+      pt: 'Tive o prazer de trabalhar diretamente com o Anderson no CEIA durante 2025 e minha recomendação é absoluta. Ele é o tipo de desenvolvedor que eleva o nível do time. Além de seu excelente domínio das tecnologias utilizadas (Python e FastAPI), o que realmente o diferencia é sua proatividade e dedicação a boas práticas de arquitetura e código limpo. É proativo, comunicativo e estava constantemente buscando formas de melhorar ativamente a estrutura do nosso código. É um profissional que se preocupa com a qualidade do produto a longo prazo. Recomendo fortemente.',
+    },
+  },
+  {
+    author: 'José Miguel Ferreira Guimarães',
+    url: 'https://www.linkedin.com/in/josemiguelferreiraguimaraes/',
+    role: {
+      en: 'Tech Lead in Digital Transformation · TOTVS RM ERP specialist',
+      pt: 'Líder Técnico em Transformação Digital · Especialista em ERP TOTVS Linha RM',
+    },
+    relation: {
+      en: 'Worked with Anderson at TOTVS Brasil Central, on a different team',
+      pt: 'Trabalhou com Anderson na TOTVS Brasil Central, em equipes diferentes',
+    },
+    date: { en: '26 Aug 2025', pt: '26 de agosto de 2025' },
+    text: {
+      en: 'I strongly recommend Anderson, with whom I had the pleasure of working at TOTVS Brasil Central. As a full stack developer he showed impressive technical versatility and a solid ability to solve complex problems, moving nimbly between backend and frontend technologies. His skill stood out especially when he implemented an internal chatbot with RAG and LLM, a project that demonstrated his ability to create innovative, high-impact solutions. Anderson is a high-potential, collaborative professional who without a doubt adds immense value to any team.',
+      pt: 'Recomendo fortemente o Anderson, com quem tive o prazer de trabalhar na TOTVS Brasil Central. Como Desenvolvedor Full Stack, ele demonstrou uma versatilidade técnica impressionante e uma sólida capacidade para resolver problemas complexos, transitando com agilidade entre tecnologias de back-end e front-end. Sua capacidade se destacou especialmente quando implementou um chatbot interno com RAG e LLM, um projeto que demonstrou sua habilidade em criar soluções inovadoras e de alto impacto. Anderson é um profissional de alto potencial, colaborativo e que, sem dúvida, agrega imenso valor a qualquer time.',
+    },
+  },
+];
+
+export const recommendationsNote: Bi = {
+  en: 'Written on LinkedIn, in Portuguese; translated here.',
+  pt: 'Escritas no LinkedIn, no original em português.',
+};
+
 export const pick = <T,>(value: { en: T; pt: T }, lang: Lang): T => value[lang] ?? value.en;
