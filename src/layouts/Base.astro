@@ -48,14 +48,14 @@ const canonical = new URL(here, Astro.site).toString();
     {/* Absolute URL: link preview crawlers do not resolve relative paths.
         Declaring summary_large_image without an image is what stopped
         LinkedIn from building a preview at all. */}
-    <meta property="og:image" content={new URL('/og.png', Astro.site).href} />
+    <meta property="og:image" content={new URL('/og-cover.png', Astro.site).href} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Anderson Gonçalves — gameplay programmer, backend engineer and Game AI researcher" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={desc} />
-    <meta name="twitter:image" content={new URL('/og.png', Astro.site).href} />
+    <meta name="twitter:image" content={new URL('/og-cover.png', Astro.site).href} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
