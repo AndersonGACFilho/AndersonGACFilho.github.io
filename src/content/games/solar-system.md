@@ -23,5 +23,5 @@ about:
     tela sem virar um protetor de tela.
 itch: https://vertex-shift.itch.io/solar-system-coursera-course
 live: true
-order: 2
+order: 9
 ---

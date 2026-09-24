@@ -25,5 +25,5 @@ about:
     projeto a migrar de editor — a versão em que tinha sido escrito quebrava
     no último passo do build WebGL.
 live: true
-order: 1
+order: 6
 ---

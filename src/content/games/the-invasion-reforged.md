@@ -19,5 +19,5 @@ about:
     C# puro desacoplado de MonoBehaviours, máquina de estados hierárquica para
     a IA, movimento por Strategy e dados dirigidos por ScriptableObjects.
 live: false
-order: 13
+order: 5
 ---

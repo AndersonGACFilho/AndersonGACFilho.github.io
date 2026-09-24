@@ -17,5 +17,5 @@ about:
     fundo deve custar algo que ainda dá para reconquistar. O build que vem para
     cá é o de tela plana, já que a versão VR precisa de um headset.
 live: false
-order: 11
+order: 1
 ---

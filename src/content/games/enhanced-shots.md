@@ -12,5 +12,5 @@ controls:
 itch: https://vertex-shift.itch.io/enhanced-shots
 repo: Enhanced-Shots
 live: true
-order: 3
+order: 8
 ---

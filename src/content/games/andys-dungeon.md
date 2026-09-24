@@ -23,5 +23,5 @@ about:
     desde o início, porque currículo que exige download é currículo que
     ninguém abre.
 live: false
-order: 4
+order: 3
 ---

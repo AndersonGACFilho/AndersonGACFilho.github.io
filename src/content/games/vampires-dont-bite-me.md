@@ -17,5 +17,5 @@ about:
     vampiro e te marca para os outros, então todo disfarce é também uma decisão
     sobre qual metade da mansão fica hostil.
 live: false
-order: 12
+order: 4
 ---
