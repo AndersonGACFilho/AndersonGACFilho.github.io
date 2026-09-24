@@ -43,6 +43,9 @@ const games = defineCollection({
     repo: z.string().optional(),
     // Flip to true once the WebGL build is committed to webgl-builds.
     live: z.boolean().default(false),
+    // The build is a test bed or demo, not the finished game. Kept out
+    // of the home page showcase so the front door shows finished work.
+    demo: z.boolean().default(false),
     order: z.number().default(100),
   }),
 });

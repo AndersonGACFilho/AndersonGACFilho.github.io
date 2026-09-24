@@ -1,5 +1,5 @@
 ---
-title: The Invasion Reforged
+title: The Invasion Reforged — AI Test Bed (not the game yet)
 tagline:
   en: The AI test bed of the Unity rebuild — watch the hierarchical state machine switch live.
   pt: A bancada de teste da IA da refatoração em Unity — veja a máquina de estados hierárquica trocando ao vivo.
@@ -31,5 +31,6 @@ about:
     nenhuma delas. O roguelite que o projeto persegue, com artefatos e
     upgrades, não está neste build.
 live: true
+demo: true
 order: 5
 ---

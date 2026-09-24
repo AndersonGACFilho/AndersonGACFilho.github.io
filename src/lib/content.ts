@@ -25,10 +25,22 @@ export async function getGames(): Promise<CollectionEntry<'games'>[]> {
   return all.sort((a, b) => a.data.order - b.data.order);
 }
 
-/** The game shown on the home page: the first one actually playable, else the first listed. */
+/**
+ * The game shown on the home page: the most recent finished one that is
+ * playable. Test beds and demos are excluded — the front door should open on
+ * something complete, not on a scene built to debug an AI. Falls back to any
+ * playable build, then to the first listed.
+ */
 export async function getFeaturedGame(): Promise<CollectionEntry<'games'> | undefined> {
   const games = await getGames();
-  return games.find((g) => g.data.live) ?? games[0];
+  const byNewest = [...games].sort(
+    (a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0),
+  );
+  return (
+    byNewest.find((g) => g.data.live && !g.data.demo) ??
+    byNewest.find((g) => g.data.live) ??
+    games[0]
+  );
 }
 
 /** Where the published Marp decks live. */
