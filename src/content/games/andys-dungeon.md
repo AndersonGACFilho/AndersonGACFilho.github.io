@@ -6,21 +6,20 @@ tagline:
 date: 2026-05-26
 buildPath: andys-dungeon
 ratio: 16 / 9
-controls:
-  en: WASD to walk, mouse to look, E to interact.
-  pt: WASD para andar, mouse para olhar, E para interagir.
 repo: Andy-s-Dungeon
 about:
   en: >-
-    A CV you walk through instead of scroll. Each room holds a piece of the
-    professional history, the arcade machines run the projects themselves, and
-    the grimoire is the document version for anyone who would rather just read
-    it. Built for WebGL from the start, because a résumé that needs a download
-    is not a résumé anyone opens.
+    Still on paper: the repository holds a design document and the decisions
+    behind it, not a build. The idea is a CV you walk through instead of
+    scroll — rooms carrying the professional history, arcade machines running
+    the projects themselves, and a grimoire for anyone who would rather just
+    read it. WebGL is the target from the start, because a résumé that needs a
+    download is not a résumé anyone opens.
   pt: >-
-    Um currículo que se percorre em vez de rolar. Cada sala guarda um pedaço da
-    história profissional, os fliperamas rodam os próprios projetos, e o
-    grimório é a versão documento para quem preferir só ler. Feito para WebGL
+    Ainda no papel: o repositório guarda um documento de design e as decisões
+    por trás dele, não um build. A ideia é um currículo que se percorre em vez
+    de rolar — salas carregando a história profissional, fliperamas rodando os
+    próprios projetos, e um grimório para quem preferir só ler. WebGL é o alvo
     desde o início, porque currículo que exige download é currículo que
     ninguém abre.
 live: false
