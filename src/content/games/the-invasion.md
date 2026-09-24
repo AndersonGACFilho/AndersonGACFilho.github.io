@@ -3,6 +3,7 @@ title: The Invasion
 tagline:
   en: Retro arcade shooter written from scratch in C++ with Allegro 5, compiled to WebAssembly.
   pt: Shooter arcade retrô escrito do zero em C++ com Allegro 5, compilado para WebAssembly.
+date: 2021-08-11
 buildPath: the-invasion
 ratio: 16 / 9
 controls:

@@ -3,6 +3,7 @@ title: Enhanced Shots
 tagline:
   en: Action prototype built in Unity, playable in the browser.
   pt: Protótipo de ação feito em Unity, jogável no navegador.
+date: 2023-08-24
 buildPath: enhanced-shots
 ratio: 16 / 10
 controls:

@@ -3,6 +3,7 @@ title: Starlight Protocol
 tagline:
   en: 2D arcade space shooter with inertia-based flight and escalating enemy waves.
   pt: Shoot'em up 2D arcade com voo inercial e ondas de inimigos cada vez maiores.
+date: 2026-05-20
 buildPath: starlight-protocol
 ratio: 16 / 9
 controls:

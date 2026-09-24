@@ -32,6 +32,9 @@ const games = defineCollection({
     // Folder inside the webgl-builds repo, served from the same origin.
     buildPath: z.string(),
     ratio: z.string().default('16 / 9'),
+    // When the work happened. Drives the ordering on the games page,
+    // newest first; `order` only breaks ties.
+    date: z.coerce.date().optional(),
     cover: z.string().optional(),   // shown before the build loads
     controls: z.object({ en: z.string(), pt: z.string() }).optional(),
     // The longer story: where it came from, why it exists.

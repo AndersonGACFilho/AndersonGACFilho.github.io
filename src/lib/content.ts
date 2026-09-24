@@ -18,7 +18,16 @@ export async function getProjects(): Promise<CollectionEntry<'projects'>[]> {
 
 export async function getGames(): Promise<CollectionEntry<'games'>[]> {
   const all = await getCollection('games');
-  return all.sort((a, b) => a.data.order - b.data.order);
+  // Newest first. Entries without a date fall to the end, where `order`
+  // still decides between them.
+  return all.sort((a, b) => {
+    const da = a.data.date?.getTime();
+    const db = b.data.date?.getTime();
+    if (da !== undefined && db !== undefined && da !== db) return db - da;
+    if (da === undefined && db !== undefined) return 1;
+    if (db === undefined && da !== undefined) return -1;
+    return a.data.order - b.data.order;
+  });
 }
 
 /** The game shown on the home page: the first one actually playable, else the first listed. */
