@@ -22,6 +22,6 @@ about:
     orbital legível em escalas absurdamente diferentes, e colocar cometas na
     tela sem virar um protetor de tela.
 itch: https://vertex-shift.itch.io/solar-system-coursera-course
-live: false
+live: true
 order: 2
 ---
