@@ -46,6 +46,10 @@ const games = defineCollection({
     // The build is a test bed or demo, not the finished game. Kept out
     // of the home page showcase so the front door shows finished work.
     demo: z.boolean().default(false),
+    // Pins this game to the home page. An explicit choice beats inferring
+    // one from dates, which in practice came down to a single day between
+    // two very different projects.
+    featured: z.boolean().default(false),
     order: z.number().default(100),
   }),
 });

@@ -26,10 +26,10 @@ export async function getGames(): Promise<CollectionEntry<'games'>[]> {
 }
 
 /**
- * The game shown on the home page: the most recent finished one that is
- * playable. Test beds and demos are excluded — the front door should open on
- * something complete, not on a scene built to debug an AI. Falls back to any
- * playable build, then to the first listed.
+ * The game shown on the home page. A game marked `featured` wins outright;
+ * that choice is deliberate and belongs to whoever writes the entry. Without
+ * one, fall back to the most recent finished build, skipping test beds and
+ * demos so the front door does not open on a scene built to debug an AI.
  */
 export async function getFeaturedGame(): Promise<CollectionEntry<'games'> | undefined> {
   const games = await getGames();
@@ -37,6 +37,7 @@ export async function getFeaturedGame(): Promise<CollectionEntry<'games'> | unde
     (a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0),
   );
   return (
+    byNewest.find((g) => g.data.featured && g.data.live) ??
     byNewest.find((g) => g.data.live && !g.data.demo) ??
     byNewest.find((g) => g.data.live) ??
     games[0]
