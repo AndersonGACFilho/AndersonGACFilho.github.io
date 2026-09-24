@@ -13,7 +13,11 @@ export const paperTitle =
 export const authors = [
   { name: 'Anderson G. Alves', self: true },
   { name: 'Lucas N. Alegre', url: 'https://lucasalegre.github.io' },
-  { name: 'Anderson R. Tavares', url: 'https://andertavares.net' },
+  // http, not https: the certificate served on 443 does not cover this
+  // hostname, so the browser stops visitors with a full-page security
+  // warning. Plain http answers cleanly. Revisit if the site gets a
+  // valid certificate.
+  { name: 'Anderson R. Tavares', url: 'http://andertavares.net' },
 ];
 
 export const affiliation = 'Instituto de Informática, Universidade Federal do Rio Grande do Sul';
