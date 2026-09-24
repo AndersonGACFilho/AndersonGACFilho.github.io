@@ -12,6 +12,7 @@ export const ui = {
     'nav.teaching': 'Teaching',
     'nav.cv': 'CV',
     'site.tagline': 'Gameplay programmer, backend engineer and Game AI researcher',
+    'site.description': 'Gameplay programmer and backend engineer in Porto Alegre, researching Game AI at UFRGS. Five prototypes play in the browser, with nothing to download.',
     'hero.role': 'Gameplay Programmer · Backend Engineer · Game AI Researcher',
     'hero.blurb':
       'I build gameplay systems in Unity and Unreal, the backend services that keep them running, and I research how planning and reinforcement learning can make NPCs worth playing against. MSc in Computer Science at UFRGS.',
@@ -91,6 +92,7 @@ export const ui = {
     'nav.teaching': 'Aulas',
     'nav.cv': 'Currículo',
     'site.tagline': 'Programador de gameplay, engenheiro de backend e pesquisador de IA para jogos',
+    'site.description': 'Programador de gameplay e engenheiro de backend em Porto Alegre, pesquisando IA para jogos na UFRGS. Cinco protótipos rodam no navegador, sem baixar nada.',
     'hero.role': 'Programador de Gameplay · Engenheiro de Backend · Pesquisador de IA para Jogos',
     'hero.blurb':
       'Construo sistemas de gameplay em Unity e Unreal, os serviços de backend que os sustentam, e pesquiso como planejamento e aprendizado por reforço podem gerar NPCs que valem a pena enfrentar. Mestrado em Computação na UFRGS.',

@@ -13,7 +13,10 @@ interface Props {
 
 const { title, description, lang, altPath } = Astro.props;
 const t = useTranslations(lang);
-const desc = description ?? t('site.tagline');
+// Link preview crawlers treat a short description as thin content;
+// LinkedIn warns below 100 characters. The tagline is kept short for
+// display, so the description is its own string.
+const desc = description ?? t('site.description');
 const here = Astro.url.pathname;
 
 const nav = [
