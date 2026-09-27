@@ -1,34 +1,13 @@
-/* pagina.css — visual das paginas interativas da UC2.
- *
- * POR QUE nao reaproveita o themes/senac.css: aquele e tema de SLIDE. Tem
- * `@import 'default'` que so o Marp resolve, seletores ancorados em `section`,
- * e 375 kB de fonte embutida em base64. Aqui a pagina e parte do SITE, e o site
- * ja tem identidade propria — os mesmos tokens do indice e do plano de ensino.
- */
-
+/* Os tokens vêm de _comum/tokens.css, o mesmo arquivo do site pessoal. Antes
+   esta página tinha paleta própria, escrita à mão, que já divergia das outras
+   duas em fundo, superfície e raio. Aqui só ficam os apelidos locais. */
 :root {
-  color-scheme: dark light;
-  --bg: #0b0d12;
-  --card: #12151d;
-  --line: #242a38;
-  --fg: #e7eaf2;
-  --dim: #9aa3b8;
-  --accent: #38bdf8;
-  --certo: #34d399;
-  --errado: #fb7185;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #fbfbfd;
-    --card: #fff;
-    --line: #e1e5ee;
-    --fg: #131722;
-    --dim: #525a6e;
-    --accent: #0284c7;
-    --certo: #0f9d63;
-    --errado: #d6335a;
-  }
+  --card: var(--bg-elev);
+  --line: var(--border);
+  --fg: var(--text);
+  --dim: var(--text-dim);
+  --certo: var(--feito);
+  --errado: var(--erro);
 }
 
 * {
@@ -39,7 +18,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font: 16px/1.6 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font: 17px/1.7 var(--font);
 }
 
 .wrap {
@@ -135,7 +114,7 @@ legend {
   background: var(--card);
   border: 1px solid var(--line);
   color: var(--dim);
-  font: 600 0.78rem/1.7em 'JetBrains Mono', ui-monospace, monospace;
+  font: 600 0.78rem/1.7em var(--display);
   text-align: center;
 }
 
@@ -184,7 +163,7 @@ legend {
 .letra {
   flex: none;
   color: var(--dim);
-  font: 600 0.82rem/1.5 'JetBrains Mono', ui-monospace, monospace;
+  font: 600 0.82rem/1.5 var(--display);
   text-transform: uppercase;
 }
 
@@ -309,13 +288,13 @@ legend {
   padding: 14px;
 }
 
-.painel > h4 {
+.painel > h3 {
   display: flex;
   gap: 10px;
   align-items: center;
   justify-content: space-between;
   margin: 0 0 10px;
-  font: 600 0.74rem/1.4 'JetBrains Mono', ui-monospace, monospace;
+  font: 600 0.74rem/1.4 var(--display);
   color: var(--dim);
   text-transform: uppercase;
   letter-spacing: 0.07em;
@@ -330,7 +309,7 @@ legend {
   border: 1px solid transparent;
   border-radius: 8px;
   background: var(--bg);
-  font: 0.83rem/1.45 'JetBrains Mono', ui-monospace, monospace;
+  font: 0.83rem/1.45 var(--display);
   transition: border-color 0.2s ease, opacity 0.2s ease, color 0.2s ease;
 }
 
@@ -415,7 +394,7 @@ legend {
   padding: 5px 10px;
   border: 1px solid var(--line);
   border-radius: 99px;
-  font: 600 0.74rem/1 'JetBrains Mono', ui-monospace, monospace;
+  font: 600 0.74rem/1 var(--display);
   color: var(--dim);
   white-space: nowrap;
 }
@@ -514,7 +493,7 @@ legend {
 .caixa > .nome {
   display: block;
   margin-bottom: 9px;
-  font: 600 0.88rem/1 'JetBrains Mono', ui-monospace, monospace;
+  font: 600 0.88rem/1 var(--display);
 }
 
 .caixa .filhas {
@@ -555,7 +534,7 @@ legend {
 
 .marco .ano {
   display: block;
-  font: 600 0.74rem/1.6 'JetBrains Mono', ui-monospace, monospace;
+  font: 600 0.74rem/1.6 var(--display);
   color: var(--dim);
 }
 
@@ -572,7 +551,7 @@ legend {
   border: 1px solid var(--line);
   border-radius: 7px;
   background: var(--bg);
-  font: 0.74rem/1.3 'JetBrains Mono', ui-monospace, monospace;
+  font: 0.74rem/1.3 var(--display);
   text-align: center;
   transition: border-color 0.2s ease, color 0.2s ease;
 }
@@ -592,7 +571,7 @@ legend {
   border: 1px solid var(--accent);
   border-radius: 11px;
   background: var(--bg);
-  font: 0.86rem/1.5 'JetBrains Mono', ui-monospace, monospace;
+  font: 0.86rem/1.5 var(--display);
 }
 
 .aponta {

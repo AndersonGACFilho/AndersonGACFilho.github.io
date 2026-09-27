@@ -52,7 +52,7 @@ export async function getFeaturedGame(): Promise<CollectionEntry<'games'> | unde
  * published straight into `public/teaching/senacrs/<year>/` by the courseware
  * repo, so the link is internal and never goes stale on a rename.
  */
-export const SLIDES_URL = '/teaching/senacrs/2026/';
+export const SLIDES_URL = '/teaching/senacrs/programador-de-sistemas/2026/index.html';
 
 /**
  * Path of the same article in the other language, falling back to the section

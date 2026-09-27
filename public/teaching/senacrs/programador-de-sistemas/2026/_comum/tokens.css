@@ -1,0 +1,152 @@
+/* ---------- tokens ----------
+ *
+ * Fonte única das cores, raios, medidas e fontes do site. Vive à parte do
+ * global.css porque o material de ensino, publicado como HTML estático em
+ * public/teaching/, consome este mesmo arquivo: os tokens estavam duplicados
+ * nos dois lados e já tinham derivado (largura, raio, fundo do modo claro e as
+ * superfícies elevadas, todos diferentes).
+ *
+ * TEMA EM TRÊS ESTADOS. Escuro é o padrão em :root. Claro entra por preferência
+ * do sistema, mas só enquanto ninguém escolheu escuro à mão — daí o
+ * :not([data-theme='dark']). Escolha explícita, gravada em data-theme pelo
+ * script do Base.astro, ganha das duas.
+ *
+ * A PALETA É QUENTE, de propósito. Quase-preto azulado com um acento neon é o
+ * visual padrão de portfólio gerado; o chão aqui é tinta quente e o texto é
+ * branco-creme. Os três tons de trilha foram escolhidos contra a matemática de
+ * contraste, não no olho: todos passam 4.5:1 sobre --bg e sobre --bg-elev, nos
+ * dois temas. O --text-faint da versão anterior reprovava (4.15:1 no escuro,
+ * 3.67:1 no claro) e era o token de todo metadado do site.
+ */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #13110e;
+  --bg-elev: #1b1813;
+  --bg-hover: #262119;
+  --border: #35302a;
+  /* contorno de controle: separado do --border decorativo porque precisa de
+     3:1 para ser a fronteira visível de um botão ou campo */
+  --border-strong: #726a5c;
+
+  --text: #f4f0e8;
+  --text-dim: #bdb5a8;
+  --text-faint: #9a9285;
+
+  --fullstack: #67cfe0;
+  --gamedev: #f5a97f;
+  --research: #c3a6f5;
+  --accent: var(--fullstack);
+  /* texto sobre o botao primario: vira com o tema, senao o marrom do modo
+     claro fica com texto quase preto por cima */
+  --on-gamedev: #13110e;
+
+  /* material de ensino */
+  --feito: #5fd6a4;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 86%, var(--feito) 14%);
+  --esp-pagina: var(--fullstack);
+  --esp-quiz: var(--feito);
+  --esp-tarefa: var(--research);
+  --esp-arquivo: var(--gamedev);
+  --erro: #fb7185;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  /* a tela jogável não é um cartão: canto vivo, como um monitor */
+  --radius-none: 0px;
+  --maxw: 1080px;
+  --gutter: 20px;
+
+  --display: 'Bricolage Grotesque', 'Segoe UI', sans-serif;
+  --font: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* segue o sistema — mas só até a pessoa escolher escuro à mão */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    color-scheme: light;
+
+    --bg: #faf7f1;
+    --bg-elev: #ffffff;
+    --bg-hover: #f1ede4;
+    --border: #e3ddd1;
+    --border-strong: #8c8376;
+
+    --text: #1a1713;
+    --text-dim: #57514a;
+    --text-faint: #6e675e;
+
+    --fullstack: #0f7c8c;
+    --gamedev: #a4581c;
+    --research: #6b43c4;
+    --on-gamedev: #ffffff;
+
+    /* material de ensino */
+    --feito: #0b7d4f;
+    --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
+    --esp-pagina: var(--fullstack);
+    --esp-quiz: var(--feito);
+    --esp-tarefa: var(--research);
+    --esp-arquivo: var(--gamedev);
+    --erro: #c62a48;
+  }
+}
+
+/* escolha explícita ganha da preferência do sistema, nos dois sentidos */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #faf7f1;
+  --bg-elev: #ffffff;
+  --bg-hover: #f1ede4;
+  --border: #e3ddd1;
+  --border-strong: #8c8376;
+
+  --text: #1a1713;
+  --text-dim: #57514a;
+  --text-faint: #6e675e;
+
+  --fullstack: #0f7c8c;
+  --gamedev: #a4581c;
+  --research: #6b43c4;
+  --on-gamedev: #ffffff;
+
+  /* material de ensino */
+  --feito: #0b7d4f;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
+  --esp-pagina: var(--fullstack);
+  --esp-quiz: var(--feito);
+  --esp-tarefa: var(--research);
+  --esp-arquivo: var(--gamedev);
+  --erro: #c62a48;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #13110e;
+  --bg-elev: #1b1813;
+  --bg-hover: #262119;
+  --border: #35302a;
+  --border-strong: #726a5c;
+
+  --text: #f4f0e8;
+  --text-dim: #bdb5a8;
+  --text-faint: #9a9285;
+
+  --fullstack: #67cfe0;
+  --gamedev: #f5a97f;
+  --research: #c3a6f5;
+  --on-gamedev: #13110e;
+
+  /* material de ensino */
+  --feito: #5fd6a4;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 86%, var(--feito) 14%);
+  --esp-pagina: var(--fullstack);
+  --esp-quiz: var(--feito);
+  --esp-tarefa: var(--research);
+  --esp-arquivo: var(--gamedev);
+  --erro: #fb7185;
+}
