@@ -704,8 +704,65 @@ legend {
   font: 0.86em/1.5 var(--mono);
   color: var(--dim);
 }
-.log li.perdeu .op { color: var(--errado); }
-.log li.ganhou .op { color: var(--certo); }
+.log > li.perdeu > .op { color: var(--errado); }
+.log > li.ganhou > .op { color: var(--certo); }
+/* no registro em par quem sinaliza e a borda e o selo do resultado; pintar
+   os paragrafos inteiros deixa a coluna toda vermelha ou verde e cansa */
+.log.par > li.perdeu > .op,
+.log.par > li.ganhou > .op { color: var(--fg); }
+
+/* ---------- registro em par ----------
+ *
+ * Quando os dois lados fazem a MESMA coisa ao mesmo tempo, empilhar numa
+ * lista unica obriga o aluno a parear as linhas de cabeca. Lado a lado, o
+ * registro tem a mesma leitura dos paineis que estao logo acima.
+ */
+
+.log.par {
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.log.par li {
+  display: block;
+  padding: 12px 13px;
+  border: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+
+.log.par .coluna.perdeu { border-color: color-mix(in srgb, var(--errado) 45%, var(--line)); }
+.log.par .coluna.ganhou { border-color: color-mix(in srgb, var(--certo) 45%, var(--line)); }
+.log.par .coluna.perdeu .resultado { color: var(--errado); border-color: var(--errado); }
+.log.par .coluna.ganhou .resultado { color: var(--certo); border-color: var(--certo); }
+
+.log.par .ator { display: inline-block; margin-bottom: 8px; }
+
+.log.par .op {
+  margin: 0 0 6px;
+  color: var(--fg);
+  font-size: 0.86rem;
+}
+.log.par .op:last-child { margin-bottom: 0; }
+.log.par .op code { display: block; margin-bottom: 4px; }
+.log.par .resultado { margin-left: 0; }
+
+/* o veredito fecha embaixo, nas duas colunas */
+.log.par .so-veredito {
+  grid-column: 1 / -1;
+  border: none;
+  border-left: 2px solid var(--line);
+  border-radius: 0;
+  background: none;
+  padding: 2px 0 2px 13px;
+}
+.log.par .so-veredito.perdeu { border-left-color: var(--errado); }
+.log.par .so-veredito .op { color: var(--dim); }
+
+@media (max-width: 620px) {
+  .log.par { grid-template-columns: 1fr; }
+}
 
 /* ---------- grade de celulas repetidas ---------- */
 

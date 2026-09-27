@@ -47,7 +47,9 @@
     }
 
     return {
+      // Registro cronologico: uma historia, varios atores, em ordem de hora.
       escrever: function (entradas, vazio) {
+        alvo.className = 'log';
         alvo.textContent = '';
         if (!entradas.length) {
           alvo.appendChild(linhaLog({ ator: 'servidor', texto: vazio || 'Nada aconteceu ainda.' }));
@@ -56,6 +58,38 @@
         entradas.forEach(function (e) {
           alvo.appendChild(linhaLog(e));
         });
+      },
+
+      // Registro em par: os dois lados fazem a MESMA coisa ao mesmo tempo, e
+      // o que interessa e comparar. Empilhar isso numa lista unica obriga o
+      // aluno a parear as linhas de cabeca; lado a lado, e a mesma leitura
+      // dos paineis que estao logo acima.
+      comparar: function (colunas, veredito, vazio) {
+        alvo.className = 'log par';
+        alvo.textContent = '';
+        if (!colunas.length) {
+          var vazia = el('li', 'so-veredito');
+          vazia.appendChild(el('span', 'op', vazio || 'Nada aconteceu ainda.'));
+          alvo.appendChild(vazia);
+          return;
+        }
+        colunas.forEach(function (c) {
+          var li = el('li', 'coluna ' + c.ator + (c.marca ? ' ' + c.marca : ''));
+          li.appendChild(el('span', 'ator ' + c.ator, NOME_ATOR[c.ator] || c.ator));
+          c.linhas.forEach(function (e) {
+            var op = el('p', 'op');
+            if (e.sql) op.appendChild(el('code', null, e.texto));
+            else op.textContent = e.texto;
+            if (e.resultado) op.appendChild(el('span', 'resultado', e.resultado));
+            li.appendChild(op);
+          });
+          alvo.appendChild(li);
+        });
+        if (veredito) {
+          var fim = el('li', 'so-veredito' + (veredito.marca ? ' ' + veredito.marca : ''));
+          fim.appendChild(el('span', 'op', veredito.texto));
+          alvo.appendChild(fim);
+        }
       },
     };
   }
@@ -274,33 +308,31 @@
       // esta guardado. Escrever o SQL aqui mostra que o banco nao "adivinha"
       // grafia — quem tem de estar certo e o dado.
       var termo = busca.value.trim();
-      log2.escrever(
+      var consulta = "SELECT * FROM emprestimo WHERE jogo LIKE '%" + termo + "%'";
+      log2.comparar(
         termo === ''
           ? []
           : [
               {
                 ator: 'planilha',
-                sql: true,
-                texto: "SELECT * FROM emprestimo WHERE jogo LIKE '%" + termo + "%'",
-                resultado: contas[0] + ' linha(s)',
                 marca: contas[0] < contas[1] ? 'perdeu' : '',
+                linhas: [{ sql: true, texto: consulta, resultado: contas[0] + ' linha(s)' }],
               },
               {
                 ator: 'banco',
-                sql: true,
-                texto: "SELECT * FROM emprestimo WHERE jogo LIKE '%" + termo + "%'",
-                resultado: contas[1] + ' linha(s)',
                 marca: contas[1] > contas[0] ? 'ganhou' : '',
-              },
-              {
-                ator: 'servidor',
-                texto:
-                  contas[0] === contas[1]
-                    ? 'mesma consulta, mesma resposta — aqui a grafia não atrapalha'
-                    : 'mesma consulta, respostas diferentes: o comando está certo dos dois lados, o que está errado é o dado',
-                marca: contas[0] === contas[1] ? '' : 'perdeu',
+                linhas: [{ sql: true, texto: consulta, resultado: contas[1] + ' linha(s)' }],
               },
             ],
+        termo === ''
+          ? null
+          : contas[0] === contas[1]
+            ? { texto: 'Mesma consulta, mesma resposta — aqui a grafia não atrapalha.' }
+            : {
+                texto:
+                  'Mesma consulta, respostas diferentes. O comando está certo dos dois lados; o que está errado é o dado.',
+                marca: 'perdeu',
+              },
         'Digite para ver a consulta.'
       );
       $('d2-legenda').textContent =
@@ -353,30 +385,37 @@
 
       // Um UPDATE de uma linha contra catorze edicoes a mao: e a diferenca
       // inteira, e ela cabe em duas linhas de registro.
-      log3.escrever(
+      log3.comparar(
         !trocado
           ? []
           : [
               {
                 ator: 'planilha',
-                texto: 'procurou o telefone antigo e reescreveu linha por linha',
-                resultado: '11 de 14',
                 marca: 'perdeu',
-              },
-              { ator: 'planilha', texto: '3 linhas ficaram com o número velho, e nada acusou', marca: 'perdeu' },
-              {
-                ator: 'banco',
-                sql: true,
-                texto: "UPDATE cliente SET telefone = '" + NOVO + "' WHERE id = 7",
-                resultado: '1 linha',
-                marca: 'ganhou',
+                linhas: [
+                  { texto: 'procurou o telefone antigo e reescreveu linha por linha', resultado: '11 de 14' },
+                  { texto: '3 linhas ficaram com o número velho, e nada acusou' },
+                ],
               },
               {
                 ator: 'banco',
-                texto: 'os 14 empréstimos apontam para essa ficha, então os 14 já veem o número novo',
                 marca: 'ganhou',
+                linhas: [
+                  {
+                    sql: true,
+                    texto: "UPDATE cliente SET telefone = '" + NOVO + "' WHERE id = 7",
+                    resultado: '1 linha',
+                  },
+                  { texto: 'os 14 empréstimos apontam para essa ficha, então os 14 já veem o número novo' },
+                ],
               },
             ],
+        !trocado
+          ? null
+          : {
+              texto:
+                'Catorze edições à mão contra um UPDATE de uma linha. A diferença não é o esforço: é que num lado dá para esquecer, e no outro não há o que esquecer.',
+            },
         'Clique em "Ana troca de número".'
       );
 
