@@ -48,17 +48,17 @@
       </div>
     </div>
 
-    <div class="registro">
-      <h3>O que cada um executou</h3>
-      <ol class="log" id="d1-log"></ol>
-    </div>
-
     <div class="controles">
       <button type="button" class="acao" id="d1-proximo">Próximo passo</button>
       <button type="button" class="acao secundaria" id="d1-modo">Repetir com um SGBD</button>
       <button type="button" class="acao secundaria" id="d1-zerar">Reiniciar</button>
     </div>
     <p class="legenda" id="d1-legenda"></p>
+
+    <div class="registro">
+      <h3>O que cada um executou</h3>
+      <ol class="log" id="d1-log"></ol>
+    </div>
   </section>
 
   <!-- ============ 2. busca que erra ============ -->
@@ -81,6 +81,11 @@
       </div>
     </div>
     <p class="legenda" id="d2-legenda"></p>
+
+    <div class="registro">
+      <h3>A consulta que os dois lados rodaram</h3>
+      <ol class="log" id="d2-log"></ol>
+    </div>
   </section>
 
   <!-- ============ 3. o mesmo fato em 14 lugares ============ -->
@@ -105,6 +110,11 @@
       <button type="button" class="acao secundaria" id="d3-zerar">Reiniciar</button>
     </div>
     <p class="legenda" id="d3-legenda"></p>
+
+    <div class="registro">
+      <h3>O que foi preciso executar dos dois lados</h3>
+      <ol class="log" id="d3-log"></ol>
+    </div>
   </section>
 
   <!-- ============ 4. as quatro garantias ============ -->
@@ -136,7 +146,14 @@
             <span class="tipo">banco de dados</span>
           </p>
 
-          <div class="tabelas">
+          <div class="nivel n-schema" data-nivel="schema">
+            <p class="etiqueta">
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 5.5 5h5l2 2h8v11.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/></svg></span>
+              <span class="qual">public</span>
+              <span class="tipo">schema</span>
+            </p>
+
+            <div class="tabelas">
             <div class="nivel n-tabela" data-nivel="tabela">
               <p class="etiqueta">
                 <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14.5h18M9 9v11"/></svg></span>
@@ -155,12 +172,14 @@
                 <span class="qual">emprestimo</span>
               </p>
             </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <p class="legenda" id="d5-legenda">Um SGBD guarda vários bancos. Um banco guarda várias tabelas.</p>
+    <p class="legenda" id="d5-legenda">Um SGBD guarda vários bancos. Um banco guarda schemas, e é dentro deles que ficam as tabelas.</p>
+    <p class="nota-lateral">Cuidado com a palavra: aqui <b>schema</b> é a gaveta onde a tabela mora, que no PostgreSQL vem pronta com o nome <code>public</code>. Na Aula 02 a palavra <b>esquema</b> aparece com outro sentido — a estrutura de uma tabela, em oposição aos dados que ela guarda. São duas coisas diferentes com nomes parecidos.</p>
   </section>
 
   <!-- ============ 6. linha do tempo ============ -->

@@ -21,6 +21,45 @@
     return e;
   }
 
+  // ---------- registro de operacoes ----------
+  //
+  // Todo painel destas demos mostra o ESTADO. O registro mostra a OPERACAO
+  // que levou ate ele, com hora e ator — e e nele que o SQL aparece escrito,
+  // que e o que a UC de fato ensina. Sem isso a demo pede que o aluno deduza
+  // o comando a partir do resultado.
+
+  var NOME_ATOR = { ana: 'Ana', bruno: 'Bruno', servidor: 'servidor', planilha: 'planilha', banco: 'banco' };
+
+  function novoLog(id) {
+    var alvo = $(id);
+    if (!alvo) return { escrever: function () {}, limpar: function () {} };
+
+    function linhaLog(e) {
+      var li = el('li', e.marca || '');
+      li.appendChild(el('span', 'hora', e.hora || ''));
+      li.appendChild(el('span', 'ator ' + e.ator, NOME_ATOR[e.ator] || e.ator));
+      var op = el('span', 'op');
+      if (e.sql) op.appendChild(el('code', null, e.texto));
+      else op.textContent = e.texto;
+      if (e.resultado) op.appendChild(el('span', 'resultado', e.resultado));
+      li.appendChild(op);
+      return li;
+    }
+
+    return {
+      escrever: function (entradas, vazio) {
+        alvo.textContent = '';
+        if (!entradas.length) {
+          alvo.appendChild(linhaLog({ ator: 'servidor', texto: vazio || 'Nada aconteceu ainda.' }));
+          return;
+        }
+        entradas.forEach(function (e) {
+          alvo.appendChild(linhaLog(e));
+        });
+      },
+    };
+  }
+
   function linha(texto, valor, classe) {
     var l = el('div', 'linha' + (classe ? ' ' + classe : ''));
     l.appendChild(el('span', null, texto));
@@ -177,77 +216,19 @@
       [6, '', 'servidor', 'os dois INSERT entraram, com números diferentes, sem ninguém combinar nada', 'ganhou'],
     ];
 
-    var NOME = { ana: 'Ana', bruno: 'Bruno', servidor: 'servidor' };
+    var log1 = novoLog('d1-log');
 
     function registrar() {
-      var alvo = $('d1-log');
       var fonte = comSgbd ? LOG_SGBD : LOG_PLANILHA;
-      alvo.textContent = '';
-      var houve = false;
-      fonte.forEach(function (e) {
-        if (e[0] > passo) return;
-        houve = true;
-        var li = el('li', e[4] || '');
-        li.appendChild(el('span', 'hora', e[1]));
-        li.appendChild(el('span', 'ator ' + e[2], NOME[e[2]]));
-        var op = el('span', 'op');
-        if (e[5] === 'sql') op.appendChild(el('code', null, e[3]));
-        else op.textContent = e[3];
-        li.appendChild(op);
-        alvo.appendChild(li);
-      });
-      if (!houve) {
-        var li = el('li');
-        li.appendChild(el('span', 'hora', ''));
-        li.appendChild(el('span', 'ator servidor', '—'));
-        li.appendChild(el('span', 'op', 'Nada aconteceu ainda.'));
-        alvo.appendChild(li);
-      }
+      log1.escrever(
+        fonte
+          .filter(function (e) { return e[0] <= passo; })
+          .map(function (e) {
+            return { hora: e[1], ator: e[2], texto: e[3], marca: e[4], sql: e[5] === 'sql' };
+          })
+      );
     }
 
-    // Quatro estados, nao dois. O selo dizia 'preenchendo' com o formulario
-    // em branco, porque um array vazio e verdadeiro em JavaScript — o painel
-    // mostrava 'Formulário em branco' e o selo dizia o contrario.
-    function seloPessoa(painel, enviou) {
-      if (!painel) return comSgbd ? 'tela fechada' : 'fechada';
-      if (!comSgbd) return 'aberta';
-      if (enviou) return 'enviado';
-      return painel.length ? 'preenchendo' : 'em branco';
-    }
-
-    function pintar(alvo, itens, destaque) {
-      alvo.textContent = '';
-      if (!itens) {
-        alvo.appendChild(
-          el('p', 'vazio-painel', comSgbd ? 'Não abriu a tela ainda.' : 'Não abriu o arquivo ainda.')
-        );
-        return;
-      }
-      if (!itens.length) {
-        alvo.appendChild(el('p', 'vazio-painel', 'Formulário em branco.'));
-        return;
-      }
-      itens.forEach(function (r, i) {
-        alvo.appendChild(linha(r[0], r[1], i === destaque ? 'entrou' : ''));
-      });
-    }
-
-    proximo.addEventListener('click', function () {
-      if (passo < 6) passo += 1;
-      desenhar();
-    });
-    $('d1-zerar').addEventListener('click', function () {
-      passo = 0;
-      desenhar();
-    });
-    $('d1-modo').addEventListener('click', function () {
-      comSgbd = !comSgbd;
-      passo = 0;
-      this.textContent = comSgbd ? 'Repetir com a planilha' : 'Repetir com um SGBD';
-      desenhar();
-    });
-
-    desenhar();
   })();
 
   /* ================= 2. a busca que responde errado ================= */
@@ -259,6 +240,8 @@
   (function () {
     var busca = $('d2-busca');
     if (!busca) return;
+
+    var log2 = novoLog('d2-log');
 
     var ALUGUEIS = [
       { digitado: 'God of War Ragnarok', certo: 'God of War Ragnarok', quem: 'Ana' },
@@ -286,6 +269,40 @@
 
       $('d2-selo-esq').textContent = contas[0] + ' achado(s)';
       $('d2-selo-dir').textContent = contas[1] + ' achado(s)';
+
+      // A MESMA consulta nos dois lados. O que muda nao e o comando: e o que
+      // esta guardado. Escrever o SQL aqui mostra que o banco nao "adivinha"
+      // grafia — quem tem de estar certo e o dado.
+      var termo = busca.value.trim();
+      log2.escrever(
+        termo === ''
+          ? []
+          : [
+              {
+                ator: 'planilha',
+                sql: true,
+                texto: "SELECT * FROM emprestimo WHERE jogo LIKE '%" + termo + "%'",
+                resultado: contas[0] + ' linha(s)',
+                marca: contas[0] < contas[1] ? 'perdeu' : '',
+              },
+              {
+                ator: 'banco',
+                sql: true,
+                texto: "SELECT * FROM emprestimo WHERE jogo LIKE '%" + termo + "%'",
+                resultado: contas[1] + ' linha(s)',
+                marca: contas[1] > contas[0] ? 'ganhou' : '',
+              },
+              {
+                ator: 'servidor',
+                texto:
+                  contas[0] === contas[1]
+                    ? 'mesma consulta, mesma resposta — aqui a grafia não atrapalha'
+                    : 'mesma consulta, respostas diferentes: o comando está certo dos dois lados, o que está errado é o dado',
+                marca: contas[0] === contas[1] ? '' : 'perdeu',
+              },
+            ],
+        'Digite para ver a consulta.'
+      );
       $('d2-legenda').textContent =
         q === ''
           ? 'Digite o nome de um jogo.'
@@ -303,6 +320,8 @@
   (function () {
     var trocar = $('d3-trocar');
     if (!trocar) return;
+
+    var log3 = novoLog('d3-log');
 
     var VELHO = '51 9888-1010';
     var NOVO = '51 9777-2020';
@@ -331,6 +350,35 @@
       $('d3-legenda').textContent = trocado
         ? 'Não foi desatenção: com o mesmo fato em 14 lugares, uma hora escapa um. À direita havia um lugar só para mudar.'
         : 'À esquerda o telefone está repetido em 14 linhas. À direita ele existe uma vez só.';
+
+      // Um UPDATE de uma linha contra catorze edicoes a mao: e a diferenca
+      // inteira, e ela cabe em duas linhas de registro.
+      log3.escrever(
+        !trocado
+          ? []
+          : [
+              {
+                ator: 'planilha',
+                texto: 'procurou o telefone antigo e reescreveu linha por linha',
+                resultado: '11 de 14',
+                marca: 'perdeu',
+              },
+              { ator: 'planilha', texto: '3 linhas ficaram com o número velho, e nada acusou', marca: 'perdeu' },
+              {
+                ator: 'banco',
+                sql: true,
+                texto: "UPDATE cliente SET telefone = '" + NOVO + "' WHERE id = 7",
+                resultado: '1 linha',
+                marca: 'ganhou',
+              },
+              {
+                ator: 'banco',
+                texto: 'os 14 empréstimos apontam para essa ficha, então os 14 já veem o número novo',
+                marca: 'ganhou',
+              },
+            ],
+        'Clique em "Ana troca de número".'
+      );
 
       trocar.disabled = trocado;
     }
@@ -388,8 +436,9 @@
     var legenda = $('d5-legenda');
 
     var CAMADAS = [
-      ['sgbd', 'SGBD', 'PostgreSQL é o SGBD: o programa que guarda e serve os dados. Um SGBD pode ter vários bancos.'],
-      ['banco', 'banco de dados', 'locadora é o banco de dados: o conjunto de tabelas de um negócio. Outro negócio, no mesmo PostgreSQL, seria outro banco.'],
+      ['sgbd', 'SGBD', 'PostgreSQL é o SGBD: o programa que guarda e serve os dados. Um SGBD pode ter vários bancos, e é dele que você recebe a porta 5432 e o usuário.'],
+      ['banco', 'banco de dados', 'locadora é o banco de dados: tudo o que é daquele negócio. Outro negócio, no mesmo PostgreSQL, seria outro banco — e um não enxerga o outro.'],
+      ['schema', 'schema', 'public é o schema: a gaveta dentro do banco onde as tabelas moram. Todo banco PostgreSQL já nasce com essa gaveta, e nesta UC você não vai precisar criar outra. Ela existe para separar assuntos num banco grande — vendas e estoque no mesmo banco, cada um no seu schema.'],
       ['tabela', 'tabela', 'jogo, cliente e emprestimo são tabelas: cada uma guarda as linhas de um tipo de coisa. As três estão acesas porque as três são tabelas.'],
     ];
 
@@ -447,11 +496,42 @@
     var alvo = $('d6');
     if (!alvo) return;
 
+    // Cada marco com EXEMPLO e com o que doia nele. Sem o exemplo, "modelo
+    // hierarquico" e so um nome numa linha do tempo; com o IMS da IBM rodando
+    // a folha de pagamento, vira uma coisa que existiu e que alguem manteve.
     var MARCOS = [
-      ['anos 1960', 'Hierárquico', 'Os dados em árvore. Descer era fácil; atravessar, péssimo.'],
-      ['anos 1970', 'Em rede', 'Atravessar ficou possível — mas o programador tinha de conhecer o caminho até o dado.'],
-      ['1970', 'Relacional', 'Codd, matemático da IBM: tudo em tabelas ligadas por valores. Você diz O QUE quer; o SGBD acha COMO.'],
-      ['anos 2000', 'NoSQL', 'Documentos, chave-valor, grafos. Resolvem casos específicos e convivem com o relacional em vez de substituí-lo.'],
+      {
+        ano: 'anos 1960',
+        nome: 'Hierárquico',
+        curto: 'IMS',
+        exemplo: 'IMS, da IBM — escrito para o programa Apollo e ainda vivo em banco e seguradora.',
+        forma: 'Os dados em árvore: cada registro tem um pai só. Um cliente tem pedidos; um pedido pertence a um cliente.',
+        doia: 'Descer a árvore era rápido. Atravessar era péssimo: "quais clientes compraram este produto?" obrigava a varrer tudo, porque o caminho ia do cliente para o produto e não de volta.',
+      },
+      {
+        ano: 'anos 1970',
+        nome: 'Em rede',
+        curto: 'CODASYL',
+        exemplo: 'CODASYL, e o IDMS que rodava nos mainframes das operadoras.',
+        forma: 'A árvore vira grafo: um registro pode ter vários pais, ligados por ponteiros declarados no esquema.',
+        doia: 'Atravessar ficou possível, mas o programa tinha de navegar ponteiro por ponteiro. Quem escrevia a consulta precisava conhecer o caminho físico até o dado — e mudar o caminho quebrava o programa.',
+      },
+      {
+        ano: '1970',
+        nome: 'Relacional',
+        curto: 'Codd, IBM',
+        exemplo: 'O artigo de Edgar F. Codd na IBM; depois System R, Ingres, Oracle e, em 1986, o POSTGRES que virou PostgreSQL.',
+        forma: 'Tudo em tabelas, ligadas por valores em comum — não por ponteiros. O jogo e o empréstimo se encontram porque compartilham um id, não porque alguém traçou um caminho.',
+        doia: 'Deixou de doer: você diz O QUE quer, e quem decide COMO buscar é o SGBD. É por isso que as tabelas venceram, e é o modelo desta UC inteira.',
+      },
+      {
+        ano: 'anos 2000',
+        nome: 'NoSQL',
+        curto: 'MongoDB, Redis, Neo4j',
+        exemplo: 'MongoDB (documentos), Redis (chave-valor), Neo4j (grafos), Cassandra (colunas).',
+        forma: 'Abre mão de partes do relacional — esquema fixo, junções, às vezes consistência imediata — em troca de escala ou de um formato que cai melhor no problema.',
+        doia: 'Não substituiu nada: resolve casos específicos e quase sempre convive com um banco relacional ao lado. Cache de sessão no Redis, catálogo sem formato fixo no Mongo, e o dinheiro continua no PostgreSQL.',
+      },
     ];
     var legenda = $('d6-legenda');
 
@@ -459,14 +539,21 @@
       var li = el('li');
       var b = el('button', 'marco');
       b.type = 'button';
-      b.appendChild(el('span', 'ano', m[0]));
-      b.appendChild(el('span', null, m[1]));
+      b.appendChild(el('span', 'ano', m.ano));
+      b.appendChild(el('span', 'nome', m.nome));
+      b.appendChild(el('span', 'ex', m.curto));
       b.addEventListener('click', function () {
         Array.prototype.forEach.call(alvo.querySelectorAll('.marco'), function (o) {
           o.classList.remove('ativo');
         });
         b.classList.add('ativo');
-        legenda.textContent = m[2];
+        legenda.textContent = '';
+        [['Exemplo', m.exemplo], ['Como era', m.forma], ['O que doía', m.doia]].forEach(function (par) {
+          var p = el('p', 'verbete');
+          p.appendChild(el('b', null, par[0] + ': '));
+          p.appendChild(document.createTextNode(par[1]));
+          legenda.appendChild(p);
+        });
       });
       li.appendChild(b);
       alvo.appendChild(li);

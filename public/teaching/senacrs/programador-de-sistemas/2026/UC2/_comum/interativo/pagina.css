@@ -512,7 +512,12 @@ legend {
   background: var(--cor);
 }
 
-.pilha { --cor-sgbd: var(--esp-pagina); --cor-banco: var(--esp-tarefa); --cor-tabela: var(--esp-arquivo); }
+.pilha {
+  --cor-sgbd: var(--esp-pagina);
+  --cor-banco: var(--esp-tarefa);
+  --cor-schema: var(--dim);
+  --cor-tabela: var(--esp-arquivo);
+}
 
 .nivel {
   border: 1px solid var(--line);
@@ -525,7 +530,10 @@ legend {
 .nivel + .nivel, .nivel .nivel { margin-top: 12px; }
 .n-sgbd { --cor: var(--cor-sgbd); }
 .n-banco { --cor: var(--cor-banco); background: var(--bg); }
-.n-tabela { --cor: var(--cor-tabela); background: var(--card); margin-top: 0; padding: 11px 12px; }
+/* o schema e a camada que a turma menos vai mexer: fica presente, com
+   contorno tracejado, sem competir com as outras tres */
+.n-schema { --cor: var(--cor-schema); background: var(--card); border-style: dashed; }
+.n-tabela { --cor: var(--cor-tabela); background: var(--bg); margin-top: 0; padding: 11px 12px; }
 
 .nivel:hover { border-color: color-mix(in srgb, var(--cor) 55%, var(--line)); }
 /* a camada inteira acende, nao so a caixa clicada */
@@ -562,6 +570,15 @@ legend {
   font-weight: 500;
   white-space: nowrap;
 }
+
+.nota-lateral {
+  margin: 10px 0 0;
+  padding: 11px 13px;
+  border-left: 2px solid var(--esp-tarefa);
+  color: var(--dim);
+  font-size: 0.88rem;
+}
+.nota-lateral code { font: 0.9em/1 var(--mono); }
 
 .tabelas {
   display: grid;
@@ -602,9 +619,16 @@ legend {
 
 .marco .ano {
   display: block;
-  font: 600 0.74rem/1.6 var(--display);
+  font: 600 0.76rem/1.6 var(--display);
   color: var(--dim);
 }
+.marco .nome { display: block; font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; }
+.marco .ex { display: block; margin-top: 3px; color: var(--dim); font-size: 0.8rem; }
+
+/* a legenda dos marcos vira tres verbetes, nao um paragrafo corrido */
+.verbete { margin: 0 0 7px; }
+.verbete:last-child { margin-bottom: 0; }
+.verbete b { color: var(--fg); font-family: var(--display); font-weight: 600; }
 
 /* ---------- registro de operacoes ---------- */
 /*
@@ -664,6 +688,17 @@ legend {
 .log .servidor { --quem: var(--esp-tarefa); }
 
 .log .op { color: var(--fg); }
+.log .resultado {
+  margin-left: 10px;
+  padding: 1px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--dim);
+  font: 500 0.76rem/1.6 var(--display);
+  white-space: nowrap;
+}
+.log .planilha { --quem: var(--esp-arquivo); }
+.log .banco { --quem: var(--esp-tarefa); }
 .log .op code {
   display: inline-block;
   font: 0.86em/1.5 var(--mono);
