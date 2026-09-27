@@ -874,6 +874,13 @@ legend {
 }
 .log .planilha { --quem: var(--esp-arquivo); }
 .log .banco { --quem: var(--esp-tarefa); }
+/* as familias de comando: DDL mexe na forma, DML no conteudo, DCL em quem pode */
+.log .ddl { --quem: var(--esp-pagina); }
+.log .dml { --quem: var(--esp-quiz); }
+.log .dcl { --quem: var(--esp-arquivo); }
+.log .voce { --quem: var(--accent); }
+.log .campo { --quem: var(--esp-arquivo); }
+.log .entidade { --quem: var(--esp-quiz); }
 .log .op code {
   display: inline-block;
   font: 0.86em/1.5 var(--mono);
@@ -945,6 +952,122 @@ legend {
 @media (max-width: 620px) {
   .log.par { grid-template-columns: 1fr; }
 }
+
+/* ---------- comandos por familia (Aula 02) ---------- */
+
+.comandos {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+
+.comando {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 12px 14px;
+  text-align: left;
+  color: var(--fg);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--cor);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.comando.ddl { --cor: var(--esp-pagina); }
+.comando.dml { --cor: var(--esp-quiz); }
+.comando.dcl { --cor: var(--esp-arquivo); }
+.comando:hover { background: var(--bg-hover); }
+.comando.aceso { border-color: var(--cor); background: color-mix(in srgb, var(--cor) 10%, var(--card)); }
+
+.comando code { font: 0.82rem/1.4 var(--mono); color: var(--fg); }
+.comando .familia { display: flex; gap: 8px; align-items: baseline; font-size: 0.8rem; color: var(--dim); }
+.comando .familia b { color: var(--cor); font-family: var(--display); letter-spacing: 0.02em; }
+
+/* consulta exibida como bloco, na demo de independencia */
+.consulta {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+}
+.consulta code { font: 0.84rem/1.6 var(--mono); color: var(--fg); white-space: pre; }
+
+/* ---------- garimpo do minimundo (Aula 03) ---------- */
+
+.frases { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.frase {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  width: 100%;
+  padding: 9px 11px;
+  text-align: left;
+  font: inherit;
+  font-size: 0.88rem;
+  color: var(--dim);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.frase:hover { border-color: var(--accent); }
+.frase .marca { flex: none; width: 1em; color: var(--dim); font-weight: 700; }
+.frase.dentro { color: var(--fg); border-color: color-mix(in srgb, var(--certo) 50%, var(--line)); }
+.frase.dentro .marca { color: var(--certo); }
+
+/* os tres testes, aparecendo em cascata */
+.testes { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 6px; }
+.teste {
+  display: grid;
+  grid-template-columns: 1.4em 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 10px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line);
+  border-radius: var(--radius-sm);
+  animation: surgindo 0.28s ease-out both;
+  animation-delay: var(--atraso, 0s);
+}
+@keyframes surgindo { from { opacity: 0; transform: translateY(-4px); } }
+.teste .sinal { font-weight: 700; }
+.teste .resposta { color: var(--dim); font-size: 0.84rem; }
+.teste.passou { border-left-color: var(--certo); }
+.teste.passou .sinal { color: var(--certo); }
+.teste.falhou { border-left-color: var(--errado); }
+.teste.falhou .sinal { color: var(--errado); }
+.teste.nem-rodou { opacity: 0.5; }
+
+/* painel que ganha ou perde a comparacao */
+.painel.ruim { border-color: color-mix(in srgb, var(--errado) 50%, var(--line)); }
+.painel.bom { border-color: color-mix(in srgb, var(--certo) 50%, var(--line)); }
+
+/* a frase com os verbos clicaveis */
+.frase-alvo { margin: 0 0 16px; font-size: 1.05rem; line-height: 2.1; }
+.verbo {
+  padding: 3px 10px;
+  font: 600 1rem/1 var(--display);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.verbo:hover { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.verbo.escolhido { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+
+/* notacao MER: retangulo e entidade, losango e relacionamento */
+.diagrama .entidade rect { fill: var(--bg); stroke: var(--fg); stroke-width: 1.4; }
+.diagrama .entidade text { fill: var(--fg); font: 600 12px var(--display); text-anchor: middle; }
+.diagrama .relacionamento polygon { fill: var(--bg); stroke: var(--accent); stroke-width: 1.4; }
+.diagrama .relacionamento text { fill: var(--accent); font: 600 11px var(--display); text-anchor: middle; }
 
 /* ---------- grade de celulas repetidas ---------- */
 

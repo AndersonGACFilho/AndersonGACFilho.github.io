@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 02 — veja acontecer · UC2</title>
+<meta name="description" content="Veja acontecer na tela o que a Aula 02 conta: o esquema parado enquanto a instância muda, o mesmo registro nos três níveis, e a consulta que sobrevive à troca do armazenamento.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 02 — veja acontecer</h1>
+  <p class="sub">A forma e o conteúdo, os três níveis, e o que a abstração compra. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de rodar tudo, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. esquema x instância ============ -->
+  <section class="demo">
+    <h2>1 · A forma não se mexe quando o conteúdo muda</h2>
+    <p class="intro">Quatro botões. Dois mexem no esquema, dois na instância — repare em qual painel muda.</p>
+
+    <div class="palco duplo">
+      <div class="painel">
+        <h3><span>esquema — a forma</span><span class="selo" id="a2-selo-esq">4 colunas</span></h3>
+        <div id="a2-esquema"></div>
+      </div>
+      <div class="painel">
+        <h3><span>instância — o conteúdo</span><span class="selo" id="a2-selo-inst">3 linhas</span></h3>
+        <div id="a2-instancia"></div>
+      </div>
+    </div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="a2-inserir">Inserir um empréstimo</button>
+      <button type="button" class="acao" id="a2-apagar">Apagar todos os empréstimos</button>
+      <button type="button" class="acao secundaria" id="a2-coluna">Acrescentar coluna devolvido_em</button>
+      <button type="button" class="acao secundaria" id="a2-zerar">Reiniciar</button>
+    </div>
+    <p class="legenda" id="a2-legenda"></p>
+
+    <div class="registro">
+      <h3>O que foi executado</h3>
+      <ol class="log" id="a2-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. os três níveis ============ -->
+  <section class="demo">
+    <h2>2 · O mesmo registro, três olhares</h2>
+    <p class="intro">Um empréstimo só, guardado uma vez. Escolha de onde olhar.</p>
+
+    <div class="camadas" id="a2-niveis" role="group" aria-label="Escolher o nível"></div>
+
+    <div class="painel">
+      <h3><span id="a2-nivel-nome">nível conceitual</span><span class="selo" id="a2-nivel-quem">quem olha assim</span></h3>
+      <div id="a2-nivel-corpo"></div>
+    </div>
+    <p class="legenda" id="a2-nivel-legenda"></p>
+  </section>
+
+  <!-- ============ 3. independência de dados ============ -->
+  <section class="demo">
+    <h2>3 · O que a abstração compra</h2>
+    <p class="intro">Troque o armazenamento e veja o que acontece com a consulta que o programa manda.</p>
+
+    <div class="palco duplo">
+      <div class="painel">
+        <h3><span>como está guardado</span><span class="selo" id="a3-selo-fis">heap</span></h3>
+        <div id="a3-fisico"></div>
+      </div>
+      <div class="painel">
+        <h3><span>o que o programa manda</span><span class="selo" id="a3-selo-con">sem mudança</span></h3>
+        <div id="a3-consulta"></div>
+      </div>
+    </div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="a3-trocar">Trocar o armazenamento</button>
+      <button type="button" class="acao secundaria" id="a3-zerar">Reiniciar</button>
+    </div>
+    <p class="legenda" id="a3-legenda"></p>
+
+    <div class="registro">
+      <h3>O que mudou de cada lado</h3>
+      <ol class="log" id="a3-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 4. DDL, DML, DCL ============ -->
+  <section class="demo">
+    <h2>4 · Três famílias de comando</h2>
+    <p class="intro">Clique num comando e veja de que família ele é, e no que ele encosta.</p>
+    <div class="comandos" id="a2-comandos"></div>
+    <p class="legenda" id="a2-cmd-legenda">DDL mexe no esquema. DML mexe na instância. DCL diz quem pode o quê.</p>
+  </section>
+
+  <p class="rodape">
+    <a href="../slides.html">Voltar para os slides da Aula 02</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

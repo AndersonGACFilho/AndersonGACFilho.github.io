@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 03 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 03 da UC2: a borda do minimundo, os três testes de entidade e o primeiro desenho.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 03 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+  <!-- ============ 7. quiz ============ -->
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+
+  <p class="rodape">
+    <a href="../slides.html">Voltar para os slides da Aula 03</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-03', [
+  {
+    pergunta: 'O dono diz: "a locadora abre às 9h e fecha às 19h". Isso entra no banco?',
+    alternativas: [
+      'Sim, é informação da locadora',
+      'Não: não tem várias, não muda, não vira linha',
+      'Só se houver mais de uma filial',
+      'Sim, como uma tabela de horários'
+    ],
+    certa: 1,
+    porque: 'É verdade e não é dado que se guarda. Cada frase verdadeira que entra sem precisar é uma tabela a manter.'
+  },
+  {
+    pergunta: '"Quero saber quantas vezes cada jogo foi alugado no mês." O que isso vira?',
+    alternativas: [
+      'Uma tabela de relatório mensal',
+      'Um campo contador em JOGO',
+      'Nada novo: sai de EMPRESTIMO com uma contagem',
+      'Uma entidade RELATORIO'
+    ],
+    certa: 2,
+    porque: 'É pergunta, não dado. Modelar o relatório em vez do dado é o erro comum da aula — e um contador desatualiza na primeira devolução.'
+  },
+  {
+    pergunta: 'Por que "catálogo" não é entidade?',
+    alternativas: [
+      'Porque não tem atributos suficientes',
+      'Porque é o nome coletivo do conjunto de jogos — a tabela jogo já é o catálogo',
+      'Porque catálogo é um relatório',
+      'Porque só viraria entidade com mais de mil jogos'
+    ],
+    certa: 1,
+    porque: 'Acervo, estoque, cardápio e elenco caem na mesma armadilha: parecem entidade e são só o nome do conjunto.'
+  },
+  {
+    pergunta: 'Qual é o primeiro teste que "locadora" não passa?',
+    alternativas: ['Existe mais de um?', 'Tem mais de um dado dentro?', 'Precisa ser guardado separado?', 'Passa nos três'],
+    certa: 0,
+    porque: 'Existe uma só. Guardar uma linha numa tabela para sempre ter uma linha não resolve nada — e os outros dois testes nem chegam a rodar.'
+  },
+  {
+    pergunta: '"gênero" tem vários, mas cada um é só um nome. O veredito é:',
+    alternativas: [
+      'entidade, sempre',
+      'campo de JOGO, por enquanto',
+      'nunca entra no modelo',
+      'relacionamento'
+    ],
+    certa: 1,
+    porque: 'Vira campo até o dia em que o gênero precisar de descrição ou faixa etária. Aí promove — e o "por enquanto" é a parte importante da resposta.'
+  },
+  {
+    pergunta: 'Você modelou gênero como campo. O dono diz que um jogo pode ter mais de um. O que isso custa?',
+    alternativas: [
+      'Nada: é só separar por vírgula',
+      'Um ALTER TABLE e reescrever toda consulta que filtra por gênero',
+      'Uma linha nova',
+      'Recriar o banco do zero'
+    ],
+    certa: 1,
+    porque: 'Se fosse entidade, seria uma linha nova em jogo_genero e nenhuma consulta mudaria. Nenhuma das duas estava errada ontem; uma envelheceu melhor.'
+  },
+  {
+    pergunta: 'No desenho, o que é o losango?',
+    alternativas: ['Uma entidade', 'Um atributo', 'O relacionamento', 'Uma chave primária'],
+    certa: 2,
+    porque: 'Retângulo é entidade, losango é relacionamento. O nome dele sai do verbo da frase: o cliente ALUGA o jogo.'
+  },
+  {
+    pergunta: 'De onde vem o minimundo?',
+    alternativas: [
+      'Do manual do PostgreSQL',
+      'De perguntar ao cliente qual tabela ele quer',
+      'Do levantamento de requisitos — perguntando o problema, não a solução',
+      'Da lista de telas do sistema'
+    ],
+    certa: 2,
+    porque: 'Perguntar "que tabela você quer?" devolve a opinião do cliente sobre banco de dados. Perguntar o problema devolve o problema.'
+  }
+]);
+</script>
+</body>
+</html>

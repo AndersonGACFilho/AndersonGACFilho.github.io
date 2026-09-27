@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 03 — veja acontecer · UC2</title>
+<meta name="description" content="Veja acontecer na tela o que a Aula 03 conta: a borda do minimundo sendo decidida, os três testes de entidade, e a mesma frase virando duas modelagens — uma que aguenta a mudança e outra que quebra.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 03 — veja acontecer</h1>
+  <p class="sub">A borda do minimundo, o garimpo das entidades, e a decisão que só cobra a conta depois. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de rodar tudo, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. a borda do minimundo ============ -->
+  <section class="demo">
+    <h2>1 · Onde passa a borda</h2>
+    <p class="intro">O dono falou seis coisas. Decida o que entra no banco — e veja o que sobra para modelar.</p>
+
+    <div class="palco duplo">
+      <div class="painel">
+        <h3><span>o que o dono disse</span><span class="selo" id="a3b-selo-frases">0 dentro</span></h3>
+        <ul class="frases" id="a3b-frases"></ul>
+      </div>
+      <div class="painel">
+        <h3><span>o que vira banco</span><span class="selo" id="a3b-selo-ent">0 entidades</span></h3>
+        <div id="a3b-entidades"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a3b-legenda"></p>
+  </section>
+
+  <!-- ============ 2. os três testes ============ -->
+  <section class="demo">
+    <h2>2 · Isso é entidade?</h2>
+    <p class="intro">Três perguntas, na ordem. Clique num candidato e acompanhe.</p>
+
+    <div class="camadas" id="a3t-candidatos" role="group" aria-label="Escolher o candidato"></div>
+
+    <ol class="testes" id="a3t-testes"></ol>
+    <p class="legenda" id="a3t-legenda">Escolha um candidato acima.</p>
+  </section>
+
+  <!-- ============ 3. a mesma frase, duas modelagens ============ -->
+  <section class="demo">
+    <h2>3 · A decisão que só cobra a conta depois</h2>
+    <p class="intro">"Todo jogo tem um gênero." Duas modelagens cabem na frase. Depois o dono muda de ideia.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="a3m-painel-campo">
+        <h3><span>gênero como campo</span><span class="selo" id="a3m-selo-campo">cabe</span></h3>
+        <div id="a3m-campo"></div>
+      </div>
+      <div class="painel" id="a3m-painel-ent">
+        <h3><span>gênero como entidade</span><span class="selo" id="a3m-selo-ent">cabe</span></h3>
+        <div id="a3m-ent"></div>
+      </div>
+    </div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="a3m-mudar">O dono muda de ideia</button>
+      <button type="button" class="acao secundaria" id="a3m-zerar">Reiniciar</button>
+    </div>
+    <p class="legenda" id="a3m-legenda"></p>
+
+    <div class="registro">
+      <h3>O que cada modelagem exige agora</h3>
+      <ol class="log" id="a3m-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 4. o verbo nomeia o relacionamento ============ -->
+  <section class="demo">
+    <h2>4 · O verbo dá o nome</h2>
+    <p class="intro">Clique no verbo da frase e veja o diagrama se montar.</p>
+
+    <p class="frase-alvo" id="a3v-frase"></p>
+
+    <figure class="diagrama ativo" id="a3v-diagrama">
+      <svg viewBox="0 0 360 132" role="img"
+           aria-label="Diagrama entidade-relacionamento: o retângulo CLIENTE ligado ao retângulo JOGO por um losango com o nome do relacionamento.">
+        <g class="lig"><line x1="96" y1="58" x2="140" y2="58"/><line x1="220" y1="58" x2="264" y2="58"/></g>
+        <path class="elo-trilho" d="M96 58 H264"/>
+        <path class="elo-fluxo" pathLength="1" d="M96 58 H264"/>
+        <g class="entidade">
+          <rect x="14" y="40" width="82" height="36" rx="3"/><text x="55" y="62">CLIENTE</text>
+          <rect x="264" y="40" width="82" height="36" rx="3"/><text x="305" y="62">JOGO</text>
+        </g>
+        <g class="relacionamento">
+          <polygon points="180,32 226,58 180,84 134,58"/>
+          <text x="180" y="62" id="a3v-nome">?</text>
+        </g>
+        <text class="rotulo" x="180" y="118">o losango é o relacionamento; o verbo da frase é o nome dele</text>
+      </svg>
+      <figcaption id="a3v-legenda">Escolha o verbo na frase acima.</figcaption>
+    </figure>
+  </section>
+
+  <p class="rodape">
+    <a href="../slides.html">Voltar para os slides da Aula 03</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

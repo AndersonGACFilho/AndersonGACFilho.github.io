@@ -35,12 +35,20 @@
     return l;
   }
 
+  // Os atores do registro. Pessoas, lados de uma comparacao, e as familias de
+  // comando — cada um com cor propria no CSS.
   var NOME_ATOR = {
     ana: 'Ana',
     bruno: 'Bruno',
     servidor: 'servidor',
     planilha: 'planilha',
     banco: 'banco',
+    ddl: 'DDL',
+    dml: 'DML',
+    dcl: 'DCL',
+    voce: 'você',
+    campo: 'como campo',
+    entidade: 'como entidade',
   };
 
   /**

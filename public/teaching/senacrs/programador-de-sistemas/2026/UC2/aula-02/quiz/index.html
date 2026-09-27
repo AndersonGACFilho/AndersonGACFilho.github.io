@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 02 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 02 da UC2: esquema e instância, os três níveis de abstração e as famílias de comando SQL.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 02 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+  <!-- ============ 7. quiz ============ -->
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+
+  <p class="rodape">
+    <a href="../slides.html">Voltar para os slides da Aula 02</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-02', [
+  {
+    pergunta: 'Você apaga todos os empréstimos de hoje. Mudou o esquema ou a instância?',
+    alternativas: ['O esquema', 'A instância', 'Os dois', 'Nenhum dos dois'],
+    certa: 1,
+    porque: 'A tabela continua existindo, com as mesmas colunas, esperando a próxima linha. O que sumiu foi conteúdo.'
+  },
+  {
+    pergunta: 'E se você acrescentar a coluna devolvido_em?',
+    alternativas: ['O esquema', 'A instância', 'Nenhum: coluna vazia não conta', 'Depende de ter linhas na tabela'],
+    certa: 0,
+    porque: 'Mudou a forma: toda linha que já existe e toda que vier passa a ter esse campo, mesmo vazio.'
+  },
+  {
+    pergunta: 'Em qual nível você vai trabalhar da Aula 03 até a 11?',
+    alternativas: ['Físico', 'Conceitual', 'De visões', 'Nos três ao mesmo tempo'],
+    certa: 1,
+    porque: 'O DER que você desenha e o CREATE TABLE que você escreve vivem no conceitual. O físico é decisão do PostgreSQL.'
+  },
+  {
+    pergunta: 'O atendente vê a tela sem o CPF do cliente. Isso é:',
+    alternativas: [
+      'outra tabela, com os mesmos dados copiados',
+      'uma visão — um recorte do mesmo dado, montado na hora',
+      'o nível físico',
+      'um backup filtrado'
+    ],
+    certa: 1,
+    porque: 'Nada foi duplicado. Duas pessoas olham o mesmo dado ao mesmo tempo e veem coisas diferentes — é para isso que o nível de visões existe.'
+  },
+  {
+    pergunta: 'O DBA troca o armazenamento de heap para índice b-tree. O que acontece com o seu SELECT?',
+    alternativas: [
+      'Precisa ser reescrito para usar o índice',
+      'Continua idêntico, e nem precisa ser recompilado',
+      'Para de funcionar até alguém recriar a tabela',
+      'Passa a devolver as linhas em outra ordem, sempre'
+    ],
+    certa: 1,
+    porque: 'É exatamente isso que separar os níveis compra: mexer embaixo sem quebrar em cima. Chama-se independência de dados.'
+  },
+  {
+    pergunta: 'ALTER TABLE jogo ADD COLUMN ano int é de qual família?',
+    alternativas: ['DDL, mexe no esquema', 'DML, mexe na instância', 'DCL, mexe em quem pode', 'DQL, só consulta'],
+    certa: 0,
+    porque: 'ALTER, CREATE e DROP mexem na forma — são DDL, e você escreve isso nas aulas 10 e 11.'
+  },
+  {
+    pergunta: 'GRANT SELECT ON jogo TO atendente:',
+    alternativas: [
+      'cria uma cópia da tabela para o atendente',
+      'não mexe em forma nem em conteúdo — diz quem pode olhar',
+      'é DML, porque mexe em dados',
+      'só funciona se a tabela estiver vazia'
+    ],
+    certa: 1,
+    porque: 'DCL não toca no dado. É o comando que impede o estagiário de apagar a aba de clientes, na história da Aula 01.'
+  },
+  {
+    pergunta: '"Banco de dados" significa duas coisas nesta aula. Quais?',
+    alternativas: [
+      'O programa e a empresa que o vende',
+      'O conjunto de dados guardados, e o SGBD que os guarda',
+      'O esquema e o dicionário de dados',
+      'A tabela e a linha'
+    ],
+    certa: 1,
+    porque: 'No dia a dia se diz "o banco caiu" querendo dizer o SGBD. Trocar os dois numa conversa com o cliente custa caro.'
+  }
+]);
+</script>
+</body>
+</html>
