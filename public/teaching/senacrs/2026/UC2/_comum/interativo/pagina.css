@@ -1,0 +1,602 @@
+/* pagina.css — visual das paginas interativas da UC2.
+ *
+ * POR QUE nao reaproveita o themes/senac.css: aquele e tema de SLIDE. Tem
+ * `@import 'default'` que so o Marp resolve, seletores ancorados em `section`,
+ * e 375 kB de fonte embutida em base64. Aqui a pagina e parte do SITE, e o site
+ * ja tem identidade propria — os mesmos tokens do indice e do plano de ensino.
+ */
+
+:root {
+  color-scheme: dark light;
+  --bg: #0b0d12;
+  --card: #12151d;
+  --line: #242a38;
+  --fg: #e7eaf2;
+  --dim: #9aa3b8;
+  --accent: #38bdf8;
+  --certo: #34d399;
+  --errado: #fb7185;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fbfbfd;
+    --card: #fff;
+    --line: #e1e5ee;
+    --fg: #131722;
+    --dim: #525a6e;
+    --accent: #0284c7;
+    --certo: #0f9d63;
+    --errado: #d6335a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.wrap {
+  max-width: 780px;
+  margin-inline: auto;
+  padding: 44px 20px 90px;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+
+.sub {
+  color: var(--dim);
+  margin: 0 0 28px;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 40px 0 6px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.intro {
+  color: var(--dim);
+  margin: 0 0 18px;
+  font-size: 0.94rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+/* ---------- progresso ---------- */
+
+#progresso {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+  padding: 10px 0 12px;
+  margin-bottom: 8px;
+}
+
+.placar {
+  margin: 0 0 8px;
+  font-size: 0.88rem;
+  color: var(--dim);
+}
+
+.barra {
+  height: 5px;
+  border-radius: 99px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.barra-cheia {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+/* ---------- questao ---------- */
+
+.questao {
+  margin: 20px 0;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 0 0 12px;
+  font-weight: 600;
+}
+
+.numero {
+  flex: none;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--dim);
+  font: 600 0.78rem/1.7em 'JetBrains Mono', ui-monospace, monospace;
+  text-align: center;
+}
+
+.alternativa {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  width: 100%;
+  margin: 0 0 8px;
+  padding: 12px 14px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.alternativa:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.alternativa:disabled {
+  cursor: default;
+  opacity: 0.75;
+}
+
+/* a resposta certa aparece SEMPRE, mesmo quando o aluno erra: esconder o certo
+   transforma o exercicio em adivinhacao */
+.alternativa.certa {
+  border-color: var(--certo);
+  opacity: 1;
+}
+
+.alternativa.errada {
+  border-color: var(--errado);
+  opacity: 1;
+}
+
+.alternativa.escolhida {
+  background: color-mix(in srgb, var(--card) 80%, var(--accent) 20%);
+}
+
+.letra {
+  flex: none;
+  color: var(--dim);
+  font: 600 0.82rem/1.5 'JetBrains Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+}
+
+/* ---------- explicacao ---------- */
+
+.porque {
+  margin: 12px 0 0;
+  padding: 14px 16px;
+  border-radius: 11px;
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  background: var(--card);
+}
+
+.porque.acertou {
+  border-left-color: var(--certo);
+}
+
+.porque.errou {
+  border-left-color: var(--errado);
+}
+
+.veredito {
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.porque.acertou .veredito {
+  color: var(--certo);
+}
+
+.porque.errou .veredito {
+  color: var(--errado);
+}
+
+.texto {
+  margin: 0;
+  color: var(--dim);
+}
+
+.refazer {
+  margin-top: 12px;
+  padding: 7px 13px;
+  font: 500 0.84rem/1 inherit;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  cursor: pointer;
+}
+
+.refazer:hover {
+  border-color: var(--accent);
+}
+
+/* ---------- rodape ---------- */
+
+.rodape {
+  margin-top: 52px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--dim);
+  font-size: 0.9rem;
+}
+
+#recomecar {
+  padding: 7px 13px;
+  font: 500 0.84rem/1 inherit;
+  color: var(--dim);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  cursor: pointer;
+}
+
+#recomecar:hover {
+  color: var(--fg);
+  border-color: var(--accent);
+}
+
+@media (max-width: 520px) {
+  .wrap {
+    padding: 28px 16px 70px;
+  }
+}
+
+/* ---------- demonstracoes ---------- */
+/*
+ * O aluno nao le sobre o problema: ele ve o problema acontecer. Cada demo tem
+ * um palco (o que esta na tela), um botao que faz a coisa acontecer, e UMA
+ * linha de legenda. Texto longo aqui e sinal de que a demo nao esta mostrando.
+ */
+
+.demo {
+  margin: 24px 0 38px;
+}
+
+.demo h3 {
+  font-size: 1.02rem;
+  margin: 0 0 4px;
+}
+
+.palco {
+  display: grid;
+  gap: 14px;
+}
+
+@media (min-width: 660px) {
+  .palco.duplo {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.painel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.painel > h4 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 10px;
+  font: 600 0.74rem/1.4 'JetBrains Mono', ui-monospace, monospace;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.linha {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--bg);
+  font: 0.83rem/1.45 'JetBrains Mono', ui-monospace, monospace;
+  transition: border-color 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+}
+
+.linha.entrou {
+  border-color: var(--certo);
+}
+
+.linha.sumiu {
+  border-color: var(--errado);
+  color: var(--errado);
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.linha.velha {
+  border-color: var(--errado);
+  color: var(--errado);
+}
+
+.linha.achou {
+  border-color: var(--accent);
+}
+
+.vazio-painel {
+  margin: 0;
+  color: var(--dim);
+  font-size: 0.86rem;
+}
+
+.controles {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.acao {
+  padding: 9px 16px;
+  font: 600 0.87rem/1 inherit;
+  color: #08131b;
+  background: var(--accent);
+  border: none;
+  border-radius: 99px;
+  cursor: pointer;
+}
+
+.acao:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.acao.secundaria {
+  color: var(--dim);
+  background: none;
+  border: 1px solid var(--line);
+  font-weight: 500;
+}
+
+.acao.secundaria:hover:not(:disabled) {
+  color: var(--fg);
+  border-color: var(--accent);
+}
+
+.busca {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 9px 13px;
+  font: 0.9rem/1.3 inherit;
+  color: var(--fg);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+}
+
+.busca:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.selo {
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font: 600 0.74rem/1 'JetBrains Mono', ui-monospace, monospace;
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+.selo.bom {
+  color: var(--certo);
+  border-color: var(--certo);
+}
+
+.selo.ruim {
+  color: var(--errado);
+  border-color: var(--errado);
+}
+
+.legenda {
+  margin: 12px 0 0;
+  min-height: 1.5em;
+  color: var(--dim);
+  font-size: 0.92rem;
+}
+
+/* ---------- grade de cartoes que viram ---------- */
+
+.cartoes {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+
+.cartao {
+  /* <button> centraliza o conteudo na vertical por conta propria: sem o flex em
+     coluna, um cartao curto flutua no meio e a grade fica desalinhada */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.cartao:hover {
+  border-color: var(--accent);
+}
+
+.cartao.aberto {
+  border-color: var(--certo);
+}
+
+.cartao b {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.cartao .frente {
+  color: var(--dim);
+  font-size: 0.9rem;
+}
+
+.cartao .verso {
+  width: 100%;
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--errado);
+  font-size: 0.88rem;
+}
+
+/* ---------- caixas encaixadas ---------- */
+
+.caixas {
+  padding: 16px;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+}
+
+.caixa {
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--card);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.caixa:hover,
+.caixa.ativa {
+  border-color: var(--accent);
+}
+
+.caixa > .nome {
+  display: block;
+  margin-bottom: 9px;
+  font: 600 0.88rem/1 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.caixa .filhas {
+  display: grid;
+  gap: 9px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+/* ---------- linha do tempo ---------- */
+
+.tempo {
+  display: grid;
+  gap: 9px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.marco {
+  width: 100%;
+  padding: 13px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--line);
+  border-radius: 4px 4px 11px 11px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.marco:hover,
+.marco.ativo {
+  border-color: var(--accent);
+}
+
+.marco .ano {
+  display: block;
+  font: 600 0.74rem/1.6 'JetBrains Mono', ui-monospace, monospace;
+  color: var(--dim);
+}
+
+/* ---------- grade de celulas repetidas ---------- */
+
+.chips {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+}
+
+.chip {
+  padding: 7px 4px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--bg);
+  font: 0.74rem/1.3 'JetBrains Mono', ui-monospace, monospace;
+  text-align: center;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.chip.novo {
+  border-color: var(--certo);
+  color: var(--certo);
+}
+
+.chip.velho {
+  border-color: var(--errado);
+  color: var(--errado);
+}
+
+.ficha {
+  padding: 13px;
+  border: 1px solid var(--accent);
+  border-radius: 11px;
+  background: var(--bg);
+  font: 0.86rem/1.5 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.aponta {
+  margin: 10px 0 0;
+  color: var(--dim);
+  font-size: 0.86rem;
+}

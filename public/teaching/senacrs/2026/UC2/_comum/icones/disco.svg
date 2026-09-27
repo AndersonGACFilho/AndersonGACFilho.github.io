@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="nível físico — onde os bytes moram">
+  <title>nível físico — onde os bytes moram</title>
+  <g fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="8" y="26" width="80" height="44" rx="8"/>
+    <circle cx="34" cy="48" r="14"/>
+    <circle cx="34" cy="48" r="4" fill="#FF7809" stroke="none"/>
+    <path d="M60 40h18M60 56h18" stroke="#FF7809"/>
+  </g>
+</svg>

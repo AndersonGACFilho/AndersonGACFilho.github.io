@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="objetivo / resultado esperado">
+  <title>objetivo / resultado esperado</title>
+  <g fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="48" cy="48" r="38"/>
+    <circle cx="48" cy="48" r="22"/>
+    <circle cx="48" cy="48" r="7" fill="#FFFFFF" stroke="none"/>
+  </g>
+</svg>

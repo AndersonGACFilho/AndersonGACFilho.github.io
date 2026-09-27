@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="várias pessoas ao mesmo tempo — concorrência">
+  <title>várias pessoas ao mesmo tempo — concorrência</title>
+  <g fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="48" cy="30" r="13" stroke="#FF7809"/>
+    <path d="M27 76c0-11.6 9.4-21 21-21s21 9.4 21 21" stroke="#FF7809"/>
+    <circle cx="18" cy="38" r="9"/>
+    <path d="M4 72c0-7.7 6.3-14 14-14"/>
+    <circle cx="78" cy="38" r="9"/>
+    <path d="M92 72c0-7.7-6.3-14-14-14"/>
+  </g>
+</svg>

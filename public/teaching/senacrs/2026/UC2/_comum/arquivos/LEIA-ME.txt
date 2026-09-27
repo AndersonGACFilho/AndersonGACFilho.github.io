@@ -1,0 +1,8 @@
+Arquivos de apoio publicados no site.
+
+Ponha aqui a planilha modelo, o .sql do banco de exemplo, o roteiro de
+instalacao — e cite o nome do arquivo na coluna `arquivo` de materiais.md,
+na raiz do repositorio. O que nao estiver citado la nao aparece no site.
+
+Nao ponha .md nesta pasta: o build do Marp converteria em deck.
+Nao ponha gabarito sem antes marcar `publicar: nao` na linha correspondente.

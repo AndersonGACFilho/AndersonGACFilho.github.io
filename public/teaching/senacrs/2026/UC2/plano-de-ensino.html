@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano de Ensino — UC2: Implementar Banco de Dados</title>
+<style>
+  :root { color-scheme: dark light; --bg:#0b0d12; --card:#12151d; --line:#242a38; --fg:#e7eaf2; --dim:#9aa3b8; --accent:#38bdf8; }
+  @media (prefers-color-scheme: light) { :root { --bg:#fbfbfd; --card:#fff; --line:#e1e5ee; --fg:#131722; --dim:#525a6e; --accent:#0284c7; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; }
+  .wrap { max-width:840px; margin-inline:auto; padding:48px 20px 80px; }
+  h1 { font-size:clamp(1.7rem,4vw,2.2rem); letter-spacing:-.02em; margin:0 0 24px; }
+  h2 { font-size:1.35rem; margin:44px 0 12px; padding-top:16px; border-top:1px solid var(--line); }
+  h3 { font-size:1.08rem; margin:28px 0 8px; }
+  h4 { font-size:.95rem; margin:20px 0 6px; color:var(--dim); text-transform:uppercase; letter-spacing:.06em; }
+  a { color:var(--accent); }
+  p, li { overflow-wrap:break-word; }
+  ul, ol { padding-left:1.3em; }
+  li { margin:.3em 0; }
+  code { font:.88em/1.5 'JetBrains Mono',ui-monospace,monospace; background:var(--card); border:1px solid var(--line); border-radius:5px; padding:.1em .35em; }
+  pre { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; overflow-x:auto; }
+  pre code { background:none; border:none; padding:0; }
+  blockquote { margin:18px 0; padding:2px 0 2px 18px; border-left:3px solid var(--accent); color:var(--dim); }
+  .tabela { overflow-x:auto; margin:18px 0; }
+  table { border-collapse:collapse; width:100%; font-size:.9rem; }
+  th, td { text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:var(--card); font-weight:600; white-space:nowrap; }
+  tbody tr:hover td { background:var(--card); }
+  hr { border:none; border-top:1px solid var(--line); margin:36px 0; }
+  .back { margin-top:48px; color:var(--dim); font-size:.9rem; }
+</style>
+</head>
+<body>
+<main class="wrap">
+<h1>Plano de Ensino — UC2: Implementar Banco de Dados</h1>
+<blockquote>
+<p>Referência única da distribuição de conteúdo, datas e indicadores da UC2.
+Construído a partir do plano de curso do Senac RS, do cronograma oficial da turma
+(versão de 22/09/2026), do formulário diagnóstico respondido pela turma e do
+livro-texto de apoio.</p>
+</blockquote>
+<h2>1. Identificação</h2>
+<div class="tabela"><table>
+
+<tbody>
+<tr>
+<td>Curso</td>
+<td>Programador de Sistemas — Qualificação Profissional (Senac RS)</td>
+</tr>
+<tr>
+<td>Unidade Curricular</td>
+<td>UC2 — Implementar Banco de Dados</td>
+</tr>
+<tr>
+<td>Carga horária</td>
+<td>72 horas (18 aulas × 4h)</td>
+</tr>
+<tr>
+<td>Período</td>
+<td>06/10/2026 a 03/11/2026</td>
+</tr>
+<tr>
+<td>Turno</td>
+<td>Noite, 18h–22h, segunda a sexta</td>
+</tr>
+<tr>
+<td>Docente</td>
+<td>Anderson Gonçalves (<code>anderson.goncalves@inf.ufrgs.br</code>)</td>
+</tr>
+<tr>
+<td>Não letivos no período</td>
+<td>12/10 (feriado), 13/10 (Dia do Professor) e 02/11 (Finados)</td>
+</tr>
+</tbody>
+</table></div>
+<h2>2. Competência da UC e indicadores</h2>
+<p><strong>Competência:</strong> implementar banco de dados.</p>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>Nº</th>
+<th>Indicador</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1</td>
+<td>Define a arquitetura de banco de dados, de acordo com a modelagem de dados.</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>Planeja o banco de dados conforme as regras de negócio.</td>
+</tr>
+<tr>
+<td>I3</td>
+<td>Desenvolve estruturas de dados, de acordo com o planejamento definido.</td>
+</tr>
+<tr>
+<td>I4</td>
+<td>Modela o banco de dados de acordo com o planejamento definido.</td>
+</tr>
+<tr>
+<td>I5</td>
+<td>Avalia a persistência dos dados gerados pelo software, verificando sua funcionalidade, conforme o planejamento definido.</td>
+</tr>
+<tr>
+<td>I6</td>
+<td>Operacionaliza atividades de atualização, permissões de acesso e cópias de segurança de acordo com o banco implantado.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>3. Conteúdo programático (conhecimentos do plano de curso)</h2>
+<p>Modelagem de dados (requisitos, dicionário de dados, modelo relacional, MER) · Normalização ·
+SGBD (conceito e arquitetura) · SQL — DDL e DML · Gestão de dados (usuários, backup e
+recuperação).</p>
+<h2>4. Metodologia</h2>
+<p>Segue a orientação metodológica do plano de curso — metodologias ativas, construção de tabelas
+em um SGBD real, criação de conexão com banco de dados e construção de um <strong>CRUD completo</strong>
+como fio condutor prático, variando a composição dos grupos ao longo da UC.</p>
+<p><strong>Teoria a serviço da prática — não teoria e depois prática.</strong> Cada aula de 4h é fatiada em
+<strong>teoria curta (30–45min) → prática imediata que aplica exatamente aquela teoria</strong>, nunca vários
+conceitos acumulados para só depois &quot;ir para o laboratório&quot;. A tabela da seção 6 já traz essa
+divisão em cada linha (<code>Teoria:</code> / <code>Prática:</code>).</p>
+<p><strong>Projeto contínuo (case único, não exemplos soltos).</strong> A partir da Aula 3, a turma trabalha em
+grupos sobre <strong>um único estudo de caso que evolui aula a aula</strong> até o CRUD final na Aula 18 —
+em vez de exemplos descartáveis a cada aula. Proposta padrão do docente: <strong>Sistema de Locadora
+de Jogos</strong> (jogos, plataformas, clientes, empréstimos) — domínio que o próprio docente conhece
+bem (desenvolvedor de jogos no LabTIME/UFG) e que também está entre os interesses mais
+citados pela turma. Grupos que preferirem podem
+adaptar para outro tema de interesse (RPG/anime, confeitaria etc.), desde que a estrutura de
+dados tenha complexidade equivalente (mínimo 3 entidades relacionadas, com pelo menos um
+relacionamento N:N). Isso garante que a prática de cada aula não é um exercício isolado — é
+sempre &quot;o próximo passo do banco que o grupo já está construindo&quot;.</p>
+<p><strong>Ajustes ao perfil desta turma</strong>, a partir das 14 respostas do formulário diagnóstico:</p>
+<ul>
+<li>Comandos SQL sempre acompanhados de glossário EN→PT (turma majoritariamente sem domínio de
+inglês).</li>
+<li>Modelagem explicada com diagramas visuais, não com notação formal de conjuntos (turma com
+matemática básica, não avançada).</li>
+<li>Exemplos de estudo de caso usam temas de interesse recorrente da turma — games/coleção de
+jogos (escolhido como projeto contínuo, também domínio de conforto do docente), futebol,
+confeitaria — em vez de cenários corporativos genéricos.</li>
+<li>Não assume UC1 consolidada: lógica básica é retomada nas aulas 1–2 antes de avançar em SQL.</li>
+<li><strong>Terminal/CMD é barreira real, não só detalhe.</strong> O João relatou que uma aula inteira de UC1
+dedicada a terminal/CMD não foi bem compreendida pela turma. Portanto:
+<ul>
+<li>Todo SQL é executado no <strong>pgAdmin Query Tool</strong> (GUI) — nunca <code>psql</code> em terminal.</li>
+<li>O CRUD em Python usa <strong>Jupyter Notebook no VS Code</strong> (rodar com o botão ▶, célula por
+célula) — não terminal com <code>python arquivo.py</code>.</li>
+<li>Onde a CLI for mesmo inevitável (<code>pip install</code>, <code>pg_dump</code>), tratar como mini-tópico próprio,
+passo a passo com print de tela, sem presumir que &quot;já viram isso na UC1&quot;.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Linguagem do CRUD: Python.</strong> A UC1 (João) é lecionada em Python — o CRUD desta UC2 continua
+nessa linguagem, conectando ao PostgreSQL via <code>psycopg2</code> (ou <code>psycopg</code> v3), dentro de um
+<strong>notebook Jupyter</strong> para evitar terminal. Isso mantém a turma numa única linguagem ao longo do
+curso e prepara terreno para o <strong>pytest</strong> que a UC3 usará sobre este mesmo código. A
+modelagem/DDL/consultas em si continuam ensinadas em SQL puro (via pgAdmin) nas aulas 10–15; o
+Python entra a partir da Aula 11/12 como camada de acesso ao banco já criado.</p>
+<p><strong>SGBD adotado em laboratório:</strong> <strong>PostgreSQL</strong> (servidor) administrado pelo <strong>pgAdmin</strong> (interface
+gráfica) — mesma dupla que o docente usa em produção. O livro-texto ensina com MySQL/MySQL Workbench; a lógica de MER, DDL e DML é a mesma, mas a
+sintaxe diverge em alguns pontos — sinalizar nos slides quando relevante:</p>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>Tópico</th>
+<th>MySQL (livro-texto)</th>
+<th>PostgreSQL (usado em aula)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto-incremento de PK</td>
+<td><code>AUTO_INCREMENT</code></td>
+<td><code>SERIAL</code> / <code>GENERATED ALWAYS AS IDENTITY</code></td>
+</tr>
+<tr>
+<td>Aspas de identificador</td>
+<td><code>`crase`</code></td>
+<td><code>&quot;aspas duplas&quot;</code></td>
+</tr>
+<tr>
+<td>Limitar linhas</td>
+<td><code>LIMIT n</code></td>
+<td><code>LIMIT n</code> (igual)</td>
+</tr>
+<tr>
+<td>Cliente gráfico</td>
+<td>MySQL Workbench / DB Manager</td>
+<td><strong>pgAdmin</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Cada aluno instala PostgreSQL + pgAdmin no próprio notebook (ou usa a instalação do laboratório) —
+incluir isso como pré-requisito de logística antes da Aula 10.</p>
+<p><strong>&quot;Para casa&quot; (opcional, todas as 18 aulas).</strong> Cada deck termina com um slide verde
+&quot;Para casa&quot; com dois itens, sempre <strong>sem caráter obrigatório</strong> — reforço para quem
+quiser, não pré-requisito da aula seguinte nem penalidade para quem não fizer:</p>
+<ul>
+<li><strong>Testar em casa</strong> — um gatilho curto de experimentação, geralmente fora do projeto do grupo
+(ex.: &quot;pense em outro exemplo do dia a dia&quot;), para fixar o conceito sem depender do grupo.</li>
+<li><strong>Tarefa opcional</strong> — algo um pouco mais estruturado, quase sempre aplicado ao <strong>próprio
+projeto</strong> do grupo (revisar, enriquecer ou avançar um artefato já em andamento).</li>
+</ul>
+<h2>5. Avaliação</h2>
+<p>Conforme o plano de curso: menção por indicador (<strong>A</strong>tendido / <strong>P</strong>arcialmente <strong>A</strong>tendido /
+<strong>N</strong>ão <strong>A</strong>tendido durante o processo; A/NA ao final da UC) e menção final da UC
+(<strong>D</strong>esenvolvida / <strong>N</strong>ão <strong>D</strong>esenvolvida). Frequência mínima de 75%.</p>
+<p>Instrumento principal de avaliação: o <strong>CRUD completo</strong> desenvolvido ao longo da UC (modelagem →
+implementação → consultas → gestão), entregue e demonstrado na Aula 18.</p>
+<h2>6. Distribuição das aulas</h2>
+<p>Cada célula de &quot;Teoria / Prática&quot; segue a lógica da seção 4: teoria curta primeiro, prática
+aplicada ao <strong>mesmo projeto contínuo</strong> logo em seguida (nunca teoria acumulada sem uso imediato).</p>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>Aula</th>
+<th>Data</th>
+<th>Dia</th>
+<th>Bloco</th>
+<th>Teoria (curta)</th>
+<th>Prática (no projeto contínuo)</th>
+<th>Indicador(es)</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>06/10</td>
+<td>ter</td>
+<td>Fundamentos</td>
+<td>O que é um SGBD; problema de arquivos isolados</td>
+<td>Em grupo: listar o que dá errado numa &quot;planilha de locadora de jogos&quot; compartilhada (edição simultânea, perda de dados) e ligar cada problema a um objetivo do SGBD</td>
+<td>I1</td>
+<td>U1</td>
+</tr>
+<tr>
+<td>02</td>
+<td>07/10</td>
+<td>qua</td>
+<td>Fundamentos</td>
+<td>Abstração de dados (físico/conceitual/visões); instâncias vs. esquema</td>
+<td>Explorar no pgAdmin um banco de exemplo já pronto (fornecido): distinguir &quot;esquema vazio&quot; de &quot;banco com dados&quot;</td>
+<td>I1</td>
+<td>U1</td>
+</tr>
+<tr>
+<td>03</td>
+<td>08/10</td>
+<td>qui</td>
+<td>Modelagem</td>
+<td>Minimundo/estudo de caso: como extrair entidades e relacionamentos de um texto</td>
+<td>Ler o estudo de caso da locadora e circular, em grupo, substantivos (entidades) e verbos (relacionamentos)</td>
+<td>I1, I2</td>
+<td>U2</td>
+</tr>
+<tr>
+<td>04</td>
+<td>09/10</td>
+<td>sex</td>
+<td>Modelagem</td>
+<td>Atributos: como qualificar uma entidade</td>
+<td>Listar os atributos de cada entidade do próprio caso (ex.: <code>jogo</code>, <code>plataforma</code>, <code>cliente</code>)</td>
+<td>I2, I4</td>
+<td>U2</td>
+</tr>
+<tr>
+<td>—</td>
+<td>12–13/10</td>
+<td>seg/ter</td>
+<td><em>(não letivo — feriado e Dia do Professor)</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>05</td>
+<td>14/10</td>
+<td>qua</td>
+<td>Modelagem</td>
+<td>Chaves (PK, candidata, estrangeira, composta) e cardinalidades</td>
+<td>Definir PK/FK e cardinalidades entre as entidades do próprio caso</td>
+<td>I2, I4</td>
+<td>U2</td>
+</tr>
+<tr>
+<td>06</td>
+<td>15/10</td>
+<td>qui</td>
+<td>Modelagem</td>
+<td>MER × DER; notações de diagrama; relacionamentos especiais</td>
+<td><strong>Desenhar o DER completo do projeto</strong> (a partir do MER) no draw.io, em grupo</td>
+<td>I2, I4</td>
+<td>U2</td>
+</tr>
+<tr>
+<td>07</td>
+<td>16/10</td>
+<td>sex</td>
+<td>Relacional</td>
+<td>Mapeamento entidade/relacionamento → tabela relacional</td>
+<td>Converter o DER da Aula 06 numa lista de tabelas/colunas (papel ou planilha)</td>
+<td>I2, I4</td>
+<td>U3</td>
+</tr>
+<tr>
+<td>08</td>
+<td>19/10</td>
+<td>seg</td>
+<td>Relacional</td>
+<td>Dependências funcionais (o essencial, sem álgebra formal pesada)</td>
+<td>Identificar dependências entre colunas nas próprias tabelas do projeto</td>
+<td>I2, I4</td>
+<td>U3</td>
+</tr>
+<tr>
+<td>09</td>
+<td>20/10</td>
+<td>ter</td>
+<td>Relacional</td>
+<td>Normalização (1FN, 2FN, 3FN)</td>
+<td><strong>Normalizar o próprio esquema do projeto</strong> até 3FN</td>
+<td>I2, I4</td>
+<td>U3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>21/10</td>
+<td>qua</td>
+<td>SGBD/DDL</td>
+<td>O que é DDL; tipos de dados no Postgres</td>
+<td>Instalar PostgreSQL + pgAdmin (guiado) · criar o banco e a <strong>1ª tabela real</strong> do projeto</td>
+<td>I1, I3</td>
+<td>U4 + Apêndice A</td>
+</tr>
+<tr>
+<td>11</td>
+<td>22/10</td>
+<td>qui</td>
+<td>SGBD/DDL</td>
+<td>Constraints, <code>ALTER</code>, <code>DROP</code>, FK entre tabelas</td>
+<td>Criar <strong>todas as tabelas</strong> do esquema normalizado (Aula 09) no pgAdmin</td>
+<td>I3, I4</td>
+<td>U4 + Apêndice A</td>
+</tr>
+<tr>
+<td>12</td>
+<td>23/10</td>
+<td>sex</td>
+<td>SGBD/DML</td>
+<td><code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code>; mini-tópico guiado <code>pip install psycopg2-binary</code></td>
+<td>Inserir dados reais do projeto no pgAdmin <strong>e</strong> no 1º notebook Jupyter conectado ao banco</td>
+<td>I3, I5</td>
+<td>U4 + Apêndice B</td>
+</tr>
+<tr>
+<td>13</td>
+<td>26/10</td>
+<td>seg</td>
+<td>Consultas</td>
+<td><code>SELECT</code>, <code>WHERE</code>, <code>ORDER BY</code></td>
+<td>Consultar os dados do próprio projeto — lado a lado, pgAdmin e célula de notebook</td>
+<td>I3, I5</td>
+<td>Apêndice B</td>
+</tr>
+<tr>
+<td>14</td>
+<td>27/10</td>
+<td>ter</td>
+<td>Consultas</td>
+<td><code>JOIN</code> (INNER/LEFT) e agregações (<code>GROUP BY</code>, <code>COUNT</code>, <code>SUM</code>)</td>
+<td>Responder perguntas reais do projeto (&quot;jogos por plataforma&quot;, &quot;empréstimos por cliente&quot;) com JOIN</td>
+<td>I3, I5</td>
+<td>Apêndice B</td>
+</tr>
+<tr>
+<td>15</td>
+<td>28/10</td>
+<td>qua</td>
+<td>Consultas</td>
+<td>Subconsultas e views</td>
+<td>Implementar as funções <code>create</code>/<code>read</code>/<code>update</code>/<code>delete</code> do CRUD em células do notebook</td>
+<td>I5</td>
+<td>Apêndice B</td>
+</tr>
+<tr>
+<td>16</td>
+<td>29/10</td>
+<td>qui</td>
+<td>Gestão</td>
+<td>Usuários, roles e permissões</td>
+<td>Criar, no próprio banco do projeto, um usuário com permissão só de leitura</td>
+<td>I6</td>
+<td>U1 (Recursos Humanos) + U4</td>
+</tr>
+<tr>
+<td>17</td>
+<td>30/10</td>
+<td>sex</td>
+<td>Gestão</td>
+<td>Backup/restore; ciclo de vida do sistema</td>
+<td>Fazer backup do banco do projeto e simular um restore — <strong>pelo botão do pgAdmin</strong>, sem terminal</td>
+<td>I6</td>
+<td>U1</td>
+</tr>
+<tr>
+<td>—</td>
+<td>02/11</td>
+<td>seg</td>
+<td><em>(não letivo — Finados)</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>03/11</td>
+<td>ter</td>
+<td>Fechamento</td>
+<td>—</td>
+<td><strong>Entrega e demonstração do CRUD completo</strong> do projeto de cada grupo</td>
+<td>I1–I6</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h2>7. Bibliografia</h2>
+<p><strong>Básica</strong></p>
+<ul>
+<li>ALVES, Willian Pereira. <em>Banco de dados</em>. São Paulo: Érica, 2014.</li>
+<li>LIMA, Adilson da Silva. <em>Especificações técnicas de software</em>. São Paulo: Érica, 2012.</li>
+<li>MOREIRA, Flávio Ferry de Oliveira. <em>Fundamentos de Banco de Dados</em>. Teresina: EDUFPI/CEAD, 2013.</li>
+</ul>
+<p><strong>Complementar</strong></p>
+<ul>
+<li>BEIGHLEY, Lynn. <em>Use a Cabeça! SQL</em>. Alta Books, 2008.</li>
+<li>LIGHTSTONE, Sam. <em>Projeto e modelagem de banco de dados</em>. Elsevier/Academic, 2013.</li>
+<li>PUGA, S. <em>Banco de dados: Implementação em SQL, PL/SQL e Oracle 11g</em>. Pearson, 2013 (ebook).</li>
+</ul>
+<hr>
+<p><em>Última atualização: distribuição inicial proposta pelo docente — revisar e
+ajustar conforme o ritmo real da turma nas primeiras aulas.</em></p>
+
+<p class="back">← <a href="./index.html">Slides da UC2</a></p>
+</main>
+</body>
+</html>
