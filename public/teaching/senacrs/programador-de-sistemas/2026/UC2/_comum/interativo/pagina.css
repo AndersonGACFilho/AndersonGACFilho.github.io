@@ -749,6 +749,13 @@ legend {
 .log.par .resultado { margin-left: 0; }
 
 /* o veredito fecha embaixo, nas duas colunas */
+/* O .so-veredito nao tem hora nem ator: e uma frase so. Sem isto ele herda a
+   grade de tres colunas do .log li (hora, ator, operacao) e o texto cai na
+   primeira — 4.2em de largura — quebrando quase letra a letra. */
+.log .so-veredito {
+  display: block;
+}
+
 .log.par .so-veredito {
   grid-column: 1 / -1;
   border: none;
