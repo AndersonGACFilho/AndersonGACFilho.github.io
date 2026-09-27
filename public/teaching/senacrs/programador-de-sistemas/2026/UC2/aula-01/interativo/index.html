@@ -271,7 +271,9 @@
             <text class="cel" x="231" y="108">1004</text><text class="cel" x="301" y="108">8</text>
             <text class="nome-tab" x="276" y="22">emprestimo</text>
           </g>
-          <path class="elo" pathLength="1" d="M44 82 C 44 148, 301 148, 301 82"/>
+          <path class="elo-trilho" d="M44 82 C 44 148, 301 148, 301 82"/>
+          <path class="elo-fluxo" pathLength="1" d="M44 82 C 44 148, 301 148, 301 82"/>
+          <circle class="chegada" cx="301" cy="76" r="13"/>
           <text class="rotulo" x="180" y="176">o encontro é pelo VALOR, não por caminho traçado antes</text>
           <text class="rotulo" x="180" y="194">você diz o que quer; quem acha como é o SGBD</text>
         </svg>
@@ -279,30 +281,34 @@
       </figure>
 
       <figure class="diagrama" id="dia-nosql" hidden>
-        <svg viewBox="0 0 360 200" role="img"
-             aria-label="Três formatos NoSQL — documento, chave-valor e grafo — ligados a uma tabela relacional, convivendo com ela em vez de substituí-la.">
+        <svg viewBox="0 0 360 208" role="img"
+             aria-label="Três formatos NoSQL com um uso cada: documento para catálogo, chave-valor para sessão de login, grafo para quem conhece quem. Os três ligados por tracejado à tabela relacional, onde ficam os empréstimos.">
           <g class="no">
-            <rect x="14" y="22" width="96" height="62" rx="6"/>
-            <rect x="126" y="22" width="96" height="62" rx="6"/>
-            <rect x="238" y="22" width="96" height="62" rx="6"/>
+            <rect x="12" y="14" width="100" height="78" rx="6"/>
+            <rect x="130" y="14" width="100" height="78" rx="6"/>
+            <rect x="248" y="14" width="100" height="78" rx="6"/>
           </g>
-          <text class="cel" x="62" y="50">{ }</text>
-          <text class="cel" x="174" y="50">k → v</text>
+          <text class="cel" x="62" y="42">{ }</text>
+          <text class="cel" x="180" y="42">k → v</text>
           <g class="lig">
-            <line x1="272" y1="44" x2="300" y2="40"/><line x1="300" y1="40" x2="286" y2="58"/><line x1="286" y1="58" x2="272" y2="44"/>
-            <circle cx="272" cy="44" r="3.5"/><circle cx="300" cy="40" r="3.5"/><circle cx="286" cy="58" r="3.5"/>
+            <line x1="284" y1="38" x2="312" y2="33"/><line x1="312" y1="33" x2="298" y2="50"/><line x1="298" y1="50" x2="284" y2="38"/>
+            <circle cx="284" cy="38" r="3.5"/><circle cx="312" cy="33" r="3.5"/><circle cx="298" cy="50" r="3.5"/>
           </g>
-          <text class="rotulo-lig" x="62" y="74">documento</text>
-          <text class="rotulo-lig" x="174" y="74">chave-valor</text>
-          <text class="rotulo-lig" x="286" y="74">grafo</text>
+          <text class="rotulo-lig" x="62" y="64">documento</text>
+          <text class="rotulo-lig" x="180" y="64">chave-valor</text>
+          <text class="rotulo-lig" x="298" y="68">grafo</text>
+          <text class="uso" x="62" y="82">catálogo de produtos</text>
+          <text class="uso" x="180" y="82">sessão de login</text>
+          <text class="uso" x="298" y="82">quem conhece quem</text>
           <g class="tabela destaque">
-            <rect x="126" y="124" width="96" height="44" rx="6"/>
-            <line x1="126" y1="142" x2="222" y2="142"/><line x1="174" y1="124" x2="174" y2="168"/>
+            <rect x="130" y="134" width="100" height="42" rx="6"/>
+            <line x1="130" y1="151" x2="230" y2="151"/><line x1="180" y1="134" x2="180" y2="176"/>
           </g>
-          <path class="elo conviver" d="M62 84 C 62 106, 150 106, 162 124"/>
-          <path class="elo conviver" d="M174 84 V 124"/>
-          <path class="elo conviver" d="M286 84 C 286 106, 198 106, 186 124"/>
-          <text class="nome-tab" x="174" y="186">relacional</text>
+          <path class="elo conviver" d="M62 92 C 62 116, 152 116, 166 134"/>
+          <path class="elo conviver" d="M180 92 V 134"/>
+          <path class="elo conviver" d="M298 92 C 298 116, 208 116, 194 134"/>
+          <text class="nome-tab" x="180" y="192">relacional</text>
+          <text class="uso" x="180" y="205">o empréstimo, o pagamento, o estoque</text>
         </svg>
         <figcaption>Cada formato resolve um caso. O dinheiro continua na tabela.</figcaption>
       </figure>

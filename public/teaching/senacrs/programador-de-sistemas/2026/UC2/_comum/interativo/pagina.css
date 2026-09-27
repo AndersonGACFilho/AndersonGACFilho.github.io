@@ -642,7 +642,9 @@ legend {
 
 /* rotulos */
 .diagrama .rotulo { fill: var(--dim); font: 400 11px var(--display); text-anchor: middle; }
-.diagrama .rotulo-lig { fill: var(--dim); font: 400 10px var(--display); text-anchor: middle; }
+.diagrama .rotulo-lig { fill: var(--fg); font: 600 10px var(--display); text-anchor: middle; }
+/* o uso concreto de cada formato: e o que tira o diagrama do abstrato */
+.diagrama .uso { fill: var(--dim); font: 400 9px var(--display); text-anchor: middle; }
 
 /* A varredura do hierarquico. Tracinhos marchando sao discretos demais para
    ler como movimento; o que se ve e o facho passando pedido a pedido. */
@@ -690,31 +692,60 @@ legend {
   33%, 100% { stroke-dashoffset: 0; opacity: 0; }
 }
 
-/* O elo por valor.
+/* O elo por valor, como um circuito.
  *
- * COMECA SEMPRE DO ZERO. Antes a animacao rodava desde o carregamento da
- * pagina, com os quatro diagramas escondidos; quando alguem clicava no marco,
- * pegava o ciclo no meio — a linha ja desenhada, prestes a desfazer. Agora a
- * animacao esta em `.diagrama.ativo`, e a classe so entra quando o diagrama
- * aparece: o primeiro quadro e sempre o traco vazio.
+ * Era um traco que se desenhava e se apagava. Isso mostrava a LIGACAO, mas
+ * nao o que a aula quer: o valor indo de uma tabela para a outra. Agora o
+ * trilho fica sempre visivel e um pulso corre por ele, sem parar, chegando
+ * no 7 do outro lado — que acende quando o pulso chega.
  *
- * Desenha rapido, segura pouco, desfaz e recomeca: 2.2s de ciclo, contra 3s
- * em que mais de um terco era pausa.
+ * O laco e perfeito porque o caminho tem pathLength="1": um traco de 0.18
+ * com 0.82 de vao percorre exatamente o comprimento e volta ao inicio sem
+ * emenda. Nao ha comeco nem fim de ciclo para pegar no estado errado.
  */
-.diagrama .elo {
+
+.diagrama .elo-trilho {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 34%, transparent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.diagrama .elo-fluxo {
   fill: none;
   stroke: var(--accent);
-  stroke-width: 2;
-  stroke-dasharray: 1;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-dasharray: 0.18 0.82;
   stroke-dashoffset: 1;
+  opacity: 0;
 }
-.diagrama.ativo .elo { animation: ligando 2.2s ease-out infinite; }
-@keyframes ligando {
-  0% { stroke-dashoffset: 1; }
-  35%, 62% { stroke-dashoffset: 0; }
-  82%, 100% { stroke-dashoffset: 1; }
+.diagrama.ativo .elo-fluxo {
+  opacity: 1;
+  animation: correndo 2.4s linear infinite;
 }
-.diagrama .elo.conviver, .diagrama.ativo .elo.conviver {
+@keyframes correndo { to { stroke-dashoffset: 0; } }
+
+/* o 7 de destino acende quando o pulso chega */
+.diagrama .chegada {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.4;
+  opacity: 0;
+  transform-origin: 301px 76px;
+}
+.diagrama.ativo .chegada { animation: chegando 2.4s ease-out infinite; }
+@keyframes chegando {
+  0%, 74% { opacity: 0; transform: scale(0.5); }
+  84% { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.25); }
+}
+
+/* Estas herdavam o `fill: none` da regra .elo, que deixou de existir quando o
+   elo virou trilho + fluxo. Sem ele o navegador preenche a area fechada pela
+   curva e o tracejado vira uma cunha preta. */
+.diagrama .elo.conviver {
+  fill: none;
   stroke: var(--border-strong);
   stroke-width: 1.4;
   stroke-dasharray: 4 4;
@@ -723,8 +754,9 @@ legend {
 
 @media (prefers-reduced-motion: reduce) {
   .diagrama.ativo .varre,
-  .diagrama.ativo .elo,
   .diagrama.ativo .hop { animation: none; stroke-dashoffset: 0; }
+  .diagrama.ativo .elo-fluxo { animation: none; stroke-dasharray: none; opacity: 1; }
+  .diagrama.ativo .chegada { animation: none; opacity: 0.9; transform: none; }
   .diagrama .hop { opacity: 1; }
   .diagrama.ativo .facho { animation: none; }
   .diagrama .facho { opacity: 0.5; }
