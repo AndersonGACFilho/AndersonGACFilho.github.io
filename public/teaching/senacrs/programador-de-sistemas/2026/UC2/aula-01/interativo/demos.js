@@ -313,33 +313,66 @@
   })();
 
   /* ================= 5. SGBD, banco e tabela ================= */
+  //
+  // Escolhe-se a CAMADA, nao a caixa. Clicar em `jogo` acende as tres tabelas,
+  // porque a frase que a demo ensina e "jogo e UMA tabela" — cliente e
+  // emprestimo tambem sao, e acender so uma dizia o contrario.
 
   (function () {
+    var escolha = $('d5-escolha');
+    if (!escolha) return;
     var legenda = $('d5-legenda');
-    if (!legenda) return;
 
-    var TEXTO = {
-      sgbd: 'PostgreSQL é o SGBD: o programa. Ele pode guardar vários bancos.',
-      banco: 'locadora é o banco de dados: o conjunto de tabelas de um negócio.',
-      tabela: 'jogo é uma tabela: as linhas de um tipo de coisa.',
-    };
+    var CAMADAS = [
+      ['sgbd', 'SGBD', 'PostgreSQL é o SGBD: o programa que guarda e serve os dados. Um SGBD pode ter vários bancos.'],
+      ['banco', 'banco de dados', 'locadora é o banco de dados: o conjunto de tabelas de um negócio. Outro negócio, no mesmo PostgreSQL, seria outro banco.'],
+      ['tabela', 'tabela', 'jogo, cliente e emprestimo são tabelas: cada uma guarda as linhas de um tipo de coisa. As três estão acesas porque as três são tabelas.'],
+    ];
 
-    var caixas = document.querySelectorAll('.caixa');
-    Array.prototype.forEach.call(caixas, function (caixa) {
-      function escolher(ev) {
-        ev.stopPropagation(); // senao o clique na tabela acende tambem o banco e o SGBD
-        Array.prototype.forEach.call(caixas, function (o) {
-          o.classList.remove('ativa');
-        });
-        caixa.classList.add('ativa');
-        legenda.textContent = TEXTO[caixa.dataset.nivel];
-      }
-      caixa.addEventListener('click', escolher);
-      caixa.addEventListener('keydown', function (ev) {
-        if (ev.key === 'Enter' || ev.key === ' ') {
-          ev.preventDefault();
-          escolher(ev);
-        }
+    var caixas = Array.prototype.slice.call(document.querySelectorAll('.nivel'));
+    var botoes = [];
+
+    function acender(nivel) {
+      caixas.forEach(function (c) {
+        c.classList.toggle('acesa', c.dataset.nivel === nivel);
+      });
+      botoes.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.nivel === nivel ? 'true' : 'false');
+      });
+      var achou = CAMADAS.filter(function (c) { return c[0] === nivel; })[0];
+      if (achou) legenda.textContent = achou[2];
+    }
+
+    CAMADAS.forEach(function (c) {
+      var b = el('button', 'camada-btn');
+      b.type = 'button';
+      b.dataset.nivel = c[0];
+      b.style.setProperty('--cor', 'var(--cor-' + c[0] + ')');
+      b.setAttribute('aria-pressed', 'false');
+      b.appendChild(el('span', 'ponto'));
+      b.appendChild(el('span', null, c[1]));
+      b.addEventListener('click', function () {
+        acender(c[0]);
+      });
+      botoes.push(b);
+      escolha.appendChild(b);
+    });
+
+    // os botoes herdam as cores declaradas na .pilha
+    var pilha = document.querySelector('.pilha');
+    if (pilha) {
+      var lidas = getComputedStyle(pilha);
+      CAMADAS.forEach(function (c, i) {
+        botoes[i].style.setProperty('--cor', lidas.getPropertyValue('--cor-' + c[0]).trim());
+      });
+    }
+
+    caixas.forEach(function (caixa) {
+      caixa.addEventListener('click', function (ev) {
+        // sem isto, clicar numa tabela acenderia tabela, depois banco, depois
+        // SGBD, e a ultima a rodar venceria
+        ev.stopPropagation();
+        acender(caixa.dataset.nivel);
       });
     });
   })();

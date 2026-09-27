@@ -6,6 +6,7 @@
 <title>Aula 01 — veja acontecer · UC2</title>
 <meta name="description" content="Veja acontecer na tela o que a Aula 01 conta: o lançamento que some, a busca que erra, o telefone em 14 linhas, as quatro garantias.">
 <meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
@@ -111,20 +112,49 @@
   <!-- ============ 5. SGBD, banco, tabela ============ -->
   <section class="demo">
     <h2>5 · SGBD, banco e tabela</h2>
-    <p class="intro">Três nomes diferentes. Clique em cada camada.</p>
-    <div class="caixas">
-      <div class="caixa" data-nivel="sgbd" tabindex="0" role="button">
-        <span class="nome">PostgreSQL</span>
-        <div class="caixa" data-nivel="banco" tabindex="0" role="button">
-          <span class="nome">locadora</span>
-          <div class="filhas">
-            <div class="caixa" data-nivel="tabela" tabindex="0" role="button"><span class="nome">jogo</span></div>
-            <div class="caixa" data-nivel="tabela" tabindex="0" role="button"><span class="nome">cliente</span></div>
-            <div class="caixa" data-nivel="tabela" tabindex="0" role="button"><span class="nome">emprestimo</span></div>
+    <p class="intro">Três nomes que a turma troca o tempo todo. Escolha uma camada.</p>
+
+    <div class="camadas" id="d5-escolha" role="group" aria-label="Escolher a camada"></div>
+
+    <div class="pilha">
+      <div class="nivel n-sgbd" data-nivel="sgbd">
+        <p class="etiqueta">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
+          <span class="qual">PostgreSQL</span>
+          <span class="tipo">SGBD</span>
+        </p>
+
+        <div class="nivel n-banco" data-nivel="banco">
+          <p class="etiqueta">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
+            <span class="qual">locadora</span>
+            <span class="tipo">banco de dados</span>
+          </p>
+
+          <div class="tabelas">
+            <div class="nivel n-tabela" data-nivel="tabela">
+              <p class="etiqueta">
+                <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14.5h18M9 9v11"/></svg></span>
+                <span class="qual">jogo</span>
+              </p>
+            </div>
+            <div class="nivel n-tabela" data-nivel="tabela">
+              <p class="etiqueta">
+                <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14.5h18M9 9v11"/></svg></span>
+                <span class="qual">cliente</span>
+              </p>
+            </div>
+            <div class="nivel n-tabela" data-nivel="tabela">
+              <p class="etiqueta">
+                <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14.5h18M9 9v11"/></svg></span>
+                <span class="qual">emprestimo</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <p class="legenda" id="d5-legenda">Um SGBD guarda vários bancos. Um banco guarda várias tabelas.</p>
   </section>
 

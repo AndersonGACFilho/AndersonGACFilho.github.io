@@ -468,38 +468,106 @@ legend {
   font-size: 0.88rem;
 }
 
-/* ---------- caixas encaixadas ---------- */
+/* ---------- camadas encaixadas: SGBD, banco, tabela ---------- */
+/*
+ * Eram três caixas aninhadas em que só a clicada acendia. Na prática não dava
+ * para acertar a de fora: as internas cobriam quase toda a área dela, e o
+ * clique caía sempre na de dentro. Pior, clicar em `jogo` acendia só o `jogo`,
+ * como se `cliente` e `emprestimo` não fossem tabelas.
+ *
+ * Agora escolhe-se a CAMADA, pelos botões de cima ou por qualquer caixa dela,
+ * e a camada inteira acende — as três tabelas juntas, que é o que a frase diz.
+ */
 
-.caixas {
-  padding: 16px;
-  border: 1px dashed var(--line);
-  border-radius: 14px;
+.camadas {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
 }
 
-.caixa {
-  padding: 13px;
-  border: 1px solid var(--line);
-  border-radius: 11px;
-  background: var(--card);
+.camada-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font: 600 0.85rem/1 var(--display);
+  color: var(--dim);
+  background: none;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
   cursor: pointer;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.camada-btn:hover { border-color: var(--cor); color: var(--cor); }
+.camada-btn[aria-pressed='true'] {
+  color: var(--cor);
+  border-color: var(--cor);
+  background: color-mix(in srgb, var(--cor) 14%, transparent);
+}
+.camada-btn .ponto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cor);
 }
 
-.caixa:hover,
-.caixa.ativa {
-  border-color: var(--accent);
+.pilha { --cor-sgbd: var(--esp-pagina); --cor-banco: var(--esp-tarefa); --cor-tabela: var(--esp-arquivo); }
+
+.nivel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  padding: 13px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.nivel + .nivel, .nivel .nivel { margin-top: 12px; }
+.n-sgbd { --cor: var(--cor-sgbd); }
+.n-banco { --cor: var(--cor-banco); background: var(--bg); }
+.n-tabela { --cor: var(--cor-tabela); background: var(--card); margin-top: 0; padding: 11px 12px; }
+
+.nivel:hover { border-color: color-mix(in srgb, var(--cor) 55%, var(--line)); }
+/* a camada inteira acende, nao so a caixa clicada */
+.nivel.acesa {
+  border-color: var(--cor);
+  background: color-mix(in srgb, var(--cor) 9%, var(--card));
 }
 
-.caixa > .nome {
-  display: block;
-  margin-bottom: 9px;
-  font: 600 0.88rem/1 var(--display);
+.etiqueta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+  font-family: var(--display);
+}
+.nivel .nivel .etiqueta { font-size: 0.94rem; }
+.etiqueta .ico {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  color: var(--cor);
+  background: color-mix(in srgb, var(--cor) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cor) 38%, transparent);
+}
+.etiqueta .ico svg { width: 18px; height: 18px; }
+.etiqueta .qual { font-weight: 600; letter-spacing: -0.01em; }
+.etiqueta .tipo {
+  margin-left: auto;
+  color: var(--dim);
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
-.caixa .filhas {
+.tabelas {
   display: grid;
   gap: 9px;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-top: 12px;
 }
 
 /* ---------- linha do tempo ---------- */
