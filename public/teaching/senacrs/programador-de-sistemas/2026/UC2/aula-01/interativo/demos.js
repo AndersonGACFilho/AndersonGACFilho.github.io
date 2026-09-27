@@ -1,105 +1,19 @@
 /* demos.js — as demonstracoes da Aula 01.
  *
- * Ficam AQUI, ao lado da pagina, e nao em _comum/: o motor do quiz e o visual
- * sao compartilhados, mas cada aula demonstra outra coisa. _comum/ so guarda o
- * que a proxima aula vai reaproveitar sem mexer.
+ * Ficam AQUI, ao lado da pagina, e nao em _comum/: o que se repete entre
+ * aulas mora no demo-kit.js; uma demonstracao nao se reaproveita, porque cada
+ * aula demonstra outra coisa.
  *
- * Script classico, mesmo motivo do autocorrecao.js: a pagina tem de abrir com
- * duplo clique no arquivo quando a internet do laboratorio cair.
+ * Script classico, mesmo motivo do kit: a pagina tem de abrir com duplo
+ * clique no arquivo quando a internet do laboratorio cair.
  */
-(function () {
+(function (kit) {
   'use strict';
 
-  var $ = function (id) {
-    return document.getElementById(id);
-  };
-
-  function el(tag, classe, texto) {
-    var e = document.createElement(tag);
-    if (classe) e.className = classe;
-    if (texto != null) e.textContent = texto;
-    return e;
-  }
-
-  // ---------- registro de operacoes ----------
-  //
-  // Todo painel destas demos mostra o ESTADO. O registro mostra a OPERACAO
-  // que levou ate ele, com hora e ator — e e nele que o SQL aparece escrito,
-  // que e o que a UC de fato ensina. Sem isso a demo pede que o aluno deduza
-  // o comando a partir do resultado.
-
-  var NOME_ATOR = { ana: 'Ana', bruno: 'Bruno', servidor: 'servidor', planilha: 'planilha', banco: 'banco' };
-
-  function novoLog(id) {
-    var alvo = $(id);
-    if (!alvo) return { escrever: function () {}, limpar: function () {} };
-
-    function linhaLog(e) {
-      var li = el('li', e.marca || '');
-      li.appendChild(el('span', 'hora', e.hora || ''));
-      li.appendChild(el('span', 'ator ' + e.ator, NOME_ATOR[e.ator] || e.ator));
-      var op = el('span', 'op');
-      if (e.sql) op.appendChild(el('code', null, e.texto));
-      else op.textContent = e.texto;
-      if (e.resultado) op.appendChild(el('span', 'resultado', e.resultado));
-      li.appendChild(op);
-      return li;
-    }
-
-    return {
-      // Registro cronologico: uma historia, varios atores, em ordem de hora.
-      escrever: function (entradas, vazio) {
-        alvo.className = 'log';
-        alvo.textContent = '';
-        if (!entradas.length) {
-          alvo.appendChild(linhaLog({ ator: 'servidor', texto: vazio || 'Nada aconteceu ainda.' }));
-          return;
-        }
-        entradas.forEach(function (e) {
-          alvo.appendChild(linhaLog(e));
-        });
-      },
-
-      // Registro em par: os dois lados fazem a MESMA coisa ao mesmo tempo, e
-      // o que interessa e comparar. Empilhar isso numa lista unica obriga o
-      // aluno a parear as linhas de cabeca; lado a lado, e a mesma leitura
-      // dos paineis que estao logo acima.
-      comparar: function (colunas, veredito, vazio) {
-        alvo.className = 'log par';
-        alvo.textContent = '';
-        if (!colunas.length) {
-          var vazia = el('li', 'so-veredito');
-          vazia.appendChild(el('span', 'op', vazio || 'Nada aconteceu ainda.'));
-          alvo.appendChild(vazia);
-          return;
-        }
-        colunas.forEach(function (c) {
-          var li = el('li', 'coluna ' + c.ator + (c.marca ? ' ' + c.marca : ''));
-          li.appendChild(el('span', 'ator ' + c.ator, NOME_ATOR[c.ator] || c.ator));
-          c.linhas.forEach(function (e) {
-            var op = el('p', 'op');
-            if (e.sql) op.appendChild(el('code', null, e.texto));
-            else op.textContent = e.texto;
-            if (e.resultado) op.appendChild(el('span', 'resultado', e.resultado));
-            li.appendChild(op);
-          });
-          alvo.appendChild(li);
-        });
-        if (veredito) {
-          var fim = el('li', 'so-veredito' + (veredito.marca ? ' ' + veredito.marca : ''));
-          fim.appendChild(el('span', 'op', veredito.texto));
-          alvo.appendChild(fim);
-        }
-      },
-    };
-  }
-
-  function linha(texto, valor, classe) {
-    var l = el('div', 'linha' + (classe ? ' ' + classe : ''));
-    l.appendChild(el('span', null, texto));
-    l.appendChild(el('span', null, valor));
-    return l;
-  }
+  var $ = kit.$;
+  var el = kit.el;
+  var linha = kit.linha;
+  var novoLog = kit.novoLog;
 
   /* ================= 1. o lancamento que some ================= */
   //
@@ -263,6 +177,49 @@
       );
     }
 
+    // Quatro estados, nao dois. O selo dizia 'preenchendo' com o formulario
+    // em branco, porque um array vazio e verdadeiro em JavaScript — o painel
+    // mostrava 'Formulário em branco' e o selo dizia o contrario.
+    function seloPessoa(painel, enviou) {
+      if (!painel) return comSgbd ? 'tela fechada' : 'fechada';
+      if (!comSgbd) return 'aberta';
+      if (enviou) return 'enviado';
+      return painel.length ? 'preenchendo' : 'em branco';
+    }
+
+    function pintar(alvo, itens, destaque) {
+      alvo.textContent = '';
+      if (!itens) {
+        alvo.appendChild(
+          el('p', 'vazio-painel', comSgbd ? 'Não abriu a tela ainda.' : 'Não abriu o arquivo ainda.')
+        );
+        return;
+      }
+      if (!itens.length) {
+        alvo.appendChild(el('p', 'vazio-painel', 'Formulário em branco.'));
+        return;
+      }
+      itens.forEach(function (r, i) {
+        alvo.appendChild(linha(r[0], r[1], i === destaque ? 'entrou' : ''));
+      });
+    }
+
+    proximo.addEventListener('click', function () {
+      if (passo < 6) passo += 1;
+      desenhar();
+    });
+    $('d1-zerar').addEventListener('click', function () {
+      passo = 0;
+      desenhar();
+    });
+    $('d1-modo').addEventListener('click', function () {
+      comSgbd = !comSgbd;
+      passo = 0;
+      this.textContent = comSgbd ? 'Repetir com a planilha' : 'Repetir com um SGBD';
+      desenhar();
+    });
+
+    desenhar();
   })();
 
   /* ================= 2. a busca que responde errado ================= */
@@ -598,4 +555,4 @@
       alvo.appendChild(li);
     });
   })();
-})();
+})(window.DemoKit);

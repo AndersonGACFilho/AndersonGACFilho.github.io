@@ -2,6 +2,7 @@
  *
  * Uso na pagina da aula:
  *
+ *   <script src="../../_comum/interativo/demo-kit.js"></script>
  *   <script src="../../_comum/interativo/autocorrecao.js"></script>
  *   <script>
  *     montarExercicios('aula-01', [
@@ -19,15 +20,11 @@
  * o aluno escolhe — sem botao "corrigir" no fim — e o "por que" e exibido tanto
  * no acerto quanto no erro. Quem acertou por sorte tambem precisa ler.
  */
-(function () {
+(function (kit) {
   'use strict';
 
-  function elemento(tag, classe, texto) {
-    var el = document.createElement(tag);
-    if (classe) el.className = classe;
-    if (texto != null) el.textContent = texto;
-    return el;
-  }
+  // o mesmo el() do demo-kit: tinha uma copia identica aqui, chamada elemento()
+  var elemento = kit.el;
 
   window.montarExercicios = function (chave, itens) {
     var alvo = document.getElementById('exercicios');
@@ -179,4 +176,4 @@
       });
     }
   };
-})();
+})(window.DemoKit);
