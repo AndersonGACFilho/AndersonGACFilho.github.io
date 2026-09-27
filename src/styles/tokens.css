@@ -42,6 +42,15 @@
      claro fica com texto quase preto por cima */
   --on-gamedev: #13110e;
 
+  /* material de ensino */
+  --feito: #5fd6a4;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 86%, var(--feito) 14%);
+  --esp-pagina: var(--fullstack);
+  --esp-quiz: var(--feito);
+  --esp-tarefa: var(--research);
+  --esp-arquivo: var(--gamedev);
+  --erro: #fb7185;
+
   --radius: 10px;
   --radius-sm: 6px;
   /* a tela jogável não é um cartão: canto vivo, como um monitor */
@@ -73,6 +82,15 @@
     --gamedev: #a4581c;
     --research: #6b43c4;
     --on-gamedev: #ffffff;
+
+    /* material de ensino */
+    --feito: #0b7d4f;
+    --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
+    --esp-pagina: var(--fullstack);
+    --esp-quiz: var(--feito);
+    --esp-tarefa: var(--research);
+    --esp-arquivo: var(--gamedev);
+    --erro: #c62a48;
   }
 }
 
@@ -94,6 +112,15 @@
   --gamedev: #a4581c;
   --research: #6b43c4;
   --on-gamedev: #ffffff;
+
+  /* material de ensino */
+  --feito: #0b7d4f;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
+  --esp-pagina: var(--fullstack);
+  --esp-quiz: var(--feito);
+  --esp-tarefa: var(--research);
+  --esp-arquivo: var(--gamedev);
+  --erro: #c62a48;
 }
 
 :root[data-theme='dark'] {
@@ -113,4 +140,13 @@
   --gamedev: #f5a97f;
   --research: #c3a6f5;
   --on-gamedev: #13110e;
+
+  /* material de ensino */
+  --feito: #5fd6a4;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 86%, var(--feito) 14%);
+  --esp-pagina: var(--fullstack);
+  --esp-quiz: var(--feito);
+  --esp-tarefa: var(--research);
+  --esp-arquivo: var(--gamedev);
+  --erro: #fb7185;
 }
