@@ -1,31 +1,18 @@
 ---
 import PageHeader from '../PageHeader.astro';
 import { useTranslations, type Lang } from '../../i18n/ui';
-import { SLIDES_URL } from '../../lib/content';
+import { ensino } from '../../data/teaching';
 
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const pick = (b: { en: string; pt: string }) => (lang === 'pt' ? b.pt : b.en);
 
-const stats = [
-  { value: '19', label: t('teaching.stat.classes') },
-  { value: '4', label: t('teaching.stat.hours') },
-  { value: '∑', label: t('teaching.stat.format') },
-  { value: '↗', label: t('teaching.stat.open') },
-];
-
-// The unit, deck by deck — the same order the slides are published in.
-const syllabus = [
-  { n: '01–02', en: 'What a DBMS is · data abstraction', pt: 'O que é um SGBD · abstração de dados' },
-  { n: '03–05', en: 'From problem to model: mini-world, attributes, keys and cardinalities', pt: 'Do problema ao modelo: minimundo, atributos, chaves e cardinalidades' },
-  { n: '06–07', en: 'From ER model to ER diagram, and from diagram to tables', pt: 'Do MER ao DER, e do DER às tabelas' },
-  { n: '08–09', en: 'Functional dependencies and normalisation', pt: 'Dependências funcionais e normalização' },
-  { n: '10–11', en: 'PostgreSQL and pgAdmin · constraints and relationships', pt: 'PostgreSQL e pgAdmin · constraints e relacionamentos' },
-  { n: '12–13', en: 'DML, the first Python connection, querying data', pt: 'DML, primeira conexão em Python, consultando dados' },
-  { n: '14–15', en: 'JOIN and aggregations · subqueries, views and CRUD in Python', pt: 'JOIN e agregações · subconsultas, views e o CRUD em Python' },
-  { n: '16–17', en: 'Users and permissions · backup and restore', pt: 'Usuários e permissões · backup e restore' },
-  { n: '18', en: 'Delivery of the complete CRUD', pt: 'Entrega do CRUD completo' },
-];
+const rotuloSituacao = {
+  'no-ar': t('teaching.status.live'),
+  preparando: t('teaching.status.wip'),
+  'outro-docente': t('teaching.status.other'),
+} as const;
 ---
 
 <PageHeader
@@ -33,75 +20,115 @@ const syllabus = [
   title={t('nav.teaching')}
   intro={t('teaching.intro')}
   accent="var(--fullstack)"
->
-  <div class="btn-row header-cta">
-    <a class="btn" href={SLIDES_URL}>{t('teaching.cta')} →</a>
-  </div>
-</PageHeader>
+/>
 
-<section>
-  <dl class="stats">
-    {
-      stats.map((stat) => (
-        <div>
-          <dt>{stat.value}</dt>
-          <dd>{stat.label}</dd>
-        </div>
-      ))
-    }
-  </dl>
-</section>
+{
+  ensino.map((inst) => (
+    <section>
+      <div class="section-head">
+        <h2>{inst.nome}</h2>
+        <span class="more">{inst.local}</span>
+      </div>
 
-<section>
-  <div class="section-head"><h2>UC2 — Implementar Banco de Dados</h2></div>
-  <p class="muted lead">
-    {lang === 'pt'
-      ? 'Unidade curricular do curso Programador de Sistemas do Senac RS. Cada aula tem quatro horas e foi escrita do zero em Marp, com os diagramas gerados a partir de fontes Mermaid e um tema próprio da instituição. A turma sai da unidade com um CRUD em Python sobre PostgreSQL.'
-      : 'A unit of the Systems Programmer course at Senac RS. Each four-hour session was written from scratch in Marp, with diagrams generated from Mermaid sources and a custom institutional theme. Students leave the unit with a Python CRUD running on PostgreSQL.'}
-  </p>
+      {inst.cursos.map((curso) => (
+        <article class="curso">
+          <header class="curso-topo">
+            <h3>{pick(curso.nome)}</h3>
+            <p class="nivel">{pick(curso.nivel)}</p>
+          </header>
 
-  <h3 class="sub">{t('teaching.what')}</h3>
-  <ol class="syllabus">
-    {
-      syllabus.map((item) => (
-        <li>
-          <span class="n mono">{item.n}</span>
-          <span>{lang === 'pt' ? item.pt : item.en}</span>
-        </li>
-      ))
-    }
-  </ol>
+          {curso.edicoes.map((ed) => (
+            <div class="edicao">
+              <div class="edicao-topo">
+                <p class="quando">
+                  <strong>{ed.ano}</strong>
+                  <span>{ed.periodo}</span>
+                  <span>{pick(ed.turno)}</span>
+                </p>
+                {ed.href && (
+                  <a class="btn btn-primary" href={ed.href}>
+                    {t('teaching.cta')}
+                  </a>
+                )}
+              </div>
 
-  <p class="btn-row">
-    <a class="btn btn-primary" href={SLIDES_URL}>{t('teaching.cta')} →</a>
-  </p>
-</section>
+              <ul class="ucs">
+                {ed.ucs.map((uc) => (
+                  <li class={uc.situacao === 'no-ar' ? 'ativa' : undefined}>
+                    <span class="codigo">{uc.codigo}</span>
+                    <span class="nome">{pick(uc.nome)}</span>
+                    <span class="ch">{uc.ch}</span>
+                    <span class={`situacao ${uc.situacao}`}>{rotuloSituacao[uc.situacao]}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </article>
+      ))}
+    </section>
+  ))
+}
 
 <style>
-  .header-cta { margin-top: 18px; }
-
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin: 0; }
-  .stats > div {
+  .curso {
     border: 1px solid var(--border);
+    border-left: 3px solid var(--fullstack);
     border-radius: var(--radius);
     background: var(--bg-elev);
-    padding: 16px 18px;
+    padding: 20px 22px;
   }
-  .stats dt { font-size: 1.7rem; font-weight: 650; letter-spacing: -0.02em; color: var(--fullstack); }
-  .stats dd { margin: 2px 0 0; color: var(--text-dim); font-size: 0.88rem; }
+  .curso-topo h3 { margin: 0; font-size: 1.3rem; }
+  .nivel { margin: 2px 0 0; color: var(--text-dim); font-size: 0.92rem; }
 
-  .lead { max-width: 60ch; }
-  .sub { margin-top: 32px; color: var(--text-faint); font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; }
-
-  .syllabus { list-style: none; margin: 14px 0 28px; padding: 0; display: grid; gap: 0; max-width: 60ch; }
-  .syllabus li {
-    display: grid;
-    grid-template-columns: 62px 1fr;
+  .edicao { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .edicao-topo {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .quando {
+    display: flex;
     gap: 14px;
     align-items: baseline;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .quando strong {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  /* Uma linha por UC, com a situação escrita. Quem chega vê o curso inteiro e
+     sabe o que ainda vem, em vez de achar que só existe o que está no ar. */
+  .ucs { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .ucs li {
+    display: grid;
+    grid-template-columns: 3.2em 1fr auto auto;
+    gap: 14px;
+    align-items: baseline;
+    padding: 11px 0;
+    border-top: 1px solid var(--border);
     color: var(--text-dim);
   }
-  .syllabus .n { color: var(--text-faint); font-size: 0.78rem; }
+  .ucs li:first-child { border-top: none; }
+  .ucs .codigo { font-family: var(--display); font-weight: 700; color: var(--text-faint); }
+  .ucs li.ativa .codigo { color: var(--fullstack); }
+  .ucs li.ativa .nome { color: var(--text); font-weight: 600; }
+  .ucs .ch { font-size: 0.86rem; font-variant-numeric: tabular-nums; }
+  .situacao { font-family: var(--display); font-size: 0.8rem; white-space: nowrap; }
+  .situacao.no-ar { color: var(--feito); font-weight: 600; }
+
+  @media (max-width: 560px) {
+    .ucs li { grid-template-columns: 3.2em 1fr; }
+    .ucs .ch, .situacao { grid-column: 2; }
+  }
 </style>

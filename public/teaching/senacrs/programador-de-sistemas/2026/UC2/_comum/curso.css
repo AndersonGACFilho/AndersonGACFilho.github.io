@@ -1,0 +1,228 @@
+/* curso.css — visual das páginas de material da UC.
+ *
+ * Consome os mesmos tokens do site pessoal (tokens.css), em vez de repetir
+ * cor à mão. Antes eram dois conjuntos, e já tinham derivado: largura 900 vs
+ * 1080, fundo claro #f4f5f8 vs #fbfbfd, superfícies e raios diferentes.
+ *
+ * A forma é a de uma página de curso no Moodle, que é a que esta turma
+ * conhece das outras UCs: tópicos que abrem na própria página, atividades com
+ * ícone por espécie, e marcação de concluído.
+ */
+
+* { box-sizing: border-box; }
+
+html { touch-action: manipulation; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+a { color: var(--accent); }
+
+.dentro { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.pular {
+  position: absolute;
+  left: -9999px;
+}
+
+/* texto que só o leitor de tela pronuncia — sem o :focus do skip link */
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.pular:focus {
+  left: var(--gutter);
+  top: 8px;
+  z-index: 50;
+  background: var(--bg-elev);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--accent);
+  color: var(--text);
+}
+
+/* ---------- cabeçalho ---------- */
+.topo { background: var(--bg-elev); border-bottom: 1px solid var(--border); padding: 18px 0 26px; }
+.topo-linha { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+.trilha { margin: 0; color: var(--text-dim); font-size: 0.88rem; }
+.trilha a { color: var(--text-dim); text-decoration: none; }
+.trilha a:hover { color: var(--accent); }
+.trilha .sep { padding: 0 7px; opacity: 0.5; }
+.topo h1 { margin: 0 0 4px; font-size: clamp(1.7rem, 4vw, 2.4rem); letter-spacing: -0.035em; }
+.topo .curso { margin: 0 0 18px; color: var(--text-dim); font-size: 0.98rem; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 6px 13px;
+  color: var(--text-dim);
+  background: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+.pill:hover { border-color: var(--accent); color: var(--accent); }
+/* alvo de toque de 44px sem inflar a pílula */
+.pill.tema { position: relative; }
+.pill.tema::after { content: ''; position: absolute; inset: 50% auto auto 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); }
+
+.medidor { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin: 0 0 18px; }
+.trilho { flex: 1 1 220px; height: 8px; border-radius: 999px; background: var(--border); overflow: hidden; }
+.cheio { display: block; width: 0; height: 100%; background: var(--feito); transition: width 0.25s ease; }
+.conta { margin: 0; color: var(--text-dim); font-size: 0.86rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.acoes { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 0; }
+.botao {
+  padding: 9px 16px;
+  font: 600 0.9rem/1 var(--display);
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.botao:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- tópicos ---------- */
+main { padding: 26px 0 90px; }
+.topicos { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 12px; }
+.topico {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.topico[open] { border-left-color: var(--accent); }
+summary { display: flex; gap: 12px; align-items: flex-start; padding: 15px 17px; cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary:hover .titulo { color: var(--accent); }
+.seta { flex: none; width: 18px; height: 18px; margin-top: 5px; color: var(--text-dim); transition: transform 0.15s ease; }
+.seta svg { width: 100%; height: 100%; display: block; }
+.topico[open] .seta { transform: rotate(90deg); }
+.cabeca { flex: 1; min-width: 0; }
+/* o título da aula é um h2 de verdade: eram dezenove seções e só um h1 na
+   página, então quem navega por cabeçalho não achava aula nenhuma */
+.cabeca .ordem { display: block; color: var(--text-dim); font: 600 0.82rem/1.5 var(--display); }
+.cabeca .titulo { display: block; margin: 0; font-family: var(--display); font-size: 1.08rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+.cabeca .sumario { display: block; margin-top: 2px; color: var(--text-dim); font-size: 0.92rem; }
+.lado { flex: none; display: flex; gap: 10px; align-items: center; padding-top: 3px; }
+.quando, .placar { font-size: 0.8rem; color: var(--text-dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.placar { padding: 5px 9px; border: 1px solid var(--border); border-radius: 999px; }
+.placar.completo { color: var(--feito); border-color: var(--feito); }
+
+/* ---------- atividades ---------- */
+.atividades { list-style: none; margin: 0; padding: 2px 17px 16px; display: grid; gap: 2px; }
+.atividade { display: flex; gap: 13px; align-items: center; padding: 9px 10px; border-radius: var(--radius-sm); }
+.atividade:hover { background: var(--bg-hover); }
+/* Quadrado tingido com o glifo na cor da espécie, e não fundo saturado com
+   ícone branco. O branco sobre o verde dava 2.54:1 e sobre o âmbar 2.15:1 —
+   o mínimo para elemento não-textual é 3:1, e no modo claro os mesmos dois
+   quadrados também sumiam contra o painel. Assim o contraste é o da cor
+   contra o painel, que já é o mesmo das trilhas do site. */
+.icone {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  color: var(--esp);
+  background: color-mix(in srgb, var(--esp) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--esp) 40%, transparent);
+}
+.icone svg { width: 21px; height: 21px; }
+.icone.pagina { --esp: var(--esp-pagina); }
+.icone.quiz { --esp: var(--esp-quiz); }
+.icone.tarefa { --esp: var(--esp-tarefa); }
+.icone.arquivo { --esp: var(--esp-arquivo); }
+.corpo { flex: 1; min-width: 0; }
+.corpo a { font-family: var(--display); font-weight: 600; text-decoration: none; }
+.corpo a:hover { text-decoration: underline; }
+.fora { margin-left: 5px; font-size: 0.78em; opacity: 0.75; }
+.especie { display: block; color: var(--text-dim); font-size: 0.82rem; }
+.feito {
+  flex: none;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 12px;
+  font: 500 0.8rem/1 var(--display);
+  color: var(--text-dim);
+  background: none;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.feito:hover { border-color: var(--feito); color: var(--feito); }
+.feito .marca { opacity: 0; }
+.feito[aria-pressed='true'] { color: var(--feito); border-color: var(--feito); background: var(--feito-fundo); }
+.feito[aria-pressed='true'] .marca { opacity: 1; }
+
+@media (max-width: 560px) {
+  .feito .dizer { display: none; }
+  .feito { padding: 9px; }
+  .feito .marca { opacity: 0.4; }
+  .lado { flex-direction: column; align-items: flex-end; gap: 5px; }
+}
+
+.nota { margin: 0; color: var(--text-dim); font-size: 0.86rem; }
+.volta { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 0.88rem; }
+.rodape { margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--border); display: flex; gap: 16px; justify-content: space-between; flex-wrap: wrap; color: var(--text-dim); font-size: 0.88rem; }
+
+/* ---------- tela de seleção ---------- */
+.ucs { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.uc > a, .uc > .falso {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 17px 18px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.uc > a:hover { border-color: var(--accent); background: var(--bg-hover); }
+.uc.fechada > .falso { border-left-color: var(--border); }
+.uc.fechada .nome, .uc.fechada .meta { color: var(--text-dim); }
+.codigo { flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: var(--radius-sm); background: var(--bg); border: 1px solid var(--border); font: 700 0.9rem/1 var(--display); color: var(--text-dim); }
+.uc > a .codigo { color: var(--accent); border-color: var(--accent); }
+.uc .nome { display: block; font-family: var(--display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.02em; }
+.uc .meta { display: block; color: var(--text-dim); font-size: 0.88rem; }
+.estado { flex: none; font-size: 0.82rem; color: var(--text-dim); white-space: nowrap; }
+.estado.aberto { color: var(--feito); font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

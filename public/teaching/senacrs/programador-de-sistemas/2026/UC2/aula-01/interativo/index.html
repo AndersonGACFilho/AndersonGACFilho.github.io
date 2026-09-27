@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 01 — veja acontecer · UC2</title>
+<meta name="description" content="Veja acontecer na tela o que a Aula 01 conta: o lançamento que some, a busca que erra, o telefone em 14 linhas, as quatro garantias.">
+<meta name="theme-color" content="#13110e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 01 — veja acontecer</h1>
+  <p class="sub">Os problemas da planilha, rodando na tela. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../quiz/index.html">Depois de rodar tudo, confira se ficou de pé nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. perda de lançamento ============ -->
+  <section class="demo">
+    <h2>1 · O lançamento que some</h2>
+    <p class="intro">Ana e Bruno abrem a mesma planilha com um minuto de diferença.</p>
+
+    <div class="palco duplo">
+      <div class="painel">
+        <h3><span>Ana — cópia dela</span><span class="selo" id="selo-ana">fechada</span></h3>
+        <div id="lista-ana"></div>
+      </div>
+      <div class="painel">
+        <h3><span>Bruno — cópia dele</span><span class="selo" id="selo-bruno">fechada</span></h3>
+        <div id="lista-bruno"></div>
+      </div>
+    </div>
+    <div class="palco" style="margin-top:14px">
+      <div class="painel">
+        <h3><span id="rotulo-arquivo">emprestimos.xlsx — no servidor</span><span class="selo" id="selo-arquivo"></span></h3>
+        <div id="lista-arquivo"></div>
+      </div>
+    </div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="d1-proximo">Próximo passo</button>
+      <button type="button" class="acao secundaria" id="d1-modo">Repetir com um SGBD</button>
+      <button type="button" class="acao secundaria" id="d1-zerar">Reiniciar</button>
+    </div>
+    <p class="legenda" id="d1-legenda"></p>
+  </section>
+
+  <!-- ============ 2. busca que erra ============ -->
+  <section class="demo">
+    <h2>2 · A busca que responde errado</h2>
+    <p class="intro">Três atendentes cadastraram o mesmo jogo de três jeitos. Procure por ele.</p>
+
+    <div class="controles" style="margin:0 0 14px">
+      <input class="busca" id="d2-busca" type="search" value="God of War Ragnarok" aria-label="Procurar jogo">
+    </div>
+
+    <div class="palco duplo">
+      <div class="painel">
+        <h3><span>Como foi digitado</span><span class="selo ruim" id="d2-selo-esq"></span></h3>
+        <div id="d2-esq"></div>
+      </div>
+      <div class="painel">
+        <h3><span>Com cadastro único</span><span class="selo bom" id="d2-selo-dir"></span></h3>
+        <div id="d2-dir"></div>
+      </div>
+    </div>
+    <p class="legenda" id="d2-legenda"></p>
+  </section>
+
+  <!-- ============ 3. o mesmo fato em 14 lugares ============ -->
+  <section class="demo">
+    <h2>3 · O telefone em 14 linhas</h2>
+    <p class="intro">A Ana aparece em 14 empréstimos. Ela troca de número.</p>
+
+    <div class="palco duplo">
+      <div class="painel">
+        <h3><span>Planilha</span><span class="selo" id="d3-selo-esq">14 cópias</span></h3>
+        <div class="chips" id="d3-esq"></div>
+      </div>
+      <div class="painel">
+        <h3><span>Banco</span><span class="selo" id="d3-selo-dir">1 lugar</span></h3>
+        <div class="ficha" id="d3-ficha"></div>
+        <p class="aponta">14 empréstimos apontam para esta ficha.</p>
+      </div>
+    </div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="d3-trocar">Ana troca de número</button>
+      <button type="button" class="acao secundaria" id="d3-zerar">Reiniciar</button>
+    </div>
+    <p class="legenda" id="d3-legenda"></p>
+  </section>
+
+  <!-- ============ 4. as quatro garantias ============ -->
+  <section class="demo">
+    <h2>4 · As quatro garantias</h2>
+    <p class="intro">Clique para ver o que acontece sem cada uma.</p>
+    <div class="cartoes" id="d4"></div>
+  </section>
+
+  <!-- ============ 5. SGBD, banco, tabela ============ -->
+  <section class="demo">
+    <h2>5 · SGBD, banco e tabela</h2>
+    <p class="intro">Três nomes diferentes. Clique em cada camada.</p>
+    <div class="caixas">
+      <div class="caixa" data-nivel="sgbd" tabindex="0" role="button">
+        <span class="nome">PostgreSQL</span>
+        <div class="caixa" data-nivel="banco" tabindex="0" role="button">
+          <span class="nome">locadora</span>
+          <div class="filhas">
+            <div class="caixa" data-nivel="tabela" tabindex="0" role="button"><span class="nome">jogo</span></div>
+            <div class="caixa" data-nivel="tabela" tabindex="0" role="button"><span class="nome">cliente</span></div>
+            <div class="caixa" data-nivel="tabela" tabindex="0" role="button"><span class="nome">emprestimo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="legenda" id="d5-legenda">Um SGBD guarda vários bancos. Um banco guarda várias tabelas.</p>
+  </section>
+
+  <!-- ============ 6. linha do tempo ============ -->
+  <section class="demo">
+    <h2>6 · Por que as tabelas venceram</h2>
+    <p class="intro">Clique em cada marco.</p>
+    <ol class="tempo" id="d6"></ol>
+    <p class="legenda" id="d6-legenda">Sessenta anos em quatro passos.</p>
+  </section>
+
+  <p class="rodape">
+    <a href="../slides.html">Voltar para os slides da Aula 01</a>
+  </p>
+</main>
+
+<script src="demos.js"></script>
+</body>
+</html>

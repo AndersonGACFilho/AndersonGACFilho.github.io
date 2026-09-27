@@ -44,8 +44,18 @@ export async function getFeaturedGame(): Promise<CollectionEntry<'games'> | unde
   );
 }
 
-/** Where the published Marp decks live. */
-export const SLIDES_URL = 'https://andersongacfilho.github.io/aulas-programador-de-sistemas/';
+/**
+ * Where the course material lives — now inside this site, under `public/`.
+ *
+ * It used to point at a separate `aulas-programador-de-sistemas` repo. The
+ * decks, the interactive pages and the submission forms are now published
+ * straight into `public/teaching/<school>/<course>/<year>/` by the courseware
+ * repo, so the link is internal and never goes stale on a rename.
+ *
+ * O nível do CURSO existe no caminho porque o Senac abre mais de um, e
+ * `senacrs/2026` ficaria ambíguo no dia em que abrir.
+ */
+export const SLIDES_URL = '/teaching/senacrs/programador-de-sistemas/2026/';
 
 /**
  * Path of the same article in the other language, falling back to the section

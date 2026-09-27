@@ -36,7 +36,7 @@ const venue = d.venue;
     {d.tags.map((tag) => <span>#{tag}</span>)}
   </div>
   <div class="card-links">
-    <a href={localize(`/articles/${slug}`, lang)}>{t('cta.read')} →</a>
+    <a href={localize(`/articles/${slug}`, lang)}>{t('cta.read')}</a>
     {d.pdf && <a href={d.pdf}>PDF</a>}
     {venue?.url && <a href={venue.url}>{t('cta.proceedings')}</a>}
   </div>

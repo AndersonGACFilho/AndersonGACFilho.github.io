@@ -19,13 +19,16 @@ const { kicker, title, intro, accent = 'var(--text-faint)' } = Astro.props;
 
 <style>
   .page-head { margin-block: 28px 40px; max-width: 46rem; }
+  /* Era caixa-alta espaçada em monoespaçada — a moldura de template mais
+     reconhecível que existe, e que aparecia acima de todo título do site.
+     Agora é uma frase legível, na grotesca, com a cor da trilha. */
   .kicker {
-    font-family: var(--mono);
+    font-family: var(--display);
     color: var(--kicker);
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 0 0 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
   }
   .page-head h1 { margin-bottom: 12px; text-wrap: balance; }
   .intro { color: var(--text-dim); font-size: 1.05rem; margin: 0; }

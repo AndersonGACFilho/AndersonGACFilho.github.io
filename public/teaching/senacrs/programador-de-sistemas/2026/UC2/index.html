@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC2 · Implementar Banco de Dados</title>
+<meta name="description" content="Slides, exercícios e entregas da UC2 (Implementar Banco de Dados) do curso Programador de Sistemas, Senac RS.">
+<meta name="theme-color" content="#13110e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../_comum/tokens.css">
+<link rel="stylesheet" href="../_comum/curso.css">
+<script>
+  /* sem piscada: roda antes da primeira pintura, e é síncrono de propósito */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo">
+  <div class="dentro">
+    <div class="topo-linha">
+      <nav class="trilha" aria-label="Trilha de navegação">
+        <a href="https://andersongacfilho.github.io/pt/teaching">Ensino</a><span class="sep">/</span>Senac RS<span class="sep">/</span><a href="../">Programador de Sistemas</a><span class="sep">/</span>2026<span class="sep">/</span>UC2
+      </nav>
+      <button type="button" class="pill tema" id="tema" hidden
+        data-troca="Tema" data-system="Sistema" data-light="Claro" data-dark="Escuro">
+        <span class="marca" aria-hidden="true"></span><span class="dizer"></span>
+      </button>
+    </div>
+    <h1>Implementar Banco de Dados</h1>
+    <p class="curso">Programador de Sistemas · Senac RS · 19 aulas</p>
+    <div class="medidor">
+      <span class="trilho"><span class="cheio" id="cheio"></span></span>
+      <p class="conta" id="conta" data-modelo="{n} de {total} concluídas">0 de 88 concluídas</p>
+    </div>
+    <p class="acoes">
+      <a class="botao" href="plano-de-ensino.html">Plano de ensino</a>
+      <button type="button" class="botao" id="todas" data-expandir="Expandir tudo" data-recolher="Recolher tudo">Recolher tudo</button>
+    </p>
+  </div>
+</header>
+
+<main class="dentro" id="conteudo">
+  <ol class="topicos">
+    <li><details class="topico" data-n="00" data-data="2026-10-06">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 00</span>
+          <h2 class="titulo">Implementar Banco de Dados</h2>
+          <span class="sumario">Bem-vindo(a) à UC2!</span>
+        </span>
+        <span class="lado">
+          <span class="quando">06/10/2026</span>
+          <span class="placar" data-placar>0/1</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-00-apresentacao/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-00-apresentacao/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="01" data-data="2026-10-06">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 01</span>
+          <h2 class="titulo">O que é um Sistema Gerenciador de Banco de Dados</h2>
+          <span class="sumario">Aula 01 — Fundamentos</span>
+        </span>
+        <span class="lado">
+          <span class="quando">06/10/2026</span>
+          <span class="placar" data-placar>0/6</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-01/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-01/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/ZakPJocgyA6yRNwT6">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/ZakPJocgyA6yRNwT6" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/oGc6LaESTpD12n9Z6">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/oGc6LaESTpD12n9Z6" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/uAbov6G4X8vZ9icSA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/uAbov6G4X8vZ9icSA" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="aula-01/interativo/">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="aula-01/interativo/">Aula 01 — veja acontecer</a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="aula-01/quiz/">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="aula-01/quiz/">Aula 01 — oito perguntas</a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="02" data-data="2026-10-07">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 02</span>
+          <h2 class="titulo">Abstração de Dados</h2>
+          <span class="sumario">Aula 02 — Esquema, instância e níveis de um SGBD</span>
+        </span>
+        <span class="lado">
+          <span class="quando">07/10/2026</span>
+          <span class="placar" data-placar>0/4</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-02/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-02/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/HSe7ZbxQ5nJwGaP56">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/HSe7ZbxQ5nJwGaP56" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/66fe68inNDdDRVQe8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/66fe68inNDdDRVQe8" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/ESbrwoBxwskT52659">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/ESbrwoBxwskT52659" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="03" data-data="2026-10-08">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 03</span>
+          <h2 class="titulo">Do Problema ao Modelo</h2>
+          <span class="sumario">Aula 03 — Estudo de caso (minimundo)</span>
+        </span>
+        <span class="lado">
+          <span class="quando">08/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-03/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-03/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/ad9wrnWXNnCBhNPKA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/ad9wrnWXNnCBhNPKA" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/e2EpoEQqxsP8unC66">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/e2EpoEQqxsP8unC66" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/j56eeepZd1VtGGfE7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/j56eeepZd1VtGGfE7" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/b1RtJjcn72boy2is9">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/b1RtJjcn72boy2is9" target="_blank" rel="noopener">Minimundo do grupo<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="04" data-data="2026-10-09">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 04</span>
+          <h2 class="titulo">Atributos</h2>
+          <span class="sumario">Aula 04 — Qualificando cada entidade</span>
+        </span>
+        <span class="lado">
+          <span class="quando">09/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-04/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-04/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/qaG7VPeuVdTazQhH8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/qaG7VPeuVdTazQhH8" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/oMEceP9nFSKNbWEL7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/oMEceP9nFSKNbWEL7" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/wWqcjvpPmFt6ALFK6">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/wWqcjvpPmFt6ALFK6" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/JuQg4xw1nW1f4WcKA">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/JuQg4xw1nW1f4WcKA" target="_blank" rel="noopener">Dicionário de dados<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="05" data-data="2026-10-14">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 05</span>
+          <h2 class="titulo">Chaves e Cardinalidades</h2>
+          <span class="sumario">Aula 05 — Identificando e ligando</span>
+        </span>
+        <span class="lado">
+          <span class="quando">14/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-05/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-05/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/pTgsa1kexpq6k7w28">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/pTgsa1kexpq6k7w28" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/1CxoyscjB8MCU15S9">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/1CxoyscjB8MCU15S9" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/PJ45C7cbdwML2XkcA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/PJ45C7cbdwML2XkcA" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/4M4XW2NEZSCzE34k9">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/4M4XW2NEZSCzE34k9" target="_blank" rel="noopener">Chaves e cardinalidades<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="06" data-data="2026-10-15">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 06</span>
+          <h2 class="titulo">Do MER ao DER</h2>
+          <span class="sumario">Aula 06 — Desenhando o modelo</span>
+        </span>
+        <span class="lado">
+          <span class="quando">15/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-06/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-06/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/jJHCEEvginTdFGgf8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/jJHCEEvginTdFGgf8" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/WvKwNhCgc3ZZgw4d7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/WvKwNhCgc3ZZgw4d7" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/RwsKp7zJA5Um5Euq6">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/RwsKp7zJA5Um5Euq6" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/hPtKkhUyDPAdco9eA">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/hPtKkhUyDPAdco9eA" target="_blank" rel="noopener">DER completo (.drawio.svg)<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="07" data-data="2026-10-16">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 07</span>
+          <h2 class="titulo">Do DER às Tabelas</h2>
+          <span class="sumario">Aula 07 — Modelo relacional</span>
+        </span>
+        <span class="lado">
+          <span class="quando">16/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-07/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-07/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/KTQj11Fm5NoCTVsq6">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/KTQj11Fm5NoCTVsq6" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/Qw7LkhLiYJovCxYD8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/Qw7LkhLiYJovCxYD8" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/tM4ewxv5YHee7i7h7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/tM4ewxv5YHee7i7h7" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/Sug5LhiNU8FaoMC27">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/Sug5LhiNU8FaoMC27" target="_blank" rel="noopener">Esquema relacional<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="08" data-data="2026-10-19">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 08</span>
+          <h2 class="titulo">Dependências Funcionais</h2>
+          <span class="sumario">Aula 08 — Quem determina quem</span>
+        </span>
+        <span class="lado">
+          <span class="quando">19/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-08/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-08/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/3jitq1nTiakU3rLv9">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/3jitq1nTiakU3rLv9" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/giRELyiMoDYoHjnEA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/giRELyiMoDYoHjnEA" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/geQqgx1CHMxyK8W89">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/geQqgx1CHMxyK8W89" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/27CR7wFyjGWN4nmr6">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/27CR7wFyjGWN4nmr6" target="_blank" rel="noopener">Dependências encontradas<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="09" data-data="2026-10-20">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 09</span>
+          <h2 class="titulo">Normalização</h2>
+          <span class="sumario">Aula 09 — 1FN, 2FN e 3FN</span>
+        </span>
+        <span class="lado">
+          <span class="quando">20/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-09/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-09/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/M44Awj16aVoNPYqY9">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/M44Awj16aVoNPYqY9" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/AAWZrgdGqWaLyj3EA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/AAWZrgdGqWaLyj3EA" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/rk3L2yjurRqg9DZG7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/rk3L2yjurRqg9DZG7" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/EuAg5bgj5QdS84FG6">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/EuAg5bgj5QdS84FG6" target="_blank" rel="noopener">Esquema normalizado até 3FN<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="10" data-data="2026-10-21">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 10</span>
+          <h2 class="titulo">PostgreSQL e pgAdmin</h2>
+          <span class="sumario">Aula 10 — Do papel para o banco de verdade</span>
+        </span>
+        <span class="lado">
+          <span class="quando">21/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-10/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-10/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/cpabVDxqWwFhQ6vM6">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/cpabVDxqWwFhQ6vM6" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/x6EmAVSPHvQVhcXS7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/x6EmAVSPHvQVhcXS7" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/zb6GjkPn5SAUBrkS7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/zb6GjkPn5SAUBrkS7" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/2raWs96nJB7wd1XLA">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/2raWs96nJB7wd1XLA" target="_blank" rel="noopener">Banco criado e primeira tabela<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="11" data-data="2026-10-22">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 11</span>
+          <h2 class="titulo">Constraints e Relacionamentos</h2>
+          <span class="sumario">Aula 11 — Ligando as tabelas de verdade</span>
+        </span>
+        <span class="lado">
+          <span class="quando">22/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-11/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-11/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/qPrJsFo2PqEX2HMD8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/qPrJsFo2PqEX2HMD8" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/x2QWc8URunzAzAYv5">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/x2QWc8URunzAzAYv5" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/8RTd9sLxLMaJAaNF7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/8RTd9sLxLMaJAaNF7" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/z2QuzHQvxdy79XFL8">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/z2QuzHQvxdy79XFL8" target="_blank" rel="noopener">Todas as tabelas com constraints<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="12" data-data="2026-10-23">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 12</span>
+          <h2 class="titulo">DML e Primeira Conexão em Python</h2>
+          <span class="sumario">Aula 12 — Colocando dados dentro do banco</span>
+        </span>
+        <span class="lado">
+          <span class="quando">23/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-12/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-12/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/ivoRJB1gRWxSANLMA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/ivoRJB1gRWxSANLMA" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/HburG1NLEmAqSaJP6">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/HburG1NLEmAqSaJP6" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/sqDyxzRQGAFN5Wpx8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/sqDyxzRQGAFN5Wpx8" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/W3PoFFXwyp4Z7GqL6">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/W3PoFFXwyp4Z7GqL6" target="_blank" rel="noopener">Banco populado<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="13" data-data="2026-10-26">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 13</span>
+          <h2 class="titulo">Consultando Dados</h2>
+          <span class="sumario">Aula 13 — SELECT, WHERE e ORDER BY</span>
+        </span>
+        <span class="lado">
+          <span class="quando">26/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-13/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-13/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/4i47cdaYRsufVD78A">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/4i47cdaYRsufVD78A" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/PhCNLgDhS25n5F3i9">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/PhCNLgDhS25n5F3i9" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/6sC6XncQpodjevWu6">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/6sC6XncQpodjevWu6" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/maZhP1iU9apTKXcA9">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/maZhP1iU9apTKXcA9" target="_blank" rel="noopener">Consultas do projeto<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="14" data-data="2026-10-27">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 14</span>
+          <h2 class="titulo">JOIN e Agregações</h2>
+          <span class="sumario">Aula 14 — Cruzando tabelas e resumindo dados</span>
+        </span>
+        <span class="lado">
+          <span class="quando">27/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-14/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-14/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/oD9QmiuXY9TQFn3T6">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/oD9QmiuXY9TQFn3T6" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/zTcGYrga5Mo5GvpBA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/zTcGYrga5Mo5GvpBA" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/wvhFdjbj4jTqqGYK7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/wvhFdjbj4jTqqGYK7" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/VvYXePhvscCRoFoK8">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/VvYXePhvscCRoFoK8" target="_blank" rel="noopener">Consultas com JOIN<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="15" data-data="2026-10-28">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 15</span>
+          <h2 class="titulo">Subconsultas, Views e o CRUD em Python</h2>
+          <span class="sumario">Aula 15 — Montando as 4 operações</span>
+        </span>
+        <span class="lado">
+          <span class="quando">28/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-15/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-15/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/MZnaevBNd39g7bD1A">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/MZnaevBNd39g7bD1A" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/Agc2Q8HuzeuQHqEC8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/Agc2Q8HuzeuQHqEC8" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/e3Zh8oDBs5yMhzZFA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/e3Zh8oDBs5yMhzZFA" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/dZtUpdgDf3pYfLddA">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/dZtUpdgDf3pYfLddA" target="_blank" rel="noopener">CRUD em Python<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="16" data-data="2026-10-29">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 16</span>
+          <h2 class="titulo">Usuários e Permissões</h2>
+          <span class="sumario">Aula 16 — Quem pode ver e mudar o quê</span>
+        </span>
+        <span class="lado">
+          <span class="quando">29/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-16/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-16/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/1CwPu1MuMXkLfXnW7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/1CwPu1MuMXkLfXnW7" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/12EK4Mz5XAwF4mLZA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/12EK4Mz5XAwF4mLZA" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/S4xyAMfKpKd68QHZ7">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/S4xyAMfKpKd68QHZ7" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/NANBn5UCdnW566AJ8">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/NANBn5UCdnW566AJ8" target="_blank" rel="noopener">Matriz de permissões e roles<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="17" data-data="2026-10-30">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 17</span>
+          <h2 class="titulo">Backup e Restore</h2>
+          <span class="sumario">Aula 17 — Não perder os dados nunca</span>
+        </span>
+        <span class="lado">
+          <span class="quando">30/10/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-17/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-17/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/mqGQsz2JWNMpXZWC8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/mqGQsz2JWNMpXZWC8" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/rb9tkAognEuFhNct8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/rb9tkAognEuFhNct8" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/AcQS8wpHNYTmQWHVA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/AcQS8wpHNYTmQWHVA" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/ejCp2ZhjNXjzQGb98">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/ejCp2ZhjNXjzQGb98" target="_blank" rel="noopener">Política de backup e restore<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="18" data-data="2026-11-03">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 18</span>
+          <h2 class="titulo">Entrega do CRUD Completo</h2>
+          <span class="sumario">Aula 18 — Fechamento da UC2</span>
+        </span>
+        <span class="lado">
+          <span class="quando">03/11/2026</span>
+          <span class="placar" data-placar>0/2</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-18/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-18/slides.html">Slides da aula</a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/AkMmPCJUQPgk9FU86">
+          <span class="icone tarefa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5v3h-5z"/><path d="M14.5 5h3.5v15.5h-12V5h3.5"/><path d="M12 17v-6"/><path d="M9.6 13.4 12 11l2.4 2.4"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/AkMmPCJUQPgk9FU86" target="_blank" rel="noopener">Entrega final do CRUD<span class="fora" aria-hidden="true">↗</span><span class="so-leitor">(abre em nova aba)</span></a>
+            <span class="especie">Tarefa</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+  </ol>
+
+  <div class="rodape">
+    <p class="nota">As marcações de concluído ficam só neste navegador — não há login e ninguém mais vê.</p>
+    <p><a href="https://andersongacfilho.github.io/pt/teaching">Voltar para andersongacfilho.github.io</a></p>
+  </div>
+</main>
+<script src="../_comum/curso.js"></script>
+</body>
+</html>
