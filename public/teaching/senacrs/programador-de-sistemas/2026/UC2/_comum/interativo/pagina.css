@@ -280,8 +280,34 @@ legend {
   gap: 14px;
 }
 
+/* segundo palco ou painel logo abaixo de outro */
+.afastado { margin-top: 14px; }
+
 @media (min-width: 660px) {
   .palco.duplo {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Tres lados lado a lado. Empilhados eles viram uma lista, e o que a demo
+   pede e comparacao — a mesma razao do .duplo.
+   Em coluna estreita o cabecalho empilha: lado a lado, o titulo quebra em
+   tres linhas e briga com o selo. */
+.palco.tres .painel > h3 {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.palco.tres .selo { align-self: flex-start; }
+/* Tres lados lado a lado. Empilhados eles viram uma lista, e o que a demo
+   pede e comparacao — a mesma razao do .duplo. */
+@media (min-width: 820px) {
+  .palco.tres {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 560px) and (max-width: 819px) {
+  .palco.tres {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -344,6 +370,16 @@ legend {
   font-size: 0.86rem;
 }
 
+/* Nota de rodape do painel: explica o que se esta vendo. Usava a classe do
+   estado vazio, que diz "nao ha nada aqui" — sentido oposto. */
+.nota-painel {
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--dim);
+  font-size: 0.85rem;
+}
+
 .controles {
   display: flex;
   gap: 10px;
@@ -351,6 +387,11 @@ legend {
   flex-wrap: wrap;
   margin-top: 14px;
 }
+
+/* O controle vem depois do palco, pela regra do padrao. A excecao e o campo
+   de busca: ele nao dispara uma acao, ele FILTRA o que o palco mostra, e ler
+   o resultado de baixo para cima nao funciona. */
+.controles.antes { margin: 0 0 14px; }
 
 .acao {
   padding: 9px 16px;

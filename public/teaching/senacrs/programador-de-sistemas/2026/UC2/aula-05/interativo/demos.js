@@ -166,6 +166,9 @@
       botoes.push(b);
       caixa.appendChild(b);
     });
+    // sem isto a secao abre com dois paineis ocos, so cabecalho — buraco na
+    // pagina, e nada diz que e preciso clicar antes
+    mostrar(CASOS[0]);
   })();
 
   /* ================= 3. de que lado fica a chave estrangeira ================= */

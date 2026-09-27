@@ -87,7 +87,7 @@
           if (String(l[1]).indexOf('???') === 0) marca = 'sumiu';
           p.appendChild(linha(l[0], l[1], marca));
         });
-        p.appendChild(el('p', 'vazio-painel', t.nota));
+        p.appendChild(el('p', 'nota-painel', t.nota));
         palco.appendChild(p);
       });
 
