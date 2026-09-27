@@ -396,7 +396,10 @@ legend {
 .acao {
   padding: 9px 16px;
   font: 600 0.87rem/1 inherit;
-  color: #08131b;
+  /* o texto acompanha o tema. Fixo em #08131b, media 10.3:1 no escuro e so
+     3.8:1 no claro — reprovava em AA no botao mais clicado da pagina. Com
+     var(--bg) da 10.4 e 4.6. */
+  color: var(--bg);
   background: var(--accent);
   border: none;
   border-radius: 99px;
@@ -431,9 +434,22 @@ legend {
   border-radius: 99px;
 }
 
+/* O campo tirava o contorno do foco por completo, e nao havia nenhuma regra
+   de :focus-visible no arquivo — quem navega por teclado dependia do anel
+   padrao do navegador, que varia e some aqui. Agora o anel e declarado, e so
+   o clique de mouse fica sem ele. */
 .busca:focus {
-  outline: none;
   border-color: var(--accent);
+}
+
+.busca:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 .selo {
@@ -558,7 +574,13 @@ legend {
   background: var(--cor);
 }
 
-.pilha {
+/* Moradas das cores de camada: ficam no :root, e nao na .pilha, porque os
+   botoes de escolha da demonstracao 5 da Aula 01 NAO sao descendentes da
+   .pilha. Declaradas la, var(--cor-sgbd) nao resolvia no botao, e o demos.js
+   contornava lendo o valor ja resolvido e gravando o hex no style — o que
+   congelava a cor do tema vigente no carregamento. No tema claro a bolinha
+   ficava com o ciano do escuro, a 1,7:1. */
+:root {
   --cor-sgbd: var(--esp-pagina);
   --cor-banco: var(--esp-tarefa);
   --cor-schema: var(--dim);

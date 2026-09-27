@@ -467,15 +467,6 @@
       escolha.appendChild(b);
     });
 
-    // os botoes herdam as cores declaradas na .pilha
-    var pilha = document.querySelector('.pilha');
-    if (pilha) {
-      var lidas = getComputedStyle(pilha);
-      CAMADAS.forEach(function (c, i) {
-        botoes[i].style.setProperty('--cor', lidas.getPropertyValue('--cor-' + c[0]).trim());
-      });
-    }
-
     caixas.forEach(function (caixa) {
       caixa.addEventListener('click', function (ev) {
         // sem isto, clicar numa tabela acenderia tabela, depois banco, depois

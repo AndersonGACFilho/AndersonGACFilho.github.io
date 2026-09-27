@@ -206,10 +206,62 @@ projeto</strong> do grupo (revisar, enriquecer ou avançar um artefato já em an
 </ul>
 <h2>5. Avaliação</h2>
 <p>Conforme o plano de curso: menção por indicador (<strong>A</strong>tendido / <strong>P</strong>arcialmente <strong>A</strong>tendido /
-<strong>N</strong>ão <strong>A</strong>tendido durante o processo; A/NA ao final da UC) e menção final da UC
-(<strong>D</strong>esenvolvida / <strong>N</strong>ão <strong>D</strong>esenvolvida). Frequência mínima de 75%.</p>
+<strong>N</strong>ão <strong>A</strong>tendido durante o processo; <strong>A ou NA ao final</strong> — PA não existe no fim) e menção
+final da UC (<strong>D</strong>esenvolvida / <strong>N</strong>ão <strong>D</strong>esenvolvida). Frequência mínima de 75%.</p>
+<p><strong>Um único indicador NA ao final reprova a UC.</strong> O plano de curso é literal:
+<em>&quot;caso algum dos indicadores não seja atingido, o aluno será considerado
+reprovado na unidade&quot;</em>. Não há compensação entre indicadores.</p>
+<p><strong>Recuperação é imediata, não no fim.</strong> O plano manda que ela seja <em>&quot;imediata à
+constatação das dificuldades do aluno, por meio de solução de situações-problema,
+realização de estudos dirigidos e outras estratégias&quot;</em>. Na prática desta UC:
+constatado um PA numa entrega, a recuperação acontece <strong>na aula seguinte</strong>,
+dentro do bloco de prática, com o docente na mesa do grupo — e fica registrada
+com a data.</p>
 <p>Instrumento principal de avaliação: o <strong>CRUD completo</strong> desenvolvido ao longo da UC (modelagem →
 implementação → consultas → gestão), entregue e demonstrado na Aula 18.</p>
+<p><strong>Cada indicador tem evidência antes da Aula 18</strong>, pelas entregas por aula:</p>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>indicador</th>
+<th>primeira evidência</th>
+<th>aula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1 — arquitetura</td>
+<td>banco criado e primeira tabela</td>
+<td>10</td>
+</tr>
+<tr>
+<td>I2 — planeja conforme as regras de negócio</td>
+<td>minimundo do grupo</td>
+<td>03</td>
+</tr>
+<tr>
+<td>I3 — desenvolve estruturas</td>
+<td>banco criado e primeira tabela</td>
+<td>10</td>
+</tr>
+<tr>
+<td>I4 — modela</td>
+<td>dicionário de dados</td>
+<td>04</td>
+</tr>
+<tr>
+<td>I5 — avalia a persistência</td>
+<td>consultas do projeto</td>
+<td>13</td>
+</tr>
+<tr>
+<td>I6 — atualização, permissões e backup</td>
+<td>matriz de permissões e roles</td>
+<td>16</td>
+</tr>
+</tbody>
+</table></div>
+<p>A Aula 18 é a <strong>consolidação</strong> dos seis, não a primeira medida de nenhum.</p>
 <h2>6. Distribuição das aulas</h2>
 <p>Cada célula de &quot;Teoria / Prática&quot; segue a lógica da seção 4: teoria curta primeiro, prática
 aplicada ao <strong>mesmo projeto contínuo</strong> logo em seguida (nunca teoria acumulada sem uso imediato).</p>
@@ -262,8 +314,8 @@ aplicada ao <strong>mesmo projeto contínuo</strong> logo em seguida (nunca teor
 <td>09/10</td>
 <td>sex</td>
 <td>Modelagem</td>
-<td>Atributos: como qualificar uma entidade</td>
-<td>Listar os atributos de cada entidade do próprio caso (ex.: <code>jogo</code>, <code>plataforma</code>, <code>cliente</code>)</td>
+<td>Atributos, tipos de dado e nulo; <strong>o dicionário de dados</strong></td>
+<td>Listar os atributos de cada entidade do próprio caso e <strong>preencher o dicionário de dados</strong> (entrega da aula)</td>
 <td>I2, I4</td>
 <td>U2</td>
 </tr>
@@ -395,7 +447,7 @@ aplicada ao <strong>mesmo projeto contínuo</strong> logo em seguida (nunca teor
 <td>Usuários, roles e permissões</td>
 <td>Criar, no próprio banco do projeto, um usuário com permissão só de leitura</td>
 <td>I6</td>
-<td>U1 (Recursos Humanos) + U4</td>
+<td>U1 (só a classificação de usuários) + <strong>doc. PostgreSQL 16, cap. 22 e <code>GRANT</code>/<code>REVOKE</code></strong></td>
 </tr>
 <tr>
 <td>17</td>
@@ -405,7 +457,7 @@ aplicada ao <strong>mesmo projeto contínuo</strong> logo em seguida (nunca teor
 <td>Backup/restore; ciclo de vida do sistema</td>
 <td>Fazer backup do banco do projeto e simular um restore — <strong>pelo botão do pgAdmin</strong>, sem terminal</td>
 <td>I6</td>
-<td>U1</td>
+<td><strong>doc. PostgreSQL 16, cap. 26 (Backup and Restore)</strong> + pgAdmin</td>
 </tr>
 <tr>
 <td>—</td>
@@ -429,12 +481,29 @@ aplicada ao <strong>mesmo projeto contínuo</strong> logo em seguida (nunca teor
 </tr>
 </tbody>
 </table></div>
+<blockquote>
+<p><strong>Sobre a coluna &quot;Fonte&quot;.</strong> <code>U1</code> a <code>U4</code> e os apêndices são do livro-texto de
+apoio (Moreira). As Aulas 16 e 17 <strong>não têm fonte nele</strong>: conferido por
+varredura no texto inteiro, o livro tem zero ocorrências de <code>GRANT</code> ou
+<code>REVOKE</code>, e trata backup só como objetivo do SGBD, sem procedimento. Essas
+duas aulas vêm da documentação do PostgreSQL 16 — capítulo 22 (Database
+Roles), as páginas de <code>GRANT</code> e <code>REVOKE</code>, e o capítulo 26 (Backup and
+Restore) — mais os diálogos Backup/Restore do pgAdmin.</p>
+</blockquote>
 <h2>7. Bibliografia</h2>
-<p><strong>Básica</strong></p>
+<p><strong>Básica — do plano de curso do Senac</strong></p>
 <ul>
 <li>ALVES, Willian Pereira. <em>Banco de dados</em>. São Paulo: Érica, 2014.</li>
 <li>LIMA, Adilson da Silva. <em>Especificações técnicas de software</em>. São Paulo: Érica, 2012.</li>
-<li>MOREIRA, Flávio Ferry de Oliveira. <em>Fundamentos de Banco de Dados</em>. Teresina: EDUFPI/CEAD, 2013.</li>
+</ul>
+<p><strong>Acrescentada pelo docente</strong> (não consta da bibliografia oficial)</p>
+<ul>
+<li>MOREIRA, Flávio Ferry de Oliveira. <em>Fundamentos de Banco de Dados</em>. Teresina:
+EDUFPI/CEAD, 2013. Escolhida por ser aberta, em português e alinhada à
+modelagem e ao relacional. <strong>Não cobre o indicador 6</strong>, e traz três erros
+conceituais registrados no <a href="../../README.md#livro-texto-de-apoio">README da raiz</a>.</li>
+<li>Documentação do <strong>PostgreSQL 16</strong> e do <strong>pgAdmin 4</strong>, fonte real das Aulas
+10 a 17.</li>
 </ul>
 <p><strong>Complementar</strong></p>
 <ul>
