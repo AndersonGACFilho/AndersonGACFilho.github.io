@@ -556,7 +556,15 @@
         b.classList.add('ativo');
         // um diagrama por vez: animacao rodando fora do que se esta lendo e ruido
         Array.prototype.forEach.call(document.querySelectorAll('.diagrama'), function (f) {
-          f.hidden = f.id !== m.dia;
+          var meu = f.id === m.dia;
+          f.hidden = !meu;
+          // a classe reinicia a animacao do zero a cada abertura; sem ela o
+          // ciclo corre desde o carregamento e o diagrama aparece no meio
+          f.classList.remove('ativo');
+          if (meu) {
+            void f.offsetWidth; // forca o reflow, senao o navegador funde as duas mudancas
+            f.classList.add('ativo');
+          }
         });
         legenda.textContent = '';
         [['Quem foi', m.quem], ['O que isso custava', m.custo]].forEach(function (par) {
