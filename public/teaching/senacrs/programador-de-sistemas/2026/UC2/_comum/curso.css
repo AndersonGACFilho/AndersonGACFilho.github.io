@@ -40,6 +40,16 @@ a { color: var(--accent); }
   position: absolute;
   left: -9999px;
 }
+
+/* texto que só o leitor de tela pronuncia — sem o :focus do skip link */
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .pular:focus {
   left: var(--gutter);
   top: 8px;

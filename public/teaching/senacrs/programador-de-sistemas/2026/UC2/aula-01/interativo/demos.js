@@ -33,6 +33,12 @@
   // A demo inteira existe por causa do passo 6: ate ali tudo parece certo. O
   // aluno tem de VER o #1003 sumir depois de ter sido salvo — e ninguem ser
   // avisado. Descrito em texto, isso nao assusta; na tela, assusta.
+  //
+  // OS DOIS ESCOLHEM O MESMO NUMERO, e isso e o ponto. Cada um so enxerga a
+  // propria copia, onde o ultimo lancamento e o #1002; nao ha como a planilha
+  // combinar um proximo numero entre as duas. Dar #1004 ao Bruno seria dar a
+  // planilha uma coordenacao que ela nao tem, e apagaria justamente a
+  // diferenca que a aula quer mostrar: no banco, quem numera e um so.
 
   (function () {
     var proximo = $('d1-proximo');
@@ -49,8 +55,8 @@
       'A planilha tem dois lançamentos. Ninguém está com ela aberta.',
       '19h02 — Ana abre o arquivo. O que ela vê é uma cópia.',
       '19h03 — Bruno abre o mesmo arquivo. Segunda cópia.',
-      '19h05 — Ana lança o empréstimo #1003 na cópia dela.',
-      '19h06 — Bruno lança o #1004 na cópia dele.',
+      'Ana lança o próximo empréstimo. O último é #1002, então ela escreve #1003.',
+      'Bruno lança o dele. Na cópia que ele tem, o último também é #1002 — ele escreve #1003 também.',
       '19h10 — Ana salva. Até aqui, tudo certo.',
       null, // o desfecho muda conforme o modo
     ];
@@ -64,10 +70,12 @@
       if (passo >= 1) ana = BASE.slice();
       if (passo >= 2) bruno = BASE.slice();
       if (passo >= 3) ana = ana.concat([['#1003', 'Baldurs Gate 3']]);
-      if (passo >= 4) bruno = bruno.concat([['#1004', 'Stardew Valley']]);
+      if (passo >= 4) bruno = bruno.concat([['#1003', 'Stardew Valley']]);
       if (passo >= 5) arquivo = ana.slice();
       if (passo >= 6) {
         if (comSgbd) {
+          // Quem numera é o banco, e ele numera uma vez só. Os dois entram,
+          // com números diferentes, sem ninguém precisar combinar nada.
           arquivo = BASE.concat([
             ['#1003', 'Baldurs Gate 3'],
             ['#1004', 'Stardew Valley'],
@@ -107,8 +115,8 @@
         passo < 6
           ? PASSOS[passo]
           : comSgbd
-            ? '19h11 — Bruno salva. Os dois lançamentos entraram: o SGBD enfileira as gravações em vez de trocar o arquivo inteiro.'
-            : '19h11 — Bruno salva por cima. O #1003 não existe mais, e ninguém foi avisado.';
+            ? '19h11 — Bruno salva. Os dois entraram, e com números diferentes: quem numera é o banco, num lugar só. Na planilha cada um numerava a própria cópia, e os dois chegaram no mesmo #1003.'
+            : '19h11 — Bruno salva por cima. Existem dois #1003 diferentes, e só um sobreviveu: o Baldurs Gate 3 da Ana não existe mais. Ninguém foi avisado.';
 
       proximo.disabled = passo >= 6;
     }

@@ -62,9 +62,7 @@ export const ensino: Instituicao[] = [
             ano: '2026',
             periodo: '08/09 — 25/11/2026',
             turno: { en: 'Evenings, 6–10pm', pt: 'Noite, 18h às 22h' },
-            // aponta para o arquivo, não para a pasta: servidor que não monta
-            // índice de diretório devolve 404, e foi assim que este botão quebrou
-            href: '/teaching/senacrs/programador-de-sistemas/2026/index.html',
+            href: '/teaching/senacrs/programador-de-sistemas/2026/',
             ucs: [
               {
                 codigo: 'UC1',

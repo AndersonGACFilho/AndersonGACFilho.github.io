@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aula 01 — exercícios · UC2</title>
-<meta name="description" content="Veja acontecer na tela o que a Aula 01 conta: o lançamento que some, a busca que erra, o telefone em 14 linhas. No fim, 8 perguntas com resposta na hora.">
+<title>Aula 01 — veja acontecer · UC2</title>
+<meta name="description" content="Veja acontecer na tela o que a Aula 01 conta: o lançamento que some, a busca que erra, o telefone em 14 linhas, as quatro garantias.">
 <meta name="theme-color" content="#13110e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,7 @@
 <main class="wrap">
   <h1>Aula 01 — veja acontecer</h1>
   <p class="sub">Os problemas da planilha, rodando na tela. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../quiz/index.html">Depois de rodar tudo, confira se ficou de pé nas 8 perguntas.</a></p>
 
   <!-- ============ 1. perda de lançamento ============ -->
   <section class="demo">
@@ -135,101 +136,11 @@
     <p class="legenda" id="d6-legenda">Sessenta anos em quatro passos.</p>
   </section>
 
-  <!-- ============ 7. quiz ============ -->
-  <section class="demo">
-    <h2>7 · Confira se ficou de pé</h2>
-    <p class="intro">Oito perguntas. A resposta aparece assim que você escolhe.</p>
-    <div id="progresso"></div>
-    <div id="exercicios"></div>
-  </section>
-
   <p class="rodape">
     <a href="../slides.html">Voltar para os slides da Aula 01</a>
-    <button type="button" id="recomecar">Limpar respostas</button>
   </p>
 </main>
 
 <script src="demos.js"></script>
-<script src="../../_comum/interativo/autocorrecao.js"></script>
-<script>
-montarExercicios('aula-01', [
-  {
-    pergunta: 'Ana e Bruno abrem a mesma planilha e salvam com um minuto de diferença. O que acontece?',
-    alternativas: [
-      'Os dois lançamentos ficam salvos',
-      'O lançamento da Ana some — o arquivo do Bruno foi salvo por cima',
-      'O programa avisa do conflito',
-      'O arquivo corrompe'
-    ],
-    certa: 1,
-    porque: 'Ninguém errou e ninguém é avisado. Por isso o erro só aparece semanas depois, quando já não dá para saber o que faltou.'
-  },
-  {
-    pergunta: 'O mesmo jogo cadastrado de três jeitos. Qual é a pior consequência?',
-    alternativas: [
-      'A planilha fica desorganizada',
-      'O arquivo ocupa mais espaço',
-      '"Quantas vezes esse jogo foi alugado?" passa a ter resposta errada',
-      'O programa corrige a grafia sozinho'
-    ],
-    certa: 2,
-    porque: 'A busca acha 1 aluguel em vez de 3. O chefe tira o jogo do catálogo por causa de um dado que parecia inofensivo.'
-  },
-  {
-    pergunta: 'Atualizaram 11 das 14 linhas com o telefone da Ana. Qual é a raiz do problema?',
-    alternativas: [
-      'Quem atualizou foi desatento',
-      'O mesmo fato está guardado em mais de um lugar',
-      'A planilha tem linhas demais',
-      'Faltou backup'
-    ],
-    certa: 1,
-    porque: 'Culpar a desatenção não resolve: com 14 cópias, uma hora escapa uma. Guardar cada fato num lugar só é o assunto das Aulas 7 a 9.'
-  },
-  {
-    pergunta: 'A planilha é a ferramenta certa quando:',
-    alternativas: [
-      'Os dados cabem em menos de um milhão de linhas',
-      'Uma pessoa só mexe, os dados não crescem e perder tudo não quebraria o negócio',
-      'Nunca — banco é sempre melhor',
-      'Não há orçamento para um SGBD'
-    ],
-    certa: 1,
-    porque: 'Trocar ferramenta boa por ferramenta grande também é erro de projeto. E preço não é critério: o PostgreSQL é livre.'
-  },
-  {
-    pergunta: 'O estagiário apagou a aba de clientes. Qual garantia resolve?',
-    alternativas: ['Concorrência', 'Integridade', 'Persistência', 'Segurança'],
-    certa: 3,
-    porque: 'Cada um vê e muda só o que pode — e o banco registra quem fez o quê. Você configura isso nas Aulas 16 e 17.'
-  },
-  {
-    pergunta: 'Qual é a diferença entre uma planilha de um milhão de linhas e um banco de dados?',
-    alternativas: ['O tamanho', 'A velocidade de busca', 'Quem faz valer as regras', 'O preço'],
-    certa: 2,
-    porque: 'Na planilha as regras estão na disciplina de quem digita. No banco, estão no banco — e ele recusa o que as viola.'
-  },
-  {
-    pergunta: 'PostgreSQL, locadora e jogo são, nesta ordem:',
-    alternativas: [
-      'banco, SGBD, tabela',
-      'SGBD, banco, tabela',
-      'SGBD, tabela, banco',
-      'três nomes para a mesma coisa'
-    ],
-    certa: 1,
-    porque: 'Um SGBD tem vários bancos; um banco tem várias tabelas. Trocar esses nomes numa conversa com o cliente custa caro.'
-  },
-  {
-    pergunta: '"Vou usar SQL" diz qual banco de dados a pessoa vai usar?',
-    alternativas: [
-      'Sim — SQL é o banco mais usado',
-      'Não — SQL é a linguagem; MySQL, PostgreSQL e SQL Server são produtos que a falam'
-    ],
-    certa: 1,
-    porque: 'É como dizer "vou falar português": não diz com quem. Quem aprende a lógica em um troca de fabricante com pouco esforço.'
-  }
-]);
-</script>
 </body>
 </html>
