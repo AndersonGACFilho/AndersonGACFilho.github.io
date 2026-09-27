@@ -492,47 +492,54 @@
     var alvo = $('d6');
     if (!alvo) return;
 
-    // Cada marco com EXEMPLO e com o que doia nele. Sem o exemplo, "modelo
-    // hierarquico" e so um nome numa linha do tempo; com o IMS da IBM rodando
-    // a folha de pagamento, vira uma coisa que existiu e que alguem manteve.
+    // O DESENHO E O TEXTO DIVIDEM O TRABALHO, nao o repetem.
+    //
+    // O diagrama mostra a FORMA: a arvore, os ponteiros, o valor em comum,
+    // os tres formatos ao lado da tabela. Entao o texto nao descreve a forma
+    // — ele carrega o que uma figura nao carrega: nome, ano, e a consequencia
+    // pratica que so aparece em quem manteve aquilo.
+    //
+    // Antes havia um verbete "Como era" que dizia em palavras exatamente o
+    // que o desenho ja mostrava. Saiu.
     var MARCOS = [
       {
         ano: 'anos 1960',
         nome: 'Hierárquico',
         curto: 'IMS',
         dia: 'dia-hierarquico',
-        exemplo: 'IMS, da IBM — escrito para o programa Apollo e ainda vivo em banco e seguradora.',
-        forma: 'Os dados em árvore: cada registro tem um pai só. Um cliente tem pedidos; um pedido pertence a um cliente.',
-        doia: 'Descer a árvore era rápido. Atravessar era péssimo: "quais clientes compraram este produto?" obrigava a varrer tudo, porque o caminho ia do cliente para o produto e não de volta.',
+        quem: 'IMS, da IBM, 1966 — escrito para o programa Apollo. Ainda roda em banco e seguradora.',
+        custo:
+          'A varredura custava tempo proporcional ao tamanho da base. Para responder rápido, a equipe montava uma segunda árvore com os mesmos dados de cabeça para baixo — e passava a manter as duas em dia.',
       },
       {
         ano: 'anos 1970',
         nome: 'Em rede',
         curto: 'CODASYL',
         dia: 'dia-rede',
-        exemplo: 'CODASYL, e o IDMS que rodava nos mainframes das operadoras.',
-        forma: 'A árvore vira grafo: um registro pode ter vários pais, ligados por ponteiros declarados no esquema.',
-        doia: 'Atravessar ficou possível, mas o programa tinha de navegar ponteiro por ponteiro. Quem escrevia a consulta precisava conhecer o caminho físico até o dado — e mudar o caminho quebrava o programa.',
+        quem: 'O padrão CODASYL, 1969, e o IDMS que rodava nos mainframes das operadoras.',
+        custo:
+          'Os ponteiros viviam no programa, não no dado. Mudar um caminho obrigava a recompilar todo programa que passasse por ele — e ninguém sabia ao certo quais eram.',
       },
       {
         ano: '1970',
         nome: 'Relacional',
         curto: 'Codd, IBM',
         dia: 'dia-relacional',
-        exemplo: 'O artigo de Edgar F. Codd na IBM; depois System R, Ingres, Oracle e, em 1986, o POSTGRES que virou PostgreSQL.',
-        forma: 'Tudo em tabelas, ligadas por valores em comum — não por ponteiros. O jogo e o empréstimo se encontram porque compartilham um id, não porque alguém traçou um caminho.',
-        doia: 'Deixou de doer: você diz O QUE quer, e quem decide COMO buscar é o SGBD. É por isso que as tabelas venceram, e é o modelo desta UC inteira.',
+        quem: 'Edgar F. Codd, na IBM. Depois System R, Ingres, Oracle, e em 1986 o POSTGRES que viraria PostgreSQL.',
+        custo:
+          'Separar o que se pede de como se busca libertou o SGBD para mudar o caminho sem quebrar o programa. É essa separação que a UC inteira usa — e o motivo de você escrever SELECT sem dizer por onde procurar.',
       },
       {
         ano: 'anos 2000',
         nome: 'NoSQL',
         curto: 'MongoDB, Redis, Neo4j',
         dia: 'dia-nosql',
-        exemplo: 'MongoDB (documentos), Redis (chave-valor), Neo4j (grafos), Cassandra (colunas).',
-        forma: 'Abre mão de partes do relacional — esquema fixo, junções, às vezes consistência imediata — em troca de escala ou de um formato que cai melhor no problema.',
-        doia: 'Não substituiu nada: resolve casos específicos e quase sempre convive com um banco relacional ao lado. Cache de sessão no Redis, catálogo sem formato fixo no Mongo, e o dinheiro continua no PostgreSQL.',
+        quem: 'MongoDB, Redis, Neo4j, Cassandra.',
+        custo:
+          'Cada um abre mão de algo — esquema fixo, junção, ou consistência imediata — em troca de escala. Na prática o sistema fica com os dois: sessão no Redis, catálogo no Mongo, e o dinheiro no PostgreSQL.',
       },
     ];
+
     var legenda = $('d6-legenda');
 
     MARCOS.forEach(function (m) {
@@ -552,7 +559,7 @@
           f.hidden = f.id !== m.dia;
         });
         legenda.textContent = '';
-        [['Exemplo', m.exemplo], ['Como era', m.forma], ['O que doía', m.doia]].forEach(function (par) {
+        [['Quem foi', m.quem], ['O que isso custava', m.custo]].forEach(function (par) {
           var p = el('p', 'verbete');
           p.appendChild(el('b', null, par[0] + ': '));
           p.appendChild(document.createTextNode(par[1]));

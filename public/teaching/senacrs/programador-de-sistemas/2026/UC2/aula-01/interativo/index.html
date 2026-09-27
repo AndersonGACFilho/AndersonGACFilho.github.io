@@ -211,7 +211,8 @@
             <rect x="202" y="140" width="60" height="24" rx="5"/><text x="232" y="156">pedido</text>
             <rect x="282" y="140" width="60" height="24" rx="5"/><text x="312" y="156">pedido</text>
           </g>
-          <path class="varre" d="M18 178 H336" marker-end="url(#pta)"/>
+          <rect class="facho" x="12" y="134" width="74" height="36" rx="6"/>
+          <path class="varre" d="M18 180 H336" marker-end="url(#pta)"/>
           <text class="rotulo" x="180" y="196">para achar quem comprou o produto, varre os quatro</text>
         </svg>
         <figcaption>Cada registro tem um pai só. Descer é direto; atravessar obriga a varrer a base inteira.</figcaption>
@@ -226,9 +227,14 @@
             </marker>
           </defs>
           <g class="lig">
-            <line x1="88" y1="52" x2="88" y2="88" marker-end="url(#ptb)"/>
-            <line x1="130" y1="105" x2="228" y2="105" marker-end="url(#ptb)"/>
-            <line x1="272" y1="90" x2="272" y2="54" marker-end="url(#ptb)"/>
+            <line x1="88" y1="52" x2="88" y2="88"/>
+            <line x1="130" y1="105" x2="228" y2="105"/>
+            <line x1="272" y1="90" x2="272" y2="54"/>
+          </g>
+          <g class="salto">
+            <path class="hop h1" d="M88 52 V88" marker-end="url(#ptb)"/>
+            <path class="hop h2" d="M130 105 H228" marker-end="url(#ptb)"/>
+            <path class="hop h3" d="M272 90 V54" marker-end="url(#ptb)"/>
           </g>
           <g class="no">
             <rect x="48" y="24" width="80" height="26" rx="5"/><text x="88" y="41">cliente</text>
@@ -236,10 +242,6 @@
             <rect x="232" y="92" width="80" height="26" rx="5"/><text x="272" y="109">produto</text>
             <rect x="232" y="24" width="80" height="26" rx="5"/><text x="272" y="41">fornecedor</text>
           </g>
-          <circle class="anda" r="4.5">
-            <animateMotion dur="3.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1"
-                           path="M88 52 V88 M88 105 H228 M272 90 V54"/>
-          </circle>
           <text class="rotulo-lig" x="96" y="74" text-anchor="start">ponteiro</text>
           <text class="rotulo-lig" x="179" y="99">ponteiro</text>
           <text class="rotulo" x="180" y="152">o caminho existe, mas quem consulta precisa conhecê-lo</text>
