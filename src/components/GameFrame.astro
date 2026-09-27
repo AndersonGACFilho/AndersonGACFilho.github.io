@@ -28,7 +28,10 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
       <div class="game-stage" data-src={src}>
         {/* The build is only fetched on click: a Unity bundle is tens of MB. */}
         <button class="game-poster" type="button" data-play>
-          {d.cover && <img src={d.cover} alt="" loading="lazy" />}
+          {/* width/height explicitos: sem eles a capa empurra o palco para baixo
+              quando carrega, e o botao de jogar pula debaixo do cursor. Os
+              numeros sao a proporcao declarada do build, nao o tamanho real. */}
+          {d.cover && <img src={d.cover} alt="" loading="lazy" width={Math.round(1280)} height={Math.round(1280 / ratioNum)} />}
           <span class="game-poster-inner">
             <span class="play-icon" aria-hidden="true">▶</span>
             <strong>{d.title}</strong>
@@ -41,7 +44,7 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
         <p>{t('label.soon')}</p>
         {d.itch && (
           <p class="muted">
-            {t('play.fallback')} <a href={d.itch}>itch.io →</a>
+            {t('play.fallback')} <a href={d.itch}>itch.io</a>
           </p>
         )}
       </div>

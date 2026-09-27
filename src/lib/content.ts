@@ -44,8 +44,15 @@ export async function getFeaturedGame(): Promise<CollectionEntry<'games'> | unde
   );
 }
 
-/** Where the published Marp decks live. */
-export const SLIDES_URL = 'https://andersongacfilho.github.io/aulas-programador-de-sistemas/';
+/**
+ * Where the course material lives — now inside this site, under `public/`.
+ *
+ * It used to point at a separate `aulas-programador-de-sistemas` repo. That
+ * repo is gone; the decks, the interactive pages and the submission forms are
+ * published straight into `public/teaching/senacrs/<year>/` by the courseware
+ * repo, so the link is internal and never goes stale on a rename.
+ */
+export const SLIDES_URL = '/teaching/senacrs/2026/';
 
 /**
  * Path of the same article in the other language, falling back to the section

@@ -35,7 +35,7 @@ const { Content } = await render(entry);
         <p class="venue">
           {t(`venue.${entry.data.venue.status}` as UIKey)} <strong>{entry.data.venue.name}</strong>
           {entry.data.venue.full && <span class="venue-full">{entry.data.venue.full}</span>}
-          {entry.data.venue.url && <a href={entry.data.venue.url}>{t('cta.proceedings')} →</a>}
+          {entry.data.venue.url && <a href={entry.data.venue.url}>{t('cta.proceedings')}</a>}
         </p>
       )
     }

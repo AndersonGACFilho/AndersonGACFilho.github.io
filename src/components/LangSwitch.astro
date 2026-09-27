@@ -14,4 +14,4 @@ const t = useTranslations(lang);
 const href = altPath ?? localize(stripLocale(Astro.url.pathname), target);
 ---
 
-<a class="lang-switch" href={href} hreflang={target} rel="alternate">{t('lang.switch')}</a>
+<a class="pill lang-switch" href={href} hreflang={target} rel="alternate">{t('lang.switch')}</a>

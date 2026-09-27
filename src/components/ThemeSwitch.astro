@@ -1,0 +1,102 @@
+---
+/**
+ * Alternador de tema em três estados: sistema → claro → escuro → sistema.
+ *
+ * POR QUE TRÊS E NÃO DOIS: um interruptor de dois estados obriga a pessoa a
+ * escolher, e tira dela a opção de simplesmente seguir o aparelho — que é o
+ * padrão certo e o que vale até ela decidir outra coisa.
+ *
+ * O botão nasce com `hidden`. Sem JavaScript ele não aparece: um controle que
+ * promete trocar o tema e não troca é pior do que controle nenhum, e nesse
+ * caso a preferência do sistema continua funcionando sozinha.
+ *
+ * O estado NÃO é só o ícone. O texto ao lado diz qual modo está valendo, e o
+ * `aria-label` diz o que o próximo clique faz — sol e lua sozinhos não
+ * informam nada a quem usa leitor de tela.
+ */
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<button
+  type="button"
+  class="pill theme-switch"
+  id="theme-switch"
+  hidden
+  data-rotulo-system={t('theme.system')}
+  data-rotulo-light={t('theme.light')}
+  data-rotulo-dark={t('theme.dark')}
+  data-troca={t('theme.switch')}
+>
+  <span class="theme-icone" aria-hidden="true"></span>
+  <span class="theme-nome"></span>
+</button>
+
+<style>
+  .theme-switch {
+    /* alvo de toque de 44px sem inflar a pílula: a área cresce por fora */
+    position: relative;
+  }
+  .theme-switch::after {
+    content: '';
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 44px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+  }
+  .theme-icone { font-size: 0.95em; line-height: 1; }
+  @media (max-width: 520px) {
+    .theme-nome { display: none; }
+  }
+</style>
+
+<script>
+  const CHAVE = 'site:theme';
+  const ORDEM = ['system', 'light', 'dark'] as const;
+  type Modo = (typeof ORDEM)[number];
+  const ICONE: Record<Modo, string> = { system: '◐', light: '☀', dark: '☾' };
+
+  const botao = document.getElementById('theme-switch');
+  if (botao) {
+    const icone = botao.querySelector('.theme-icone')!;
+    const nome = botao.querySelector('.theme-nome')!;
+
+    const ler = (): Modo => {
+      try {
+        const v = localStorage.getItem(CHAVE);
+        return ORDEM.includes(v as Modo) ? (v as Modo) : 'system';
+      } catch {
+        return 'system'; // janela anônima: segue o sistema, sem lembrar
+      }
+    };
+
+    const aplicar = (m: Modo) => {
+      const raiz = document.documentElement;
+      if (m === 'system') raiz.removeAttribute('data-theme');
+      else raiz.setAttribute('data-theme', m);
+      // a barra do navegador no celular acompanha o fundo real da página
+      const cor = getComputedStyle(raiz).getPropertyValue('--bg').trim();
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', cor);
+      icone.textContent = ICONE[m];
+      nome.textContent = botao.dataset[`rotulo${m[0].toUpperCase()}${m.slice(1)}`] ?? m;
+      botao.setAttribute('aria-label', `${botao.dataset.troca}: ${nome.textContent}`);
+    };
+
+    aplicar(ler());
+    botao.hidden = false; // só agora: com JS, o controle cumpre o que promete
+
+    botao.addEventListener('click', () => {
+      const proximo = ORDEM[(ORDEM.indexOf(ler()) + 1) % ORDEM.length];
+      try {
+        localStorage.setItem(CHAVE, proximo);
+      } catch {
+        /* sem armazenamento: vale para esta página, não para a próxima */
+      }
+      aplicar(proximo);
+    });
+  }
+</script>

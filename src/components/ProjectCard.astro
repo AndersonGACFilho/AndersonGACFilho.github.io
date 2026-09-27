@@ -42,7 +42,7 @@ const meta = await repoInfo(d.repo);
 
   <div class="card-links">
     {d.play && <a href={localize(`/play/${d.play}`, lang)}>▶ {t('cta.play')}</a>}
-    {d.detail && <a href={localize(d.detail, lang)}>{t('cta.read')} →</a>}
+    {d.detail && <a href={localize(d.detail, lang)}>{t('cta.read')}</a>}
     {d.repo && <a href={repoUrl(d.repo)}>{t('cta.source')}</a>}
     {d.itch && <a href={d.itch}>{t('cta.itch')}</a>}
   </div>
@@ -51,7 +51,7 @@ const meta = await repoInfo(d.repo);
 <style>
   .status {
     margin-left: 8px;
-    font-family: var(--mono);
+    font-family: var(--display);
     font-size: 0.68rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
