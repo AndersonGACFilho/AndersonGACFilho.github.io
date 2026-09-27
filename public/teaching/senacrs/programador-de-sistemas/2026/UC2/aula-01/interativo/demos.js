@@ -30,15 +30,25 @@
 
   /* ================= 1. o lancamento que some ================= */
   //
-  // A demo inteira existe por causa do passo 6: ate ali tudo parece certo. O
-  // aluno tem de VER o #1003 sumir depois de ter sido salvo — e ninguem ser
-  // avisado. Descrito em texto, isso nao assusta; na tela, assusta.
+  // A demo inteira existe por causa do ultimo passo: ate ali tudo parece
+  // certo. O aluno tem de VER o lancamento sumir depois de ter sido salvo — e
+  // ninguem ser avisado. Descrito em texto isso nao assusta; na tela, assusta.
   //
-  // OS DOIS ESCOLHEM O MESMO NUMERO, e isso e o ponto. Cada um so enxerga a
-  // propria copia, onde o ultimo lancamento e o #1002; nao ha como a planilha
-  // combinar um proximo numero entre as duas. Dar #1004 ao Bruno seria dar a
-  // planilha uma coordenacao que ela nao tem, e apagaria justamente a
-  // diferenca que a aula quer mostrar: no banco, quem numera e um so.
+  // OS DOIS MODOS NAO SAO A MESMA CENA COM OUTRO FINAL. Sao modelos
+  // diferentes, e e por isso que os paineis mudam de nome e de conteudo:
+  //
+  //   planilha  cada um leva uma COPIA inteira do arquivo. E na copia que ele
+  //             escolhe o proximo numero, e nas duas o ultimo e o #1002 —
+  //             entao os dois escrevem #1003, sem ter como saber. Salvar e
+  //             trocar o arquivo inteiro, e o segundo apaga o primeiro.
+  //
+  //   SGBD      nao existe copia. Cada um tem uma TELA DE LANCAMENTO com o
+  //             que ele digitou, e nada mais. Ninguem inventa numero: manda o
+  //             registro, e o banco devolve o numero que deu. Quem numera e um
+  //             so, e por isso nao ha colisao nem perda.
+  //
+  // Desenhar o modo SGBD com "copia da Ana" e um #1003 escolhido por ela
+  // ensinaria o modelo errado — seria a planilha com final feliz.
 
   (function () {
     var proximo = $('d1-proximo');
@@ -48,57 +58,78 @@
       ['#1001', 'Elden Ring'],
       ['#1002', 'Hollow Knight'],
     ];
+    var ANA = 'Baldurs Gate 3';
+    var BRUNO = 'Stardew Valley';
     var comSgbd = false;
     var passo = 0;
 
-    var PASSOS = [
+    var PASSOS_PLANILHA = [
       'A planilha tem dois lançamentos. Ninguém está com ela aberta.',
-      '19h02 — Ana abre o arquivo. O que ela vê é uma cópia.',
-      '19h03 — Bruno abre o mesmo arquivo. Segunda cópia.',
-      'Ana lança o próximo empréstimo. O último é #1002, então ela escreve #1003.',
-      'Bruno lança o dele. Na cópia que ele tem, o último também é #1002 — ele escreve #1003 também.',
-      '19h10 — Ana salva. Até aqui, tudo certo.',
-      null, // o desfecho muda conforme o modo
+      '19h02 — Ana abre o arquivo. O que ela vê é uma cópia inteira.',
+      '19h03 — Bruno abre o mesmo arquivo. Segunda cópia inteira.',
+      'Ana lança o próximo empréstimo. Na cópia dela o último é #1002, então ela escreve #1003.',
+      'Bruno lança o dele. Na cópia dele o último também é #1002 — ele escreve #1003 também, sem ter como saber.',
+      '19h10 — Ana salva: o arquivo do servidor vira a cópia dela. Até aqui, tudo certo.',
+      '19h11 — Bruno salva: o arquivo vira a cópia DELE. Existiam dois #1003 diferentes, e o Baldurs Gate 3 da Ana não existe mais. Ninguém foi avisado.',
+    ];
+
+    var PASSOS_SGBD = [
+      'O banco tem dois empréstimos. Ninguém tem cópia de nada — os dados estão só no servidor.',
+      '19h02 — Ana abre a tela de lançamento. Ela vê um formulário vazio, não o arquivo.',
+      '19h03 — Bruno abre a tela dele. Também um formulário, também vazio.',
+      'Ana escolhe o jogo. Repare que não há número: quem numera não é ela.',
+      'Bruno escolhe o dele. Também sem número.',
+      '19h10 — Ana envia. O banco grava e devolve o número que deu: #1003.',
+      '19h11 — Bruno envia. O banco grava e devolve #1004. Nada colidiu e nada se perdeu, porque quem numera é um só.',
     ];
 
     function desenhar() {
-      var arquivo = BASE.slice();
+      var passos = comSgbd ? PASSOS_SGBD : PASSOS_PLANILHA;
+      var servidor = BASE.slice();
       var ana = null;
       var bruno = null;
       var perdido = null;
 
-      if (passo >= 1) ana = BASE.slice();
-      if (passo >= 2) bruno = BASE.slice();
-      if (passo >= 3) ana = ana.concat([['#1003', 'Baldurs Gate 3']]);
-      if (passo >= 4) bruno = bruno.concat([['#1003', 'Stardew Valley']]);
-      if (passo >= 5) arquivo = ana.slice();
-      if (passo >= 6) {
-        if (comSgbd) {
-          // Quem numera é o banco, e ele numera uma vez só. Os dois entram,
-          // com números diferentes, sem ninguém precisar combinar nada.
-          arquivo = BASE.concat([
-            ['#1003', 'Baldurs Gate 3'],
-            ['#1004', 'Stardew Valley'],
-          ]);
-        } else {
-          arquivo = bruno.slice();
-          perdido = ['#1003', 'Baldurs Gate 3'];
+      if (comSgbd) {
+        // sem cópia: o painel de cada um tem só o que ele digitou
+        if (passo >= 1) ana = [];
+        if (passo >= 2) bruno = [];
+        if (passo >= 3) ana = [['—', ANA]];
+        if (passo >= 4) bruno = [['—', BRUNO]];
+        if (passo >= 5) {
+          ana = [['#1003', ANA]];
+          servidor = BASE.concat([['#1003', ANA]]);
+        }
+        if (passo >= 6) {
+          bruno = [['#1004', BRUNO]];
+          servidor = BASE.concat([['#1003', ANA], ['#1004', BRUNO]]);
+        }
+      } else {
+        if (passo >= 1) ana = BASE.slice();
+        if (passo >= 2) bruno = BASE.slice();
+        if (passo >= 3) ana = ana.concat([['#1003', ANA]]);
+        if (passo >= 4) bruno = bruno.concat([['#1003', BRUNO]]);
+        if (passo >= 5) servidor = ana.slice();
+        if (passo >= 6) {
+          servidor = bruno.slice();
+          perdido = ['#1003', ANA];
         }
       }
 
-      pintar($('lista-ana'), ana, passo >= 3 ? 2 : -1);
-      pintar($('lista-bruno'), bruno, passo >= 4 ? 2 : -1);
+      pintar($('lista-ana'), ana, comSgbd ? (passo >= 3 ? 0 : -1) : (passo >= 3 ? 2 : -1));
+      pintar($('lista-bruno'), bruno, comSgbd ? (passo >= 4 ? 0 : -1) : (passo >= 4 ? 2 : -1));
 
       var alvo = $('lista-arquivo');
       alvo.textContent = '';
-      arquivo.forEach(function (r, i) {
-        var novo = passo >= 5 && i >= BASE.length;
-        alvo.appendChild(linha(r[0], r[1], novo ? 'entrou' : ''));
+      servidor.forEach(function (r, i) {
+        alvo.appendChild(linha(r[0], r[1], i >= BASE.length ? 'entrou' : ''));
       });
       if (perdido) alvo.appendChild(linha(perdido[0], perdido[1], 'sumiu'));
 
-      $('selo-ana').textContent = ana ? 'aberta' : 'fechada';
-      $('selo-bruno').textContent = bruno ? 'aberta' : 'fechada';
+      $('rotulo-ana').textContent = comSgbd ? 'Ana — tela de lançamento' : 'Ana — cópia dela';
+      $('rotulo-bruno').textContent = comSgbd ? 'Bruno — tela de lançamento' : 'Bruno — cópia dele';
+      $('selo-ana').textContent = seloPessoa(ana, passo >= 5);
+      $('selo-bruno').textContent = seloPessoa(bruno, passo >= 6);
       $('rotulo-arquivo').textContent = comSgbd
         ? 'banco locadora — no servidor'
         : 'emprestimos.xlsx — no servidor';
@@ -111,20 +142,25 @@
         selo.textContent = comSgbd ? 'nada se perdeu' : '1 lançamento perdido';
       }
 
-      $('d1-legenda').textContent =
-        passo < 6
-          ? PASSOS[passo]
-          : comSgbd
-            ? '19h11 — Bruno salva. Os dois entraram, e com números diferentes: quem numera é o banco, num lugar só. Na planilha cada um numerava a própria cópia, e os dois chegaram no mesmo #1003.'
-            : '19h11 — Bruno salva por cima. Existem dois #1003 diferentes, e só um sobreviveu: o Baldurs Gate 3 da Ana não existe mais. Ninguém foi avisado.';
-
+      $('d1-legenda').textContent = passos[passo];
       proximo.disabled = passo >= 6;
+    }
+
+    function seloPessoa(painel, enviou) {
+      if (comSgbd) return !painel ? 'tela fechada' : enviou ? 'enviado' : 'preenchendo';
+      return painel ? 'aberta' : 'fechada';
     }
 
     function pintar(alvo, itens, destaque) {
       alvo.textContent = '';
       if (!itens) {
-        alvo.appendChild(el('p', 'vazio-painel', 'Não abriu o arquivo ainda.'));
+        alvo.appendChild(
+          el('p', 'vazio-painel', comSgbd ? 'Não abriu a tela ainda.' : 'Não abriu o arquivo ainda.')
+        );
+        return;
+      }
+      if (!itens.length) {
+        alvo.appendChild(el('p', 'vazio-painel', 'Formulário em branco.'));
         return;
       }
       itens.forEach(function (r, i) {
