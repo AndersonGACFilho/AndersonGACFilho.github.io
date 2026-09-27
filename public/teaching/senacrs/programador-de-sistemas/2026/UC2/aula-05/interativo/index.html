@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 05 — veja acontecer · UC2</title>
+<meta name="description" content="Veja acontecer na tela o que a Aula 05 conta: duas Anas que o nome não distingue, a chave estrangeira no lado errado, e a cardinalidade decidindo quantas tabelas existem.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 05 — veja acontecer</h1>
+  <p class="sub">Duas Anas, uma chave no lado errado, e a cardinalidade decidindo quantas tabelas existem. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de rodar tudo, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. duas Anas ============ -->
+  <section class="demo">
+    <h2>1 · Duas clientes chamadas Ana Silva</h2>
+    <p class="intro">Uma delas trocou de telefone. Atualize pelo que você tem.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="a5-painel-nome">
+        <h3><span>identificando pelo nome</span><span class="selo" id="a5-selo-nome">2 linhas</span></h3>
+        <div id="a5-por-nome"></div>
+      </div>
+      <div class="painel" id="a5-painel-id">
+        <h3><span>identificando por id</span><span class="selo" id="a5-selo-id">2 linhas</span></h3>
+        <div id="a5-por-id"></div>
+      </div>
+    </div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="a5-atualizar">Trocar o telefone da Ana Silva</button>
+      <button type="button" class="acao secundaria" id="a5-zerar">Reiniciar</button>
+    </div>
+    <p class="legenda" id="a5-legenda"></p>
+
+    <div class="registro">
+      <h3>O comando de cada lado</h3>
+      <ol class="log" id="a5-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. natural x artificial ============ -->
+  <section class="demo">
+    <h2>2 · Chave natural ou artificial</h2>
+    <p class="intro">O CPF parece uma boa chave primária. Clique nos casos e veja onde ele range.</p>
+
+    <div class="camadas" id="a5-casos" role="group" aria-label="Escolher o caso"></div>
+
+    <div class="palco duplo">
+      <div class="painel" id="a5-painel-cpf">
+        <h3><span>PK = cpf</span><span class="selo" id="a5-selo-cpf">—</span></h3>
+        <div id="a5-cpf"></div>
+      </div>
+      <div class="painel" id="a5-painel-serial">
+        <h3><span>PK = id serial</span><span class="selo" id="a5-selo-serial">—</span></h3>
+        <div id="a5-serial"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a5-caso-legenda">Escolha um caso acima.</p>
+  </section>
+
+  <!-- ============ 3. de que lado fica a chave estrangeira ============ -->
+  <section class="demo">
+    <h2>3 · De que lado fica a chave estrangeira</h2>
+    <p class="intro">Uma plataforma tem muitos jogos; um jogo é de uma plataforma. Ponha a chave dos dois jeitos.</p>
+
+    <div class="controles" style="margin-top:0">
+      <button type="button" class="acao" id="a5-lado">Pôr a chave do outro lado</button>
+    </div>
+
+    <div class="palco duplo">
+      <div class="painel" id="a5-painel-t1">
+        <h3><span id="a5-t1-nome">plataforma</span><span class="selo" id="a5-t1-selo">—</span></h3>
+        <div id="a5-t1"></div>
+      </div>
+      <div class="painel" id="a5-painel-t2">
+        <h3><span id="a5-t2-nome">jogo</span><span class="selo" id="a5-t2-selo">—</span></h3>
+        <div id="a5-t2"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a5-fk-legenda"></p>
+  </section>
+
+  <!-- ============ 4. cardinalidade ============ -->
+  <section class="demo">
+    <h2>4 · A cardinalidade decide quantas tabelas existem</h2>
+    <p class="intro">Escolha quantos se ligam a quantos, e veja onde a chave vai parar.</p>
+
+    <div class="camadas" id="a5-cards" role="group" aria-label="Escolher a cardinalidade"></div>
+
+    <figure class="diagrama ativo" id="a5-diagrama">
+      <svg viewBox="0 0 360 120" role="img" id="a5-svg"
+           aria-label="Diagrama entidade-relacionamento entre CLIENTE e JOGO, com a cardinalidade escrita nas duas pontas da ligação.">
+        <g class="lig"><line x1="96" y1="52" x2="140" y2="52"/><line x1="220" y1="52" x2="264" y2="52"/></g>
+        <g class="entidade">
+          <rect x="14" y="34" width="82" height="36" rx="3"/><text x="55" y="56">CLIENTE</text>
+          <rect x="264" y="34" width="82" height="36" rx="3"/><text x="305" y="56">JOGO</text>
+        </g>
+        <g class="relacionamento">
+          <polygon points="180,26 226,52 180,78 134,52"/>
+          <text x="180" y="56">ALUGA</text>
+        </g>
+        <text class="card" x="112" y="44" id="a5-c1">1</text>
+        <text class="card" x="248" y="44" id="a5-c2">N</text>
+        <text class="rotulo" x="180" y="108" id="a5-card-forma">uma chave estrangeira em JOGO</text>
+      </svg>
+      <figcaption id="a5-card-legenda">Escolha uma cardinalidade acima.</figcaption>
+    </figure>
+
+    <div class="painel" style="margin-top:14px">
+      <h3><span>as tabelas que isso gera</span><span class="selo" id="a5-card-selo">2 tabelas</span></h3>
+      <div id="a5-card-tabelas"></div>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 05</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

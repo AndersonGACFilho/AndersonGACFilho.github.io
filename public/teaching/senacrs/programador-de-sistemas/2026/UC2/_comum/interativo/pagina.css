@@ -1073,6 +1073,15 @@ legend {
 .diagrama .entidade text { fill: var(--fg); font: 600 12px var(--display); text-anchor: middle; }
 .diagrama .relacionamento polygon { fill: var(--bg); stroke: var(--accent); stroke-width: 1.4; }
 .diagrama .relacionamento text { fill: var(--accent); font: 600 11px var(--display); text-anchor: middle; }
+/* a cardinalidade fica na ponta da ligacao, e e o que muda quando se escolhe */
+.diagrama .card { fill: var(--esp-quiz); font: 700 13px var(--mono); text-anchor: middle; }
+
+/* ---------- notacao de atributo no MER (Aula 04) ---------- */
+
+.diagrama .atr { fill: var(--bg); stroke: var(--fg); stroke-width: 1.3; }
+.diagrama .atr.fora { fill: none; }
+.diagrama .atr.derivado { stroke-dasharray: 5 4; }
+.diagrama .atr-nome { fill: var(--fg); font: 400 11px var(--display); text-anchor: middle; }
 
 /* ---------- grade de celulas repetidas ---------- */
 

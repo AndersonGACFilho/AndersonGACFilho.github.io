@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 05 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 05 da UC2: chave primária, chave estrangeira e cardinalidade.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 05 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+  <!-- ============ 7. quiz ============ -->
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 05</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-05', [
+  {
+    pergunta: 'Duas clientes se chamam Ana Silva. Você roda UPDATE ... WHERE nome = \'Ana Silva\'. O que acontece?',
+    alternativas: [
+      'O banco recusa, porque há duas',
+      'Altera as duas, e nada acusa',
+      'Altera a primeira que encontrar',
+      'Pede confirmação'
+    ],
+    certa: 1,
+    porque: 'Duas linhas alteradas, nenhum aviso. A segunda Ana perdeu o telefone dela e não sabe — é a Aula 01 de novo, por outro motivo.'
+  },
+  {
+    pergunta: 'Por que nome não serve como chave primária?',
+    alternativas: [
+      'Porque é texto, e chave tem de ser número',
+      'Porque homônimo existe, gente troca de nome, e ninguém digita igual duas vezes',
+      'Porque ocupa muito espaço',
+      'Porque o PostgreSQL não permite'
+    ],
+    certa: 1,
+    porque: 'Nada impede tecnicamente. O que impede é que nome não identifica.'
+  },
+  {
+    pergunta: 'Um cliente estrangeiro não tem CPF. Se o CPF for a chave primária:',
+    alternativas: [
+      'Entra com CPF nulo',
+      'Não entra: chave primária não aceita nulo',
+      'Entra com CPF zerado',
+      'O banco gera um CPF'
+    ],
+    certa: 1,
+    porque: 'Sem CPF não há linha, e o cliente fica de fora do sistema. Com id artificial, o CPF vira campo comum que pode faltar.'
+  },
+  {
+    pergunta: 'Quando a chave natural é a escolha certa?',
+    alternativas: [
+      'Nunca: sempre use id serial',
+      'Quando o valor não muda, não falta, não é sigiloso e já é curto',
+      'Sempre que existir um documento oficial',
+      'Quando a tabela tem poucas linhas'
+    ],
+    certa: 1,
+    porque: 'A sigla do estado passa nos quatro testes — ali um id seria coluna a mais sem função.'
+  },
+  {
+    pergunta: 'Uma plataforma tem muitos jogos; um jogo é de uma plataforma. Onde fica a chave estrangeira?',
+    alternativas: ['Em plataforma', 'Em jogo', 'Nas duas', 'Numa terceira tabela'],
+    certa: 1,
+    porque: 'A chave estrangeira fica no lado do N. Do outro jeito, a plataforma teria de repetir a linha inteira uma vez por jogo.'
+  },
+  {
+    pergunta: 'Um cliente aluga muitos jogos e um jogo é alugado por muitos clientes. Quantas tabelas?',
+    alternativas: ['1', '2', '3', 'Depende do volume'],
+    certa: 2,
+    porque: 'N:N não cabe em nenhum dos dois lados: nasce uma terceira tabela — e é nela que a data do empréstimo vai morar.'
+  },
+  {
+    pergunta: 'Numa relação 1:1, de que lado colocar a chave?',
+    alternativas: [
+      'Sempre na tabela criada primeiro',
+      'No lado que pode faltar',
+      'Nos dois, para garantir',
+      'Numa tabela no meio'
+    ],
+    certa: 1,
+    porque: 'Nem todo cliente tem cartão de sócio. A chave no lado opcional evita uma coluna nula na tabela principal.'
+  },
+  {
+    pergunta: 'Por que evitar CPF como chave primária mesmo quando todo cliente tem um?',
+    alternativas: [
+      'Porque é lento para indexar',
+      'Porque a chave vaza para URL, log e integração — e corrigir um CPF errado obriga a trocar a chave em toda tabela que aponta para ela',
+      'Porque CPF pode repetir',
+      'Porque não cabe em INTEGER'
+    ],
+    certa: 1,
+    porque: 'Um id sequencial não diz nada sobre a pessoa; um CPF diz tudo. E id errado ninguém corrige, porque id não significa nada.'
+  }
+]);
+</script>
+</body>
+</html>

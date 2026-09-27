@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 04 — veja acontecer · UC2</title>
+<meta name="description" content="Veja acontecer na tela o que a Aula 04 conta: as três tentativas de guardar dois telefones, o CPF que perde o zero quando vira número, e a diferença entre nulo, zero e vazio.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 04 — veja acontecer</h1>
+  <p class="sub">Dois telefones, um CPF que some, e a diferença entre não ter e valer zero. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de rodar tudo, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. multivalorado ============ -->
+  <section class="demo">
+    <h2>1 · O cliente tem dois telefones</h2>
+    <p class="intro">Três tentativas de guardar isso. Procure um número e depois acrescente um terceiro.</p>
+
+    <div class="controles" style="margin-top:0">
+      <input class="busca" id="a4-busca" type="search" value="98888-2222" aria-label="Procurar telefone">
+      <button type="button" class="acao" id="a4-terceiro">Ana arranja um terceiro telefone</button>
+      <button type="button" class="acao secundaria" id="a4-zerar">Reiniciar</button>
+    </div>
+
+    <div class="palco" id="a4-tentativas"></div>
+    <p class="legenda" id="a4-legenda"></p>
+  </section>
+
+  <!-- ============ 2. número que não é número ============ -->
+  <section class="demo">
+    <h2>2 · Nem tudo que tem dígito é número</h2>
+    <p class="intro">Escolha o tipo da coluna <code>cpf</code> e veja o que o banco guarda.</p>
+
+    <div class="camadas" id="a4-tipos" role="group" aria-label="Escolher o tipo"></div>
+
+    <div class="palco duplo">
+      <div class="painel">
+        <h3><span>o que você digitou</span><span class="selo">entrada</span></h3>
+        <div id="a4-entrada"></div>
+      </div>
+      <div class="painel" id="a4-painel-saida">
+        <h3><span>o que o banco guardou</span><span class="selo" id="a4-selo-saida">—</span></h3>
+        <div id="a4-saida"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a4-tipo-legenda"></p>
+  </section>
+
+  <!-- ============ 3. nulo ============ -->
+  <section class="demo">
+    <h2>3 · Nulo não é zero, e não é vazio</h2>
+    <p class="intro">Três empréstimos, e um deles ainda não voltou. Rode as contas.</p>
+
+    <div class="painel">
+      <h3><span>emprestimo</span><span class="selo" id="a4-nulo-selo">3 linhas</span></h3>
+      <div id="a4-tabela-nulo"></div>
+    </div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="a4-contar">Contar</button>
+      <button type="button" class="acao" id="a4-media">Média de dias</button>
+      <button type="button" class="acao" id="a4-abertos">Quais ainda não voltaram</button>
+    </div>
+    <p class="legenda" id="a4-nulo-legenda"></p>
+
+    <div class="registro">
+      <h3>A consulta e o que ela devolveu</h3>
+      <ol class="log" id="a4-nulo-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 4. a notação no desenho ============ -->
+  <section class="demo">
+    <h2>4 · Como cada tipo de atributo aparece no desenho</h2>
+    <p class="intro">Clique num tipo para ver a forma dele.</p>
+
+    <div class="camadas" id="a4-formas" role="group" aria-label="Escolher o tipo de atributo"></div>
+
+    <figure class="diagrama ativo" id="a4-diagrama">
+      <svg viewBox="0 0 360 150" role="img" id="a4-svg"
+           aria-label="Notação de atributos num diagrama entidade-relacionamento: elipse simples, elipse com sub-elipses para composto, elipse dupla para multivalorado e elipse tracejada para derivado.">
+        <g class="lig" id="a4-ligacoes"></g>
+        <g class="entidade">
+          <rect x="139" y="14" width="82" height="34" rx="3"/><text x="180" y="35">CLIENTE</text>
+        </g>
+        <g id="a4-atributos"></g>
+      </svg>
+      <figcaption id="a4-forma-legenda">Escolha um tipo acima.</figcaption>
+    </figure>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 04</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

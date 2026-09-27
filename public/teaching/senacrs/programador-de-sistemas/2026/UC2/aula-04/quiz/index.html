@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 04 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 04 da UC2: atributo multivalorado, tipos de dado, e a diferença entre nulo, zero e vazio.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 04 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+  <!-- ============ 7. quiz ============ -->
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 04</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-04', [
+  {
+    pergunta: 'O cliente tem dois telefones. Qual solução aguenta o terceiro sem mudar de forma?',
+    alternativas: [
+      'Guardar "99999-1111 / 98888-2222" num campo só',
+      'Criar telefone1, telefone2 e telefone3',
+      'Uma entidade TELEFONE ligada a CLIENTE',
+      'Guardar só o principal'
+    ],
+    certa: 2,
+    porque: 'Cada número vira uma linha. Um, dois ou dez: a estrutura é a mesma — e dá para marcar qual é o celular.'
+  },
+  {
+    pergunta: 'Atributo que aceita vários valores quase sempre é:',
+    alternativas: ['um erro de levantamento', 'uma entidade esperando para nascer', 'um atributo derivado', 'um campo de texto longo'],
+    certa: 1,
+    porque: 'Essa frase volta inteira na Aula 09, com o nome de primeira forma normal.'
+  },
+  {
+    pergunta: 'Você guarda CPF como INTEGER e insere 01234567890. O que o banco guarda?',
+    alternativas: ['01234567890', '1234567890 — o zero da frente some', 'Recusa o valor', 'Guarda como texto automaticamente'],
+    certa: 1,
+    porque: 'Para o banco os dois são o mesmo número. A regra: se você nunca vai somar nem tirar média, é texto — mesmo que só tenha dígito.'
+  },
+  {
+    pergunta: 'A tabela tem 3 linhas e uma delas tem dias NULL. COUNT(*) e COUNT(dias) devolvem:',
+    alternativas: ['3 e 3', '3 e 2', '2 e 2', 'erro na segunda'],
+    certa: 1,
+    porque: 'COUNT(*) conta linhas; COUNT(coluna) conta valores, e NULL não é valor. Se fosse zero, contaria.'
+  },
+  {
+    pergunta: 'Dois empréstimos de 4 e 2 dias, e um ainda aberto (NULL). AVG(dias) devolve:',
+    alternativas: ['2,0', '3,0', '6,0', 'NULL'],
+    certa: 1,
+    porque: 'Somou 4 e 2 e dividiu por 2, não por 3 — ignorou a linha que não sabe. Se NULL valesse zero a média seria 2, e estaria errada.'
+  },
+  {
+    pergunta: 'Como perguntar quais empréstimos ainda não voltaram?',
+    alternativas: [
+      'WHERE dias = NULL',
+      'WHERE dias IS NULL',
+      'WHERE dias = 0',
+      'WHERE dias = \'\''
+    ],
+    certa: 1,
+    porque: 'O primeiro não devolve nada e não dá erro — NULL não é igual a nada, nem a outro NULL. É o erro que mais custa depuração.'
+  },
+  {
+    pergunta: 'Endereço com rua, cidade e CEP juntos num campo é atributo:',
+    alternativas: ['multivalorado', 'composto', 'derivado', 'simples'],
+    certa: 1,
+    porque: 'Guarde as partes, não o todo: buscar por cidade exige a cidade separada.'
+  },
+  {
+    pergunta: 'Você tem data de nascimento. Guardar também a idade é:',
+    alternativas: [
+      'boa ideia, evita calcular toda vez',
+      'atributo derivado — e guardar as duas garante que um dia discordem',
+      'obrigatório, porque idade é usada em relatório',
+      'indiferente'
+    ],
+    certa: 1,
+    porque: 'A idade muda sozinha todo ano; a data de nascimento não. Um dado que dá para calcular não se guarda.'
+  }
+]);
+</script>
+</body>
+</html>
