@@ -587,6 +587,100 @@ legend {
   margin-top: 12px;
 }
 
+/* ---------- diagramas da linha do tempo ----------
+ *
+ * SVG inline, desenhado a mao: sem biblioteca, sem imagem externa, sem
+ * <style> dentro do SVG. Tudo em currentColor, entao o desenho acompanha o
+ * tema sem duplicar paleta.
+ *
+ * UMA animacao por diagrama, e so no que esta aberto. Movimento espalhado
+ * vira ruido; a animacao aqui carrega o argumento — a varredura que percorre
+ * a base inteira, o ponto que navega ponteiro por ponteiro, o valor que liga
+ * as duas tabelas.
+ */
+
+.palco-tempo { margin-top: 16px; }
+
+.diagrama {
+  margin: 0;
+  padding: 16px 16px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.diagrama svg {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  margin-inline: auto;
+  color: var(--fg);
+}
+
+.diagrama figcaption {
+  margin-top: 10px;
+  color: var(--dim);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* caixas e ligacoes */
+.diagrama .no rect { fill: var(--bg); stroke: var(--border-strong); stroke-width: 1; }
+.diagrama .no text { fill: var(--fg); font: 600 12px var(--display); text-anchor: middle; }
+.diagrama .lig line { stroke: var(--border-strong); stroke-width: 1.4; fill: none; }
+.diagrama .lig circle { fill: var(--esp-tarefa); }
+
+/* tabelas */
+.diagrama .tabela rect { fill: var(--bg); stroke: var(--border-strong); stroke-width: 1; }
+.diagrama .tabela line { stroke: var(--line); stroke-width: 1; }
+.diagrama .tabela.destaque rect { stroke: var(--accent); }
+.diagrama .cab { fill: var(--dim); font: 600 10px var(--display); text-anchor: middle; letter-spacing: 0.04em; }
+.diagrama .cel { fill: var(--fg); font: 400 12px var(--mono); text-anchor: middle; }
+.diagrama .cel.chave { fill: var(--accent); font-weight: 600; }
+.diagrama .nome-tab { fill: var(--dim); font: 600 11px var(--display); text-anchor: middle; }
+
+/* rotulos */
+.diagrama .rotulo { fill: var(--dim); font: 400 11px var(--display); text-anchor: middle; }
+.diagrama .rotulo-lig { fill: var(--dim); font: 400 10px var(--display); text-anchor: middle; }
+
+/* a varredura do modelo hierarquico: e ela que diz por que atravessar doia */
+.diagrama .varre {
+  fill: none;
+  stroke: var(--errado);
+  stroke-width: 2;
+  stroke-dasharray: 10 8;
+  animation: varrendo 1.6s linear infinite;
+}
+@keyframes varrendo { to { stroke-dashoffset: -18; } }
+
+/* o ponto que navega ponteiro por ponteiro, no modelo em rede */
+.diagrama .anda { fill: var(--esp-tarefa); }
+
+/* o elo por valor, no relacional: aparece desenhando-se */
+.diagrama .elo {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 260;
+  animation: ligando 2.6s ease-in-out infinite;
+}
+@keyframes ligando {
+  0% { stroke-dashoffset: 260; }
+  45%, 100% { stroke-dashoffset: 0; }
+}
+.diagrama .elo.conviver {
+  stroke: var(--border-strong);
+  stroke-width: 1.4;
+  stroke-dasharray: 4 4;
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diagrama .varre, .diagrama .elo { animation: none; stroke-dashoffset: 0; }
+  .diagrama .anda { display: none; }
+}
+
 /* ---------- linha do tempo ---------- */
 
 .tempo {

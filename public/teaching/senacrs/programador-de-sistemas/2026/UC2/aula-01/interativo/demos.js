@@ -500,6 +500,7 @@
         ano: 'anos 1960',
         nome: 'Hierárquico',
         curto: 'IMS',
+        dia: 'dia-hierarquico',
         exemplo: 'IMS, da IBM — escrito para o programa Apollo e ainda vivo em banco e seguradora.',
         forma: 'Os dados em árvore: cada registro tem um pai só. Um cliente tem pedidos; um pedido pertence a um cliente.',
         doia: 'Descer a árvore era rápido. Atravessar era péssimo: "quais clientes compraram este produto?" obrigava a varrer tudo, porque o caminho ia do cliente para o produto e não de volta.',
@@ -508,6 +509,7 @@
         ano: 'anos 1970',
         nome: 'Em rede',
         curto: 'CODASYL',
+        dia: 'dia-rede',
         exemplo: 'CODASYL, e o IDMS que rodava nos mainframes das operadoras.',
         forma: 'A árvore vira grafo: um registro pode ter vários pais, ligados por ponteiros declarados no esquema.',
         doia: 'Atravessar ficou possível, mas o programa tinha de navegar ponteiro por ponteiro. Quem escrevia a consulta precisava conhecer o caminho físico até o dado — e mudar o caminho quebrava o programa.',
@@ -516,6 +518,7 @@
         ano: '1970',
         nome: 'Relacional',
         curto: 'Codd, IBM',
+        dia: 'dia-relacional',
         exemplo: 'O artigo de Edgar F. Codd na IBM; depois System R, Ingres, Oracle e, em 1986, o POSTGRES que virou PostgreSQL.',
         forma: 'Tudo em tabelas, ligadas por valores em comum — não por ponteiros. O jogo e o empréstimo se encontram porque compartilham um id, não porque alguém traçou um caminho.',
         doia: 'Deixou de doer: você diz O QUE quer, e quem decide COMO buscar é o SGBD. É por isso que as tabelas venceram, e é o modelo desta UC inteira.',
@@ -524,6 +527,7 @@
         ano: 'anos 2000',
         nome: 'NoSQL',
         curto: 'MongoDB, Redis, Neo4j',
+        dia: 'dia-nosql',
         exemplo: 'MongoDB (documentos), Redis (chave-valor), Neo4j (grafos), Cassandra (colunas).',
         forma: 'Abre mão de partes do relacional — esquema fixo, junções, às vezes consistência imediata — em troca de escala ou de um formato que cai melhor no problema.',
         doia: 'Não substituiu nada: resolve casos específicos e quase sempre convive com um banco relacional ao lado. Cache de sessão no Redis, catálogo sem formato fixo no Mongo, e o dinheiro continua no PostgreSQL.',
@@ -543,6 +547,10 @@
           o.classList.remove('ativo');
         });
         b.classList.add('ativo');
+        // um diagrama por vez: animacao rodando fora do que se esta lendo e ruido
+        Array.prototype.forEach.call(document.querySelectorAll('.diagrama'), function (f) {
+          f.hidden = f.id !== m.dia;
+        });
         legenda.textContent = '';
         [['Exemplo', m.exemplo], ['Como era', m.forma], ['O que doía', m.doia]].forEach(function (par) {
           var p = el('p', 'verbete');
