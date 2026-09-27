@@ -221,6 +221,11 @@ legend {
 
 /* ---------- rodape ---------- */
 
+/* o voltar principal ganha peso: e o caminho de volta para a pagina da aula,
+   de onde a pessoa chegou aqui */
+.rodape .voltar { color: var(--fg); font-weight: 600; font-family: var(--display); }
+.rodape .voltar:hover { color: var(--accent); }
+
 .rodape {
   margin-top: 52px;
   padding-top: 20px;
