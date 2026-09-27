@@ -1,0 +1,302 @@
+-- ============================================================================
+-- Exercícios da Aula 11 — tentando quebrar as regras do banco
+-- ============================================================================
+--
+-- Nove tentativas de fazer besteira. A maioria vai ser recusada, e é isso que
+-- se quer ver: constraint só faz sentido depois que ela te impede de fazer
+-- alguma coisa.
+--
+-- ANTES: rode o locadora-demo.sql.
+--
+-- COMO USAR, no Query Tool do pgAdmin:
+--
+--   1. leia a situação
+--   2. RESPONDA "o banco aceita?" antes de rodar. Escreva no arquivo.
+--   3. selecione só o comando e aperte F5
+--   4. leia a mensagem inteira, incluindo o nome da constraint
+--   5. só depois, role até a CONFERÊNCIA
+--
+-- O palpite é a parte importante. Quem roda primeiro e pensa depois acha que
+-- sabia o tempo todo.
+--
+-- É SEGURO. Comando recusado não muda nada, e as poucas inserções que passam
+-- são desfeitas no próprio exercício ou acontecem na tabela oficina_, que é
+-- sua bancada.
+-- ============================================================================
+
+
+-- ----------------------------------------------------------------------------
+-- 1. O jogo de uma plataforma que não existe
+-- ----------------------------------------------------------------------------
+--     INSERT INTO jogo (titulo, genero, id_plataforma)
+--     VALUES ('Jogo Fantasma', 'Ação', 500);
+--
+-- O banco aceita?   ( ) sim   ( ) não
+-- Se recusar, qual palavra da mensagem você acha que vai aparecer? ________
+
+
+
+-- ----------------------------------------------------------------------------
+-- 2. O mesmo email de novo
+-- ----------------------------------------------------------------------------
+--     INSERT INTO cliente (nome, telefone, email)
+--     VALUES ('Outra Pessoa', '(51) 90000-0000', 'ana.souza@exemplo.com');
+--
+-- O banco aceita?   ( ) sim   ( ) não
+-- Por quê? ____________________
+
+
+
+-- ----------------------------------------------------------------------------
+-- 3. Dois clientes sem email
+-- ----------------------------------------------------------------------------
+-- A Carla já está cadastrada sem email. Agora entra outro cliente sem email:
+--
+--     INSERT INTO cliente (nome, telefone, email)
+--     VALUES ('Fábio Nunes', '(51) 91234-0000', NULL);
+--
+-- Atenção: a coluna email é UNIQUE, e vão existir DOIS nulos nela.
+--
+-- O banco aceita?   ( ) sim   ( ) não
+--
+-- Esta é a pegadinha do arquivo. Pense antes.
+--
+-- Depois de descobrir, desfaça:
+--     DELETE FROM cliente WHERE nome = 'Fábio Nunes';
+
+
+
+-- ----------------------------------------------------------------------------
+-- 4. A diária de menos dois reais
+-- ----------------------------------------------------------------------------
+--     INSERT INTO jogo (titulo, genero, preco_diaria, id_plataforma)
+--     VALUES ('Jogo Barato', 'Ação', -2.00, 1);
+--
+-- O banco aceita?   ( ) sim   ( ) não
+-- Qual constraint impede? ____________________
+
+
+
+-- ----------------------------------------------------------------------------
+-- 5. Devolver antes de retirar
+-- ----------------------------------------------------------------------------
+--     INSERT INTO emprestimo (id_cliente, id_jogo, data_retirada, data_prevista)
+--     VALUES (1, 1, '2026-10-20', '2026-10-15');
+--
+-- O banco aceita?   ( ) sim   ( ) não
+--
+-- Repare no que esta regra tem de diferente das outras: ela não olha uma
+-- coluna, olha a relação entre duas.
+
+
+
+-- ----------------------------------------------------------------------------
+-- 6. O cliente sem nome
+-- ----------------------------------------------------------------------------
+--     INSERT INTO cliente (nome, telefone) VALUES (NULL, '(51) 90000-1111');
+--
+-- O banco aceita?   ( ) sim   ( ) não
+--
+-- E esta, aceita?
+--     INSERT INTO cliente (nome, telefone) VALUES ('', '(51) 90000-1111');
+--
+-- ( ) sim   ( ) não     — e é a mesma coisa que a de cima? ________
+--
+-- Se alguma passar, desfaça:
+--     DELETE FROM cliente WHERE telefone = '(51) 90000-1111';
+
+
+
+-- ----------------------------------------------------------------------------
+-- 7. Apagando uma plataforma que tem jogos
+-- ----------------------------------------------------------------------------
+--     DELETE FROM plataforma WHERE nome = 'PlayStation 5';
+--
+-- Meu palpite — o que acontece?
+--   ( ) apaga a plataforma e os 4 jogos junto
+--   ( ) apaga a plataforma e deixa os jogos sem plataforma
+--   ( ) recusa apagar
+--
+-- Rode SEM MEDO: uma das três respostas não estraga nada, e descobrir qual é
+-- o exercício.
+
+
+
+-- ----------------------------------------------------------------------------
+-- 8. O valor que entra sozinho
+-- ----------------------------------------------------------------------------
+--     CREATE TABLE IF NOT EXISTS oficina_socio (
+--         id_socio      SERIAL  PRIMARY KEY,
+--         nome          VARCHAR(100) NOT NULL,
+--         data_cadastro DATE    DEFAULT CURRENT_DATE,
+--         ativo         BOOLEAN DEFAULT TRUE,
+--         brindes       INTEGER DEFAULT 0
+--     );
+--
+--     INSERT INTO oficina_socio (nome) VALUES ('Helena Dias');
+--     SELECT * FROM oficina_socio;
+--
+-- Meu palpite — o que vai estar nas três colunas que você não preencheu?
+--   data_cadastro ________  ativo ________  brindes ________
+--
+-- E agora, dizendo NULL de propósito:
+--     INSERT INTO oficina_socio (nome, brindes) VALUES ('Igor Salles', NULL);
+--
+-- O que fica em brindes: 0 ou nulo? ________
+
+
+
+-- ----------------------------------------------------------------------------
+-- 9. A regra que o banco NÃO está guardando
+-- ----------------------------------------------------------------------------
+-- A locadora tem uma regra de casa: cliente inativo não pode pegar jogo.
+--
+-- Tente:
+--     UPDATE cliente SET ativo = FALSE WHERE nome = 'Diego Rocha';
+--
+--     INSERT INTO emprestimo (id_cliente, id_jogo, data_retirada, data_prevista)
+--     VALUES ((SELECT id_cliente FROM cliente WHERE nome = 'Diego Rocha'),
+--             1, '2026-10-25', '2026-10-28');
+--
+-- O banco aceita?   ( ) sim   ( ) não
+--
+-- Ele aceita. E aí: de quem é a culpa? Escreva sua resposta antes de ler a
+-- conferência — ela é a mais importante das nove.
+--
+--   ____________________________________________________________
+--
+-- Desfaça depois:
+--     DELETE FROM emprestimo WHERE data_retirada = '2026-10-25';
+--     UPDATE cliente SET ativo = TRUE WHERE nome = 'Diego Rocha';
+
+
+
+-- ============================================================================
+-- CONFERÊNCIA — só role até aqui depois de tentar
+-- ============================================================================
+--
+--
+-- 1) recusa
+--
+--        ERROR: insert or update on table "jogo" violates foreign key
+--        constraint "jogo_id_plataforma_fkey"
+--        DETAIL: Key (id_plataforma)=(500) is not present in table "plataforma".
+--
+--    É a integridade referencial fazendo exatamente o que prometeu na Aula
+--    01: o banco é um ponto único de manipulação, e ele não deixa passar
+--    ponteiro para o vazio — não importa se quem mandou foi o sistema, o
+--    estagiário ou você pelo pgAdmin.
+--
+--    Repare no nome da constraint na mensagem: jogo_id_plataforma_fkey. O
+--    Postgres batiza sozinho, no formato tabela_coluna_tipo. Quando a
+--    aplicação quebrar em produção, é esse nome que aparece no log.
+--
+--
+-- 2) recusa
+--
+--        ERROR: duplicate key value violates unique constraint
+--        "cliente_email_key"
+--
+--    UNIQUE. E veja que a regra vale mesmo o resto da linha sendo diferente:
+--    outro nome, outro telefone, mesmo email — recusado. Foi você quem disse
+--    que aquele campo identifica uma pessoa só.
+--
+--
+-- 3) ACEITA — e é aqui que quase todo mundo erra
+--
+--    Dois nulos não são duplicados, porque nulo não é igual a nada, nem a
+--    outro nulo. É a mesma regra do "= NULL não funciona" da Aula 13, vista
+--    de outro lado.
+--
+--    Consequência prática: UNIQUE numa coluna que aceita nulo garante menos
+--    do que parece. Se a regra do negócio é "todo cliente tem email, e
+--    ninguém repete", o UNIQUE sozinho não basta — precisa de NOT NULL junto.
+--    É exatamente por isso que PRIMARY KEY é UNIQUE + NOT NULL.
+--
+--
+-- 4) recusa
+--
+--        ERROR: new row for relation "jogo" violates check constraint
+--        "jogo_preco_diaria_check"
+--
+--    CHECK é a regra de negócio morando dentro do banco. Ela poderia estar só
+--    na tela do sistema — e aí valeria só para quem passa pela tela. Aqui
+--    vale para todo mundo, inclusive para o script que alguém vai rodar
+--    daqui a dois anos sem saber da regra.
+--
+--
+-- 5) recusa, pelo CHECK (data_prevista >= data_retirada)
+--
+--    A diferença é que este CHECK compara duas colunas da MESMA linha. O
+--    banco consegue fazer isso porque tem a linha inteira na mão na hora de
+--    gravar.
+--
+--    Repare no nome na mensagem: emprestimo_check, e não
+--    emprestimo_data_prevista_check como nos outros. Quando o CHECK olha mais
+--    de uma coluna, ele deixa de pertencer a uma coluna só, e o Postgres
+--    batiza com o nome da tabela. Dá para escolher o nome:
+--    CONSTRAINT devolucao_depois_da_retirada CHECK (...) — e num banco que
+--    outra pessoa vai manter, vale a pena.
+--
+--    O que ele não consegue é comparar com OUTRA linha ou com outra tabela —
+--    "não pode emprestar o mesmo jogo duas vezes ao mesmo tempo" não cabe num
+--    CHECK. Esse tipo de regra vai para a aplicação, ou para recursos mais
+--    avançados que esta UC não cobre.
+--
+--
+-- 6) NULL recusa; '' ACEITA
+--
+--        ERROR: null value in column "nome" of relation "cliente" violates
+--        not-null constraint
+--
+--    E não, não é a mesma coisa. Texto vazio é um valor: tem tipo, tem
+--    tamanho zero, e passa por qualquer NOT NULL. Nulo é ausência de valor.
+--
+--    Na prática, é assim que entra lixo em tabela bem modelada: o formulário
+--    manda '' quando o usuário não digita nada, o NOT NULL não vê problema, e
+--    seis meses depois você tem duzentos clientes sem nome. Quem quiser
+--    fechar essa porta precisa de um CHECK: CHECK (nome <> '').
+--
+--
+-- 7) RECUSA apagar
+--
+--        ERROR: update or delete on table "plataforma" violates foreign key
+--        constraint "jogo_id_plataforma_fkey" on table "jogo"
+--
+--    É o ON DELETE RESTRICT, que é o comportamento padrão — o mesmo que a
+--    aula adotou de propósito. As outras opções existem:
+--
+--      CASCADE   apagaria a plataforma E os quatro jogos junto
+--      SET NULL  apagaria a plataforma e deixaria os jogos sem nenhuma
+--
+--    CASCADE é conveniente e perigoso: um DELETE distraído leva meio banco.
+--    RESTRICT obriga você a decidir o que fazer com os filhos antes.
+--
+--
+-- 8) data_cadastro = a data de hoje, ativo = true, brindes = 0.
+--    Com NULL de propósito, brindes fica NULO — não 0.
+--
+--    DEFAULT vale quando a coluna é OMITIDA. Dizer NULL não é omitir: é
+--    afirmar que não há valor, e o banco respeita a sua afirmação.
+--
+--    Esse detalhe já derrubou muito relatório: a coluna tem DEFAULT 0, todo
+--    mundo assume que nunca é nula, e um INSERT gerado por código manda NULL
+--    explícito. Depois SUM() ignora, COUNT() diverge, e ninguém entende.
+--
+--
+-- 9) o banco aceita, e a culpa NÃO é dele
+--
+--    Ninguém pediu essa regra a ele. Não existe constraint dizendo que
+--    emprestimo só entra se o cliente estiver ativo — e o banco não adivinha
+--    combinado de balcão.
+--
+--    É o limite honesto das constraints: elas garantem o que foi DECLARADO.
+--    Tudo que ficou só na cabeça de quem trabalha ali, ou só na tela do
+--    sistema, vale até alguém acessar o banco por outro caminho — um script,
+--    um relatório, uma importação de planilha, um estagiário com pgAdmin
+--    aberto.
+--
+--    E aqui a pergunta que vale a aula: quantas regras do minimundo do SEU
+--    grupo estão escritas no documento da Aula 03 e não estão declaradas em
+--    nenhum CREATE TABLE? Cada uma delas é uma regra que existe no papel e
+--    não existe no sistema.
