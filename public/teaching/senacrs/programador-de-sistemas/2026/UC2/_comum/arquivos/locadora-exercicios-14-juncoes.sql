@@ -1,0 +1,279 @@
+-- ============================================================================
+-- Exercícios da Aula 14 — o que uma tabela sozinha não responde
+-- ============================================================================
+--
+-- Sete perguntas do balcão que morrem na metade se você olhar uma tabela só.
+-- Nenhuma vem com a consulta pronta.
+--
+-- ANTES: rode o locadora-demo.sql, e faça os exercícios da Aula 13 — aqui a
+-- gente parte de SELECT, WHERE e ORDER BY já na mão.
+--
+-- COMO USAR, no Query Tool do pgAdmin:
+--
+--   1. leia a situação
+--   2. escreva o palpite — escreva mesmo, no arquivo, que é seu
+--   3. escreva a consulta, selecione só ela com o mouse e aperte F5
+--   4. compare com o palpite
+--   5. só depois, role até a CONFERÊNCIA
+--
+-- Em quase todos os itens o palpite pedido é o NÚMERO DE LINHAS. É de
+-- propósito: em junção, o número de linhas é onde mora quase todo erro, e
+-- quem não previu não percebe quando ele acontece.
+-- ============================================================================
+
+
+-- ----------------------------------------------------------------------------
+-- 1. "Esse jogo é de qual console?"
+-- ----------------------------------------------------------------------------
+-- A tabela jogo guarda id_plataforma: um número. Ninguém no balcão quer ouvir
+-- "plataforma 2" — querem ouvir "Nintendo Switch".
+--
+-- Meu palpite — quantas linhas vêm? ____
+--
+-- Sua consulta (título do jogo e nome da plataforma):
+
+
+
+-- ----------------------------------------------------------------------------
+-- 2. "Quem está com o quê?"
+-- ----------------------------------------------------------------------------
+-- Agora são três tabelas: o empréstimo sabe quem e qual, mas só por número.
+-- O nome está em cliente, o título está em jogo.
+--
+-- Meu palpite — quantas linhas? ____
+--
+-- Sua consulta (cliente, jogo e data de retirada):
+
+
+
+-- ----------------------------------------------------------------------------
+-- 3. "Manda a lista de todos os clientes, com o que cada um pegou"
+-- ----------------------------------------------------------------------------
+-- Atenção: TODOS os clientes. Inclusive quem nunca pegou nada — que para a
+-- locadora é justamente quem interessa, porque é para esses que vale mandar
+-- promoção.
+--
+-- Meu palpite — quantas linhas? E quantos clientes diferentes aparecem? ____
+--
+-- Faça primeiro do jeito do exercício 2, com INNER JOIN. Depois conte quantos
+-- clientes diferentes apareceram. Faltou alguém?
+--
+-- Sua consulta:
+
+
+
+-- ----------------------------------------------------------------------------
+-- 4. A armadilha
+-- ----------------------------------------------------------------------------
+-- Você resolveu o item 3 e agora querem a mesma lista, só que das retiradas
+-- de outubro. Parece pedir só um WHERE a mais.
+--
+-- Rode esta, que é o que quase todo mundo escreve:
+--
+--     SELECT c.nome, e.data_retirada
+--     FROM   cliente c
+--     LEFT JOIN emprestimo e ON c.id_cliente = e.id_cliente
+--     WHERE  e.data_retirada > '2026-10-01';
+--
+-- Meu palpite — quantos clientes diferentes aparecem agora? ____
+--
+-- Cadê o Diego e a Elisa? Eles não sumiram do banco. Sumiram da resposta.
+--
+-- O que você acha que aconteceu? ____________________________
+
+
+
+-- ----------------------------------------------------------------------------
+-- 5. "Quantos jogos temos de cada console?"
+-- ----------------------------------------------------------------------------
+-- Não é uma linha por jogo: é uma linha por console, com a contagem.
+--
+-- Meu palpite — quantas linhas no resultado? ____
+-- E qual console vem com o maior número? ____
+--
+-- Sua consulta:
+
+
+
+-- ----------------------------------------------------------------------------
+-- 6. "Só os consoles com mais de dois jogos"
+-- ----------------------------------------------------------------------------
+-- Agora o filtro não é sobre a linha da tabela: é sobre o GRUPO já contado.
+-- Tente com WHERE primeiro, de propósito, e leia a mensagem de erro — ela é
+-- boa e diz exatamente o que está errado.
+--
+-- Meu palpite — quantos consoles sobram? ____
+--
+-- Sua consulta:
+
+
+
+-- ----------------------------------------------------------------------------
+-- 7. "Quem é nosso melhor cliente?"
+-- ----------------------------------------------------------------------------
+-- Junta tudo: trazer todos os clientes, contar os empréstimos de cada um e
+-- ordenar do maior para o menor.
+--
+-- Meu palpite — quem lidera, e com quantos? ____
+-- E quanto vai aparecer na linha do Diego? ____
+--
+-- Sua consulta:
+
+
+
+-- ----------------------------------------------------------------------------
+-- 8. A pergunta que dá trabalho — e que o banco responde
+-- ----------------------------------------------------------------------------
+-- "Quem está com jogo atrasado agora?"
+--
+-- Atrasado é quem ainda não devolveu E cuja data prevista já passou. As duas
+-- coisas estão na tabela emprestimo; o nome de quem é, não.
+--
+-- Meu palpite — alguém está atrasado hoje? ____
+--
+-- Dica: CURRENT_DATE é a data de hoje, e o banco sabe qual é.
+-- Cuidado com a primeira condição: "não devolveu" não é data_devolucao = 0
+-- nem = '', é ausência de data.
+--
+-- Sua consulta:
+
+
+
+-- ============================================================================
+-- CONFERÊNCIA — só role até aqui depois de tentar
+-- ============================================================================
+--
+--
+-- 1) doze linhas — uma por jogo
+--
+--        SELECT j.titulo, p.nome
+--        FROM   jogo j
+--        INNER JOIN plataforma p ON j.id_plataforma = p.id_plataforma;
+--
+--    O ON é onde você diz COMO as duas tabelas se encontram: o número que
+--    está no jogo é o mesmo que identifica a plataforma. Esquecer o ON não dá
+--    erro de sintaxe em todo banco — dá resultado errado, cada jogo casado
+--    com cada plataforma, 48 linhas. Junção sem ON é multiplicação.
+--
+--    O apelido (j, p) não muda nada no resultado; com três tabelas ele é o
+--    que mantém a consulta legível.
+--
+--
+-- 2) sete linhas — uma por empréstimo
+--
+--        SELECT c.nome   AS "Cliente",
+--               j.titulo AS "Jogo",
+--               e.data_retirada
+--        FROM   emprestimo e
+--        INNER JOIN cliente c ON e.id_cliente = c.id_cliente
+--        INNER JOIN jogo    j ON e.id_jogo    = j.id_jogo;
+--
+--    Comece pela tabela do meio. emprestimo é quem aponta para as outras
+--    duas, então é dela que saem as duas junções — uma para cada seta.
+--
+--
+-- 3) com INNER JOIN vêm sete linhas, mas só TRÊS clientes: Ana, Bruno e
+--    Carla. Diego e Elisa somem, e some sem aviso.
+--
+--        SELECT c.nome, e.data_retirada
+--        FROM   cliente c
+--        LEFT JOIN emprestimo e ON c.id_cliente = e.id_cliente;
+--
+--    Agora são nove linhas: as sete de antes mais uma para o Diego e uma
+--    para a Elisa, com a data vazia.
+--
+--    LEFT JOIN é "traga tudo da esquerda, tendo par ou não". E é o padrão
+--    certo para relatório: uma lista de clientes que esconde os clientes sem
+--    movimento responde a pergunta errada.
+--
+--
+-- 4) três clientes de novo — o LEFT JOIN virou INNER JOIN disfarçado
+--
+--    O LEFT JOIN trouxe Diego e Elisa com data_retirada nula, e aí o WHERE
+--    perguntou se essa data é maior que 2026-10-01. Nulo não é maior, não é
+--    menor e não é igual a coisa nenhuma: a comparação dá desconhecido, e a
+--    linha cai fora. O WHERE desfez o trabalho do LEFT JOIN.
+--
+--    Duas saídas, e elas respondem perguntas diferentes:
+--
+--        -- a) a condição entra no ON: mantém todo mundo, e filtra só o par
+--        SELECT c.nome, e.data_retirada
+--        FROM   cliente c
+--        LEFT JOIN emprestimo e
+--               ON c.id_cliente = e.id_cliente
+--              AND e.data_retirada > '2026-10-01';
+--
+--        -- b) ou você aceita a ausência explicitamente
+--        SELECT c.nome, e.data_retirada
+--        FROM   cliente c
+--        LEFT JOIN emprestimo e ON c.id_cliente = e.id_cliente
+--        WHERE  e.data_retirada > '2026-10-01' OR e.data_retirada IS NULL;
+--
+--    Regra prática: condição sobre a tabela da DIREITA num LEFT JOIN vai no
+--    ON. No WHERE, ela mata as linhas sem par.
+--
+--
+-- 5) quatro linhas, e o PlayStation 5 lidera com quatro jogos
+--
+--        SELECT p.nome, COUNT(*) AS total_jogos
+--        FROM   jogo j
+--        INNER JOIN plataforma p ON j.id_plataforma = p.id_plataforma
+--        GROUP BY p.nome;
+--
+--    Tudo que estiver no SELECT e não for função de agregação tem de estar no
+--    GROUP BY. Acrescente j.titulo ali e o banco recusa — com razão: você
+--    estaria pedindo um título por grupo, e o grupo tem vários.
+--
+--
+-- 6) três — PlayStation 5 (4), Nintendo Switch (3) e PC (3)
+--
+--        SELECT p.nome, COUNT(*) AS total
+--        FROM   jogo j
+--        INNER JOIN plataforma p ON j.id_plataforma = p.id_plataforma
+--        GROUP BY p.nome
+--        HAVING COUNT(*) > 2;
+--
+--    Com WHERE COUNT(*) > 2 o banco responde "aggregate functions are not
+--    allowed in WHERE". Não é implicância: quando o WHERE roda, o grupo ainda
+--    não existe. WHERE filtra LINHA antes de agrupar; HAVING filtra GRUPO
+--    depois.
+--
+--
+-- 7) Ana Souza, com três. E o Diego aparece com ZERO.
+--
+--        SELECT c.nome                 AS "Cliente",
+--               COUNT(e.id_emprestimo) AS "Empréstimos"
+--        FROM   cliente c
+--        LEFT JOIN emprestimo e ON c.id_cliente = e.id_cliente
+--        GROUP BY c.nome
+--        ORDER BY COUNT(e.id_emprestimo) DESC;
+--
+--    Repare no que está DENTRO do COUNT. Com COUNT(*) o Diego apareceria com
+--    1, porque a linha do LEFT JOIN existe — ela só tem as colunas do
+--    empréstimo vazias. COUNT de uma coluna não conta os nulos, e é por isso
+--    que se conta a coluna da tabela da direita. Um * no lugar errado aqui é
+--    um relatório que diz que todo mundo alugou pelo menos uma vez.
+--
+--
+-- 8) sim — três pessoas, se hoje for depois de 26/10/2026
+--
+--        SELECT c.nome, j.titulo, e.data_prevista,
+--               CURRENT_DATE - e.data_prevista AS "Dias de atraso"
+--        FROM   emprestimo e
+--        INNER JOIN cliente c ON e.id_cliente = c.id_cliente
+--        INNER JOIN jogo    j ON e.id_jogo    = j.id_jogo
+--        WHERE  e.data_devolucao IS NULL
+--          AND  e.data_prevista < CURRENT_DATE;
+--
+--    Aqui o INNER JOIN é o certo: você quer só quem tem empréstimo aberto,
+--    e não a lista de todo mundo.
+--
+--    E data_devolucao IS NULL é a consulta que faz o nulo valer a pena. Se a
+--    coluna guardasse '1900-01-01' ou uma data qualquer para dizer "não
+--    devolveu", esta consulta teria de saber desse combinado — e alguém, um
+--    dia, não saberia. Nulo é ausência, e ausência é exatamente o que se
+--    quer dizer.
+--
+--    No projeto do SEU grupo: que pergunta é essa? Toda regra de negócio tem
+--    uma consulta que a locadora precisa rodar todo dia de manhã. Se o modelo
+--    de vocês não consegue respondê-la, ainda dá tempo de mexer no modelo.

@@ -6,3 +6,8 @@ na raiz do repositorio. O que nao estiver citado la nao aparece no site.
 
 Nao ponha .md nesta pasta: o build do Marp converteria em deck.
 Nao ponha gabarito sem antes marcar `publicar: nao` na linha correspondente.
+
+Os .sql desta pasta tem regra propria, em PADRAO-SQL.md, na raiz: sao
+exercicio e nao lista de respostas, e todos tem de rodar de novo sem duplicar
+nada (CREATE TABLE IF NOT EXISTS, ON CONFLICT DO NOTHING). Testar antes de
+publicar, executando duas vezes seguidas.
