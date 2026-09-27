@@ -24,6 +24,7 @@ const projects = await getProjects();
   }
 </div>
 
+<h2 class="so-leitor">{t('nav.projects')}</h2>
 <div class="grid" id="project-grid">
   {projects.map((project) => <ProjectCard project={project} lang={lang} />)}
 </div>

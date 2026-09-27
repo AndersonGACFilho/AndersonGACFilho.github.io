@@ -164,7 +164,16 @@ summary:hover .titulo { color: var(--accent); }
 .icone.tarefa { --esp: var(--esp-tarefa); }
 .icone.arquivo { --esp: var(--esp-arquivo); }
 .corpo { flex: 1; min-width: 0; }
-.corpo a { font-family: var(--display); font-weight: 600; text-decoration: none; }
+/* 24px de altura minima no alvo: o link tinha a altura da linha de texto
+   (21px), abaixo do minimo da WCAG 2.5.8, e ele e o controle principal da
+   linha — nao um link solto no meio de um paragrafo */
+.corpo a {
+  display: inline-block;
+  padding-block: 3px;
+  font-family: var(--display);
+  font-weight: 600;
+  text-decoration: none;
+}
 .corpo a:hover { text-decoration: underline; }
 .fora { margin-left: 5px; font-size: 0.78em; opacity: 0.75; }
 .especie { display: block; color: var(--text-dim); font-size: 0.82rem; }
