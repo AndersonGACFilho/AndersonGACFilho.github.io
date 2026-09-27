@@ -606,6 +606,72 @@ legend {
   color: var(--dim);
 }
 
+/* ---------- registro de operacoes ---------- */
+/*
+ * O painel mostra o ESTADO; o registro mostra o que aconteceu para chegar
+ * nele. Sem ele a demo pede que o aluno deduza a operacao a partir do
+ * resultado — e no modo SGBD a operacao e justamente o que a aula ensina:
+ * quem manda o INSERT nao escolhe o id, o servidor devolve.
+ */
+
+.registro {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.registro h3 {
+  margin: 0 0 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dim);
+}
+
+.log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.log li {
+  display: grid;
+  grid-template-columns: 4.2em 5.4em 1fr;
+  gap: 10px;
+  align-items: baseline;
+  padding: 5px 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.86rem;
+}
+.log li:first-child { border-top: none; }
+
+.log .hora { color: var(--dim); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+
+.log .ator {
+  justify-self: start;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font: 600 0.72rem/1.5 var(--display);
+  color: var(--quem);
+  background: color-mix(in srgb, var(--quem) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--quem) 40%, transparent);
+}
+.log .ana { --quem: var(--esp-pagina); }
+.log .bruno { --quem: var(--esp-arquivo); }
+.log .servidor { --quem: var(--esp-tarefa); }
+
+.log .op { color: var(--fg); }
+.log .op code {
+  display: inline-block;
+  font: 0.86em/1.5 var(--mono);
+  color: var(--dim);
+}
+.log li.perdeu .op { color: var(--errado); }
+.log li.ganhou .op { color: var(--certo); }
+
 /* ---------- grade de celulas repetidas ---------- */
 
 .chips {

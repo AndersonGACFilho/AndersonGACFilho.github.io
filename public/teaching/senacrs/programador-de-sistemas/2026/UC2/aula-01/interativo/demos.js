@@ -143,12 +143,76 @@
       }
 
       $('d1-legenda').textContent = passos[passo];
+      $('d1-intro').textContent = comSgbd
+        ? 'Ana e Bruno lançam ao mesmo tempo, cada um pela tela dele.'
+        : 'Ana e Bruno abrem a mesma planilha com um minuto de diferença.';
+      registrar();
       proximo.disabled = passo >= 6;
     }
 
+    // O painel mostra o ESTADO; o registro mostra a OPERACAO que levou ate
+    // ele. No modo SGBD a operacao e o que a aula ensina: quem manda o INSERT
+    // nao escolhe o id — o servidor grava, gera e devolve.
+    var LOG_PLANILHA = [
+      [1, '19h02', 'ana', 'baixou uma cópia de emprestimos.xlsx (2 linhas)'],
+      [2, '19h03', 'bruno', 'baixou uma cópia de emprestimos.xlsx (2 linhas)'],
+      [3, '19h05', 'ana', 'escreveu #1003 Baldurs Gate 3 na cópia dela'],
+      [4, '19h06', 'bruno', 'escreveu #1003 Stardew Valley na cópia dele — o último que ele vê é o #1002'],
+      [5, '19h10', 'ana', 'enviou a cópia dela'],
+      [5, '19h10', 'servidor', 'substituiu o arquivo pela cópia da Ana (3 linhas)'],
+      [6, '19h11', 'bruno', 'enviou a cópia dele'],
+      [6, '19h11', 'servidor', 'substituiu o arquivo pela cópia do Bruno (3 linhas)', 'perdeu'],
+      [6, '', 'servidor', 'o #1003 da Ana não está mais em lugar nenhum, e ninguém foi avisado', 'perdeu'],
+    ];
+
+    var LOG_SGBD = [
+      [1, '19h02', 'ana', 'abriu a tela de lançamento'],
+      [2, '19h03', 'bruno', 'abriu a tela de lançamento'],
+      [3, '19h05', 'ana', 'escolheu Baldurs Gate 3 — sem número, porque não é ela quem numera'],
+      [4, '19h06', 'bruno', 'escolheu Stardew Valley — também sem número'],
+      [5, '19h10', 'ana', 'INSERT INTO emprestimo (jogo) VALUES (\'Baldurs Gate 3\')', '', 'sql'],
+      [5, '19h10', 'servidor', 'gravou, gerou id = 1003 e devolveu', 'ganhou'],
+      [6, '19h11', 'bruno', 'INSERT INTO emprestimo (jogo) VALUES (\'Stardew Valley\')', '', 'sql'],
+      [6, '19h11', 'servidor', 'gravou, gerou id = 1004 e devolveu', 'ganhou'],
+      [6, '', 'servidor', 'os dois INSERT entraram, com números diferentes, sem ninguém combinar nada', 'ganhou'],
+    ];
+
+    var NOME = { ana: 'Ana', bruno: 'Bruno', servidor: 'servidor' };
+
+    function registrar() {
+      var alvo = $('d1-log');
+      var fonte = comSgbd ? LOG_SGBD : LOG_PLANILHA;
+      alvo.textContent = '';
+      var houve = false;
+      fonte.forEach(function (e) {
+        if (e[0] > passo) return;
+        houve = true;
+        var li = el('li', e[4] || '');
+        li.appendChild(el('span', 'hora', e[1]));
+        li.appendChild(el('span', 'ator ' + e[2], NOME[e[2]]));
+        var op = el('span', 'op');
+        if (e[5] === 'sql') op.appendChild(el('code', null, e[3]));
+        else op.textContent = e[3];
+        li.appendChild(op);
+        alvo.appendChild(li);
+      });
+      if (!houve) {
+        var li = el('li');
+        li.appendChild(el('span', 'hora', ''));
+        li.appendChild(el('span', 'ator servidor', '—'));
+        li.appendChild(el('span', 'op', 'Nada aconteceu ainda.'));
+        alvo.appendChild(li);
+      }
+    }
+
+    // Quatro estados, nao dois. O selo dizia 'preenchendo' com o formulario
+    // em branco, porque um array vazio e verdadeiro em JavaScript — o painel
+    // mostrava 'Formulário em branco' e o selo dizia o contrario.
     function seloPessoa(painel, enviou) {
-      if (comSgbd) return !painel ? 'tela fechada' : enviou ? 'enviado' : 'preenchendo';
-      return painel ? 'aberta' : 'fechada';
+      if (!painel) return comSgbd ? 'tela fechada' : 'fechada';
+      if (!comSgbd) return 'aberta';
+      if (enviou) return 'enviado';
+      return painel.length ? 'preenchendo' : 'em branco';
     }
 
     function pintar(alvo, itens, destaque) {
