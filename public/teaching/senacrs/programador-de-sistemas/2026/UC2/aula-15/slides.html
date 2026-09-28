@@ -210,10 +210,11 @@ Mas apagar uma <strong>tabela</strong> que a view usa quebra a view.
 <h2 id="checagem-do-bloco-2">Checagem do Bloco 2</h2>
 <div class="com-qr">
 <div>
+<p>A dona quer ver, toda segunda, quantos jogos há por plataforma.</p>
 <ul>
-<li data-marpit-fragment="1">A view guarda os <strong>dados</strong> ou a <strong>consulta</strong>?</li>
-<li data-marpit-fragment="2">Se eu inserir um jogo novo, a view precisa ser recriada?</li>
-<li data-marpit-fragment="3">Cite um uso de view ligado a <strong>segurança</strong></li>
+<li data-marpit-fragment="1">Escreva o comando que guarda essa consulta como <code>v_jogos_por_plataforma</code></li>
+<li data-marpit-fragment="2">Você cadastra um jogo na terça. Na segunda seguinte o número muda sozinho?</li>
+<li data-marpit-fragment="3">O estagiário pode consultar essa view <strong>sem</strong> poder ler a tabela <code>jogo</code>?</li>
 </ul>
 </div>
 <div class="qr-cartao" data-qr="15-2">
@@ -338,10 +339,14 @@ e o erro fica escondido dentro de uma função com nome inocente.
 <h2 id="checagem-do-bloco-3">Checagem do Bloco 3</h2>
 <div class="com-qr">
 <div>
+<p>Esta função &quot;funciona&quot; e apaga o catálogo inteiro na primeira chamada:</p>
+<pre><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">apagar</span>(<span class="hljs-params">cursor, id_jogo</span>):
+    cursor.execute(<span class="hljs-string">&quot;DELETE FROM jogo&quot;</span>)
+</code></pre>
 <ul>
-<li data-marpit-fragment="1">Quais das 4 funções precisam de <code>commit()</code>?</li>
-<li data-marpit-fragment="2">Para que serve <code>cursor.rowcount</code>?</li>
-<li data-marpit-fragment="3">Por que <code>%s</code> e não montar o SQL com <code>+</code>?</li>
+<li data-marpit-fragment="1">Qual é o defeito, e o que ele custa?</li>
+<li data-marpit-fragment="2">Escreva a versão certa, usando <code>%s</code></li>
+<li data-marpit-fragment="3">Que linha você acrescenta para conferir que apagou <strong>uma</strong> linha só?</li>
 </ul>
 </div>
 <div class="qr-cartao" data-qr="15-3">
