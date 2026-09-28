@@ -1,0 +1,6 @@
+# O Search Console é o canal do Google; esta linha existe para os demais
+# rastreadores (Bing, DuckDuckGo), que só descobrem o sitemap por aqui.
+User-agent: *
+Allow: /
+
+Sitemap: https://andersongacfilho.github.io/sitemap-index.xml

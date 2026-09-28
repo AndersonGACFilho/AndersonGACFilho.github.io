@@ -3,7 +3,7 @@ import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import TrackBadge from '../../../components/TrackBadge.astro';
 import { formatDate, localize, useTranslations, type UIKey } from '../../../i18n/ui';
-import { getArticles, articleSlug, articleAltPath } from '../../../lib/content';
+import { getArticles, articleSlug, articleAltPath, articleTwinPath } from '../../../lib/content';
 
 const lang = 'pt' as const;
 const t = useTranslations(lang);
@@ -13,16 +13,22 @@ export async function getStaticPaths() {
   return Promise.all(
     articles.map(async (entry) => ({
       params: { slug: articleSlug(entry) },
-      props: { entry, altPath: await articleAltPath(entry, 'pt') },
+      props: {
+        entry,
+        altPath: await articleAltPath(entry, 'pt'),
+        // null, not undefined: an article with no twin must emit no hreflang
+        // rather than fall back to the mirrored route, which would 404.
+        translation: (await articleTwinPath(entry, 'pt')) ?? null,
+      },
     })),
   );
 }
 
-const { entry, altPath } = Astro.props;
+const { entry, altPath, translation } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Base title={`${entry.data.title} — Anderson Gonçalves`} description={entry.data.summary} lang={lang} altPath={altPath}>
+<Base title={`${entry.data.title} — Anderson Gonçalves`} description={entry.data.summary} lang={lang} altPath={altPath} translation={translation}>
   <article class="prose">
     <p><a class="muted" href={localize('/articles', lang)}>← Artigos</a></p>
     <div class="badge-row">

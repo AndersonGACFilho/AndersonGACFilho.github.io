@@ -58,12 +58,25 @@ export async function getFeaturedGame(): Promise<CollectionEntry<'games'> | unde
 export const SLIDES_URL = '/teaching/senacrs/programador-de-sistemas/2026/';
 
 /**
+ * Path of the article that really is this one's translation, or undefined when
+ * it has none. Separate from `articleAltPath` because hreflang needs the truth:
+ * declaring the section index as a translation breaks the reciprocity Google
+ * requires, and it then ignores the whole cluster.
+ */
+export async function articleTwinPath(
+  entry: CollectionEntry<'articles'>,
+  lang: Lang,
+): Promise<string | undefined> {
+  const other: Lang = lang === 'en' ? 'pt' : 'en';
+  const wanted = entry.data.translationOf ?? articleSlug(entry);
+  const twin = (await getArticles(other)).find((candidate) => articleSlug(candidate) === wanted);
+  return twin ? `/${other === 'en' ? '' : 'pt/'}articles/${articleSlug(twin)}` : undefined;
+}
+
+/**
  * Path of the same article in the other language, falling back to the section
  * root so the language switch never lands on a 404.
  */
 export async function articleAltPath(entry: CollectionEntry<'articles'>, lang: Lang): Promise<string> {
-  const other: Lang = lang === 'en' ? 'pt' : 'en';
-  const wanted = entry.data.translationOf ?? articleSlug(entry);
-  const twin = (await getArticles(other)).find((candidate) => articleSlug(candidate) === wanted);
-  return twin ? `/${other === 'en' ? '' : 'pt/'}articles/${articleSlug(twin)}` : other === 'en' ? '/articles' : '/pt/articles';
+  return (await articleTwinPath(entry, lang)) ?? (lang === 'en' ? '/pt/articles' : '/articles');
 }

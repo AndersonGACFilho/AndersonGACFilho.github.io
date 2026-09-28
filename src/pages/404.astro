@@ -4,7 +4,8 @@ import { useTranslations } from '../i18n/ui';
 const lang = 'en' as const;
 const t = useTranslations(lang);
 ---
-<Base title="404 — Anderson Gonçalves" lang={lang} altPath="/pt">
+{/* translation=null: a 404 has no translated counterpart to pair with. */}
+<Base title="404 — Anderson Gonçalves" lang={lang} altPath="/pt" translation={null}>
   <section class="prose">
     <h1>{t('notfound.title')}</h1>
     <p>{t('notfound.body')}</p>

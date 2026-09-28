@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import LangSwitch from '../components/LangSwitch.astro';
 import ThemeSwitch from '../components/ThemeSwitch.astro';
-import { useTranslations, localize, type Lang } from '../i18n/ui';
+import { useTranslations, localize, stripLocale, otherLang, type Lang } from '../i18n/ui';
 
 interface Props {
   title: string;
@@ -10,9 +10,16 @@ interface Props {
   lang: Lang;
   /** Path in the *other* language; defaults to the mirrored route. */
   altPath?: string;
+  /**
+   * Path of the real translation, for hreflang. Defaults to the mirrored
+   * route, true of every page that has a twin. Pass `null` where none exists
+   * (an untranslated article, the 404): hreflang has to be reciprocal, so a
+   * link to a fallback index would make Google discard the pair entirely.
+   */
+  translation?: string | null;
 }
 
-const { title, description, lang, altPath } = Astro.props;
+const { title, description, lang, altPath, translation } = Astro.props;
 const t = useTranslations(lang);
 // Link preview crawlers treat a short description as thin content;
 // LinkedIn warns below 100 characters. The tagline is kept short for
@@ -31,6 +38,14 @@ const nav = [
 
 const isCurrent = (href: string) => here === href || here === `${href}/`;
 const canonical = new URL(here, Astro.site).toString();
+
+// Canonicals here are directory-style, and to Google `/pt` and `/pt/` are two
+// URLs. hreflang that disagrees with the canonical by a slash is not
+// reciprocal, which is the one thing that makes it be ignored outright.
+const asDir = (path: string) => (path.endsWith('/') ? path : `${path}/`);
+const twin = translation === undefined ? localize(stripLocale(here), otherLang(lang)) : translation;
+const enHref = twin === null ? null : new URL(asDir(lang === 'en' ? here : twin), Astro.site).toString();
+const ptHref = twin === null ? null : new URL(asDir(lang === 'pt' ? here : twin), Astro.site).toString();
 ---
 
 <!doctype html>
@@ -41,6 +56,17 @@ const canonical = new URL(here, Astro.site).toString();
     <title>{title}</title>
     <meta name="description" content={desc} />
     <link rel="canonical" href={canonical} />
+    {/* Sem isto as rotas EN e PT concorrem entre si em vez de se declararem
+        traduções. A auto-referência é exigida pelo Google, não é redundância. */}
+    {
+      enHref && ptHref && (
+        <>
+          <link rel="alternate" hreflang="en" href={enHref} />
+          <link rel="alternate" hreflang="pt-BR" href={ptHref} />
+          <link rel="alternate" hreflang="x-default" href={enHref} />
+        </>
+      )
+    }
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />
