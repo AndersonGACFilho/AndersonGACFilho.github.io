@@ -117,7 +117,7 @@ mesmo tempo.
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-header="UC2 · Implementar Banco de Dados" data-footer="Aula 14 · 27/10/2026 · Indicadores 3, 5" data-theme="senac" lang="pt-BR" data-marpit-pagination="7" style="--paginate:true;--header:UC2 · Implementar Banco de Dados;--footer:Aula 14 · 27/10/2026 · Indicadores 3, 5;--theme:senac;" data-marpit-pagination-total="32" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}">
 <header>UC2 · Implementar Banco de Dados</header>
 <h2 id="icone-o-que-acontece-por-dentro"><img src="../_comum/icones/mono/lupa.svg" alt="icone" /> O que acontece por dentro</h2>
-<p><img class="center" src="img/join-como-funciona.svg" alt="" style="width:621px;" /></p>
+<p><img class="center" src="img/join-como-funciona.svg" alt="As tabelas jogo e plataforma se cruzam pela chave estrangeira e produzem o resultado do INNER JOIN" style="width:621px;" /></p>
 <p>Para cada linha de <code>jogo</code>, o banco procura a linha de <code>plataforma</code> com o mesmo id e <strong>cola as duas</strong>.</p>
 <footer>Aula 14 · 27/10/2026 · Indicadores 3, 5</footer>
 </section>
@@ -201,7 +201,7 @@ Quem não tem par simplesmente <strong>some do resultado</strong> — sem aviso.
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-header="UC2 · Implementar Banco de Dados" data-footer="Aula 14 · 27/10/2026 · Indicadores 3, 5" data-theme="senac" lang="pt-BR" data-marpit-pagination="14" style="--paginate:true;--header:UC2 · Implementar Banco de Dados;--footer:Aula 14 · 27/10/2026 · Indicadores 3, 5;--theme:senac;" data-marpit-pagination-total="32" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}">
 <header>UC2 · Implementar Banco de Dados</header>
 <h2 id="icone-left-join--todo-mundo-da-esquerda"><img src="../_comum/icones/mono/juncao-esquerda.svg" alt="icone" /> <code>LEFT JOIN</code> — todo mundo da esquerda</h2>
-<p><img class="center" src="img/inner-vs-left.svg" alt="" style="width:1120px;" /></p>
+<p><img class="center" src="img/inner-vs-left.svg" alt="O INNER JOIN deixa Carla de fora por ela nao ter emprestimo; o LEFT JOIN traz Carla com NULL no emprestimo" style="width:1120px;" /></p>
 <pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> c.nome, e.data_retirada
 <span class="hljs-keyword">FROM</span>   cliente c
 <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> emprestimo e <span class="hljs-keyword">ON</span> c.id_cliente <span class="hljs-operator">=</span> e.id_cliente;
@@ -331,7 +331,7 @@ Condição sobre a tabela da direita vai no <code>ON</code>, não no <code>WHERE
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-header="UC2 · Implementar Banco de Dados" data-footer="Aula 14 · 27/10/2026 · Indicadores 3, 5" data-theme="senac" lang="pt-BR" data-marpit-pagination="21" style="--paginate:true;--header:UC2 · Implementar Banco de Dados;--footer:Aula 14 · 27/10/2026 · Indicadores 3, 5;--theme:senac;" data-marpit-pagination-total="32" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}">
 <header>UC2 · Implementar Banco de Dados</header>
 <h2 id="icone-group-by--resumir-por-grupo"><img src="../_comum/icones/mono/agrupar.svg" alt="icone" /> <code>GROUP BY</code> — resumir por grupo</h2>
-<p><img class="center" src="img/group-by.svg" alt="" style="width:1000px;" /></p>
+<p><img class="center" src="img/group-by.svg" alt="Seis linhas de jogo viram tres linhas de resultado quando o GROUP BY junta por plataforma" style="width:1000px;" /></p>
 <pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> p.nome, <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">AS</span> total_jogos
 <span class="hljs-keyword">FROM</span>   jogo j
 <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> plataforma p <span class="hljs-keyword">ON</span> j.id_plataforma <span class="hljs-operator">=</span> p.id_plataforma
