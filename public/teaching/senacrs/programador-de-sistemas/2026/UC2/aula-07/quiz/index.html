@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 07 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 07 da UC2: o modelo relacional, a notação de esquema e as cinco regras de mapeamento do DER para tabelas.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 07 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 07</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-07', [
+  {
+    pergunta: 'Seu DER tem 4 entidades e 3 relacionamentos, todos 1:N. Quantas tabelas saem daí?',
+    alternativas: [
+      '7 — uma por entidade e uma por relacionamento',
+      '4 — uma por entidade, e os relacionamentos viram colunas',
+      '3 — só os relacionamentos geram tabelas',
+      'Depende da quantidade de atributos'
+    ],
+    certa: 1,
+    porque: 'Relacionamento 1:N não vira tabela: vira uma chave estrangeira na tabela do lado do N. Só o N:N cria tabela nova — e aqui não sobrou nenhum.'
+  },
+  {
+    pergunta: 'Na notação jogo (id_jogo*, titulo, id_plataforma CE/FK → plataforma), para que serve a seta?',
+    alternativas: [
+      'Para indicar a ordem das colunas',
+      'Para dizer para onde a chave estrangeira aponta — e na Aula 11 ela vira o REFERENCES',
+      'Para marcar que a coluna é obrigatória',
+      'É só enfeite da notação'
+    ],
+    certa: 1,
+    porque: 'A seta é literalmente o REFERENCES do SQL. A regra prática: se você não consegue escrever o que vem depois da seta, a chave estrangeira está errada.'
+  },
+  {
+    pergunta: 'Você escreve id_plataforma REFERENCES plataforma(id_plataforma), mas a tabela plataforma ainda não foi criada. O que o PostgreSQL responde?',
+    alternativas: [
+      'Cria assim mesmo e avisa depois',
+      'ERROR: relation "plataforma" does not exist',
+      'Cria a tabela plataforma vazia, automaticamente',
+      'Aceita, porque a verificação só acontece no INSERT'
+    ],
+    certa: 1,
+    porque: 'A tabela apontada precisa existir antes. Quase sempre é questão de ordem no script: jogo criado antes de plataforma. É o erro que mais aparece na Aula 11.'
+  },
+  {
+    pergunta: 'A tabela plataforma existe e a coluna fabricante existe. Mesmo assim, REFERENCES plataforma(fabricante) é recusado. Por quê?',
+    alternativas: [
+      'Porque fabricante é texto, e chave estrangeira só aceita número',
+      'Porque fabricante não identifica uma linha só — "Sony" aparece em várias',
+      'Porque a coluna tem de ter o mesmo nome dos dois lados',
+      'Porque falta criar um índice na coluna'
+    ],
+    certa: 1,
+    porque: 'A mensagem é "there is no unique constraint matching given keys". Uma chave estrangeira precisa apontar para algo que identifique UMA linha — é a Aula 05 cobrando a conta.'
+  },
+  {
+    pergunta: 'O cliente tem dois telefones. Como isso fica no modelo relacional?',
+    alternativas: [
+      'Duas colunas: telefone1 e telefone2',
+      'Uma coluna telefone com os dois números separados por barra',
+      'Uma tabela telefone_cliente, com uma linha por número',
+      'Um campo de texto livre em observações'
+    ],
+    certa: 2,
+    porque: 'Uma célula guarda um valor só: não existe coluna com lista dentro. Essa é, literalmente, a 1ª forma normal — e é a Aula 09.'
+  },
+  {
+    pergunta: 'Seu grupo decide separar DADOS_BANCARIOS de CLIENTE num 1:1. O que a chave estrangeira precisa ter, além do REFERENCES?',
+    alternativas: [
+      'Precisa ser única',
+      'Precisa ser chave primária composta',
+      'Precisa aceitar nulo',
+      'Nada além do REFERENCES'
+    ],
+    certa: 0,
+    porque: 'Sem UNIQUE, dois registros de dados bancários poderiam apontar para o mesmo cliente — e aí o relacionamento já não seria 1:1. A constraint volta na Aula 11.'
+  },
+  {
+    pergunta: 'Ao mapear, seu grupo acha útil acrescentar cliente.pontos_fidelidade, que não está no DER. O que fazer?',
+    alternativas: [
+      'Acrescentar só na lista de tabelas: o DER já cumpriu o papel dele',
+      'Ou voltar e acrescentar no DER hoje, ou não criar a coluna',
+      'Deixar para acertar o DER no fim do curso',
+      'Criar uma tabela nova só para ela'
+    ],
+    certa: 1,
+    porque: 'Mapear é traduzir, não criar. Os dois artefatos convivem até a Aula 18 — mexeu na lista, mexeu no .drawio no mesmo dia. Senão o DER vira ficção a partir da Aula 09.'
+  },
+  {
+    pergunta: 'Por que a convenção é nome de tabela no singular — jogo, e não jogos?',
+    alternativas: [
+      'Porque o PostgreSQL recusa nomes no plural',
+      'Porque a tabela guarda ocorrências de UM jogo, e porque jogo.titulo se lê melhor',
+      'Porque nome no plural ocupa mais espaço em disco',
+      'É indiferente: as duas formas são igualmente usadas'
+    ],
+    certa: 1,
+    porque: 'Cada linha é uma ocorrência da entidade. E na Aula 14 você vai escrever jogo.titulo em toda junção — que se lê como português.'
+  }
+]);
+</script>
+</body>
+</html>

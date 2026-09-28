@@ -129,5 +129,48 @@
     };
   }
 
-  raiz.DemoKit = { $: $, el: el, linha: linha, novoLog: novoLog };
+  /**
+   * Grupo de escolha: uma pílula por caso, só uma acesa por vez.
+   *
+   * Existia copiado em sete lugares — Aulas 01 a 05 —, sempre com as mesmas
+   * cinco linhas de `aria-pressed` e a mesma chamada final para o primeiro
+   * item. Essa última linha é a que importa: sem ela a demonstração abre com
+   * os painéis vazios, só cabeçalho, e nada na tela diz que é preciso clicar.
+   * Aqui ela não tem como ser esquecida.
+   *
+   * @param {string} idCaixa  id do contêiner `.camadas`
+   * @param {Array}  itens    [{ id, nome }]
+   * @param {Function} aoEscolher  recebe o item escolhido
+   */
+  function escolhas(idCaixa, itens, aoEscolher) {
+    var caixa = $(idCaixa);
+    if (!caixa) return;
+    var botoes = [];
+
+    function escolher(item) {
+      botoes.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.id === item.id ? 'true' : 'false');
+      });
+      aoEscolher(item);
+    }
+
+    itens.forEach(function (item) {
+      var b = el('button', 'camada-btn');
+      b.type = 'button';
+      b.dataset.id = item.id;
+      // a cor da pilula vem do tema, nao de um hex: ler o valor resolvido aqui
+      // congelaria a cor do tema vigente no carregamento.
+      b.style.setProperty('--cor', 'var(--accent)');
+      b.setAttribute('aria-pressed', 'false');
+      b.appendChild(el('span', 'ponto'));
+      b.appendChild(el('span', null, item.nome));
+      b.addEventListener('click', function () { escolher(item); });
+      botoes.push(b);
+      caixa.appendChild(b);
+    });
+
+    escolher(itens[0]);
+  }
+
+  raiz.DemoKit = { $: $, el: el, linha: linha, novoLog: novoLog, escolhas: escolhas };
 })(window);

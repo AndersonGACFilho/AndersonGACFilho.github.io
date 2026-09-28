@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 06 — veja acontecer · UC2</title>
+<meta name="description" content="A data da retirada que não cabe em nenhum dos dois lados, o nome da entidade do meio virando nome de tabela, e a caixa que se liga nela mesma.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema e a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 06 — veja acontecer</h1>
+  <p class="sub">A data que não cabe em lugar nenhum, o nome que daqui a cinco aulas vira <code>CREATE TABLE</code>, e a caixa que se liga nela mesma. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas três, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. onde mora a data da retirada ============ -->
+  <section class="demo">
+    <h2>1 · Onde mora a data da retirada?</h2>
+    <p class="intro">Um cliente aluga vários jogos. Um jogo é alugado por vários clientes. Agora guarde <strong>a data de cada retirada</strong>. Tente os três lugares antes de decidir qual serve.</p>
+
+    <div class="camadas" id="a6-tentativas" role="group" aria-label="Onde guardar a data da retirada"></div>
+
+    <div class="palco duplo">
+      <div class="painel" id="a6-painel-e">
+        <h3><span id="a6-tit-e">CLIENTE</span><span class="selo" id="a6-selo-e"></span></h3>
+        <div id="a6-corpo-e"></div>
+      </div>
+      <div class="painel" id="a6-painel-d">
+        <h3><span id="a6-tit-d">JOGO</span><span class="selo" id="a6-selo-d"></span></h3>
+        <div id="a6-corpo-d"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a6-legenda"></p>
+
+    <div class="registro">
+      <h3>O que a Ana pediu no balcão</h3>
+      <ol class="log" id="a6-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. o nome da entidade do meio ============ -->
+  <section class="demo">
+    <h2>2 · O nome que você dá hoje, lido daqui a cinco aulas</h2>
+    <p class="intro">A entidade do meio precisa de um nome. Escolha um e veja o que acontece com ele na Aula 11, na Aula 14, e no dia em que a locadora resolve guardar também as <strong>reservas</strong> — que ligam os mesmos dois lados.</p>
+
+    <div class="camadas" id="a6-nomes" role="group" aria-label="Nome da entidade do meio"></div>
+
+    <!-- Empilhado, e nao lado a lado: em duas colunas o painel fica com 331px, e
+         a linha da notacao (`cliente_jogo (id*, id_cliente CE/FK, ...)`) mede
+         560px — nascia cortada, com barra de rolagem, justo a linha que o aluno
+         precisa comparar entre os tres nomes. -->
+    <div class="palco">
+      <div class="painel">
+        <h3><span>o nome no resto do curso</span><span class="selo" id="a6-nome-selo"></span></h3>
+        <div id="a6-nome-usos"></div>
+      </div>
+      <div class="painel" id="a6-nome-painel-r">
+        <h3><span>e quando chega a reserva?</span><span class="selo" id="a6-nome-selo-r"></span></h3>
+        <div id="a6-nome-reserva"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a6-nome-legenda"></p>
+
+    <div class="registro">
+      <h3>Quem lê esse nome, e quando</h3>
+      <ol class="log" id="a6-nome-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 3. a caixa que se liga nela mesma ============ -->
+  <section class="demo">
+    <h2>3 · A caixa que se liga nela mesma</h2>
+    <p class="intro">Um jogo pode ser <strong>DLC de outro jogo</strong>. A primeira ideia de quase todo grupo é criar uma entidade <code>DLC</code>. Avance um passo de cada vez e veja até onde ela aguenta.</p>
+
+    <figure class="diagrama">
+      <svg viewBox="0 0 360 132" role="img" id="a6-auto-svg"
+           aria-label="Diagrama que alterna entre duas formas: duas caixas, JOGO e DLC, ligadas por um relacionamento; e uma caixa JOGO só, com uma ligação que sai dela e volta para ela mesma.">
+        <g class="lig" id="a6-auto-lig"></g>
+        <g class="entidade" id="a6-auto-caixas"></g>
+        <g class="relacionamento" id="a6-auto-losango"></g>
+        <text class="rotulo" x="180" y="122" id="a6-auto-rotulo"></text>
+      </svg>
+      <figcaption id="a6-auto-cap"></figcaption>
+    </figure>
+
+    <div class="painel afastado">
+      <h3><span id="a6-auto-tit">as colunas que a tabela DLC precisa ter</span><span class="selo" id="a6-auto-selo"></span></h3>
+      <div class="chips" id="a6-auto-colunas"></div>
+      <p class="nota-painel" id="a6-auto-nota"></p>
+    </div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="a6-auto-passo">Próximo passo</button>
+      <button type="button" class="acao secundaria" id="a6-auto-zerar">Começar de novo</button>
+    </div>
+    <p class="legenda" id="a6-auto-legenda"></p>
+
+    <div class="registro">
+      <h3>O que cada passo custou</h3>
+      <ol class="log" id="a6-auto-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 06</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

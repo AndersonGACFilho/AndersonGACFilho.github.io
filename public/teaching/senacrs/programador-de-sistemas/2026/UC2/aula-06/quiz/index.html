@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 06 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 06 da UC2: a legenda do DER, o N:N que vira entidade no meio, e os relacionamentos especiais.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 06 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 06</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-06', [
+  {
+    pergunta: 'A Ana levou Elden Ring no dia 02/10 e Hades no dia 05/10. Você guardou data_retirada como uma coluna de CLIENTE. O que aconteceu com o 02/10?',
+    alternativas: [
+      'Ficou guardado: a coluna aceita as duas datas',
+      'Foi por cima: a linha da Ana guarda uma data só',
+      'O banco recusou a segunda retirada',
+      'Foi para a tabela JOGO automaticamente'
+    ],
+    certa: 1,
+    porque: 'A Ana tem uma linha, e a linha tem uma célula de data. A segunda retirada sobrescreveu a primeira, sem aviso. Não foi erro de digitação: a data não tem onde caber.'
+  },
+  {
+    pergunta: 'Seu grupo tenta resolver mudando a coluna data_retirada de CLIENTE para JOGO. Resolve?',
+    alternativas: [
+      'Sim, JOGO é o lado certo',
+      'Não: agora é Elden Ring que tem uma data só, e ele saiu com duas pessoas',
+      'Sim, desde que a coluna seja UNIQUE',
+      'Só se CLIENTE também mantiver a coluna'
+    ],
+    certa: 1,
+    porque: 'Trocar de lado troca de vítima. A data não pertence ao cliente nem ao jogo: pertence ao encontro entre os dois — e é por isso que ela precisa de um lugar próprio.'
+  },
+  {
+    pergunta: 'Você criou EMPRESTIMO entre CLIENTE e JOGO. O que acontece com o N:N que existia antes?',
+    alternativas: [
+      'Continua lá, agora com três entidades',
+      'Some, e no lugar ficam dois 1:N',
+      'Vira um 1:1 de cada lado',
+      'Vira um N:N mais forte, com duas chaves'
+    ],
+    certa: 1,
+    porque: 'Um cliente faz vários empréstimos; um jogo aparece em vários empréstimos. São dois 1:N, cada um com a chave estrangeira do lado N — que é o lado do meio.'
+  },
+  {
+    pergunta: 'Numa confeitaria, o N:N é entre CLIENTE e PRODUTO. Qual nome serve melhor para a entidade do meio?',
+    alternativas: [
+      'CLIENTE_PRODUTO',
+      'LIGACAO',
+      'ITEM_ENCOMENDA',
+      'TABELA_MEIO'
+    ],
+    certa: 2,
+    porque: 'A entidade do meio é quase sempre o EVENTO — a heurística “pessoa, coisa, evento” da Aula 03. O nome do acontecimento diz o que aquilo é; os outros três só dizem onde a tabela fica.'
+  },
+  {
+    pergunta: 'Você batizou a entidade do meio de CLIENTE_JOGO. Meses depois a locadora quer guardar também as reservas, que ligam os mesmos dois lados. Qual é o problema?',
+    alternativas: [
+      'Nenhum: basta criar CLIENTE_JOGO_2',
+      'O nome descreve os lados, não o acontecimento — e os dois acontecimentos têm os mesmos lados',
+      'O banco não aceita duas tabelas ligando as mesmas entidades',
+      'A reserva teria de virar uma coluna da tabela existente'
+    ],
+    certa: 1,
+    porque: 'Empréstimo e reserva ligam cliente e jogo, mas são coisas diferentes. Nome colado é um nome só para os dois — e quem abrir o banco na Aula 18 não vai saber qual é qual.'
+  },
+  {
+    pergunta: 'Um empréstimo pode sair com vários jogos de uma vez, e ITEM_EMPRESTIMO não faz sentido nenhum sozinho: apagado o empréstimo, o item não é nada. Como esse caso se chama?',
+    alternativas: [
+      'Autorrelacionamento',
+      'Entidade fraca',
+      'Relacionamento 1:1',
+      'Atributo multivalorado'
+    ],
+    certa: 1,
+    porque: 'Entidade fraca é a que só existe dentro de outra. Metade dos grupos vai precisar dela — é o que permite um empréstimo com vários jogos.'
+  },
+  {
+    pergunta: 'Um jogo pode ser DLC de outro jogo. Seu grupo cria uma entidade DLC separada, com titulo, preco e genero. Onde isso quebra primeiro?',
+    alternativas: [
+      'No dia em que a DLC for alugada, porque aí ela é um jogo',
+      'Nunca quebra: DLC e jogo são coisas diferentes',
+      'Na hora de desenhar, porque o draw.io não liga duas caixas iguais',
+      'Só na Aula 09, por causa da normalização'
+    ],
+    certa: 0,
+    porque: 'A DLC tem título, preço, plataforma e é alugada como qualquer jogo. O que ela tem a mais é um jogo do qual depende — e isso é uma coluna apontando para a própria tabela, não uma tabela nova.'
+  },
+  {
+    pergunta: 'O grupo abriu o draw.io às 19h e às 21h ainda não tinha modelo. O que faltou?',
+    alternativas: [
+      'Mais tempo de ferramenta',
+      'Decidir no papel antes: entidades, atributos, chaves e cardinalidades',
+      'Um computador mais rápido',
+      'Ter feito direto no SQL'
+    ],
+    certa: 1,
+    porque: 'O draw.io é lápis, não cérebro. Quem abre a ferramenta sem o papel da Aula 05 na mão passa a aula arrastando caixa. A ordem é decidir, depois desenhar.'
+  }
+]);
+</script>
+</body>
+</html>

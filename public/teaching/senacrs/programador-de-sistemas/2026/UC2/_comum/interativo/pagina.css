@@ -563,7 +563,7 @@ legend {
 }
 .camada-btn:hover { border-color: var(--cor); color: var(--cor); }
 .camada-btn[aria-pressed='true'] {
-  color: var(--cor);
+  color: color-mix(in srgb, var(--cor) var(--tinta-chip), #000);
   border-color: var(--cor);
   background: color-mix(in srgb, var(--cor) 14%, transparent);
 }
@@ -580,6 +580,19 @@ legend {
    contornava lendo o valor ja resolvido e gravando o hex no style — o que
    congelava a cor do tema vigente no carregamento. No tema claro a bolinha
    ficava com o ciano do escuro, a 1,7:1. */
+/* Quanto a tinta do texto de um chip precisa escurecer para vencer o PROPRIO
+   fundo. O chip pinta o fundo com 14% da mesma cor do texto; no tema claro isso
+   baixa a luminancia do fundo o bastante para derrubar o par para 3,82:1 na
+   pilula acesa e 4,06:1 no ator `voce` — medido, reprovado em AA. No escuro o
+   mesmo par da 6,54:1, entao la o valor e 100% e nada muda.
+   86% e nao 90% porque a 90% o pior par ficava em 4,52:1: dois centesimos
+   de folga sobre o piso nao sobrevivem a um ajuste de token la na frente. */
+:root { --tinta-chip: 100%; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) { --tinta-chip: 86%; }
+}
+:root[data-theme='light'] { --tinta-chip: 86%; }
+
 :root {
   --cor-sgbd: var(--esp-pagina);
   --cor-banco: var(--esp-tarefa);
@@ -697,6 +710,10 @@ legend {
 .diagrama .no rect { fill: var(--bg); stroke: var(--border-strong); stroke-width: 1; }
 .diagrama .no text { fill: var(--fg); font: 600 12px var(--display); text-anchor: middle; }
 .diagrama .lig line { stroke: var(--border-strong); stroke-width: 1.4; fill: none; }
+/* O autorrelacionamento da Aula 06 e uma curva, nao um segmento: a ligacao sai
+   da caixa e volta para ela mesma. Sem esta regra o <path> herda o padrao do
+   SVG — fill preto, sem traco — e vira uma mancha solida sobre a caixa. */
+.diagrama .lig path { stroke: var(--border-strong); stroke-width: 1.4; fill: none; }
 .diagrama .lig circle { fill: var(--esp-tarefa); }
 
 /* tabelas */
@@ -922,7 +939,7 @@ legend {
   padding: 2px 8px;
   border-radius: 999px;
   font: 600 0.72rem/1.5 var(--display);
-  color: var(--quem);
+  color: color-mix(in srgb, var(--quem) var(--tinta-chip), #000);
   background: color-mix(in srgb, var(--quem) 14%, transparent);
   border: 1px solid color-mix(in srgb, var(--quem) 40%, transparent);
 }
@@ -1055,6 +1072,11 @@ legend {
 .comando .familia b { color: var(--cor); font-family: var(--display); letter-spacing: 0.02em; }
 
 /* consulta exibida como bloco, na demo de independencia */
+/* Varios blocos empilhados so precisam de respiro entre eles. NAO use o
+   `.comandos` para isso: ele e uma grade `auto-fit` de 270px e, num painel
+   largo, quebra em duas colunas de 331px — menos que a linha da notacao
+   relacional, que mede 560px e nascia com barra de rolagem. */
+.consulta + .consulta { margin-top: 8px; }
 .consulta {
   margin: 0;
   padding: 12px 14px;
