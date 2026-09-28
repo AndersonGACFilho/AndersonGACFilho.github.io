@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 912 184" width="912" height="184"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 892 184" width="892" height="184"
      role="img" aria-label="A chave estrangeira em JOGO, marcada CE barra FK, apontando para a chave primaria de PLATAFORMA.">
   <style>
     /* @estilo-padrao */
@@ -181,9 +181,12 @@
     .ent-campo { fill: #ffffff; }
     .ent-chave { fill: #ffc287; }
     .lig       { stroke: #cfe0f5; }
-    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
     .verbo     { fill: #cfe0f5; }
     .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -192,31 +195,32 @@
     /* @fim */
   </style>
 
-  <rect class="ent" x="16" y="34" width="330" height="116" rx="4"/>
-  <path class="cab" d="M20 34 H342 a4 4 0 0 1 4 4 V78 H16 V38 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="181" y="63">PLATAFORMA</text>
+  <rect class="ent" x="16" y="34" width="320" height="116" rx="4"/>
+  <path class="cab" d="M20 34 H332 a4 4 0 0 1 4 4 V78 H16 V38 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="176" y="63">PLATAFORMA</text>
   <text class="t ent-tipo" x="32" y="102">int</text>
   <text class="t ent-campo" x="108" y="102">*id_plataforma</text>
-  <rect class="faixa" x="17" y="114" width="328" height="36"/>
+  <rect class="faixa" x="17" y="114" width="318" height="36"/>
   <text class="t ent-tipo" x="32" y="138">texto</text>
   <text class="t ent-campo" x="108" y="138">nome</text>
-  <rect class="ent-borda" x="16" y="34" width="330" height="116" rx="4"/>
-  <rect class="ent" x="536" y="16" width="360" height="152" rx="4"/>
-  <path class="cab" d="M540 16 H892 a4 4 0 0 1 4 4 V60 H536 V20 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="716" y="45">JOGO</text>
-  <text class="t ent-tipo" x="552" y="84">int</text>
-  <text class="t ent-campo" x="628" y="84">*id_jogo</text>
-  <rect class="faixa" x="537" y="96" width="358" height="36"/>
-  <text class="t ent-tipo" x="552" y="120">texto</text>
-  <text class="t ent-campo" x="628" y="120">titulo</text>
-  <text class="t ent-tipo" x="552" y="156">int</text>
-  <text class="t ent-campo" x="628" y="156">id_plataforma</text>
-  <text class="t ent-chave" x="880" y="156">CE/FK</text>
-  <rect class="ent-borda" x="536" y="16" width="360" height="152" rx="4"/>
-  <path class="lig" d="M358 83 V101"/>
-  <path class="lig" d="M370 83 V101"/>
-  <path class="lig" d="M522 92 L536 83 M522 92 L536 92 M522 92 L536 101"/>
-  <circle class="lig-o" cx="510" cy="92" r="5"/>
-  <path class="lig" d="M382 92 H500"/>
-  <text class="t verbo" x="441" y="98">possui</text>
+  <rect class="ent-borda" x="16" y="34" width="320" height="116" rx="4"/>
+  <rect class="ent" x="526" y="16" width="350" height="152" rx="4"/>
+  <path class="cab" d="M530 16 H872 a4 4 0 0 1 4 4 V60 H526 V20 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="701" y="45">JOGO</text>
+  <text class="t ent-tipo" x="542" y="84">int</text>
+  <text class="t ent-campo" x="618" y="84">*id_jogo</text>
+  <rect class="faixa" x="527" y="96" width="348" height="36"/>
+  <text class="t ent-tipo" x="542" y="120">texto</text>
+  <text class="t ent-campo" x="618" y="120">titulo</text>
+  <text class="t ent-tipo" x="542" y="156">int</text>
+  <text class="t ent-campo" x="618" y="156">id_plataforma</text>
+  <text class="t ent-chave" x="860" y="156">CE/FK</text>
+  <rect class="ent-borda" x="526" y="16" width="350" height="152" rx="4"/>
+  <path class="lig" d="M350 80 V104"/>
+  <path class="lig" d="M362 80 V104"/>
+  <path class="lig" d="M508 92 L526 80 M508 92 L526 92 M508 92 L526 104"/>
+  <circle class="lig-o" cx="498 " cy="92" r="6.5"/>
+  <path class="lig" d="M372 92 H397.2"/>
+  <path class="lig" d="M464.8 92 H490"/>
+  <text class="t verbo" x="431" y="98">possui</text>
 </svg>

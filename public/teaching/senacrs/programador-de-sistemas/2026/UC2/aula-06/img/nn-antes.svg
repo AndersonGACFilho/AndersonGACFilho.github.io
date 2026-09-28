@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 912 148" width="912" height="148"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 892 148" width="892" height="148"
      role="img" aria-label="O N para N entre CLIENTE e JOGO, com pe de galinha nas duas pontas. A data da retirada nao cabe em nenhuma das duas caixas.">
   <style>
     /* @estilo-padrao */
@@ -181,9 +181,12 @@
     .ent-campo { fill: #ffffff; }
     .ent-chave { fill: #ffc287; }
     .lig       { stroke: #cfe0f5; }
-    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
     .verbo     { fill: #cfe0f5; }
     .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -192,28 +195,29 @@
     /* @fim */
   </style>
 
-  <rect class="ent" x="16" y="16" width="330" height="116" rx="4"/>
-  <path class="cab" d="M20 16 H342 a4 4 0 0 1 4 4 V60 H16 V20 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="181" y="45">CLIENTE</text>
+  <rect class="ent" x="16" y="16" width="320" height="116" rx="4"/>
+  <path class="cab" d="M20 16 H332 a4 4 0 0 1 4 4 V60 H16 V20 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="176" y="45">CLIENTE</text>
   <text class="t ent-tipo" x="32" y="84">int</text>
   <text class="t ent-campo" x="108" y="84">*id_cliente</text>
-  <rect class="faixa" x="17" y="96" width="328" height="36"/>
+  <rect class="faixa" x="17" y="96" width="318" height="36"/>
   <text class="t ent-tipo" x="32" y="120">texto</text>
   <text class="t ent-campo" x="108" y="120">nome</text>
-  <rect class="ent-borda" x="16" y="16" width="330" height="116" rx="4"/>
-  <rect class="ent" x="536" y="16" width="360" height="116" rx="4"/>
-  <path class="cab" d="M540 16 H892 a4 4 0 0 1 4 4 V60 H536 V20 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="716" y="45">JOGO</text>
-  <text class="t ent-tipo" x="552" y="84">int</text>
-  <text class="t ent-campo" x="628" y="84">*id_jogo</text>
-  <rect class="faixa" x="537" y="96" width="358" height="36"/>
-  <text class="t ent-tipo" x="552" y="120">texto</text>
-  <text class="t ent-campo" x="628" y="120">titulo</text>
-  <rect class="ent-borda" x="536" y="16" width="360" height="116" rx="4"/>
-  <path class="lig" d="M360 74 L346 65 M360 74 L346 74 M360 74 L346 83"/>
-  <circle class="lig-o" cx="372" cy="74" r="5"/>
-  <path class="lig" d="M522 74 L536 65 M522 74 L536 74 M522 74 L536 83"/>
-  <circle class="lig-o" cx="510" cy="74" r="5"/>
-  <path class="lig" d="M382 74 H500"/>
-  <text class="t verbo" x="441" y="80">aluga</text>
+  <rect class="ent-borda" x="16" y="16" width="320" height="116" rx="4"/>
+  <rect class="ent" x="526" y="16" width="350" height="116" rx="4"/>
+  <path class="cab" d="M530 16 H872 a4 4 0 0 1 4 4 V60 H526 V20 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="701" y="45">JOGO</text>
+  <text class="t ent-tipo" x="542" y="84">int</text>
+  <text class="t ent-campo" x="618" y="84">*id_jogo</text>
+  <rect class="faixa" x="527" y="96" width="348" height="36"/>
+  <text class="t ent-tipo" x="542" y="120">texto</text>
+  <text class="t ent-campo" x="618" y="120">titulo</text>
+  <rect class="ent-borda" x="526" y="16" width="350" height="116" rx="4"/>
+  <path class="lig" d="M354 74 L336 62 M354 74 L336 74 M354 74 L336 86"/>
+  <circle class="lig-o" cx="364 " cy="74" r="6.5"/>
+  <path class="lig" d="M508 74 L526 62 M508 74 L526 74 M508 74 L526 86"/>
+  <circle class="lig-o" cx="498 " cy="74" r="6.5"/>
+  <path class="lig" d="M372 74 H401.5"/>
+  <path class="lig" d="M460.5 74 H490"/>
+  <text class="t verbo" x="431" y="80">aluga</text>
 </svg>

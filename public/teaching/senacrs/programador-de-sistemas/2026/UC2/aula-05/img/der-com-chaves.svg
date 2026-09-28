@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 416" width="1092" height="416"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 424" width="1092" height="424"
      role="img" aria-label="O DER da locadora com as chaves marcadas: asterisco na chave primaria e CE barra FK nas chaves estrangeiras de JOGO e de EMPRESTIMO.">
   <style>
     /* @estilo-padrao */
@@ -181,9 +181,12 @@
     .ent-campo { fill: #ffffff; }
     .ent-chave { fill: #ffc287; }
     .lig       { stroke: #cfe0f5; }
-    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
     .verbo     { fill: #cfe0f5; }
     .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -192,77 +195,86 @@
     /* @fim */
   </style>
 
-  <rect class="ent" x="16" y="132" width="268" height="152" rx="4"/>
-  <path class="cab" d="M20 132 H280 a4 4 0 0 1 4 4 V176 H16 V136 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="150" y="161">PLATAFORMA</text>
-  <text class="t ent-tipo" x="32" y="200">int</text>
-  <text class="t ent-campo" x="108" y="200">*id_plataforma</text>
-  <rect class="faixa" x="17" y="212" width="266" height="36"/>
-  <text class="t ent-tipo" x="32" y="236">texto</text>
-  <text class="t ent-campo" x="108" y="236">nome</text>
-  <text class="t ent-tipo" x="32" y="272">texto</text>
-  <text class="t ent-campo" x="108" y="272">fabricante</text>
-  <rect class="ent-borda" x="16" y="132" width="268" height="152" rx="4"/>
-  <rect class="ent" x="386" y="16" width="320" height="188" rx="4"/>
-  <path class="cab" d="M390 16 H702 a4 4 0 0 1 4 4 V60 H386 V20 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="546" y="45">JOGO</text>
-  <text class="t ent-tipo" x="402" y="84">int</text>
-  <text class="t ent-campo" x="478" y="84">*id_jogo</text>
-  <rect class="faixa" x="387" y="96" width="318" height="36"/>
-  <text class="t ent-tipo" x="402" y="120">texto</text>
-  <text class="t ent-campo" x="478" y="120">titulo</text>
-  <text class="t ent-tipo" x="402" y="156">texto</text>
-  <text class="t ent-campo" x="478" y="156">genero</text>
-  <rect class="faixa" x="387" y="168" width="318" height="36"/>
-  <text class="t ent-tipo" x="402" y="192">int</text>
-  <text class="t ent-campo" x="478" y="192">id_plataforma</text>
-  <text class="t ent-chave" x="690" y="192">CE/FK</text>
-  <rect class="ent-borda" x="386" y="16" width="320" height="188" rx="4"/>
-  <rect class="ent" x="386" y="248" width="320" height="152" rx="4"/>
-  <path class="cab" d="M390 248 H702 a4 4 0 0 1 4 4 V292 H386 V252 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="546" y="277">CLIENTE</text>
-  <text class="t ent-tipo" x="402" y="316">int</text>
-  <text class="t ent-campo" x="478" y="316">*id_cliente</text>
-  <rect class="faixa" x="387" y="328" width="318" height="36"/>
-  <text class="t ent-tipo" x="402" y="352">texto</text>
-  <text class="t ent-campo" x="478" y="352">nome</text>
-  <text class="t ent-tipo" x="402" y="388">texto</text>
-  <text class="t ent-campo" x="478" y="388">telefone</text>
-  <rect class="ent-borda" x="386" y="248" width="320" height="152" rx="4"/>
-  <rect class="ent" x="756" y="96" width="320" height="224" rx="4"/>
-  <path class="cab-q" d="M760 96 H1072 a4 4 0 0 1 4 4 V140 H756 V100 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="916" y="125">EMPRESTIMO</text>
-  <text class="t ent-tipo" x="772" y="164">int</text>
-  <text class="t ent-campo" x="848" y="164">*id_emprestimo</text>
-  <rect class="faixa" x="757" y="176" width="318" height="36"/>
-  <text class="t ent-tipo" x="772" y="200">int</text>
-  <text class="t ent-campo" x="848" y="200">id_jogo</text>
-  <text class="t ent-chave" x="1060" y="200">CE/FK</text>
-  <text class="t ent-tipo" x="772" y="236">int</text>
-  <text class="t ent-campo" x="848" y="236">id_cliente</text>
-  <text class="t ent-chave" x="1060" y="236">CE/FK</text>
-  <rect class="faixa" x="757" y="248" width="318" height="36"/>
-  <text class="t ent-tipo" x="772" y="272">data</text>
-  <text class="t ent-campo" x="848" y="272">data_retirada</text>
-  <text class="t ent-tipo" x="772" y="308">data</text>
-  <text class="t ent-campo" x="848" y="308">data_prevista</text>
-  <rect class="ent-borda" x="756" y="96" width="320" height="224" rx="4"/>
-  <path class="lig" d="M296 199 V217"/>
-  <path class="lig" d="M308 199 V217"/>
-  <path class="lig" d="M372 110 L386 101 M372 110 L386 110 M372 110 L386 119"/>
-  <circle class="lig-o" cx="360" cy="110" r="5"/>
-  <path class="lig" d="M320 208 H325 Q335 208 335 198 V120 Q335 110 345 110 H350"/>
-  <text class="t verbo" x="335" y="165">possui</text>
-  <path class="lig" d="M718 101 V119"/>
-  <path class="lig" d="M730 101 V119"/>
-  <path class="lig" d="M742 182 L756 173 M742 182 L756 182 M742 182 L756 191"/>
-  <circle class="lig-o" cx="730" cy="182" r="5"/>
-  <path class="lig" d="M742 110 H721 Q731 110 731 120 V172 Q731 182 741 182 H720"/>
-  <text class="t verbo" x="731" y="152">aparece em</text>
-  <path class="lig" d="M718 315 V333"/>
-  <path class="lig" d="M730 315 V333"/>
-  <path class="lig" d="M742 234 L756 225 M742 234 L756 234 M742 234 L756 243"/>
-  <circle class="lig-o" cx="730" cy="234" r="5"/>
-  <path class="lig" d="M742 324 H721 Q731 324 731 314 V244 Q731 234 741 234 H720"/>
-  <text class="t verbo" x="731" y="285">faz</text>
+  <rect class="ent" x="16" y="136" width="240" height="152" rx="4"/>
+  <path class="cab" d="M20 136 H252 a4 4 0 0 1 4 4 V180 H16 V140 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="136" y="165">PLATAFORMA</text>
+  <text class="t ent-tipo" x="32" y="204">int</text>
+  <text class="t ent-campo" x="108" y="204">*id_plataforma</text>
+  <rect class="faixa" x="17" y="216" width="238" height="36"/>
+  <text class="t ent-tipo" x="32" y="240">texto</text>
+  <text class="t ent-campo" x="108" y="240">nome</text>
+  <text class="t ent-tipo" x="32" y="276">texto</text>
+  <text class="t ent-campo" x="108" y="276">fabricante</text>
+  <rect class="ent-borda" x="16" y="136" width="240" height="152" rx="4"/>
+  <rect class="ent" x="376" y="16" width="300" height="188" rx="4"/>
+  <path class="cab" d="M380 16 H672 a4 4 0 0 1 4 4 V60 H376 V20 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="526" y="45">JOGO</text>
+  <text class="t ent-tipo" x="392" y="84">int</text>
+  <text class="t ent-campo" x="468" y="84">*id_jogo</text>
+  <rect class="faixa" x="377" y="96" width="298" height="36"/>
+  <text class="t ent-tipo" x="392" y="120">texto</text>
+  <text class="t ent-campo" x="468" y="120">titulo</text>
+  <text class="t ent-tipo" x="392" y="156">texto</text>
+  <text class="t ent-campo" x="468" y="156">genero</text>
+  <rect class="faixa" x="377" y="168" width="298" height="36"/>
+  <text class="t ent-tipo" x="392" y="192">int</text>
+  <text class="t ent-campo" x="468" y="192">id_plataforma</text>
+  <text class="t ent-chave" x="660" y="192">CE/FK</text>
+  <rect class="ent-borda" x="376" y="16" width="300" height="188" rx="4"/>
+  <rect class="ent" x="376" y="256" width="300" height="152" rx="4"/>
+  <path class="cab" d="M380 256 H672 a4 4 0 0 1 4 4 V300 H376 V260 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="526" y="285">CLIENTE</text>
+  <text class="t ent-tipo" x="392" y="324">int</text>
+  <text class="t ent-campo" x="468" y="324">*id_cliente</text>
+  <rect class="faixa" x="377" y="336" width="298" height="36"/>
+  <text class="t ent-tipo" x="392" y="360">texto</text>
+  <text class="t ent-campo" x="468" y="360">nome</text>
+  <text class="t ent-tipo" x="392" y="396">texto</text>
+  <text class="t ent-campo" x="468" y="396">telefone</text>
+  <rect class="ent-borda" x="376" y="256" width="300" height="152" rx="4"/>
+  <rect class="ent" x="796" y="100" width="280" height="224" rx="4"/>
+  <path class="cab-q" d="M800 100 H1072 a4 4 0 0 1 4 4 V144 H796 V104 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="936" y="129">EMPRESTIMO</text>
+  <text class="t ent-tipo" x="812" y="168">int</text>
+  <text class="t ent-campo" x="888" y="168">*id_emprestimo</text>
+  <rect class="faixa" x="797" y="180" width="278" height="36"/>
+  <text class="t ent-tipo" x="812" y="204">int</text>
+  <text class="t ent-campo" x="888" y="204">id_jogo</text>
+  <text class="t ent-chave" x="1060" y="204">CE/FK</text>
+  <text class="t ent-tipo" x="812" y="240">int</text>
+  <text class="t ent-campo" x="888" y="240">id_cliente</text>
+  <text class="t ent-chave" x="1060" y="240">CE/FK</text>
+  <rect class="faixa" x="797" y="252" width="278" height="36"/>
+  <text class="t ent-tipo" x="812" y="276">data</text>
+  <text class="t ent-campo" x="888" y="276">data_retirada</text>
+  <text class="t ent-tipo" x="812" y="312">data</text>
+  <text class="t ent-campo" x="888" y="312">data_prevista</text>
+  <rect class="ent-borda" x="796" y="100" width="280" height="224" rx="4"/>
+  <path class="lig" d="M270 200 V224"/>
+  <path class="lig" d="M282 200 V224"/>
+  <path class="lig" d="M358 110 L376 98 M358 110 L376 110 M358 110 L376 122"/>
+  <circle class="lig-o" cx="348 " cy="110" r="6.5"/>
+  <path class="lig" d="M292 212 H306 Q316 212 316 202"/>
+  <path class="lig" d="M316 202 V174"/>
+  <path class="lig" d="M316 148 V120"/>
+  <text class="t verbo" x="316" y="167">possui</text>
+  <path class="lig" d="M316 120 Q316 110 326 110 H340"/>
+  <path class="lig" d="M690 98 V122"/>
+  <path class="lig" d="M702 98 V122"/>
+  <path class="lig" d="M778 182 L796 170 M778 182 L796 182 M778 182 L796 194"/>
+  <circle class="lig-o" cx="768 " cy="182" r="6.5"/>
+  <path class="lig" d="M712 110 H726 Q736 110 736 120"/>
+  <path class="lig" d="M736 120 V133"/>
+  <path class="lig" d="M736 159 V172"/>
+  <text class="t verbo" x="736" y="152">aparece em</text>
+  <path class="lig" d="M736 172 Q736 182 746 182 H760"/>
+  <path class="lig" d="M690 320 V344"/>
+  <path class="lig" d="M702 320 V344"/>
+  <path class="lig" d="M778 242 L796 230 M778 242 L796 242 M778 242 L796 254"/>
+  <circle class="lig-o" cx="768 " cy="242" r="6.5"/>
+  <path class="lig" d="M712 332 H726 Q736 332 736 322"/>
+  <path class="lig" d="M736 322 V300"/>
+  <path class="lig" d="M736 274 V252"/>
+  <text class="t verbo" x="736" y="293">faz</text>
+  <path class="lig" d="M736 252 Q736 242 746 242 H760"/>
 </svg>

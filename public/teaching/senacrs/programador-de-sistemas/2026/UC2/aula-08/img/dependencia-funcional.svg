@@ -181,9 +181,12 @@
     .ent-campo { fill: #ffffff; }
     .ent-chave { fill: #ffc287; }
     .lig       { stroke: #cfe0f5; }
-    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
     .verbo     { fill: #cfe0f5; }
     .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }

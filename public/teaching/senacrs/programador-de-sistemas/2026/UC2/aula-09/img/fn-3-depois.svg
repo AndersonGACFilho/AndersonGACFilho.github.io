@@ -181,9 +181,12 @@
     .ent-campo { fill: #ffffff; }
     .ent-chave { fill: #ffc287; }
     .lig       { stroke: #cfe0f5; }
-    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
     .verbo     { fill: #cfe0f5; }
     .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -218,10 +221,11 @@
   <text class="t ent-campo" x="608" y="192">id_plataforma</text>
   <text class="t ent-chave" x="880" y="192">CE/FK</text>
   <rect class="ent-borda" x="516" y="16" width="380" height="188" rx="4"/>
-  <path class="lig" d="M358 101 V119"/>
-  <path class="lig" d="M370 101 V119"/>
-  <path class="lig" d="M502 110 L516 101 M502 110 L516 110 M502 110 L516 119"/>
-  <circle class="lig-o" cx="490" cy="110" r="5"/>
-  <path class="lig" d="M382 110 H480"/>
+  <path class="lig" d="M360 98 V122"/>
+  <path class="lig" d="M372 98 V122"/>
+  <path class="lig" d="M498 110 L516 98 M498 110 L516 110 M498 110 L516 122"/>
+  <circle class="lig-o" cx="488 " cy="110" r="6.5"/>
+  <path class="lig" d="M382 110 H397.2"/>
+  <path class="lig" d="M464.8 110 H480"/>
   <text class="t verbo" x="431" y="116">possui</text>
 </svg>

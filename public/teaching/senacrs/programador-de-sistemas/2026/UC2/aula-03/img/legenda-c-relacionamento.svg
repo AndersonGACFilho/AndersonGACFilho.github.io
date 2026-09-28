@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 912 76" width="912" height="76"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 892 116" width="892" height="116"
      role="img" aria-label="O relacionamento: a linha entre PLATAFORMA e JOGO, com o verbo possui em cima e o pe de galinha na ponta.">
   <style>
     /* @estilo-padrao */
@@ -181,9 +181,12 @@
     .ent-campo { fill: #ffffff; }
     .ent-chave { fill: #ffc287; }
     .lig       { stroke: #cfe0f5; }
-    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
     .verbo     { fill: #cfe0f5; }
     .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -192,18 +195,17 @@
     /* @fim */
   </style>
 
-  <rect class="ent" x="16" y="16" width="330" height="44" rx="4"/>
-  <path class="cab" d="M20 16 H342 a4 4 0 0 1 4 4 V60 H16 V20 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="181" y="45">PLATAFORMA</text>
-  <rect class="ent-borda" x="16" y="16" width="330" height="44" rx="4"/>
-  <rect class="ent" x="536" y="16" width="360" height="44" rx="4"/>
-  <path class="cab" d="M540 16 H892 a4 4 0 0 1 4 4 V60 H536 V20 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="716" y="45">JOGO</text>
-  <rect class="ent-borda" x="536" y="16" width="360" height="44" rx="4"/>
-  <path class="lig" d="M358 29 V47"/>
-  <path class="lig" d="M370 29 V47"/>
-  <path class="lig" d="M522 38 L536 29 M522 38 L536 38 M522 38 L536 47"/>
-  <circle class="lig-o" cx="510" cy="38" r="5"/>
-  <path class="lig" d="M382 38 H500"/>
-  <text class="t verbo" x="441" y="44">possui</text>
+  <rect class="ent-so" x="16" y="16" width="320" height="84" rx="6"/>
+  <path class="barra" d="M25 16 H20 a4 4 0 0 0 -4 4 V96 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="180.5" y="66">PLATAFORMA</text>
+  <rect class="ent-so" x="526" y="16" width="350" height="84" rx="6"/>
+  <path class="barra" d="M535 16 H530 a4 4 0 0 0 -4 4 V96 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="705.5" y="66">JOGO</text>
+  <path class="lig" d="M350 46 V70"/>
+  <path class="lig" d="M362 46 V70"/>
+  <path class="lig" d="M508 58 L526 46 M508 58 L526 58 M508 58 L526 70"/>
+  <circle class="lig-o" cx="498 " cy="58" r="6.5"/>
+  <path class="lig" d="M372 58 H397.2"/>
+  <path class="lig" d="M464.8 58 H490"/>
+  <text class="t verbo" x="431" y="64">possui</text>
 </svg>

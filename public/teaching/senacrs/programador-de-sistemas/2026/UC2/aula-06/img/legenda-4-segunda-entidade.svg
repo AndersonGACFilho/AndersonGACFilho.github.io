@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 912 148" width="912" height="148"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 892 148" width="892" height="148"
      role="img" aria-label="Passo 4 da legenda: duas caixas no desenho, ainda sem ligacao entre elas.">
   <style>
     /* @estilo-padrao */
@@ -181,9 +181,12 @@
     .ent-campo { fill: #ffffff; }
     .ent-chave { fill: #ffc287; }
     .lig       { stroke: #cfe0f5; }
-    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
     .verbo     { fill: #cfe0f5; }
     .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -192,22 +195,21 @@
     /* @fim */
   </style>
 
-  <rect class="ent" x="16" y="16" width="330" height="116" rx="4"/>
-  <path class="cab" d="M20 16 H342 a4 4 0 0 1 4 4 V60 H16 V20 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="181" y="45">JOGO</text>
+  <rect class="ent" x="16" y="16" width="320" height="116" rx="4"/>
+  <path class="cab" d="M20 16 H332 a4 4 0 0 1 4 4 V60 H16 V20 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="176" y="45">JOGO</text>
   <text class="t ent-tipo" x="32" y="84">int</text>
   <text class="t ent-campo" x="108" y="84">*id_jogo</text>
-  <rect class="faixa" x="17" y="96" width="328" height="36"/>
+  <rect class="faixa" x="17" y="96" width="318" height="36"/>
   <text class="t ent-tipo" x="32" y="120">texto</text>
   <text class="t ent-campo" x="108" y="120">titulo</text>
-  <rect class="ent-borda" x="16" y="16" width="330" height="116" rx="4"/>
-  <rect class="ent" x="536" y="52" width="360" height="44" rx="4"/>
-  <path class="cab" d="M540 52 H892 a4 4 0 0 1 4 4 V96 H536 V56 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="716" y="81">PLATAFORMA</text>
-  <rect class="ent-borda" x="536" y="52" width="360" height="44" rx="4"/>
-  <path class="lig" d="M358 65 V83"/>
-  <path class="lig" d="M370 65 V83"/>
-  <path class="lig" d="M522 74 L536 65 M522 74 L536 74 M522 74 L536 83"/>
-  <circle class="lig-o" cx="510" cy="74" r="5"/>
-  <path class="lig" d="M382 74 H500"/>
+  <rect class="ent-borda" x="16" y="16" width="320" height="116" rx="4"/>
+  <rect class="ent-so" x="526" y="32" width="350" height="84" rx="6"/>
+  <path class="barra" d="M535 32 H530 a4 4 0 0 0 -4 4 V112 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="705.5" y="82">PLATAFORMA</text>
+  <path class="lig" d="M350 62 V86"/>
+  <path class="lig" d="M362 62 V86"/>
+  <path class="lig" d="M508 74 L526 62 M508 74 L526 74 M508 74 L526 86"/>
+  <circle class="lig-o" cx="498 " cy="74" r="6.5"/>
+  <path class="lig" d="M372 74 H490"/>
 </svg>

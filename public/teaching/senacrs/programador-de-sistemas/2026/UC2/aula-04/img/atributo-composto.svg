@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 882 184" width="882" height="184"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 862 184" width="862" height="184"
      role="img" aria-label="CLIENTE_RUIM guarda o endereco inteiro numa coluna so; CLIENTE_BOM separa em logradouro e cidade.">
   <style>
     /* @estilo-padrao */
@@ -181,9 +181,12 @@
     .ent-campo { fill: #ffffff; }
     .ent-chave { fill: #ffc287; }
     .lig       { stroke: #cfe0f5; }
-    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
     .verbo     { fill: #cfe0f5; }
     .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -192,30 +195,31 @@
     /* @fim */
   </style>
 
-  <rect class="ent" x="16" y="34" width="360" height="116" rx="4"/>
-  <path class="cab" d="M20 34 H372 a4 4 0 0 1 4 4 V78 H16 V38 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="196" y="63">CLIENTE_RUIM</text>
+  <rect class="ent" x="16" y="34" width="340" height="116" rx="4"/>
+  <path class="cab" d="M20 34 H352 a4 4 0 0 1 4 4 V78 H16 V38 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="186" y="63">CLIENTE_RUIM</text>
   <text class="t ent-tipo" x="32" y="102">texto</text>
   <text class="t ent-campo" x="108" y="102">nome</text>
-  <rect class="faixa" x="17" y="114" width="358" height="36"/>
+  <rect class="faixa" x="17" y="114" width="338" height="36"/>
   <text class="t ent-tipo" x="32" y="138">texto</text>
   <text class="t ent-campo" x="108" y="138">endereco_completo</text>
-  <rect class="ent-borda" x="16" y="34" width="360" height="116" rx="4"/>
-  <rect class="ent" x="526" y="16" width="340" height="152" rx="4"/>
-  <path class="cab" d="M530 16 H862 a4 4 0 0 1 4 4 V60 H526 V20 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="696" y="45">CLIENTE_BOM</text>
-  <text class="t ent-tipo" x="542" y="84">texto</text>
-  <text class="t ent-campo" x="618" y="84">nome</text>
-  <rect class="faixa" x="527" y="96" width="338" height="36"/>
-  <text class="t ent-tipo" x="542" y="120">texto</text>
-  <text class="t ent-campo" x="618" y="120">logradouro</text>
-  <text class="t ent-tipo" x="542" y="156">texto</text>
-  <text class="t ent-campo" x="618" y="156">cidade</text>
-  <rect class="ent-borda" x="526" y="16" width="340" height="152" rx="4"/>
-  <path class="lig" d="M388 83 V101"/>
-  <path class="lig" d="M400 83 V101"/>
-  <path class="lig" d="M514 83 V101"/>
-  <path class="lig" d="M502 83 V101"/>
-  <path class="lig" d="M412 92 H490"/>
-  <text class="t verbo" x="451" y="98">o mesmo cliente</text>
+  <rect class="ent-borda" x="16" y="34" width="340" height="116" rx="4"/>
+  <rect class="ent" x="516" y="16" width="330" height="152" rx="4"/>
+  <path class="cab" d="M520 16 H842 a4 4 0 0 1 4 4 V60 H516 V20 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="681" y="45">CLIENTE_BOM</text>
+  <text class="t ent-tipo" x="532" y="84">texto</text>
+  <text class="t ent-campo" x="608" y="84">nome</text>
+  <rect class="faixa" x="517" y="96" width="328" height="36"/>
+  <text class="t ent-tipo" x="532" y="120">texto</text>
+  <text class="t ent-campo" x="608" y="120">logradouro</text>
+  <text class="t ent-tipo" x="532" y="156">texto</text>
+  <text class="t ent-campo" x="608" y="156">cidade</text>
+  <rect class="ent-borda" x="516" y="16" width="330" height="152" rx="4"/>
+  <path class="lig" d="M370 80 V104"/>
+  <path class="lig" d="M382 80 V104"/>
+  <path class="lig" d="M502 80 V104"/>
+  <path class="lig" d="M490 80 V104"/>
+  <path class="lig" d="M392 92 H372.1"/>
+  <path class="lig" d="M499.9 92 H480"/>
+  <text class="t verbo" x="436" y="98">mesmo cliente</text>
 </svg>

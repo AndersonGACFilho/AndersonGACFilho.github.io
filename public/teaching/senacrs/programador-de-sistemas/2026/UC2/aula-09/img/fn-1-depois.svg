@@ -181,9 +181,12 @@
     .ent-campo { fill: #ffffff; }
     .ent-chave { fill: #ffc287; }
     .lig       { stroke: #cfe0f5; }
-    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
     .verbo     { fill: #cfe0f5; }
     .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -216,10 +219,11 @@
   <text class="t ent-tipo" x="522" y="192">texto</text>
   <text class="t ent-campo" x="598" y="192">tipo</text>
   <rect class="ent-borda" x="506" y="16" width="390" height="188" rx="4"/>
-  <path class="lig" d="M348 101 V119"/>
-  <path class="lig" d="M360 101 V119"/>
-  <path class="lig" d="M492 110 L506 101 M492 110 L506 110 M492 110 L506 119"/>
-  <circle class="lig-o" cx="480" cy="110" r="5"/>
-  <path class="lig" d="M372 110 H470"/>
+  <path class="lig" d="M350 98 V122"/>
+  <path class="lig" d="M362 98 V122"/>
+  <path class="lig" d="M488 110 L506 98 M488 110 L506 110 M488 110 L506 122"/>
+  <circle class="lig-o" cx="478 " cy="110" r="6.5"/>
+  <path class="lig" d="M372 110 H400.1"/>
+  <path class="lig" d="M441.9 110 H470"/>
   <text class="t verbo" x="421" y="116">tem</text>
 </svg>

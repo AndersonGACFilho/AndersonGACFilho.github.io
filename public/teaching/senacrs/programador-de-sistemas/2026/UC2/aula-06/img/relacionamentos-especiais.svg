@@ -181,9 +181,12 @@
     .ent-campo { fill: #ffffff; }
     .ent-chave { fill: #ffc287; }
     .lig       { stroke: #cfe0f5; }
-    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
     .verbo     { fill: #cfe0f5; }
     .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -226,12 +229,14 @@
   <text class="t ent-campo" x="372" y="354">id_jogo_base</text>
   <text class="t ent-chave" x="624" y="354">CE/FK</text>
   <rect class="ent-borda" x="280" y="214" width="360" height="152" rx="4"/>
-  <path class="lig" d="M358 65 V83"/>
-  <path class="lig" d="M370 65 V83"/>
-  <path class="lig" d="M546 92 L560 83 M546 92 L560 92 M546 92 L560 101"/>
-  <circle class="lig-o" cx="534" cy="92" r="5"/>
-  <path class="lig" d="M382 74 H443 Q453 74 453 84 V82 Q453 92 463 92 H524"/>
-  <text class="t verbo" x="453" y="89">contém</text>
+  <path class="lig" d="M360 62 V86"/>
+  <path class="lig" d="M372 62 V86"/>
+  <path class="lig" d="M542 92 L560 80 M542 92 L560 92 M542 92 L560 104"/>
+  <circle class="lig-o" cx="532 " cy="92" r="6.5"/>
+  <path class="lig" d="M382 74 H443 Q453 74 453 84"/>
+  <path class="lig" d="M453 84 V82"/>
+  <text class="t verbo" x="453" y="48">contém</text>
+  <path class="lig" d="M453 82 Q453 92 463 92 H524"/>
   <text class="t nota" x="16" y="400">ITEM_EMPRESTIMO é entidade fraca: sem o empréstimo, ele não é nada.</text>
   <text class="t nota" x="680" y="248">JOGO se liga a ele mesmo:</text>
   <text class="t nota" x="680" y="274">um jogo é DLC de outro jogo.</text>
