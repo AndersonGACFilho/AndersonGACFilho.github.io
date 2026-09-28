@@ -8,9 +8,20 @@
 --
 -- ANTES: rode o locadora-demo.sql.
 --
--- COMO TESTAR SEM ABRIR OUTRA CONEXÃO: o comando SET ROLE faz você "virar"
--- outra role dentro da mesma janela. RESET ROLE te devolve ao postgres. É
--- assim que dá para conferir tudo aqui mesmo, no Query Tool:
+-- ATENÇÃO — ESTE ARQUIVO TESTA DE UM JEITO DIFERENTE DO DA AULA.
+--
+-- Na Aula 16 você testa como um profissional testa: abrindo uma **segunda
+-- conexão de servidor** no pgAdmin, com o usuário e a senha da role nova. O
+-- slide insiste nisso porque conceder GRANT e continuar como `postgres` não
+-- prova nada — o superusuário passa por cima de qualquer restrição.
+--
+-- Aqui, em casa e sozinho, a segunda conexão é fricção demais para um
+-- exercício. Então usamos SET ROLE, que troca de role dentro da mesma janela e
+-- faz o banco aplicar as permissões dela de verdade. É atalho legítimo para
+-- estudar, **não é o que a prática da aula cobra**.
+--
+-- COMO FUNCIONA: SET ROLE faz você "virar" outra role; RESET ROLE te devolve
+-- ao postgres.
 --
 --     SET ROLE oficina_atendente;
 --     SELECT * FROM jogo;            -- passa? não passa?
@@ -273,7 +284,9 @@ SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname LIKE 'oficina_%' ORDER B
 --    SEQUÊNCIA por trás — um objeto separado, com permissão própria. Inserir
 --    sem dizer o id significa pedir o próximo número à sequência, e ela negou.
 --
---    O que falta:
+--    O que falta — e repare que **isto não aparece na Aula 16**: o slide
+--    ensina GRANT em tabela, que é o que a matriz de permissões do projeto
+--    pede. A sequência é a camada que só aparece quando o INSERT quebra.
 --
 --        GRANT USAGE ON SEQUENCE emprestimo_id_emprestimo_seq
 --              TO oficina_atendente;
@@ -339,7 +352,8 @@ SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname LIKE 'oficina_%' ORDER B
 --    Tabela criada depois nasce sem permissão nenhuma, mesmo que você tenha
 --    escrito GRANT SELECT ON ALL TABLES IN SCHEMA public.
 --
---    A ferramenta para isso é:
+--    A ferramenta para isso é — **também fora do que a Aula 16 cobra**, e
+--    aqui porque é o erro que derruba o sistema na primeira migração:
 --
 --        ALTER DEFAULT PRIVILEGES IN SCHEMA public
 --            GRANT SELECT ON TABLES TO oficina_atendente;
