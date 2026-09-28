@@ -38,7 +38,7 @@ os marcadores nas pontas da linha. Depois de hoje, você lê qualquer DER.
 <li data-marpit-fragment="2">Por que <code>idade</code> não é um bom atributo?</li>
 <li data-marpit-fragment="3">Por que <code>telefone</code> é texto e não número?</li>
 </ul>
-<p><img class="center" src="img/legenda-sem-chave.svg" alt="A caixa JOGO sem nenhum atributo marcado como chave" style="width:372px;" /></p>
+<p><img class="center" src="img/legenda-sem-chave.svg" alt="A caixa JOGO sem nenhum atributo marcado como chave" style="width:262px;" /></p>
 <p>Esta é a nossa entidade <code>JOGO</code> de ontem. Falta uma coisa.</p>
 <footer>Aula 05 · 14/10/2026 · Indicadores 2, 4</footer>
 </section>
@@ -122,11 +122,11 @@ fica vazio.
 <div class="cols">
 <div>
 <p>Antes:</p>
-<p><img class="center" src="img/legenda-sem-chave.svg" alt="A caixa JOGO sem nenhum atributo marcado como chave" style="width:260px;" /></p>
+<p><img class="center" src="img/legenda-sem-chave.svg" alt="A caixa JOGO sem nenhum atributo marcado como chave" style="width:262px;" /></p>
 </div>
 <div>
 <p>Depois:</p>
-<p><img class="center" src="img/legenda-com-pk.svg" alt="A caixa JOGO com id_jogo marcado como chave primaria" style="width:300px;" /></p>
+<p><img class="center" src="img/legenda-com-pk.svg" alt="A caixa JOGO com id_jogo marcado como chave primaria" style="width:262px;" /></p>
 </div>
 </div>
 <p>O <code>*id_jogo</code> é a chave primária: cada jogo ganha um número próprio, que não repete.</p>
@@ -276,7 +276,7 @@ outra entidade</strong>. É o que amarra duas entidades uma na outra.
 <header>UC2 · Implementar Banco de Dados</header>
 <h2 id="legenda--a-sigla-cefk">Legenda — a sigla CE/FK</h2>
 <p><strong>Símbolo 5 — a chave estrangeira:</strong> a sigla <code>CE/FK</code> no atributo.</p>
-<p><img class="center" src="img/legenda-com-fk.svg" alt="A chave estrangeira em JOGO apontando para a chave primaria de PLATAFORMA" style="width:810px;" /></p>
+<p><img class="center" src="img/legenda-com-fk.svg" alt="A chave estrangeira em JOGO apontando para a chave primaria de PLATAFORMA" style="width:669px;" /></p>
 <ul>
 <li data-marpit-fragment="1"><code>*id_plataforma</code> em <code>PLATAFORMA</code> é a <strong>chave primária</strong> (asterisco)</li>
 <li data-marpit-fragment="2"><code>id_plataforma</code> em <code>JOGO</code> é a <strong>chave estrangeira</strong> (CE/FK) — aponta para a de cima</li>
@@ -420,7 +420,7 @@ Quem lê num sentido só erra metade do modelo.
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-marpit-fragments="2" data-paginate="true" data-header="UC2 · Implementar Banco de Dados" data-footer="Aula 05 · 14/10/2026 · Indicadores 2, 4" data-theme="senac" lang="pt-BR" data-marpit-pagination="23" style="--paginate:true;--header:UC2 · Implementar Banco de Dados;--footer:Aula 05 · 14/10/2026 · Indicadores 2, 4;--theme:senac;" data-marpit-pagination-total="36" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}">
 <header>UC2 · Implementar Banco de Dados</header>
 <h2 id="legenda--11-um-para-um">Legenda — 1:1 (um para um)</h2>
-<p><img class="center" src="img/card-1-1.svg" alt="Cardinalidade 1 para 1: um cliente tem uma carteirinha, e uma carteirinha pertence a um cliente" style="width:700px;" /></p>
+<p><img class="center" src="img/card-1-1.svg" alt="Cardinalidade 1 para 1: um cliente tem uma carteirinha, e uma carteirinha pertence a um cliente" style="width:533px;" /></p>
 <ul>
 <li data-marpit-fragment="1">Um cliente tem <strong>uma</strong> carteirinha</li>
 <li data-marpit-fragment="2">Uma carteirinha pertence a <strong>um</strong> cliente</li>
@@ -435,7 +435,7 @@ Quem lê num sentido só erra metade do modelo.
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-marpit-fragments="2" data-paginate="true" data-header="UC2 · Implementar Banco de Dados" data-footer="Aula 05 · 14/10/2026 · Indicadores 2, 4" data-theme="senac" lang="pt-BR" data-marpit-pagination="24" style="--paginate:true;--header:UC2 · Implementar Banco de Dados;--footer:Aula 05 · 14/10/2026 · Indicadores 2, 4;--theme:senac;" data-marpit-pagination-total="36" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}">
 <header>UC2 · Implementar Banco de Dados</header>
 <h2 id="legenda--1n-um-para-muitos">Legenda — 1:N (um para muitos)</h2>
-<p><img class="center" src="img/card-1-n.svg" alt="Cardinalidade 1 para N: uma plataforma possui varios jogos, e um jogo pertence a uma plataforma" style="width:760px;" /></p>
+<p><img class="center" src="img/card-1-n.svg" alt="Cardinalidade 1 para N: uma plataforma possui varios jogos, e um jogo pertence a uma plataforma" style="width:555px;" /></p>
 <ul>
 <li data-marpit-fragment="1">Uma plataforma possui <strong>vários</strong> jogos</li>
 <li data-marpit-fragment="2">Um jogo pertence a <strong>uma</strong> plataforma</li>
@@ -450,7 +450,7 @@ fica do lado do pé de galinha.
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-marpit-fragments="2" data-paginate="true" data-header="UC2 · Implementar Banco de Dados" data-footer="Aula 05 · 14/10/2026 · Indicadores 2, 4" data-theme="senac" lang="pt-BR" data-marpit-pagination="25" style="--paginate:true;--header:UC2 · Implementar Banco de Dados;--footer:Aula 05 · 14/10/2026 · Indicadores 2, 4;--theme:senac;" data-marpit-pagination-total="36" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}">
 <header>UC2 · Implementar Banco de Dados</header>
 <h2 id="legenda--nn-muitos-para-muitos">Legenda — N:N (muitos para muitos)</h2>
-<p><img class="center" src="img/card-n-n.svg" alt="Cardinalidade N para N: um cliente aluga varios jogos, e um jogo e alugado por varios clientes" style="width:760px;" /></p>
+<p><img class="center" src="img/card-n-n.svg" alt="Cardinalidade N para N: um cliente aluga varios jogos, e um jogo e alugado por varios clientes" style="width:547px;" /></p>
 <ul>
 <li data-marpit-fragment="1">Um cliente aluga <strong>vários</strong> jogos (ao longo do tempo)</li>
 <li data-marpit-fragment="2">Um jogo é alugado por <strong>vários</strong> clientes</li>
@@ -517,7 +517,7 @@ A pergunta não é "quantos <em>geralmente</em>?" — é "quantos o sistema
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-header="UC2 · Implementar Banco de Dados" data-footer="Aula 05 · 14/10/2026 · Indicadores 2, 4" data-theme="senac" lang="pt-BR" data-marpit-pagination="28" style="--paginate:true;--header:UC2 · Implementar Banco de Dados;--footer:Aula 05 · 14/10/2026 · Indicadores 2, 4;--theme:senac;" data-marpit-pagination-total="36" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}">
 <header>UC2 · Implementar Banco de Dados</header>
 <h2 id="icone-o-modelo-da-locadora-com-tudo-o-que-vimos-hoje"><img src="../_comum/icones/mono/der.svg" alt="icone" /> O modelo da locadora, com tudo o que vimos hoje</h2>
-<p><img class="center" src="img/der-com-chaves.svg" alt="O DER da locadora com a chave primaria marcada por asterisco e as chaves estrangeiras marcadas com CE barra FK" style="width:960px;" /></p>
+<p><img class="center" src="img/der-com-chaves.svg" alt="O DER da locadora com a chave primaria marcada por asterisco e as chaves estrangeiras marcadas com CE barra FK" style="width:1010px;" /></p>
 <p>Os três símbolos de hoje, aplicados: <code>*</code> nas chaves primárias, <code>CE/FK</code> nas estrangeiras e os marcadores de cardinalidade nas pontas de cada linha.</p>
 <footer>Aula 05 · 14/10/2026 · Indicadores 2, 4</footer>
 </section>

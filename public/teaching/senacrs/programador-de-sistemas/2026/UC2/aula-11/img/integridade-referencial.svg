@@ -1,1 +1,189 @@
-<svg width="796" height="224" id="my-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="flowchart" style="background-color: transparent;" viewBox="4 4 796.0831909179688 223.8644561767578" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#my-svg{font-family:Segoe UI,Arial,sans-serif;font-size:18px;fill:#10161c;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#fff4e5;}#my-svg .error-text{fill:#000b1a;stroke:#000b1a;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#5b6771;stroke:#5b6771;}#my-svg .marker.cross{stroke:#5b6771;}#my-svg svg{font-family:Segoe UI,Arial,sans-serif;font-size:18px;}#my-svg p{margin:0;}#my-svg .label{font-family:Segoe UI,Arial,sans-serif;color:#10161c;}#my-svg .cluster-label text{fill:#003d75;}#my-svg .cluster-label span{color:#003d75;}#my-svg .cluster-label span p{background-color:transparent;}#my-svg .label text,#my-svg span{fill:#10161c;color:#10161c;}#my-svg .node rect,#my-svg .node circle,#my-svg .node ellipse,#my-svg .node polygon,#my-svg .node path{fill:#003d75;stroke:#003d75;stroke-width:1px;}#my-svg .rough-node .label text,#my-svg .node .label text,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-anchor:middle;}#my-svg .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#my-svg .rough-node .label,#my-svg .node .label,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-align:center;}#my-svg .node.clickable{cursor:pointer;}#my-svg .root .anchor path{fill:#5b6771!important;stroke-width:0;stroke:#5b6771;}#my-svg .arrowheadPath{fill:#0b0b0b;}#my-svg .edgePaths .path{stroke:#5b6771;stroke-width:1px;}#my-svg .flowchart-link{stroke:#5b6771;fill:none;}#my-svg .edgeLabel{background-color:#ffffff;text-align:center;}#my-svg .edgeLabel p{background-color:#ffffff;}#my-svg .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#my-svg .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#my-svg .cluster rect{fill:#f4f7fa;stroke:#c3ced8;stroke-width:1px;}#my-svg .cluster text{fill:#003d75;}#my-svg .cluster span{color:#003d75;}#my-svg .node .collapsed-indicator{fill:#c3ced8;stroke:none;opacity:0.6;}#my-svg .node .collapsed-separator{stroke:#c3ced8;stroke-width:0.75px;}#my-svg div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Segoe UI,Arial,sans-serif;font-size:12px;background:#fff4e5;border:1px solid hsl(34.6153846154, 60%, 84.9019607843%);border-radius:2px;pointer-events:none;z-index:100;}#my-svg .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#10161c;}#my-svg rect.text{fill:none;stroke-width:0;}#my-svg .icon-shape,#my-svg .image-shape{background-color:#ffffff;text-align:center;}#my-svg .icon-shape p,#my-svg .image-shape p{background-color:#ffffff;padding:2px;}#my-svg .icon-shape .label rect,#my-svg .image-shape .label rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#my-svg .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#my-svg .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#my-svg .node .neo-node{stroke:#003d75;}#my-svg [data-look="neo"].node rect,#my-svg [data-look="neo"].cluster rect,#my-svg [data-look="neo"].node polygon{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].swimlane.cluster rect{filter:none;}#my-svg [data-look="neo"].node path{stroke:url(#my-svg-gradient);stroke-width:1px;}#my-svg [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node .neo-line path{stroke:#003d75;filter:none;}#my-svg [data-look="neo"].node circle{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node circle .state-start{fill:#000000;}#my-svg [data-look="neo"].icon-shape .icon{fill:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].icon-shape .icon-neo path{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg .node .label:not(.attribute-type):not(.attribute-name):not(.attribute-keys):not(.attribute-comment) text,#my-svg .node .label:not(.attribute-type):not(.attribute-name):not(.attribute-keys):not(.attribute-comment) tspan{fill:rgb(255, 255, 255)!important;}#my-svg .label.name text,#my-svg .label.name tspan{font-weight:700!important;}#my-svg .label.attribute-comment text,#my-svg .label.attribute-comment tspan{fill:rgb(138, 66, 0)!important;font-weight:700!important;}#my-svg .label.attribute-type text,#my-svg .label.attribute-type tspan{fill:rgb(91, 103, 113)!important;}#my-svg .label.attribute-name text,#my-svg .label.attribute-name tspan{fill:rgb(16, 22, 28)!important;}#my-svg .edgeLabel .label text,#my-svg .edgeLabel .label tspan{fill:rgb(16, 22, 28)!important;}#my-svg .cluster rect{rx:10;ry:10;}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#my-svg .erro rect{fill:rgb(255, 244, 229)!important;stroke:rgb(240, 115, 0)!important;stroke-width:2px!important;color:rgb(16, 22, 28)!important;}#my-svg .erro polygon{fill:rgb(255, 244, 229)!important;stroke:rgb(240, 115, 0)!important;stroke-width:2px!important;color:rgb(16, 22, 28)!important;}#my-svg .erro ellipse{fill:rgb(255, 244, 229)!important;stroke:rgb(240, 115, 0)!important;stroke-width:2px!important;color:rgb(16, 22, 28)!important;}#my-svg .erro circle{fill:rgb(255, 244, 229)!important;stroke:rgb(240, 115, 0)!important;stroke-width:2px!important;color:rgb(16, 22, 28)!important;}#my-svg .erro path{fill:rgb(255, 244, 229)!important;stroke:rgb(240, 115, 0)!important;stroke-width:2px!important;color:rgb(16, 22, 28)!important;}#my-svg .erro tspan{fill:rgb(16, 22, 28)!important;}</style><g><marker id="my-svg_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointEnd-margin" class="marker flowchart-v2" viewBox="0 0 11.5 14" refX="11.5" refY="7" markerUnits="userSpaceOnUse" markerWidth="10.5" markerHeight="14" orient="auto"><path d="M 0 0 L 11.5 7 L 0 14 z" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointStart-margin" class="marker flowchart-v2" viewBox="0 0 11.5 14" refX="1" refY="7" markerUnits="userSpaceOnUse" markerWidth="11.5" markerHeight="14" orient="auto"><polygon points="0,7 11.5,14 11.5,0" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleEnd-margin" class="marker flowchart-v2" viewBox="0 0 10 10" refY="5" refX="12.25" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleStart-margin" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-2" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossEnd-margin" class="marker cross flowchart-v2" viewBox="0 0 15 15" refX="17.7" refY="7.5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 1,1 L 14,14 M 1,14 L 14,1" class="arrowMarkerPath" style="stroke-width: 2.5;"/></marker><marker id="my-svg_flowchart-v2-crossStart-margin" class="marker cross flowchart-v2" viewBox="0 0 15 15" refX="-3.5" refY="7.5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 1,1 L 14,14 M 1,14 L 14,1" class="arrowMarkerPath" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"/></marker><g class="root"><g class="clusters"/><g class="edges edgePath"><path d="M220.078125,115.9322280883789L256.078125,115.9322280883789" id="my-svg-L_A_B_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_B_0" data-points="W3sieCI6MjIwLjA3ODEyNSwieSI6MTE1LjkzMjIyODA4ODM3ODl9LHsieCI6MjYwLjA3ODEyNSwieSI6MTE1LjkzMjIyODA4ODM3ODl9XQ==" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M441.9595241546631,89.94917106628421L458.45574819625267,84.45042971908767Q467.9425811767578,81.28815205891928 477.9425811767578,81.28815205891928L481.870543162028,81.28815205891928Q487.9425811767578,81.28815205891928 487.9425811767578,87.3601900736491L487.9425811767578,87.3601900736491Q487.9425811767578,93.4322280883789 494.0146191914876,93.4322280883789L554.9183883648923,93.4322280883789Q561.9894561767578,93.4322280883789 561.9894561767578,86.36116027651343L561.9894561767578,59.203296663183835Q561.9894561767578,52.13222885131836 569.0605239886233,52.13222885131836L577.9894561767578,52.13222885131836" id="my-svg-L_B_C_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_C_0" data-points="W3sieCI6NDQxLjk1OTUyNDE1NDY2MzEsInkiOjg5Ljk0OTE3MTA2NjI4NDIxfSx7IngiOjQ2Ny45NDI1ODExNzY3NTc4LCJ5Ijo4MS4yODgxNTIwNTg5MTkyOH0seyJ4Ijo0ODcuOTQyNTgxMTc2NzU3OCwieSI6ODEuMjg4MTUyMDU4OTE5Mjh9LHsieCI6NDg3Ljk0MjU4MTE3Njc1NzgsInkiOjkzLjQzMjIyODA4ODM3ODl9LHsieCI6NTYxLjk4OTQ1NjE3Njc1NzgsInkiOjkzLjQzMjIyODA4ODM3ODl9LHsieCI6NTYxLjk4OTQ1NjE3Njc1NzgsInkiOjUyLjEzMjIyODg1MTMxODM2fSx7IngiOjU4MS45ODk0NTYxNzY3NTc4LCJ5Ijo1Mi4xMzIyMjg4NTEzMTgzNn1d" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M441.95952415466303,141.9152851104737L458.45574819625267,147.4140264576702Q467.9425811767578,150.57630411783856 477.9425811767578,150.57630411783856L481.87054316202796,150.57630411783856Q487.9425811767578,150.57630411783856 487.9425811767578,144.50426610310873L487.9425811767578,144.50426610310873Q487.9425811767578,138.4322280883789 494.01461919148767,138.4322280883789L554.9183883648923,138.4322280883789Q561.9894561767578,138.4322280883789 561.9894561767578,145.50329590024438L561.9894561767578,152.86116027651343Q561.9894561767578,159.9322280883789 569.0605239886233,159.9322280883789L577.9894561767578,159.9322280883789" id="my-svg-L_B_D_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_D_0" data-points="W3sieCI6NDQxLjk1OTUyNDE1NDY2MzAzLCJ5IjoxNDEuOTE1Mjg1MTEwNDczN30seyJ4Ijo0NjcuOTQyNTgxMTc2NzU3OCwieSI6MTUwLjU3NjMwNDExNzgzODU2fSx7IngiOjQ4Ny45NDI1ODExNzY3NTc4LCJ5IjoxNTAuNTc2MzA0MTE3ODM4NTZ9LHsieCI6NDg3Ljk0MjU4MTE3Njc1NzgsInkiOjEzOC40MzIyMjgwODgzNzg5fSx7IngiOjU2MS45ODk0NTYxNzY3NTc4LCJ5IjoxMzguNDMyMjI4MDg4Mzc4OX0seyJ4Ijo1NjEuOTg5NDU2MTc2NzU3OCwieSI6MTU5LjkzMjIyODA4ODM3ODl9LHsieCI6NTgxLjk4OTQ1NjE3Njc1NzgsInkiOjE1OS45MzIyMjgwODgzNzg5fV0=" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(524.9660186767578, 92.9322280883789)"><g class="label" data-id="L_B_C_0" transform="translate(0, -12.000001907348633)"><g><rect class="background" style="" x="-16" y="0.0000019073486328125" width="32" height="24"/><text y="-10.1" text-anchor="middle" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em" text-anchor="middle"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">sim</tspan></tspan></text></g></g></g><g class="edgeLabel" transform="translate(524.9660186767578, 137.9322280883789)"><g class="label" data-id="L_B_D_0" transform="translate(0, -12.000001907348633)"><g><rect class="background" style="" x="-17.0234375" y="0.0000019073486328125" width="34.046875" height="24"/><text y="-10.1" text-anchor="middle" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em" text-anchor="middle"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">nao</tspan></tspan></text></g></g></g></g><g class="nodes"><g class="node default" id="my-svg-flowchart-A-0" data-look="classic" transform="translate(116.0390625, 115.9322280883789)"><rect class="basic label-container" style="" x="-104.0390625" y="-34.400001525878906" width="208.078125" height="68.80000305175781"/><g class="label" style="" transform="translate(0, -20.400001525878906)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">INSERT</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> INTO</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> jogo</tspan></tspan><tspan class="text-outer-tspan row" x="0" y="1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">id_plataforma</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> =</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> 7</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-B-1" data-look="classic" transform="translate(364.0103530883789, 115.9322280883789)"><polygon points="103.9322280883789,0 207.8644561767578,-103.9322280883789 103.9322280883789,-207.8644561767578 0,-103.9322280883789" class="label-container" transform="translate(-103.4322280883789, 103.9322280883789)"/><g class="label" style="" transform="translate(0, -19.900001525878906)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">Existe</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> plataforma</tspan></tspan><tspan class="text-outer-tspan row" x="0" y="1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">com</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> id</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> 7?</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-C-3" data-look="classic" transform="translate(667.5319366455078, 52.13222885131836)"><rect class="basic label-container" style="" x="-85.54248046875" y="-24" width="171.0849609375" height="48"/><g class="label" style="" transform="translate(0, -10)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">Linha</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> gravada</tspan></tspan></text></g></g></g><g class="node default erro" id="my-svg-flowchart-D-5" data-look="classic" transform="translate(687.0363311767578, 159.9322280883789)"><rect class="basic label-container" style="fill:#fff4e5 !important;stroke:#f07300 !important;stroke-width:2px !important" x="-105.046875" y="-43.79999923706055" width="210.09375" height="87.5999984741211"/><g class="label" style="color:#10161c !important" transform="translate(0, -29.799999237060547)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style="fill:#10161c !important"><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">ERRO</tspan></tspan><tspan class="text-outer-tspan row" x="0" y="1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">violates</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> foreign</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> key</tspan></tspan><tspan class="text-outer-tspan row" x="0" y="2.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">constraint</tspan></tspan></text></g></g></g></g></g></g><defs><filter id="my-svg-drop-shadow" height="130%" width="130%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><defs><filter id="my-svg-drop-shadow-small" height="150%" width="150%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><linearGradient id="my-svg-gradient" gradientUnits="objectBoundingBox" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#003d75" stop-opacity="1"/><stop offset="100%" stop-color="hsl(210, 0%, 86.862745098%)" stop-opacity="1"/></linearGradient></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 274" width="1092" height="274"
+     role="img" aria-label="Um INSERT com id_plataforma igual a 7 passa por uma conferencia: existe plataforma com id 7? Se sim, a linha e gravada; se nao, o banco recusa com erro de violacao de chave estrangeira.">
+  <style>
+    /* @estilo-padrao */
+    /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
+     *
+     * POR QUE existe: SVG externo carregado por `img` não importa folha de estilo —
+     * nem `xml-stylesheet`, nem `@import`, nem `link`. Cada arquivo precisa carregar
+     * o próprio bloco. Copiar isto em 28 arquivos faria qualquer ajuste de paleta
+     * virar 28 edições, e uma ficaria para trás.
+     *
+     * Fonte única aqui; `scripts/estilo-diagrama.mjs` injeta entre os marcadores.
+     * Edite AQUI e rode `npm run diagramas:estilo`.
+     *
+     * ---------------------------------------------------------------------------
+     * A IDENTIDADE: a barra esquerda.
+     *
+     * O deck marca o que importa com uma régua laranja à esquerda e o canto direito
+     * arredondado — está no `.atencao` e no título de "mão na massa" do senac.css.
+     * O diagrama usa o mesmo gesto: toda caixa é um cartão com régua à esquerda,
+     * azul quando é conteúdo e laranja quando é o ponto do slide.
+     *
+     * O que veio antes era retângulo azul chapado com texto branco centrado: lia
+     * como fluxograma de ferramenta, não como material desta UC.
+     * ---------------------------------------------------------------------------
+     *
+     * As razões de contraste estão medidas em PADRAO-DIAGRAMA.md.
+     */
+
+    .t    { font-family: 'Raleway', 'Segoe UI', 'Noto Sans', system-ui, sans-serif; fill: #12243a; }
+    .mono { font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace; }
+
+    /* ---------- tipografia ----------
+       Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
+       Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
+    .nome   { font-size: 16px; font-weight: 650; fill: #12243a; }
+    .glosa  { font-size: 13.5px; font-weight: 400; fill: #4a5f75; }
+    .nome-c { font-size: 16px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 13.5px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 15px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 12px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 13.5px; fill: #4a5f75; }
+    .dica   { font-size: 14.5px; fill: #4a5f75; }
+    .seta-rot { font-size: 12.5px; fill: #4a5f75; text-anchor: middle; }
+
+    /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
+       sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
+       dentro de moldura e sujava o desenho. */
+    .eyebrow { font-size: 11.5px; font-weight: 800; letter-spacing: 0.14em; fill: #b34700; }
+    .regua   { stroke: #d9e1e9; stroke-width: 1; fill: none; }
+
+    /* ---------- cartões ----------
+       Largura igual entre irmãos é a razão de desenhar à mão: quem escreve a
+       geometria escreve o mesmo `width`, e não há motor de layout para discordar. */
+    /* O simbolo segue a cor do cartao: azul no comum, laranja no que carrega o
+       ponto do slide. Os icones da pasta `_comum/icones/mono` desenham com
+       `stroke: #FFFFFF`, e o embutidor troca por `currentColor` — dai o `color`
+       aqui mandar em todos eles. */
+    .ico      { color: #01337e; }
+    .q + .ico, .ico.q { color: #e85d00; }
+    .cartao   { fill: #f2f6fa; }
+    .barra    { fill: #01337e; }
+    .cartao.q { fill: #fff1e6; }
+    .barra.q  { fill: #e85d00; }
+
+    /* Caixa cheia: para dado, não para conceito. A tabelinha de células usa isto. */
+    .caixa  { fill: #01337e; stroke: #01337e; stroke-width: 1.5; }
+    .morta  { fill: #eaeff4; stroke: none; }
+    .seta   { stroke: #7d8b99; stroke-width: 1.8; fill: none; }
+
+    /* ---------- selo numerado ---------- */
+    .selo   { fill: #4a5f75; }
+    .numero { font-size: 12.5px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+
+    /*
+     * ---------- o relógio ----------
+     *
+     *    0s - 2s   repouso no estado final   -- e o quadro que o PDF pega
+     *    2s        RESET
+     *    2s -10s   ate quatro turnos de 2s
+     *   10s -12s   repouso no estado final
+     *
+     * Estado se marca por PORCENTAGEM nos keyframes de cada diagrama; atraso
+     * deslocaria o relogio inteiro e cada painel reiniciaria num instante
+     * diferente. O realce abaixo pode usar atraso porque nao guarda estado.
+     *
+     * Nenhuma animacao usa `animation-fill-mode`: durante o atraso o navegador
+     * mostra o estilo normal, que e o estado final. E por isso que o quadro zero
+     * -- o do PDF -- sai completo.
+     */
+    @keyframes acende-barra  { 0%, 16.6% { fill: #e85d00; } 16.7%, 100% { fill: #01337e; } }
+    @keyframes acende-cartao { 0%, 16.6% { fill: #fff1e6; } 16.7%, 100% { fill: #f2f6fa; } }
+    @keyframes acende-selo   { 0%, 16.6% { fill: #ff7809; } 16.7%, 100% { fill: #4a5f75; } }
+    @keyframes acende-numero { 0%, 16.6% { fill: #10161c; } 16.7%, 100% { fill: #ffffff; } }
+    @keyframes acende-tinta  { 0%, 16.6% { fill: #b34700; font-weight: 700; } 16.7%, 100% { fill: #12243a; font-weight: 400; } }
+    @keyframes acende-traco  { 0%, 16.6% { stroke: #e85d00; stroke-width: 3; } 16.7%, 100% { stroke: #7d8b99; stroke-width: 1.8; } }
+
+    .realce .barra  { animation: acende-barra 12s linear infinite; }
+    .realce .cartao { animation: acende-cartao 12s linear infinite; }
+    .realce .selo   { animation: acende-selo 12s linear infinite; }
+    .realce .numero { animation: acende-numero 12s linear infinite; }
+    .tinta          { animation: acende-tinta 12s linear infinite; }
+    .traco          { animation: acende-traco 12s linear infinite; }
+
+    /* O atraso precisa VENCER o atalho `animation` em especificidade: o atalho
+       reescreve `animation-delay` para zero. `.realce .barra` vale 0-2-0, entao um
+       seletor 0-1-0 e ignorado e todos os turnos acendem juntos. Foi o primeiro
+       defeito do primeiro diagrama animado. */
+    .realce.v1 .barra, .realce.v1 .cartao, .realce.v1 .selo, .realce.v1 .numero, .t1.tinta, .t1.traco { animation-delay: 2s; }
+    .realce.v2 .barra, .realce.v2 .cartao, .realce.v2 .selo, .realce.v2 .numero, .t2.tinta, .t2.traco { animation-delay: 4s; }
+    .realce.v3 .barra, .realce.v3 .cartao, .realce.v3 .selo, .realce.v3 .numero, .t3.tinta, .t3.traco { animation-delay: 6s; }
+    .realce.v4 .barra, .realce.v4 .cartao, .realce.v4 .selo, .realce.v4 .numero, .t4.tinta, .t4.traco { animation-delay: 8s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .realce .barra, .realce .cartao, .realce .selo, .realce .numero,
+      .tinta, .traco, .anima { animation: none; }
+    }
+    /* @fim */
+
+    /* So a caixa do erro muda de cor, e so no fim do ciclo: e para a turma
+       associar a mensagem feia do PostgreSQL ao caminho do "nao". */
+    @keyframes recusa       { 0%, 55% { fill: #f2f6fa; } 68%, 100% { fill: #fbeae4; } }
+    @keyframes recusa-barra { 0%, 55% { fill: #01337e; } 68%, 100% { fill: #9c2d0b; } }
+    .cartao.recusa { animation: recusa 12s linear infinite; }
+    .barra.recusa  { animation: recusa-barra 12s linear infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .cartao.recusa { animation: none; fill: #fbeae4; }
+      .barra.recusa  { animation: none; fill: #9c2d0b; }
+    }
+  </style>
+
+  <defs>
+    <marker id="ponta" viewBox="0 0 9 9" refX="8" refY="4.5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <polygon points="0,0 9,4.5 0,9" fill="#7d8b99"/>
+    </marker>
+  </defs>
+  <text class="t eyebrow" x="20" y="26">O QUE O BANCO CONFERE ANTES DE GRAVAR</text>
+  <path class="regua" d="M20 35 H1072"/>
+  <path class="cartao" d="M29 90 H291 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 90 H24 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(43 124) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="14" width="64" height="48" rx="7"/>
+    <path d="M6 32h64M6 47h64"/>
+    <circle cx="74" cy="70" r="16" stroke="currentColor"/>
+    <path d="M74 62v16M66 70h16" stroke="currentColor"/>
+    </g>
+  </g>
+  <text class="t nome" x="89" y="136">INSERT em jogo</text>
+  <text class="t glosa" x="89" y="156">id_plataforma = 7</text>
+  <path class="cartao q" d="M377 90 H649 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H377 Z"/>
+  <path class="barra q" d="M377 90 H372 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(391 124) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 8c22 0 40 16 40 36S70 80 48 80c-4 0-8-.4-11.6-1.3L14 88l5-18C13.9 63.8 8 54.6 8 44 8 24 26 8 48 8Z"/>
+    <path d="M38 36a10 10 0 1 1 13 9.6c-2 .7-3 2.5-3 4.6v3" stroke="currentColor"/>
+    <circle cx="48" cy="62" r="3.5" fill="currentColor" stroke="none"/>
+    </g>
+  </g>
+  <text class="t nome" x="437" y="136">Existe plataforma</text>
+  <text class="t glosa" x="437" y="156">com id 7?</text>
+  <path class="cartao" d="M739 46 H1063 a9 9 0 0 1 9 9 V119 a9 9 0 0 1 -9 9 H739 Z"/>
+  <path class="barra" d="M739 46 H734 a4 4 0 0 0 -4 4 V124 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(753 71) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 8 82 20v26c0 20.6-14 34.8-34 42-20-7.2-34-21.4-34-42V20L48 8Z"/>
+    <path d="m33 46 11 11 21-21" stroke="currentColor"/>
+    </g>
+  </g>
+  <text class="t nome" x="799" y="83">Linha gravada</text>
+  <text class="t glosa" x="799" y="103">a referência existia</text>
+  <path class="cartao recusa" d="M739 156 H1063 a9 9 0 0 1 9 9 V239 a9 9 0 0 1 -9 9 H739 Z"/>
+  <path class="barra recusa" d="M739 156 H734 a4 4 0 0 0 -4 4 V244 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(753 165) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 12 89 82H7L48 12Z"/>
+    <path d="M48 38v20" stroke="currentColor" stroke-width="7"/>
+    <circle cx="48" cy="70" r="3.5" fill="currentColor" stroke="none"/>
+    </g>
+  </g>
+  <text class="t nome" x="799" y="188">ERRO</text>
+  <text class="t glosa" x="799" y="208">violates foreign key</text>
+  <text class="t glosa" x="799" y="226">constraint</text>
+  <path class="seta" d="M307 140 H361" marker-end="url(#ponta)"/>
+  <path class="seta" d="M665 124 C 698 124, 698 87, 724 87" marker-end="url(#ponta)"/>
+  <path class="seta" d="M665 156 C 698 156, 698 202, 724 202" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="696" y="112">sim</text>
+  <text class="t seta-rot" x="696" y="188">não</text>
+</svg>

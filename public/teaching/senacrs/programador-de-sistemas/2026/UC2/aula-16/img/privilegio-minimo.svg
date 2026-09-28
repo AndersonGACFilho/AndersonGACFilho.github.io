@@ -1,1 +1,187 @@
-<svg width="1373" height="294" id="my-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="flowchart" style="background-color: transparent;" viewBox="4 4 1372.937744140625 293.92498779296875" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#my-svg{font-family:Segoe UI,Arial,sans-serif;font-size:18px;fill:#10161c;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#fff4e5;}#my-svg .error-text{fill:#000b1a;stroke:#000b1a;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#5b6771;stroke:#5b6771;}#my-svg .marker.cross{stroke:#5b6771;}#my-svg svg{font-family:Segoe UI,Arial,sans-serif;font-size:18px;}#my-svg p{margin:0;}#my-svg .label{font-family:Segoe UI,Arial,sans-serif;color:#10161c;}#my-svg .cluster-label text{fill:#003d75;}#my-svg .cluster-label span{color:#003d75;}#my-svg .cluster-label span p{background-color:transparent;}#my-svg .label text,#my-svg span{fill:#10161c;color:#10161c;}#my-svg .node rect,#my-svg .node circle,#my-svg .node ellipse,#my-svg .node polygon,#my-svg .node path{fill:#003d75;stroke:#003d75;stroke-width:1px;}#my-svg .rough-node .label text,#my-svg .node .label text,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-anchor:middle;}#my-svg .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#my-svg .rough-node .label,#my-svg .node .label,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-align:center;}#my-svg .node.clickable{cursor:pointer;}#my-svg .root .anchor path{fill:#5b6771!important;stroke-width:0;stroke:#5b6771;}#my-svg .arrowheadPath{fill:#0b0b0b;}#my-svg .edgePaths .path{stroke:#5b6771;stroke-width:1px;}#my-svg .flowchart-link{stroke:#5b6771;fill:none;}#my-svg .edgeLabel{background-color:#ffffff;text-align:center;}#my-svg .edgeLabel p{background-color:#ffffff;}#my-svg .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#my-svg .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#my-svg .cluster rect{fill:#f4f7fa;stroke:#c3ced8;stroke-width:1px;}#my-svg .cluster text{fill:#003d75;}#my-svg .cluster span{color:#003d75;}#my-svg .node .collapsed-indicator{fill:#c3ced8;stroke:none;opacity:0.6;}#my-svg .node .collapsed-separator{stroke:#c3ced8;stroke-width:0.75px;}#my-svg div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Segoe UI,Arial,sans-serif;font-size:12px;background:#fff4e5;border:1px solid hsl(34.6153846154, 60%, 84.9019607843%);border-radius:2px;pointer-events:none;z-index:100;}#my-svg .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#10161c;}#my-svg rect.text{fill:none;stroke-width:0;}#my-svg .icon-shape,#my-svg .image-shape{background-color:#ffffff;text-align:center;}#my-svg .icon-shape p,#my-svg .image-shape p{background-color:#ffffff;padding:2px;}#my-svg .icon-shape .label rect,#my-svg .image-shape .label rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#my-svg .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#my-svg .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#my-svg .node .neo-node{stroke:#003d75;}#my-svg [data-look="neo"].node rect,#my-svg [data-look="neo"].cluster rect,#my-svg [data-look="neo"].node polygon{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].swimlane.cluster rect{filter:none;}#my-svg [data-look="neo"].node path{stroke:url(#my-svg-gradient);stroke-width:1px;}#my-svg [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node .neo-line path{stroke:#003d75;filter:none;}#my-svg [data-look="neo"].node circle{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node circle .state-start{fill:#000000;}#my-svg [data-look="neo"].icon-shape .icon{fill:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].icon-shape .icon-neo path{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg .node .label:not(.attribute-type):not(.attribute-name):not(.attribute-keys):not(.attribute-comment) text,#my-svg .node .label:not(.attribute-type):not(.attribute-name):not(.attribute-keys):not(.attribute-comment) tspan{fill:rgb(255, 255, 255)!important;}#my-svg .label.name text,#my-svg .label.name tspan{font-weight:700!important;}#my-svg .label.attribute-comment text,#my-svg .label.attribute-comment tspan{fill:rgb(138, 66, 0)!important;font-weight:700!important;}#my-svg .label.attribute-type text,#my-svg .label.attribute-type tspan{fill:rgb(91, 103, 113)!important;}#my-svg .label.attribute-name text,#my-svg .label.attribute-name tspan{fill:rgb(16, 22, 28)!important;}#my-svg .edgeLabel .label text,#my-svg .edgeLabel .label tspan{fill:rgb(16, 22, 28)!important;}#my-svg .cluster rect{rx:10;ry:10;}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#my-svg .destaque rect{fill:rgb(240, 115, 0)!important;stroke:rgb(138, 66, 0)!important;stroke-width:2px!important;color:rgb(255, 255, 255)!important;}#my-svg .destaque polygon{fill:rgb(240, 115, 0)!important;stroke:rgb(138, 66, 0)!important;stroke-width:2px!important;color:rgb(255, 255, 255)!important;}#my-svg .destaque ellipse{fill:rgb(240, 115, 0)!important;stroke:rgb(138, 66, 0)!important;stroke-width:2px!important;color:rgb(255, 255, 255)!important;}#my-svg .destaque circle{fill:rgb(240, 115, 0)!important;stroke:rgb(138, 66, 0)!important;stroke-width:2px!important;color:rgb(255, 255, 255)!important;}#my-svg .destaque path{fill:rgb(240, 115, 0)!important;stroke:rgb(138, 66, 0)!important;stroke-width:2px!important;color:rgb(255, 255, 255)!important;}#my-svg .destaque tspan{fill:rgb(255, 255, 255)!important;}</style><g><marker id="my-svg_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointEnd-margin" class="marker flowchart-v2" viewBox="0 0 11.5 14" refX="11.5" refY="7" markerUnits="userSpaceOnUse" markerWidth="10.5" markerHeight="14" orient="auto"><path d="M 0 0 L 11.5 7 L 0 14 z" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointStart-margin" class="marker flowchart-v2" viewBox="0 0 11.5 14" refX="1" refY="7" markerUnits="userSpaceOnUse" markerWidth="11.5" markerHeight="14" orient="auto"><polygon points="0,7 11.5,14 11.5,0" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleEnd-margin" class="marker flowchart-v2" viewBox="0 0 10 10" refY="5" refX="12.25" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleStart-margin" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-2" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossEnd-margin" class="marker cross flowchart-v2" viewBox="0 0 15 15" refX="17.7" refY="7.5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 1,1 L 14,14 M 1,14 L 14,1" class="arrowMarkerPath" style="stroke-width: 2.5;"/></marker><marker id="my-svg_flowchart-v2-crossStart-margin" class="marker cross flowchart-v2" viewBox="0 0 15 15" refX="-3.5" refY="7.5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 1,1 L 14,14 M 1,14 L 14,1" class="arrowMarkerPath" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"/></marker><g class="root"><g class="clusters"/><g class="edges edgePath"><path d="M266.796875,97.06249237060547L279.7258071881345,97.06249237060547Q286.796875,97.06249237060547 286.796875,104.13356018247094L286.796875,110.8914260846189Q286.796875,117.96249389648438 293.8679428118655,117.96249389648438L302.796875,117.96249389648438" id="my-svg-L_A_B_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_B_0" data-points="W3sieCI6MjY2Ljc5Njg3NSwieSI6OTcuMDYyNDkyMzcwNjA1NDd9LHsieCI6Mjg2Ljc5Njg3NSwieSI6OTcuMDYyNDkyMzcwNjA1NDd9LHsieCI6Mjg2Ljc5Njg3NSwieSI6MTE3Ljk2MjQ5Mzg5NjQ4NDM4fSx7IngiOjMwNi43OTY4NzUsInkiOjExNy45NjI0OTM4OTY0ODQzOH1d" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M540.84375,117.96249389648438L553.7726821881345,117.96249389648438Q560.84375,117.96249389648438 560.84375,110.8914260846189L560.84375,88.55231476010766Q560.84375,81.48124694824219 567.9148178118655,81.48124694824219L570.84375,81.48124694824219Q580.84375,81.48124694824219 589.7880219099992,85.95338290324176L623.5868725348284,102.8528082156564" id="my-svg-L_B_C_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_C_0" data-points="W3sieCI6NTQwLjg0Mzc1LCJ5IjoxMTcuOTYyNDkzODk2NDg0Mzh9LHsieCI6NTYwLjg0Mzc1LCJ5IjoxMTcuOTYyNDkzODk2NDg0Mzh9LHsieCI6NTYwLjg0Mzc1LCJ5Ijo4MS40ODEyNDY5NDgyNDIxOX0seyJ4Ijo1ODAuODQzNzUsInkiOjgxLjQ4MTI0Njk0ODI0MjE5fSx7IngiOjYyNy4xNjQ1ODEyOTg4MjgxLCJ5IjoxMDQuNjQxNjYyNTk3NjU2MjJ9XQ==" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M627.1645812988281,197.28332519531253L589.7880219099992,215.971604889727Q580.84375,220.44374084472656 570.84375,220.44374084472656L567.9148178118655,220.44374084472656Q560.84375,220.44374084472656 560.84375,213.3726730328611L560.84375,212.43356323422876Q560.84375,205.36249542236328 553.7726821881345,205.36249542236328L292.19687525431317,205.36249542236328Q286.796875,205.36249542236328 286.796875,210.76249567667645L286.796875,210.76249567667645Q286.796875,216.1624959309896 281.39687474568683,216.1624959309896L270.796875,216.1624959309896" id="my-svg-L_C_D_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C_D_0" data-points="W3sieCI6NjI3LjE2NDU4MTI5ODgyODEsInkiOjE5Ny4yODMzMjUxOTUzMTI1M30seyJ4Ijo1ODAuODQzNzUsInkiOjIyMC40NDM3NDA4NDQ3MjY1Nn0seyJ4Ijo1NjAuODQzNzUsInkiOjIyMC40NDM3NDA4NDQ3MjY1Nn0seyJ4Ijo1NjAuODQzNzUsInkiOjIwNS4zNjI0OTU0MjIzNjMyOH0seyJ4IjoyODYuNzk2ODc1LCJ5IjoyMDUuMzYyNDk1NDIyMzYzMjh9LHsieCI6Mjg2Ljc5Njg3NSwieSI6MjE2LjE2MjQ5NTkzMDk4OTZ9LHsieCI6MjY2Ljc5Njg3NSwieSI6MjE2LjE2MjQ5NTkzMDk4OTZ9XQ==" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M858.7687377929688,150.96249389648438L968.8156127929688,150.96249389648438" id="my-svg-L_C_E_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C_E_0" data-points="W3sieCI6ODU4Ljc2ODczNzc5Mjk2ODgsInkiOjE1MC45NjI0OTM4OTY0ODQzOH0seyJ4Ijo5NzIuODE1NjEyNzkyOTY4OCwieSI6MTUwLjk2MjQ5Mzg5NjQ4NDM4fV0=" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M266.796875,193.56249491373697L279.7258071881345,193.56249491373697Q286.796875,193.56249491373697 286.796875,186.4914271018715L286.796875,178.93356323422876Q286.796875,171.86249542236328 293.8679428118655,171.86249542236328L423.8203125,171.86249542236328L553.7726821881345,171.86249542236328Q560.84375,171.86249542236328 560.84375,164.7914276104978L560.84375,158.03356170834985Q560.84375,150.96249389648438 567.9148178118655,150.96249389648438L576.84375,150.96249389648438" id="my-svg-L_D_C_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_C_0" data-points="W3sieCI6MjY2Ljc5Njg3NSwieSI6MTkzLjU2MjQ5NDkxMzczNjk3fSx7IngiOjI4Ni43OTY4NzUsInkiOjE5My41NjI0OTQ5MTM3MzY5N30seyJ4IjoyODYuNzk2ODc1LCJ5IjoxNzEuODYyNDk1NDIyMzYzMjh9LHsieCI6NDIzLjgyMDMxMjUsInkiOjE3MS44NjI0OTU0MjIzNjMyOH0seyJ4Ijo1NjAuODQzNzUsInkiOjE3MS44NjI0OTU0MjIzNjMyOH0seyJ4Ijo1NjAuODQzNzUsInkiOjE1MC45NjI0OTM4OTY0ODQzOH0seyJ4Ijo1ODAuODQzNzUsInkiOjE1MC45NjI0OTM4OTY0ODQzOH1d" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M1135.8908081054688,150.96249389648438L1171.8908081054688,150.96249389648438" id="my-svg-L_E_F_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E_F_0" data-points="W3sieCI6MTEzNS44OTA4MDgxMDU0Njg4LCJ5IjoxNTAuOTYyNDkzODk2NDg0Mzh9LHsieCI6MTE3NS44OTA4MDgxMDU0Njg4LCJ5IjoxNTAuOTYyNDkzODk2NDg0Mzh9XQ==" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(423.8203125, 204.86249542236328)"><g class="label" data-id="L_C_D_0" transform="translate(0, -12.000001907348633)"><g><rect class="background" style="" x="-16" y="0.0000019073486328125" width="32" height="24"/><text y="-10.1" text-anchor="middle" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em" text-anchor="middle"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">sim</tspan></tspan></text></g></g></g><g class="edgeLabel" transform="translate(915.7921752929688, 150.46249389648438)"><g class="label" data-id="L_C_E_0" transform="translate(0, -12.000001907348633)"><g><rect class="background" style="" x="-17.0234375" y="0.0000019073486328125" width="34.046875" height="24"/><text y="-10.1" text-anchor="middle" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em" text-anchor="middle"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">nao</tspan></tspan></text></g></g></g></g><g class="nodes"><g class="node default" id="my-svg-flowchart-A-0" data-look="classic" transform="translate(185.7646484375, 97.06249237060547)"><rect class="basic label-container" style="" x="-81.0322265625" y="-33.900001525878906" width="162.064453125" height="67.80000305175781"/><g class="label" style="" transform="translate(0, -19.900001525878906)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">Nova</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> pessoa</tspan></tspan><tspan class="text-outer-tspan row" x="0" y="1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">na</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> equipe</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-B-1" data-look="classic" transform="translate(423.8203125, 117.96249389648438)"><rect class="basic label-container" style="" x="-117.0234375" y="-33.900001525878906" width="234.046875" height="67.80000305175781"/><g class="label" style="" transform="translate(0, -19.900001525878906)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">Comece</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> com</tspan></tspan><tspan class="text-outer-tspan row" x="0" y="1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">NENHUMA</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> permissão</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-C-3" data-look="classic" transform="translate(719.8062438964844, 150.96249389648438)"><polygon points="138.9625015258789,0 277.9250030517578,-138.9625015258789 138.9625015258789,-277.9250030517578 0,-138.9625015258789" class="label-container" transform="translate(-138.4625015258789, 138.9625015258789)"/><g class="label" style="" transform="translate(0, -19.900001525878906)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">Ela</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> precisa</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> dessa</tspan></tspan><tspan class="text-outer-tspan row" x="0" y="1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">permissão</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> para</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> trabalhar?</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-D-5" data-look="classic" transform="translate(139.3984375, 204.86249542236328)"><rect class="basic label-container" style="" x="-127.3984375" y="-33.900001525878906" width="254.796875" height="67.80000305175781"/><g class="label" style="" transform="translate(0, -19.900001525878906)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">GRANT</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> só</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> nessa</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> tabela,</tspan></tspan><tspan class="text-outer-tspan row" x="0" y="1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">só</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> nesse</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> verbo</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-E-7" data-look="classic" transform="translate(1054.3532104492188, 150.96249389648438)"><rect class="basic label-container" style="" x="-81.53759765625" y="-24" width="163.0751953125" height="48"/><g class="label" style="" transform="translate(0, -10)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">Não</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> conceda</tspan></tspan></text></g></g></g><g class="node default destaque" id="my-svg-flowchart-F-11" data-look="classic" transform="translate(1272.4142456054688, 150.96249389648438)"><rect class="basic label-container" style="fill:#f07300 !important;stroke:#8a4200 !important;stroke-width:2px !important" x="-96.5234375" y="-33.900001525878906" width="193.046875" height="67.80000305175781"/><g class="label" style="color:#ffffff !important" transform="translate(0, -19.900001525878906)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style="fill:#ffffff !important"><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">Privilégio</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> mínimo</tspan></tspan><tspan class="text-outer-tspan row" x="0" y="1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">atingido</tspan></tspan></text></g></g></g></g></g></g><defs><filter id="my-svg-drop-shadow" height="130%" width="130%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><defs><filter id="my-svg-drop-shadow-small" height="150%" width="150%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><linearGradient id="my-svg-gradient" gradientUnits="objectBoundingBox" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#003d75" stop-opacity="1"/><stop offset="100%" stop-color="hsl(210, 0%, 86.862745098%)" stop-opacity="1"/></linearGradient></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 272" width="1092" height="272"
+     role="img" aria-label="O caminho do privilegio minimo: a pessoa nova comeca sem permissao nenhuma, e para cada tabela e cada verbo se pergunta se ela precisa daquilo para trabalhar. Se sim, GRANT so naquilo; se nao, nao concede.">
+  <style>
+    /* @estilo-padrao */
+    /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
+     *
+     * POR QUE existe: SVG externo carregado por `img` não importa folha de estilo —
+     * nem `xml-stylesheet`, nem `@import`, nem `link`. Cada arquivo precisa carregar
+     * o próprio bloco. Copiar isto em 28 arquivos faria qualquer ajuste de paleta
+     * virar 28 edições, e uma ficaria para trás.
+     *
+     * Fonte única aqui; `scripts/estilo-diagrama.mjs` injeta entre os marcadores.
+     * Edite AQUI e rode `npm run diagramas:estilo`.
+     *
+     * ---------------------------------------------------------------------------
+     * A IDENTIDADE: a barra esquerda.
+     *
+     * O deck marca o que importa com uma régua laranja à esquerda e o canto direito
+     * arredondado — está no `.atencao` e no título de "mão na massa" do senac.css.
+     * O diagrama usa o mesmo gesto: toda caixa é um cartão com régua à esquerda,
+     * azul quando é conteúdo e laranja quando é o ponto do slide.
+     *
+     * O que veio antes era retângulo azul chapado com texto branco centrado: lia
+     * como fluxograma de ferramenta, não como material desta UC.
+     * ---------------------------------------------------------------------------
+     *
+     * As razões de contraste estão medidas em PADRAO-DIAGRAMA.md.
+     */
+
+    .t    { font-family: 'Raleway', 'Segoe UI', 'Noto Sans', system-ui, sans-serif; fill: #12243a; }
+    .mono { font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace; }
+
+    /* ---------- tipografia ----------
+       Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
+       Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
+    .nome   { font-size: 16px; font-weight: 650; fill: #12243a; }
+    .glosa  { font-size: 13.5px; font-weight: 400; fill: #4a5f75; }
+    .nome-c { font-size: 16px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 13.5px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 15px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 12px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 13.5px; fill: #4a5f75; }
+    .dica   { font-size: 14.5px; fill: #4a5f75; }
+    .seta-rot { font-size: 12.5px; fill: #4a5f75; text-anchor: middle; }
+
+    /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
+       sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
+       dentro de moldura e sujava o desenho. */
+    .eyebrow { font-size: 11.5px; font-weight: 800; letter-spacing: 0.14em; fill: #b34700; }
+    .regua   { stroke: #d9e1e9; stroke-width: 1; fill: none; }
+
+    /* ---------- cartões ----------
+       Largura igual entre irmãos é a razão de desenhar à mão: quem escreve a
+       geometria escreve o mesmo `width`, e não há motor de layout para discordar. */
+    /* O simbolo segue a cor do cartao: azul no comum, laranja no que carrega o
+       ponto do slide. Os icones da pasta `_comum/icones/mono` desenham com
+       `stroke: #FFFFFF`, e o embutidor troca por `currentColor` — dai o `color`
+       aqui mandar em todos eles. */
+    .ico      { color: #01337e; }
+    .q + .ico, .ico.q { color: #e85d00; }
+    .cartao   { fill: #f2f6fa; }
+    .barra    { fill: #01337e; }
+    .cartao.q { fill: #fff1e6; }
+    .barra.q  { fill: #e85d00; }
+
+    /* Caixa cheia: para dado, não para conceito. A tabelinha de células usa isto. */
+    .caixa  { fill: #01337e; stroke: #01337e; stroke-width: 1.5; }
+    .morta  { fill: #eaeff4; stroke: none; }
+    .seta   { stroke: #7d8b99; stroke-width: 1.8; fill: none; }
+
+    /* ---------- selo numerado ---------- */
+    .selo   { fill: #4a5f75; }
+    .numero { font-size: 12.5px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+
+    /*
+     * ---------- o relógio ----------
+     *
+     *    0s - 2s   repouso no estado final   -- e o quadro que o PDF pega
+     *    2s        RESET
+     *    2s -10s   ate quatro turnos de 2s
+     *   10s -12s   repouso no estado final
+     *
+     * Estado se marca por PORCENTAGEM nos keyframes de cada diagrama; atraso
+     * deslocaria o relogio inteiro e cada painel reiniciaria num instante
+     * diferente. O realce abaixo pode usar atraso porque nao guarda estado.
+     *
+     * Nenhuma animacao usa `animation-fill-mode`: durante o atraso o navegador
+     * mostra o estilo normal, que e o estado final. E por isso que o quadro zero
+     * -- o do PDF -- sai completo.
+     */
+    @keyframes acende-barra  { 0%, 16.6% { fill: #e85d00; } 16.7%, 100% { fill: #01337e; } }
+    @keyframes acende-cartao { 0%, 16.6% { fill: #fff1e6; } 16.7%, 100% { fill: #f2f6fa; } }
+    @keyframes acende-selo   { 0%, 16.6% { fill: #ff7809; } 16.7%, 100% { fill: #4a5f75; } }
+    @keyframes acende-numero { 0%, 16.6% { fill: #10161c; } 16.7%, 100% { fill: #ffffff; } }
+    @keyframes acende-tinta  { 0%, 16.6% { fill: #b34700; font-weight: 700; } 16.7%, 100% { fill: #12243a; font-weight: 400; } }
+    @keyframes acende-traco  { 0%, 16.6% { stroke: #e85d00; stroke-width: 3; } 16.7%, 100% { stroke: #7d8b99; stroke-width: 1.8; } }
+
+    .realce .barra  { animation: acende-barra 12s linear infinite; }
+    .realce .cartao { animation: acende-cartao 12s linear infinite; }
+    .realce .selo   { animation: acende-selo 12s linear infinite; }
+    .realce .numero { animation: acende-numero 12s linear infinite; }
+    .tinta          { animation: acende-tinta 12s linear infinite; }
+    .traco          { animation: acende-traco 12s linear infinite; }
+
+    /* O atraso precisa VENCER o atalho `animation` em especificidade: o atalho
+       reescreve `animation-delay` para zero. `.realce .barra` vale 0-2-0, entao um
+       seletor 0-1-0 e ignorado e todos os turnos acendem juntos. Foi o primeiro
+       defeito do primeiro diagrama animado. */
+    .realce.v1 .barra, .realce.v1 .cartao, .realce.v1 .selo, .realce.v1 .numero, .t1.tinta, .t1.traco { animation-delay: 2s; }
+    .realce.v2 .barra, .realce.v2 .cartao, .realce.v2 .selo, .realce.v2 .numero, .t2.tinta, .t2.traco { animation-delay: 4s; }
+    .realce.v3 .barra, .realce.v3 .cartao, .realce.v3 .selo, .realce.v3 .numero, .t3.tinta, .t3.traco { animation-delay: 6s; }
+    .realce.v4 .barra, .realce.v4 .cartao, .realce.v4 .selo, .realce.v4 .numero, .t4.tinta, .t4.traco { animation-delay: 8s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .realce .barra, .realce .cartao, .realce .selo, .realce .numero,
+      .tinta, .traco, .anima { animation: none; }
+    }
+    /* @fim */
+  </style>
+
+  <defs>
+    <marker id="ponta" viewBox="0 0 9 9" refX="8" refY="4.5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <polygon points="0,0 9,4.5 0,9" fill="#7d8b99"/>
+    </marker>
+  </defs>
+  <text class="t eyebrow" x="20" y="26">COMO SE CHEGA AO PRIVILÉGIO MÍNIMO</text>
+  <path class="regua" d="M20 35 H1072"/>
+  <path class="cartao" d="M29 82 H261 a9 9 0 0 1 9 9 V173 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 82 H24 a4 4 0 0 0 -4 4 V178 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(43 116) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="48" cy="30" r="15" stroke="currentColor"/>
+    <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
+    </g>
+  </g>
+  <text class="t nome" x="89" y="128">Nova pessoa</text>
+  <text class="t glosa" x="89" y="148">na equipe</text>
+  <path class="cartao" d="M337 82 H569 a9 9 0 0 1 9 9 V173 a9 9 0 0 1 -9 9 H337 Z"/>
+  <path class="barra" d="M337 82 H332 a4 4 0 0 0 -4 4 V178 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(351 116) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="18" y="42" width="60" height="44" rx="9"/>
+    <path d="M32 42V29a16 16 0 0 1 32 0v13"/>
+    <path d="M48 58v13" stroke="currentColor" stroke-width="7"/>
+    </g>
+  </g>
+  <text class="t nome" x="397" y="128">Comece com</text>
+  <text class="t glosa" x="397" y="148">NENHUMA permissão</text>
+  <path class="cartao q" d="M645 82 H877 a9 9 0 0 1 9 9 V173 a9 9 0 0 1 -9 9 H645 Z"/>
+  <path class="barra q" d="M645 82 H640 a4 4 0 0 0 -4 4 V178 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(659 116) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 8c22 0 40 16 40 36S70 80 48 80c-4 0-8-.4-11.6-1.3L14 88l5-18C13.9 63.8 8 54.6 8 44 8 24 26 8 48 8Z"/>
+    <path d="M38 36a10 10 0 1 1 13 9.6c-2 .7-3 2.5-3 4.6v3" stroke="currentColor"/>
+    <circle cx="48" cy="62" r="3.5" fill="currentColor" stroke="none"/>
+    </g>
+  </g>
+  <text class="t nome" x="705" y="128">Precisa disso</text>
+  <text class="t glosa" x="705" y="148">para trabalhar?</text>
+  <path class="cartao" d="M953 46 H1063 a9 9 0 0 1 9 9 V113 a9 9 0 0 1 -9 9 H953 Z"/>
+  <path class="barra" d="M953 46 H948 a4 4 0 0 0 -4 4 V118 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(967 68) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="16" y="44" width="60" height="42" rx="9"/>
+    <path d="M30 44V30a16 16 0 0 1 30-7"/>
+    <path d="m36 63 8 9 16-17" stroke="currentColor"/>
+    </g>
+  </g>
+  <text class="t nome" x="1013" y="90">GRANT</text>
+  <path class="cartao" d="M953 148 H1063 a9 9 0 0 1 9 9 V215 a9 9 0 0 1 -9 9 H953 Z"/>
+  <path class="barra" d="M953 148 H948 a4 4 0 0 0 -4 4 V220 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(967 170) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="16" y="44" width="60" height="42" rx="9"/>
+    <path d="M30 44V31a16 16 0 0 1 32 0v13"/>
+    <path d="m38 58 16 16M54 58 38 74" stroke="currentColor"/>
+    </g>
+  </g>
+  <text class="t nome" x="1013" y="192">Não</text>
+  <path class="seta" d="M277 132 H321" marker-end="url(#ponta)"/>
+  <path class="seta" d="M585 132 H629" marker-end="url(#ponta)"/>
+  <path class="seta" d="M893 116 C 918 116, 918 84, 938 84" marker-end="url(#ponta)"/>
+  <path class="seta" d="M893 148 C 918 148, 918 186, 938 186" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="916" y="104">sim</text>
+  <text class="t seta-rot" x="916" y="178">não</text>
+  <text class="t nota" x="636" y="250">Volte à pergunta para cada tabela e cada verbo — a permissão se concede uma de cada vez.</text>
+</svg>

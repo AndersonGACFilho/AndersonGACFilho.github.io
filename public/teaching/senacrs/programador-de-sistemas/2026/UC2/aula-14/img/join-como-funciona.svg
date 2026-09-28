@@ -1,1 +1,171 @@
-<svg width="742" height="402" id="my-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="flowchart" style="background-color: transparent;" viewBox="4 4 741.90625 402" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#my-svg{font-family:Segoe UI,Arial,sans-serif;font-size:18px;fill:#10161c;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#fff4e5;}#my-svg .error-text{fill:#000b1a;stroke:#000b1a;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#5b6771;stroke:#5b6771;}#my-svg .marker.cross{stroke:#5b6771;}#my-svg svg{font-family:Segoe UI,Arial,sans-serif;font-size:18px;}#my-svg p{margin:0;}#my-svg .label{font-family:Segoe UI,Arial,sans-serif;color:#10161c;}#my-svg .cluster-label text{fill:#003d75;}#my-svg .cluster-label span{color:#003d75;}#my-svg .cluster-label span p{background-color:transparent;}#my-svg .label text,#my-svg span{fill:#10161c;color:#10161c;}#my-svg .node rect,#my-svg .node circle,#my-svg .node ellipse,#my-svg .node polygon,#my-svg .node path{fill:#003d75;stroke:#003d75;stroke-width:1px;}#my-svg .rough-node .label text,#my-svg .node .label text,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-anchor:middle;}#my-svg .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#my-svg .rough-node .label,#my-svg .node .label,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-align:center;}#my-svg .node.clickable{cursor:pointer;}#my-svg .root .anchor path{fill:#5b6771!important;stroke-width:0;stroke:#5b6771;}#my-svg .arrowheadPath{fill:#0b0b0b;}#my-svg .edgePaths .path{stroke:#5b6771;stroke-width:1px;}#my-svg .flowchart-link{stroke:#5b6771;fill:none;}#my-svg .edgeLabel{background-color:#ffffff;text-align:center;}#my-svg .edgeLabel p{background-color:#ffffff;}#my-svg .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#my-svg .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#my-svg .cluster rect{fill:#f4f7fa;stroke:#c3ced8;stroke-width:1px;}#my-svg .cluster text{fill:#003d75;}#my-svg .cluster span{color:#003d75;}#my-svg .node .collapsed-indicator{fill:#c3ced8;stroke:none;opacity:0.6;}#my-svg .node .collapsed-separator{stroke:#c3ced8;stroke-width:0.75px;}#my-svg div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Segoe UI,Arial,sans-serif;font-size:12px;background:#fff4e5;border:1px solid hsl(34.6153846154, 60%, 84.9019607843%);border-radius:2px;pointer-events:none;z-index:100;}#my-svg .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#10161c;}#my-svg rect.text{fill:none;stroke-width:0;}#my-svg .icon-shape,#my-svg .image-shape{background-color:#ffffff;text-align:center;}#my-svg .icon-shape p,#my-svg .image-shape p{background-color:#ffffff;padding:2px;}#my-svg .icon-shape .label rect,#my-svg .image-shape .label rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#my-svg .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#my-svg .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#my-svg .node .neo-node{stroke:#003d75;}#my-svg [data-look="neo"].node rect,#my-svg [data-look="neo"].cluster rect,#my-svg [data-look="neo"].node polygon{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].swimlane.cluster rect{filter:none;}#my-svg [data-look="neo"].node path{stroke:url(#my-svg-gradient);stroke-width:1px;}#my-svg [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node .neo-line path{stroke:#003d75;filter:none;}#my-svg [data-look="neo"].node circle{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node circle .state-start{fill:#000000;}#my-svg [data-look="neo"].icon-shape .icon{fill:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].icon-shape .icon-neo path{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg .node .label:not(.attribute-type):not(.attribute-name):not(.attribute-keys):not(.attribute-comment) text,#my-svg .node .label:not(.attribute-type):not(.attribute-name):not(.attribute-keys):not(.attribute-comment) tspan{fill:rgb(255, 255, 255)!important;}#my-svg .label.name text,#my-svg .label.name tspan{font-weight:700!important;}#my-svg .label.attribute-comment text,#my-svg .label.attribute-comment tspan{fill:rgb(138, 66, 0)!important;font-weight:700!important;}#my-svg .label.attribute-type text,#my-svg .label.attribute-type tspan{fill:rgb(91, 103, 113)!important;}#my-svg .label.attribute-name text,#my-svg .label.attribute-name tspan{fill:rgb(16, 22, 28)!important;}#my-svg .edgeLabel .label text,#my-svg .edgeLabel .label tspan{fill:rgb(16, 22, 28)!important;}#my-svg .cluster rect{rx:10;ry:10;}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="my-svg_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointEnd-margin" class="marker flowchart-v2" viewBox="0 0 11.5 14" refX="11.5" refY="7" markerUnits="userSpaceOnUse" markerWidth="10.5" markerHeight="14" orient="auto"><path d="M 0 0 L 11.5 7 L 0 14 z" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointStart-margin" class="marker flowchart-v2" viewBox="0 0 11.5 14" refX="1" refY="7" markerUnits="userSpaceOnUse" markerWidth="11.5" markerHeight="14" orient="auto"><polygon points="0,7 11.5,14 11.5,0" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleEnd-margin" class="marker flowchart-v2" viewBox="0 0 10 10" refY="5" refX="12.25" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleStart-margin" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-2" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossEnd-margin" class="marker cross flowchart-v2" viewBox="0 0 15 15" refX="17.7" refY="7.5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 1,1 L 14,14 M 1,14 L 14,1" class="arrowMarkerPath" style="stroke-width: 2.5;"/></marker><marker id="my-svg_flowchart-v2-crossStart-margin" class="marker cross flowchart-v2" viewBox="0 0 15 15" refX="-3.5" refY="7.5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 1,1 L 14,14 M 1,14 L 14,1" class="arrowMarkerPath" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"/></marker><g class="root"><g class="clusters"><g class="cluster" id="my-svg-res" data-look="classic"><rect style="" x="384.453125" y="118.5" width="353.453125" height="173"/><g class="cluster-label" transform="translate(458.1171875, 118.5)"><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">resultado</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> do</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> INNER</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> JOIN</tspan></tspan></text></g></g></g><g class="cluster" id="my-svg-t2" data-look="classic"><rect style="" x="43.34375" y="12" width="266.109375" height="173"/><g class="cluster-label" transform="translate(106.3583984375, 12)"><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">tabela</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> plataforma</tspan></tspan></text></g></g></g><g class="cluster" id="my-svg-t1" data-look="classic"><rect style="" x="12" y="225" width="297.453125" height="173"/><g class="cluster-label" transform="translate(116.6796875, 225)"><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">tabela</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> jogo</tspan></tspan></text></g></g></g></g><g class="edges edgePath"><path d="M267.453125,284L275.3820571881345,284Q282.453125,284 282.453125,291.0710678118655L282.453125,308.4289321881345Q282.453125,315.5 289.5241928118655,315.5L316.953125,315.5L329.8820571881345,315.5Q336.953125,315.5 336.953125,308.4289321881345L336.953125,231.07106781186548Q336.953125,224 344.0241928118655,224L376.953125,224L419.3820571881345,224Q426.453125,224 426.453125,216.92893218813452L426.453125,192.57106781186548Q426.453125,185.5 433.5241928118655,185.5L452.453125,185.5" id="my-svg-L_A1_C1_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A1_C1_0" data-points="W3sieCI6MjY3LjQ1MzEyNSwieSI6Mjg0fSx7IngiOjI4Mi40NTMxMjUsInkiOjI4NH0seyJ4IjoyODIuNDUzMTI1LCJ5IjozMTUuNX0seyJ4IjozMTYuOTUzMTI1LCJ5IjozMTUuNX0seyJ4IjozMzYuOTUzMTI1LCJ5IjozMTUuNX0seyJ4IjozMzYuOTUzMTI1LCJ5IjoyMjR9LHsieCI6Mzc2Ljk1MzEyNSwieSI6MjI0fSx7IngiOjQyNi40NTMxMjUsInkiOjIyNH0seyJ4Ijo0MjYuNDUzMTI1LCJ5IjoxODUuNX0seyJ4Ijo0NTYuNDUzMTI1LCJ5IjoxODUuNX1d" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M267.453125,71L275.3820571881345,71Q282.453125,71 282.453125,78.07106781186548L282.453125,95.42893218813452Q282.453125,102.5 289.5241928118655,102.5L316.953125,102.5L349.8820571881345,102.5Q356.953125,102.5 356.953125,109.57106781186548L356.953125,186.92893218813452Q356.953125,194 364.0241928118655,194L376.953125,194L404.3820571881345,194Q411.453125,194 411.453125,186.92893218813452L411.453125,176.57106781186548Q411.453125,169.5 418.5241928118655,169.5L452.453125,169.5" id="my-svg-L_B1_C1_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B1_C1_0" data-points="W3sieCI6MjY3LjQ1MzEyNSwieSI6NzF9LHsieCI6MjgyLjQ1MzEyNSwieSI6NzF9LHsieCI6MjgyLjQ1MzEyNSwieSI6MTAyLjV9LHsieCI6MzE2Ljk1MzEyNSwieSI6MTAyLjV9LHsieCI6MzU2Ljk1MzEyNSwieSI6MTAyLjV9LHsieCI6MzU2Ljk1MzEyNSwieSI6MTk0fSx7IngiOjM3Ni45NTMxMjUsInkiOjE5NH0seyJ4Ijo0MTEuNDUzMTI1LCJ5IjoxOTR9LHsieCI6NDExLjQ1MzEyNSwieSI6MTY5LjV9LHsieCI6NDU2LjQ1MzEyNSwieSI6MTY5LjV9XQ==" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M267.453125,362L275.3820571881345,362Q282.453125,362 282.453125,354.9289321881345L282.453125,337.5710678118655Q282.453125,330.5 289.5241928118655,330.5L316.953125,330.5L349.8820571881345,330.5Q356.953125,330.5 356.953125,323.4289321881345L356.953125,246.07106781186548Q356.953125,239 364.0241928118655,239L376.953125,239L404.3820571881345,239Q411.453125,239 411.453125,246.07106781186548L411.453125,256.4289321881345Q411.453125,263.5 418.5241928118655,263.5L452.453125,263.5" id="my-svg-L_A2_C2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A2_C2_0" data-points="W3sieCI6MjY3LjQ1MzEyNSwieSI6MzYyfSx7IngiOjI4Mi40NTMxMjUsInkiOjM2Mn0seyJ4IjoyODIuNDUzMTI1LCJ5IjozMzAuNX0seyJ4IjozMTYuOTUzMTI1LCJ5IjozMzAuNX0seyJ4IjozNTYuOTUzMTI1LCJ5IjozMzAuNX0seyJ4IjozNTYuOTUzMTI1LCJ5IjoyMzl9LHsieCI6Mzc2Ljk1MzEyNSwieSI6MjM5fSx7IngiOjQxMS40NTMxMjUsInkiOjIzOX0seyJ4Ijo0MTEuNDUzMTI1LCJ5IjoyNjMuNX0seyJ4Ijo0NTYuNDUzMTI1LCJ5IjoyNjMuNX1d" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M267.453125,149L275.3820571881345,149Q282.453125,149 282.453125,141.92893218813452L282.453125,124.57106781186548Q282.453125,117.5 289.5241928118655,117.5L316.953125,117.5L329.8820571881345,117.5Q336.953125,117.5 336.953125,124.57106781186548L336.953125,201.92893218813452Q336.953125,209 344.0241928118655,209L376.953125,209L434.3820571881345,209Q441.453125,209 441.453125,216.07106781186548L441.453125,242Q441.453125,247.5 446.953125,247.5L452.453125,247.5" id="my-svg-L_B2_C2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B2_C2_0" data-points="W3sieCI6MjY3LjQ1MzEyNSwieSI6MTQ5fSx7IngiOjI4Mi40NTMxMjUsInkiOjE0OX0seyJ4IjoyODIuNDUzMTI1LCJ5IjoxMTcuNX0seyJ4IjozMTYuOTUzMTI1LCJ5IjoxMTcuNX0seyJ4IjozMzYuOTUzMTI1LCJ5IjoxMTcuNX0seyJ4IjozMzYuOTUzMTI1LCJ5IjoyMDl9LHsieCI6Mzc2Ljk1MzEyNSwieSI6MjA5fSx7IngiOjQ0MS40NTMxMjUsInkiOjIwOX0seyJ4Ijo0NDEuNDUzMTI1LCJ5IjoyNDcuNX0seyJ4Ijo0NTYuNDUzMTI1LCJ5IjoyNDcuNX1d" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/></g><g class="edgeLabels"/><g class="nodes"><g class="node default" id="my-svg-flowchart-A1-0" data-look="classic" transform="translate(145.7265625, 284)"><rect class="basic label-container" style="" x="-121.7265625" y="-24" width="243.453125" height="48"/><g class="label" style="" transform="translate(0, -10)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">10</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> ·</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> God</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> of</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> War</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> ·</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> plat</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> 1</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-A2-1" data-look="classic" transform="translate(169.5703125, 362)"><rect class="basic label-container" style="" x="-97.8828125" y="-24" width="195.765625" height="48"/><g class="label" style="" transform="translate(0, -10)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">11</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> ·</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> Zelda</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> ·</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> plat</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> 2</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-B1-2" data-look="classic" transform="translate(173.40625, 71)"><rect class="basic label-container" style="" x="-94.046875" y="-24" width="188.09375" height="48"/><g class="label" style="" transform="translate(0, -10)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">1</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> ·</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> PlayStation</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> 5</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-B2-3" data-look="classic" transform="translate(161.3984375, 149)"><rect class="basic label-container" style="" x="-106.0546875" y="-24" width="212.109375" height="48"/><g class="label" style="" transform="translate(0, -10)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">2</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> ·</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> Nintendo</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> Switch</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-C1-4" data-look="classic" transform="translate(591.1796875, 177.5)"><rect class="basic label-container" style="" x="-134.7265625" y="-24" width="269.453125" height="48"/><g class="label" style="" transform="translate(0, -10)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">God</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> of</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> War</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> ·</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> PlayStation</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> 5</tspan></tspan></text></g></g></g><g class="node default" id="my-svg-flowchart-C2-5" data-look="classic" transform="translate(580.015625, 255.5)"><rect class="basic label-container" style="" x="-123.5625" y="-24" width="247.125" height="48"/><g class="label" style="" transform="translate(0, -10)"><rect/><g><rect class="background" style="stroke: none"/><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">Zelda</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> ·</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> Nintendo</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> Switch</tspan></tspan></text></g></g></g></g></g></g><defs><filter id="my-svg-drop-shadow" height="130%" width="130%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><defs><filter id="my-svg-drop-shadow-small" height="150%" width="150%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><linearGradient id="my-svg-gradient" gradientUnits="objectBoundingBox" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#003d75" stop-opacity="1"/><stop offset="100%" stop-color="hsl(210, 0%, 86.862745098%)" stop-opacity="1"/></linearGradient></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 288" width="1092" height="288"
+     role="img" aria-label="As tabelas jogo e plataforma se cruzam pela chave estrangeira e produzem o resultado do INNER JOIN: God of War com PlayStation 5, e Zelda com Nintendo Switch.">
+  <style>
+    /* @estilo-padrao */
+    /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
+     *
+     * POR QUE existe: SVG externo carregado por `img` não importa folha de estilo —
+     * nem `xml-stylesheet`, nem `@import`, nem `link`. Cada arquivo precisa carregar
+     * o próprio bloco. Copiar isto em 28 arquivos faria qualquer ajuste de paleta
+     * virar 28 edições, e uma ficaria para trás.
+     *
+     * Fonte única aqui; `scripts/estilo-diagrama.mjs` injeta entre os marcadores.
+     * Edite AQUI e rode `npm run diagramas:estilo`.
+     *
+     * ---------------------------------------------------------------------------
+     * A IDENTIDADE: a barra esquerda.
+     *
+     * O deck marca o que importa com uma régua laranja à esquerda e o canto direito
+     * arredondado — está no `.atencao` e no título de "mão na massa" do senac.css.
+     * O diagrama usa o mesmo gesto: toda caixa é um cartão com régua à esquerda,
+     * azul quando é conteúdo e laranja quando é o ponto do slide.
+     *
+     * O que veio antes era retângulo azul chapado com texto branco centrado: lia
+     * como fluxograma de ferramenta, não como material desta UC.
+     * ---------------------------------------------------------------------------
+     *
+     * As razões de contraste estão medidas em PADRAO-DIAGRAMA.md.
+     */
+
+    .t    { font-family: 'Raleway', 'Segoe UI', 'Noto Sans', system-ui, sans-serif; fill: #12243a; }
+    .mono { font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace; }
+
+    /* ---------- tipografia ----------
+       Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
+       Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
+    .nome   { font-size: 16px; font-weight: 650; fill: #12243a; }
+    .glosa  { font-size: 13.5px; font-weight: 400; fill: #4a5f75; }
+    .nome-c { font-size: 16px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 13.5px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 15px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 12px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 13.5px; fill: #4a5f75; }
+    .dica   { font-size: 14.5px; fill: #4a5f75; }
+    .seta-rot { font-size: 12.5px; fill: #4a5f75; text-anchor: middle; }
+
+    /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
+       sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
+       dentro de moldura e sujava o desenho. */
+    .eyebrow { font-size: 11.5px; font-weight: 800; letter-spacing: 0.14em; fill: #b34700; }
+    .regua   { stroke: #d9e1e9; stroke-width: 1; fill: none; }
+
+    /* ---------- cartões ----------
+       Largura igual entre irmãos é a razão de desenhar à mão: quem escreve a
+       geometria escreve o mesmo `width`, e não há motor de layout para discordar. */
+    /* O simbolo segue a cor do cartao: azul no comum, laranja no que carrega o
+       ponto do slide. Os icones da pasta `_comum/icones/mono` desenham com
+       `stroke: #FFFFFF`, e o embutidor troca por `currentColor` — dai o `color`
+       aqui mandar em todos eles. */
+    .ico      { color: #01337e; }
+    .q + .ico, .ico.q { color: #e85d00; }
+    .cartao   { fill: #f2f6fa; }
+    .barra    { fill: #01337e; }
+    .cartao.q { fill: #fff1e6; }
+    .barra.q  { fill: #e85d00; }
+
+    /* Caixa cheia: para dado, não para conceito. A tabelinha de células usa isto. */
+    .caixa  { fill: #01337e; stroke: #01337e; stroke-width: 1.5; }
+    .morta  { fill: #eaeff4; stroke: none; }
+    .seta   { stroke: #7d8b99; stroke-width: 1.8; fill: none; }
+
+    /* ---------- selo numerado ---------- */
+    .selo   { fill: #4a5f75; }
+    .numero { font-size: 12.5px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+
+    /*
+     * ---------- o relógio ----------
+     *
+     *    0s - 2s   repouso no estado final   -- e o quadro que o PDF pega
+     *    2s        RESET
+     *    2s -10s   ate quatro turnos de 2s
+     *   10s -12s   repouso no estado final
+     *
+     * Estado se marca por PORCENTAGEM nos keyframes de cada diagrama; atraso
+     * deslocaria o relogio inteiro e cada painel reiniciaria num instante
+     * diferente. O realce abaixo pode usar atraso porque nao guarda estado.
+     *
+     * Nenhuma animacao usa `animation-fill-mode`: durante o atraso o navegador
+     * mostra o estilo normal, que e o estado final. E por isso que o quadro zero
+     * -- o do PDF -- sai completo.
+     */
+    @keyframes acende-barra  { 0%, 16.6% { fill: #e85d00; } 16.7%, 100% { fill: #01337e; } }
+    @keyframes acende-cartao { 0%, 16.6% { fill: #fff1e6; } 16.7%, 100% { fill: #f2f6fa; } }
+    @keyframes acende-selo   { 0%, 16.6% { fill: #ff7809; } 16.7%, 100% { fill: #4a5f75; } }
+    @keyframes acende-numero { 0%, 16.6% { fill: #10161c; } 16.7%, 100% { fill: #ffffff; } }
+    @keyframes acende-tinta  { 0%, 16.6% { fill: #b34700; font-weight: 700; } 16.7%, 100% { fill: #12243a; font-weight: 400; } }
+    @keyframes acende-traco  { 0%, 16.6% { stroke: #e85d00; stroke-width: 3; } 16.7%, 100% { stroke: #7d8b99; stroke-width: 1.8; } }
+
+    .realce .barra  { animation: acende-barra 12s linear infinite; }
+    .realce .cartao { animation: acende-cartao 12s linear infinite; }
+    .realce .selo   { animation: acende-selo 12s linear infinite; }
+    .realce .numero { animation: acende-numero 12s linear infinite; }
+    .tinta          { animation: acende-tinta 12s linear infinite; }
+    .traco          { animation: acende-traco 12s linear infinite; }
+
+    /* O atraso precisa VENCER o atalho `animation` em especificidade: o atalho
+       reescreve `animation-delay` para zero. `.realce .barra` vale 0-2-0, entao um
+       seletor 0-1-0 e ignorado e todos os turnos acendem juntos. Foi o primeiro
+       defeito do primeiro diagrama animado. */
+    .realce.v1 .barra, .realce.v1 .cartao, .realce.v1 .selo, .realce.v1 .numero, .t1.tinta, .t1.traco { animation-delay: 2s; }
+    .realce.v2 .barra, .realce.v2 .cartao, .realce.v2 .selo, .realce.v2 .numero, .t2.tinta, .t2.traco { animation-delay: 4s; }
+    .realce.v3 .barra, .realce.v3 .cartao, .realce.v3 .selo, .realce.v3 .numero, .t3.tinta, .t3.traco { animation-delay: 6s; }
+    .realce.v4 .barra, .realce.v4 .cartao, .realce.v4 .selo, .realce.v4 .numero, .t4.tinta, .t4.traco { animation-delay: 8s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .realce .barra, .realce .cartao, .realce .selo, .realce .numero,
+      .tinta, .traco, .anima { animation: none; }
+    }
+    /* @fim */
+  </style>
+
+  <defs>
+    <marker id="ponta" viewBox="0 0 9 9" refX="8" refY="4.5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <polygon points="0,0 9,4.5 0,9" fill="#7d8b99"/>
+    </marker>
+  </defs>
+  <text class="t eyebrow" x="20" y="26">DUAS TABELAS</text>
+  <path class="regua" d="M20 35 H490"/>
+  <text class="t eyebrow" x="620" y="26">O QUE O INNER JOIN DEVOLVE</text>
+  <path class="regua" d="M620 35 H1072"/>
+  <path class="cartao" d="M29 57 H481 a9 9 0 0 1 9 9 V134 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 57 H24 a4 4 0 0 0 -4 4 V139 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(43 63) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="12" y="18" width="72" height="60" rx="7"/>
+    <path d="M12 38h72" stroke="currentColor"/>
+    <path d="M12 58h72M40 38v40M62 38v40"/>
+    </g>
+  </g>
+  <text class="t nome" x="89" y="86">tabela jogo</text>
+  <text class="t glosa" x="89" y="106">10 · God of War · plat 1</text>
+  <text class="t glosa" x="89" y="124">11 · Zelda · plat 2</text>
+  <path class="cartao" d="M29 157 H481 a9 9 0 0 1 9 9 V234 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 157 H24 a4 4 0 0 0 -4 4 V239 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(43 163) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="12" y="18" width="72" height="60" rx="7"/>
+    <path d="M12 38h72" stroke="currentColor"/>
+    <path d="M12 58h72M40 38v40M62 38v40"/>
+    </g>
+  </g>
+  <text class="t nome" x="89" y="186">tabela plataforma</text>
+  <text class="t glosa" x="89" y="206">1 · PlayStation 5</text>
+  <text class="t glosa" x="89" y="224">2 · Nintendo Switch</text>
+  <path class="seta" d="M490 100 H530 Q540 100 540 110"/>
+  <path class="seta" d="M490 200 H530 Q540 200 540 190"/>
+  <path class="seta" d="M540 110 V190"/>
+  <path class="seta" d="M540 150 H612" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="540" y="132">pela chave</text>
+  <path class="cartao q" d="M629 97 H1063 a9 9 0 0 1 9 9 V194 a9 9 0 0 1 -9 9 H629 Z"/>
+  <path class="barra q" d="M629 97 H624 a4 4 0 0 0 -4 4 V199 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(643 113) scale(0.333333)">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="36" cy="48" r="26"/>
+    <circle cx="60" cy="48" r="26"/>
+    <path d="M48 24.9A26 26 0 0 1 48 71.1A26 26 0 0 1 48 24.9Z" fill="currentColor" stroke="none"/>
+    </g>
+  </g>
+  <text class="t nome" x="689" y="136">resultado</text>
+  <text class="t glosa" x="689" y="156">God of War · PlayStation 5</text>
+  <text class="t glosa" x="689" y="174">Zelda · Nintendo Switch</text>
+</svg>

@@ -1,0 +1,113 @@
+/* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
+ *
+ * POR QUE existe: SVG externo carregado por `img` não importa folha de estilo —
+ * nem `xml-stylesheet`, nem `@import`, nem `link`. Cada arquivo precisa carregar
+ * o próprio bloco. Copiar isto em 28 arquivos faria qualquer ajuste de paleta
+ * virar 28 edições, e uma ficaria para trás.
+ *
+ * Fonte única aqui; `scripts/estilo-diagrama.mjs` injeta entre os marcadores.
+ * Edite AQUI e rode `npm run diagramas:estilo`.
+ *
+ * ---------------------------------------------------------------------------
+ * A IDENTIDADE: a barra esquerda.
+ *
+ * O deck marca o que importa com uma régua laranja à esquerda e o canto direito
+ * arredondado — está no `.atencao` e no título de "mão na massa" do senac.css.
+ * O diagrama usa o mesmo gesto: toda caixa é um cartão com régua à esquerda,
+ * azul quando é conteúdo e laranja quando é o ponto do slide.
+ *
+ * O que veio antes era retângulo azul chapado com texto branco centrado: lia
+ * como fluxograma de ferramenta, não como material desta UC.
+ * ---------------------------------------------------------------------------
+ *
+ * As razões de contraste estão medidas em PADRAO-DIAGRAMA.md.
+ */
+
+.t    { font-family: 'Raleway', 'Segoe UI', 'Noto Sans', system-ui, sans-serif; fill: #12243a; }
+.mono { font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace; }
+
+/* ---------- tipografia ----------
+   Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
+   Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
+.nome   { font-size: 16px; font-weight: 650; fill: #12243a; }
+.glosa  { font-size: 13.5px; font-weight: 400; fill: #4a5f75; }
+.nome-c { font-size: 16px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+.glosa-c{ font-size: 13.5px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+.rot    { font-size: 15px; fill: #ffffff; text-anchor: middle; }
+.rot-min{ font-size: 12px; fill: #ffffff; text-anchor: middle; }
+.nota   { font-size: 13.5px; fill: #4a5f75; }
+.dica   { font-size: 14.5px; fill: #4a5f75; }
+.seta-rot { font-size: 12.5px; fill: #4a5f75; text-anchor: middle; }
+
+/* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
+   sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
+   dentro de moldura e sujava o desenho. */
+.eyebrow { font-size: 11.5px; font-weight: 800; letter-spacing: 0.14em; fill: #b34700; }
+.regua   { stroke: #d9e1e9; stroke-width: 1; fill: none; }
+
+/* ---------- cartões ----------
+   Largura igual entre irmãos é a razão de desenhar à mão: quem escreve a
+   geometria escreve o mesmo `width`, e não há motor de layout para discordar. */
+/* O simbolo segue a cor do cartao: azul no comum, laranja no que carrega o
+   ponto do slide. Os icones da pasta `_comum/icones/mono` desenham com
+   `stroke: #FFFFFF`, e o embutidor troca por `currentColor` — dai o `color`
+   aqui mandar em todos eles. */
+.ico      { color: #01337e; }
+.q + .ico, .ico.q { color: #e85d00; }
+.cartao   { fill: #f2f6fa; }
+.barra    { fill: #01337e; }
+.cartao.q { fill: #fff1e6; }
+.barra.q  { fill: #e85d00; }
+
+/* Caixa cheia: para dado, não para conceito. A tabelinha de células usa isto. */
+.caixa  { fill: #01337e; stroke: #01337e; stroke-width: 1.5; }
+.morta  { fill: #eaeff4; stroke: none; }
+.seta   { stroke: #7d8b99; stroke-width: 1.8; fill: none; }
+
+/* ---------- selo numerado ---------- */
+.selo   { fill: #4a5f75; }
+.numero { font-size: 12.5px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+
+/*
+ * ---------- o relógio ----------
+ *
+ *    0s - 2s   repouso no estado final   -- e o quadro que o PDF pega
+ *    2s        RESET
+ *    2s -10s   ate quatro turnos de 2s
+ *   10s -12s   repouso no estado final
+ *
+ * Estado se marca por PORCENTAGEM nos keyframes de cada diagrama; atraso
+ * deslocaria o relogio inteiro e cada painel reiniciaria num instante
+ * diferente. O realce abaixo pode usar atraso porque nao guarda estado.
+ *
+ * Nenhuma animacao usa `animation-fill-mode`: durante o atraso o navegador
+ * mostra o estilo normal, que e o estado final. E por isso que o quadro zero
+ * -- o do PDF -- sai completo.
+ */
+@keyframes acende-barra  { 0%, 16.6% { fill: #e85d00; } 16.7%, 100% { fill: #01337e; } }
+@keyframes acende-cartao { 0%, 16.6% { fill: #fff1e6; } 16.7%, 100% { fill: #f2f6fa; } }
+@keyframes acende-selo   { 0%, 16.6% { fill: #ff7809; } 16.7%, 100% { fill: #4a5f75; } }
+@keyframes acende-numero { 0%, 16.6% { fill: #10161c; } 16.7%, 100% { fill: #ffffff; } }
+@keyframes acende-tinta  { 0%, 16.6% { fill: #b34700; font-weight: 700; } 16.7%, 100% { fill: #12243a; font-weight: 400; } }
+@keyframes acende-traco  { 0%, 16.6% { stroke: #e85d00; stroke-width: 3; } 16.7%, 100% { stroke: #7d8b99; stroke-width: 1.8; } }
+
+.realce .barra  { animation: acende-barra 12s linear infinite; }
+.realce .cartao { animation: acende-cartao 12s linear infinite; }
+.realce .selo   { animation: acende-selo 12s linear infinite; }
+.realce .numero { animation: acende-numero 12s linear infinite; }
+.tinta          { animation: acende-tinta 12s linear infinite; }
+.traco          { animation: acende-traco 12s linear infinite; }
+
+/* O atraso precisa VENCER o atalho `animation` em especificidade: o atalho
+   reescreve `animation-delay` para zero. `.realce .barra` vale 0-2-0, entao um
+   seletor 0-1-0 e ignorado e todos os turnos acendem juntos. Foi o primeiro
+   defeito do primeiro diagrama animado. */
+.realce.v1 .barra, .realce.v1 .cartao, .realce.v1 .selo, .realce.v1 .numero, .t1.tinta, .t1.traco { animation-delay: 2s; }
+.realce.v2 .barra, .realce.v2 .cartao, .realce.v2 .selo, .realce.v2 .numero, .t2.tinta, .t2.traco { animation-delay: 4s; }
+.realce.v3 .barra, .realce.v3 .cartao, .realce.v3 .selo, .realce.v3 .numero, .t3.tinta, .t3.traco { animation-delay: 6s; }
+.realce.v4 .barra, .realce.v4 .cartao, .realce.v4 .selo, .realce.v4 .numero, .t4.tinta, .t4.traco { animation-delay: 8s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .realce .barra, .realce .cartao, .realce .selo, .realce .numero,
+  .tinta, .traco, .anima { animation: none; }
+}
