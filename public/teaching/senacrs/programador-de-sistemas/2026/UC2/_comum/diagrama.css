@@ -23,27 +23,38 @@
  * As razões de contraste estão medidas em PADRAO-DIAGRAMA.md.
  */
 
+.lig { stroke-width: 1.6; fill: none; }
+.lig-o { stroke-width: 1.6; }
+.seta { stroke-width: 1.8; fill: none; }
+.ent-borda { fill: none; stroke-width: 1.5; }
+.caixa { stroke-width: 1.5; }
+
 .t    { font-family: 'Raleway', 'Segoe UI', 'Noto Sans', system-ui, sans-serif; fill: #12243a; }
 .mono { font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace; }
 
 /* ---------- tipografia ----------
    Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
    Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-.nome   { font-size: 16px; font-weight: 650; fill: #12243a; }
-.glosa  { font-size: 13.5px; font-weight: 400; fill: #4a5f75; }
-.nome-c { font-size: 16px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-.glosa-c{ font-size: 13.5px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-.rot    { font-size: 15px; fill: #ffffff; text-anchor: middle; }
-.rot-min{ font-size: 12px; fill: #ffffff; text-anchor: middle; }
-.nota   { font-size: 13.5px; fill: #4a5f75; }
-.dica   { font-size: 14.5px; fill: #4a5f75; }
-.seta-rot { font-size: 12.5px; fill: #4a5f75; text-anchor: middle; }
+/* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
+   de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
+   diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
+   glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
+   ~16px, que e legivel de longe sem competir com o titulo do slide. */
+.nome   { font-size: 23px; font-weight: 650; }
+.glosa  { font-size: 18px; font-weight: 400; }
+.nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+.glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+.rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
+.rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
+.nota   { font-size: 18px; }
+.dica   { font-size: 19px; }
+.seta-rot { font-size: 16px; text-anchor: middle; }
 
 /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
    sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
    dentro de moldura e sujava o desenho. */
-.eyebrow { font-size: 11.5px; font-weight: 800; letter-spacing: 0.14em; fill: #b34700; }
-.regua   { stroke: #d9e1e9; stroke-width: 1; fill: none; }
+.eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+.regua   { stroke-width: 1; fill: none; }
 
 /* ---------- cartões ----------
    Largura igual entre irmãos é a razão de desenhar à mão: quem escreve a
@@ -52,21 +63,24 @@
    ponto do slide. Os icones da pasta `_comum/icones/mono` desenham com
    `stroke: #FFFFFF`, e o embutidor troca por `currentColor` — dai o `color`
    aqui mandar em todos eles. */
-.ico      { color: #01337e; }
-.q + .ico, .ico.q { color: #e85d00; }
-.cartao   { fill: #f2f6fa; }
-.barra    { fill: #01337e; }
-.cartao.q { fill: #fff1e6; }
-.barra.q  { fill: #e85d00; }
 
 /* Caixa cheia: para dado, não para conceito. A tabelinha de células usa isto. */
-.caixa  { fill: #01337e; stroke: #01337e; stroke-width: 1.5; }
-.morta  { fill: #eaeff4; stroke: none; }
-.seta   { stroke: #7d8b99; stroke-width: 1.8; fill: none; }
+
+/* ---------- notacao de DER ----------
+   A faixa do atributo e um retangulo de largura INTEIRA. O Mermaid pintava so
+   sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
+   coluninha nao acompanhava a faixa da linha dela. */
+
+.ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+.ent-tipo  { font-size: 16px; fill: #7d8b99; }
+.ent-campo { font-size: 18px; fill: #12243a; }
+.ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+
+.verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
 
 /* ---------- selo numerado ---------- */
-.selo   { fill: #4a5f75; }
-.numero { font-size: 12.5px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+
+.numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
 /*
  * ---------- o relógio ----------
@@ -111,3 +125,63 @@
   .realce .barra, .realce .cartao, .realce .selo, .realce .numero,
   .tinta, .traco, .anima { animation: none; }
 }
+/* ===========================================================================
+   VARIANTE SOLTA: o diagrama direto sobre o slide, sem o cartao branco.
+   Vale so para o SVG cuja raiz tem class="solto".
+
+   POR QUE o painel e ESCURO. A primeira tentativa foi painel de branco a 10%:
+   integrava, mas media 1,24:1 contra o slide -- invisivel -- e ainda BAIXAVA o
+   contraste do texto, porque branco sobre aquele painel dava 6,03 enquanto
+   branco direto no azul dava 7,46.
+
+   Projetor emite luz: ele nao projeta escuro, o preto e a luz da sala. Modelando
+   a luz ambiente como um piso de luminancia (0 sala escura, 0,10 com luz, 0,25
+   sala clara ou projetor fraco), o painel claro reprovava em AA com a luz acesa:
+
+     painel claro, nome branco      6,03   4,01   2,67
+     painel escuro, nome branco    18,94   6,78   3,45
+     cartao branco (para comparar) 14,44   5,90   3,16
+
+   O painel escuro passa ate o cartao branco nas tres condicoes, e fica visivel
+   (2,54:1 contra o slide). Por isso ele, e nao o claro.
+   =========================================================================== */
+.cartao   { fill: #01102a; }
+.cartao.q { fill: #2b1708; }
+.barra    { fill: #9cc9ff; }
+.barra.q  { fill: #ffb065; }
+.nome     { fill: #ffffff; }
+.glosa,
+.nota,
+.dica,
+.seta-rot { fill: #cfe0f5; }
+.eyebrow  { fill: #ffc287; }
+.regua    { stroke: rgba(255, 255, 255, 0.28); }
+.seta     { stroke: #cfe0f5; }
+.ico      { color: #9cc9ff; }
+.q + .ico, .ico.q { color: #ffb065; }
+.selo     { fill: rgba(255, 255, 255, 0.24); }
+.numero   { fill: #ffffff; }
+.caixa    { fill: #9cc9ff; stroke: #9cc9ff; }
+.morta    { fill: rgba(255, 255, 255, 0.12); }
+.rot,
+.rot-min  { fill: #01102a; }
+
+/* DER na variante solta */
+.ent       { fill: #01102a; }
+.ent-borda { stroke: rgba(255, 255, 255, 0.34); }
+.faixa     { fill: rgba(255, 255, 255, 0.06); }
+.cab       { fill: #9cc9ff; }
+.cab-q     { fill: #ffb065; }
+.ent-nome  { fill: #01102a; }
+.ent-tipo  { fill: #8fb3d9; }
+.ent-campo { fill: #ffffff; }
+.ent-chave { fill: #ffc287; }
+.lig       { stroke: #cfe0f5; }
+.lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+.verbo     { fill: #cfe0f5; }
+.verbo-bg  { fill: none; }
+
+@keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
+@keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
+.realce .barra  { animation: acende-barra-solta 12s linear infinite; }
+.realce .cartao { animation: acende-cartao-solto 12s linear infinite; }

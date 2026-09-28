@@ -1,1 +1,225 @@
-<svg width="595" height="236" id="my-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="erDiagram" style="background-color: transparent;" viewBox="10.25 4 595.05029296875 236" role="graphics-document document" aria-roledescription="er"><style>#my-svg{font-family:Raleway,'Segoe UI','Noto Sans',system-ui,sans-serif;font-size:18px;fill:#12243a;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#fff1e6;}#my-svg .error-text{fill:#000e19;stroke:#000e19;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#7d8b99;stroke:#7d8b99;}#my-svg .marker.cross{stroke:#7d8b99;}#my-svg svg{font-family:Raleway,'Segoe UI','Noto Sans',system-ui,sans-serif;font-size:18px;}#my-svg p{margin:0;}#my-svg .entityBox{fill:#01337e;stroke:#01337e;}#my-svg .relationshipLabelBox{fill:#fff1e6;opacity:0.7;background-color:#fff1e6;}#my-svg .relationshipLabelBox rect{opacity:0.5;}#my-svg .labelBkg{background-color:rgba(255, 241, 230, 0.5);}#my-svg .edgeLabel{background-color:#ffffff;}#my-svg .edgeLabel .label rect{fill:#ffffff;}#my-svg .edgeLabel .label text{fill:#12243a;}#my-svg .edgeLabel .label{fill:#01337e;font-size:14px;}#my-svg .label{font-family:Raleway,'Segoe UI','Noto Sans',system-ui,sans-serif;color:#12243a;}#my-svg .edge-pattern-dashed{stroke-dasharray:8,8;}#my-svg .node rect,#my-svg .node circle,#my-svg .node ellipse,#my-svg .node polygon{fill:#01337e;stroke:#01337e;stroke-width:1px;}#my-svg .relationshipLine{stroke:#7d8b99;stroke-width:1px;fill:none;}#my-svg .marker{fill:none!important;stroke:#7d8b99!important;stroke-width:1;}#my-svg [data-look=neo].labelBkg{background-color:rgba(255, 241, 230, 0.5);}#my-svg .cluster rect{fill:#f2f6fa;stroke:#d9e1e9;stroke-width:1px;}#my-svg .cluster text{fill:#003d75;}#my-svg .cluster-label text{fill:#003d75;}#my-svg .node .neo-node{stroke:#01337e;}#my-svg [data-look="neo"].node rect,#my-svg [data-look="neo"].cluster rect,#my-svg [data-look="neo"].node polygon{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].swimlane.cluster rect{filter:none;}#my-svg [data-look="neo"].node path{stroke:url(#my-svg-gradient);stroke-width:1px;}#my-svg [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node .neo-line path{stroke:#01337e;filter:none;}#my-svg [data-look="neo"].node circle{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node circle .state-start{fill:#000000;}#my-svg [data-look="neo"].icon-shape .icon{fill:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].icon-shape .icon-neo path{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg .node .label:not(.attribute-type):not(.attribute-name):not(.attribute-keys):not(.attribute-comment) text,#my-svg .node .label:not(.attribute-type):not(.attribute-name):not(.attribute-keys):not(.attribute-comment) tspan{fill:rgb(255, 255, 255)!important;}#my-svg .label.name text,#my-svg .label.name tspan{font-weight:700!important;}#my-svg .label.attribute-comment text,#my-svg .label.attribute-comment tspan{fill:rgb(138, 66, 0)!important;font-weight:700!important;}#my-svg .label.attribute-type text,#my-svg .label.attribute-type tspan{fill:rgb(91, 103, 113)!important;}#my-svg .label.attribute-name text,#my-svg .label.attribute-name tspan{fill:rgb(16, 22, 28)!important;}#my-svg .edgeLabel .label text,#my-svg .edgeLabel .label tspan{fill:rgb(16, 22, 28)!important;}#my-svg .cluster rect{rx:10;ry:10;}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><defs><marker id="my-svg_er-onlyOneStart" class="marker onlyOne er" refX="0" refY="9" markerWidth="18" markerHeight="18" orient="auto"><path d="M9,0 L9,18 M15,0 L15,18"/></marker></defs><defs><marker id="my-svg_er-onlyOneEnd" class="marker onlyOne er" refX="18" refY="9" markerWidth="18" markerHeight="18" orient="auto"><path d="M3,0 L3,18 M9,0 L9,18"/></marker></defs><defs><marker id="my-svg_er-zeroOrOneStart" class="marker zeroOrOne er" refX="0" refY="9" markerWidth="30" markerHeight="18" orient="auto"><circle fill="white" cx="21" cy="9" r="6"/><path d="M9,0 L9,18"/></marker></defs><defs><marker id="my-svg_er-zeroOrOneEnd" class="marker zeroOrOne er" refX="30" refY="9" markerWidth="30" markerHeight="18" orient="auto"><circle fill="white" cx="9" cy="9" r="6"/><path d="M21,0 L21,18"/></marker></defs><defs><marker id="my-svg_er-oneOrMoreStart" class="marker oneOrMore er" refX="18" refY="18" markerWidth="45" markerHeight="36" orient="auto"><path d="M0,18 Q 18,0 36,18 Q 18,36 0,18 M42,9 L42,27"/></marker></defs><defs><marker id="my-svg_er-oneOrMoreEnd" class="marker oneOrMore er" refX="27" refY="18" markerWidth="45" markerHeight="36" orient="auto"><path d="M3,9 L3,27 M9,18 Q27,0 45,18 Q27,36 9,18"/></marker></defs><defs><marker id="my-svg_er-zeroOrMoreStart" class="marker zeroOrMore er" refX="18" refY="18" markerWidth="57" markerHeight="36" orient="auto"><circle fill="white" cx="48" cy="18" r="6"/><path d="M0,18 Q18,0 36,18 Q18,36 0,18"/></marker></defs><defs><marker id="my-svg_er-zeroOrMoreEnd" class="marker zeroOrMore er" refX="39" refY="18" markerWidth="57" markerHeight="36" orient="auto"><circle fill="white" cx="9" cy="18" r="6"/><path d="M21,18 Q39,0 57,18 Q39,36 21,18"/></marker></defs><g class="root"><g class="edges edgePath"><path d="M207.1875,122L324.671875,122" id="my-svg-id_entity-CLIENTE-0_entity-TELEFONE_CLIENTE-1_0" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="fill:none;;;fill:none" data-edge="true" data-et="edge" data-id="id_entity-CLIENTE-0_entity-TELEFONE_CLIENTE-1_0" data-points="W3sieCI6MjA3LjE4NzUsInkiOjEyMn0seyJ4IjozMjQuNjcxODc1LCJ5IjoxMjJ9XQ==" data-look="classic" marker-start="url(#my-svg_er-onlyOneStart)" marker-end="url(#my-svg_er-zeroOrMoreEnd)"/></g><g class="clusters"/><g class="edgeLabels"><g class="edgeLabel" transform="translate(265.9296875, 121.5)"><g class="label" data-id="id_entity-CLIENTE-0_entity-TELEFONE_CLIENTE-1_0" transform="translate(0, -8.500000953674316)"><g><rect class="background" style="" x="-18.7421875" y="-2.999998092651367" width="37.484375" height="28"/><text y="-10.1" text-anchor="middle" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em" text-anchor="middle"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">tem</tspan></tspan></text></g></g></g></g><g class="nodes"><g class="node default" id="my-svg-entity-CLIENTE-0" data-look="classic" transform="translate(109.59375, 122)"><g class="outer-path" style=""><path d="M-91.34375 -66 L91.34375 -66 L91.34375 66 L-91.34375 66" stroke="none" stroke-width="0" fill="#01337e"/><path d="M-91.34375 -66 C-31.43001235119541 -66, 28.483725297609183 -66, 91.34375 -66 M-91.34375 -66 C-38.53381499835456 -66, 14.276120003290885 -66, 91.34375 -66 M91.34375 -66 C91.34375 -19.76613907779887, 91.34375 26.467721844402263, 91.34375 66 M91.34375 -66 C91.34375 -38.65719668230959, 91.34375 -11.314393364619185, 91.34375 66 M91.34375 66 C28.331268247701217 66, -34.681213504597565 66, -91.34375 66 M91.34375 66 C52.62193328806857 66, 13.900116576137137 66, -91.34375 66 M-91.34375 66 C-91.34375 20.528322061946824, -91.34375 -24.943355876106352, -91.34375 -66 M-91.34375 66 C-91.34375 33.399592645665614, -91.34375 0.7991852913312272, -91.34375 -66" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-odd"><path d="M-91.34375 -22 L91.34375 -22 L91.34375 22 L-91.34375 22" stroke="none" stroke-width="0" fill="#ffffff"/><path d="M-91.34375 -22 C-50.43640008205866 -22, -9.529050164117322 -22, 91.34375 -22 M-91.34375 -22 C-33.91180420641808 -22, 23.520141587163835 -22, 91.34375 -22 M91.34375 -22 C91.34375 -7.64256202758051, 91.34375 6.71487594483898, 91.34375 22 M91.34375 -22 C91.34375 -9.125837223919776, 91.34375 3.7483255521604484, 91.34375 22 M91.34375 22 C28.25056933221066 22, -34.84261133557868 22, -91.34375 22 M91.34375 22 C38.90284264918395 22, -13.538064701632095 22, -91.34375 22 M-91.34375 22 C-91.34375 9.698324702580678, -91.34375 -2.603350594838645, -91.34375 -22 M-91.34375 22 C-91.34375 6.3473271343381175, -91.34375 -9.305345731323765, -91.34375 -22" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-even"><path d="M-91.34375 22 L91.34375 22 L91.34375 66 L-91.34375 66" stroke="none" stroke-width="0" fill="#f2f6fa"/><path d="M-91.34375 22 C-53.85251719832264 22, -16.361284396645274 22, 91.34375 22 M-91.34375 22 C-22.499206028626276 22, 46.34533794274745 22, 91.34375 22 M91.34375 22 C91.34375 37.38767841997465, 91.34375 52.775356839949296, 91.34375 66 M91.34375 22 C91.34375 31.2580410945409, 91.34375 40.5160821890818, 91.34375 66 M91.34375 66 C29.22222373629552 66, -32.89930252740896 66, -91.34375 66 M91.34375 66 C43.65840846687175 66, -4.026933066256504 66, -91.34375 66 M-91.34375 66 C-91.34375 49.11017618039911, -91.34375 32.22035236079821, -91.34375 22 M-91.34375 66 C-91.34375 53.19338387411394, -91.34375 40.38676774822788, -91.34375 22" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="label name" transform="translate(-36.90625, -56)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">CLIENTE</tspan></tspan></text></g><g class="label attribute-type" transform="translate(-78.84375, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">int</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-10.640625, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">*id_cliente</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(103.84375, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(103.84375, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-type" transform="translate(-78.84375, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">texto</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-10.640625, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">nome</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(103.84375, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(103.84375, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="divider"><path d="M-91.34375 -22.00005 L-91.34375 -21.99995 L91.34375 -21.99995 L91.34375 -22.00005" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-91.34375 -22.00005 C-91.34375 -22.000020647753566, -91.34375 -21.999991295507133, -91.34375 -21.99995 M-91.34375 -22.00005 C-91.34375 -22.000010442659907, -91.34375 -21.99997088531981, -91.34375 -21.99995 M-91.34375 -21.99995 C-28.322818041649185 -21.99995, 34.69811391670163 -21.99995, 91.34375 -21.99995 M-91.34375 -21.99995 C-40.74293791234394 -21.99995, 9.85787417531212 -21.99995, 91.34375 -21.99995 M91.34375 -21.99995 C91.34375 -21.999982789451273, 91.34375 -22.000015578902545, 91.34375 -22.00005 M91.34375 -21.99995 C91.34375 -21.999975003917026, 91.34375 -22.000000007834053, 91.34375 -22.00005 M91.34375 -22.00005 C19.677110072473866 -22.00005, -51.98952985505227 -22.00005, -91.34375 -22.00005 M91.34375 -22.00005 C30.574494318786094 -22.00005, -30.194761362427812 -22.00005, -91.34375 -22.00005" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="divider"><path d="M-23.140675 -22 L-23.140575 -22 L-23.140575 66 L-23.140675 66" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-23.140675 -22 C-23.140635723019066 -22, -23.140596446038128 -22, -23.140575 -22 M-23.140675 -22 C-23.140635316840537 -22, -23.140595633681073 -22, -23.140575 -22 M-23.140575 -22 C-23.140575 -0.30750732023211214, -23.140575 21.384985359535776, -23.140575 66 M-23.140575 -22 C-23.140575 -1.9643804677023304, -23.140575 18.07123906459534, -23.140575 66 M-23.140575 66 C-23.140611228167394 66, -23.140647456334786 66, -23.140675 66 M-23.140575 66 C-23.140603180069945 66, -23.140631360139892 66, -23.140675 66 M-23.140675 66 C-23.140675 45.224558325966115, -23.140675 24.449116651932236, -23.140675 -22 M-23.140675 66 C-23.140675 44.4598743317504, -23.140675 22.91974866350079, -23.140675 -22" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="divider"><path d="M-91.34375 -22.00005 L-91.34375 -21.99995 L91.34375 -21.99995 L91.34375 -22.00005" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-91.34375 -22.00005 C-91.34375 -22.000022372396618, -91.34375 -21.999994744793234, -91.34375 -21.99995 M-91.34375 -22.00005 C-91.34375 -22.00002562751987, -91.34375 -22.00000125503974, -91.34375 -21.99995 M-91.34375 -21.99995 C-38.25632015658639 -21.99995, 14.831109686827219 -21.99995, 91.34375 -21.99995 M-91.34375 -21.99995 C-30.461769620463834 -21.99995, 30.420210759072333 -21.99995, 91.34375 -21.99995 M91.34375 -21.99995 C91.34375 -21.999973048648034, 91.34375 -21.99999609729607, 91.34375 -22.00005 M91.34375 -21.99995 C91.34375 -21.999988743916248, 91.34375 -22.000027487832497, 91.34375 -22.00005 M91.34375 -22.00005 C52.504067956000775 -22.00005, 13.66438591200155 -22.00005, -91.34375 -22.00005 M91.34375 -22.00005 C18.440431339306727 -22.00005, -54.462887321386546 -22.00005, -91.34375 -22.00005" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g></g><g class="node default" id="my-svg-entity-TELEFONE_CLIENTE-1" data-look="classic" transform="translate(460.98606872558594, 122)"><g class="outer-path" style=""><path d="M-136.31419372558594 -110 L136.31419372558594 -110 L136.31419372558594 110 L-136.31419372558594 110" stroke="none" stroke-width="0" fill="#01337e"/><path d="M-136.31419372558594 -110 C-40.4093034844022 -110, 55.495586756781535 -110, 136.31419372558594 -110 M-136.31419372558594 -110 C-30.70223679113886 -110, 74.90972014330822 -110, 136.31419372558594 -110 M136.31419372558594 -110 C136.31419372558594 -52.22191662498834, 136.31419372558594 5.556166750023323, 136.31419372558594 110 M136.31419372558594 -110 C136.31419372558594 -42.13210011282652, 136.31419372558594 25.735799774346958, 136.31419372558594 110 M136.31419372558594 110 C60.59142655612162 110, -15.1313406133427 110, -136.31419372558594 110 M136.31419372558594 110 C52.284671420066644 110, -31.74485088545265 110, -136.31419372558594 110 M-136.31419372558594 110 C-136.31419372558594 29.570010032631316, -136.31419372558594 -50.85997993473737, -136.31419372558594 -110 M-136.31419372558594 110 C-136.31419372558594 55.43156776184836, -136.31419372558594 0.8631355236967266, -136.31419372558594 -110" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-odd"><path d="M-136.31419372558594 -66 L136.31419372558594 -66 L136.31419372558594 -22 L-136.31419372558594 -22" stroke="none" stroke-width="0" fill="#ffffff"/><path d="M-136.31419372558594 -66 C-57.238890335016706 -66, 21.836413055552526 -66, 136.31419372558594 -66 M-136.31419372558594 -66 C-79.53053301391294 -66, -22.74687230223995 -66, 136.31419372558594 -66 M136.31419372558594 -66 C136.31419372558594 -54.41702703506248, 136.31419372558594 -42.834054070124964, 136.31419372558594 -22 M136.31419372558594 -66 C136.31419372558594 -57.057176318797936, 136.31419372558594 -48.11435263759587, 136.31419372558594 -22 M136.31419372558594 -22 C50.57509991158983 -22, -35.163993902406276 -22, -136.31419372558594 -22 M136.31419372558594 -22 C70.92721440604696 -22, 5.540235086507977 -22, -136.31419372558594 -22 M-136.31419372558594 -22 C-136.31419372558594 -34.224177444498736, -136.31419372558594 -46.44835488899747, -136.31419372558594 -66 M-136.31419372558594 -22 C-136.31419372558594 -33.135675441362984, -136.31419372558594 -44.27135088272597, -136.31419372558594 -66" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-even"><path d="M-136.31419372558594 -22 L136.31419372558594 -22 L136.31419372558594 22 L-136.31419372558594 22" stroke="none" stroke-width="0" fill="#f2f6fa"/><path d="M-136.31419372558594 -22 C-33.32956918123071 -22, 69.65505536312452 -22, 136.31419372558594 -22 M-136.31419372558594 -22 C-81.4714696648625 -22, -26.62874560413904 -22, 136.31419372558594 -22 M136.31419372558594 -22 C136.31419372558594 -4.5716557323610445, 136.31419372558594 12.856688535277911, 136.31419372558594 22 M136.31419372558594 -22 C136.31419372558594 -7.7372711893735815, 136.31419372558594 6.525457621252837, 136.31419372558594 22 M136.31419372558594 22 C79.2447701202199 22, 22.175346514853842 22, -136.31419372558594 22 M136.31419372558594 22 C55.901221604294975 22, -24.51175051699599 22, -136.31419372558594 22 M-136.31419372558594 22 C-136.31419372558594 12.034630088440748, -136.31419372558594 2.069260176881496, -136.31419372558594 -22 M-136.31419372558594 22 C-136.31419372558594 7.4952847456216745, -136.31419372558594 -7.009430508756651, -136.31419372558594 -22" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-odd"><path d="M-136.31419372558594 22 L136.31419372558594 22 L136.31419372558594 66 L-136.31419372558594 66" stroke="none" stroke-width="0" fill="#ffffff"/><path d="M-136.31419372558594 22 C-77.49530947259723 22, -18.676425219608518 22, 136.31419372558594 22 M-136.31419372558594 22 C-33.15708109829623 22, 70.00003152899347 22, 136.31419372558594 22 M136.31419372558594 22 C136.31419372558594 36.03320586472299, 136.31419372558594 50.066411729445974, 136.31419372558594 66 M136.31419372558594 22 C136.31419372558594 36.61146368901517, 136.31419372558594 51.22292737803034, 136.31419372558594 66 M136.31419372558594 66 C33.18546297186617 66, -69.94326778185359 66, -136.31419372558594 66 M136.31419372558594 66 C53.23731178914585 66, -29.83957014729424 66, -136.31419372558594 66 M-136.31419372558594 66 C-136.31419372558594 52.90194711955097, -136.31419372558594 39.803894239101936, -136.31419372558594 22 M-136.31419372558594 66 C-136.31419372558594 49.70858053296319, -136.31419372558594 33.41716106592638, -136.31419372558594 22" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-even"><path d="M-136.31419372558594 66 L136.31419372558594 66 L136.31419372558594 110 L-136.31419372558594 110" stroke="none" stroke-width="0" fill="#f2f6fa"/><path d="M-136.31419372558594 66 C-80.31240060580302 66, -24.310607486020118 66, 136.31419372558594 66 M-136.31419372558594 66 C-50.14467565505804 66, 36.02484241546986 66, 136.31419372558594 66 M136.31419372558594 66 C136.31419372558594 79.36064080554841, 136.31419372558594 92.72128161109683, 136.31419372558594 110 M136.31419372558594 66 C136.31419372558594 78.04821443086556, 136.31419372558594 90.0964288617311, 136.31419372558594 110 M136.31419372558594 110 C31.678216358141526 110, -72.95776100930289 110, -136.31419372558594 110 M136.31419372558594 110 C73.53174058142902 110, 10.749287437272102 110, -136.31419372558594 110 M-136.31419372558594 110 C-136.31419372558594 93.65780828636716, -136.31419372558594 77.31561657273433, -136.31419372558594 66 M-136.31419372558594 110 C-136.31419372558594 96.23925995218019, -136.31419372558594 82.47851990436038, -136.31419372558594 66" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="label name" transform="translate(-85.3203125, -100)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">TELEFONE_CLIENTE</tspan></tspan></text></g><g class="label attribute-type" transform="translate(-123.81419372558594, -56)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">int</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-55.61106872558594, -56)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">*id_telefone</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(72.82643127441406, -56)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(72.82643127441406, -56)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-type" transform="translate(-123.81419372558594, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">int</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-55.61106872558594, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">id_cliente</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(72.82643127441406, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(72.82643127441406, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">CE/FK</tspan></tspan></text></g><g class="label attribute-type" transform="translate(-123.81419372558594, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">texto</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-55.61106872558594, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">numero</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(72.82643127441406, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(72.82643127441406, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-type" transform="translate(-123.81419372558594, 76)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">texto</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-55.61106872558594, 76)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">tipo</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(72.82643127441406, 76)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(72.82643127441406, 76)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="divider"><path d="M-136.31419372558594 -66.00005 L-136.31419372558594 -65.99995 L136.31419372558594 -65.99995 L136.31419372558594 -66.00005" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-136.31419372558594 -66.00005 C-136.31419372558594 -66.00002641488467, -136.31419372558594 -66.00000282976934, -136.31419372558594 -65.99995 M-136.31419372558594 -66.00005 C-136.31419372558594 -66.00001671574545, -136.31419372558594 -65.99998343149088, -136.31419372558594 -65.99995 M-136.31419372558594 -65.99995 C-76.30297406636396 -65.99995, -16.29175440714198 -65.99995, 136.31419372558594 -65.99995 M-136.31419372558594 -65.99995 C-39.07772391412077 -65.99995, 58.1587458973444 -65.99995, 136.31419372558594 -65.99995 M136.31419372558594 -65.99995 C136.31419372558594 -65.9999892717346, 136.31419372558594 -66.00002854346921, 136.31419372558594 -66.00005 M136.31419372558594 -65.99995 C136.31419372558594 -65.99998525268806, 136.31419372558594 -66.00002050537611, 136.31419372558594 -66.00005 M136.31419372558594 -66.00005 C72.05023632940836 -66.00005, 7.78627893323079 -66.00005, -136.31419372558594 -66.00005 M136.31419372558594 -66.00005 C42.70788789298389 -66.00005, -50.898417939618156 -66.00005, -136.31419372558594 -66.00005" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="divider"><path d="M-68.11111872558594 -66 L-68.11101872558594 -66 L-68.11101872558594 110 L-68.11111872558594 110" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-68.11111872558594 -66 C-68.11109069307554 -66, -68.11106266056514 -66, -68.11101872558594 -66 M-68.11111872558594 -66 C-68.11108928736708 -66, -68.1110598491482 -66, -68.11101872558594 -66 M-68.11101872558594 -66 C-68.11101872558594 -4.655084878481567, -68.11101872558594 56.689830243036866, -68.11101872558594 110 M-68.11101872558594 -66 C-68.11101872558594 -21.934873936654782, -68.11101872558594 22.130252126690436, -68.11101872558594 110 M-68.11101872558594 110 C-68.1110556942773 110, -68.11109266296866 110, -68.11111872558594 110 M-68.11101872558594 110 C-68.11105660832992 110, -68.1110944910739 110, -68.11111872558594 110 M-68.11111872558594 110 C-68.11111872558594 66.66168740699426, -68.11111872558594 23.323374813988522, -68.11111872558594 -66 M-68.11111872558594 110 C-68.11111872558594 70.14630338312153, -68.11111872558594 30.292606766243082, -68.11111872558594 -66" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="divider"><path d="M60.32638127441406 -66 L60.326481274414064 -66 L60.326481274414064 110 L60.32638127441406 110" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M60.32638127441406 -66 C60.3264212027372 -66, 60.326461131060334 -66, 60.326481274414064 -66 M60.32638127441406 -66 C60.326417513339514 -66, 60.32645375226496 -66, 60.326481274414064 -66 M60.326481274414064 -66 C60.326481274414064 -28.694973082702845, 60.326481274414064 8.61005383459431, 60.326481274414064 110 M60.326481274414064 -66 C60.326481274414064 -12.641545660100768, 60.326481274414064 40.716908679798465, 60.326481274414064 110 M60.326481274414064 110 C60.3264521971552 110, 60.32642311989633 110, 60.32638127441406 110 M60.326481274414064 110 C60.32645056076709 110, 60.32641984712012 110, 60.32638127441406 110 M60.32638127441406 110 C60.32638127441406 57.570795363504416, 60.32638127441406 5.141590727008833, 60.32638127441406 -66 M60.32638127441406 110 C60.32638127441406 64.31255923904507, 60.32638127441406 18.62511847809013, 60.32638127441406 -66" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="divider"><path d="M-136.31419372558594 -66.00005 L-136.31419372558594 -65.99995 L136.31419372558594 -65.99995 L136.31419372558594 -66.00005" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-136.31419372558594 -66.00005 C-136.31419372558594 -66.00002376463965, -136.31419372558594 -65.99999752927931, -136.31419372558594 -65.99995 M-136.31419372558594 -66.00005 C-136.31419372558594 -66.0000249240281, -136.31419372558594 -65.9999998480562, -136.31419372558594 -65.99995 M-136.31419372558594 -65.99995 C-52.08593093617182 -65.99995, 32.1423318532423 -65.99995, 136.31419372558594 -65.99995 M-136.31419372558594 -65.99995 C-71.71158633426154 -65.99995, -7.108978942937142 -65.99995, 136.31419372558594 -65.99995 M136.31419372558594 -65.99995 C136.31419372558594 -65.99998502606469, 136.31419372558594 -66.00002005212937, 136.31419372558594 -66.00005 M136.31419372558594 -65.99995 C136.31419372558594 -65.99998998808037, 136.31419372558594 -66.00002997616075, 136.31419372558594 -66.00005 M136.31419372558594 -66.00005 C78.14755439919793 -66.00005, 19.98091507280992 -66.00005, -136.31419372558594 -66.00005 M136.31419372558594 -66.00005 C69.33731564409713 -66.00005, 2.3604375626083254 -66.00005, -136.31419372558594 -66.00005" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g></g></g></g></g><defs><filter id="my-svg-drop-shadow" height="130%" width="130%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><defs><filter id="my-svg-drop-shadow-small" height="150%" width="150%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><linearGradient id="my-svg-gradient" gradientUnits="objectBoundingBox" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#01337e" stop-opacity="1"/><stop offset="100%" stop-color="hsl(210, 4.4444444444%, 86.4705882353%)" stop-opacity="1"/></linearGradient></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 912 220" width="912" height="220"
+     role="img" aria-label="Depois da 1FN: cliente e telefone_cliente em tabelas separadas, com uma linha por telefone.">
+  <style>
+    /* @estilo-padrao */
+    /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
+     *
+     * POR QUE existe: SVG externo carregado por `img` não importa folha de estilo —
+     * nem `xml-stylesheet`, nem `@import`, nem `link`. Cada arquivo precisa carregar
+     * o próprio bloco. Copiar isto em 28 arquivos faria qualquer ajuste de paleta
+     * virar 28 edições, e uma ficaria para trás.
+     *
+     * Fonte única aqui; `scripts/estilo-diagrama.mjs` injeta entre os marcadores.
+     * Edite AQUI e rode `npm run diagramas:estilo`.
+     *
+     * ---------------------------------------------------------------------------
+     * A IDENTIDADE: a barra esquerda.
+     *
+     * O deck marca o que importa com uma régua laranja à esquerda e o canto direito
+     * arredondado — está no `.atencao` e no título de "mão na massa" do senac.css.
+     * O diagrama usa o mesmo gesto: toda caixa é um cartão com régua à esquerda,
+     * azul quando é conteúdo e laranja quando é o ponto do slide.
+     *
+     * O que veio antes era retângulo azul chapado com texto branco centrado: lia
+     * como fluxograma de ferramenta, não como material desta UC.
+     * ---------------------------------------------------------------------------
+     *
+     * As razões de contraste estão medidas em PADRAO-DIAGRAMA.md.
+     */
+
+    .lig { stroke-width: 1.6; fill: none; }
+    .lig-o { stroke-width: 1.6; }
+    .seta { stroke-width: 1.8; fill: none; }
+    .ent-borda { fill: none; stroke-width: 1.5; }
+    .caixa { stroke-width: 1.5; }
+
+    .t    { font-family: 'Raleway', 'Segoe UI', 'Noto Sans', system-ui, sans-serif; fill: #12243a; }
+    .mono { font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace; }
+
+    /* ---------- tipografia ----------
+       Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
+       Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
+    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
+       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
+       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
+       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
+       ~16px, que e legivel de longe sem competir com o titulo do slide. */
+    .nome   { font-size: 23px; font-weight: 650; }
+    .glosa  { font-size: 18px; font-weight: 400; }
+    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 18px; }
+    .dica   { font-size: 19px; }
+    .seta-rot { font-size: 16px; text-anchor: middle; }
+
+    /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
+       sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
+       dentro de moldura e sujava o desenho. */
+    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .regua   { stroke-width: 1; fill: none; }
+
+    /* ---------- cartões ----------
+       Largura igual entre irmãos é a razão de desenhar à mão: quem escreve a
+       geometria escreve o mesmo `width`, e não há motor de layout para discordar. */
+    /* O simbolo segue a cor do cartao: azul no comum, laranja no que carrega o
+       ponto do slide. Os icones da pasta `_comum/icones/mono` desenham com
+       `stroke: #FFFFFF`, e o embutidor troca por `currentColor` — dai o `color`
+       aqui mandar em todos eles. */
+
+    /* Caixa cheia: para dado, não para conceito. A tabelinha de células usa isto. */
+
+    /* ---------- notacao de DER ----------
+       A faixa do atributo e um retangulo de largura INTEIRA. O Mermaid pintava so
+       sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
+       coluninha nao acompanhava a faixa da linha dela. */
+
+    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
+    .ent-campo { font-size: 18px; fill: #12243a; }
+    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+
+    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+
+    /* ---------- selo numerado ---------- */
+
+    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+
+    /*
+     * ---------- o relógio ----------
+     *
+     *    0s - 2s   repouso no estado final   -- e o quadro que o PDF pega
+     *    2s        RESET
+     *    2s -10s   ate quatro turnos de 2s
+     *   10s -12s   repouso no estado final
+     *
+     * Estado se marca por PORCENTAGEM nos keyframes de cada diagrama; atraso
+     * deslocaria o relogio inteiro e cada painel reiniciaria num instante
+     * diferente. O realce abaixo pode usar atraso porque nao guarda estado.
+     *
+     * Nenhuma animacao usa `animation-fill-mode`: durante o atraso o navegador
+     * mostra o estilo normal, que e o estado final. E por isso que o quadro zero
+     * -- o do PDF -- sai completo.
+     */
+    @keyframes acende-barra  { 0%, 16.6% { fill: #e85d00; } 16.7%, 100% { fill: #01337e; } }
+    @keyframes acende-cartao { 0%, 16.6% { fill: #fff1e6; } 16.7%, 100% { fill: #f2f6fa; } }
+    @keyframes acende-selo   { 0%, 16.6% { fill: #ff7809; } 16.7%, 100% { fill: #4a5f75; } }
+    @keyframes acende-numero { 0%, 16.6% { fill: #10161c; } 16.7%, 100% { fill: #ffffff; } }
+    @keyframes acende-tinta  { 0%, 16.6% { fill: #b34700; font-weight: 700; } 16.7%, 100% { fill: #12243a; font-weight: 400; } }
+    @keyframes acende-traco  { 0%, 16.6% { stroke: #e85d00; stroke-width: 3; } 16.7%, 100% { stroke: #7d8b99; stroke-width: 1.8; } }
+
+    .realce .barra  { animation: acende-barra 12s linear infinite; }
+    .realce .cartao { animation: acende-cartao 12s linear infinite; }
+    .realce .selo   { animation: acende-selo 12s linear infinite; }
+    .realce .numero { animation: acende-numero 12s linear infinite; }
+    .tinta          { animation: acende-tinta 12s linear infinite; }
+    .traco          { animation: acende-traco 12s linear infinite; }
+
+    /* O atraso precisa VENCER o atalho `animation` em especificidade: o atalho
+       reescreve `animation-delay` para zero. `.realce .barra` vale 0-2-0, entao um
+       seletor 0-1-0 e ignorado e todos os turnos acendem juntos. Foi o primeiro
+       defeito do primeiro diagrama animado. */
+    .realce.v1 .barra, .realce.v1 .cartao, .realce.v1 .selo, .realce.v1 .numero, .t1.tinta, .t1.traco { animation-delay: 2s; }
+    .realce.v2 .barra, .realce.v2 .cartao, .realce.v2 .selo, .realce.v2 .numero, .t2.tinta, .t2.traco { animation-delay: 4s; }
+    .realce.v3 .barra, .realce.v3 .cartao, .realce.v3 .selo, .realce.v3 .numero, .t3.tinta, .t3.traco { animation-delay: 6s; }
+    .realce.v4 .barra, .realce.v4 .cartao, .realce.v4 .selo, .realce.v4 .numero, .t4.tinta, .t4.traco { animation-delay: 8s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .realce .barra, .realce .cartao, .realce .selo, .realce .numero,
+      .tinta, .traco, .anima { animation: none; }
+    }
+    /* ===========================================================================
+       VARIANTE SOLTA: o diagrama direto sobre o slide, sem o cartao branco.
+       Vale so para o SVG cuja raiz tem class="solto".
+
+       POR QUE o painel e ESCURO. A primeira tentativa foi painel de branco a 10%:
+       integrava, mas media 1,24:1 contra o slide -- invisivel -- e ainda BAIXAVA o
+       contraste do texto, porque branco sobre aquele painel dava 6,03 enquanto
+       branco direto no azul dava 7,46.
+
+       Projetor emite luz: ele nao projeta escuro, o preto e a luz da sala. Modelando
+       a luz ambiente como um piso de luminancia (0 sala escura, 0,10 com luz, 0,25
+       sala clara ou projetor fraco), o painel claro reprovava em AA com a luz acesa:
+
+         painel claro, nome branco      6,03   4,01   2,67
+         painel escuro, nome branco    18,94   6,78   3,45
+         cartao branco (para comparar) 14,44   5,90   3,16
+
+       O painel escuro passa ate o cartao branco nas tres condicoes, e fica visivel
+       (2,54:1 contra o slide). Por isso ele, e nao o claro.
+       =========================================================================== */
+    .cartao   { fill: #01102a; }
+    .cartao.q { fill: #2b1708; }
+    .barra    { fill: #9cc9ff; }
+    .barra.q  { fill: #ffb065; }
+    .nome     { fill: #ffffff; }
+    .glosa,
+    .nota,
+    .dica,
+    .seta-rot { fill: #cfe0f5; }
+    .eyebrow  { fill: #ffc287; }
+    .regua    { stroke: rgba(255, 255, 255, 0.28); }
+    .seta     { stroke: #cfe0f5; }
+    .ico      { color: #9cc9ff; }
+    .q + .ico, .ico.q { color: #ffb065; }
+    .selo     { fill: rgba(255, 255, 255, 0.24); }
+    .numero   { fill: #ffffff; }
+    .caixa    { fill: #9cc9ff; stroke: #9cc9ff; }
+    .morta    { fill: rgba(255, 255, 255, 0.12); }
+    .rot,
+    .rot-min  { fill: #01102a; }
+
+    /* DER na variante solta */
+    .ent       { fill: #01102a; }
+    .ent-borda { stroke: rgba(255, 255, 255, 0.34); }
+    .faixa     { fill: rgba(255, 255, 255, 0.06); }
+    .cab       { fill: #9cc9ff; }
+    .cab-q     { fill: #ffb065; }
+    .ent-nome  { fill: #01102a; }
+    .ent-tipo  { fill: #8fb3d9; }
+    .ent-campo { fill: #ffffff; }
+    .ent-chave { fill: #ffc287; }
+    .lig       { stroke: #cfe0f5; }
+    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .verbo     { fill: #cfe0f5; }
+    .verbo-bg  { fill: none; }
+
+    @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
+    @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
+    .realce .barra  { animation: acende-barra-solta 12s linear infinite; }
+    .realce .cartao { animation: acende-cartao-solto 12s linear infinite; }
+    /* @fim */
+  </style>
+
+  <rect class="ent" x="16" y="52" width="320" height="116" rx="4"/>
+  <path class="cab" d="M20 52 H332 a4 4 0 0 1 4 4 V96 H16 V56 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="176" y="81">CLIENTE</text>
+  <text class="t ent-tipo" x="32" y="120">int</text>
+  <text class="t ent-campo" x="108" y="120">*id_cliente</text>
+  <rect class="faixa" x="17" y="132" width="318" height="36"/>
+  <text class="t ent-tipo" x="32" y="156">texto</text>
+  <text class="t ent-campo" x="108" y="156">nome</text>
+  <rect class="ent-borda" x="16" y="52" width="320" height="116" rx="4"/>
+  <rect class="ent" x="506" y="16" width="390" height="188" rx="4"/>
+  <path class="cab" d="M510 16 H892 a4 4 0 0 1 4 4 V60 H506 V20 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="701" y="45">TELEFONE_CLIENTE</text>
+  <text class="t ent-tipo" x="522" y="84">int</text>
+  <text class="t ent-campo" x="598" y="84">*id_telefone</text>
+  <rect class="faixa" x="507" y="96" width="388" height="36"/>
+  <text class="t ent-tipo" x="522" y="120">int</text>
+  <text class="t ent-campo" x="598" y="120">id_cliente</text>
+  <text class="t ent-chave" x="880" y="120">CE/FK</text>
+  <text class="t ent-tipo" x="522" y="156">texto</text>
+  <text class="t ent-campo" x="598" y="156">numero</text>
+  <rect class="faixa" x="507" y="168" width="388" height="36"/>
+  <text class="t ent-tipo" x="522" y="192">texto</text>
+  <text class="t ent-campo" x="598" y="192">tipo</text>
+  <rect class="ent-borda" x="506" y="16" width="390" height="188" rx="4"/>
+  <path class="lig" d="M348 101 V119"/>
+  <path class="lig" d="M360 101 V119"/>
+  <path class="lig" d="M492 110 L506 101 M492 110 L506 110 M492 110 L506 119"/>
+  <circle class="lig-o" cx="480" cy="110" r="5"/>
+  <path class="lig" d="M372 110 H470"/>
+  <text class="t verbo" x="421" y="116">tem</text>
+</svg>

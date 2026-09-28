@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 200" width="1092" height="200"
-     role="img" aria-label="O caminho no pgAdmin em oito passos numerados: Servers, PostgreSQL 16, Databases, locadora, Schemas, public, Tables, e enfim as tabelas jogo, cliente e emprestimo.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 272" width="1092" height="272"
+     role="img" aria-label="O caminho no pgAdmin em oito passos numerados: Servers, PostgreSQL 16, Databases, locadora, Schemas, public, Tables, e enfim as tabelas do aluno.">
   <style>
     /* @estilo-padrao */
     /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
@@ -27,27 +27,38 @@
      * As razões de contraste estão medidas em PADRAO-DIAGRAMA.md.
      */
 
+    .lig { stroke-width: 1.6; fill: none; }
+    .lig-o { stroke-width: 1.6; }
+    .seta { stroke-width: 1.8; fill: none; }
+    .ent-borda { fill: none; stroke-width: 1.5; }
+    .caixa { stroke-width: 1.5; }
+
     .t    { font-family: 'Raleway', 'Segoe UI', 'Noto Sans', system-ui, sans-serif; fill: #12243a; }
     .mono { font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace; }
 
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    .nome   { font-size: 16px; font-weight: 650; fill: #12243a; }
-    .glosa  { font-size: 13.5px; font-weight: 400; fill: #4a5f75; }
-    .nome-c { font-size: 16px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 13.5px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 12px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 13.5px; fill: #4a5f75; }
-    .dica   { font-size: 14.5px; fill: #4a5f75; }
-    .seta-rot { font-size: 12.5px; fill: #4a5f75; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
+       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
+       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
+       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
+       ~16px, que e legivel de longe sem competir com o titulo do slide. */
+    .nome   { font-size: 23px; font-weight: 650; }
+    .glosa  { font-size: 18px; font-weight: 400; }
+    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 18px; }
+    .dica   { font-size: 19px; }
+    .seta-rot { font-size: 16px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 11.5px; font-weight: 800; letter-spacing: 0.14em; fill: #b34700; }
-    .regua   { stroke: #d9e1e9; stroke-width: 1; fill: none; }
+    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
        Largura igual entre irmãos é a razão de desenhar à mão: quem escreve a
@@ -56,21 +67,24 @@
        ponto do slide. Os icones da pasta `_comum/icones/mono` desenham com
        `stroke: #FFFFFF`, e o embutidor troca por `currentColor` — dai o `color`
        aqui mandar em todos eles. */
-    .ico      { color: #01337e; }
-    .q + .ico, .ico.q { color: #e85d00; }
-    .cartao   { fill: #f2f6fa; }
-    .barra    { fill: #01337e; }
-    .cartao.q { fill: #fff1e6; }
-    .barra.q  { fill: #e85d00; }
 
     /* Caixa cheia: para dado, não para conceito. A tabelinha de células usa isto. */
-    .caixa  { fill: #01337e; stroke: #01337e; stroke-width: 1.5; }
-    .morta  { fill: #eaeff4; stroke: none; }
-    .seta   { stroke: #7d8b99; stroke-width: 1.8; fill: none; }
+
+    /* ---------- notacao de DER ----------
+       A faixa do atributo e um retangulo de largura INTEIRA. O Mermaid pintava so
+       sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
+       coluninha nao acompanhava a faixa da linha dela. */
+
+    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
+    .ent-campo { font-size: 18px; fill: #12243a; }
+    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+
+    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
-    .selo   { fill: #4a5f75; }
-    .numero { font-size: 12.5px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+
+    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -115,104 +129,104 @@
       .realce .barra, .realce .cartao, .realce .selo, .realce .numero,
       .tinta, .traco, .anima { animation: none; }
     }
+    /* ===========================================================================
+       VARIANTE SOLTA: o diagrama direto sobre o slide, sem o cartao branco.
+       Vale so para o SVG cuja raiz tem class="solto".
+
+       POR QUE o painel e ESCURO. A primeira tentativa foi painel de branco a 10%:
+       integrava, mas media 1,24:1 contra o slide -- invisivel -- e ainda BAIXAVA o
+       contraste do texto, porque branco sobre aquele painel dava 6,03 enquanto
+       branco direto no azul dava 7,46.
+
+       Projetor emite luz: ele nao projeta escuro, o preto e a luz da sala. Modelando
+       a luz ambiente como um piso de luminancia (0 sala escura, 0,10 com luz, 0,25
+       sala clara ou projetor fraco), o painel claro reprovava em AA com a luz acesa:
+
+         painel claro, nome branco      6,03   4,01   2,67
+         painel escuro, nome branco    18,94   6,78   3,45
+         cartao branco (para comparar) 14,44   5,90   3,16
+
+       O painel escuro passa ate o cartao branco nas tres condicoes, e fica visivel
+       (2,54:1 contra o slide). Por isso ele, e nao o claro.
+       =========================================================================== */
+    .cartao   { fill: #01102a; }
+    .cartao.q { fill: #2b1708; }
+    .barra    { fill: #9cc9ff; }
+    .barra.q  { fill: #ffb065; }
+    .nome     { fill: #ffffff; }
+    .glosa,
+    .nota,
+    .dica,
+    .seta-rot { fill: #cfe0f5; }
+    .eyebrow  { fill: #ffc287; }
+    .regua    { stroke: rgba(255, 255, 255, 0.28); }
+    .seta     { stroke: #cfe0f5; }
+    .ico      { color: #9cc9ff; }
+    .q + .ico, .ico.q { color: #ffb065; }
+    .selo     { fill: rgba(255, 255, 255, 0.24); }
+    .numero   { fill: #ffffff; }
+    .caixa    { fill: #9cc9ff; stroke: #9cc9ff; }
+    .morta    { fill: rgba(255, 255, 255, 0.12); }
+    .rot,
+    .rot-min  { fill: #01102a; }
+
+    /* DER na variante solta */
+    .ent       { fill: #01102a; }
+    .ent-borda { stroke: rgba(255, 255, 255, 0.34); }
+    .faixa     { fill: rgba(255, 255, 255, 0.06); }
+    .cab       { fill: #9cc9ff; }
+    .cab-q     { fill: #ffb065; }
+    .ent-nome  { fill: #01102a; }
+    .ent-tipo  { fill: #8fb3d9; }
+    .ent-campo { fill: #ffffff; }
+    .ent-chave { fill: #ffc287; }
+    .lig       { stroke: #cfe0f5; }
+    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .verbo     { fill: #cfe0f5; }
+    .verbo-bg  { fill: none; }
+
+    @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
+    @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
+    .realce .barra  { animation: acende-barra-solta 12s linear infinite; }
+    .realce .cartao { animation: acende-cartao-solto 12s linear infinite; }
     /* @fim */
   </style>
 
   <defs>
     <marker id="ponta" viewBox="0 0 9 9" refX="8" refY="4.5" markerWidth="6.5" markerHeight="6.5" orient="auto">
-      <polygon points="0,0 9,4.5 0,9" fill="#7d8b99"/>
+      <polygon points="0,0 9,4.5 0,9" fill="#cfe0f5"/>
     </marker>
   </defs>
-  <text class="t eyebrow" x="20" y="26">O CAMINHO ATÉ AS SUAS TABELAS</text>
-  <path class="regua" d="M20 35 H1072"/>
-  <path class="cartao" d="M29 50 H259 a9 9 0 0 1 9 9 V117 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 50 H24 a4 4 0 0 0 -4 4 V122 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(43 72) scale(0.333333)">
-    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="18" cy="22" r="9"/>
-    <circle cx="78" cy="22" r="9"/>
-    <circle cx="48" cy="50" r="10" stroke="currentColor"/>
-    <circle cx="18" cy="78" r="9"/>
-    <circle cx="78" cy="78" r="9"/>
-    <path d="m25 28 15 15M71 28 56 43M25 72l15-15M71 72 56 57M18 31v38M78 31v38"/>
-    </g>
-  </g>
-  <text class="t nome" x="89" y="94">1 · Servers</text>
-  <path class="seta" d="M275 88 H281" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M297 50 H527 a9 9 0 0 1 9 9 V117 a9 9 0 0 1 -9 9 H297 Z"/>
-  <path class="barra" d="M297 50 H292 a4 4 0 0 0 -4 4 V122 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(311 72) scale(0.333333)">
-    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse cx="38" cy="22" rx="26" ry="9.5"/>
-    <path d="M12 22v44c0 5.2 11.6 9.5 26 9.5 4 0 7.9-.3 11.3-.9"/>
-    <path d="M12 44c0 5.2 11.6 9.5 26 9.5 1.6 0 3.2-.1 4.7-.2"/>
-    <circle cx="69" cy="65" r="11" stroke="currentColor"/>
-    <path d="M69 47v7M69 76v7M87 65h-7M58 65h-7M81.7 52.3l-5 5M61.3 72.7l-5 5M81.7 77.7l-5-5M61.3 57.3l-5-5" stroke="currentColor"/>
-    </g>
-  </g>
-  <text class="t nome" x="357" y="94">2 · PostgreSQL 16</text>
-  <path class="seta" d="M543 88 H549" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M565 50 H795 a9 9 0 0 1 9 9 V117 a9 9 0 0 1 -9 9 H565 Z"/>
-  <path class="barra" d="M565 50 H560 a4 4 0 0 0 -4 4 V122 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(579 72) scale(0.333333)">
-    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M48 10 88 28 48 46 8 28 48 10Z" stroke="currentColor"/>
-    <path d="M8 48l40 18 40-18"/>
-    <path d="M8 68l40 18 40-18"/>
-    </g>
-  </g>
-  <text class="t nome" x="625" y="94">3 · Databases</text>
-  <path class="seta" d="M811 88 H817" marker-end="url(#ponta)"/>
-  <path class="cartao q" d="M833 50 H1063 a9 9 0 0 1 9 9 V117 a9 9 0 0 1 -9 9 H833 Z"/>
-  <path class="barra q" d="M833 50 H828 a4 4 0 0 0 -4 4 V122 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(847 72) scale(0.333333)">
-    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse cx="48" cy="24" rx="30" ry="11"/>
-    <path d="M18 24v48c0 6.1 13.4 11 30 11s30-4.9 30-11V24"/>
-    <path d="M18 48c0 6.1 13.4 11 30 11s30-4.9 30-11" stroke="currentColor"/>
-    </g>
-  </g>
-  <text class="t nome" x="893" y="94">4 · locadora</text>
-  <path class="cartao" d="M29 146 H259 a9 9 0 0 1 9 9 V213 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 146 H24 a4 4 0 0 0 -4 4 V218 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(43 168) scale(0.333333)">
-    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M48 10 88 28 48 46 8 28 48 10Z" stroke="currentColor"/>
-    <path d="M8 48l40 18 40-18"/>
-    <path d="M8 68l40 18 40-18"/>
-    </g>
-  </g>
-  <text class="t nome" x="89" y="190">5 · Schemas</text>
-  <path class="seta" d="M275 184 H281" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M297 146 H527 a9 9 0 0 1 9 9 V213 a9 9 0 0 1 -9 9 H297 Z"/>
-  <path class="barra" d="M297 146 H292 a4 4 0 0 0 -4 4 V218 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(311 168) scale(0.333333)">
-    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M48 8 86 28v40L48 88 10 68V28L48 8Z"/>
-    <path d="M10 28l38 20 38-20M48 48v40" stroke="currentColor"/>
-    </g>
-  </g>
-  <text class="t nome" x="357" y="190">6 · public</text>
-  <path class="seta" d="M543 184 H549" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M565 146 H795 a9 9 0 0 1 9 9 V213 a9 9 0 0 1 -9 9 H565 Z"/>
-  <path class="barra" d="M565 146 H560 a4 4 0 0 0 -4 4 V218 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(579 168) scale(0.333333)">
-    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="12" y="18" width="72" height="60" rx="7"/>
-    <path d="M12 38h72" stroke="currentColor"/>
-    <path d="M12 58h72M40 38v40M62 38v40"/>
-    </g>
-  </g>
-  <text class="t nome" x="625" y="190">7 · Tables</text>
-  <path class="seta" d="M811 184 H817" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M833 146 H1063 a9 9 0 0 1 9 9 V213 a9 9 0 0 1 -9 9 H833 Z"/>
-  <path class="barra" d="M833 146 H828 a4 4 0 0 0 -4 4 V218 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(847 168) scale(0.333333)">
-    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="12" y="18" width="72" height="60" rx="7"/>
-    <path d="M12 38h72" stroke="currentColor"/>
-    <path d="M12 58h72M40 38v40M62 38v40"/>
-    </g>
-  </g>
-  <text class="t nome" x="893" y="190">8 · jogo, cliente, emprestimo</text>
+  <text class="t eyebrow" x="20" y="28">O CAMINHO ATÉ AS SUAS TABELAS</text>
+  <path class="regua" d="M20 39 H1072"/>
+  <path class="cartao" d="M29 52 H259 a9 9 0 0 1 9 9 V131 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 52 H24 a4 4 0 0 0 -4 4 V136 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="104">1 · Servers</text>
+  <path class="seta" d="M276 96 H282" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M297 52 H527 a9 9 0 0 1 9 9 V131 a9 9 0 0 1 -9 9 H297 Z"/>
+  <path class="barra" d="M297 52 H292 a4 4 0 0 0 -4 4 V136 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="317" y="104">2 · PostgreSQL 16</text>
+  <path class="seta" d="M544 96 H550" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M565 52 H795 a9 9 0 0 1 9 9 V131 a9 9 0 0 1 -9 9 H565 Z"/>
+  <path class="barra" d="M565 52 H560 a4 4 0 0 0 -4 4 V136 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="585" y="104">3 · Databases</text>
+  <path class="seta" d="M812 96 H818" marker-end="url(#ponta)"/>
+  <path class="cartao q" d="M833 52 H1063 a9 9 0 0 1 9 9 V131 a9 9 0 0 1 -9 9 H833 Z"/>
+  <path class="barra q" d="M833 52 H828 a4 4 0 0 0 -4 4 V136 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="853" y="104">4 · locadora</text>
+  <path class="cartao" d="M29 160 H259 a9 9 0 0 1 9 9 V239 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 160 H24 a4 4 0 0 0 -4 4 V244 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="212">5 · Schemas</text>
+  <path class="seta" d="M276 204 H282" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M297 160 H527 a9 9 0 0 1 9 9 V239 a9 9 0 0 1 -9 9 H297 Z"/>
+  <path class="barra" d="M297 160 H292 a4 4 0 0 0 -4 4 V244 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="317" y="212">6 · public</text>
+  <path class="seta" d="M544 204 H550" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M565 160 H795 a9 9 0 0 1 9 9 V239 a9 9 0 0 1 -9 9 H565 Z"/>
+  <path class="barra" d="M565 160 H560 a4 4 0 0 0 -4 4 V244 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="585" y="212">7 · Tables</text>
+  <path class="seta" d="M812 204 H818" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M833 160 H1063 a9 9 0 0 1 9 9 V239 a9 9 0 0 1 -9 9 H833 Z"/>
+  <path class="barra" d="M833 160 H828 a4 4 0 0 0 -4 4 V244 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="853" y="212">8 · suas tabelas</text>
 </svg>

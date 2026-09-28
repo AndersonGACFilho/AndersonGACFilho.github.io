@@ -1,1 +1,222 @@
-<svg width="669" height="236" id="my-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="erDiagram" style="background-color: transparent;" viewBox="10.25 4 668.67529296875 236" role="graphics-document document" aria-roledescription="er"><style>#my-svg{font-family:Raleway,'Segoe UI','Noto Sans',system-ui,sans-serif;font-size:18px;fill:#12243a;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#fff1e6;}#my-svg .error-text{fill:#000e19;stroke:#000e19;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#7d8b99;stroke:#7d8b99;}#my-svg .marker.cross{stroke:#7d8b99;}#my-svg svg{font-family:Raleway,'Segoe UI','Noto Sans',system-ui,sans-serif;font-size:18px;}#my-svg p{margin:0;}#my-svg .entityBox{fill:#01337e;stroke:#01337e;}#my-svg .relationshipLabelBox{fill:#fff1e6;opacity:0.7;background-color:#fff1e6;}#my-svg .relationshipLabelBox rect{opacity:0.5;}#my-svg .labelBkg{background-color:rgba(255, 241, 230, 0.5);}#my-svg .edgeLabel{background-color:#ffffff;}#my-svg .edgeLabel .label rect{fill:#ffffff;}#my-svg .edgeLabel .label text{fill:#12243a;}#my-svg .edgeLabel .label{fill:#01337e;font-size:14px;}#my-svg .label{font-family:Raleway,'Segoe UI','Noto Sans',system-ui,sans-serif;color:#12243a;}#my-svg .edge-pattern-dashed{stroke-dasharray:8,8;}#my-svg .node rect,#my-svg .node circle,#my-svg .node ellipse,#my-svg .node polygon{fill:#01337e;stroke:#01337e;stroke-width:1px;}#my-svg .relationshipLine{stroke:#7d8b99;stroke-width:1px;fill:none;}#my-svg .marker{fill:none!important;stroke:#7d8b99!important;stroke-width:1;}#my-svg [data-look=neo].labelBkg{background-color:rgba(255, 241, 230, 0.5);}#my-svg .cluster rect{fill:#f2f6fa;stroke:#d9e1e9;stroke-width:1px;}#my-svg .cluster text{fill:#003d75;}#my-svg .cluster-label text{fill:#003d75;}#my-svg .node .neo-node{stroke:#01337e;}#my-svg [data-look="neo"].node rect,#my-svg [data-look="neo"].cluster rect,#my-svg [data-look="neo"].node polygon{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].swimlane.cluster rect{filter:none;}#my-svg [data-look="neo"].node path{stroke:url(#my-svg-gradient);stroke-width:1px;}#my-svg [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node .neo-line path{stroke:#01337e;filter:none;}#my-svg [data-look="neo"].node circle{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node circle .state-start{fill:#000000;}#my-svg [data-look="neo"].icon-shape .icon{fill:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].icon-shape .icon-neo path{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg .node .label:not(.attribute-type):not(.attribute-name):not(.attribute-keys):not(.attribute-comment) text,#my-svg .node .label:not(.attribute-type):not(.attribute-name):not(.attribute-keys):not(.attribute-comment) tspan{fill:rgb(255, 255, 255)!important;}#my-svg .label.name text,#my-svg .label.name tspan{font-weight:700!important;}#my-svg .label.attribute-comment text,#my-svg .label.attribute-comment tspan{fill:rgb(138, 66, 0)!important;font-weight:700!important;}#my-svg .label.attribute-type text,#my-svg .label.attribute-type tspan{fill:rgb(91, 103, 113)!important;}#my-svg .label.attribute-name text,#my-svg .label.attribute-name tspan{fill:rgb(16, 22, 28)!important;}#my-svg .edgeLabel .label text,#my-svg .edgeLabel .label tspan{fill:rgb(16, 22, 28)!important;}#my-svg .cluster rect{rx:10;ry:10;}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><defs><marker id="my-svg_er-onlyOneStart" class="marker onlyOne er" refX="0" refY="9" markerWidth="18" markerHeight="18" orient="auto"><path d="M9,0 L9,18 M15,0 L15,18"/></marker></defs><defs><marker id="my-svg_er-onlyOneEnd" class="marker onlyOne er" refX="18" refY="9" markerWidth="18" markerHeight="18" orient="auto"><path d="M3,0 L3,18 M9,0 L9,18"/></marker></defs><defs><marker id="my-svg_er-zeroOrOneStart" class="marker zeroOrOne er" refX="0" refY="9" markerWidth="30" markerHeight="18" orient="auto"><circle fill="white" cx="21" cy="9" r="6"/><path d="M9,0 L9,18"/></marker></defs><defs><marker id="my-svg_er-zeroOrOneEnd" class="marker zeroOrOne er" refX="30" refY="9" markerWidth="30" markerHeight="18" orient="auto"><circle fill="white" cx="9" cy="9" r="6"/><path d="M21,0 L21,18"/></marker></defs><defs><marker id="my-svg_er-oneOrMoreStart" class="marker oneOrMore er" refX="18" refY="18" markerWidth="45" markerHeight="36" orient="auto"><path d="M0,18 Q 18,0 36,18 Q 18,36 0,18 M42,9 L42,27"/></marker></defs><defs><marker id="my-svg_er-oneOrMoreEnd" class="marker oneOrMore er" refX="27" refY="18" markerWidth="45" markerHeight="36" orient="auto"><path d="M3,9 L3,27 M9,18 Q27,0 45,18 Q27,36 9,18"/></marker></defs><defs><marker id="my-svg_er-zeroOrMoreStart" class="marker zeroOrMore er" refX="18" refY="18" markerWidth="57" markerHeight="36" orient="auto"><circle fill="white" cx="48" cy="18" r="6"/><path d="M0,18 Q18,0 36,18 Q18,36 0,18"/></marker></defs><defs><marker id="my-svg_er-zeroOrMoreEnd" class="marker zeroOrMore er" refX="39" refY="18" markerWidth="57" markerHeight="36" orient="auto"><circle fill="white" cx="9" cy="18" r="6"/><path d="M21,18 Q39,0 57,18 Q39,36 21,18"/></marker></defs><g class="root"><g class="edges edgePath"><path d="M245.1875,122L384.171875,122" id="my-svg-id_entity-PLATAFORMA-0_entity-JOGO-1_0" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="fill:none;;;fill:none" data-edge="true" data-et="edge" data-id="id_entity-PLATAFORMA-0_entity-JOGO-1_0" data-points="W3sieCI6MjQ1LjE4NzUsInkiOjEyMn0seyJ4IjozODQuMTcxODc1LCJ5IjoxMjJ9XQ==" data-look="classic" marker-start="url(#my-svg_er-onlyOneStart)" marker-end="url(#my-svg_er-zeroOrMoreEnd)"/></g><g class="clusters"/><g class="edgeLabels"><g class="edgeLabel" transform="translate(314.6796875, 121.5)"><g class="label" data-id="id_entity-PLATAFORMA-0_entity-JOGO-1_0" transform="translate(0, -8.500000953674316)"><g><rect class="background" style="" x="-29.4921875" y="-2.999998092651367" width="58.984375" height="28"/><text y="-10.1" text-anchor="middle" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em" text-anchor="middle"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">possui</tspan></tspan></text></g></g></g></g><g class="nodes"><g class="node default" id="my-svg-entity-PLATAFORMA-0" data-look="classic" transform="translate(128.59375, 122)"><g class="outer-path" style=""><path d="M-110.34375 -66 L110.34375 -66 L110.34375 66 L-110.34375 66" stroke="none" stroke-width="0" fill="#01337e"/><path d="M-110.34375 -66 C-63.61393015153574 -66, -16.88411030307148 -66, 110.34375 -66 M-110.34375 -66 C-40.87291856459039 -66, 28.597912870819215 -66, 110.34375 -66 M110.34375 -66 C110.34375 -28.5759618945689, 110.34375 8.848076210862203, 110.34375 66 M110.34375 -66 C110.34375 -19.49689244577487, 110.34375 27.006215108450263, 110.34375 66 M110.34375 66 C29.017823491452276 66, -52.30810301709545 66, -110.34375 66 M110.34375 66 C53.82103455852734 66, -2.7016808829453254 66, -110.34375 66 M-110.34375 66 C-110.34375 22.7713053257989, -110.34375 -20.457389348402202, -110.34375 -66 M-110.34375 66 C-110.34375 18.67248445601423, -110.34375 -28.655031087971537, -110.34375 -66" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-odd"><path d="M-110.34375 -22 L110.34375 -22 L110.34375 22 L-110.34375 22" stroke="none" stroke-width="0" fill="#ffffff"/><path d="M-110.34375 -22 C-40.1320108182034 -22, 30.079728363593205 -22, 110.34375 -22 M-110.34375 -22 C-51.75643327603418 -22, 6.83088344793164 -22, 110.34375 -22 M110.34375 -22 C110.34375 -6.510059334519918, 110.34375 8.979881330960165, 110.34375 22 M110.34375 -22 C110.34375 -8.706548872398912, 110.34375 4.586902255202176, 110.34375 22 M110.34375 22 C29.705896127726774 22, -50.93195774454645 22, -110.34375 22 M110.34375 22 C26.718267622976796 22, -56.90721475404641 22, -110.34375 22 M-110.34375 22 C-110.34375 5.719232712352817, -110.34375 -10.561534575294367, -110.34375 -22 M-110.34375 22 C-110.34375 12.197933086158406, -110.34375 2.3958661723168113, -110.34375 -22" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-even"><path d="M-110.34375 22 L110.34375 22 L110.34375 66 L-110.34375 66" stroke="none" stroke-width="0" fill="#f2f6fa"/><path d="M-110.34375 22 C-38.91007594354869 22, 32.52359811290262 22, 110.34375 22 M-110.34375 22 C-35.61033217399934 22, 39.12308565200132 22, 110.34375 22 M110.34375 22 C110.34375 31.714717381888036, 110.34375 41.42943476377607, 110.34375 66 M110.34375 22 C110.34375 36.512433196853216, 110.34375 51.02486639370643, 110.34375 66 M110.34375 66 C63.43460785060237 66, 16.525465701204737 66, -110.34375 66 M110.34375 66 C48.68150379804329 66, -12.980742403913425 66, -110.34375 66 M-110.34375 66 C-110.34375 54.9012850837581, -110.34375 43.802570167516194, -110.34375 22 M-110.34375 66 C-110.34375 54.35269058939301, -110.34375 42.70538117878603, -110.34375 22" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="label name" transform="translate(-59.95966339111328, -56)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">PLATAFORMA</tspan></tspan></text></g><g class="label attribute-type" transform="translate(-97.84375, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">int</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-29.640625, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">*id_plataforma</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(122.84375, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(122.84375, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-type" transform="translate(-97.84375, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">texto</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-29.640625, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">nome</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(122.84375, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(122.84375, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="divider"><path d="M-110.34375 -22.00005 L-110.34375 -21.99995 L110.34375 -21.99995 L110.34375 -22.00005" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-110.34375 -22.00005 C-110.34375 -22.000010382668332, -110.34375 -21.99997076533666, -110.34375 -21.99995 M-110.34375 -22.00005 C-110.34375 -22.00001825208742, -110.34375 -21.999986504174835, -110.34375 -21.99995 M-110.34375 -21.99995 C-32.67036639123428 -21.99995, 45.003017217531436 -21.99995, 110.34375 -21.99995 M-110.34375 -21.99995 C-51.55630596990853 -21.99995, 7.231138060182943 -21.99995, 110.34375 -21.99995 M110.34375 -21.99995 C110.34375 -21.99997762920103, 110.34375 -22.000005258402066, 110.34375 -22.00005 M110.34375 -21.99995 C110.34375 -21.99998123815447, 110.34375 -22.000012476308942, 110.34375 -22.00005 M110.34375 -22.00005 C24.20204981196771 -22.00005, -61.93965037606458 -22.00005, -110.34375 -22.00005 M110.34375 -22.00005 C47.83281666252741 -22.00005, -14.678116674945187 -22.00005, -110.34375 -22.00005" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="divider"><path d="M-42.140675 -22 L-42.140575 -22 L-42.140575 66 L-42.140675 66" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-42.140675 -22 C-42.14064982354615 -22, -42.140624647092295 -22, -42.140575 -22 M-42.140675 -22 C-42.1406424442198 -22, -42.140609888439606 -22, -42.140575 -22 M-42.140575 -22 C-42.140575 -1.9877319085848946, -42.140575 18.02453618283021, -42.140575 66 M-42.140575 -22 C-42.140575 2.153322865726455, -42.140575 26.30664573145291, -42.140575 66 M-42.140575 66 C-42.14059841506794 66, -42.14062183013589 66, -42.140675 66 M-42.140575 66 C-42.14060843469177 66, -42.140641869383536 66, -42.140675 66 M-42.140675 66 C-42.140675 45.12701229968815, -42.140675 24.254024599376287, -42.140675 -22 M-42.140675 66 C-42.140675 45.920218066525905, -42.140675 25.84043613305181, -42.140675 -22" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="divider"><path d="M-110.34375 -22.00005 L-110.34375 -21.99995 L110.34375 -21.99995 L110.34375 -22.00005" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-110.34375 -22.00005 C-110.34375 -22.000022167510313, -110.34375 -21.99999433502062, -110.34375 -21.99995 M-110.34375 -22.00005 C-110.34375 -22.00001653425652, -110.34375 -21.99998306851304, -110.34375 -21.99995 M-110.34375 -21.99995 C-53.60127288078962 -21.99995, 3.1412042384207552 -21.99995, 110.34375 -21.99995 M-110.34375 -21.99995 C-24.524178667932944 -21.99995, 61.29539266413411 -21.99995, 110.34375 -21.99995 M110.34375 -21.99995 C110.34375 -21.999984056258796, 110.34375 -22.000018112517594, 110.34375 -22.00005 M110.34375 -21.99995 C110.34375 -21.999980978722004, 110.34375 -22.000011957444013, 110.34375 -22.00005 M110.34375 -22.00005 C36.481903795448346 -22.00005, -37.37994240910331 -22.00005, -110.34375 -22.00005 M110.34375 -22.00005 C36.862606814655535 -22.00005, -36.61853637068893 -22.00005, -110.34375 -22.00005" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g></g><g class="node default" id="my-svg-entity-JOGO-1" data-look="classic" transform="translate(527.5485687255859, 122)"><g class="outer-path" style=""><path d="M-143.37669372558594 -110 L143.37669372558594 -110 L143.37669372558594 110 L-143.37669372558594 110" stroke="none" stroke-width="0" fill="#01337e"/><path d="M-143.37669372558594 -110 C-31.283439566234946 -110, 80.80981459311604 -110, 143.37669372558594 -110 M-143.37669372558594 -110 C-47.09371452384029 -110, 49.189264677905356 -110, 143.37669372558594 -110 M143.37669372558594 -110 C143.37669372558594 -27.69994812798599, 143.37669372558594 54.60010374402802, 143.37669372558594 110 M143.37669372558594 -110 C143.37669372558594 -50.76242870687338, 143.37669372558594 8.475142586253241, 143.37669372558594 110 M143.37669372558594 110 C72.89416185972239 110, 2.4116299938588384 110, -143.37669372558594 110 M143.37669372558594 110 C83.27366136324162 110, 23.17062900089728 110, -143.37669372558594 110 M-143.37669372558594 110 C-143.37669372558594 23.440479705210493, -143.37669372558594 -63.119040589579015, -143.37669372558594 -110 M-143.37669372558594 110 C-143.37669372558594 36.00122291435038, -143.37669372558594 -37.99755417129924, -143.37669372558594 -110" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-odd"><path d="M-143.37669372558594 -66 L143.37669372558594 -66 L143.37669372558594 -22 L-143.37669372558594 -22" stroke="none" stroke-width="0" fill="#ffffff"/><path d="M-143.37669372558594 -66 C-29.58671246761348 -66, 84.20326879035898 -66, 143.37669372558594 -66 M-143.37669372558594 -66 C-51.958655856197566 -66, 39.459382013190805 -66, 143.37669372558594 -66 M143.37669372558594 -66 C143.37669372558594 -50.54049883760152, 143.37669372558594 -35.08099767520304, 143.37669372558594 -22 M143.37669372558594 -66 C143.37669372558594 -49.928808963828175, 143.37669372558594 -33.85761792765636, 143.37669372558594 -22 M143.37669372558594 -22 C42.53162778262228 -22, -58.31343816034138 -22, -143.37669372558594 -22 M143.37669372558594 -22 C82.46758658119788 -22, 21.558479436809833 -22, -143.37669372558594 -22 M-143.37669372558594 -22 C-143.37669372558594 -31.727452403595137, -143.37669372558594 -41.454904807190275, -143.37669372558594 -66 M-143.37669372558594 -22 C-143.37669372558594 -35.316993711102484, -143.37669372558594 -48.63398742220497, -143.37669372558594 -66" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-even"><path d="M-143.37669372558594 -22 L143.37669372558594 -22 L143.37669372558594 22 L-143.37669372558594 22" stroke="none" stroke-width="0" fill="#f2f6fa"/><path d="M-143.37669372558594 -22 C-42.51433255203068 -22, 58.34802862152458 -22, 143.37669372558594 -22 M-143.37669372558594 -22 C-59.915059358235425 -22, 23.546575009115088 -22, 143.37669372558594 -22 M143.37669372558594 -22 C143.37669372558594 -12.843578891137726, 143.37669372558594 -3.6871577822754524, 143.37669372558594 22 M143.37669372558594 -22 C143.37669372558594 -4.412902062608559, 143.37669372558594 13.174195874782882, 143.37669372558594 22 M143.37669372558594 22 C70.45020234062974 22, -2.4762890443264496 22, -143.37669372558594 22 M143.37669372558594 22 C51.333451397854134 22, -40.70979092987767 22, -143.37669372558594 22 M-143.37669372558594 22 C-143.37669372558594 11.868151717535572, -143.37669372558594 1.736303435071143, -143.37669372558594 -22 M-143.37669372558594 22 C-143.37669372558594 8.670274092390443, -143.37669372558594 -4.659451815219114, -143.37669372558594 -22" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-odd"><path d="M-143.37669372558594 22 L143.37669372558594 22 L143.37669372558594 66 L-143.37669372558594 66" stroke="none" stroke-width="0" fill="#ffffff"/><path d="M-143.37669372558594 22 C-70.11582265495774 22, 3.145048415670459 22, 143.37669372558594 22 M-143.37669372558594 22 C-51.715753949243194 22, 39.94518582709955 22, 143.37669372558594 22 M143.37669372558594 22 C143.37669372558594 36.34478926790148, 143.37669372558594 50.689578535802966, 143.37669372558594 66 M143.37669372558594 22 C143.37669372558594 37.916907170861094, 143.37669372558594 53.83381434172219, 143.37669372558594 66 M143.37669372558594 66 C63.06290826489767 66, -17.250877195790594 66, -143.37669372558594 66 M143.37669372558594 66 C83.61626960762763 66, 23.85584548966932 66, -143.37669372558594 66 M-143.37669372558594 66 C-143.37669372558594 49.86886291536386, -143.37669372558594 33.73772583072773, -143.37669372558594 22 M-143.37669372558594 66 C-143.37669372558594 53.24738104676245, -143.37669372558594 40.4947620935249, -143.37669372558594 22" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g style="" class="row-rect-even"><path d="M-143.37669372558594 66 L143.37669372558594 66 L143.37669372558594 110 L-143.37669372558594 110" stroke="none" stroke-width="0" fill="#f2f6fa"/><path d="M-143.37669372558594 66 C-56.96504345823584 66, 29.446606809114257 66, 143.37669372558594 66 M-143.37669372558594 66 C-73.96575080223352 66, -4.554807878881093 66, 143.37669372558594 66 M143.37669372558594 66 C143.37669372558594 76.60816971006638, 143.37669372558594 87.21633942013275, 143.37669372558594 110 M143.37669372558594 66 C143.37669372558594 75.02784935048322, 143.37669372558594 84.05569870096645, 143.37669372558594 110 M143.37669372558594 110 C44.3444460264501 110, -54.68780167268574 110, -143.37669372558594 110 M143.37669372558594 110 C73.70996403417321 110, 4.043234342760485 110, -143.37669372558594 110 M-143.37669372558594 110 C-143.37669372558594 94.14333903028563, -143.37669372558594 78.28667806057125, -143.37669372558594 66 M-143.37669372558594 110 C-143.37669372558594 96.41788500662325, -143.37669372558594 82.8357700132465, -143.37669372558594 66" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="label name" transform="translate(-24.734375, -100)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">JOGO</tspan></tspan></text></g><g class="label attribute-type" transform="translate(-130.87669372558594, -56)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">int</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-62.67356872558594, -56)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">*id_jogo</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(79.88893127441406, -56)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(79.88893127441406, -56)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-type" transform="translate(-130.87669372558594, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">texto</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-62.67356872558594, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">titulo</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(79.88893127441406, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(79.88893127441406, -12)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-type" transform="translate(-130.87669372558594, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">texto</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-62.67356872558594, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">genero</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(79.88893127441406, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(79.88893127441406, 32)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-type" transform="translate(-130.87669372558594, 76)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">int</tspan></tspan></text></g><g class="label attribute-name" transform="translate(-62.67356872558594, 76)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">id_plataforma</tspan></tspan></text></g><g class="label attribute-keys" transform="translate(79.88893127441406, 76)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"/></text></g><g class="label attribute-comment" transform="translate(79.88893127441406, 76)" style=""><g><rect class="background" style="stroke: none"/></g><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">CE/FK</tspan></tspan></text></g><g class="divider"><path d="M-143.37669372558594 -66.00005 L-143.37669372558594 -65.99995 L143.37669372558594 -65.99995 L143.37669372558594 -66.00005" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-143.37669372558594 -66.00005 C-143.37669372558594 -66.0000177811247, -143.37669372558594 -65.99998556224939, -143.37669372558594 -65.99995 M-143.37669372558594 -66.00005 C-143.37669372558594 -66.0000279413472, -143.37669372558594 -66.0000058826944, -143.37669372558594 -65.99995 M-143.37669372558594 -65.99995 C-36.42625093952272 -65.99995, 70.5241918465405 -65.99995, 143.37669372558594 -65.99995 M-143.37669372558594 -65.99995 C-36.01388090490096 -65.99995, 71.34893191578402 -65.99995, 143.37669372558594 -65.99995 M143.37669372558594 -65.99995 C143.37669372558594 -65.9999782828135, 143.37669372558594 -66.00000656562699, 143.37669372558594 -66.00005 M143.37669372558594 -65.99995 C143.37669372558594 -65.99998873247054, 143.37669372558594 -66.0000274649411, 143.37669372558594 -66.00005 M143.37669372558594 -66.00005 C73.32942261101499 -66.00005, 3.282151496444044 -66.00005, -143.37669372558594 -66.00005 M143.37669372558594 -66.00005 C66.07347478666443 -66.00005, -11.22974415225707 -66.00005, -143.37669372558594 -66.00005" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="divider"><path d="M-75.17361872558594 -66 L-75.17351872558594 -66 L-75.17351872558594 110 L-75.17361872558594 110" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-75.17361872558594 -66 C-75.17359084151573 -66, -75.17356295744553 -66, -75.17351872558594 -66 M-75.17361872558594 -66 C-75.173588590545 -66, -75.17355845550406 -66, -75.17351872558594 -66 M-75.17351872558594 -66 C-75.17351872558594 -7.579950077066812, -75.17351872558594 50.840099845866376, -75.17351872558594 110 M-75.17351872558594 -66 C-75.17351872558594 -20.3902446535511, -75.17351872558594 25.2195106928978, -75.17351872558594 110 M-75.17351872558594 110 C-75.1735515201956 110, -75.17358431480525 110, -75.17361872558594 110 M-75.17351872558594 110 C-75.17355184259316 110, -75.17358495960038 110, -75.17361872558594 110 M-75.17361872558594 110 C-75.17361872558594 73.24556585419509, -75.17361872558594 36.491131708390185, -75.17361872558594 -66 M-75.17361872558594 110 C-75.17361872558594 57.03847265442882, -75.17361872558594 4.0769453088576455, -75.17361872558594 -66" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="divider"><path d="M67.38888127441406 -66 L67.38898127441406 -66 L67.38898127441406 110 L67.38888127441406 110" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M67.38888127441406 -66 C67.38890324988425 -66, 67.38892522535443 -66, 67.38898127441406 -66 M67.38888127441406 -66 C67.38890654476505 -66, 67.38893181511602 -66, 67.38898127441406 -66 M67.38898127441406 -66 C67.38898127441406 -18.396483215535532, 67.38898127441406 29.207033568928935, 67.38898127441406 110 M67.38898127441406 -66 C67.38898127441406 -18.06596184768786, 67.38898127441406 29.86807630462428, 67.38898127441406 110 M67.38898127441406 110 C67.38895118799196 110, 67.38892110156985 110, 67.38888127441406 110 M67.38898127441406 110 C67.38895497281432 110, 67.38892867121457 110, 67.38888127441406 110 M67.38888127441406 110 C67.38888127441406 50.71179267527679, 67.38888127441406 -8.57641464944642, 67.38888127441406 -66 M67.38888127441406 110 C67.38888127441406 48.204863212168746, 67.38888127441406 -13.590273575662508, 67.38888127441406 -66" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g><g class="divider"><path d="M-143.37669372558594 -66.00005 L-143.37669372558594 -65.99995 L143.37669372558594 -65.99995 L143.37669372558594 -66.00005" stroke="none" stroke-width="0" fill="#01337e" fill-rule="evenodd"/><path d="M-143.37669372558594 -66.00005 C-143.37669372558594 -66.0000126152588, -143.37669372558594 -65.9999752305176, -143.37669372558594 -65.99995 M-143.37669372558594 -66.00005 C-143.37669372558594 -66.00002749489303, -143.37669372558594 -66.00000498978606, -143.37669372558594 -65.99995 M-143.37669372558594 -65.99995 C-47.297730318393505 -65.99995, 48.78123308879893 -65.99995, 143.37669372558594 -65.99995 M-143.37669372558594 -65.99995 C-81.63875974000186 -65.99995, -19.90082575441778 -65.99995, 143.37669372558594 -65.99995 M143.37669372558594 -65.99995 C143.37669372558594 -65.99998377331285, 143.37669372558594 -66.0000175466257, 143.37669372558594 -66.00005 M143.37669372558594 -65.99995 C143.37669372558594 -65.99997089524584, 143.37669372558594 -65.99999179049169, 143.37669372558594 -66.00005 M143.37669372558594 -66.00005 C73.24138995380547 -66.00005, 3.1060861820249954 -66.00005, -143.37669372558594 -66.00005 M143.37669372558594 -66.00005 C77.11543563423108 -66.00005, 10.854177542876215 -66.00005, -143.37669372558594 -66.00005" stroke="#01337e" stroke-width="1.3" fill="none" stroke-dasharray="0 0"/></g></g></g></g></g><defs><filter id="my-svg-drop-shadow" height="130%" width="130%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><defs><filter id="my-svg-drop-shadow-small" height="150%" width="150%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><linearGradient id="my-svg-gradient" gradientUnits="objectBoundingBox" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#01337e" stop-opacity="1"/><stop offset="100%" stop-color="hsl(210, 4.4444444444%, 86.4705882353%)" stop-opacity="1"/></linearGradient></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 912 184" width="912" height="184"
+     role="img" aria-label="Passo 6 da legenda: a chave estrangeira, marcada CE barra FK no atributo que aponta para a outra entidade.">
+  <style>
+    /* @estilo-padrao */
+    /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
+     *
+     * POR QUE existe: SVG externo carregado por `img` não importa folha de estilo —
+     * nem `xml-stylesheet`, nem `@import`, nem `link`. Cada arquivo precisa carregar
+     * o próprio bloco. Copiar isto em 28 arquivos faria qualquer ajuste de paleta
+     * virar 28 edições, e uma ficaria para trás.
+     *
+     * Fonte única aqui; `scripts/estilo-diagrama.mjs` injeta entre os marcadores.
+     * Edite AQUI e rode `npm run diagramas:estilo`.
+     *
+     * ---------------------------------------------------------------------------
+     * A IDENTIDADE: a barra esquerda.
+     *
+     * O deck marca o que importa com uma régua laranja à esquerda e o canto direito
+     * arredondado — está no `.atencao` e no título de "mão na massa" do senac.css.
+     * O diagrama usa o mesmo gesto: toda caixa é um cartão com régua à esquerda,
+     * azul quando é conteúdo e laranja quando é o ponto do slide.
+     *
+     * O que veio antes era retângulo azul chapado com texto branco centrado: lia
+     * como fluxograma de ferramenta, não como material desta UC.
+     * ---------------------------------------------------------------------------
+     *
+     * As razões de contraste estão medidas em PADRAO-DIAGRAMA.md.
+     */
+
+    .lig { stroke-width: 1.6; fill: none; }
+    .lig-o { stroke-width: 1.6; }
+    .seta { stroke-width: 1.8; fill: none; }
+    .ent-borda { fill: none; stroke-width: 1.5; }
+    .caixa { stroke-width: 1.5; }
+
+    .t    { font-family: 'Raleway', 'Segoe UI', 'Noto Sans', system-ui, sans-serif; fill: #12243a; }
+    .mono { font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace; }
+
+    /* ---------- tipografia ----------
+       Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
+       Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
+    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
+       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
+       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
+       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
+       ~16px, que e legivel de longe sem competir com o titulo do slide. */
+    .nome   { font-size: 23px; font-weight: 650; }
+    .glosa  { font-size: 18px; font-weight: 400; }
+    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 18px; }
+    .dica   { font-size: 19px; }
+    .seta-rot { font-size: 16px; text-anchor: middle; }
+
+    /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
+       sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
+       dentro de moldura e sujava o desenho. */
+    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .regua   { stroke-width: 1; fill: none; }
+
+    /* ---------- cartões ----------
+       Largura igual entre irmãos é a razão de desenhar à mão: quem escreve a
+       geometria escreve o mesmo `width`, e não há motor de layout para discordar. */
+    /* O simbolo segue a cor do cartao: azul no comum, laranja no que carrega o
+       ponto do slide. Os icones da pasta `_comum/icones/mono` desenham com
+       `stroke: #FFFFFF`, e o embutidor troca por `currentColor` — dai o `color`
+       aqui mandar em todos eles. */
+
+    /* Caixa cheia: para dado, não para conceito. A tabelinha de células usa isto. */
+
+    /* ---------- notacao de DER ----------
+       A faixa do atributo e um retangulo de largura INTEIRA. O Mermaid pintava so
+       sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
+       coluninha nao acompanhava a faixa da linha dela. */
+
+    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
+    .ent-campo { font-size: 18px; fill: #12243a; }
+    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+
+    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+
+    /* ---------- selo numerado ---------- */
+
+    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+
+    /*
+     * ---------- o relógio ----------
+     *
+     *    0s - 2s   repouso no estado final   -- e o quadro que o PDF pega
+     *    2s        RESET
+     *    2s -10s   ate quatro turnos de 2s
+     *   10s -12s   repouso no estado final
+     *
+     * Estado se marca por PORCENTAGEM nos keyframes de cada diagrama; atraso
+     * deslocaria o relogio inteiro e cada painel reiniciaria num instante
+     * diferente. O realce abaixo pode usar atraso porque nao guarda estado.
+     *
+     * Nenhuma animacao usa `animation-fill-mode`: durante o atraso o navegador
+     * mostra o estilo normal, que e o estado final. E por isso que o quadro zero
+     * -- o do PDF -- sai completo.
+     */
+    @keyframes acende-barra  { 0%, 16.6% { fill: #e85d00; } 16.7%, 100% { fill: #01337e; } }
+    @keyframes acende-cartao { 0%, 16.6% { fill: #fff1e6; } 16.7%, 100% { fill: #f2f6fa; } }
+    @keyframes acende-selo   { 0%, 16.6% { fill: #ff7809; } 16.7%, 100% { fill: #4a5f75; } }
+    @keyframes acende-numero { 0%, 16.6% { fill: #10161c; } 16.7%, 100% { fill: #ffffff; } }
+    @keyframes acende-tinta  { 0%, 16.6% { fill: #b34700; font-weight: 700; } 16.7%, 100% { fill: #12243a; font-weight: 400; } }
+    @keyframes acende-traco  { 0%, 16.6% { stroke: #e85d00; stroke-width: 3; } 16.7%, 100% { stroke: #7d8b99; stroke-width: 1.8; } }
+
+    .realce .barra  { animation: acende-barra 12s linear infinite; }
+    .realce .cartao { animation: acende-cartao 12s linear infinite; }
+    .realce .selo   { animation: acende-selo 12s linear infinite; }
+    .realce .numero { animation: acende-numero 12s linear infinite; }
+    .tinta          { animation: acende-tinta 12s linear infinite; }
+    .traco          { animation: acende-traco 12s linear infinite; }
+
+    /* O atraso precisa VENCER o atalho `animation` em especificidade: o atalho
+       reescreve `animation-delay` para zero. `.realce .barra` vale 0-2-0, entao um
+       seletor 0-1-0 e ignorado e todos os turnos acendem juntos. Foi o primeiro
+       defeito do primeiro diagrama animado. */
+    .realce.v1 .barra, .realce.v1 .cartao, .realce.v1 .selo, .realce.v1 .numero, .t1.tinta, .t1.traco { animation-delay: 2s; }
+    .realce.v2 .barra, .realce.v2 .cartao, .realce.v2 .selo, .realce.v2 .numero, .t2.tinta, .t2.traco { animation-delay: 4s; }
+    .realce.v3 .barra, .realce.v3 .cartao, .realce.v3 .selo, .realce.v3 .numero, .t3.tinta, .t3.traco { animation-delay: 6s; }
+    .realce.v4 .barra, .realce.v4 .cartao, .realce.v4 .selo, .realce.v4 .numero, .t4.tinta, .t4.traco { animation-delay: 8s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .realce .barra, .realce .cartao, .realce .selo, .realce .numero,
+      .tinta, .traco, .anima { animation: none; }
+    }
+    /* ===========================================================================
+       VARIANTE SOLTA: o diagrama direto sobre o slide, sem o cartao branco.
+       Vale so para o SVG cuja raiz tem class="solto".
+
+       POR QUE o painel e ESCURO. A primeira tentativa foi painel de branco a 10%:
+       integrava, mas media 1,24:1 contra o slide -- invisivel -- e ainda BAIXAVA o
+       contraste do texto, porque branco sobre aquele painel dava 6,03 enquanto
+       branco direto no azul dava 7,46.
+
+       Projetor emite luz: ele nao projeta escuro, o preto e a luz da sala. Modelando
+       a luz ambiente como um piso de luminancia (0 sala escura, 0,10 com luz, 0,25
+       sala clara ou projetor fraco), o painel claro reprovava em AA com a luz acesa:
+
+         painel claro, nome branco      6,03   4,01   2,67
+         painel escuro, nome branco    18,94   6,78   3,45
+         cartao branco (para comparar) 14,44   5,90   3,16
+
+       O painel escuro passa ate o cartao branco nas tres condicoes, e fica visivel
+       (2,54:1 contra o slide). Por isso ele, e nao o claro.
+       =========================================================================== */
+    .cartao   { fill: #01102a; }
+    .cartao.q { fill: #2b1708; }
+    .barra    { fill: #9cc9ff; }
+    .barra.q  { fill: #ffb065; }
+    .nome     { fill: #ffffff; }
+    .glosa,
+    .nota,
+    .dica,
+    .seta-rot { fill: #cfe0f5; }
+    .eyebrow  { fill: #ffc287; }
+    .regua    { stroke: rgba(255, 255, 255, 0.28); }
+    .seta     { stroke: #cfe0f5; }
+    .ico      { color: #9cc9ff; }
+    .q + .ico, .ico.q { color: #ffb065; }
+    .selo     { fill: rgba(255, 255, 255, 0.24); }
+    .numero   { fill: #ffffff; }
+    .caixa    { fill: #9cc9ff; stroke: #9cc9ff; }
+    .morta    { fill: rgba(255, 255, 255, 0.12); }
+    .rot,
+    .rot-min  { fill: #01102a; }
+
+    /* DER na variante solta */
+    .ent       { fill: #01102a; }
+    .ent-borda { stroke: rgba(255, 255, 255, 0.34); }
+    .faixa     { fill: rgba(255, 255, 255, 0.06); }
+    .cab       { fill: #9cc9ff; }
+    .cab-q     { fill: #ffb065; }
+    .ent-nome  { fill: #01102a; }
+    .ent-tipo  { fill: #8fb3d9; }
+    .ent-campo { fill: #ffffff; }
+    .ent-chave { fill: #ffc287; }
+    .lig       { stroke: #cfe0f5; }
+    .lig-o     { fill: #014dbf; stroke: #cfe0f5; }
+    .verbo     { fill: #cfe0f5; }
+    .verbo-bg  { fill: none; }
+
+    @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
+    @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
+    .realce .barra  { animation: acende-barra-solta 12s linear infinite; }
+    .realce .cartao { animation: acende-cartao-solto 12s linear infinite; }
+    /* @fim */
+  </style>
+
+  <rect class="ent" x="16" y="34" width="330" height="116" rx="4"/>
+  <path class="cab" d="M20 34 H342 a4 4 0 0 1 4 4 V78 H16 V38 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="181" y="63">PLATAFORMA</text>
+  <text class="t ent-tipo" x="32" y="102">int</text>
+  <text class="t ent-campo" x="108" y="102">*id_plataforma</text>
+  <rect class="faixa" x="17" y="114" width="328" height="36"/>
+  <text class="t ent-tipo" x="32" y="138">texto</text>
+  <text class="t ent-campo" x="108" y="138">nome</text>
+  <rect class="ent-borda" x="16" y="34" width="330" height="116" rx="4"/>
+  <rect class="ent" x="536" y="16" width="360" height="152" rx="4"/>
+  <path class="cab" d="M540 16 H892 a4 4 0 0 1 4 4 V60 H536 V20 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="716" y="45">JOGO</text>
+  <text class="t ent-tipo" x="552" y="84">int</text>
+  <text class="t ent-campo" x="628" y="84">*id_jogo</text>
+  <rect class="faixa" x="537" y="96" width="358" height="36"/>
+  <text class="t ent-tipo" x="552" y="120">texto</text>
+  <text class="t ent-campo" x="628" y="120">titulo</text>
+  <text class="t ent-tipo" x="552" y="156">int</text>
+  <text class="t ent-campo" x="628" y="156">id_plataforma</text>
+  <text class="t ent-chave" x="880" y="156">CE/FK</text>
+  <rect class="ent-borda" x="536" y="16" width="360" height="152" rx="4"/>
+  <path class="lig" d="M358 83 V101"/>
+  <path class="lig" d="M370 83 V101"/>
+  <path class="lig" d="M522 92 L536 83 M522 92 L536 92 M522 92 L536 101"/>
+  <circle class="lig-o" cx="510" cy="92" r="5"/>
+  <path class="lig" d="M382 92 H500"/>
+  <text class="t verbo" x="441" y="98">possui</text>
+</svg>
