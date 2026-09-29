@@ -217,7 +217,7 @@
   <circle class="lig-o" cx="364 " cy="74" r="6.5"/>
   <path class="lig" d="M508 74 L526 62 M508 74 L526 74 M508 74 L526 86"/>
   <circle class="lig-o" cx="498 " cy="74" r="6.5"/>
-  <path class="lig" d="M372 74 H401.5"/>
-  <path class="lig" d="M460.5 74 H490"/>
+  <path class="lig" d="M372 74 H395.5"/>
+  <path class="lig" d="M466.5 74 H490"/>
   <text class="t verbo" x="431" y="80">aluga</text>
 </svg>

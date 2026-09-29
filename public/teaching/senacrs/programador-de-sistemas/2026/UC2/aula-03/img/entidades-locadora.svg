@@ -212,9 +212,8 @@
   <path class="lig" d="M358 58 L376 46 M358 58 L376 58 M358 58 L376 70"/>
   <circle class="lig-o" cx="348 " cy="58" r="6.5"/>
   <path class="lig" d="M292 126 H306 Q316 126 316 116"/>
-  <path class="lig" d="M316 116 V105"/>
-  <path class="lig" d="M316 79 V68"/>
-  <text class="t verbo" x="316" y="98">possui</text>
+  <path class="lig" d="M316 116 V68"/>
+  <text class="t verbo" x="316" y="32">possui</text>
   <path class="lig" d="M316 68 Q316 58 326 58 H340"/>
   <path class="lig" d="M690 46 V70"/>
   <path class="lig" d="M702 46 V70"/>

@@ -220,7 +220,7 @@
   <path class="lig" d="M362 80 V104"/>
   <path class="lig" d="M508 92 L526 80 M508 92 L526 92 M508 92 L526 104"/>
   <circle class="lig-o" cx="498 " cy="92" r="6.5"/>
-  <path class="lig" d="M372 92 H397.2"/>
-  <path class="lig" d="M464.8 92 H490"/>
+  <path class="lig" d="M372 92 H391.2"/>
+  <path class="lig" d="M470.8 92 H490"/>
   <text class="t verbo" x="431" y="98">possui</text>
 </svg>

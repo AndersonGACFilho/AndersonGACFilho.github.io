@@ -223,7 +223,7 @@
   <path class="lig" d="M362 98 V122"/>
   <path class="lig" d="M488 110 L506 98 M488 110 L506 110 M488 110 L506 122"/>
   <circle class="lig-o" cx="478 " cy="110" r="6.5"/>
-  <path class="lig" d="M372 110 H400.1"/>
-  <path class="lig" d="M441.9 110 H470"/>
+  <path class="lig" d="M372 110 H394.1"/>
+  <path class="lig" d="M447.9 110 H470"/>
   <text class="t verbo" x="421" y="116">tem</text>
 </svg>

@@ -250,8 +250,8 @@
   <path class="lig" d="M358 110 L376 98 M358 110 L376 110 M358 110 L376 122"/>
   <circle class="lig-o" cx="348 " cy="110" r="6.5"/>
   <path class="lig" d="M292 230 H306 Q316 230 316 220"/>
-  <path class="lig" d="M316 220 V183"/>
-  <path class="lig" d="M316 157 V120"/>
+  <path class="lig" d="M316 220 V188"/>
+  <path class="lig" d="M316 152 V120"/>
   <text class="t verbo" x="316" y="176">possui</text>
   <path class="lig" d="M316 120 Q316 110 326 110 H340"/>
   <path class="lig" d="M690 98 V122"/>
@@ -259,8 +259,8 @@
   <path class="lig" d="M778 200 L796 188 M778 200 L796 200 M778 200 L796 212"/>
   <circle class="lig-o" cx="768 " cy="200" r="6.5"/>
   <path class="lig" d="M712 110 H726 Q736 110 736 120"/>
-  <path class="lig" d="M736 120 V142"/>
-  <path class="lig" d="M736 168 V190"/>
+  <path class="lig" d="M736 120 V137"/>
+  <path class="lig" d="M736 173 V190"/>
   <text class="t verbo" x="736" y="161">aparece em</text>
   <path class="lig" d="M736 190 Q736 200 746 200 H760"/>
   <path class="lig" d="M690 338 V362"/>
@@ -268,8 +268,8 @@
   <path class="lig" d="M778 260 L796 248 M778 260 L796 260 M778 260 L796 272"/>
   <circle class="lig-o" cx="768 " cy="260" r="6.5"/>
   <path class="lig" d="M712 350 H726 Q736 350 736 340"/>
-  <path class="lig" d="M736 340 V318"/>
-  <path class="lig" d="M736 292 V270"/>
+  <path class="lig" d="M736 340 V323"/>
+  <path class="lig" d="M736 287 V270"/>
   <text class="t verbo" x="736" y="311">faz</text>
   <path class="lig" d="M736 270 Q736 260 746 260 H760"/>
 </svg>

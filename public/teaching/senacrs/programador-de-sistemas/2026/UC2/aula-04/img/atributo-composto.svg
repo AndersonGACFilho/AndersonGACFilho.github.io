@@ -219,7 +219,6 @@
   <path class="lig" d="M382 80 V104"/>
   <path class="lig" d="M502 80 V104"/>
   <path class="lig" d="M490 80 V104"/>
-  <path class="lig" d="M392 92 H372.1"/>
-  <path class="lig" d="M499.9 92 H480"/>
-  <text class="t verbo" x="436" y="98">mesmo cliente</text>
+  <path class="lig" d="M392 92 H480"/>
+  <text class="t verbo" x="436" y="66">mesmo cliente</text>
 </svg>

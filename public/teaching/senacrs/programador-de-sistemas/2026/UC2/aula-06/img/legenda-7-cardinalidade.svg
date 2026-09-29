@@ -205,8 +205,8 @@
   <path class="lig" d="M342 46 V70"/>
   <path class="lig" d="M546 46 V70"/>
   <path class="lig" d="M534 46 V70"/>
-  <path class="lig" d="M352 58 H417.1"/>
-  <path class="lig" d="M458.9 58 H524"/>
+  <path class="lig" d="M352 58 H411.1"/>
+  <path class="lig" d="M464.9 58 H524"/>
   <text class="t verbo" x="438" y="64">tem</text>
   <text class="t nota" x="880" y="65">1 para 1</text>
   <rect class="ent-so" x="16" y="134" width="300" height="84" rx="6"/>
@@ -219,8 +219,8 @@
   <path class="lig" d="M342 164 V188"/>
   <path class="lig" d="M542 176 L560 164 M542 176 L560 176 M542 176 L560 188"/>
   <circle class="lig-o" cx="532 " cy="176" r="6.5"/>
-  <path class="lig" d="M352 176 H404.2"/>
-  <path class="lig" d="M471.8 176 H524"/>
+  <path class="lig" d="M352 176 H398.2"/>
+  <path class="lig" d="M477.8 176 H524"/>
   <text class="t verbo" x="438" y="182">possui</text>
   <text class="t nota" x="880" y="183">1 para N</text>
   <rect class="ent-so" x="16" y="252" width="300" height="84" rx="6"/>
@@ -233,8 +233,8 @@
   <circle class="lig-o" cx="344 " cy="294" r="6.5"/>
   <path class="lig" d="M542 294 L560 282 M542 294 L560 294 M542 294 L560 306"/>
   <circle class="lig-o" cx="532 " cy="294" r="6.5"/>
-  <path class="lig" d="M352 294 H408.5"/>
-  <path class="lig" d="M467.5 294 H524"/>
+  <path class="lig" d="M352 294 H402.5"/>
+  <path class="lig" d="M473.5 294 H524"/>
   <text class="t verbo" x="438" y="300">aluga</text>
   <text class="t nota" x="880" y="301">N para N</text>
 </svg>

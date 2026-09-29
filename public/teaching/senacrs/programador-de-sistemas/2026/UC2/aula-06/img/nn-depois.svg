@@ -233,14 +233,12 @@
   <path class="lig" d="M322 98 V122"/>
   <path class="lig" d="M388 110 L406 98 M388 110 L406 110 M388 110 L406 122"/>
   <circle class="lig-o" cx="378 " cy="110" r="6.5"/>
-  <path class="lig" d="M332 110 H330.1"/>
-  <path class="lig" d="M371.9 110 H370"/>
-  <text class="t verbo" x="351" y="116">faz</text>
+  <path class="lig" d="M332 110 H370"/>
+  <text class="t verbo" x="351" y="84">faz</text>
   <path class="lig" d="M764 110 L746 98 M764 110 L746 110 M764 110 L746 122"/>
   <circle class="lig-o" cx="774 " cy="110" r="6.5"/>
   <path class="lig" d="M842 98 V122"/>
   <path class="lig" d="M830 98 V122"/>
-  <path class="lig" d="M782 110 H750"/>
-  <path class="lig" d="M852 110 H820"/>
-  <text class="t verbo" x="801" y="116">aparece em</text>
+  <path class="lig" d="M782 110 H820"/>
+  <text class="t verbo" x="801" y="84">aparece em</text>
 </svg>

@@ -225,7 +225,7 @@
   <path class="lig" d="M372 98 V122"/>
   <path class="lig" d="M498 110 L516 98 M498 110 L516 110 M498 110 L516 122"/>
   <circle class="lig-o" cx="488 " cy="110" r="6.5"/>
-  <path class="lig" d="M382 110 H397.2"/>
-  <path class="lig" d="M464.8 110 H480"/>
+  <path class="lig" d="M382 110 H391.2"/>
+  <path class="lig" d="M470.8 110 H480"/>
   <text class="t verbo" x="431" y="116">possui</text>
 </svg>
