@@ -90,6 +90,14 @@ section { margin-block: 64px; }
   border-bottom: 1px solid var(--border);
 }
 .section-head .more:hover { color: var(--accent); border-color: currentColor; }
+/* Irmã do `.more` para quando o que vai ali é uma frase, não um link curto.
+   O `nowrap` do `.more` existe para "All projects" não quebrar em duas linhas;
+   aplicado a uma frase, ele empurrava o /cv/ 7px além da tela do celular. */
+.section-head .section-nota {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  max-width: 100%;
+}
 .section-sub { color: var(--text-dim); margin: -16px 0 24px; }
 
 .grid {
@@ -123,7 +131,15 @@ section { margin-block: 64px; }
 }
 .brand span { color: var(--text-faint); font-weight: 400; letter-spacing: -0.01em; }
 .site-nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.95rem; }
-.site-nav a { font-family: var(--display); color: var(--text-dim); }
+.site-nav a {
+  font-family: var(--display);
+  color: var(--text-dim);
+  /* 24px é o mínimo da WCAG 2.2 para alvo de ponteiro. Só morde no "CV", que
+     sem isto fica com 20px de largura; os outros rótulos já passam disso. A
+     altura vem da entrelinha e já dá 26px. */
+  min-width: 24px;
+  text-align: center;
+}
 .site-nav a[aria-current='page'] {
   color: var(--text);
   font-weight: 600;
