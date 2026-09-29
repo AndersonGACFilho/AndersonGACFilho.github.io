@@ -20,9 +20,22 @@ const games = await getGames();
     <section class="game-block">
       <div class="section-head">
         <h2><a href={localize(`/play/${game.id}`, lang)}>{game.data.title}</a></h2>
+        {/* Um par destes por jogo na mesma página: sem o `aria-label` a lista
+            de links vira "itch.io, Código, itch.io, Código…". */}
         <span class="more card-links">
-          {game.data.itch && <a href={game.data.itch}>{t('cta.itch')}</a>}
-          {game.data.repo && <a href={`https://github.com/AndersonGACFilho/${game.data.repo}`}>{t('cta.source')}</a>}
+          {game.data.itch && (
+            <a href={game.data.itch} aria-label={`${t('cta.itch')}: ${game.data.title}`}>
+              {t('cta.itch')}
+            </a>
+          )}
+          {game.data.repo && (
+            <a
+              href={`https://github.com/AndersonGACFilho/${game.data.repo}`}
+              aria-label={`${t('cta.source')}: ${game.data.title}`}
+            >
+              {t('cta.source')}
+            </a>
+          )}
         </span>
       </div>
       <p class="section-sub">{pick(game.data.tagline, lang)}</p>

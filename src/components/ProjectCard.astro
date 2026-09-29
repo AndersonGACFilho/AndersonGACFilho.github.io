@@ -40,11 +40,33 @@ const meta = await repoInfo(d.repo);
     {!meta && d.year && <span>{d.year}</span>}
   </div>
 
+  {/* O RÓTULO VISÍVEL SOZINHO NÃO BASTA AQUI. Cada cartão repete os mesmos
+      quatro rótulos, então quem navega por leitor de tela — que costuma pedir
+      a lista de links da página em vez de ler tudo em ordem — ouvia "Código,
+      Código, Código, Código" sem nada que dissesse de qual projeto era cada
+      um. O `aria-label` começa pelo mesmo texto que está na tela porque quem
+      navega por voz fala o que enxerga: trocar a ordem quebraria o comando. */}
   <div class="card-links">
-    {d.play && <a href={localize(`/play/${d.play}`, lang)}>▶ {t('cta.play')}</a>}
-    {d.detail && <a href={localize(d.detail, lang)}>{t('cta.read')}</a>}
-    {d.repo && <a href={repoUrl(d.repo)}>{t('cta.source')}</a>}
-    {d.itch && <a href={d.itch}>{t('cta.itch')}</a>}
+    {d.play && (
+      <a href={localize(`/play/${d.play}`, lang)} aria-label={`${t('cta.play')}: ${d.title}`}>
+        ▶ {t('cta.play')}
+      </a>
+    )}
+    {d.detail && (
+      <a href={localize(d.detail, lang)} aria-label={`${t('cta.read')}: ${d.title}`}>
+        {t('cta.read')}
+      </a>
+    )}
+    {d.repo && (
+      <a href={repoUrl(d.repo)} aria-label={`${t('cta.source')}: ${d.title}`}>
+        {t('cta.source')}
+      </a>
+    )}
+    {d.itch && (
+      <a href={d.itch} aria-label={`${t('cta.itch')}: ${d.title}`}>
+        {t('cta.itch')}
+      </a>
+    )}
   </div>
 </article>
 
