@@ -13,7 +13,7 @@ interface Props {
   /**
    * Path of the real translation, for hreflang. Defaults to the mirrored
    * route, true of every page that has a twin. Pass `null` where none exists
-   * (an untranslated article, the 404): hreflang has to be reciprocal, so a
+   * (an untranslated publication, the 404): hreflang has to be reciprocal, so a
    * link to a fallback index would make Google discard the pair entirely.
    */
   translation?: string | null;
@@ -31,7 +31,7 @@ const nav = [
   { href: localize('/projects', lang), label: t('nav.projects') },
   { href: localize('/games', lang), label: t('nav.games') },
   { href: localize('/research', lang), label: t('nav.research') },
-  { href: localize('/articles', lang), label: t('nav.articles') },
+  { href: localize('/publications', lang), label: t('nav.publications') },
   { href: localize('/teaching', lang), label: t('nav.teaching') },
   { href: localize('/cv', lang), label: t('nav.cv') },
 ];

@@ -1,0 +1,36 @@
+---
+import PublicationCard from '../PublicationCard.astro';
+import PageHeader from '../PageHeader.astro';
+import { useTranslations, type Lang } from '../../i18n/ui';
+import { getPublications } from '../../lib/content';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+/*
+ * UMA LISTA SÓ. Antes esta página separava "Publications" de "Notes" pela
+ * presença de `venue`. A divisão prometia duas listas e entregava duas listas
+ * vazias, cada uma com seu próprio texto de estado vazio — e o `venue` de cada
+ * entrada já diz, no cartão, se aquilo saiu em anais ou não. A distinção
+ * continua visível onde importa; o que sumiu foi o andaime em volta dela.
+ */
+const publications = await getPublications(lang);
+---
+
+<PageHeader
+  kicker={t('kicker.publications')}
+  title={t('nav.publications')}
+  intro={t('publications.intro')}
+  accent="var(--research)"
+/>
+
+{
+  publications.length > 0 ? (
+    <div class="grid">
+      {publications.map((entry) => <PublicationCard publication={entry} lang={lang} />)}
+    </div>
+  ) : (
+    <p class="empty">{t('publications.empty')}</p>
+  )
+}

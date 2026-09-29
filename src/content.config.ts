@@ -54,8 +54,8 @@ const games = defineCollection({
   }),
 });
 
-const articles = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
+const publications = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/publications' }),
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -63,7 +63,9 @@ const articles = defineCollection({
     tracks: z.array(track).default(['research']),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
-    // Present when the text is a paper: renders under Publications instead of Notes.
+    // Presente quando o texto é um paper, ausente quando é nota. A lista da
+    // página é única, então isto não separa mais seções: só faz o cartão
+    // mostrar onde saiu e linkar os anais.
     venue: z
       .object({
         name: z.string(),                 // 'ERAMIA-RS 2026'
@@ -72,10 +74,10 @@ const articles = defineCollection({
         status: z.enum(['published', 'accepted', 'submitted', 'in-preparation']).default('published'),
       })
       .optional(),
-    // Slug of the same article in the other language, when it exists.
+    // Slug of the same text in the other language, when it exists.
     translationOf: z.string().optional(),
     pdf: z.string().optional(),
   }),
 });
 
-export const collections = { projects, games, articles };
+export const collections = { projects, games, publications };

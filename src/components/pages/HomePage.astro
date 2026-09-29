@@ -1,17 +1,17 @@
 ---
 import GameFrame from '../GameFrame.astro';
 import ProjectCard from '../ProjectCard.astro';
-import ArticleCard from '../ArticleCard.astro';
+import PublicationCard from '../PublicationCard.astro';
 import { useTranslations, localize, type Lang } from '../../i18n/ui';
 import { TRACKS, trackColor, trackLabelKey, trackDescKey } from '../../lib/tracks';
-import { getArticles, getProjects, getFeaturedGame, SLIDES_URL } from '../../lib/content';
+import { getPublications, getProjects, getFeaturedGame, SLIDES_URL } from '../../lib/content';
 
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const projects = (await getProjects()).filter((p) => p.data.featured);
-const articles = (await getArticles(lang)).slice(0, 3);
+const publications = (await getPublications(lang)).slice(0, 3);
 const game = await getFeaturedGame();
 const trackCount = (track: string) =>
   projects.filter((p) => (p.data.tracks as string[]).includes(track)).length;
@@ -69,16 +69,16 @@ const trackCount = (track: string) =>
 
 <section>
   <div class="section-head">
-    <h2>{t('section.articles')}</h2>
-    <a class="more" href={localize('/articles', lang)}>{t('cta.all.articles')}</a>
+    <h2>{t('section.publications')}</h2>
+    <a class="more" href={localize('/publications', lang)}>{t('cta.all.publications')}</a>
   </div>
   {
-    articles.length > 0 ? (
+    publications.length > 0 ? (
       <div class="grid">
-        {articles.map((article) => <ArticleCard article={article} lang={lang} />)}
+        {publications.map((entry) => <PublicationCard publication={entry} lang={lang} />)}
       </div>
     ) : (
-      <p class="empty">{t('articles.empty')}</p>
+      <p class="empty">{t('publications.empty')}</p>
     )
   }
 </section>

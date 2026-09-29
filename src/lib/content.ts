@@ -1,13 +1,13 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { Lang } from '../i18n/ui';
 
-/** Articles for one language, newest first, drafts dropped from the build. */
-export async function getArticles(lang: Lang): Promise<CollectionEntry<'articles'>[]> {
-  const all = await getCollection('articles', ({ id, data }) => id.startsWith(`${lang}/`) && !data.draft);
+/** Publications for one language, newest first, drafts dropped from the build. */
+export async function getPublications(lang: Lang): Promise<CollectionEntry<'publications'>[]> {
+  const all = await getCollection('publications', ({ id, data }) => id.startsWith(`${lang}/`) && !data.draft);
   return all.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 
-export function articleSlug(entry: CollectionEntry<'articles'>): string {
+export function publicationSlug(entry: CollectionEntry<'publications'>): string {
   return entry.id.replace(/^(en|pt)\//, '');
 }
 
@@ -58,25 +58,33 @@ export async function getFeaturedGame(): Promise<CollectionEntry<'games'> | unde
 export const SLIDES_URL = '/teaching/senacrs/programador-de-sistemas/2026/';
 
 /**
- * Path of the article that really is this one's translation, or undefined when
- * it has none. Separate from `articleAltPath` because hreflang needs the truth:
+ * Path of the text that really is this one's translation, or undefined when
+ * it has none. Separate from `publicationAltPath` because hreflang needs the truth:
  * declaring the section index as a translation breaks the reciprocity Google
  * requires, and it then ignores the whole cluster.
  */
-export async function articleTwinPath(
-  entry: CollectionEntry<'articles'>,
+export async function publicationTwinPath(
+  entry: CollectionEntry<'publications'>,
   lang: Lang,
 ): Promise<string | undefined> {
   const other: Lang = lang === 'en' ? 'pt' : 'en';
-  const wanted = entry.data.translationOf ?? articleSlug(entry);
-  const twin = (await getArticles(other)).find((candidate) => articleSlug(candidate) === wanted);
-  return twin ? `/${other === 'en' ? '' : 'pt/'}articles/${articleSlug(twin)}` : undefined;
+  const wanted = entry.data.translationOf ?? publicationSlug(entry);
+  const twin = (await getPublications(other)).find(
+    (candidate) => publicationSlug(candidate) === wanted,
+  );
+  return twin ? `/${other === 'en' ? '' : 'pt/'}publications/${publicationSlug(twin)}` : undefined;
 }
 
 /**
- * Path of the same article in the other language, falling back to the section
+ * Path of the same text in the other language, falling back to the section
  * root so the language switch never lands on a 404.
  */
-export async function articleAltPath(entry: CollectionEntry<'articles'>, lang: Lang): Promise<string> {
-  return (await articleTwinPath(entry, lang)) ?? (lang === 'en' ? '/pt/articles' : '/articles');
+export async function publicationAltPath(
+  entry: CollectionEntry<'publications'>,
+  lang: Lang,
+): Promise<string> {
+  return (
+    (await publicationTwinPath(entry, lang)) ??
+    (lang === 'en' ? '/pt/publications' : '/publications')
+  );
 }

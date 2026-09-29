@@ -4,12 +4,12 @@ import TrackBadge from './TrackBadge.astro';
 import { useTranslations, localize, formatDate, type Lang, type UIKey } from '../i18n/ui';
 import { trackColor } from '../lib/tracks';
 
-interface Props { article: CollectionEntry<'articles'>; lang: Lang; }
-const { article, lang } = Astro.props;
-const d = article.data;
+interface Props { publication: CollectionEntry<'publications'>; lang: Lang; }
+const { publication, lang } = Astro.props;
+const d = publication.data;
 const t = useTranslations(lang);
 // Collection ids carry the language folder: "en/my-post" -> "my-post".
-const slug = article.id.replace(/^(en|pt)\//, '');
+const slug = publication.id.replace(/^(en|pt)\//, '');
 const venue = d.venue;
 ---
 
@@ -17,7 +17,7 @@ const venue = d.venue;
   <div class="badge-row">
     {d.tracks.map((track) => <TrackBadge track={track} lang={lang} />)}
   </div>
-  <h3><a href={localize(`/articles/${slug}`, lang)}>{d.title}</a></h3>
+  <h3><a href={localize(`/publications/${slug}`, lang)}>{d.title}</a></h3>
 
   {
     venue && (
@@ -35,10 +35,18 @@ const venue = d.venue;
     <span>{formatDate(d.date, lang)}</span>
     {d.tags.map((tag) => <span>#{tag}</span>)}
   </div>
+  {/* Rótulos repetidos cartão a cartão; o `aria-label` diz de qual publicação
+      é cada link. Mesma razão do `ProjectCard`. */}
   <div class="card-links">
-    <a href={localize(`/articles/${slug}`, lang)}>{t('cta.read')}</a>
-    {d.pdf && <a href={d.pdf}>PDF</a>}
-    {venue?.url && <a href={venue.url}>{t('cta.proceedings')}</a>}
+    <a href={localize(`/publications/${slug}`, lang)} aria-label={`${t('cta.read')}: ${d.title}`}>
+      {t('cta.read')}
+    </a>
+    {d.pdf && <a href={d.pdf} aria-label={`PDF: ${d.title}`}>PDF</a>}
+    {venue?.url && (
+      <a href={venue.url} aria-label={`${t('cta.proceedings')}: ${d.title}`}>
+        {t('cta.proceedings')}
+      </a>
+    )}
   </div>
 </article>
 

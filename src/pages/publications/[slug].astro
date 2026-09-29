@@ -1,24 +1,24 @@
 ---
 import { render } from 'astro:content';
-import Base from '../../../layouts/Base.astro';
-import TrackBadge from '../../../components/TrackBadge.astro';
-import { formatDate, localize, useTranslations, type UIKey } from '../../../i18n/ui';
-import { getArticles, articleSlug, articleAltPath, articleTwinPath } from '../../../lib/content';
+import Base from '../../layouts/Base.astro';
+import TrackBadge from '../../components/TrackBadge.astro';
+import { formatDate, localize, useTranslations, type UIKey } from '../../i18n/ui';
+import { getPublications, publicationSlug, publicationAltPath, publicationTwinPath } from '../../lib/content';
 
-const lang = 'pt' as const;
+const lang = 'en' as const;
 const t = useTranslations(lang);
 
 export async function getStaticPaths() {
-  const articles = await getArticles('pt');
+  const publications = await getPublications('en');
   return Promise.all(
-    articles.map(async (entry) => ({
-      params: { slug: articleSlug(entry) },
+    publications.map(async (entry) => ({
+      params: { slug: publicationSlug(entry) },
       props: {
         entry,
-        altPath: await articleAltPath(entry, 'pt'),
-        // null, not undefined: an article with no twin must emit no hreflang
+        altPath: await publicationAltPath(entry, 'en'),
+        // null, not undefined: a publication with no twin must emit no hreflang
         // rather than fall back to the mirrored route, which would 404.
-        translation: (await articleTwinPath(entry, 'pt')) ?? null,
+        translation: (await publicationTwinPath(entry, 'en')) ?? null,
       },
     })),
   );
@@ -30,7 +30,7 @@ const { Content } = await render(entry);
 
 <Base title={`${entry.data.title} — Anderson Gonçalves`} description={entry.data.summary} lang={lang} altPath={altPath} translation={translation}>
   <article class="prose">
-    <p><a class="muted" href={localize('/articles', lang)}>← Artigos</a></p>
+    <p><a class="muted" href={localize('/publications', lang)}>← Publications</a></p>
     <div class="badge-row">
       {entry.data.tracks.map((track) => <TrackBadge track={track} lang={lang} />)}
     </div>

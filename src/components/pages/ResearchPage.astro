@@ -11,7 +11,7 @@ const evaluation = experiments[lang];
 
 // The ERAMIA entry is a reserved draft until the paper is out: link it only
 // once it is published, and otherwise show where it stands.
-const eramia = (await getCollection('articles')).find((entry) => entry.id === `${lang}/eramia-rs`);
+const eramia = (await getCollection('publications')).find((entry) => entry.id === `${lang}/eramia-rs`);
 const eramiaLive = eramia && !eramia.data.draft;
 const eramiaStatus = eramia?.data.venue?.status ?? 'in-preparation';
 ---
@@ -91,7 +91,7 @@ const eramiaStatus = eramia?.data.venue?.status ?? 'in-preparation';
     <li>
       {
         eramiaLive ? (
-          <a href={localize('/articles/eramia-rs', lang)}>{copy.paperPending}</a>
+          <a href={localize('/publications/eramia-rs', lang)}>{copy.paperPending}</a>
         ) : (
           <>
             <span>{copy.paperPending}</span>

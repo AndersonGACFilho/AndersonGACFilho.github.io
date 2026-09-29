@@ -40,6 +40,29 @@ function paginasDoMaterial(raiz = 'public/teaching') {
   return achados.sort();
 }
 
+/**
+ * A seção mudou de `/articles/` para `/publications/`.
+ *
+ * As duas URLs antigas estavam no sitemap já enviado ao Search Console, e o
+ * GitHub Pages não define cabeçalho de resposta — não há 301 possível aqui.
+ * O que dá é a página que o Astro gera no lugar: `<meta http-equiv="refresh">`
+ * mais um `<link rel="canonical">` apontando para o destino. Não é um 301,
+ * mas o Google trata refresh instantâneo como redirecionamento e transfere o
+ * sinal da URL antiga.
+ *
+ * Nenhuma rota de artigo individual entra aqui porque nunca existiu: todo o
+ * conteúdo da coleção está como `draft`, então o build nunca emitiu um slug.
+ *
+ * O destino leva barra final porque o `canonical` da página de destino leva —
+ * e para o Google `/publications` e `/publications/` são duas URLs. Sem a
+ * barra, o canonical desta página apontaria para uma terceira URL que só
+ * redireciona de novo.
+ */
+const ROTAS_ANTIGAS = {
+  '/articles': '/publications/',
+  '/pt/articles': '/pt/publications/',
+};
+
 export default defineConfig({
   site: SITE,
   i18n: {
@@ -47,5 +70,14 @@ export default defineConfig({
     locales: ['en', 'pt'],
     routing: { prefixDefaultLocale: false },
   },
-  integrations: [sitemap({ customPages: paginasDoMaterial() })],
+  redirects: ROTAS_ANTIGAS,
+  integrations: [
+    sitemap({
+      customPages: paginasDoMaterial(),
+      // Uma página de redirecionamento não é conteúdo: no índice ela competiria
+      // com o destino pelo mesmo texto. Ela existe só para quem chegar pelo
+      // link velho.
+      filter: (url) => !Object.keys(ROTAS_ANTIGAS).some((antiga) => url.endsWith(`${antiga}/`)),
+    }),
+  ],
 });
