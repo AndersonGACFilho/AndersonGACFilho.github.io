@@ -235,8 +235,8 @@
   <text class="t glosa" x="721" y="126">volta para</text>
   <text class="t glosa" x="721" y="150">segunda, 23h</text>
   <path class="seta" d="M916 118 H922" marker-end="url(#ponta)"/>
-  <path class="cartao perda" d="M939 52 H1063 a9 9 0 0 1 9 9 V175 a9 9 0 0 1 -9 9 H939 Z"/>
-  <path class="barra perda" d="M939 52 H934 a4 4 0 0 0 -4 4 V180 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="959" y="113">Perdido</text>
-  <text class="t glosa" x="959" y="139">tudo da terça</text>
+  <path class="cartao perda" d="M931 52 H1063 a9 9 0 0 1 9 9 V175 a9 9 0 0 1 -9 9 H931 Z"/>
+  <path class="barra perda" d="M931 52 H926 a4 4 0 0 0 -4 4 V180 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="951" y="113">Perdido</text>
+  <text class="t glosa" x="951" y="139">tudo da terça</text>
 </svg>

@@ -195,9 +195,9 @@
     /* @fim */
   </style>
 
-  <rect class="ent-so" x="16" y="84" width="240" height="84" rx="6"/>
+  <rect class="ent-so" x="16" y="84" width="250" height="84" rx="6"/>
   <path class="barra" d="M25 84 H20 a4 4 0 0 0 -4 4 V164 a4 4 0 0 0 4 4 Z"/>
-  <text class="t ent-nome-so" x="140.5" y="134">PLATAFORMA</text>
+  <text class="t ent-nome-so" x="145.5" y="134">PLATAFORMA</text>
   <rect class="ent-so" x="376" y="16" width="300" height="84" rx="6"/>
   <path class="barra" d="M385 16 H380 a4 4 0 0 0 -4 4 V96 a4 4 0 0 0 4 4 Z"/>
   <text class="t ent-nome-so" x="530.5" y="66">JOGO</text>
@@ -207,14 +207,14 @@
   <rect class="ent-so" x="796" y="84" width="280" height="84" rx="6"/>
   <path class="barra" d="M805 84 H800 a4 4 0 0 0 -4 4 V164 a4 4 0 0 0 4 4 Z"/>
   <text class="t ent-nome-so" x="940.5" y="134">EMPRESTIMO</text>
-  <path class="lig" d="M270 114 V138"/>
-  <path class="lig" d="M282 114 V138"/>
+  <path class="lig" d="M280 114 V138"/>
+  <path class="lig" d="M292 114 V138"/>
   <path class="lig" d="M358 58 L376 46 M358 58 L376 58 M358 58 L376 70"/>
   <circle class="lig-o" cx="348 " cy="58" r="6.5"/>
-  <path class="lig" d="M292 126 H306 Q316 126 316 116"/>
-  <path class="lig" d="M316 116 V68"/>
-  <text class="t verbo" x="316" y="32">possui</text>
-  <path class="lig" d="M316 68 Q316 58 326 58 H340"/>
+  <path class="lig" d="M302 126 H311 Q321 126 321 116"/>
+  <path class="lig" d="M321 116 V68"/>
+  <text class="t verbo" x="321" y="32">possui</text>
+  <path class="lig" d="M321 68 Q321 58 331 58 H340"/>
   <path class="lig" d="M690 46 V70"/>
   <path class="lig" d="M702 46 V70"/>
   <path class="lig" d="M778 96 L796 84 M778 96 L796 96 M778 96 L796 108"/>

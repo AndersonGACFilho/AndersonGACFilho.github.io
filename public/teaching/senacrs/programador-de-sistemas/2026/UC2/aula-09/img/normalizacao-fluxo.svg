@@ -202,7 +202,7 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">TRÊS PERGUNTAS, EM ORDEM</text>
   <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao" d="M29 52 H751 a9 9 0 0 1 9 9 V127 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao" d="M29 52 H755 a9 9 0 0 1 9 9 V127 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 52 H24 a4 4 0 0 0 -4 4 V132 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 74) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -213,7 +213,7 @@
   </g>
   <text class="t nome" x="103" y="89">1ª — alguma célula guarda mais de um valor?</text>
   <text class="t glosa" x="103" y="115">se sim, separe</text>
-  <path class="seta" d="M768 94 H812" marker-end="url(#ponta)"/>
+  <path class="seta" d="M772 94 H812" marker-end="url(#ponta)"/>
   <path class="cartao q" d="M829 52 H1063 a9 9 0 0 1 9 9 V127 a9 9 0 0 1 -9 9 H829 Z"/>
   <path class="barra q" d="M829 52 H824 a4 4 0 0 0 -4 4 V132 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(845 74) scale(0.4167)">
@@ -223,7 +223,7 @@
     </g>
   </g>
   <text class="t nome" x="903" y="102">Chega à 1FN</text>
-  <path class="cartao" d="M29 152 H751 a9 9 0 0 1 9 9 V227 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao" d="M29 152 H755 a9 9 0 0 1 9 9 V227 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 152 H24 a4 4 0 0 0 -4 4 V232 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 174) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -234,7 +234,7 @@
   </g>
   <text class="t nome" x="103" y="189">2ª — algum atributo depende de só um pedaço da chave?</text>
   <text class="t glosa" x="103" y="215">se sim, separe</text>
-  <path class="seta" d="M768 194 H812" marker-end="url(#ponta)"/>
+  <path class="seta" d="M772 194 H812" marker-end="url(#ponta)"/>
   <path class="cartao q" d="M829 152 H1063 a9 9 0 0 1 9 9 V227 a9 9 0 0 1 -9 9 H829 Z"/>
   <path class="barra q" d="M829 152 H824 a4 4 0 0 0 -4 4 V232 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(845 174) scale(0.4167)">
@@ -244,7 +244,7 @@
     </g>
   </g>
   <text class="t nome" x="903" y="202">Chega à 2FN</text>
-  <path class="cartao" d="M29 252 H751 a9 9 0 0 1 9 9 V327 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao" d="M29 252 H755 a9 9 0 0 1 9 9 V327 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 252 H24 a4 4 0 0 0 -4 4 V332 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 274) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -255,7 +255,7 @@
   </g>
   <text class="t nome" x="103" y="289">3ª — algum atributo depende de outro atributo comum?</text>
   <text class="t glosa" x="103" y="315">se sim, separe</text>
-  <path class="seta" d="M768 294 H812" marker-end="url(#ponta)"/>
+  <path class="seta" d="M772 294 H812" marker-end="url(#ponta)"/>
   <path class="cartao q" d="M829 252 H1063 a9 9 0 0 1 9 9 V327 a9 9 0 0 1 -9 9 H829 Z"/>
   <path class="barra q" d="M829 252 H824 a4 4 0 0 0 -4 4 V332 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(845 274) scale(0.4167)">

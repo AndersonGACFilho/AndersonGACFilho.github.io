@@ -232,7 +232,7 @@
   <path class="seta" d="M480 225 H518 Q528 225 528 215"/>
   <path class="seta" d="M528 113 V215"/>
   <path class="seta" d="M528 164 H612" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="548" y="150">pela chave</text>
+  <text class="t seta-rot" x="574" y="150">pela chave</text>
   <path class="cartao q" d="M629 102 H1063 a9 9 0 0 1 9 9 V217 a9 9 0 0 1 -9 9 H629 Z"/>
   <path class="barra q" d="M629 102 H624 a4 4 0 0 0 -4 4 V222 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(645 116) scale(0.4167)">

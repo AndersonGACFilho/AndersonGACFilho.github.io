@@ -202,7 +202,7 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">A DE DENTRO RODA PRIMEIRO</text>
   <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao q" d="M29 80 H347 a9 9 0 0 1 9 9 V211 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao q" d="M29 80 H355 a9 9 0 0 1 9 9 V211 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra q" d="M29 80 H24 a4 4 0 0 0 -4 4 V216 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 89) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -240,7 +240,7 @@
   <text class="t nome" x="895" y="132">Resultado</text>
   <text class="t glosa" x="895" y="158">God of War</text>
   <text class="t glosa" x="895" y="182">FIFA 25</text>
-  <path class="seta traco t1" d="M364 150 H408" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="386" y="136">devolve 1</text>
+  <path class="seta traco t1" d="M372 150 H408" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="390" y="66">devolve 1</text>
   <path class="seta traco t2" d="M760 150 H804" marker-end="url(#ponta)"/>
 </svg>

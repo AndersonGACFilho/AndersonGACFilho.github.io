@@ -214,9 +214,9 @@
   <text class="t nome" x="103" y="122">pgAdmin</text>
   <text class="t glosa" x="103" y="148">o cliente — a janela</text>
   <text class="t glosa" x="103" y="172">que você abre</text>
-  <path class="cartao q" d="M417 74 H719 a9 9 0 0 1 9 9 V197 a9 9 0 0 1 -9 9 H417 Z"/>
-  <path class="barra q" d="M417 74 H412 a4 4 0 0 0 -4 4 V202 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(433 92) scale(0.4167)">
+  <path class="cartao q" d="M401 74 H703 a9 9 0 0 1 9 9 V197 a9 9 0 0 1 -9 9 H401 Z"/>
+  <path class="barra q" d="M401 74 H396 a4 4 0 0 0 -4 4 V202 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(417 92) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="38" cy="22" rx="26" ry="9.5"/>
     <path d="M12 22v44c0 5.2 11.6 9.5 26 9.5 4 0 7.9-.3 11.3-.9"/>
@@ -225,12 +225,12 @@
     <path d="M69 47v7M69 76v7M87 65h-7M58 65h-7M81.7 52.3l-5 5M61.3 72.7l-5 5M81.7 77.7l-5-5M61.3 57.3l-5-5" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="491" y="122">PostgreSQL</text>
-  <text class="t glosa" x="491" y="148">o servidor, em segundo</text>
-  <text class="t glosa" x="491" y="172">plano, na porta 5432</text>
-  <path class="cartao" d="M805 84 H1063 a9 9 0 0 1 9 9 V187 a9 9 0 0 1 -9 9 H805 Z"/>
-  <path class="barra" d="M805 84 H800 a4 4 0 0 0 -4 4 V192 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(821 120) scale(0.4167)">
+  <text class="t nome" x="475" y="122">PostgreSQL</text>
+  <text class="t glosa" x="475" y="148">o servidor, em segundo</text>
+  <text class="t glosa" x="475" y="172">plano, na porta 5432</text>
+  <path class="cartao" d="M773 84 H1063 a9 9 0 0 1 9 9 V187 a9 9 0 0 1 -9 9 H773 Z"/>
+  <path class="barra" d="M773 84 H768 a4 4 0 0 0 -4 4 V192 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(789 120) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="8" y="26" width="80" height="44" rx="8"/>
     <circle cx="34" cy="48" r="14"/>
@@ -238,9 +238,9 @@
     <path d="M60 40h18M60 56h18" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="879" y="135">Arquivos do banco</text>
-  <text class="t glosa" x="879" y="161">no disco</text>
-  <path class="seta" d="M348 140 H400" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="374" y="128">pergunta</text>
-  <path class="seta" d="M736 140 H788" marker-end="url(#ponta)"/>
+  <text class="t nome" x="847" y="135">Arquivos do banco</text>
+  <text class="t glosa" x="847" y="161">no disco</text>
+  <path class="seta" d="M348 140 H384" marker-end="url(#ponta)"/>
+  <path class="seta" d="M720 140 H756" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="366" y="64">pergunta</text>
 </svg>

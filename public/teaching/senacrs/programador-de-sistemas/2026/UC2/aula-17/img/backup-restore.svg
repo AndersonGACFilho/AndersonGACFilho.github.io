@@ -202,31 +202,33 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">O CAMINHO DE IDA E DE VOLTA</text>
   <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao" d="M29 78 H251 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao" d="M29 78 H223 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 78 H24 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 114) scale(0.4167)">
+  <g class="ico" transform="translate(45 86) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="48" cy="24" rx="30" ry="11"/>
     <path d="M18 24v48c0 6.1 13.4 11 30 11s30-4.9 30-11V24"/>
     <path d="M18 48c0 6.1 13.4 11 30 11s30-4.9 30-11" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="103" y="129">Banco locadora</text>
-  <text class="t glosa" x="103" y="155">em produção</text>
-  <path class="cartao" d="M317 78 H539 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H317 Z"/>
-  <path class="barra" d="M317 78 H312 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(333 114) scale(0.4167)">
+  <text class="t nome" x="103" y="116">Banco</text>
+  <text class="t glosa" x="103" y="142">locadora,</text>
+  <text class="t glosa" x="103" y="166">em produção</text>
+  <path class="cartao" d="M313 78 H507 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H313 Z"/>
+  <path class="barra" d="M313 78 H308 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(329 86) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M24 8h32l18 18v62a6 6 0 0 1-6 6H24a6 6 0 0 1-6-6V14a6 6 0 0 1 6-6Z"/>
     <path d="M54 8v20h20"/>
     <path d="M30 50h36M30 62h36M30 74h22" stroke="currentColor" stroke-width="4.5"/>
     </g>
   </g>
-  <text class="t nome" x="391" y="129">Arquivo .backup</text>
-  <text class="t glosa" x="391" y="155">pg_dump</text>
-  <path class="cartao" d="M605 78 H827 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H605 Z"/>
-  <path class="barra" d="M605 78 H600 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(621 86) scale(0.4167)">
+  <text class="t nome" x="387" y="116">Arquivo</text>
+  <text class="t glosa" x="387" y="142">.backup</text>
+  <text class="t glosa" x="387" y="166">via pg_dump</text>
+  <path class="cartao" d="M597 78 H791 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H597 Z"/>
+  <path class="barra" d="M597 78 H592 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(613 86) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="8" y="26" width="80" height="44" rx="8"/>
     <circle cx="34" cy="48" r="14"/>
@@ -234,12 +236,12 @@
     <path d="M60 40h18M60 56h18" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="679" y="116">Guardado fora</text>
-  <text class="t glosa" x="679" y="142">pen drive, nuvem,</text>
-  <text class="t glosa" x="679" y="166">outro servidor</text>
-  <path class="cartao q" d="M893 78 H1063 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H893 Z"/>
-  <path class="barra q" d="M893 78 H888 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(909 114) scale(0.4167)">
+  <text class="t nome" x="671" y="116">Guardado</text>
+  <text class="t glosa" x="671" y="142">fora do</text>
+  <text class="t glosa" x="671" y="166">servidor</text>
+  <path class="cartao q" d="M881 78 H1075 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H881 Z"/>
+  <path class="barra q" d="M881 78 H876 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(897 114) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="48" cy="16" rx="26" ry="9"/>
     <path d="M22 16v22c0 5 11.6 9 26 9s26-4 26-9V16"/>
@@ -248,12 +250,12 @@
     <path d="M14 88h68"/>
     </g>
   </g>
-  <text class="t nome" x="967" y="129">De volta</text>
-  <text class="t glosa" x="967" y="155">pg_restore</text>
-  <path class="seta traco t1" d="M268 134 H300" marker-end="url(#ponta)"/>
-  <path class="seta traco t2" d="M556 134 H588" marker-end="url(#ponta)"/>
-  <path class="seta traco t3" d="M844 134 H876" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="284" y="118">backup</text>
-  <text class="t seta-rot" x="572" y="118">copia</text>
-  <text class="t seta-rot" x="860" y="118">restore</text>
+  <text class="t nome" x="955" y="129">De volta</text>
+  <text class="t glosa" x="955" y="155">pg_restore</text>
+  <path class="seta traco t1" d="M240 134 H296" marker-end="url(#ponta)"/>
+  <path class="seta traco t2" d="M524 134 H580" marker-end="url(#ponta)"/>
+  <path class="seta traco t3" d="M808 134 H864" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="268" y="118">backup</text>
+  <text class="t seta-rot" x="552" y="118">copia</text>
+  <text class="t seta-rot" x="836" y="118">restore</text>
 </svg>

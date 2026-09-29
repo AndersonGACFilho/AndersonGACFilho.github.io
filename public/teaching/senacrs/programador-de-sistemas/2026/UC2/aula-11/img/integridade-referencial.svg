@@ -225,7 +225,7 @@
   </g>
   <text class="t nome" x="103" y="147">INSERT em jogo</text>
   <text class="t glosa" x="103" y="173">id_plataforma = 7</text>
-  <path class="cartao q" d="M387 96 H659 a9 9 0 0 1 9 9 V199 a9 9 0 0 1 -9 9 H387 Z"/>
+  <path class="cartao q" d="M387 96 H663 a9 9 0 0 1 9 9 V199 a9 9 0 0 1 -9 9 H387 Z"/>
   <path class="barra q" d="M387 96 H382 a4 4 0 0 0 -4 4 V204 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(403 132) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -259,8 +259,8 @@
   <text class="t glosa" x="823" y="230">violates foreign key</text>
   <text class="t glosa" x="823" y="254">constraint</text>
   <path class="seta" d="M318 152 H370" marker-end="url(#ponta)"/>
-  <path class="seta" d="M676 134 C 710 134, 710 98, 732 98" marker-end="url(#ponta)"/>
-  <path class="seta" d="M676 170 C 710 170, 710 222, 732 222" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="690" y="120">sim</text>
-  <text class="t seta-rot" x="690" y="206">não</text>
+  <path class="seta" d="M680 134 C 712 134, 712 98, 732 98" marker-end="url(#ponta)"/>
+  <path class="seta" d="M680 170 C 712 170, 712 222, 732 222" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="694" y="92">sim</text>
+  <text class="t seta-rot" x="694" y="240">não</text>
 </svg>

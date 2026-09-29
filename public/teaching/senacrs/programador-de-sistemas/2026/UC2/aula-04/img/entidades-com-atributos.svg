@@ -195,17 +195,17 @@
     /* @fim */
   </style>
 
-  <rect class="ent" x="16" y="154" width="240" height="152" rx="4"/>
-  <path class="cab" d="M20 154 H252 a4 4 0 0 1 4 4 V198 H16 V158 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="136" y="183">PLATAFORMA</text>
+  <rect class="ent" x="16" y="154" width="250" height="152" rx="4"/>
+  <path class="cab" d="M20 154 H262 a4 4 0 0 1 4 4 V198 H16 V158 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="141" y="183">PLATAFORMA</text>
   <text class="t ent-tipo" x="32" y="222">texto</text>
   <text class="t ent-campo" x="108" y="222">nome</text>
-  <rect class="faixa" x="17" y="234" width="238" height="36"/>
+  <rect class="faixa" x="17" y="234" width="248" height="36"/>
   <text class="t ent-tipo" x="32" y="258">texto</text>
   <text class="t ent-campo" x="108" y="258">fabricante</text>
   <text class="t ent-tipo" x="32" y="294">int</text>
   <text class="t ent-campo" x="108" y="294">ano_lancamento</text>
-  <rect class="ent-borda" x="16" y="154" width="240" height="152" rx="4"/>
+  <rect class="ent-borda" x="16" y="154" width="250" height="152" rx="4"/>
   <rect class="ent" x="376" y="16" width="300" height="188" rx="4"/>
   <path class="cab" d="M380 16 H672 a4 4 0 0 1 4 4 V60 H376 V20 a4 4 0 0 1 4 -4 Z"/>
   <text class="t ent-nome" x="526" y="45">JOGO</text>
@@ -245,15 +245,15 @@
   <text class="t ent-tipo" x="812" y="294">data</text>
   <text class="t ent-campo" x="888" y="294">data_devolucao</text>
   <rect class="ent-borda" x="796" y="154" width="280" height="152" rx="4"/>
-  <path class="lig" d="M270 218 V242"/>
-  <path class="lig" d="M282 218 V242"/>
+  <path class="lig" d="M280 218 V242"/>
+  <path class="lig" d="M292 218 V242"/>
   <path class="lig" d="M358 110 L376 98 M358 110 L376 110 M358 110 L376 122"/>
   <circle class="lig-o" cx="348 " cy="110" r="6.5"/>
-  <path class="lig" d="M292 230 H306 Q316 230 316 220"/>
-  <path class="lig" d="M316 220 V188"/>
-  <path class="lig" d="M316 152 V120"/>
-  <text class="t verbo" x="316" y="176">possui</text>
-  <path class="lig" d="M316 120 Q316 110 326 110 H340"/>
+  <path class="lig" d="M302 230 H311 Q321 230 321 220"/>
+  <path class="lig" d="M321 220 V188"/>
+  <path class="lig" d="M321 152 V120"/>
+  <text class="t verbo" x="321" y="176">possui</text>
+  <path class="lig" d="M321 120 Q321 110 331 110 H340"/>
   <path class="lig" d="M690 98 V122"/>
   <path class="lig" d="M702 98 V122"/>
   <path class="lig" d="M778 200 L796 188 M778 200 L796 200 M778 200 L796 212"/>

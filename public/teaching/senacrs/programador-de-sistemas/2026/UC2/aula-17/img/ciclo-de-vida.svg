@@ -202,27 +202,30 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">O CICLO DE VIDA DE UM BANCO</text>
   <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao" d="M29 52 H207 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao" d="M29 52 H199 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 52 H24 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
   <text class="t nome" x="49" y="124">Planejar</text>
-  <path class="seta" d="M224 116 H236" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M253 52 H431 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H253 Z"/>
-  <path class="barra" d="M253 52 H248 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="273" y="124">Implantar</text>
-  <path class="seta" d="M448 116 H460" marker-end="url(#ponta)"/>
-  <path class="cartao q" d="M477 52 H655 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H477 Z"/>
-  <path class="barra q" d="M477 52 H472 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="497" y="98">Operar</text>
-  <text class="t glosa" x="497" y="124">backup, monitoração</text>
-  <text class="t glosa" x="497" y="148">e permissões</text>
-  <path class="seta" d="M672 116 H684" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M701 52 H879 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H701 Z"/>
-  <path class="barra" d="M701 52 H696 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="721" y="111">Manter</text>
-  <text class="t glosa" x="721" y="137">corrigir, atualizar</text>
-  <path class="seta" d="M896 116 H908" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M925 52 H1103 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H925 Z"/>
-  <path class="barra" d="M925 52 H920 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="945" y="111">Desativar</text>
-  <text class="t glosa" x="945" y="137">arquivar dados</text>
+  <path class="seta" d="M216 116 H228" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M245 52 H415 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H245 Z"/>
+  <path class="barra" d="M245 52 H240 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="265" y="124">Implantar</text>
+  <path class="seta" d="M432 116 H444" marker-end="url(#ponta)"/>
+  <path class="cartao q" d="M461 52 H631 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H461 Z"/>
+  <path class="barra q" d="M461 52 H456 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="481" y="85">Operar</text>
+  <text class="t glosa" x="481" y="111">backup,</text>
+  <text class="t glosa" x="481" y="135">permissões,</text>
+  <text class="t glosa" x="481" y="159">monitoração</text>
+  <path class="seta" d="M648 116 H660" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M677 52 H847 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H677 Z"/>
+  <path class="barra" d="M677 52 H672 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="697" y="98">Manter</text>
+  <text class="t glosa" x="697" y="124">corrigir,</text>
+  <text class="t glosa" x="697" y="148">atualizar</text>
+  <path class="seta" d="M864 116 H876" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M893 52 H1063 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H893 Z"/>
+  <path class="barra" d="M893 52 H888 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="913" y="98">Desativar</text>
+  <text class="t glosa" x="913" y="124">arquivar</text>
+  <text class="t glosa" x="913" y="148">dados</text>
 </svg>

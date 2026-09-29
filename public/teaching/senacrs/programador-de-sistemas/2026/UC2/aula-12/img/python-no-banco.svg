@@ -212,9 +212,9 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">O CAMINHO DE UM COMANDO, E O DA RESPOSTA</text>
   <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao" d="M29 90 H261 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao" d="M29 90 H211 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 90 H24 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 126) scale(0.4167)">
+  <g class="ico" transform="translate(45 98) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="8" y="16" width="80" height="64" rx="8"/>
     <path d="M8 34h80"/>
@@ -222,11 +222,12 @@
     <path d="M48 52h30M48 66h20"/>
     </g>
   </g>
-  <text class="t nome" x="103" y="141">Célula do</text>
-  <text class="t glosa" x="103" y="167">notebook crud.ipynb</text>
-  <path class="cartao" d="M339 90 H541 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H339 Z"/>
-  <path class="barra" d="M339 90 H334 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(355 126) scale(0.4167)">
+  <text class="t nome" x="103" y="128">Célula do</text>
+  <text class="t glosa" x="103" y="154">notebook</text>
+  <text class="t glosa" x="103" y="178">crud.ipynb</text>
+  <path class="cartao" d="M312 90 H494 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H312 Z"/>
+  <path class="barra" d="M312 90 H307 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(328 126) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="4" y="20" width="34" height="34" rx="5"/>
     <path d="M12 31h18M12 43h12"/>
@@ -236,11 +237,11 @@
     <path d="M50 40l6 6-6 6" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="413" y="141">psycopg2</text>
-  <text class="t glosa" x="413" y="167">o tradutor</text>
-  <path class="cartao q" d="M619 90 H821 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H619 Z"/>
-  <path class="barra q" d="M619 90 H614 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(635 126) scale(0.4167)">
+  <text class="t nome" x="386" y="141">psycopg2</text>
+  <text class="t glosa" x="386" y="167">o tradutor</text>
+  <path class="cartao q" d="M595 90 H813 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H595 Z"/>
+  <path class="barra q" d="M595 90 H590 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(611 126) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="38" cy="22" rx="26" ry="9.5"/>
     <path d="M12 22v44c0 5.2 11.6 9.5 26 9.5 4 0 7.9-.3 11.3-.9"/>
@@ -249,28 +250,28 @@
     <path d="M69 47v7M69 76v7M87 65h-7M58 65h-7M81.7 52.3l-5 5M61.3 72.7l-5 5M81.7 77.7l-5-5M61.3 57.3l-5-5" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="693" y="141">PostgreSQL</text>
-  <text class="t glosa" x="693" y="167">o servidor</text>
-  <path class="cartao" d="M899 90 H1063 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H899 Z"/>
-  <path class="barra" d="M899 90 H894 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(915 126) scale(0.4167)">
+  <text class="t nome" x="669" y="141">PostgreSQL</text>
+  <text class="t glosa" x="669" y="167">o servidor</text>
+  <path class="cartao" d="M914 90 H1063 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H914 Z"/>
+  <path class="barra" d="M914 90 H909 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(930 126) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="48" cy="24" rx="30" ry="11"/>
     <path d="M18 24v48c0 6.1 13.4 11 30 11s30-4.9 30-11V24"/>
     <path d="M18 48c0 6.1 13.4 11 30 11s30-4.9 30-11" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="973" y="141">Banco</text>
-  <text class="t glosa" x="973" y="167">locadora</text>
-  <path class="seta ida i1" d="M278 126 H322" marker-end="url(#ponta)"/>
-  <path class="seta ida i2" d="M558 126 H602" marker-end="url(#ponta)"/>
-  <path class="seta volta v1" d="M602 168 H558" marker-end="url(#ponta)"/>
-  <path class="seta volta v2" d="M322 168 H278" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="300" y="114">comando</text>
-  <text class="t seta-rot" x="580" y="114">comando</text>
-  <text class="t seta-rot" x="580" y="192">resultado</text>
-  <text class="t seta-rot" x="300" y="192">resultado</text>
-  <path class="seta" d="M838 146 H882" marker-end="url(#ponta)"/>
+  <text class="t nome" x="988" y="141">Banco</text>
+  <text class="t glosa" x="988" y="167">locadora</text>
+  <path class="seta ida i1" d="M228 126 H295" marker-end="url(#ponta)"/>
+  <path class="seta ida i2" d="M511 126 H578" marker-end="url(#ponta)"/>
+  <path class="seta volta v1" d="M578 168 H511" marker-end="url(#ponta)"/>
+  <path class="seta volta v2" d="M295 168 H228" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="262" y="114">comando</text>
+  <text class="t seta-rot" x="544" y="114">comando</text>
+  <text class="t seta-rot" x="544" y="192">resultado</text>
+  <text class="t seta-rot" x="262" y="192">resultado</text>
+  <path class="seta" d="M830 146 H897" marker-end="url(#ponta)"/>
   <path class="cartao" d="M29 238 H261 a9 9 0 0 1 9 9 V309 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 238 H24 a4 4 0 0 0 -4 4 V314 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 258) scale(0.4167)">
@@ -282,5 +283,5 @@
   </g>
   <text class="t nome" x="103" y="273">pgAdmin</text>
   <text class="t glosa" x="103" y="299">a outra janela</text>
-  <path class="seta" d="M278 278 C 420 278, 520 242, 602 202" marker-end="url(#ponta)"/>
+  <path class="seta" d="M278 278 C 420 278, 510 242, 586 202" marker-end="url(#ponta)"/>
 </svg>

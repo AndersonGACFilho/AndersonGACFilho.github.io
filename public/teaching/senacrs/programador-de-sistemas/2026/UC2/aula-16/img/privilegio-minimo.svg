@@ -202,7 +202,7 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">COMO SE CHEGA AO PRIVILÉGIO MÍNIMO</text>
   <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao" d="M29 90 H261 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao" d="M29 90 H251 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 90 H24 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 126) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -212,17 +212,17 @@
   </g>
   <text class="t nome" x="103" y="141">Nova pessoa</text>
   <text class="t glosa" x="103" y="167">na equipe</text>
-  <path class="cartao" d="M339 90 H571 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H339 Z"/>
-  <path class="barra" d="M339 90 H334 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(355 126) scale(0.4167)">
+  <path class="cartao" d="M321 90 H579 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H321 Z"/>
+  <path class="barra" d="M321 90 H316 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(337 126) scale(0.4167)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="18" y="42" width="60" height="44" rx="9"/>
     <path d="M32 42V29a16 16 0 0 1 32 0v13"/>
     <path d="M48 58v13" stroke="currentColor" stroke-width="7"/>
     </g>
   </g>
-  <text class="t nome" x="413" y="141">Comece com</text>
-  <text class="t glosa" x="413" y="167">NENHUMA permissão</text>
+  <text class="t nome" x="395" y="141">Comece com</text>
+  <text class="t glosa" x="395" y="167">NENHUMA permissão</text>
   <path class="cartao q" d="M649 90 H881 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H649 Z"/>
   <path class="barra q" d="M649 90 H644 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(665 126) scale(0.4167)">
@@ -240,11 +240,11 @@
   <path class="cartao" d="M959 156 H1063 a9 9 0 0 1 9 9 V231 a9 9 0 0 1 -9 9 H959 Z"/>
   <path class="barra" d="M959 156 H954 a4 4 0 0 0 -4 4 V236 a4 4 0 0 0 4 4 Z"/>
   <text class="t nome" x="979" y="206">Não</text>
-  <path class="seta" d="M278 146 H322" marker-end="url(#ponta)"/>
-  <path class="seta" d="M588 146 H632" marker-end="url(#ponta)"/>
+  <path class="seta" d="M268 146 H304" marker-end="url(#ponta)"/>
+  <path class="seta" d="M596 146 H632" marker-end="url(#ponta)"/>
   <path class="seta" d="M898 128 C 924 128, 924 94, 942 94" marker-end="url(#ponta)"/>
   <path class="seta" d="M898 164 C 924 164, 924 198, 942 198" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="918" y="114">sim</text>
-  <text class="t seta-rot" x="918" y="198">não</text>
+  <text class="t seta-rot" x="920" y="74">sim</text>
+  <text class="t seta-rot" x="920" y="226">não</text>
   <text class="t nota" x="20" y="282">Volte à pergunta para cada tabela e cada verbo — a permissão se concede uma de cada vez.</text>
 </svg>
