@@ -1,0 +1,270 @@
+---
+/**
+ * Controle na tela para jogar os builds WebGL no celular.
+ *
+ * COMO FUNCIONA: o `iframe` do jogo é servido de `/webgl-builds`, a mesma
+ * origem desta página, então o script daqui alcança o documento de dentro e
+ * despacha eventos de teclado nele. Para a Unity, um evento sintético e um
+ * dedo numa tecla física chegam pelo mesmo ouvinte.
+ *
+ * O QUE ISTO NÃO RESOLVE: jogo que mira com o mouse. Um direcional não
+ * substitui um ponteiro, e por isso o campo `touch` é opt-in no schema — só
+ * recebe overlay o jogo que anda por teclado.
+ *
+ * As setas são SVG, não `▲` e `▶`. Além de caractere não ser ícone, o subset
+ * latin das fontes do site não tem esses glifos: viriam do fallback do
+ * sistema, com desenho e peso diferentes em cada aparelho.
+ */
+import { DIRECIONAIS, TECLAS, type NomeDeTecla } from '../lib/teclas';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Botao {
+  rotulo: { en: string; pt: string };
+  tecla: NomeDeTecla;
+}
+interface Props {
+  direcional?: keyof typeof DIRECIONAIS;
+  botoes: Botao[];
+  lang: Lang;
+}
+
+const { direcional, botoes, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const setas = direcional ? DIRECIONAIS[direcional] : null;
+const direcoes = setas
+  ? ([
+      ['cima', setas.cima, t('touch.cima')],
+      ['esquerda', setas.esquerda, t('touch.esquerda')],
+      ['direita', setas.direita, t('touch.direita')],
+      ['baixo', setas.baixo, t('touch.baixo')],
+    ] as const)
+  : [];
+
+/** Os três campos que o evento precisa, prontos para o `data-` do botão. */
+const dados = (nome: NomeDeTecla) => {
+  const tecla = TECLAS[nome];
+  return { 'data-key': tecla.key, 'data-code': tecla.code, 'data-keycode': String(tecla.keyCode) };
+};
+---
+
+<div class="toque" data-toque>
+  {
+    setas && (
+      <div class="dpad" role="group" aria-label={t('touch.direcional')}>
+        {direcoes.map(([posicao, nome, rotulo]) => (
+          <button type="button" class={`tecla dir dir-${posicao}`} aria-label={rotulo} {...dados(nome)}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 6 L19 17 L5 17 Z" />
+            </svg>
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    botoes.length > 0 && (
+      <div class="acoes" role="group" aria-label={t('touch.acoes')}>
+        {botoes.map((botao) => (
+          <button type="button" class="tecla acao" {...dados(botao.tecla)}>
+            {botao.rotulo[lang]}
+          </button>
+        ))}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  /*
+   * NASCE ESCONDIDO, e quem o revela é o `GameFrame`: o controle só aparece em
+   * modo cinema ou tela cheia, em aparelho de toque e com o aparelho deitado.
+   *
+   * POR QUE NÃO NO PALCO EMBUTIDO: em retrato, o palco de um 16:9 numa tela de
+   * 375px tem 188px de altura — exatamente a altura do direcional sozinho, e
+   * menos largura do que o direcional e as ações somados. Caberia cortado, que
+   * é pior do que não caber: um botão pela metade parece defeito e some sob o
+   * dedo. Para jogar de verdade no celular, entra-se no cinema.
+   */
+  .toque { display: none; }
+
+  @media (pointer: coarse) {
+    .toque {
+      position: absolute;
+      inset: auto 0 0 0;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      /* A barra de gestos e o entalhe comem a borda de baixo em tela cheia. */
+      padding: 12px calc(12px + env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom))
+        calc(12px + env(safe-area-inset-left));
+      pointer-events: none; /* só os botões pegam o toque; o resto é do jogo */
+      z-index: 3;
+    }
+
+    .dpad {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 10px; /* acima dos 8px mínimos entre alvos vizinhos */
+    }
+    .dir-cima { grid-area: 1 / 2; }
+    .dir-esquerda { grid-area: 2 / 1; }
+    .dir-direita { grid-area: 2 / 3; }
+    .dir-baixo { grid-area: 3 / 2; }
+
+    .acoes { display: flex; align-items: flex-end; gap: 10px; }
+
+    .tecla {
+      pointer-events: auto;
+      display: grid;
+      place-items: center;
+      /* 56 passa dos 44pt do iOS e dos 48dp do Android com folga; polegar em
+         jogo erra mais que polegar em formulário. */
+      min-width: 56px;
+      min-height: 56px;
+      padding: 0 14px;
+      border-radius: 14px;
+      font: inherit;
+      font-family: var(--display);
+      font-size: 0.9rem;
+      /*
+       * FUNDO PRÓPRIO, NÃO TRANSPARÊNCIA SOBRE A ARTE. O que passa por baixo é
+       * um jogo qualquer, que pode ser branco num quadro e preto no seguinte —
+       * sem uma base opaca o contraste do rótulo é sorteado a cada frame.
+       */
+      background: color-mix(in srgb, var(--bg-elev) 88%, transparent);
+      border: 1px solid var(--border);
+      color: var(--text);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      /* sem isto o toque arrasta a página e o polegar abre a lupa */
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+    }
+
+    .tecla svg { width: 22px; height: 22px; fill: currentColor; }
+    .dir-baixo svg { transform: rotate(180deg); }
+    .dir-esquerda svg { transform: rotate(-90deg); }
+    .dir-direita svg { transform: rotate(90deg); }
+
+    /* Pressionado muda cor e borda, nunca tamanho: um botão que encolhe sob o
+       dedo desalinha os vizinhos justo quando a pessoa está mirando.
+       O rótulo usa `--bg` e não um hex fixo porque `--gamedev` é escuro no tema
+       claro e claro no escuro: medido, o par dá 4,92:1 e 9,75:1. Um hex só,
+       como o do `.play-icon`, daria 3,44:1 no claro — passa lá por ser glifo
+       grande, não passaria aqui num rótulo de 0,9rem. */
+    .tecla[data-pressionada] {
+      background: var(--gamedev);
+      border-color: var(--gamedev);
+      color: var(--bg);
+    }
+
+    .tecla:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-toque]').forEach((painel) => {
+    const raiz = painel.closest<HTMLElement>('.game');
+    if (!raiz) return;
+
+    /**
+     * O documento de dentro do `iframe`. Devolve `null` enquanto o jogo não
+     * foi aberto — e também se um dia o build sair para outro domínio, caso em
+     * que o acesso lança por política de origem. Falhar calado aqui é o certo:
+     * o botão simplesmente não faz nada, em vez de derrubar a página.
+     */
+    const documentoDoJogo = (): Document | null => {
+      const frame = raiz.querySelector('iframe');
+      try {
+        return frame?.contentDocument ?? null;
+      } catch {
+        return null;
+      }
+    };
+
+    const despachar = (tipo: 'keydown' | 'keyup', botao: HTMLElement) => {
+      const doc = documentoDoJogo();
+      if (!doc) return;
+
+      const codigo = Number(botao.dataset.keycode);
+      const evento = new KeyboardEvent(tipo, {
+        key: botao.dataset.key,
+        code: botao.dataset.code,
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+      });
+      // `keyCode` e `which` não existem no construtor por serem obsoletos, e a
+      // Unity lê os dois. Enxertados aqui, o evento passa pelos dois caminhos.
+      Object.defineProperty(evento, 'keyCode', { get: () => codigo });
+      Object.defineProperty(evento, 'which', { get: () => codigo });
+
+      // O ouvinte da Unity fica no canvas ou no documento, conforme a versão do
+      // loader. Despachar no canvas cobre os dois: o evento borbulha de lá.
+      (doc.querySelector('canvas') ?? doc.body ?? doc).dispatchEvent(evento);
+    };
+
+    const pressionadas = new Set<HTMLElement>();
+
+    const pressionar = (botao: HTMLElement) => {
+      if (pressionadas.has(botao)) return; // um dedo, um keydown
+      pressionadas.add(botao);
+      botao.dataset.pressionada = '';
+      despachar('keydown', botao);
+    };
+
+    const soltar = (botao: HTMLElement) => {
+      if (!pressionadas.delete(botao)) return;
+      delete botao.dataset.pressionada;
+      despachar('keyup', botao);
+    };
+
+    /** Nenhuma tecla pode ficar afundada quando o jogo ou o modo some. */
+    const soltarTudo = () => [...pressionadas].forEach(soltar);
+
+    painel.querySelectorAll<HTMLElement>('.tecla').forEach((botao) => {
+      botao.addEventListener('pointerdown', (evento) => {
+        evento.preventDefault();
+        // Sem a captura, deslizar o polegar para fora do botão engole o
+        // `pointerup` e a tecla fica presa para baixo.
+        botao.setPointerCapture(evento.pointerId);
+        pressionar(botao);
+      });
+
+      const fim = (evento: PointerEvent) => {
+        if (botao.hasPointerCapture(evento.pointerId)) botao.releasePointerCapture(evento.pointerId);
+        soltar(botao);
+      };
+      botao.addEventListener('pointerup', fim);
+      botao.addEventListener('pointercancel', fim);
+
+      // Teclado e leitor de tela chegam por aqui: um clique sem ponteiro vira
+      // um toque curto, que é o que `Input.GetKeyDown` espera ver.
+      botao.addEventListener('click', (evento) => {
+        if ((evento as PointerEvent).pointerType) return; // já tratado acima
+        pressionar(botao);
+        setTimeout(() => soltar(botao), 80);
+      });
+    });
+
+    /*
+     * Sair da aba com o dedo apoiado deixaria o personagem andando sozinho.
+     *
+     * E SÓ `visibilitychange`, NÃO `blur` DA JANELA. O `blur` parece cobrir
+     * mais casos, mas dispara também quando o foco entra no `iframe` — e o
+     * loader da Unity chama `focus()` no canvas assim que recebe a primeira
+     * entrada. O resultado era soltar a tecla no meio de um movimento, com o
+     * dedo ainda no botão: segurar para a direita andava dois passos e parava.
+     * Aqui o overlay só existe em celular, onde mandar o navegador para o
+     * fundo dispara `visibilitychange` de qualquer forma.
+     */
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) soltarTudo();
+    });
+  });
+</script>

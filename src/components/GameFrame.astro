@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { useTranslations, type Lang } from '../i18n/ui';
 import { pick } from '../lib/tracks';
+import TouchControls from './TouchControls.astro';
 
 interface Props { game: CollectionEntry<'games'>; lang: Lang; }
 const { game, lang } = Astro.props;
@@ -38,6 +39,11 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
             <small>{pick(d.tagline, lang)}</small>
           </span>
         </button>
+        {d.touch && (
+          <TouchControls direcional={d.touch.direcional} botoes={d.touch.botoes} lang={lang} />
+        )}
+        {/* So aparece em cinema, em aparelho de toque, com o aparelho em pe. */}
+        <p class="girar">{t('touch.girar')}</p>
       </div>
     ) : (
       <div class="game-stage game-stage-empty">
@@ -185,6 +191,50 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
   .game.cinema .cinema-close:hover { background: var(--bg-hover); }
   :global(body.cinema-open) { overflow: hidden; }
 
+  .girar { display: none; }
+
+  @media (pointer: coarse) {
+    /*
+     * CINEMA NO CELULAR DEITA O APARELHO. Em pé, o palco de um 16:9 numa tela
+     * de 375px fica com 184px de altura mesmo em cinema — menor que a capa que
+     * ele substituiu. A legenda sai porque cada linha de texto é altura
+     * roubada de um palco que já não tem, e o controle do jogo já está na tela.
+     */
+    .game.cinema {
+      --cinema-chrome: 56px;
+      padding: 40px 8px 8px;
+    }
+    .game.cinema figcaption { display: none; }
+
+    /* Nem todo navegador deixa travar a orientação — o Safari do iPhone não
+       deixa. Onde a trava falha, sobra pedir. */
+    .game.cinema .girar {
+      display: block;
+      position: absolute;
+      inset: auto 0 50% 0;
+      margin: 0;
+      padding: 10px 16px;
+      text-align: center;
+      font-family: var(--display);
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /*
+     * O CONTROLE SÓ APARECE DEITADO. Em pé não há palco que o comporte, e o
+     * aviso acima já está na tela dizendo o que fazer. Tela cheia entra junto
+     * porque é o outro lugar onde sobra área.
+     */
+    .game.cinema :global(.toque),
+    .game:fullscreen :global(.toque) { display: none; }
+  }
+
+  @media (pointer: coarse) and (orientation: landscape) {
+    .game.cinema .girar { display: none; }
+    .game.cinema :global(.toque),
+    .game:fullscreen :global(.toque) { display: flex; }
+  }
+
   .game:fullscreen { background: #000; display: grid; place-items: center; }
   .game:fullscreen .game-stage { height: 100%; width: auto; aspect-ratio: var(--ratio); }
   .game:fullscreen figcaption { display: none; }
@@ -203,18 +253,40 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
       frame.title = root.querySelector('strong')?.textContent ?? 'game';
       frame.allow = 'autoplay; fullscreen; gamepad; cross-origin-isolated';
       frame.setAttribute('allowfullscreen', '');
-      stage.replaceChildren(frame);
+      // Tira so a capa. `replaceChildren` levaria junto o controle de toque,
+      // que vive dentro do palco para acompanha-lo em cinema e tela cheia.
+      poster.remove();
+      stage.prepend(frame);
     });
+
+    const noToque = () => window.matchMedia('(pointer: coarse)').matches;
 
     const exitCinema = () => {
       root.classList.remove('cinema');
       document.body.classList.remove('cinema-open');
+      try {
+        screen.orientation?.unlock?.();
+      } catch {
+        /* nunca travou: nada a desfazer */
+      }
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
     };
 
-    root.querySelector<HTMLButtonElement>('[data-cinema]')?.addEventListener('click', () => {
+    root.querySelector<HTMLButtonElement>('[data-cinema]')?.addEventListener('click', async () => {
       root.classList.add('cinema');
       document.body.classList.add('cinema-open');
       root.querySelector<HTMLIFrameElement>('iframe')?.focus();
+
+      // A trava de orientacao so e permitida em tela cheia, e nem sempre la.
+      // As duas falham calado de proposito: o cinema em si ja funcionou, e o
+      // aviso de girar cobre o caso de a trava nao acontecer.
+      if (!noToque()) return;
+      try {
+        await root.requestFullscreen?.();
+        await screen.orientation?.lock?.('landscape');
+      } catch {
+        /* sem tela cheia ou sem trava de orientacao: fica o aviso na tela */
+      }
     });
 
     root.querySelector<HTMLButtonElement>('[data-cinema-close]')?.addEventListener('click', exitCinema);

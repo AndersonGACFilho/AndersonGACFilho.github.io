@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { NOMES_DE_TECLA, NOMES_DE_DIRECIONAL } from './lib/teclas';
 
 const track = z.enum(['fullstack', 'gamedev', 'research']);
 
@@ -37,6 +38,28 @@ const games = defineCollection({
     date: z.coerce.date().optional(),
     cover: z.string().optional(),   // shown before the build loads
     controls: z.object({ en: z.string(), pt: z.string() }).optional(),
+    /*
+     * O controle na tela para quem abre no celular. OPT-IN DE PROPÓSITO: um
+     * direcional só serve a jogo que anda por teclado. Dos builds daqui, os
+     * que miram com o mouse não ganham nada com um D-pad — dar um a eles
+     * seria prometer que dá para jogar e entregar metade. Jogo sem este
+     * campo não recebe overlay nenhum.
+     */
+    touch: z
+      .object({
+        direcional: z.enum(NOMES_DE_DIRECIONAL).optional(),
+        // Três é o que cabe na largura de um polegar sem encostar um no outro.
+        botoes: z
+          .array(
+            z.object({
+              rotulo: z.object({ en: z.string(), pt: z.string() }),
+              tecla: z.enum(NOMES_DE_TECLA),
+            }),
+          )
+          .max(3)
+          .default([]),
+      })
+      .optional(),
     // The longer story: where it came from, why it exists.
     about: z.object({ en: z.string(), pt: z.string() }).optional(),
     itch: z.string().url().optional(),

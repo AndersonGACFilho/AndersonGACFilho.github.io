@@ -9,6 +9,9 @@ ratio: 16 / 9
 controls:
   en: WASD to move. Each enemy shows its current state above it.
   pt: WASD para mover. Cada inimigo mostra o estado atual acima dele.
+# Sem botao de acao: a bancada so anda, nao atira.
+touch:
+  direcional: wasd
 repo: TheInvasionReforged
 about:
   en: >-
