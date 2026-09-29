@@ -74,13 +74,33 @@ const t = useTranslations(lang);
       }
     };
 
+    /*
+     * A barra do navegador no celular acompanha o fundo real da página.
+     *
+     * LER DEPOIS DA PINTURA, NÃO AGORA. Mexer em `data-theme` invalida o
+     * estilo do documento inteiro; ler um valor computado no comando seguinte
+     * obriga o navegador a recalcular tudo ali mesmo, antes de continuar o
+     * script — 103 ms num aparelho fraco, medidos pelo Lighthouse como reflow
+     * forçado, e em toda página, porque isto roda no carregamento. Dentro do
+     * quadro seguinte o recálculo já aconteceu por conta própria e a leitura
+     * sai de graça. A barra muda um quadro depois, o que ninguém percebe.
+     *
+     * A cor vem do CSS em vez de estar escrita aqui de propósito: o
+     * `tokens.css` é a fonte dos tokens, e valor duplicado em JavaScript sai
+     * do lugar em silêncio na primeira vez que o fundo mudar.
+     */
+    const sincronizarBarra = (raiz: HTMLElement) => {
+      requestAnimationFrame(() => {
+        const cor = getComputedStyle(raiz).getPropertyValue('--bg').trim();
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', cor);
+      });
+    };
+
     const aplicar = (m: Modo) => {
       const raiz = document.documentElement;
       if (m === 'system') raiz.removeAttribute('data-theme');
       else raiz.setAttribute('data-theme', m);
-      // a barra do navegador no celular acompanha o fundo real da página
-      const cor = getComputedStyle(raiz).getPropertyValue('--bg').trim();
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', cor);
+      sincronizarBarra(raiz);
       icone.textContent = ICONE[m];
       nome.textContent = botao.dataset[`rotulo${m[0].toUpperCase()}${m.slice(1)}`] ?? m;
       botao.setAttribute('aria-label', `${botao.dataset.troca}: ${nome.textContent}`);
