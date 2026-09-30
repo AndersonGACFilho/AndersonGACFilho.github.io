@@ -7,8 +7,8 @@ date: 2021-08-11
 buildPath: the-invasion
 ratio: 16 / 9
 controls:
-  en: WASD to move, Space to fire, Esc for the menu.
-  pt: WASD para mover, Espaço para atirar, Esc para o menu.
+  en: W and S to move up and down, Space to fire, Esc for the menu.
+  pt: W e S para subir e descer, Espaço para atirar, Esc para o menu.
 # O mesmo que o `controls` acima diz em palavras, em forma de controle na tela
 # para quem abre no celular. Trilho, e nao cruz: a nave so sobe e desce, e numa
 # cruz cada troca de direcao obriga a levantar o dedo.
