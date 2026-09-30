@@ -47,7 +47,12 @@ const games = defineCollection({
      */
     touch: z
       .object({
+        // Cruz de quatro botoes, para quem anda nos dois eixos.
         direcional: z.enum(NOMES_DE_DIRECIONAL).optional(),
+        // Trilho vertical de duas metades, para quem so sobe e desce. Usa
+        // `cima` e `baixo` do mesmo preset; `esquerda` e `direita` ficam de
+        // fora porque o jogo nao tem para onde ir de lado.
+        deslizante: z.enum(NOMES_DE_DIRECIONAL).optional(),
         // Três é o que cabe na largura de um polegar sem encostar um no outro.
         botoes: z
           .array(

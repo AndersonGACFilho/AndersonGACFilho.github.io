@@ -9,10 +9,11 @@ ratio: 16 / 9
 controls:
   en: WASD to move, Space to fire, Esc for the menu.
   pt: WASD para mover, Espaço para atirar, Esc para o menu.
-# O mesmo que o `controls` acima diz em palavras, em forma de botao na tela
-# para quem abre no celular.
+# O mesmo que o `controls` acima diz em palavras, em forma de controle na tela
+# para quem abre no celular. Trilho, e nao cruz: a nave so sobe e desce, e numa
+# cruz cada troca de direcao obriga a levantar o dedo.
 touch:
-  direcional: wasd
+  deslizante: wasd
   botoes:
     - rotulo:
         en: Fire

@@ -40,7 +40,12 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
           </span>
         </button>
         {d.touch && (
-          <TouchControls direcional={d.touch.direcional} botoes={d.touch.botoes} lang={lang} />
+          <TouchControls
+            direcional={d.touch.direcional}
+            deslizante={d.touch.deslizante}
+            botoes={d.touch.botoes}
+            lang={lang}
+          />
         )}
         {/* So aparece em cinema, em aparelho de toque, com o aparelho em pe. */}
         <p class="girar">{t('touch.girar')}</p>
@@ -257,6 +262,17 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
       // que vive dentro do palco para acompanha-lo em cinema e tela cheia.
       poster.remove();
       stage.prepend(frame);
+
+      /*
+       * NO CELULAR, JOGAR JA ENTRA EM CINEMA. O palco embutido tem 188px de
+       * altura em retrato e nao mostra controle nenhum -- tocar em jogar ali
+       * dava um jogo pequeno e sem como controlar, e a pessoa tinha que
+       * descobrir sozinha que faltava um segundo toque em "modo cinema".
+       *
+       * Vale como gesto do usuario para a tela cheia porque roda dentro do
+       * mesmo clique que abriu o jogo.
+       */
+      if (noToque()) void entrarCinema();
     });
 
     const noToque = () => window.matchMedia('(pointer: coarse)').matches;
@@ -272,7 +288,7 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
       if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
     };
 
-    root.querySelector<HTMLButtonElement>('[data-cinema]')?.addEventListener('click', async () => {
+    const entrarCinema = async () => {
       root.classList.add('cinema');
       document.body.classList.add('cinema-open');
       root.querySelector<HTMLIFrameElement>('iframe')?.focus();
@@ -287,7 +303,9 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
       } catch {
         /* sem tela cheia ou sem trava de orientacao: fica o aviso na tela */
       }
-    });
+    };
+
+    root.querySelector<HTMLButtonElement>('[data-cinema]')?.addEventListener('click', entrarCinema);
 
     root.querySelector<HTMLButtonElement>('[data-cinema-close]')?.addEventListener('click', exitCinema);
 

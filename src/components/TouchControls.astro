@@ -5,13 +5,22 @@
  * COMO FUNCIONA: o `iframe` do jogo é servido de `/webgl-builds`, a mesma
  * origem desta página, então o script daqui alcança o documento de dentro e
  * despacha eventos de teclado nele. Para a Unity, um evento sintético e um
- * dedo numa tecla física chegam pelo mesmo ouvinte.
+ * dedo numa tecla física chegam pelo mesmo ouvinte — confirmado em aparelho
+ * real, que era a única parte que não dava para provar do computador.
  *
- * O QUE ISTO NÃO RESOLVE: jogo que mira com o mouse. Um direcional não
- * substitui um ponteiro, e por isso o campo `touch` é opt-in no schema — só
- * recebe overlay o jogo que anda por teclado.
+ * DOIS FORMATOS DE MOVIMENTO, porque os jogos daqui não se movem igual:
  *
- * As setas são SVG, não `▲` e `▶`. Além de caractere não ser ícone, o subset
+ *   `direcional` — cruz de quatro botões, para quem anda nos dois eixos.
+ *   `deslizante` — trilho vertical de duas metades, para quem só sobe e desce.
+ *
+ * O trilho não é enfeite. Num jogo vertical o dedo troca de cima para baixo o
+ * tempo todo, e numa cruz cada troca obriga a levantar e reapertar — o que se
+ * sente como controle travado, não como controle preciso.
+ *
+ * O QUE ISTO NÃO RESOLVE: jogo que mira com o mouse. Nenhum dos dois formatos
+ * substitui um ponteiro, e por isso o campo `touch` é opt-in no schema.
+ *
+ * As setas são SVG, não `▲` e `▼`. Além de caractere não ser ícone, o subset
  * latin das fontes do site não tem esses glifos: viriam do fallback do
  * sistema, com desenho e peso diferentes em cada aparelho.
  */
@@ -24,22 +33,16 @@ interface Botao {
 }
 interface Props {
   direcional?: keyof typeof DIRECIONAIS;
+  deslizante?: keyof typeof DIRECIONAIS;
   botoes: Botao[];
   lang: Lang;
 }
 
-const { direcional, botoes, lang } = Astro.props;
+const { direcional, deslizante, botoes, lang } = Astro.props;
 const t = useTranslations(lang);
 
-const setas = direcional ? DIRECIONAIS[direcional] : null;
-const direcoes = setas
-  ? ([
-      ['cima', setas.cima, t('touch.cima')],
-      ['esquerda', setas.esquerda, t('touch.esquerda')],
-      ['direita', setas.direita, t('touch.direita')],
-      ['baixo', setas.baixo, t('touch.baixo')],
-    ] as const)
-  : [];
+const cruz = direcional ? DIRECIONAIS[direcional] : null;
+const trilho = deslizante ? DIRECIONAIS[deslizante] : null;
 
 /** Os três campos que o evento precisa, prontos para o `data-` do botão. */
 const dados = (nome: NomeDeTecla) => {
@@ -50,9 +53,18 @@ const dados = (nome: NomeDeTecla) => {
 
 <div class="toque" data-toque>
   {
-    setas && (
-      <div class="dpad" role="group" aria-label={t('touch.direcional')}>
-        {direcoes.map(([posicao, nome, rotulo]) => (
+    cruz && (
+      /* `data-zonas` liga o controle de deslizar: o dedo troca de botão sem
+         levantar, e quem manda é a posição, não em qual botão o toque começou. */
+      <div class="dpad" data-zonas role="group" aria-label={t('touch.direcional')}>
+        {(
+          [
+            ['cima', cruz.cima, t('touch.cima')],
+            ['esquerda', cruz.esquerda, t('touch.esquerda')],
+            ['direita', cruz.direita, t('touch.direita')],
+            ['baixo', cruz.baixo, t('touch.baixo')],
+          ] as const
+        ).map(([posicao, nome, rotulo]) => (
           <button type="button" class={`tecla dir dir-${posicao}`} aria-label={rotulo} {...dados(nome)}>
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path d="M12 6 L19 17 L5 17 Z" />
@@ -64,7 +76,33 @@ const dados = (nome: NomeDeTecla) => {
   }
 
   {
+    trilho && (
+      /*
+       * São dois botões de verdade, não um controle desenhado. Quem chega de
+       * teclado ou leitor de tela encontra "mover para cima" e "mover para
+       * baixo" nomeados; quem chega de dedo desliza entre eles. O vão do meio
+       * é zona morta: é onde se para.
+       */
+      <div class="trilho" data-zonas role="group" aria-label={t('touch.trilho')}>
+        <button type="button" class="tecla metade" aria-label={t('touch.cima')} {...dados(trilho.cima)}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 6 L19 17 L5 17 Z" />
+          </svg>
+        </button>
+        <span class="zona-morta" aria-hidden="true"></span>
+        <button type="button" class="tecla metade baixo" aria-label={t('touch.baixo')} {...dados(trilho.baixo)}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 6 L19 17 L5 17 Z" />
+          </svg>
+        </button>
+      </div>
+    )
+  }
+
+  {
     botoes.length > 0 && (
+      /* Sem `data-zonas`: ação é discreta. Deslizar de "atirar" para "menu" no
+         meio de uma partida abriria o menu sem ninguém ter pedido. */
       <div class="acoes" role="group" aria-label={t('touch.acoes')}>
         {botoes.map((botao) => (
           <button type="button" class="tecla acao" {...dados(botao.tecla)}>
@@ -84,8 +122,7 @@ const dados = (nome: NomeDeTecla) => {
    * POR QUE NÃO NO PALCO EMBUTIDO: em retrato, o palco de um 16:9 numa tela de
    * 375px tem 188px de altura — exatamente a altura do direcional sozinho, e
    * menos largura do que o direcional e as ações somados. Caberia cortado, que
-   * é pior do que não caber: um botão pela metade parece defeito e some sob o
-   * dedo. Para jogar de verdade no celular, entra-se no cinema.
+   * é pior do que não caber.
    */
   .toque { display: none; }
 
@@ -99,7 +136,7 @@ const dados = (nome: NomeDeTecla) => {
       /* A barra de gestos e o entalhe comem a borda de baixo em tela cheia. */
       padding: 12px calc(12px + env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom))
         calc(12px + env(safe-area-inset-left));
-      pointer-events: none; /* só os botões pegam o toque; o resto é do jogo */
+      pointer-events: none; /* só os controles pegam o toque; o resto é do jogo */
       z-index: 3;
     }
 
@@ -113,10 +150,37 @@ const dados = (nome: NomeDeTecla) => {
     .dir-direita { grid-area: 2 / 3; }
     .dir-baixo { grid-area: 3 / 2; }
 
+    .trilho {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 64px;
+    }
+    /* Alto o bastante para o polegar ter curso: com o trilho curto, a diferença
+       entre subir e parar vira questão de milímetros. */
+    .trilho .metade {
+      flex: 1;
+      min-height: 76px;
+      border-radius: 16px 16px 4px 4px;
+    }
+    .trilho .baixo { border-radius: 4px 4px 16px 16px; }
+    .trilho .baixo svg { transform: rotate(180deg); }
+    /* O vão é a zona morta: soltar o controle sem tirar o dedo da tela. */
+    .zona-morta { height: 14px; pointer-events: none; }
+
     .acoes { display: flex; align-items: flex-end; gap: 10px; }
 
+    .dpad,
+    .trilho,
+    .acoes { pointer-events: auto; }
+
+    /* O contêiner de zonas recebe o toque inteiro; os botões dentro dele são
+       alvo de mira, não de evento. Sem isto a captura de ponteiro fica presa
+       ao botão onde o dedo encostou primeiro e deslizar não troca nada. */
+    [data-zonas] { touch-action: none; }
+    [data-zonas] .tecla { pointer-events: none; }
+
     .tecla {
-      pointer-events: auto;
       display: grid;
       place-items: center;
       /* 56 passa dos 44pt do iOS e dos 48dp do Android com folga; polegar em
@@ -145,6 +209,7 @@ const dados = (nome: NomeDeTecla) => {
       -webkit-tap-highlight-color: transparent;
       cursor: pointer;
     }
+    .acoes .tecla { pointer-events: auto; }
 
     .tecla svg { width: 22px; height: 22px; fill: currentColor; }
     .dir-baixo svg { transform: rotate(180deg); }
@@ -154,9 +219,7 @@ const dados = (nome: NomeDeTecla) => {
     /* Pressionado muda cor e borda, nunca tamanho: um botão que encolhe sob o
        dedo desalinha os vizinhos justo quando a pessoa está mirando.
        O rótulo usa `--bg` e não um hex fixo porque `--gamedev` é escuro no tema
-       claro e claro no escuro: medido, o par dá 4,92:1 e 9,75:1. Um hex só,
-       como o do `.play-icon`, daria 3,44:1 no claro — passa lá por ser glifo
-       grande, não passaria aqui num rótulo de 0,9rem. */
+       claro e claro no escuro: medido, o par dá 4,92:1 e 9,75:1. */
     .tecla[data-pressionada] {
       background: var(--gamedev);
       border-color: var(--gamedev);
@@ -212,7 +275,7 @@ const dados = (nome: NomeDeTecla) => {
     const pressionadas = new Set<HTMLElement>();
 
     const pressionar = (botao: HTMLElement) => {
-      if (pressionadas.has(botao)) return; // um dedo, um keydown
+      if (pressionadas.has(botao)) return; // um dedo parado, um keydown só
       pressionadas.add(botao);
       botao.dataset.pressionada = '';
       despachar('keydown', botao);
@@ -227,24 +290,72 @@ const dados = (nome: NomeDeTecla) => {
     /** Nenhuma tecla pode ficar afundada quando o jogo ou o modo some. */
     const soltarTudo = () => [...pressionadas].forEach(soltar);
 
-    painel.querySelectorAll<HTMLElement>('.tecla').forEach((botao) => {
+    /*
+     * MOVIMENTO É POR ZONA, NÃO POR BOTÃO. O contêiner captura o dedo inteiro e
+     * a cada movimento decide qual botão está sob ele — então deslizar de cima
+     * para baixo troca a tecla sem levantar o dedo. Prender a captura ao botão
+     * onde o toque começou, como antes, obrigava a levantar e reapertar a cada
+     * troca de direção; num jogo vertical, que alterna o tempo todo, isso é
+     * sentido como controle travado.
+     *
+     * As medidas dos botões são lidas uma vez, no `pointerdown`. Consultar a
+     * geometria a cada `pointermove` forçaria recálculo de layout no meio do
+     * gesto, que é justamente o tipo de trabalho que faz o toque parecer lento.
+     */
+    painel.querySelectorAll<HTMLElement>('[data-zonas]').forEach((zona) => {
+      let alvos: { botao: HTMLElement; r: DOMRect }[] = [];
+
+      const sob = (x: number, y: number) =>
+        alvos.find(({ r }) => x >= r.left && x <= r.right && y >= r.top && y <= r.bottom)?.botao;
+
+      const aplicar = (evento: PointerEvent) => {
+        const escolhido = sob(evento.clientX, evento.clientY);
+        for (const { botao } of alvos) if (botao !== escolhido) soltar(botao);
+        if (escolhido) pressionar(escolhido);
+      };
+
+      zona.addEventListener('pointerdown', (evento) => {
+        evento.preventDefault();
+        alvos = [...zona.querySelectorAll<HTMLElement>('.tecla')].map((botao) => ({
+          botao,
+          r: botao.getBoundingClientRect(),
+        }));
+        zona.setPointerCapture(evento.pointerId);
+        aplicar(evento);
+      });
+
+      zona.addEventListener('pointermove', (evento) => {
+        if (!zona.hasPointerCapture(evento.pointerId)) return;
+        aplicar(evento);
+      });
+
+      const fim = (evento: PointerEvent) => {
+        if (zona.hasPointerCapture(evento.pointerId)) zona.releasePointerCapture(evento.pointerId);
+        for (const { botao } of alvos) soltar(botao);
+      };
+      zona.addEventListener('pointerup', fim);
+      zona.addEventListener('pointercancel', fim);
+    });
+
+    /* Ação é discreta: a captura fica no próprio botão, que é o que impede a
+       tecla de ficar presa se o dedo escorregar para fora antes de levantar. */
+    painel.querySelectorAll<HTMLElement>('.acoes .tecla').forEach((botao) => {
       botao.addEventListener('pointerdown', (evento) => {
         evento.preventDefault();
-        // Sem a captura, deslizar o polegar para fora do botão engole o
-        // `pointerup` e a tecla fica presa para baixo.
         botao.setPointerCapture(evento.pointerId);
         pressionar(botao);
       });
-
       const fim = (evento: PointerEvent) => {
         if (botao.hasPointerCapture(evento.pointerId)) botao.releasePointerCapture(evento.pointerId);
         soltar(botao);
       };
       botao.addEventListener('pointerup', fim);
       botao.addEventListener('pointercancel', fim);
+    });
 
-      // Teclado e leitor de tela chegam por aqui: um clique sem ponteiro vira
-      // um toque curto, que é o que `Input.GetKeyDown` espera ver.
+    /* Teclado e leitor de tela chegam por `click`, sem ponteiro: vira um toque
+       curto, que é o que `Input.GetKeyDown` espera ver. */
+    painel.querySelectorAll<HTMLElement>('.tecla').forEach((botao) => {
       botao.addEventListener('click', (evento) => {
         if ((evento as PointerEvent).pointerType) return; // já tratado acima
         pressionar(botao);
@@ -259,9 +370,7 @@ const dados = (nome: NomeDeTecla) => {
      * mais casos, mas dispara também quando o foco entra no `iframe` — e o
      * loader da Unity chama `focus()` no canvas assim que recebe a primeira
      * entrada. O resultado era soltar a tecla no meio de um movimento, com o
-     * dedo ainda no botão: segurar para a direita andava dois passos e parava.
-     * Aqui o overlay só existe em celular, onde mandar o navegador para o
-     * fundo dispara `visibilitychange` de qualquer forma.
+     * dedo ainda no botão.
      */
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) soltarTudo();
