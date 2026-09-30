@@ -163,8 +163,11 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
     z-index: 200;
     margin: 0;
     padding: 56px 24px 24px;
+    /* Sem desfoque de fundo. Sobre um fundo 96% opaco ele quase nao aparecia,
+       e custava caro no lugar errado: este elemento ocupa a tela inteira e e o
+       pai direto do canvas do jogo, entao o filtro era reavaliado a cada
+       quadro da partida. */
     background: rgba(2, 3, 8, 0.96);
-    backdrop-filter: blur(3px);
     display: grid;
     grid-template-rows: 1fr auto;
     gap: 14px;

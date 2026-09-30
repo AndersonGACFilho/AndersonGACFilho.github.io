@@ -166,7 +166,9 @@ const dados = (nome: NomeDeTecla) => {
     .trilho .baixo { border-radius: 4px 4px 16px 16px; }
     .trilho .baixo svg { transform: rotate(180deg); }
     /* O vão é a zona morta: soltar o controle sem tirar o dedo da tela. */
-    .zona-morta { height: 14px; pointer-events: none; }
+    /* 26 e nao 14 porque a deteccao infla cada metade em 5px de cada lado
+       para cobrir o vao; o que sobra de zona morta real sao 16px. */
+    .zona-morta { height: 26px; pointer-events: none; }
 
     .acoes { display: flex; align-items: flex-end; gap: 10px; }
 
@@ -197,11 +199,20 @@ const dados = (nome: NomeDeTecla) => {
        * um jogo qualquer, que pode ser branco num quadro e preto no seguinte —
        * sem uma base opaca o contraste do rótulo é sorteado a cada frame.
        */
+      /*
+       * SEM `backdrop-filter`. O desfoque ficava bonito e custava caro: este
+       * overlay vive sobre um canvas WebGL que redesenha a cada quadro, e um
+       * filtro de fundo obriga o navegador a reamostrar e convoluir o que
+       * esta atras -- de novo, a cada quadro, para cada botao. Num celular
+       * isso aparece como engasgo no jogo inteiro, nao como controle lento.
+       *
+       * A translucidez fica: misturar alpha e quase de graca, desfocar nao e.
+       * As medicoes de contraste ja tinham sido feitas sobre a cor composta,
+       * sem contar com o desfoque, entao continuam valendo.
+       */
       background: color-mix(in srgb, var(--bg-elev) 88%, transparent);
       border: 1px solid var(--border);
       color: var(--text);
-      -webkit-backdrop-filter: blur(6px);
-      backdrop-filter: blur(6px);
       /* sem isto o toque arrasta a página e o polegar abre a lupa */
       touch-action: none;
       -webkit-user-select: none;
@@ -305,8 +316,23 @@ const dados = (nome: NomeDeTecla) => {
     painel.querySelectorAll<HTMLElement>('[data-zonas]').forEach((zona) => {
       let alvos: { botao: HTMLElement; r: DOMRect }[] = [];
 
+      /*
+       * A deteccao infla cada botao em 5px, metade do vao entre eles.
+       *
+       * POR QUE: com a borda exata, um polegar parado bem na divisa entrava e
+       * saia da zona a cada tremor de deteccao do toque, e cada entrada e
+       * saida virava um `keyup` seguido de `keydown`. Para o jogo isso e a
+       * tecla sendo martelada, o que se ve como movimento aos solavancos.
+       * Inflados, os vaos do direcional deixam de existir para efeito de
+       * deteccao e so a zona morta do trilho continua sendo um lugar onde
+       * nada esta pressionado -- por isso ela e maior que a folga.
+       */
+      const FOLGA = 5;
       const sob = (x: number, y: number) =>
-        alvos.find(({ r }) => x >= r.left && x <= r.right && y >= r.top && y <= r.bottom)?.botao;
+        alvos.find(
+          ({ r }) =>
+            x >= r.left - FOLGA && x <= r.right + FOLGA && y >= r.top - FOLGA && y <= r.bottom + FOLGA,
+        )?.botao;
 
       const aplicar = (evento: PointerEvent) => {
         const escolhido = sob(evento.clientX, evento.clientY);
