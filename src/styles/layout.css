@@ -1,0 +1,48 @@
+/* Responsabilidade: o esqueleto que toda página divide -- a caixa de largura
+   máxima, o respiro entre seções, o cabeçalho de seção e as grades. */
+
+/* ---------- layout ---------- */
+.wrap {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+main { padding-block: 40px 72px; }
+
+section { margin-block: 64px; }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+.section-head h2 { margin: 0; }
+.section-head .more {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+.section-head .more:hover { color: var(--accent); border-color: currentColor; }
+/* Irmã do `.more` para quando o que vai ali é uma frase, não um link curto.
+   O `nowrap` do `.more` existe para "All projects" não quebrar em duas linhas;
+   aplicado a uma frase, ele empurrava o /cv/ 7px além da tela do celular. */
+.section-head .section-nota {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  max-width: 100%;
+}
+.section-sub { color: var(--text-dim); margin: -16px 0 24px; }
+
+.grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }

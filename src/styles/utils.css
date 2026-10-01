@@ -1,0 +1,45 @@
+/* Responsabilidade: as poucas classes de uma linha e os ajustes que precisam
+   ganhar de tudo que veio antes. Último módulo do manifesto por isso. */
+
+/* ---------- utils ---------- */
+/* .card sets display:flex, which beats the browser's own [hidden] rule —
+   without this, hiding a filtered-out card does nothing. */
+[hidden] { display: none !important; }
+
+/* texto que so o leitor de tela pronuncia */
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.muted { color: var(--text-dim); }
+.mono { font-family: var(--mono); }
+.empty {
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: center;
+  color: var(--text-dim);
+}
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: var(--gutter);
+  top: 8px;
+  z-index: 50;
+  background: var(--bg-elev);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}

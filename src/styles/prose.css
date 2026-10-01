@@ -1,0 +1,14 @@
+/* Responsabilidade: texto corrido vindo de Markdown, onde não há classe para
+   pendurar em cada elemento. */
+
+/* ---------- prose ---------- */
+.prose { max-width: 72ch; }
+.prose h2 { margin-top: 1.8em; }
+.prose h3 { margin-top: 1.4em; }
+.prose code { font-family: var(--mono); font-size: 0.86em; background: var(--bg-elev); padding: 2px 5px; border-radius: 4px; }
+.prose pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; overflow-x: auto; }
+.prose pre code { background: none; padding: 0; }
+.prose blockquote { margin: 1.4em 0; padding-left: 18px; border-left: 2px solid var(--accent); color: var(--text-dim); font-style: italic; }
+.prose a { color: var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+.prose a:hover { border-bottom-color: currentColor; }
+.prose img { border-radius: var(--radius-sm); }

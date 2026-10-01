@@ -1,0 +1,11 @@
+/* Responsabilidade: o rodapé do site. */
+
+/* ---------- footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding-block: 28px 40px;
+  color: var(--text-faint);
+  font-size: 0.9rem;
+}
+.site-footer .wrap { display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; }
+.site-footer a { color: var(--text-dim); }

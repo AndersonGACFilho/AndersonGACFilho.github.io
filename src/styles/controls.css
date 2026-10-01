@@ -1,0 +1,28 @@
+/* Responsabilidade: os controles clicáveis que atravessam páginas. Controle
+   que existe numa página só mora no `<style>` daquele componente. */
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  /* contorno com 3:1 contra o fundo: é a fronteira visível do controle */
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.btn:hover { border-color: var(--accent); color: var(--text); background: var(--bg-hover); }
+.btn-primary {
+  background: var(--gamedev);
+  border-color: var(--gamedev);
+  color: var(--on-gamedev);
+}
+.btn-primary:hover { filter: brightness(1.06); color: var(--on-gamedev); background: var(--gamedev); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }

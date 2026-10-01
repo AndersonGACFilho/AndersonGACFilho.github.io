@@ -1,0 +1,62 @@
+/* Responsabilidade: o estado cru dos elementos HTML -- reset, corpo, títulos,
+   link, foco. Nada de componente, nada de classe de página. */
+
+/* ---------- base ----------
+ *
+ * DUAS FAMÍLIAS, COM PAPÉIS CLAROS. Bricolage Grotesque nos títulos e na
+ * interface; Source Serif 4 no corpo. A serifa não é enfeite: metade deste
+ * site é texto de pesquisa, e ela dá peso a esse texto e separa sem esforço o
+ * que é título do que é leitura.
+ *
+ * A MONOESPAÇADA SÓ APARECE EM CÓDIGO. Antes ela rotulava toda migalha de
+ * metadado — data de cartão, tag, chip, troca de idioma. Monoespaçada em
+ * rótulo pequeno não informa nada; só imita painel de controle. Onde havia
+ * mono agora há a grotesca em corpo menor.
+ */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  /* tira o atraso de 300ms do toque duplo no celular */
+  touch-action: manipulation;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 17px;
+  /* serifa pede entrelinha maior que sans no mesmo tamanho */
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  margin: 0 0 0.4em;
+}
+h1 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); letter-spacing: -0.04em; }
+h2 { font-size: clamp(1.45rem, 3vw, 1.95rem); }
+h3 { font-size: 1.15rem; }
+p { margin: 0 0 1em; max-width: 68ch; }
+
+/* números em coluna e placares não podem dançar de largura */
+.stats dt, .card-meta, time, .tabular { font-variant-numeric: tabular-nums; }
+
+img { max-width: 100%; height: auto; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

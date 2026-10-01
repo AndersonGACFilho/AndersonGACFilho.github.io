@@ -1,0 +1,73 @@
+/* Responsabilidade: a lista de trabalhos e as peças que só ela usa -- a linha
+   de projeto ou publicação, a marca de trilha, a tecnologia e o metadado.
+   Consumida por ProjectCard, PublicationCard e pelas páginas que listam. */
+
+/* ---------- badges ---------- */
+/* A trilha (fullstack / gamedev / research) é informação, então tem cor e
+   forma próprias. O que saiu foi o caixa-alta espaçado em monoespaçada, que é
+   a moldura de template mais reconhecível que existe. */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--track) 55%, transparent);
+  background: color-mix(in srgb, var(--track) 14%, transparent);
+  color: var(--track);
+  white-space: nowrap;
+}
+.badge-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tag {
+  font-family: var(--display);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+}
+/* ---------- cards ---------- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  overflow: hidden;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+/* a trilha entra como filete no topo, e não como barra lateral: fica lida
+   antes do título, que é a ordem em que a pessoa olha */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--track, var(--border));
+}
+.card:hover {
+  border-color: color-mix(in srgb, var(--track, var(--accent)) 60%, var(--border));
+  background: var(--bg-hover);
+}
+.card h3 { margin: 0; }
+.card p { color: var(--text-dim); font-size: 0.95rem; margin: 0; }
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 0.8rem;
+  color: var(--text-faint);
+}
+.card-links { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.88rem; }
+.card-links a { color: var(--text-dim); border-bottom: 1px solid var(--border); }
+.card-links a:hover { color: var(--accent); border-color: currentColor; }
