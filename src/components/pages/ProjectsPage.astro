@@ -25,26 +25,37 @@ const projects = await getProjects();
 </div>
 
 <h2 class="so-leitor">{t('nav.projects')}</h2>
-<div class="grid" id="project-grid">
+<div class="index" id="project-grid">
   {projects.map((project) => <ProjectCard project={project} lang={lang} />)}
 </div>
 
 <style>
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: -12px 0 28px; }
+  /* O FILTRO NÃO É MAIS PÍLULA TINGIDA. O marcado ganhava fundo na cor da
+     trilha, que é a mesma forma do badge que estava em cada cartão — três
+     pílulas coloridas no topo e mais três por linha abaixo. Agora o marcado
+     se anuncia pelo traço embaixo, igual à página atual na navegação: é a
+     mesma ideia ("você está aqui") e passa a ter a mesma forma.
+
+     O traço não é o único sinal: a cor e o peso mudam junto, e o estado real
+     está no `aria-pressed`, que é o que o leitor de tela anuncia. */
+  .filters { display: flex; flex-wrap: wrap; gap: 6px; margin: -8px 0 24px; }
   .chip {
     font-family: var(--display);
-    font-size: 0.78rem;
-    padding: 6px 14px;
-    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: var(--radius);
     border: 1px solid var(--border);
-    background: var(--bg-elev);
+    background: none;
     color: var(--text-dim);
     cursor: pointer;
   }
+  .chip:hover { border-color: var(--border-strong); color: var(--text); }
   .chip[aria-pressed='true'] {
-    border-color: var(--track, var(--text-dim));
+    border-color: var(--border-strong);
     color: var(--track, var(--text));
-    background: color-mix(in srgb, var(--track, var(--text)) 10%, var(--bg-elev));
+    font-weight: 600;
+    box-shadow: inset 0 -2px 0 0 var(--track, var(--text));
   }
 </style>
 

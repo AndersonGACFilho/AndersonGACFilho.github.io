@@ -1,5 +1,6 @@
 /* Responsabilidade: o esqueleto que toda página divide -- a caixa de largura
-   máxima, o respiro entre seções, o cabeçalho de seção e as grades. */
+   máxima, o respiro entre seções, o cabeçalho de seção e as duas formas de
+   enfileirar conteúdo (o índice e a grade). */
 
 /* ---------- layout ---------- */
 .wrap {
@@ -8,9 +9,9 @@
   padding-inline: var(--gutter);
 }
 
-main { padding-block: 40px 72px; }
+main { padding-block: 36px 72px; }
 
-section { margin-block: 64px; }
+section { margin-block: 60px; }
 
 .section-head {
   display: flex;
@@ -18,16 +19,17 @@ section { margin-block: 64px; }
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   border-bottom: 1px solid var(--border);
-  padding-bottom: 12px;
+  padding-bottom: 10px;
 }
 .section-head h2 { margin: 0; }
 .section-head .more {
-  font-size: 0.92rem;
+  font-family: var(--display);
+  font-size: 0.9rem;
   color: var(--text-dim);
   white-space: nowrap;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-strong);
 }
 .section-head .more:hover { color: var(--accent); border-color: currentColor; }
 /* Irmã do `.more` para quando o que vai ali é uma frase, não um link curto.
@@ -38,11 +40,37 @@ section { margin-block: 64px; }
   color: var(--text-dim);
   max-width: 100%;
 }
-.section-sub { color: var(--text-dim); margin: -16px 0 24px; }
+.section-sub { color: var(--text-dim); margin: -12px 0 20px; }
 
+/* ---------- índice ----------
+ *
+ * A FORMA EM QUE O TRABALHO APARECE. Projetos e publicações eram uma grade de
+ * caixas de 280px, todas do mesmo tamanho, cada uma com seu contorno e seu
+ * canto redondo — o kit de cartão que todo portfólio gerado monta. A grade
+ * também mentia sobre a hierarquia: treze projetos de importância diferente
+ * ocupando treze retângulos idênticos.
+ *
+ * Agora é um índice: uma linha por trabalho, largura inteira, separadas por
+ * fio de um pixel. Os fios se encostam — o `border-top` é do contêiner e o
+ * `border-bottom` é de cada linha — então a lista fecha como tabela, e some
+ * junto com a linha quando o filtro esconde uma.
+ *
+ * O resumo ganha a medida de leitura que a caixa de 280px não dava, e a
+ * trilha vira um filete na margem esquerda, lido antes do título.
+ */
+.index {
+  display: grid;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- grade ----------
+ *
+ * Sobrou para o que é mesmo paralelo e cabe em cartão: as recomendações do
+ * /cv/, os blocos de pesquisa. Não é mais a forma padrão de listar trabalho.
+ */
 .grid {
   display: grid;
-  gap: 18px;
+  gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }

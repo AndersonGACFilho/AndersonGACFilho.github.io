@@ -22,7 +22,7 @@ const games = await getGames();
         <h2><a href={localize(`/play/${game.id}`, lang)}>{game.data.title}</a></h2>
         {/* Um par destes por jogo na mesma página: sem o `aria-label` a lista
             de links vira "itch.io, Código, itch.io, Código…". */}
-        <span class="more card-links">
+        <span class="more link-row">
           {game.data.itch && (
             <a href={game.data.itch} aria-label={`${t('cta.itch')}: ${game.data.title}`}>
               {t('cta.itch')}

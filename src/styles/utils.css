@@ -18,7 +18,11 @@
 
 .muted { color: var(--text-dim); }
 .mono { font-family: var(--mono); }
+/* O estado vazio ocupa a largura da lista que ele substitui. Sem isto ele
+   herda o `max-width: 68ch` de qualquer parágrafo e fica com dois terços da
+   linha, centralizado dentro de uma caixa torta. */
 .empty {
+  max-width: none;
   border: 1px dashed var(--border-strong);
   border-radius: var(--radius);
   padding: 32px;

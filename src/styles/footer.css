@@ -1,11 +1,20 @@
 /* Responsabilidade: o rodapé do site. */
 
-/* ---------- footer ---------- */
+/* ---------- rodapé ----------
+ *
+ * OS LINKS SOCIAIS NÃO SÃO MAIS `.card-links`. O rodapé reusava a classe da
+ * fila de links do cartão, que não tem nada a ver com ele: além de mentir no
+ * nome, amarrava a aparência do rodapé à ordem em que os módulos de CSS
+ * entram -- `.card-links a` e `.site-footer a` têm a mesma especificidade, e
+ * quem viesse por último ganhava. Agora o rodapé declara os próprios links.
+ */
 .site-footer {
   border-top: 1px solid var(--border);
-  padding-block: 28px 40px;
+  padding-block: 26px 40px;
   color: var(--text-faint);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 .site-footer .wrap { display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; }
-.site-footer a { color: var(--text-dim); }
+.site-footer-links { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.site-footer-links a { font-family: var(--display); color: var(--text-dim); }
+.site-footer-links a:hover { color: var(--accent); }

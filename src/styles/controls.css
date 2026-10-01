@@ -1,19 +1,32 @@
 /* Responsabilidade: os controles clicáveis que atravessam páginas. Controle
-   que existe numa página só mora no `<style>` daquele componente. */
+   que existe numa página só mora no `<style>` daquele componente -- o filtro
+   de trilha, por exemplo, é da ProjectsPage. */
 
-/* ---------- buttons ---------- */
+/* ---------- botões ----------
+ *
+ * CANTO VIVO, e não mais pílula. O raio de 999px é a forma mais reconhecível
+ * do kit de interface gerado, e ela estava em botão, badge, chip e nas duas
+ * trocas da barra ao mesmo tempo. Aqui ficou o `--radius`, que é 3px e existe
+ * só para a borda não serrilhar.
+ *
+ * O PREENCHIDO É UM SÓ POR PÁGINA, na ação principal daquela página — hoje,
+ * só abrir o material em /teaching/. A home perdeu o dela: com a tela do
+ * jogo logo acima, o botão de jogar de verdade é o ▶ em cima da capa, e um
+ * segundo botão preenchido apontando para a lista de jogos disputava com
+ * ele. Dois preenchidos lado a lado é anúncio, não interface.
+ */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 20px;
-  border-radius: 999px;
+  padding: 10px 18px;
+  border-radius: var(--radius);
   /* contorno com 3:1 contra o fundo: é a fronteira visível do controle */
   border: 1px solid var(--border-strong);
   background: var(--bg-elev);
   color: var(--text);
   font-family: var(--display);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
   cursor: pointer;
   transition: border-color 0.18s ease, background 0.18s ease;
@@ -24,5 +37,7 @@
   border-color: var(--gamedev);
   color: var(--on-gamedev);
 }
-.btn-primary:hover { filter: brightness(1.06); color: var(--on-gamedev); background: var(--gamedev); }
-.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+/* O apontado troca a borda, e não o brilho: --gamedev é ocre escuro no tema
+   claro, e clarear 6% ali não se via. */
+.btn-primary:hover { background: var(--gamedev); border-color: var(--text); color: var(--on-gamedev); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px; }

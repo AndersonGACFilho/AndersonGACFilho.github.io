@@ -27,7 +27,7 @@ const publications = await getPublications(lang);
 
 {
   publications.length > 0 ? (
-    <div class="grid">
+    <div class="index">
       {publications.map((entry) => <PublicationCard publication={entry} lang={lang} />)}
     </div>
   ) : (

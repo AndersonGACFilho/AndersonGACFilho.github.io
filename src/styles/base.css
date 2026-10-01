@@ -3,15 +3,25 @@
 
 /* ---------- base ----------
  *
- * DUAS FAMÍLIAS, COM PAPÉIS CLAROS. Bricolage Grotesque nos títulos e na
- * interface; Source Serif 4 no corpo. A serifa não é enfeite: metade deste
- * site é texto de pesquisa, e ela dá peso a esse texto e separa sem esforço o
- * que é título do que é leitura.
+ * DUAS FAMÍLIAS, COM PAPÉIS CLAROS. Archivo nos títulos e na interface;
+ * Literata no corpo. A serifa não é enfeite: metade deste site é texto de
+ * pesquisa, e ela dá peso a esse texto e separa sem esforço o que é título do
+ * que é leitura.
+ *
+ * O EIXO DE LARGURA É O GESTO DA IDENTIDADE, e é a única coisa aqui que não
+ * é neutra. O assunto do site é uma tela 16:9 com um jogo rodando dentro;
+ * título largo ecoa isso sem desenhar moldura, gradiente nem ícone. Por isso
+ * o `font-stretch` cresce com o tamanho do título: o h1 abre em 118%, o h2
+ * em 108%, e da interface para baixo tudo volta a 100%. Largura é hierarquia
+ * aqui, junto com o corpo — não decoração aplicada por igual.
+ *
+ * TRACKING QUASE ZERO, ao contrário da versão anterior. Grotesca estreita
+ * pede tracking negativo para fechar o buraco entre as letras; grotesca
+ * aberta já vem com a contraforma certa, e apertar só suja.
  *
  * A MONOESPAÇADA SÓ APARECE EM CÓDIGO. Antes ela rotulava toda migalha de
  * metadado — data de cartão, tag, chip, troca de idioma. Monoespaçada em
- * rótulo pequeno não informa nada; só imita painel de controle. Onde havia
- * mono agora há a grotesca em corpo menor.
+ * rótulo pequeno não informa nada; só imita painel de controle.
  */
 
 *,
@@ -31,7 +41,7 @@ body {
   font-family: var(--font);
   font-size: 17px;
   /* serifa pede entrelinha maior que sans no mesmo tamanho */
-  line-height: 1.7;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -40,14 +50,22 @@ a:hover { color: var(--accent); }
 
 h1, h2, h3, h4 {
   font-family: var(--display);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
+  line-height: 1.08;
+  letter-spacing: -0.005em;
   font-weight: 600;
   margin: 0 0 0.4em;
 }
-h1 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); letter-spacing: -0.04em; }
-h2 { font-size: clamp(1.45rem, 3vw, 1.95rem); }
-h3 { font-size: 1.15rem; }
+h1 {
+  font-size: clamp(2.3rem, 6vw, 3.6rem);
+  font-stretch: 118%;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+h2 {
+  font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+  font-stretch: 108%;
+}
+h3 { font-size: 1.1rem; }
 p { margin: 0 0 1em; max-width: 68ch; }
 
 /* números em coluna e placares não podem dançar de largura */
@@ -58,5 +76,5 @@ img { max-width: 100%; height: auto; }
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 2px;
 }

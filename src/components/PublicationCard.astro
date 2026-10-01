@@ -13,40 +13,49 @@ const slug = publication.id.replace(/^(en|pt)\//, '');
 const venue = d.venue;
 ---
 
+{/* Mesma linha de duas colunas do ProjectCard, e de propósito: projeto e
+    publicação aparecem um debaixo do outro na home, e duas formas diferentes
+    ali fariam parecer que são coisas de natureza diferente. */}
 <article class="card" style={`--track: ${trackColor[d.tracks[0]]}`}>
-  <div class="badge-row">
-    {d.tracks.map((track) => <TrackBadge track={track} lang={lang} />)}
+  <div class="card-main">
+    <h3><a href={localize(`/publications/${slug}`, lang)}>{d.title}</a></h3>
+
+    {
+      venue && (
+        <p class="venue">
+          <span class="venue-status">{t(`venue.${venue.status}` as UIKey)}</span>{' '}
+          <strong>{venue.name}</strong>
+          {venue.full && <span class="venue-full">{venue.full}</span>}
+        </p>
+      )
+    }
+
+    <p>{d.summary}</p>
   </div>
-  <h3><a href={localize(`/publications/${slug}`, lang)}>{d.title}</a></h3>
 
-  {
-    venue && (
-      <p class="venue">
-        <span class="venue-status">{t(`venue.${venue.status}` as UIKey)}</span>{' '}
-        <strong>{venue.name}</strong>
-        {venue.full && <span class="venue-full">{venue.full}</span>}
-      </p>
-    )
-  }
+  <div class="card-side">
+    <div class="badge-row">
+      {d.tracks.map((track) => <TrackBadge track={track} lang={lang} />)}
+    </div>
 
-  <p>{d.summary}</p>
+    <div class="card-meta">
+      <span>{formatDate(d.date, lang)}</span>
+      {d.tags.map((tag) => <span>#{tag}</span>)}
+    </div>
 
-  <div class="card-meta">
-    <span>{formatDate(d.date, lang)}</span>
-    {d.tags.map((tag) => <span>#{tag}</span>)}
-  </div>
-  {/* Rótulos repetidos cartão a cartão; o `aria-label` diz de qual publicação
-      é cada link. Mesma razão do `ProjectCard`. */}
-  <div class="card-links">
-    <a href={localize(`/publications/${slug}`, lang)} aria-label={`${t('cta.read')}: ${d.title}`}>
-      {t('cta.read')}
-    </a>
-    {d.pdf && <a href={d.pdf} aria-label={`PDF: ${d.title}`}>PDF</a>}
-    {venue?.url && (
-      <a href={venue.url} aria-label={`${t('cta.proceedings')}: ${d.title}`}>
-        {t('cta.proceedings')}
+    {/* Rótulos repetidos linha a linha; o `aria-label` diz de qual publicação
+        é cada link. Mesma razão do `ProjectCard`. */}
+    <div class="link-row">
+      <a href={localize(`/publications/${slug}`, lang)} aria-label={`${t('cta.read')}: ${d.title}`}>
+        {t('cta.read')}
       </a>
-    )}
+      {d.pdf && <a href={d.pdf} aria-label={`PDF: ${d.title}`}>PDF</a>}
+      {venue?.url && (
+        <a href={venue.url} aria-label={`${t('cta.proceedings')}: ${d.title}`}>
+          {t('cta.proceedings')}
+        </a>
+      )}
+    </div>
   </div>
 </article>
 

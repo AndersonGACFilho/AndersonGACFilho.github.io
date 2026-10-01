@@ -1,73 +1,108 @@
-/* Responsabilidade: a lista de trabalhos e as peças que só ela usa -- a linha
-   de projeto ou publicação, a marca de trilha, a tecnologia e o metadado.
-   Consumida por ProjectCard, PublicationCard e pelas páginas que listam. */
+/* Responsabilidade: a linha do índice de trabalhos e as peças que ela monta --
+   marca de trilha, tecnologia, metadado e fila de links. Consumida por
+   ProjectCard, PublicationCard e pelas páginas que listam. */
 
-/* ---------- badges ---------- */
-/* A trilha (fullstack / gamedev / research) é informação, então tem cor e
-   forma próprias. O que saiu foi o caixa-alta espaçado em monoespaçada, que é
-   a moldura de template mais reconhecível que existe. */
+/* ---------- marca de trilha ----------
+ *
+ * A trilha (fullstack / gamedev / research) é informação, então tem cor. O
+ * que saiu foi a pílula: contorno arredondado com fundo tingido em cima da
+ * cor da trilha é o badge de biblioteca de componentes, e aparecia três vezes
+ * por linha. Agora é a palavra, na cor da tinta — e o filete de 3px na margem
+ * da linha já diz a trilha principal antes do título.
+ */
 .badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
   font-family: var(--display);
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  padding: 3px 10px;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--track) 55%, transparent);
-  background: color-mix(in srgb, var(--track) 14%, transparent);
   color: var(--track);
   white-space: nowrap;
 }
-.badge-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 2px 12px; }
 
+/* A tecnologia não é trilha: é etiqueta de catálogo, e fica quieta. Mantém
+   contorno porque são muitas por linha e sem ele viram uma frase só. */
 .tag {
   font-family: var(--display);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--text-faint);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 2px 8px;
+  padding: 1px 7px;
+  white-space: nowrap;
 }
-/* ---------- cards ---------- */
+.tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+
+/* ---------- a linha ----------
+ *
+ * `.card` continua sendo a superfície elevada onde ela faz sentido: a
+ * recomendação do /cv/, o bloco de pesquisa — conteúdo paralelo que cabe em
+ * caixa. O que mudou é que deixou de ser a forma padrão de mostrar trabalho.
+ *
+ * O FILETE DA TRILHA É A BORDA ESQUERDA, e não mais um pseudo-elemento de 2px
+ * no topo. Dá no mesmo visualmente e economiza o `position: relative` e o
+ * `overflow: hidden` que existiam só para segurar o `::before`.
+ */
 .card {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
   background: var(--bg-elev);
   border: 1px solid var(--border);
+  border-left: 3px solid var(--track, var(--border-strong));
   border-radius: var(--radius);
-  padding: 20px;
-  overflow: hidden;
-  transition: border-color 0.18s ease, background 0.18s ease;
+  padding: 18px 20px;
+  transition: background 0.18s ease, border-color 0.18s ease;
 }
-/* a trilha entra como filete no topo, e não como barra lateral: fica lida
-   antes do título, que é a ordem em que a pessoa olha */
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 2px;
-  background: var(--track, var(--border));
-}
-.card:hover {
-  border-color: color-mix(in srgb, var(--track, var(--accent)) 60%, var(--border));
-  background: var(--bg-hover);
-}
+.card:hover { background: var(--bg-hover); }
 .card h3 { margin: 0; }
 .card p { color: var(--text-dim); font-size: 0.95rem; margin: 0; }
+/* Em grade, as caixas têm altura igual e o metadado desce para o pé de cada
+   uma. No índice não há altura a igualar, então a regra fica presa à grade. */
+.grid .card .card-meta { margin-top: auto; padding-top: 8px; }
+
+/* Dentro do índice a mesma `.card` perde a caixa: sem fundo, sem contorno,
+   sem canto. Fica o fio de baixo, que encosta no fio de cima do contêiner, e
+   o filete da trilha. */
+.index .card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px 32px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-left: 3px solid var(--track, var(--border-strong));
+  border-radius: 0;
+  padding: 18px 4px 18px 16px;
+}
+/* O apontado ganha superfície em vez de contorno: numa lista encostada, mudar
+   a cor da borda moveria o fio que a linha de baixo divide com esta. */
+.index .card:hover { background: var(--bg-elev); }
+
+/* Acima de 760px a linha abre em duas colunas: o que se lê à esquerda, o que
+   se consulta à direita. Alinhado à direita de propósito — é o que faz a
+   coluna de metadado ler como índice e não como segunda coluna de texto. */
+.card-main { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.card-side { display: flex; flex-direction: column; gap: 7px; align-items: flex-start; }
+
+@media (min-width: 760px) {
+  .index .card { grid-template-columns: minmax(0, 1fr) minmax(0, 15rem); }
+  .card-side { align-items: flex-end; text-align: right; }
+}
+
 .card-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: auto;
-  padding-top: 10px;
+  gap: 2px 12px;
   font-size: 0.8rem;
   color: var(--text-faint);
 }
-.card-links { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.88rem; }
-.card-links a { color: var(--text-dim); border-bottom: 1px solid var(--border); }
-.card-links a:hover { color: var(--accent); border-color: currentColor; }
+
+/* Fila de links curtos. Vive aqui porque a linha do índice é quem mais usa,
+   mas é genérica: a página de um jogo e o rodapé também montam uma. */
+.link-row { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.88rem; }
+.link-row a {
+  font-family: var(--display);
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border-strong);
+}
+.link-row a:hover { color: var(--accent); border-color: currentColor; }

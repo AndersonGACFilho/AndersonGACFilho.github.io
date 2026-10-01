@@ -1,30 +1,40 @@
 /* Responsabilidade: a barra do topo -- marca, navegação e os dois controles
    que moram nela (tema e idioma). */
 
-/* ---------- header ---------- */
+/* ---------- cabeçalho ----------
+ *
+ * O DESFOQUE DE FUNDO SAIU, E A TRANSLUCIDEZ JUNTO. O desfoque existia para
+ * a barra deixar passar o que rola por baixo sem virar sopa, e custava caro
+ * pelo mesmo motivo medido nos controles de toque: filtro de fundo obriga o
+ * navegador a reamostrar tudo que está atrás, a cada rolagem.
+ *
+ * Tirar só o desfoque não serve: sem ele, os 8% de transparência viram o
+ * texto da página aparecendo por dentro do nome e dos links da barra, que é
+ * pior do que qualquer um dos dois sozinho. A barra é opaca — custa nada,
+ * não fantasma, e é a única das três opções que mantém o contraste medido.
+ */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: color-mix(in srgb, var(--bg) 90%, transparent);
-  backdrop-filter: blur(10px);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 .site-header .wrap {
   display: flex;
   align-items: center;
   gap: 18px;
-  min-height: 60px;
+  min-height: 58px;
   flex-wrap: wrap;
 }
 .brand {
   font-family: var(--display);
   font-weight: 700;
-  letter-spacing: -0.03em;
+  font-stretch: 108%;
   margin-right: auto;
 }
-.brand span { color: var(--text-faint); font-weight: 400; letter-spacing: -0.01em; }
-.site-nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.95rem; }
+.brand span { color: var(--text-faint); font-weight: 400; font-stretch: 100%; }
+.site-nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.93rem; }
 .site-nav a {
   font-family: var(--display);
   color: var(--text-dim);
@@ -42,20 +52,26 @@
   box-shadow: inset 0 -2px 0 0 var(--accent);
 }
 
-/* pílula da barra: troca de idioma e troca de tema compartilham a forma */
-.pill {
+/* ---------- controles da barra ----------
+ *
+ * Chamava-se `.pill`, e virou mentira quando o canto deixou de ser redondo.
+ * O nome agora diz onde mora, que é o que não muda quando a aparência muda.
+ * Troca de idioma e troca de tema dividem a forma porque dividem o papel:
+ * dois controles de cromo, do mesmo tamanho, no mesmo canto.
+ */
+.bar-btn {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   font-family: var(--display);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 500;
   border: 1px solid var(--border-strong);
-  border-radius: 999px;
-  padding: 6px 13px;
+  border-radius: var(--radius);
+  padding: 5px 11px;
   color: var(--text-dim);
   background: none;
   cursor: pointer;
   transition: border-color 0.18s ease, color 0.18s ease;
 }
-.pill:hover { border-color: var(--accent); color: var(--accent); }
+.bar-btn:hover { border-color: var(--accent); color: var(--accent); }
