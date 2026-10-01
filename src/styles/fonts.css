@@ -12,36 +12,49 @@
  *
  * SÃO OS MESMOS BYTES do subset `latin` do Google (U+0000–00FF e companhia),
  * que cobre todo o português. Nada foi reamostrado nem teve eixo fixado — o
- * desenho na tela é o mesmo de antes, só o caminho até ele mudou.
+ * desenho na tela é o mesmo do original, só o caminho até ele mudou.
  *
- * Bricolage e Source Serif são variáveis: um arquivo cobre toda a faixa de
- * peso, e é por isso que há um `@font-face` por família em vez de um por peso.
- * Os nomes das famílias vêm do `tokens.css` e não mudam.
+ * ARCHIVO TEM EIXO DE LARGURA, e é por isso que ela está aqui no lugar da
+ * Bricolage Grotesque. O assunto do site é uma tela 16:9 com um jogo dentro;
+ * título largo é a única coisa na tipografia que ecoa isso sem desenhar
+ * nada. O eixo vai de 62% a 125% num arquivo só, então o `font-stretch` do
+ * `@font-face` precisa declarar a faixa inteira — sem ele o navegador fixa a
+ * largura normal e ignora qualquer `font-stretch` nas regras.
+ *
+ * LITERATA NO CORPO porque metade deste site é texto de pesquisa para ler até
+ * o fim, e ela foi desenhada e testada para leitura longa em tela, com eixo
+ * óptico que engrossa a haste nos tamanhos pequenos (o `font-optical-sizing`
+ * é automático por padrão, então não há regra para isso). Entrou no lugar da
+ * Source Serif 4, que é a serifa padrão de qualquer projeto.
+ *
+ * Os nomes das famílias vêm do `tokens.css`, em `--display` e `--font`.
  */
 
 @font-face {
-  font-family: 'Bricolage Grotesque';
+  font-family: 'Archivo';
   font-style: normal;
-  font-weight: 200 800;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
   font-display: swap;
-  src: url('/fonts/bricolage-grotesque-latin.woff2') format('woff2');
+  src: url('/fonts/archivo-latin.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Source Serif 4';
+  font-family: 'Literata';
   font-style: normal;
   font-weight: 200 900;
   font-display: swap;
-  src: url('/fonts/source-serif-4-latin.woff2') format('woff2');
+  src: url('/fonts/literata-latin.woff2') format('woff2');
 }
 
-/* O itálico da Source Serif não tem eixo de peso — só o regular existe. */
+/* O itálico tem o eixo de peso inteiro, ao contrário do da Source Serif, que
+ * só existia em regular — por isso ele some das exceções no corpo do site. */
 @font-face {
-  font-family: 'Source Serif 4';
+  font-family: 'Literata';
   font-style: italic;
-  font-weight: 400;
+  font-weight: 200 900;
   font-display: swap;
-  src: url('/fonts/source-serif-4-latin-italic.woff2') format('woff2');
+  src: url('/fonts/literata-latin-italic.woff2') format('woff2');
 }
 
 /* Só aparece em código, então fica de fora do `preload`: a maioria das

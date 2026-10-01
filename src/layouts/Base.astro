@@ -86,9 +86,9 @@ const ptHref = twin === null ? null : new URL(asDir(lang === 'pt' ? here : twin)
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={desc} />
     <meta name="twitter:image" content={new URL('/og-cover.png', Astro.site).href} />
-    {/* Bricolage Grotesque para títulos e interface, Source Serif 4 para o
-        corpo, IBM Plex Mono só para código. A monoespaçada não rotula mais
-        metadado. Os `@font-face` estão em `styles/fonts.css`.
+    {/* Archivo para títulos e interface, Literata para o corpo, IBM Plex Mono
+        só para código. A monoespaçada não rotula metadado. Os `@font-face`
+        estão em `styles/fonts.css`, com o porquê de cada família.
 
         SÓ ESTAS DUAS ENTRAM NO PRELOAD, e é o ponto todo da mudança: são as
         que toda página usa, e sem o preload o navegador só descobre que
@@ -96,22 +96,10 @@ const ptHref = twin === null ? null : new URL(asDir(lang === 'pt' ? here : twin)
         monoespaçada ficam de fora de propósito — pré-carregar arquivo que a
         maioria das páginas não pede é gastar banda do caminho crítico para
         atrasar o que importa. */}
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href="/fonts/bricolage-grotesque-latin.woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href="/fonts/source-serif-4-latin.woff2"
-      crossorigin
-    />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/literata-latin.woff2" crossorigin />
     {/* Valor inicial só; o script do ThemeSwitch corrige para o --bg real. */}
-    <meta name="theme-color" content="#13110e" />
+    <meta name="theme-color" content="#1b1b1b" />
     {/* SEM PISCADA. Roda antes da primeira pintura e é síncrono de propósito:
         o site é estático e recarrega a cada navegação, então sem isto a
         pessoa vê um lampejo do tema errado em toda página. */}
