@@ -17,44 +17,49 @@ const trackCount = (track: string) =>
   projects.filter((p) => (p.data.tracks as string[]).includes(track)).length;
 ---
 
-<section class="hero">
-  <p class="hero-role">{t('hero.role')}</p>
+{/* O BUILD É O TOPO DA PÁGINA. Antes ele vinha depois do nome, da descrição,
+    de dois botões e de um cabeçalho de seção — quatro blocos de texto antes
+    da única coisa que nenhum outro portfólio tem, que é um jogo rodando ali
+    mesmo. Agora são duas linhas de identificação e a tela.
+
+    O cabeçalho "Play in your browser" saiu junto, com o subtítulo dele: um
+    jogo visível com um botão de jogar em cima não precisa de uma frase
+    dizendo que dá para jogar. */}
+<header class="hero">
   <h1>Anderson Gonçalves</h1>
+  <p class="hero-role">{t('hero.role')}</p>
+</header>
+
+{game && <GameFrame game={game} lang={lang} />}
+
+<section class="hero-pe">
   <p class="hero-blurb">{t('hero.blurb')}</p>
   <div class="btn-row">
-    <a class="btn btn-primary" href={localize('/games', lang)}>▶ {t('hero.cta.play')}</a>
+    <a class="btn" href={localize('/games', lang)}>▶ {t('hero.cta.play')}</a>
     <a class="btn" href={localize('/projects', lang)}>{t('hero.cta.projects')}</a>
   </div>
 </section>
 
-{
-  game && (
-    <section>
-      <div class="section-head">
-        <h2>{t('section.play')}</h2>
-        <a class="more" href={localize('/games', lang)}>{t('cta.all.games')}</a>
-      </div>
-      <p class="section-sub">{t('section.play.sub')}</p>
-      <GameFrame game={game} lang={lang} />
-    </section>
-  )
-}
-
+{/* Eram três cartões lado a lado, do tamanho um do outro. Viraram três
+    linhas com o mesmo filete de trilha do índice de projetos — é o mesmo
+    assunto, então é a mesma forma, e o link leva para o índice já filtrado. */}
 <section>
   <div class="section-head"><h2>{t('section.tracks')}</h2></div>
-  <div class="grid grid-3">
+  <ul class="trilhas">
     {
       TRACKS.map((track) => (
-        <a class="card track-card" href={`${localize('/projects', lang)}#${track}`} style={`--track: ${trackColor[track]}`}>
-          <h3>{t(trackLabelKey(track))}</h3>
-          <p>{t(trackDescKey(track))}</p>
-          <div class="card-meta">
-            <span>{trackCount(track)} {t('nav.projects').toLowerCase()}</span>
-          </div>
-        </a>
+        <li style={`--track: ${trackColor[track]}`}>
+          <a href={`${localize('/projects', lang)}#${track}`}>
+            <span class="trilha-nome">{t(trackLabelKey(track))}</span>
+            <span class="trilha-desc">{t(trackDescKey(track))}</span>
+            <span class="trilha-conta">
+              {trackCount(track)} {t('nav.projects').toLowerCase()}
+            </span>
+          </a>
+        </li>
       ))
     }
-  </div>
+  </ul>
 </section>
 
 <section>
@@ -62,7 +67,7 @@ const trackCount = (track: string) =>
     <h2>{t('section.projects')}</h2>
     <a class="more" href={localize('/projects', lang)}>{t('cta.all.projects')}</a>
   </div>
-  <div class="grid">
+  <div class="index">
     {projects.map((project) => <ProjectCard project={project} lang={lang} />)}
   </div>
 </section>
@@ -74,7 +79,7 @@ const trackCount = (track: string) =>
   </div>
   {
     publications.length > 0 ? (
-      <div class="grid">
+      <div class="index">
         {publications.map((entry) => <PublicationCard publication={entry} lang={lang} />)}
       </div>
     ) : (
@@ -90,10 +95,53 @@ const trackCount = (track: string) =>
 </section>
 
 <style>
-  .hero { margin-block: 32px 72px; max-width: 62ch; }
+  .hero { margin-block: 24px 20px; }
+  .hero h1 { margin-bottom: 6px; }
   /* mesma razão do .kicker: sai o caixa-alta espaçado em monoespaçada */
-  .hero-role { font-family: var(--display); color: var(--text-dim); font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
-  .hero h1 { margin-bottom: 16px; }
-  .hero-blurb { font-size: 1.08rem; color: var(--text-dim); margin-bottom: 26px; }
-  .track-card h3 { color: var(--track); }
+  .hero-role {
+    font-family: var(--display);
+    color: var(--text-dim);
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    max-width: none;
+  }
+
+  /* O pé do topo divide a linha com os dois links: o texto não precisa da
+     largura inteira, e os links sobem para a altura dele em vez de empilhar
+     mais um bloco entre a tela e o índice. */
+  .hero-pe {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-between;
+    gap: 16px 32px;
+    margin-block: 22px 56px;
+  }
+  .hero-blurb {
+    font-size: 1.02rem;
+    color: var(--text-dim);
+    margin: 0;
+    max-width: 56ch;
+  }
+
+  .trilhas { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+  .trilhas li { border-bottom: 1px solid var(--border); border-left: 3px solid var(--track); }
+  .trilhas a {
+    display: grid;
+    gap: 2px 24px;
+    padding: 14px 4px 14px 16px;
+  }
+  .trilhas a:hover { background: var(--bg-elev); color: inherit; }
+  .trilha-nome { font-family: var(--display); font-weight: 600; color: var(--track); }
+  .trilha-desc { color: var(--text-dim); font-size: 0.95rem; }
+  .trilha-conta { font-family: var(--display); font-size: 0.8rem; color: var(--text-faint); }
+
+  @media (min-width: 760px) {
+    .trilhas a {
+      grid-template-columns: 13rem minmax(0, 1fr) 7rem;
+      align-items: baseline;
+    }
+    .trilha-conta { text-align: right; }
+  }
 </style>
