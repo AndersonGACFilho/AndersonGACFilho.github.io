@@ -11,55 +11,73 @@
  * :not([data-theme='dark']). Escolha explícita, gravada em data-theme pelo
  * script do Base.astro, ganha das duas.
  *
- * A PALETA É QUENTE, de propósito. Quase-preto azulado com um acento neon é o
- * visual padrão de portfólio gerado; o chão aqui é tinta quente e o texto é
- * branco-creme. Os três tons de trilha foram escolhidos contra a matemática de
- * contraste, não no olho: todos passam 4.5:1 sobre --bg e sobre --bg-elev, nos
- * dois temas. O --text-faint da versão anterior reprovava (4.15:1 no escuro,
- * 3.67:1 no claro) e era o token de todo metadado do site.
+ * O CHÃO É CINZA NEUTRO, e isso é o argumento inteiro da identidade. A coisa
+ * que só este site tem é um build rodando dentro da página: WebGL com a arte
+ * do jogo. Fundo com tinta própria mente sobre a cor do que está por cima —
+ * é o mesmo motivo pelo qual se monta foto sobre cinza neutro, e não sobre
+ * creme. Aqui R, G e B são iguais em todos os tons de fundo, de propósito:
+ * a única coisa cromática acima da dobra é o jogo.
+ *
+ * A VERSÃO ANTERIOR ERA QUENTE pelo motivo oposto, e envelheceu mal. O
+ * comentário dizia que quase-preto azulado com acento neon era o visual de
+ * portfólio gerado, e era — em 2024. Hoje a assinatura mais reconhecível é
+ * exatamente o que estava aqui: fundo creme perto de #f4f1ea, display
+ * serifado e acento terracota perto de #d97757. A fuga virou o clichê.
+ *
+ * AS TRILHAS SÃO TINTA, NÃO NEON. Os três tons continuam escolhidos contra a
+ * matemática de contraste, não no olho: todos passam 4.5:1 sobre --bg e sobre
+ * --bg-elev, nos dois temas, porque viram rótulo de texto e não só filete. O
+ * que mudou é a saturação — sobre cinza neutro, tom chapado de caneta marca
+ * mais do que tom fluorescente, e não disputa atenção com o jogo.
+ *
+ * NADA AQUI SE MEDE NO OLHO: `npm run check:contrast` confere todos os pares
+ * que a interface realmente pinta, nos dois temas, e falha com o número.
  */
 
 :root {
   color-scheme: dark;
 
-  --bg: #13110e;
-  --bg-elev: #1b1813;
-  --bg-hover: #262119;
-  --border: #35302a;
+  --bg: #1b1b1b;
+  --bg-elev: #242424;
+  --bg-hover: #2e2e2e;
+  --border: #3d3d3d;
   /* contorno de controle: separado do --border decorativo porque precisa de
      3:1 para ser a fronteira visível de um botão ou campo */
-  --border-strong: #726a5c;
+  --border-strong: #7d7d7d;
 
-  --text: #f4f0e8;
-  --text-dim: #bdb5a8;
-  --text-faint: #9a9285;
+  --text: #f0f0f0;
+  --text-dim: #b6b6b6;
+  --text-faint: #9c9c9c;
 
-  --fullstack: #67cfe0;
-  --gamedev: #f5a97f;
-  --research: #c3a6f5;
+  --fullstack: #8fb2cc;
+  --gamedev: #ccab6e;
+  --research: #b3abd9;
   --accent: var(--fullstack);
-  /* texto sobre o botao primario: vira com o tema, senao o marrom do modo
+  /* texto sobre o botao primario: vira com o tema, senao o ocre do modo
      claro fica com texto quase preto por cima */
-  --on-gamedev: #13110e;
+  --on-gamedev: #1b1b1b;
 
   /* material de ensino */
-  --feito: #5fd6a4;
+  --feito: #7fc99b;
   --feito-fundo: color-mix(in srgb, var(--bg-elev) 86%, var(--feito) 14%);
   --esp-pagina: var(--fullstack);
   --esp-quiz: var(--feito);
   --esp-tarefa: var(--research);
   --esp-arquivo: var(--gamedev);
-  --erro: #fb7185;
+  --erro: #e59595;
 
-  --radius: 10px;
-  --radius-sm: 6px;
+  /* Canto vivo é decisão de identidade, não descuido: a página é a moldura de
+     uma tela, e tela não tem canto redondo. O que sobra de raio existe só
+     para o pixel da borda não serrilhar. */
+  --radius: 3px;
+  --radius-sm: 2px;
   /* a tela jogável não é um cartão: canto vivo, como um monitor */
   --radius-none: 0px;
   --maxw: 1080px;
   --gutter: 20px;
 
-  --display: 'Bricolage Grotesque', 'Segoe UI', sans-serif;
-  --font: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --display: 'Archivo', 'Segoe UI', sans-serif;
+  --font: 'Literata', Georgia, 'Times New Roman', serif;
   --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
@@ -68,29 +86,29 @@
   :root:not([data-theme='dark']) {
     color-scheme: light;
 
-    --bg: #faf7f1;
-    --bg-elev: #ffffff;
-    --bg-hover: #f1ede4;
-    --border: #e3ddd1;
-    --border-strong: #8c8376;
+    --bg: #e9e9e9;
+    --bg-elev: #f7f7f7;
+    --bg-hover: #dcdcdc;
+    --border: #c8c8c8;
+    --border-strong: #6c6c6c;
 
-    --text: #1a1713;
-    --text-dim: #57514a;
-    --text-faint: #6e675e;
+    --text: #1a1a1a;
+    --text-dim: #4b4b4b;
+    --text-faint: #5d5d5d;
 
-    --fullstack: #0f7c8c;
-    --gamedev: #a4581c;
-    --research: #6b43c4;
-    --on-gamedev: #ffffff;
+    --fullstack: #2f5d80;
+    --gamedev: #7a5712;
+    --research: #5b4a8c;
+    --on-gamedev: #f7f7f7;
 
     /* material de ensino */
-    --feito: #0b7d4f;
+    --feito: #2d6b45;
     --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
     --esp-pagina: var(--fullstack);
     --esp-quiz: var(--feito);
     --esp-tarefa: var(--research);
     --esp-arquivo: var(--gamedev);
-    --erro: #c62a48;
+    --erro: #a33434;
   }
 }
 
@@ -98,55 +116,55 @@
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --bg: #faf7f1;
-  --bg-elev: #ffffff;
-  --bg-hover: #f1ede4;
-  --border: #e3ddd1;
-  --border-strong: #8c8376;
+  --bg: #e9e9e9;
+  --bg-elev: #f7f7f7;
+  --bg-hover: #dcdcdc;
+  --border: #c8c8c8;
+  --border-strong: #6c6c6c;
 
-  --text: #1a1713;
-  --text-dim: #57514a;
-  --text-faint: #6e675e;
+  --text: #1a1a1a;
+  --text-dim: #4b4b4b;
+  --text-faint: #5d5d5d;
 
-  --fullstack: #0f7c8c;
-  --gamedev: #a4581c;
-  --research: #6b43c4;
-  --on-gamedev: #ffffff;
+  --fullstack: #2f5d80;
+  --gamedev: #7a5712;
+  --research: #5b4a8c;
+  --on-gamedev: #f7f7f7;
 
   /* material de ensino */
-  --feito: #0b7d4f;
+  --feito: #2d6b45;
   --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
   --esp-pagina: var(--fullstack);
   --esp-quiz: var(--feito);
   --esp-tarefa: var(--research);
   --esp-arquivo: var(--gamedev);
-  --erro: #c62a48;
+  --erro: #a33434;
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  --bg: #13110e;
-  --bg-elev: #1b1813;
-  --bg-hover: #262119;
-  --border: #35302a;
-  --border-strong: #726a5c;
+  --bg: #1b1b1b;
+  --bg-elev: #242424;
+  --bg-hover: #2e2e2e;
+  --border: #3d3d3d;
+  --border-strong: #7d7d7d;
 
-  --text: #f4f0e8;
-  --text-dim: #bdb5a8;
-  --text-faint: #9a9285;
+  --text: #f0f0f0;
+  --text-dim: #b6b6b6;
+  --text-faint: #9c9c9c;
 
-  --fullstack: #67cfe0;
-  --gamedev: #f5a97f;
-  --research: #c3a6f5;
-  --on-gamedev: #13110e;
+  --fullstack: #8fb2cc;
+  --gamedev: #ccab6e;
+  --research: #b3abd9;
+  --on-gamedev: #1b1b1b;
 
   /* material de ensino */
-  --feito: #5fd6a4;
+  --feito: #7fc99b;
   --feito-fundo: color-mix(in srgb, var(--bg-elev) 86%, var(--feito) 14%);
   --esp-pagina: var(--fullstack);
   --esp-quiz: var(--feito);
   --esp-tarefa: var(--research);
   --esp-arquivo: var(--gamedev);
-  --erro: #fb7185;
+  --erro: #e59595;
 }

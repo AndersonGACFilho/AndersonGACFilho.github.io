@@ -68,9 +68,18 @@ a { color: var(--accent); }
 .trilha a { color: var(--text-dim); text-decoration: none; }
 .trilha a:hover { color: var(--accent); }
 .trilha .sep { padding: 0 7px; opacity: 0.5; }
-.topo h1 { margin: 0 0 4px; font-size: clamp(1.7rem, 4vw, 2.4rem); letter-spacing: -0.035em; }
+.topo h1 { margin: 0 0 4px; font-size: clamp(1.7rem, 4vw, 2.4rem); letter-spacing: -0.015em; }
 .topo .curso { margin: 0 0 18px; color: var(--text-dim); font-size: 0.98rem; }
 
+/* CANTO VIVO, como o site. Os cinco controles daqui tinham raio de 999px, o
+   que deixou de bater quando a identidade do site trocou a pilula pelo canto
+   vivo -- e estas paginas sao servidas de dentro do site, uma navegacao de
+   distancia. O raio sai do `--radius` do tokens.css, entao da proxima vez
+   muda junto sem ninguem lembrar de vir aqui.
+
+   O TRACKING TAMBEM AFROUXOU. Os titulos pediam -0.035em porque a Bricolage
+   Grotesque e estreita e fecha mal; a Archivo e aberta e ja vem com a
+   contraforma certa, entao apertar so suja. */
 .pill {
   display: inline-flex;
   align-items: center;
@@ -79,7 +88,7 @@ a { color: var(--accent); }
   font-size: 0.82rem;
   font-weight: 500;
   border: 1px solid var(--border-strong);
-  border-radius: 999px;
+  border-radius: var(--radius);
   padding: 6px 13px;
   color: var(--text-dim);
   background: none;
@@ -93,7 +102,7 @@ a { color: var(--accent); }
 .pill.tema::after { content: ''; position: absolute; inset: 50% auto auto 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); }
 
 .medidor { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin: 0 0 18px; }
-.trilho { flex: 1 1 220px; height: 8px; border-radius: 999px; background: var(--border); overflow: hidden; }
+.trilho { flex: 1 1 220px; height: 8px; border-radius: var(--radius); background: var(--border); overflow: hidden; }
 .cheio { display: block; width: 0; height: 100%; background: var(--feito); transition: width 0.25s ease; }
 .conta { margin: 0; color: var(--text-dim); font-size: 0.86rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
@@ -104,7 +113,7 @@ a { color: var(--accent); }
   color: var(--text);
   background: var(--bg);
   border: 1px solid var(--border-strong);
-  border-radius: 999px;
+  border-radius: var(--radius);
   text-decoration: none;
   cursor: pointer;
 }
@@ -131,11 +140,11 @@ summary:hover .titulo { color: var(--accent); }
 /* o título da aula é um h2 de verdade: eram dezenove seções e só um h1 na
    página, então quem navega por cabeçalho não achava aula nenhuma */
 .cabeca .ordem { display: block; color: var(--text-dim); font: 600 0.82rem/1.5 var(--display); }
-.cabeca .titulo { display: block; margin: 0; font-family: var(--display); font-size: 1.08rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+.cabeca .titulo { display: block; margin: 0; font-family: var(--display); font-size: 1.08rem; font-weight: 600; letter-spacing: -0.005em; line-height: 1.25; }
 .cabeca .sumario { display: block; margin-top: 2px; color: var(--text-dim); font-size: 0.92rem; }
 .lado { flex: none; display: flex; gap: 10px; align-items: center; padding-top: 3px; }
 .quando, .placar { font-size: 0.8rem; color: var(--text-dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.placar { padding: 5px 9px; border: 1px solid var(--border); border-radius: 999px; }
+.placar { padding: 5px 9px; border: 1px solid var(--border); border-radius: var(--radius); }
 .placar.completo { color: var(--feito); border-color: var(--feito); }
 
 /* ---------- atividades ---------- */
@@ -189,7 +198,7 @@ summary:hover .titulo { color: var(--accent); }
   color: var(--text-dim);
   background: none;
   border: 1px solid var(--border-strong);
-  border-radius: 999px;
+  border-radius: var(--radius);
   cursor: pointer;
 }
 .feito:hover { border-color: var(--feito); color: var(--feito); }
@@ -228,7 +237,7 @@ summary:hover .titulo { color: var(--accent); }
 .uc.fechada .nome, .uc.fechada .meta { color: var(--text-dim); }
 .codigo { flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: var(--radius-sm); background: var(--bg); border: 1px solid var(--border); font: 700 0.9rem/1 var(--display); color: var(--text-dim); }
 .uc > a .codigo { color: var(--accent); border-color: var(--accent); }
-.uc .nome { display: block; font-family: var(--display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.02em; }
+.uc .nome { display: block; font-family: var(--display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.005em; }
 .uc .meta { display: block; color: var(--text-dim); font-size: 0.88rem; }
 .estado { flex: none; font-size: 0.82rem; color: var(--text-dim); white-space: nowrap; }
 .estado.aberto { color: var(--feito); font-weight: 600; }
