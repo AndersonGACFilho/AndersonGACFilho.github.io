@@ -129,6 +129,23 @@ const ptHref = twin === null ? null : new URL(asDir(lang === 'pt' ? here : twin)
         <ThemeSwitch lang={lang} />
         <LangSwitch lang={lang} altPath={altPath} />
       </div>
+      {/* NO CELULAR A NAVEGAÇÃO É UMA FAIXA QUE ROLA DE LADO, e ela nasce no
+          começo. Em /cv/ e /teaching/, que são os dois últimos rótulos, o
+          traço que diz "você está aqui" ficava fora da vista — a única pista
+          de localização da página sumia justo onde ela é mais necessária.
+
+          Só isto não dá para fazer em CSS: o navegador traz para a vista o
+          que recebe foco, não o que tem `aria-current`. O guarda de rolagem
+          mantém a linha inerte no desktop, onde os seis rótulos cabem. */}
+      <script is:inline>
+        (function () {
+          var faixa = document.querySelector('.site-nav');
+          var atual = faixa && faixa.querySelector('[aria-current="page"]');
+          if (atual && faixa.scrollWidth > faixa.clientWidth) {
+            atual.scrollIntoView({ inline: 'center', block: 'nearest' });
+          }
+        })();
+      </script>
     </header>
 
     <main id="main">

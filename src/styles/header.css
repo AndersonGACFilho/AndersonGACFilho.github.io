@@ -52,6 +52,54 @@
   box-shadow: inset 0 -2px 0 0 var(--accent);
 }
 
+/* ---------- a barra no celular ----------
+ *
+ * EM 375px ELA OCUPAVA 165px — 20% da tela, e grudada, então os 20% não
+ * voltavam nunca. A causa é o `flex-wrap` sozinho resolvendo o aperto: seis
+ * links, a marca e os dois controles quebravam em quatro linhas.
+ *
+ * Agora são duas, e a divisão é explícita em vez de sorteada pelo wrap. A
+ * marca e os dois controles ficam na primeira; a navegação é empurrada para
+ * a segunda por `flex-basis: 100%` e vira uma faixa que rola de lado.
+ *
+ * A FAIXA SANGRA ATÉ A BORDA DA TELA, com margem negativa do tamanho do
+ * `--gutter`. Sem isso o último link encosta no fim do padding do `.wrap` e
+ * parece o fim da lista; sangrando, ele aparece cortado pela borda do
+ * aparelho, que é como se anuncia que há mais coisa à direita. A barra de
+ * rolagem fica escondida porque o corte já diz o mesmo, sem roubar altura.
+ *
+ * Rolar a faixa não rola a página: o `overflow-x: auto` contém o estouro
+ * dentro dela. Quem chega de teclado continua alcançando os seis — o
+ * navegador traz para dentro da vista o que recebe foco.
+ */
+@media (max-width: 640px) {
+  .site-header .wrap {
+    min-height: 0;
+    padding-block: 8px;
+    gap: 8px 12px;
+  }
+  /* A primeira linha só fecha sem a segunda assinatura: com ela a marca tem
+     254px dos 335 disponíveis, e a troca de idioma era expulsa para uma
+     linha própria. "dev, games, AI" é a mesma frase que o `<title>` e a
+     descrição da página já dizem, e repetida em toda rolagem. */
+  .brand span { display: none; }
+
+  .site-nav {
+    order: 3;
+    flex-basis: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 16px;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+  .site-nav::-webkit-scrollbar { display: none; }
+  /* Sem isto os seis links encolhem para caber em vez de sair pela direita —
+     flex item encolhe por padrão, e o resultado eram seis palavras coladas. */
+  .site-nav a { flex: none; white-space: nowrap; }
+}
+
 /* ---------- controles da barra ----------
  *
  * Chamava-se `.pill`, e virou mentira quando o canto deixou de ser redondo.

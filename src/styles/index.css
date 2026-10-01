@@ -104,5 +104,11 @@
   font-family: var(--display);
   color: var(--text-dim);
   border-bottom: 1px solid var(--border-strong);
+  /* 24px é o mínimo da WCAG 2.2 para alvo de ponteiro, e aqui morde: "Ler" em
+     português dá 20px. A exceção que a norma abre para link dentro de frase
+     não vale — esta é uma fila de ações, não um parágrafo. A altura vem da
+     entrelinha e já dá 25px. */
+  min-width: 24px;
+  text-align: center;
 }
 .link-row a:hover { color: var(--accent); border-color: currentColor; }
