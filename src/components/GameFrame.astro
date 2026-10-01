@@ -87,7 +87,10 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
     position: relative;
     aspect-ratio: var(--ratio);
     width: 100%;
-    background: radial-gradient(circle at 50% 30%, var(--bg-hover), var(--bg-elev));
+    /* Fundo chapado. O gradiente radial que estava aqui era decoração pura:
+       fica escondido atrás da capa enquanto o jogo não roda, e atrás do canvas
+       depois que roda. O palco é a moldura de uma tela, e moldura não degrada. */
+    background: var(--bg-elev);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
@@ -135,7 +138,10 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
     margin-bottom: 8px;
     border-radius: 50%;
     background: var(--gamedev);
-    color: #14161c;
+    /* Era o hex fixo #14161c, de uma paleta que não existe mais. Com --gamedev
+       escuro no tema claro, isso virava quase-preto sobre marrom: 1.2:1. O
+       token existe exatamente para isto e acompanha a troca de tema. */
+    color: var(--on-gamedev);
     font-size: 1.4rem;
     padding-left: 4px;
     transition: transform 0.18s ease;
@@ -167,7 +173,10 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
        e custava caro no lugar errado: este elemento ocupa a tela inteira e e o
        pai direto do canvas do jogo, entao o filtro era reavaliado a cada
        quadro da partida. */
-    background: rgba(2, 3, 8, 0.96);
+    /* Escuro nos dois temas de propósito — é uma sala de cinema, não uma
+       superfície do site. Neutro como o resto da identidade: o azul que
+       estava aqui tingia a arte do jogo por cima. */
+    background: rgba(10, 10, 10, 0.96);
     display: grid;
     grid-template-rows: 1fr auto;
     gap: 14px;
