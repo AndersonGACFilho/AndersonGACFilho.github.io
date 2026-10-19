@@ -1,0 +1,129 @@
+<!doctype html>
+<!--
+  Fonte da public/og-cover.png, a prévia que o LinkedIn mostra quando alguém
+  cola o link. Não é página do site: o render-og-cover.mjs abre este arquivo
+  num Chromium headless em 1200×630 e salva a captura.
+
+  Tokens e fontes vêm direto de src/styles e public/fonts, por caminho
+  relativo. Trocou um hex no tokens.css, roda `npm run render:og` e a capa
+  acompanha.
+
+  Gameplay e full stack dividem a linha em duas colunas do mesmo tamanho,
+  porque a mesma prévia vai em candidatura das duas. A pesquisa vem embaixo,
+  como no hero.role, que põe o mestrado depois das duas funções.
+
+  Tema escuro fixado em data-theme: o headless pode anunciar preferência
+  clara, e a capa não pode depender disso.
+-->
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../src/styles/tokens.css" />
+<style>
+  @font-face {
+    font-family: 'Archivo';
+    font-weight: 100 900;
+    font-stretch: 62% 125%;
+    src: url('../public/fonts/archivo-latin.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Literata';
+    font-weight: 200 900;
+    src: url('../public/fonts/literata-latin.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    font-weight: 400;
+    src: url('../public/fonts/ibm-plex-mono-latin-400.woff2') format('woff2');
+  }
+
+  html, body { margin: 0; }
+  body {
+    width: 1200px;
+    height: 630px;
+    box-sizing: border-box;
+    padding: 72px 80px 64px;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  h1 {
+    margin: 0 0 14px;
+    font-family: var(--display);
+    font-size: 84px;
+    font-stretch: 118%;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.02;
+  }
+  .role {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 31px;
+    font-weight: 500;
+    color: var(--text-dim);
+  }
+
+  /* o mesmo filete de 3px das trilhas da home: canto vivo, cor da trilha */
+  .tracks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
+    margin-top: 64px;
+  }
+  .track {
+    border-left: 3px solid var(--track);
+    padding: 4px 0 6px 20px;
+  }
+  .track strong {
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--display);
+    font-size: 30px;
+    font-stretch: 108%;
+    font-weight: 600;
+    color: var(--track);
+  }
+  .track span { font-size: 25px; line-height: 1.35; color: var(--text-dim); }
+
+  .foot {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 40px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+  }
+  /* uma linha só: quebrada, deixava "NPCs" sozinho embaixo */
+  .research { font-size: 22px; white-space: nowrap; color: var(--text-dim); }
+  .research b { font-weight: 600; color: var(--research); }
+  .url { font-family: var(--mono); font-size: 19px; white-space: nowrap; color: var(--text-faint); }
+</style>
+</head>
+<body>
+  <h1>Anderson Gonçalves</h1>
+  <p class="role">Gameplay programmer and full stack engineer</p>
+
+  <div class="tracks">
+    <p class="track" style="--track: var(--gamedev)">
+      <strong>Gameplay</strong>
+      <span>Unity and Unreal systems. Five prototypes play in the browser.</span>
+    </p>
+    <p class="track" style="--track: var(--fullstack)">
+      <strong>Full stack</strong>
+      <span>APIs and event-driven backends in Python and Java, Angular on top.</span>
+    </p>
+  </div>
+
+  <div class="foot">
+    <span class="research"><b>MSc at UFRGS</b> on control and decision-making, tested on NPCs</span>
+    <span class="url">andersongacfilho.github.io</span>
+  </div>
+</body>
+</html>
