@@ -84,7 +84,7 @@ const groups: [keyof typeof section, Entry[]][] = [
                 <span class="period">{pick(entry.period, lang)}</span>
                 <span class="place">{pick(entry.place, lang)}</span>
                 {[entry.track, ...(entry.alsoTracks ?? [])].filter(Boolean).map((track) => (
-                  <span class="entry-track">{t(trackLabelKey(track!))}</span>
+                  <span class="entry-track" data-track={track}>{t(trackLabelKey(track!))}</span>
                 ))}
               </div>
               <div class="what">
@@ -191,12 +191,14 @@ const groups: [keyof typeof section, Entry[]][] = [
      traço colorido à esquerda do texto, o mesmo filete que saiu do índice. */
   .entry-track { color: var(--entry); font-weight: 700; letter-spacing: 0; }
 
-  /* Com um foco escolhido, a experiência do outro lado perde a tinta dos
-     nomes mas não perde contraste: o texto segue igual e a entrada continua
-     na lista. Apaga-se a propriedade, e não o `--entry`: a variável vem no
-     atributo style da `li`, e estilo inline ganha de qualquer regra daqui. */
-  .cv[data-focus='gamedev'] .timeline > li[data-track='fullstack'] .entry-track,
-  .cv[data-focus='fullstack'] .timeline > li[data-track='gamedev'] .entry-track { color: var(--text-faint); font-weight: 300; }
+  /* Com um foco escolhido, o rótulo da trilha do outro lado perde a tinta
+     dos nomes mas não perde contraste: o texto segue igual e a entrada
+     continua na lista. Cada rótulo responde pela própria trilha, e não pela
+     da entrada, porque uma entrada pode ter mais de uma: a pesquisa da UFRGS
+     é Game Dev e AI Research, e no foco full stack só o Game Dev apaga.
+     Pesquisa não apaga em foco nenhum. */
+  .cv[data-focus='gamedev'] .entry-track[data-track='fullstack'],
+  .cv[data-focus='fullstack'] .entry-track[data-track='gamedev'] { color: var(--text-faint); font-weight: 300; }
 
   .skills { margin: 0; display: grid; gap: 14px; }
   .skills > div { display: grid; gap: 6px 28px; grid-template-columns: minmax(0, 190px) 1fr; align-items: start; }
