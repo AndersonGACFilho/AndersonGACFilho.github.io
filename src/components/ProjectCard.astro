@@ -14,11 +14,9 @@ const t = useTranslations(lang);
 const meta = await repoInfo(d.repo);
 ---
 
-{/* DUAS COLUNAS, DOIS PAPÉIS. À esquerda o que se lê de ponta a ponta — o
-    título, o resumo, a tecnologia. À direita o que se consulta de relance:
-    trilha, números, links. Acima de 760px a direita alinha pela margem, que é
-    o que faz a linha ler como índice e não como segunda coluna de texto;
-    abaixo disso as duas viram uma pilha só.
+{/* DOIS BLOCOS, DOIS PAPÉIS. Em cima o que se lê de ponta a ponta — o
+    título, o resumo, a tecnologia. Embaixo, numa linha só, o que se consulta
+    de relance: trilha, números, links.
 
     O TÍTULO VEM ANTES DA TRILHA no HTML, ao contrário de antes. Quem lê por
     leitor de tela ouvia "Game Dev, Game AI Research" antes de saber de qual

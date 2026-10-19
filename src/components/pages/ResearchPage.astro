@@ -18,8 +18,8 @@ const eramiaVenue = eramia?.data.venue?.name ?? 'ERAMIA-RS';
 ---
 
 <header class="head">
-  <p class="kicker">{copy.kicker}</p>
   <h1>{paperTitle}</h1>
+  <p class="kicker">{copy.kicker}</p>
   <ul class="authors">
     {
       authors.map((author) => (
@@ -110,17 +110,18 @@ const eramiaVenue = eramia?.data.venue?.name ?? 'ERAMIA-RS';
 <style>
   /* One measure for the whole header block, so title, authors and affiliation
      line up instead of each wrapping at its own width. */
-  .head { margin-block: 28px 32px; max-width: 46rem; }
-  .head h1 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); text-wrap: balance; }
-  /* Sobrevivente da moldura antiga: era monoespaçada em caixa-alta espaçada,
-     a mesma coisa que já tinha saído de todos os outros cabeçalhos do site.
-     Agora segue o `.kicker` do PageHeader — frase legível, na grotesca. */
+  .head { margin-block: clamp(40px, 12svh, 140px) 40px; max-width: 46rem; }
+  .head h1 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); text-wrap: balance; margin-bottom: 14px; }
+  /* Segue o `.kicker` do PageHeader: embaixo do título, em caixa alta
+     pequena, na tinta de leitura. */
   .kicker {
     font-family: var(--display);
-    color: var(--research);
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    margin-bottom: 10px;
   }
   .authors {
     list-style: none;
@@ -133,21 +134,18 @@ const eramiaVenue = eramia?.data.venue?.name ?? 'ERAMIA-RS';
   }
   .authors li { white-space: nowrap; }
   .authors li + li::before { content: '·'; color: var(--text-faint); margin-inline: 10px; }
-  .authors .self { color: var(--text); font-weight: 600; }
-  .authors a { border-bottom: 1px solid var(--border); }
+  .authors .self { color: var(--accent); font-weight: 700; }
+  .authors a { text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 0.2em; }
   .affiliation { color: var(--text-faint); font-size: 0.9rem; margin: 0; }
 
+  /* A tese são três frases curtas, e elas não precisam de caixa para serem o
+     centro da página: corpo maior, negrito e vazio em volta. A caixa com
+     filete roxo que estava aqui era o mesmo tique do índice. */
   .thesis {
     max-width: 46rem;
-    margin: 0 0 32px;
-    padding: 20px 24px;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--research);
-    border-radius: var(--radius);
-    background: var(--bg-elev);
+    margin: 0 0 40px;
   }
-  .thesis p { margin: 0; font-size: 1.05rem; }
-  .thesis p + p { margin-top: 2px; }
+  .thesis p { margin: 0; font-size: 1.3rem; font-weight: 700; line-height: 1.35; }
 
   .intro { max-width: 46rem; font-size: 1.05rem; color: var(--text-dim); }
 
@@ -163,20 +161,17 @@ const eramiaVenue = eramia?.data.venue?.name ?? 'ERAMIA-RS';
     display: block;
     width: 100%;
     max-width: 620px;
-    border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     background: #fff;
   }
   .poster figcaption { margin-top: 10px; color: var(--text-faint); font-size: 0.88rem; }
 
-  .materials { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .materials { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
   .materials li {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
     align-items: baseline;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
   }
   .materials a { color: var(--accent); }
   .materials .muted { font-size: 0.9rem; flex: 1 1 320px; }

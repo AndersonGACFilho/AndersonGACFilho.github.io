@@ -17,9 +17,11 @@ interface Props {
    * link to a fallback index would make Google discard the pair entirely.
    */
   translation?: string | null;
+  /** Home only: the standing name is the page's h1 there, and a link elsewhere. */
+  home?: boolean;
 }
 
-const { title, description, lang, altPath, translation } = Astro.props;
+const { title, description, lang, altPath, translation, home = false } = Astro.props;
 const t = useTranslations(lang);
 // Link preview crawlers treat a short description as thin content;
 // LinkedIn warns below 100 characters. The tagline is kept short for
@@ -86,20 +88,19 @@ const ptHref = twin === null ? null : new URL(asDir(lang === 'pt' ? here : twin)
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={desc} />
     <meta name="twitter:image" content={new URL('/og-cover.png', Astro.site).href} />
-    {/* Archivo para títulos e interface, Literata para o corpo, IBM Plex Mono
-        só para código. A monoespaçada não rotula metadado. Os `@font-face`
-        estão em `styles/fonts.css`, com o porquê de cada família.
+    {/* Cooper Hewitt para tudo que se lê, Martian Mono Condensed só no nome em
+        pé, IBM Plex Mono só para código. Os `@font-face` estão em
+        `styles/fonts.css`, com o porquê de cada família.
 
-        SÓ ESTAS DUAS ENTRAM NO PRELOAD, e é o ponto todo da mudança: são as
-        que toda página usa, e sem o preload o navegador só descobre que
-        precisa delas depois de baixar e interpretar o CSS. O itálico e a
-        monoespaçada ficam de fora de propósito — pré-carregar arquivo que a
-        maioria das páginas não pede é gastar banda do caminho crítico para
-        atrasar o que importa. */}
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin.woff2" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/literata-latin.woff2" crossorigin />
+        ENTRAM NO PRELOAD SÓ AS QUE TODA PÁGINA PINTA NA PRIMEIRA TELA: o corpo,
+        o negrito dos títulos e a condensada do nome. Sem o preload o navegador
+        só descobre que precisa delas depois de baixar e interpretar o CSS. O
+        itálico, o peso 300 e a monoespaçada ficam de fora de propósito. */}
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/cooper-hewitt-latin-400-normal.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/cooper-hewitt-latin-700-normal.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/martian-mono-condensed-800.woff2" crossorigin />
     {/* Valor inicial só; o script do ThemeSwitch corrige para o --bg real. */}
-    <meta name="theme-color" content="#1b1b1b" />
+    <meta name="theme-color" content="#0f1a13" />
     {/* SEM PISCADA. Roda antes da primeira pintura e é síncrono de propósito:
         o site é estático e recarrega a cada navegação, então sem isto a
         pessoa vê um lampejo do tema errado em toda página. */}
@@ -114,18 +115,27 @@ const ptHref = twin === null ? null : new URL(asDir(lang === 'pt' ? here : twin)
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    {/* O NOME EM PÉ. No desktop é a coluna da esquerda, da altura da tela, e
+        fica parado enquanto a página rola; no celular deita e abre a página.
+        Na home ele é o próprio h1, porque lá não existe outro título. */}
+    {
+      home ? (
+        <h1 class="spine"><a href={localize('/', lang)} aria-current="page">Anderson Gonçalves</a></h1>
+      ) : (
+        <p class="spine"><a href={localize('/', lang)}>Anderson Gonçalves</a></p>
+      )
+    }
     <header class="site-header">
-      <div class="wrap">
-        <a class="brand" href={localize('/', lang)}>Anderson Filho <span>/ dev, games, AI</span></a>
-        <nav class="site-nav" aria-label="Main">
-          {
-            nav.map((item) => (
-              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-                {item.label}
-              </a>
-            ))
-          }
-        </nav>
+      <nav class="site-nav" aria-label="Main">
+        {
+          nav.map((item) => (
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+      <div class="bar-controls">
         <ThemeSwitch lang={lang} />
         <LangSwitch lang={lang} altPath={altPath} />
       </div>

@@ -1,5 +1,6 @@
-/* Responsabilidade: a barra do topo -- marca, navegação e os dois controles
-   que moram nela (tema e idioma). */
+/* Responsabilidade: a barra do topo -- navegação e os dois controles que
+   moram nela (tema e idioma). O nome do site não mora aqui: é a coluna em pé
+   de `layout.css`. */
 
 /* ---------- cabeçalho ----------
  *
@@ -9,32 +10,21 @@
  * navegador a reamostrar tudo que está atrás, a cada rolagem.
  *
  * Tirar só o desfoque não serve: sem ele, os 8% de transparência viram o
- * texto da página aparecendo por dentro do nome e dos links da barra, que é
- * pior do que qualquer um dos dois sozinho. A barra é opaca — custa nada,
- * não fantasma, e é a única das três opções que mantém o contraste medido.
+ * texto da página aparecendo por dentro dos links da barra. Quando ela gruda
+ * (só no celular, onde o nome não fica parado ao lado), é opaca.
+ *
+ * NO DESKTOP ELA NÃO GRUDA. O nome em pé já fica na tela o tempo todo e leva
+ * para a home; a navegação mora no topo da página e rola com ela.
  */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-}
-.site-header .wrap {
   display: flex;
   align-items: center;
-  gap: 18px;
-  min-height: 58px;
+  gap: 12px 24px;
   flex-wrap: wrap;
+  padding: 18px clamp(var(--gutter), 4vw, 3rem) 0 var(--gutter);
+  max-width: var(--maxw);
 }
-.brand {
-  font-family: var(--display);
-  font-weight: 700;
-  font-stretch: 108%;
-  margin-right: auto;
-}
-.brand span { color: var(--text-faint); font-weight: 400; font-stretch: 100%; }
-.site-nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.93rem; }
+.site-nav { display: flex; gap: 6px 20px; flex-wrap: wrap; font-size: 0.95rem; margin-right: auto; }
 .site-nav a {
   font-family: var(--display);
   color: var(--text-dim);
@@ -46,11 +36,15 @@
 }
 .site-nav a[aria-current='page'] {
   color: var(--text);
-  font-weight: 600;
+  font-weight: 700;
   /* a página atual ganha um traço, não só um peso a mais: peso sozinho é
      distinção fraca demais para quem enxerga pouco */
-  box-shadow: inset 0 -2px 0 0 var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.35em;
 }
+.bar-controls { display: flex; gap: 8px; }
 
 /* ---------- a barra no celular ----------
  *
@@ -58,9 +52,9 @@
  * voltavam nunca. A causa é o `flex-wrap` sozinho resolvendo o aperto: seis
  * links, a marca e os dois controles quebravam em quatro linhas.
  *
- * Agora são duas, e a divisão é explícita em vez de sorteada pelo wrap. A
- * marca e os dois controles ficam na primeira; a navegação é empurrada para
- * a segunda por `flex-basis: 100%` e vira uma faixa que rola de lado.
+ * Agora são duas, e a divisão é explícita em vez de sorteada pelo wrap. Os
+ * dois controles ficam na primeira; a navegação é empurrada para a segunda
+ * por `flex-basis: 100%` e vira uma faixa que rola de lado.
  *
  * A FAIXA SANGRA ATÉ A BORDA DA TELA, com margem negativa do tamanho do
  * `--gutter`. Sem isso o último link encosta no fim do padding do `.wrap` e
@@ -72,17 +66,16 @@
  * dentro dela. Quem chega de teclado continua alcançando os seis — o
  * navegador traz para dentro da vista o que recebe foco.
  */
-@media (max-width: 640px) {
-  .site-header .wrap {
-    min-height: 0;
-    padding-block: 8px;
+@media (max-width: 760px) {
+  /* Com o nome deitado e rolando junto, quem fica no topo é só esta faixa. */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    padding: 8px var(--gutter);
     gap: 8px 12px;
   }
-  /* A primeira linha só fecha sem a segunda assinatura: com ela a marca tem
-     254px dos 335 disponíveis, e a troca de idioma era expulsa para uma
-     linha própria. "dev, games, AI" é a mesma frase que o `<title>` e a
-     descrição da página já dizem, e repetida em toda rolagem. */
-  .brand span { display: none; }
 
   .site-nav {
     order: 3;
@@ -92,12 +85,14 @@
     gap: 16px;
     margin-inline: calc(var(--gutter) * -1);
     padding-inline: var(--gutter);
+    padding-block: 4px;
     scrollbar-width: none;
   }
   .site-nav::-webkit-scrollbar { display: none; }
   /* Sem isto os seis links encolhem para caber em vez de sair pela direita —
      flex item encolhe por padrão, e o resultado eram seis palavras coladas. */
   .site-nav a { flex: none; white-space: nowrap; }
+  .bar-controls { margin-left: auto; }
 }
 
 /* ---------- controles da barra ----------
@@ -112,8 +107,8 @@
   align-items: center;
   gap: 7px;
   font-family: var(--display);
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 400;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius);
   padding: 5px 11px;

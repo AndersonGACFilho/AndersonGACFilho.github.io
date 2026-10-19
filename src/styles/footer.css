@@ -9,7 +9,6 @@
  * quem viesse por último ganhava. Agora o rodapé declara os próprios links.
  */
 .site-footer {
-  border-top: 1px solid var(--border);
   padding-block: 26px 40px;
   color: var(--text-faint);
   font-size: 0.88rem;

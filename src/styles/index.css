@@ -1,109 +1,87 @@
-/* Responsabilidade: a linha do índice de trabalhos e as peças que ela monta --
-   marca de trilha, tecnologia, metadado e fila de links. Consumida por
+/* Responsabilidade: a entrada do índice de trabalhos e as peças que ela monta
+   -- nome de trilha, tecnologia, metadado e fila de links. Consumida por
    ProjectCard, PublicationCard e pelas páginas que listam. */
 
-/* ---------- marca de trilha ----------
+/* ---------- nome de trilha ----------
  *
- * A trilha (fullstack / gamedev / research) é informação, então tem cor. O
- * que saiu foi a pílula: contorno arredondado com fundo tingido em cima da
- * cor da trilha é o badge de biblioteca de componentes, e aparecia três vezes
- * por linha. Agora é a palavra, na cor da tinta — e o filete de 3px na margem
- * da linha já diz a trilha principal antes do título.
+ * A trilha se lê pela palavra. As três têm a mesma tinta (a dos nomes, ver
+ * `tokens.css`), então o que diz "Game Dev" é o texto "Game Dev". O `--track`
+ * continua chegando pelo atributo style porque `tracks.ts` o injeta.
  */
 .badge {
   font-family: var(--display);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   color: var(--track);
   white-space: nowrap;
 }
-.badge-row { display: flex; flex-wrap: wrap; gap: 2px 12px; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 2px 14px; }
 
-/* A tecnologia não é trilha: é etiqueta de catálogo, e fica quieta. Mantém
-   contorno porque são muitas por linha e sem ele viram uma frase só. */
+/* ---------- tecnologia ----------
+ *
+ * ERA UMA FILEIRA DE ETIQUETAS COM CONTORNO embaixo de todo item, e ela sozinha
+ * fazia qualquer lista parecer catálogo de componente. Agora é uma linha de
+ * texto, separada por vírgula, no peso leve do metadado. Os `span.tag`
+ * continuam um por item porque o currículo e os projetos montam a lista a
+ * partir de array.
+ */
 .tag {
   font-family: var(--display);
-  font-size: 0.76rem;
-  color: var(--text-faint);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 1px 7px;
-  white-space: nowrap;
+  font-size: 0.88rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
 }
-.tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag:not(:last-child)::after { content: ','; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 0 0.4em; }
 
-/* ---------- a linha ----------
+/* ---------- a entrada ----------
  *
- * `.card` continua sendo a superfície elevada onde ela faz sentido: a
- * recomendação do /cv/, o bloco de pesquisa — conteúdo paralelo que cabe em
- * caixa. O que mudou é que deixou de ser a forma padrão de mostrar trabalho.
- *
- * O FILETE DA TRILHA É A BORDA ESQUERDA, e não mais um pseudo-elemento de 2px
- * no topo. Dá no mesmo visualmente e economiza o `position: relative` e o
- * `overflow: hidden` que existiam só para segurar o `::before`.
+ * SEM CAIXA, SEM FIO, SEM FILETE. `.card` era superfície elevada com contorno
+ * e uma borda de 3px na cor da trilha. Agora é texto sobre o fundo: o nome do
+ * trabalho na tinta dos nomes, o resumo na tinta de leitura, e o que se
+ * consulta (trilha, números, links) numa linha só embaixo. O que separa uma
+ * entrada da outra é o `gap` do contêiner.
  */
 .card {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--track, var(--border-strong));
-  border-radius: var(--radius);
-  padding: 18px 20px;
-  transition: background 0.18s ease, border-color 0.18s ease;
+  gap: 8px;
 }
-.card:hover { background: var(--bg-hover); }
 .card h3 { margin: 0; }
-.card p { color: var(--text-dim); font-size: 0.95rem; margin: 0; }
-/* Em grade, as caixas têm altura igual e o metadado desce para o pé de cada
-   uma. No índice não há altura a igualar, então a regra fica presa à grade. */
+.card p { margin: 0; }
+/* Em grade, o metadado desce para o pé de cada coluna. */
 .grid .card .card-meta { margin-top: auto; padding-top: 8px; }
 
-/* Dentro do índice a mesma `.card` perde a caixa: sem fundo, sem contorno,
-   sem canto. Fica o fio de baixo, que encosta no fio de cima do contêiner, e
-   o filete da trilha. */
-.index .card {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 10px 32px;
-  background: none;
-  border: 0;
-  border-bottom: 1px solid var(--border);
-  border-left: 3px solid var(--track, var(--border-strong));
-  border-radius: 0;
-  padding: 18px 4px 18px 16px;
+.index .card h3 {
+  font-size: 1.45rem;
+  line-height: 1.15;
+  color: var(--accent);
 }
-/* O apontado ganha superfície em vez de contorno: numa lista encostada, mudar
-   a cor da borda moveria o fio que a linha de baixo divide com esta. */
-.index .card:hover { background: var(--bg-elev); }
+.index .card h3 a:hover { color: var(--text); }
 
-/* Acima de 760px a linha abre em duas colunas: o que se lê à esquerda, o que
-   se consulta à direita. Alinhado à direita de propósito — é o que faz a
-   coluna de metadado ler como índice e não como segunda coluna de texto. */
-.card-main { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.card-side { display: flex; flex-direction: column; gap: 7px; align-items: flex-start; }
-
-@media (min-width: 760px) {
-  .index .card { grid-template-columns: minmax(0, 1fr) minmax(0, 15rem); }
-  .card-side { align-items: flex-end; text-align: right; }
-}
+.card-main { display: flex; flex-direction: column; gap: 8px; min-width: 0; max-width: 64ch; }
+.card-side { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 22px; }
 
 .card-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 2px 12px;
-  font-size: 0.8rem;
+  gap: 2px 14px;
+  font-size: 0.88rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
   color: var(--text-faint);
 }
 
-/* Fila de links curtos. Vive aqui porque a linha do índice é quem mais usa,
-   mas é genérica: a página de um jogo e o rodapé também montam uma. */
-.link-row { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.88rem; }
+/* Fila de links curtos. Vive aqui porque a entrada do índice é quem mais usa,
+   mas é genérica: a página de um jogo e a lista de jogos também montam uma. */
+.link-row { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 0.92rem; }
 .link-row a {
   font-family: var(--display);
-  color: var(--text-dim);
-  border-bottom: 1px solid var(--border-strong);
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.25em;
   /* 24px é o mínimo da WCAG 2.2 para alvo de ponteiro, e aqui morde: "Ler" em
      português dá 20px. A exceção que a norma abre para link dentro de frase
      não vale — esta é uma fila de ações, não um parágrafo. A altura vem da
@@ -111,4 +89,4 @@
   min-width: 24px;
   text-align: center;
 }
-.link-row a:hover { color: var(--accent); border-color: currentColor; }
+.link-row a:hover { color: var(--accent); text-decoration-color: currentColor; }

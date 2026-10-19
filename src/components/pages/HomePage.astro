@@ -20,27 +20,20 @@ const trackCount = (track: string) =>
 {/* O JOGO DESCEU DO TOPO. Ele era a primeira coisa da página, logo abaixo
     do nome, e com ele ali a home se lia como portfólio só de jogos. O site
     também serve candidatura de backend e full stack (o /cv tem uma chave de
-    foco para isso), então a primeira tela agora é quem eu sou e as três
-    frentes. O jogo vem logo depois, como a primeira prova, e o botão de
-    jogar do topo virou o do currículo: o ▶ já está na tela do jogo. */}
-<header class="hero">
-  <h1>Anderson Gonçalves</h1>
-  <p class="hero-role">{t('hero.role')}</p>
-</header>
+    foco para isso), então a primeira tela é quem eu sou e as três frentes.
 
-<section class="hero-pe">
+    A PRIMEIRA TELA ASSENTA NO CHÃO. O nome em pé, que aqui é o h1 (ver
+    `Base.astro`), ocupa a coluna da esquerda; papel, texto e frentes descem
+    para o pé da tela, encostados nele. */}
+<section class="hero">
+  <p class="hero-role">{t('hero.role')}</p>
   <p class="hero-blurb">{t('hero.blurb')}</p>
   <div class="btn-row">
     <a class="btn" href={localize('/projects', lang)}>{t('hero.cta.projects')}</a>
     <a class="btn" href={localize('/cv', lang)}>{t('hero.cta.cv')}</a>
   </div>
-</section>
 
-{/* Eram três cartões lado a lado, do tamanho um do outro. Viraram três
-    linhas com o mesmo filete de trilha do índice de projetos — é o mesmo
-    assunto, então é a mesma forma, e o link leva para o índice já filtrado. */}
-<section>
-  <div class="section-head"><h2>{t('section.tracks')}</h2></div>
+  <h2 class="so-leitor">{t('section.tracks')}</h2>
   <ul class="trilhas">
     {
       TRACKS.map((track) => (
@@ -103,53 +96,35 @@ const trackCount = (track: string) =>
 </section>
 
 <style>
-  .hero { margin-block: 24px 20px; }
-  .hero h1 { margin-bottom: 6px; }
-  /* mesma razão do .kicker: sai o caixa-alta espaçado em monoespaçada */
+  .hero { max-width: 33rem; margin-block: 32px 96px; }
+  /* No desktop a primeira tela inteira é do topo, e o conteúdo dela desce até
+     o pé: tira-se a altura da navegação e o respiro do `main`. */
+  @media (min-width: 761px) {
+    .hero {
+      min-height: calc(100svh - 150px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-top: 0;
+    }
+  }
+
   .hero-role {
     font-family: var(--display);
-    color: var(--text-dim);
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 0;
-    max-width: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    max-width: 26rem;
   }
+  .hero-blurb { font-size: 1.06rem; margin: 0 0 28px; }
 
-  /* O pé do topo divide a linha com os dois links: o texto não precisa da
-     largura inteira, e os links sobem para a altura dele em vez de empilhar
-     mais um bloco entre a apresentação e as trilhas. */
-  .hero-pe {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    justify-content: space-between;
-    gap: 16px 32px;
-    margin-block: 22px 56px;
-  }
-  .hero-blurb {
-    font-size: 1.02rem;
-    color: var(--text-dim);
-    margin: 0;
-    max-width: 56ch;
-  }
-
-  .trilhas { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
-  .trilhas li { border-bottom: 1px solid var(--border); border-left: 3px solid var(--track); }
-  .trilhas a {
-    display: grid;
-    gap: 2px 24px;
-    padding: 14px 4px 14px 16px;
-  }
-  .trilhas a:hover { background: var(--bg-elev); color: inherit; }
-  .trilha-nome { font-family: var(--display); font-weight: 600; color: var(--track); }
-  .trilha-desc { color: var(--text-dim); font-size: 0.95rem; }
-  .trilha-conta { font-family: var(--display); font-size: 0.8rem; color: var(--text-faint); }
-
-  @media (min-width: 760px) {
-    .trilhas a {
-      grid-template-columns: 13rem minmax(0, 1fr) 7rem;
-      align-items: baseline;
-    }
-    .trilha-conta { text-align: right; }
-  }
+  .trilhas { list-style: none; margin: 56px 0 0; padding: 0; display: grid; gap: 26px; }
+  .trilhas a { display: grid; gap: 4px; }
+  .trilhas a:hover .trilha-nome { color: var(--text); }
+  .trilha-nome { font-weight: 700; font-size: 1.45rem; line-height: 1.1; color: var(--track); }
+  .trilha-desc { font-size: 0.96rem; line-height: 1.45; }
+  .trilha-conta { font-size: 0.88rem; font-weight: 300; letter-spacing: 0.04em; }
 </style>

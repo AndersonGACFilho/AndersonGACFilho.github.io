@@ -23,22 +23,22 @@
   border-radius: var(--radius);
   /* contorno com 3:1 contra o fundo: é a fronteira visível do controle */
   border: 1px solid var(--border-strong);
-  background: var(--bg-elev);
+  background: none;
   color: var(--text);
   font-family: var(--display);
-  font-size: 0.92rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   cursor: pointer;
   transition: border-color 0.18s ease, background 0.18s ease;
 }
-.btn:hover { border-color: var(--accent); color: var(--text); background: var(--bg-hover); }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
 .btn-primary {
   background: var(--gamedev);
   border-color: var(--gamedev);
   color: var(--on-gamedev);
 }
-/* O apontado troca a borda, e não o brilho: --gamedev é ocre escuro no tema
-   claro, e clarear 6% ali não se via. */
+/* O apontado troca a borda, e não o brilho: no tema claro o verde já é
+   escuro, e clarear 6% ali não se via. */
 .btn-primary:hover { background: var(--gamedev); border-color: var(--text); color: var(--on-gamedev); }
 .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
 
@@ -59,8 +59,8 @@
  */
 .chip {
   font-family: var(--display);
-  font-size: 0.82rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 400;
   padding: 6px 12px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
@@ -72,7 +72,7 @@
 .chip[aria-pressed='true'] {
   border-color: var(--border-strong);
   color: var(--track, var(--text));
-  font-weight: 600;
+  font-weight: 700;
   box-shadow: inset 0 -2px 0 0 var(--track, var(--text));
 }
 /* Fileira de chips: o filtro de projetos e a chave de foco do currículo. */

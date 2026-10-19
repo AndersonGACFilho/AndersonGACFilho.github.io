@@ -11,7 +11,7 @@ const t = useTranslations(lang);
 const projects = await getProjects();
 ---
 
-<PageHeader kicker={t('kicker.projects')} title={t('nav.projects')} intro={t('projects.intro')} accent="var(--fullstack)" />
+<PageHeader kicker={t('kicker.projects')} title={t('nav.projects')} intro={t('projects.intro')} />
 
 <div class="filters chip-row" role="group" aria-label={t('label.filter')}>
   <button class="chip" type="button" data-filter="all" aria-pressed="true">{t('label.all')}</button>

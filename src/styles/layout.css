@@ -1,37 +1,86 @@
-/* Responsabilidade: o esqueleto que toda página divide -- a caixa de largura
-   máxima, o respiro entre seções, o cabeçalho de seção e as duas formas de
-   enfileirar conteúdo (o índice e a grade). */
+/* Responsabilidade: o esqueleto que toda página divide -- a coluna do nome
+   em pé, a caixa de largura máxima, o respiro entre seções, o cabeçalho de
+   seção e as duas formas de enfileirar conteúdo (o índice e a grade). */
 
-/* ---------- layout ---------- */
+/* ---------- esqueleto ----------
+ *
+ * DUAS COLUNAS NO DESKTOP: o nome em pé à esquerda, a página à direita. O
+ * nome ocupa todas as linhas da grade e é `sticky`, então fica parado
+ * enquanto cabeçalho, conteúdo e rodapé rolam ao lado dele.
+ *
+ * O CONTEÚDO ENCOSTA NO NOME, e não no centro da tela. Em tela larga sobra
+ * vazio à direita, de propósito: o que segura a página é a coluna, não a
+ * simetria.
+ */
+body {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  min-height: 100svh;
+}
+body > :not(.spine):not(.skip-link) { grid-column: 2; }
+
 .wrap {
   max-width: var(--maxw);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding-inline: var(--gutter) clamp(var(--gutter), 4vw, 3rem);
 }
 
-main { padding-block: 36px 72px; }
+main { padding-block: 24px 96px; }
 
-section { margin-block: 60px; }
+section { margin-block: 72px; }
 
+/* ---------- o nome em pé ----------
+ *
+ * LÊ DE BAIXO PARA CIMA, como lombada de livro na estante daqui, e começa no
+ * pé da tela. `sideways-lr` faz isso sem girar nada; navegador que não o
+ * conhece fica com `vertical-rl`, que lê de cima para baixo — o nome
+ * continua inteiro e legível, só começa pelo topo.
+ *
+ * O CORPO SAI DA ALTURA DA TELA. O nome tem 10,8 em de comprimento nessa
+ * fonte; 8,4% da altura deixa ele caber com folga até numa janela baixa, e o
+ * teto em rem impede que um monitor alto o transforme em cartaz.
+ */
+.spine {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  align-self: start;
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  margin: 0;
+  padding: 2svh clamp(0.4rem, 2vw, 1.6rem) 2svh clamp(0.4rem, 1.4vw, 1.2rem);
+  writing-mode: vertical-rl;
+  writing-mode: sideways-lr;
+  font-family: var(--spine);
+  font-weight: 800;
+  font-size: min(8.4svh, 5.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.spine a { color: var(--accent); }
+.spine a:hover { color: var(--text); }
+
+/* ---------- cabeçalho de seção ---------- */
 .section-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 16px;
+  gap: 8px 24px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 10px;
+  margin-bottom: 28px;
 }
 .section-head h2 { margin: 0; }
 .section-head .more {
   font-family: var(--display);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-dim);
   white-space: nowrap;
-  border-bottom: 1px solid var(--border-strong);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.25em;
 }
-.section-head .more:hover { color: var(--accent); border-color: currentColor; }
+.section-head .more:hover { color: var(--accent); text-decoration-color: currentColor; }
 /* Irmã do `.more` para quando o que vai ali é uma frase, não um link curto.
    O `nowrap` do `.more` existe para "All projects" não quebrar em duas linhas;
    aplicado a uma frase, ele empurrava o /cv/ 7px além da tela do celular. */
@@ -39,38 +88,56 @@ section { margin-block: 60px; }
   font-size: 0.92rem;
   color: var(--text-dim);
   max-width: 100%;
+  white-space: normal;
+  text-decoration: none;
 }
-.section-sub { color: var(--text-dim); margin: -12px 0 20px; }
+.section-sub { color: var(--text-dim); margin: -16px 0 24px; }
 
 /* ---------- índice ----------
  *
- * A FORMA EM QUE O TRABALHO APARECE. Projetos e publicações eram uma grade de
- * caixas de 280px, todas do mesmo tamanho, cada uma com seu contorno e seu
- * canto redondo — o kit de cartão que todo portfólio gerado monta. A grade
- * também mentia sobre a hierarquia: treze projetos de importância diferente
- * ocupando treze retângulos idênticos.
- *
- * Agora é um índice: uma linha por trabalho, largura inteira, separadas por
- * fio de um pixel. Os fios se encostam — o `border-top` é do contêiner e o
- * `border-bottom` é de cada linha — então a lista fecha como tabela, e some
- * junto com a linha quando o filtro esconde uma.
- *
- * O resumo ganha a medida de leitura que a caixa de 280px não dava, e a
- * trilha vira um filete na margem esquerda, lido antes do título.
+ * UMA ENTRADA POR TRABALHO, SEPARADAS POR VAZIO. Antes eram linhas de fio de
+ * um pixel com um filete de cor à esquerda, todas da mesma forma — o índice
+ * de tabela que todo portfólio gerado monta. Agora o que separa uma entrada
+ * da outra é o espaço, e o que se lê primeiro é o nome do trabalho, na
+ * tinta dos nomes.
  */
 .index {
   display: grid;
-  border-top: 1px solid var(--border);
+  gap: 40px;
 }
 
 /* ---------- grade ----------
  *
- * Sobrou para o que é mesmo paralelo e cabe em cartão: as recomendações do
- * /cv/, os blocos de pesquisa. Não é mais a forma padrão de listar trabalho.
+ * Sobrou para o que é mesmo paralelo: as recomendações do /cv/, os blocos de
+ * pesquisa. Não é a forma padrão de listar trabalho.
  */
 .grid {
   display: grid;
-  gap: 16px;
+  gap: 32px 40px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+/* ---------- celular ----------
+ *
+ * O NOME DEITA E ABRE A PÁGINA. Em pé ele comeria 70px de uma tela de 375 em
+ * todas as páginas. Deitado, quebra em duas linhas e rola junto com o resto;
+ * quem fica preso no topo é só a faixa de navegação (`header.css`).
+ */
+@media (max-width: 760px) {
+  body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr auto;
+  }
+  body > :not(.spine):not(.skip-link) { grid-column: 1; }
+  .spine {
+    grid-row: 1;
+    position: static;
+    height: auto;
+    padding: 28px var(--gutter) 4px;
+    writing-mode: horizontal-tb;
+    font-size: clamp(2.4rem, 12vw, 3.4rem);
+    white-space: normal;
+  }
+  .wrap { padding-inline: var(--gutter); }
+}

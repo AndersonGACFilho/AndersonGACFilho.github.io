@@ -3,25 +3,15 @@
 
 /* ---------- base ----------
  *
- * DUAS FAMÍLIAS, COM PAPÉIS CLAROS. Archivo nos títulos e na interface;
- * Literata no corpo. A serifa não é enfeite: metade deste site é texto de
- * pesquisa, e ela dá peso a esse texto e separa sem esforço o que é título do
- * que é leitura.
+ * UMA FAMÍLIA, E A HIERARQUIA SAI DE PESO, CAIXA E ESPAÇO. Cooper Hewitt no
+ * título, no corpo e na interface. Não há segunda família de leitura para
+ * marcar o que é título: marca o negrito, o tamanho e o vazio em volta.
  *
- * O EIXO DE LARGURA É O GESTO DA IDENTIDADE, e é a única coisa aqui que não
- * é neutra. O assunto do site é uma tela 16:9 com um jogo rodando dentro;
- * título largo ecoa isso sem desenhar moldura, gradiente nem ícone. Por isso
- * o `font-stretch` cresce com o tamanho do título: o h1 abre em 118%, o h2
- * em 108%, e da interface para baixo tudo volta a 100%. Largura é hierarquia
- * aqui, junto com o corpo — não decoração aplicada por igual.
+ * NÃO HÁ TÍTULO GRANDE ALÉM DO NOME EM PÉ. O h1 de cada página é firme mas
+ * contido; o que é grande no site é só o nome, na coluna da esquerda.
  *
- * TRACKING QUASE ZERO, ao contrário da versão anterior. Grotesca estreita
- * pede tracking negativo para fechar o buraco entre as letras; grotesca
- * aberta já vem com a contraforma certa, e apertar só suja.
- *
- * A MONOESPAÇADA SÓ APARECE EM CÓDIGO. Antes ela rotulava toda migalha de
- * metadado — data de cartão, tag, chip, troca de idioma. Monoespaçada em
- * rótulo pequeno não informa nada; só imita painel de controle.
+ * A MONOESPAÇADA DE LEITURA SÓ APARECE EM CÓDIGO. A condensada do nome é
+ * monoespaçada também, mas mora em `--spine` e não sai da coluna.
  */
 
 *,
@@ -40,8 +30,7 @@ body {
   color: var(--text);
   font-family: var(--font);
   font-size: 17px;
-  /* serifa pede entrelinha maior que sans no mesmo tamanho */
-  line-height: 1.68;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -50,22 +39,13 @@ a:hover { color: var(--accent); }
 
 h1, h2, h3, h4 {
   font-family: var(--display);
-  line-height: 1.08;
-  letter-spacing: -0.005em;
-  font-weight: 600;
+  line-height: 1.1;
+  font-weight: 700;
   margin: 0 0 0.4em;
 }
-h1 {
-  font-size: clamp(2.3rem, 6vw, 3.6rem);
-  font-stretch: 118%;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-}
-h2 {
-  font-size: clamp(1.4rem, 2.8vw, 1.85rem);
-  font-stretch: 108%;
-}
-h3 { font-size: 1.1rem; }
+h1 { font-size: clamp(2.1rem, 4.4vw, 3rem); line-height: 1.04; }
+h2 { font-size: clamp(1.3rem, 2.2vw, 1.6rem); }
+h3 { font-size: 1.15rem; }
 p { margin: 0 0 1em; max-width: 68ch; }
 
 /* números em coluna e placares não podem dançar de largura */

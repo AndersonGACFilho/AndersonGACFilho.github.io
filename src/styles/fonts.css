@@ -10,51 +10,62 @@
  * Servidos da mesma origem, os arquivos entram no `preload` do `Base.astro` e
  * começam a baixar junto com o HTML.
  *
- * SÃO OS MESMOS BYTES do subset `latin` do Google (U+0000–00FF e companhia),
- * que cobre todo o português. Nada foi reamostrado nem teve eixo fixado — o
- * desenho na tela é o mesmo do original, só o caminho até ele mudou.
+ * COOPER HEWITT EM TUDO QUE SE LÊ, título, corpo e interface. Uma família só
+ * porque a hierarquia aqui sai de peso, caixa e espaço, e não de contraste
+ * entre serifa e grotesca. São os subsets `latin` do pacote do Fontsource,
+ * que cobrem todo o português. Chester Jenkins para o Cooper Hewitt,
+ * Smithsonian Design Museum; SIL OFL 1.1, licença em `OFL-cooper-hewitt.txt`.
  *
- * ARCHIVO TEM EIXO DE LARGURA, e é por isso que ela está aqui no lugar da
- * Bricolage Grotesque. O assunto do site é uma tela 16:9 com um jogo dentro;
- * título largo é a única coisa na tipografia que ecoa isso sem desenhar
- * nada. O eixo vai de 62% a 125% num arquivo só, então o `font-stretch` do
- * `@font-face` precisa declarar a faixa inteira — sem ele o navegador fixa a
- * largura normal e ignora qualquer `font-stretch` nas regras.
+ * MARTIAN MONO CONDENSED SÓ NO NOME EM PÉ, no ExtraBold. Condensada porque o
+ * nome inteiro tem de caber na altura da tela; monoespaçada porque cada letra
+ * ocupa o mesmo degrau da coluna. Arquivo da Evil Martians sem alteração
+ * (`evilmartians/mono`, commit 8babba8); SIL OFL 1.1, em `OFL-martian-mono.txt`.
  *
- * LITERATA NO CORPO porque metade deste site é texto de pesquisa para ler até
- * o fim, e ela foi desenhada e testada para leitura longa em tela, com eixo
- * óptico que engrossa a haste nos tamanhos pequenos (o `font-optical-sizing`
- * é automático por padrão, então não há regra para isso). Entrou no lugar da
- * Source Serif 4, que é a serifa padrão de qualquer projeto.
+ * Archivo e Literata continuam em `public/fonts/` só porque o
+ * `scripts/og-cover.html` ainda desenha a imagem de prévia com elas.
  *
- * Os nomes das famílias vêm do `tokens.css`, em `--display` e `--font`.
+ * Os nomes das famílias vêm do `tokens.css`, em `--display`, `--font` e
+ * `--spine`.
  */
 
 @font-face {
-  font-family: 'Archivo';
+  font-family: 'Cooper Hewitt';
   font-style: normal;
-  font-weight: 100 900;
-  font-stretch: 62% 125%;
+  font-weight: 300;
   font-display: swap;
-  src: url('/fonts/archivo-latin.woff2') format('woff2');
+  src: url('/fonts/cooper-hewitt-latin-300-normal.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Literata';
+  font-family: 'Cooper Hewitt';
   font-style: normal;
-  font-weight: 200 900;
+  font-weight: 400;
   font-display: swap;
-  src: url('/fonts/literata-latin.woff2') format('woff2');
+  src: url('/fonts/cooper-hewitt-latin-400-normal.woff2') format('woff2');
 }
 
-/* O itálico tem o eixo de peso inteiro, ao contrário do da Source Serif, que
- * só existia em regular — por isso ele some das exceções no corpo do site. */
 @font-face {
-  font-family: 'Literata';
+  font-family: 'Cooper Hewitt';
   font-style: italic;
-  font-weight: 200 900;
+  font-weight: 400;
   font-display: swap;
-  src: url('/fonts/literata-latin-italic.woff2') format('woff2');
+  src: url('/fonts/cooper-hewitt-latin-400-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cooper Hewitt';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/cooper-hewitt-latin-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Martian Mono Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/martian-mono-condensed-800.woff2') format('woff2');
 }
 
 /* Só aparece em código, então fica de fora do `preload`: a maioria das

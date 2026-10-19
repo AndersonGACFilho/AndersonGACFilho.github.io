@@ -11,24 +11,22 @@
  * :not([data-theme='dark']). Escolha explícita, gravada em data-theme pelo
  * script do Base.astro, ganha das duas.
  *
- * O CHÃO É CINZA NEUTRO, e isso é o argumento inteiro da identidade. A coisa
- * que só este site tem é um build rodando dentro da página: WebGL com a arte
- * do jogo. Fundo com tinta própria mente sobre a cor do que está por cima —
- * é o mesmo motivo pelo qual se monta foto sobre cinza neutro, e não sobre
- * creme. Aqui R, G e B são iguais em todos os tons de fundo, de propósito:
- * a única coisa cromática acima da dobra é o jogo.
+ * DUAS TINTAS, E O VERDE SÓ EM NOME PRÓPRIO. A direção veio de uma frase da
+ * home: a outra metade do trabalho "tem de ficar de pé". O nome fica em pé,
+ * na vertical, numa coluna à esquerda; o resto assenta embaixo dela. A tinta
+ * de leitura é um quase-branco esverdeado sobre verde quase preto; a segunda
+ * tinta, verde-folha, marca só o que é nome: o meu, o de cada frente, o de
+ * cada projeto. Tom de texto secundário (--text-dim, --text-faint) é a mesma
+ * tinta de leitura, mais apagada, e não uma terceira cor.
  *
- * A VERSÃO ANTERIOR ERA QUENTE pelo motivo oposto, e envelheceu mal. O
- * comentário dizia que quase-preto azulado com acento neon era o visual de
- * portfólio gerado, e era — em 2024. Hoje a assinatura mais reconhecível é
- * exatamente o que estava aqui: fundo creme perto de #f4f1ea, display
- * serifado e acento terracota perto de #d97757. A fuga virou o clichê.
+ * AS TRÊS TRILHAS TÊM A MESMA TINTA. Os três tons pastel em cima de cinza
+ * eram a assinatura mais reconhecível do visual gerado. `--fullstack`,
+ * `--gamedev` e `--research` continuam existindo porque `tracks.ts` os
+ * injeta pelo nome, mas valem o verde dos nomes: a trilha se lê pela palavra
+ * escrita, que sempre esteve lá, e não pela cor.
  *
- * AS TRILHAS SÃO TINTA, NÃO NEON. Os três tons continuam escolhidos contra a
- * matemática de contraste, não no olho: todos passam 4.5:1 sobre --bg e sobre
- * --bg-elev, nos dois temas, porque viram rótulo de texto e não só filete. O
- * que mudou é a saturação — sobre cinza neutro, tom chapado de caneta marca
- * mais do que tom fluorescente, e não disputa atenção com o jogo.
+ * O MATERIAL DE ENSINO PRECISA DE QUATRO TIPOS DISTINTOS de atividade, então
+ * `--esp-*` deixou de apontar para as trilhas e tem valor próprio.
  *
  * NADA AQUI SE MEDE NO OLHO: `npm run check:contrast` confere todos os pares
  * que a interface realmente pinta, nos dois temas, e falha com o número.
@@ -37,33 +35,33 @@
 :root {
   color-scheme: dark;
 
-  --bg: #1b1b1b;
-  --bg-elev: #242424;
-  --bg-hover: #2e2e2e;
-  --border: #3d3d3d;
+  --bg: #0f1a13;
+  --bg-elev: #15231a;
+  --bg-hover: #1b2d21;
+  --border: #2a3d30;
   /* contorno de controle: separado do --border decorativo porque precisa de
      3:1 para ser a fronteira visível de um botão ou campo */
-  --border-strong: #7d7d7d;
+  --border-strong: #6e8a74;
 
-  --text: #f0f0f0;
-  --text-dim: #b6b6b6;
-  --text-faint: #9c9c9c;
+  --text: #eaf0e8;
+  --text-dim: #bfcbbf;
+  --text-faint: #9fb09f;
 
-  --fullstack: #8fb2cc;
-  --gamedev: #ccab6e;
-  --research: #b3abd9;
-  --accent: var(--fullstack);
-  /* texto sobre o botao primario: vira com o tema, senao o ocre do modo
-     claro fica com texto quase preto por cima */
-  --on-gamedev: #1b1b1b;
+  /* a tinta dos nomes */
+  --accent: #8ccf86;
+  --fullstack: var(--accent);
+  --gamedev: var(--accent);
+  --research: var(--accent);
+  /* texto sobre o botao primario: vira com o tema */
+  --on-gamedev: #0f1a13;
 
   /* material de ensino */
   --feito: #7fc99b;
   --feito-fundo: color-mix(in srgb, var(--bg-elev) 86%, var(--feito) 14%);
-  --esp-pagina: var(--fullstack);
+  --esp-pagina: #9fc4de;
   --esp-quiz: var(--feito);
-  --esp-tarefa: var(--research);
-  --esp-arquivo: var(--gamedev);
+  --esp-tarefa: #c4b8e8;
+  --esp-arquivo: #dcc07e;
   --erro: #e59595;
 
   /* Canto vivo é decisão de identidade, não descuido: a página é a moldura de
@@ -76,8 +74,10 @@
   --maxw: 1080px;
   --gutter: 20px;
 
-  --display: 'Archivo', 'Segoe UI', sans-serif;
-  --font: 'Literata', Georgia, 'Times New Roman', serif;
+  /* Uma família para ler e para a interface; a condensada só no nome em pé. */
+  --display: 'Cooper Hewitt', 'Helvetica Neue', Arial, sans-serif;
+  --font: 'Cooper Hewitt', 'Helvetica Neue', Arial, sans-serif;
+  --spine: 'Martian Mono Condensed', ui-monospace, monospace;
   --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
@@ -86,28 +86,32 @@
   :root:not([data-theme='dark']) {
     color-scheme: light;
 
-    --bg: #e9e9e9;
-    --bg-elev: #f7f7f7;
-    --bg-hover: #dcdcdc;
-    --border: #c8c8c8;
-    --border-strong: #6c6c6c;
+    --bg: #eef2ec;
+    --bg-elev: #f8faf7;
+    --bg-hover: #e2e8df;
+    --border: #c8d1c5;
+    --border-strong: #66756a;
 
-    --text: #1a1a1a;
-    --text-dim: #4b4b4b;
-    --text-faint: #5d5d5d;
+    --text: #0f1a13;
+    --text-dim: #384a3d;
+    --text-faint: #4b5d50;
 
-    --fullstack: #2f5d80;
-    --gamedev: #7a5712;
-    --research: #5b4a8c;
-    --on-gamedev: #f7f7f7;
+    --accent: #2c6a2a;
+  --fullstack: var(--accent);
+  --gamedev: var(--accent);
+  --research: var(--accent);
+    --fullstack: var(--accent);
+    --gamedev: var(--accent);
+    --research: var(--accent);
+    --on-gamedev: #f8faf7;
 
     /* material de ensino */
     --feito: #2d6b45;
     --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
-    --esp-pagina: var(--fullstack);
+    --esp-pagina: #2f5d80;
     --esp-quiz: var(--feito);
-    --esp-tarefa: var(--research);
-    --esp-arquivo: var(--gamedev);
+    --esp-tarefa: #5b4a8c;
+    --esp-arquivo: #7a5712;
     --erro: #a33434;
   }
 }
@@ -116,55 +120,59 @@
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --bg: #e9e9e9;
-  --bg-elev: #f7f7f7;
-  --bg-hover: #dcdcdc;
-  --border: #c8c8c8;
-  --border-strong: #6c6c6c;
+  --bg: #eef2ec;
+  --bg-elev: #f8faf7;
+  --bg-hover: #e2e8df;
+  --border: #c8d1c5;
+  --border-strong: #66756a;
 
-  --text: #1a1a1a;
-  --text-dim: #4b4b4b;
-  --text-faint: #5d5d5d;
+  --text: #0f1a13;
+  --text-dim: #384a3d;
+  --text-faint: #4b5d50;
 
-  --fullstack: #2f5d80;
-  --gamedev: #7a5712;
-  --research: #5b4a8c;
-  --on-gamedev: #f7f7f7;
+  --accent: #2c6a2a;
+  --fullstack: var(--accent);
+  --gamedev: var(--accent);
+  --research: var(--accent);
+  --on-gamedev: #f8faf7;
 
   /* material de ensino */
   --feito: #2d6b45;
   --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
-  --esp-pagina: var(--fullstack);
+  --esp-pagina: #2f5d80;
   --esp-quiz: var(--feito);
-  --esp-tarefa: var(--research);
-  --esp-arquivo: var(--gamedev);
+  --esp-tarefa: #5b4a8c;
+  --esp-arquivo: #7a5712;
   --erro: #a33434;
+
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  --bg: #1b1b1b;
-  --bg-elev: #242424;
-  --bg-hover: #2e2e2e;
-  --border: #3d3d3d;
-  --border-strong: #7d7d7d;
+  --bg: #0f1a13;
+  --bg-elev: #15231a;
+  --bg-hover: #1b2d21;
+  --border: #2a3d30;
+  --border-strong: #6e8a74;
 
-  --text: #f0f0f0;
-  --text-dim: #b6b6b6;
-  --text-faint: #9c9c9c;
+  --text: #eaf0e8;
+  --text-dim: #bfcbbf;
+  --text-faint: #9fb09f;
 
-  --fullstack: #8fb2cc;
-  --gamedev: #ccab6e;
-  --research: #b3abd9;
-  --on-gamedev: #1b1b1b;
+  --accent: #8ccf86;
+  --fullstack: var(--accent);
+  --gamedev: var(--accent);
+  --research: var(--accent);
+  --on-gamedev: #0f1a13;
 
   /* material de ensino */
   --feito: #7fc99b;
   --feito-fundo: color-mix(in srgb, var(--bg-elev) 86%, var(--feito) 14%);
-  --esp-pagina: var(--fullstack);
+  --esp-pagina: #9fc4de;
   --esp-quiz: var(--feito);
-  --esp-tarefa: var(--research);
-  --esp-arquivo: var(--gamedev);
+  --esp-tarefa: #c4b8e8;
+  --esp-arquivo: #dcc07e;
   --erro: #e59595;
+
 }

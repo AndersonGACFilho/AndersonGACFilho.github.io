@@ -1,35 +1,40 @@
 ---
-/** The header every section page shares: kicker, title, intro, optional extras. */
+/** The header every section page shares: title, kicker, intro, optional extras. */
 interface Props {
   kicker?: string;
   title: string;
   intro?: string;
-  /** CSS colour for the kicker — usually a track colour. */
+  /** CSS colour for the kicker. Defaults to the reading ink. */
   accent?: string;
 }
-const { kicker, title, intro, accent = 'var(--text-faint)' } = Astro.props;
+const { kicker, title, intro, accent = 'var(--text)' } = Astro.props;
 ---
 
 <header class="page-head">
-  {kicker && <p class="kicker" style={`--kicker: ${accent}`}>{kicker}</p>}
   <h1>{title}</h1>
+  {kicker && <p class="kicker" style={`--kicker: ${accent}`}>{kicker}</p>}
   {intro && <p class="intro">{intro}</p>}
   <slot />
 </header>
 
 <style>
-  .page-head { margin-block: 28px 40px; max-width: 46rem; }
-  /* Era caixa-alta espaçada em monoespaçada — a moldura de template mais
-     reconhecível que existe, e que aparecia acima de todo título do site.
-     Agora é uma frase legível, na grotesca, com a cor da trilha. */
+  /* O topo da página fica vazio e o cabeçalho assenta mais embaixo: o peso
+     está no chão, como o nome em pé ao lado. */
+  .page-head { margin-block: clamp(40px, 12svh, 140px) 48px; max-width: 46rem; }
+  .page-head h1 { margin-bottom: 14px; text-wrap: balance; }
+  /* O KICKER VEIO PARA BAIXO DO TÍTULO. Em cima de todo título ele era a
+     moldura de template mais reconhecível do site. Embaixo, em caixa alta
+     pequena e espaçada, ele faz o papel da linha que diz o que eu faço, logo
+     depois do nome: é o único texto do site em caixa alta. */
   .kicker {
     font-family: var(--display);
     color: var(--kicker);
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin: 0 0 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    margin: 0 0 20px;
   }
-  .page-head h1 { margin-bottom: 12px; text-wrap: balance; }
-  .intro { color: var(--text-dim); font-size: 1.05rem; margin: 0; }
+  .intro { color: var(--text-dim); font-size: 1.06rem; margin: 0; }
 </style>

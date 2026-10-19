@@ -91,8 +91,7 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
        fica escondido atrás da capa enquanto o jogo não roda, e atrás do canvas
        depois que roda. O palco é a moldura de uma tela, e moldura não degrada. */
     background: var(--bg-elev);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-none);
     overflow: hidden;
   }
   .game-stage :global(iframe) { width: 100%; height: 100%; border: 0; display: block; }
