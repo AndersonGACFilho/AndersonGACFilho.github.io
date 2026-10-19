@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 08 — veja acontecer · UC2</title>
+<meta name="description" content="Apagar um empréstimo e perder um cliente junto, descobrir de quem cada coluna depende testando na própria tabela, e ver a dependência parcial e a transitiva nomeadas pelo caminho que percorrem.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 08 — veja acontecer</h1>
+  <p class="sub">A tabela do crime, rodando. Apague uma linha e veja o que some junto, descubra de quem cada coluna depende testando na própria tabela, e veja o caminho que separa a dependência parcial da transitiva. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas três, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. apagar uma linha e perder outra coisa ============ -->
+  <section class="demo">
+    <h2>1 · Apague um empréstimo, perca um cliente</h2>
+    <p class="intro">A tabela do crime é a única que existe: não há tabela de clientes nem de jogos. Escolha uma linha para apagar e <strong>diga antes</strong> o que você acha que vai acontecer.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="a8-painel-tab">
+        <h3><span>a tabela do crime</span><span class="selo" id="a8-selo-tab"></span></h3>
+        <div id="a8-tabela"></div>
+      </div>
+      <div class="painel" id="a8-painel-sabe">
+        <h3><span>o que a locadora ainda sabe</span><span class="selo" id="a8-selo-sabe"></span></h3>
+        <div id="a8-sabe"></div>
+        <p class="nota-painel">Esta lista não é uma tabela: é tudo o que dá para descobrir olhando a de ao lado.</p>
+      </div>
+    </div>
+
+    <div class="controles" id="a8-apagar" role="group" aria-label="Qual linha apagar"></div>
+    <p class="legenda" id="a8-legenda"></p>
+
+    <div class="registro">
+      <h3>O que você mandou, e o que o banco fez</h3>
+      <ol class="log" id="a8-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. de quem essa coluna depende ============ -->
+  <section class="demo">
+    <h2>2 · De quem essa coluna depende?</h2>
+    <p class="intro">O teste da pergunta, feito na tabela. Escolha uma coluna: a demonstração agrupa as linhas por cada candidato a determinante e mostra onde o valor <strong>se repete sem variar</strong>. É isso, e só isso, que significa “depende de”.</p>
+
+    <div class="camadas" id="a8-colunas" role="group" aria-label="Qual coluna testar"></div>
+
+    <div class="palco tres">
+      <div class="painel" id="a8-painel-emp">
+        <h3><span>por id_emprestimo</span><span class="selo" id="a8-selo-emp"></span></h3>
+        <div id="a8-grupo-emp"></div>
+      </div>
+      <div class="painel" id="a8-painel-jog">
+        <h3><span>por id_jogo</span><span class="selo" id="a8-selo-jog"></span></h3>
+        <div id="a8-grupo-jog"></div>
+      </div>
+      <div class="painel" id="a8-painel-cli">
+        <h3><span>por id_cliente</span><span class="selo" id="a8-selo-cli"></span></h3>
+        <div id="a8-grupo-cli"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a8-dep-legenda"></p>
+
+    <div class="registro">
+      <h3>O teste da pergunta, escrito</h3>
+      <ol class="log" id="a8-dep-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 3. parcial ou transitiva ============ -->
+  <section class="demo">
+    <h2>3 · Parcial ou transitiva? O caminho diz</h2>
+    <p class="intro">Os dois vilões têm o mesmo sintoma — repetição — e caminhos diferentes até a chave. Avance um caso por vez e acompanhe o caminho sendo percorrido.</p>
+
+    <figure class="diagrama">
+      <svg viewBox="0 0 700 150" role="img" id="a8-caminho-svg"
+           aria-label="Diagrama do caminho de uma coluna ate a chave: na dependencia total ela sai direto das duas partes da chave composta; na parcial, de uma parte so; na transitiva, ela passa por uma coluna do meio antes de chegar na chave.">
+        <g id="a8-caminho"></g>
+      </svg>
+      <figcaption id="a8-caminho-cap"></figcaption>
+    </figure>
+
+    <div class="palco duplo afastado">
+      <div class="painel" id="a8-painel-vilao">
+        <h3><span>o que a coluna repete</span><span class="selo" id="a8-selo-vilao"></span></h3>
+        <div id="a8-vilao"></div>
+      </div>
+      <div class="painel" id="a8-painel-conserto">
+        <h3><span>para onde ela vai</span><span class="selo" id="a8-selo-conserto"></span></h3>
+        <div id="a8-conserto"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a8-vilao-legenda"></p>
+
+    <div class="controles">
+      <button class="acao" type="button" id="a8-vilao-passo">Próximo caso</button>
+      <button class="acao secundaria" type="button" id="a8-vilao-zerar">Começar de novo</button>
+    </div>
+
+    <div class="registro">
+      <h3>Cada caso, e o remédio com nome</h3>
+      <ol class="log" id="a8-vilao-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 08</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

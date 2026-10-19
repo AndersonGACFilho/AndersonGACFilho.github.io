@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 424" width="1092" height="424"
-     role="img" aria-label="O DER completo da locadora: PLATAFORMA, JOGO, CLIENTE e EMPRESTIMO, com as chaves marcadas e o pe de galinha dizendo a cardinalidade de cada ligacao.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 356" width="1092" height="356"
+     role="img" aria-label="O DER da locadora: PLATAFORMA roda em JOGO e JOGO entra em EMPRESTIMO, as duas ligacoes N para N; CLIENTE faz EMPRESTIMO, 1 para N; e CLIENTE e de um ENDERECO, 1 para 1.">
   <style>
     /* @estilo-padrao */
     /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -195,83 +200,49 @@
     /* @fim */
   </style>
 
-  <rect class="ent" x="16" y="136" width="250" height="152" rx="4"/>
-  <path class="cab" d="M20 136 H262 a4 4 0 0 1 4 4 V180 H16 V140 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="141" y="165">PLATAFORMA</text>
-  <text class="t ent-tipo" x="32" y="204">int</text>
-  <text class="t ent-campo" x="108" y="204">*id_plataforma</text>
-  <rect class="faixa" x="17" y="216" width="248" height="36"/>
-  <text class="t ent-tipo" x="32" y="240">texto</text>
-  <text class="t ent-campo" x="108" y="240">nome</text>
-  <text class="t ent-tipo" x="32" y="276">texto</text>
-  <text class="t ent-campo" x="108" y="276">fabricante</text>
-  <rect class="ent-borda" x="16" y="136" width="250" height="152" rx="4"/>
-  <rect class="ent" x="376" y="16" width="300" height="188" rx="4"/>
-  <path class="cab" d="M380 16 H672 a4 4 0 0 1 4 4 V60 H376 V20 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="526" y="45">JOGO</text>
-  <text class="t ent-tipo" x="392" y="84">int</text>
-  <text class="t ent-campo" x="468" y="84">*id_jogo</text>
-  <rect class="faixa" x="377" y="96" width="298" height="36"/>
-  <text class="t ent-tipo" x="392" y="120">texto</text>
-  <text class="t ent-campo" x="468" y="120">titulo</text>
-  <text class="t ent-tipo" x="392" y="156">texto</text>
-  <text class="t ent-campo" x="468" y="156">genero</text>
-  <rect class="faixa" x="377" y="168" width="298" height="36"/>
-  <text class="t ent-tipo" x="392" y="192">int</text>
-  <text class="t ent-campo" x="468" y="192">id_plataforma</text>
-  <text class="t ent-chave" x="660" y="192">CE/FK</text>
-  <rect class="ent-borda" x="376" y="16" width="300" height="188" rx="4"/>
-  <rect class="ent" x="376" y="256" width="300" height="152" rx="4"/>
-  <path class="cab" d="M380 256 H672 a4 4 0 0 1 4 4 V300 H376 V260 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="526" y="285">CLIENTE</text>
-  <text class="t ent-tipo" x="392" y="324">int</text>
-  <text class="t ent-campo" x="468" y="324">*id_cliente</text>
-  <rect class="faixa" x="377" y="336" width="298" height="36"/>
-  <text class="t ent-tipo" x="392" y="360">texto</text>
-  <text class="t ent-campo" x="468" y="360">nome</text>
-  <text class="t ent-tipo" x="392" y="396">texto</text>
-  <text class="t ent-campo" x="468" y="396">telefone</text>
-  <rect class="ent-borda" x="376" y="256" width="300" height="152" rx="4"/>
-  <rect class="ent" x="796" y="118" width="280" height="188" rx="4"/>
-  <path class="cab-q" d="M800 118 H1072 a4 4 0 0 1 4 4 V162 H796 V122 a4 4 0 0 1 4 -4 Z"/>
-  <text class="t ent-nome" x="936" y="147">EMPRESTIMO</text>
-  <text class="t ent-tipo" x="812" y="186">int</text>
-  <text class="t ent-campo" x="888" y="186">*id_emprestimo</text>
-  <rect class="faixa" x="797" y="198" width="278" height="36"/>
-  <text class="t ent-tipo" x="812" y="222">int</text>
-  <text class="t ent-campo" x="888" y="222">id_jogo</text>
-  <text class="t ent-chave" x="1060" y="222">CE/FK</text>
-  <text class="t ent-tipo" x="812" y="258">int</text>
-  <text class="t ent-campo" x="888" y="258">id_cliente</text>
-  <text class="t ent-chave" x="1060" y="258">CE/FK</text>
-  <rect class="faixa" x="797" y="270" width="278" height="36"/>
-  <text class="t ent-tipo" x="812" y="294">data</text>
-  <text class="t ent-campo" x="888" y="294">data_retirada</text>
-  <rect class="ent-borda" x="796" y="118" width="280" height="188" rx="4"/>
-  <path class="lig" d="M280 200 V224"/>
-  <path class="lig" d="M292 200 V224"/>
-  <path class="lig" d="M358 110 L376 98 M358 110 L376 110 M358 110 L376 122"/>
-  <circle class="lig-o" cx="348 " cy="110" r="6.5"/>
-  <path class="lig" d="M302 212 H311 Q321 212 321 202"/>
-  <path class="lig" d="M321 202 V179"/>
-  <path class="lig" d="M321 143 V120"/>
-  <text class="t verbo" x="321" y="167">possui</text>
-  <path class="lig" d="M321 120 Q321 110 331 110 H340"/>
-  <path class="lig" d="M690 98 V122"/>
-  <path class="lig" d="M702 98 V122"/>
-  <path class="lig" d="M778 182 L796 170 M778 182 L796 182 M778 182 L796 194"/>
-  <circle class="lig-o" cx="768 " cy="182" r="6.5"/>
-  <path class="lig" d="M712 110 H726 Q736 110 736 120"/>
-  <path class="lig" d="M736 120 V172"/>
-  <text class="t verbo" x="736" y="84">aparece em</text>
-  <path class="lig" d="M736 172 Q736 182 746 182 H760"/>
-  <path class="lig" d="M690 320 V344"/>
-  <path class="lig" d="M702 320 V344"/>
-  <path class="lig" d="M778 242 L796 230 M778 242 L796 242 M778 242 L796 254"/>
-  <circle class="lig-o" cx="768 " cy="242" r="6.5"/>
-  <path class="lig" d="M712 332 H726 Q736 332 736 322"/>
-  <path class="lig" d="M736 322 V305"/>
-  <path class="lig" d="M736 269 V252"/>
-  <text class="t verbo" x="736" y="293">faz</text>
-  <path class="lig" d="M736 252 Q736 242 746 242 H760"/>
+  <rect class="ent-so" x="16" y="16" width="215" height="92" rx="6"/>
+  <path class="barra" d="M25 16 H20 a4 4 0 0 0 -4 4 V104 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="128" y="72">PLATAFORMA</text>
+  <rect class="ent-so" x="361" y="16" width="240" height="92" rx="6"/>
+  <path class="barra" d="M370 16 H365 a4 4 0 0 0 -4 4 V104 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="485.5" y="72">JOGO</text>
+  <rect class="ent-so" x="16" y="248" width="215" height="92" rx="6"/>
+  <path class="barra" d="M25 248 H20 a4 4 0 0 0 -4 4 V336 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="128" y="304">ENDERECO</text>
+  <rect class="ent-so" x="361" y="248" width="240" height="92" rx="6"/>
+  <path class="barra" d="M370 248 H365 a4 4 0 0 0 -4 4 V336 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="485.5" y="304">CLIENTE</text>
+  <rect class="ent-so" x="731" y="132" width="215" height="92" rx="6"/>
+  <path class="barra q" d="M740 132 H735 a4 4 0 0 0 -4 4 V220 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="843" y="188">EMPRESTIMO</text>
+  <path class="lig" d="M253 62 L231 47 M253 62 L231 62 M253 62 L231 77"/>
+  <circle class="lig-o" cx="264 " cy="62" r="8"/>
+  <path class="lig" d="M339 62 L361 47 M339 62 L361 62 M339 62 L361 77"/>
+  <circle class="lig-o" cx="328 " cy="62" r="8"/>
+  <path class="lig" d="M275 62 H317"/>
+  <text class="t verbo" x="296" y="30">roda em</text>
+  <path class="lig" d="M248 279 V309"/>
+  <path class="lig" d="M262 279 V309"/>
+  <path class="lig" d="M344 279 V309"/>
+  <path class="lig" d="M330 279 V309"/>
+  <path class="lig" d="M275 294 H317"/>
+  <text class="t verbo" x="296" y="262">é de</text>
+  <path class="lig" d="M623 62 L601 47 M623 62 L601 62 M623 62 L601 77"/>
+  <circle class="lig-o" cx="634 " cy="62" r="8"/>
+  <path class="lig" d="M709 162 L731 147 M709 162 L731 162 M709 162 L731 177"/>
+  <circle class="lig-o" cx="698 " cy="162" r="8"/>
+  <path class="lig" d="M645 62 H656 Q666 62 666 72"/>
+  <path class="lig" d="M666 72 V84"/>
+  <path class="lig" d="M666 140 V152"/>
+  <text class="t verbo" x="666" y="118">entra em</text>
+  <path class="lig" d="M666 152 Q666 162 676 162 H687"/>
+  <path class="lig" d="M618 279 V309"/>
+  <path class="lig" d="M632 279 V309"/>
+  <path class="lig" d="M709 194 L731 179 M709 194 L731 194 M709 194 L731 209"/>
+  <circle class="lig-o" cx="698 " cy="194" r="8"/>
+  <path class="lig" d="M645 294 H656 Q666 294 666 284"/>
+  <path class="lig" d="M666 284 V272"/>
+  <path class="lig" d="M666 216 V204"/>
+  <text class="t verbo" x="666" y="250">faz</text>
+  <path class="lig" d="M666 204 Q666 194 676 194 H687"/>
 </svg>

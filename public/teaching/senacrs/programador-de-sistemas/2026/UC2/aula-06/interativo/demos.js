@@ -89,9 +89,9 @@
         seloE: '3 linhas',
         marcaE: 'bom',
         linhasE: [
-          ['#1 · cliente 1 · jogo 10', '02/10'],
-          ['#2 · cliente 1 · jogo 20', '05/10'],
-          ['#3 · cliente 2 · jogo 10', '05/10'],
+          ['#1 · empréstimo 1 · jogo 10', 'R$ 12,00'],
+          ['#1 · empréstimo 1 · jogo 11', 'R$ 8,00'],
+          ['#2 · empréstimo 2 · jogo 10', 'R$ 12,00'],
         ],
         perdidaE: -1,
         titD: 'a pergunta do balcão',
@@ -198,7 +198,7 @@
         tab: 'emprestimo',
         selo: 'nomeia o acontecimento',
         usos: [
-          'emprestimo (id*, id_cliente CE/FK, id_jogo CE/FK, data_retirada)',
+          'item_emprestimo (id_emprestimo* CE/FK, id_jogo* CE/FK, preco_pago)',
           'CREATE TABLE emprestimo (\n  id_emprestimo SERIAL PRIMARY KEY,\n  ...\n);',
           'SELECT * FROM emprestimo\n WHERE data_retirada > \'2026-10-01\';',
         ],
@@ -333,12 +333,12 @@
           { nome: 'titulo', marca: '' },
           { nome: 'preco', marca: '' },
           { nome: 'genero', marca: '' },
-          { nome: 'id_plataforma', marca: '' },
+          { nome: 'preco_diaria', marca: '' },
           { nome: 'id_jogo_base', marca: 'novo' },
         ],
         nota: 'id_jogo_base é uma chave estrangeira para a própria tabela jogo — e fica vazia nos jogos que não são DLC.',
         legenda:
-          'Uma DLC é um jogo: tem título, preço, plataforma, e é alugada como qualquer outro. O que ela tem a mais é um jogo do qual depende — e isso é uma coluna, não uma tabela. Quantos níveis quiser, sem tabela nova.',
+          'Uma DLC é um jogo: tem título, preço, roda nas mesmas plataformas, e é alugada como qualquer outro. O que ela tem a mais é um jogo do qual depende — e isso é uma coluna, não uma tabela. Quantos níveis quiser, sem tabela nova.',
         registro: { ator: 'banco', texto: 'uma coluna resolveu os três níveis', marca: 'bom' },
       },
     ];

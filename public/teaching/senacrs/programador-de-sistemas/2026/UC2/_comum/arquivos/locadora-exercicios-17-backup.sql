@@ -101,8 +101,8 @@
 --
 -- E agora a pergunta fina: insira um empréstimo novo e veja o id.
 --
---     INSERT INTO emprestimo (id_cliente, id_jogo, data_retirada, data_prevista)
---     VALUES (1, 1, '2026-11-03', '2026-11-06') RETURNING id_emprestimo;
+--     INSERT INTO emprestimo (id_cliente, data_retirada, data_prevista)
+--     VALUES (1, '2026-11-03', '2026-11-06') RETURNING id_emprestimo;
 --
 -- Meu palpite — o contador do SERIAL também voltou, ou recomeçou do 1? ____
 --

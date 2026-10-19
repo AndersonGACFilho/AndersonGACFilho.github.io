@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 320" width="1092" height="320"
-     role="img" aria-label="As tabelas jogo e plataforma se cruzam pela chave estrangeira e produzem o resultado do INNER JOIN: God of War com PlayStation 5, e Zelda com Nintendo Switch.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 344" width="1092" height="344"
+     role="img" aria-label="As tabelas emprestimo e cliente se cruzam pela chave estrangeira id_cliente e produzem o resultado do INNER JOIN: o emprestimo 7 com Ana Souza, e o 8 com Bruno Lima.">
   <style>
     /* @estilo-padrao */
     /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -201,48 +206,48 @@
     </marker>
   </defs>
   <text class="t eyebrow" x="20" y="28">DUAS TABELAS</text>
-  <path class="regua" d="M20 39 H472"/>
+  <path class="regua" d="M20 43 H472"/>
   <text class="t eyebrow" x="620" y="28">O QUE O INNER JOIN DEVOLVE</text>
-  <path class="regua" d="M620 39 H1072"/>
-  <path class="cartao" d="M29 51 H463 a9 9 0 0 1 9 9 V146 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 51 H24 a4 4 0 0 0 -4 4 V151 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 55) scale(0.4167)">
+  <path class="regua" d="M620 43 H1072"/>
+  <path class="cartao" d="M29 35 H463 a9 9 0 0 1 9 9 V146 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 35 H24 a4 4 0 0 0 -4 4 V151 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(45 35) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="12" y="18" width="72" height="60" rx="7"/>
     <path d="M12 38h72" stroke="currentColor"/>
     <path d="M12 58h72M40 38v40M62 38v40"/>
     </g>
   </g>
-  <text class="t nome" x="103" y="85">tabela jogo</text>
-  <text class="t glosa" x="103" y="111">10 · God of War · plat 1</text>
-  <text class="t glosa" x="103" y="135">11 · Zelda · plat 2</text>
-  <path class="cartao" d="M29 173 H463 a9 9 0 0 1 9 9 V268 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 173 H24 a4 4 0 0 0 -4 4 V273 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 177) scale(0.4167)">
+  <text class="t nome" x="99" y="73">tabela emprestimo</text>
+  <text class="t glosa" x="99" y="107">7 · cliente 1 · 20/10</text>
+  <text class="t glosa" x="99" y="139">8 · cliente 2 · 21/10</text>
+  <path class="cartao" d="M29 173 H463 a9 9 0 0 1 9 9 V284 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 173 H24 a4 4 0 0 0 -4 4 V289 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(45 173) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="12" y="18" width="72" height="60" rx="7"/>
     <path d="M12 38h72" stroke="currentColor"/>
     <path d="M12 58h72M40 38v40M62 38v40"/>
     </g>
   </g>
-  <text class="t nome" x="103" y="207">tabela plataforma</text>
-  <text class="t glosa" x="103" y="233">1 · PlayStation 5</text>
-  <text class="t glosa" x="103" y="257">2 · Nintendo Switch</text>
-  <path class="seta" d="M480 103 H518 Q528 103 528 113"/>
-  <path class="seta" d="M480 225 H518 Q528 225 528 215"/>
-  <path class="seta" d="M528 113 V215"/>
+  <text class="t nome" x="99" y="211">tabela cliente</text>
+  <text class="t glosa" x="99" y="245">1 · Ana Souza</text>
+  <text class="t glosa" x="99" y="277">2 · Bruno Lima</text>
+  <path class="seta" d="M480 95 H518 Q528 95 528 105"/>
+  <path class="seta" d="M480 233 H518 Q528 233 528 223"/>
+  <path class="seta" d="M528 105 V223"/>
   <path class="seta" d="M528 164 H612" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="574" y="150">pela chave</text>
-  <path class="cartao q" d="M629 102 H1063 a9 9 0 0 1 9 9 V217 a9 9 0 0 1 -9 9 H629 Z"/>
-  <path class="barra q" d="M629 102 H624 a4 4 0 0 0 -4 4 V222 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(645 116) scale(0.4167)">
+  <text class="t seta-rot" x="588" y="72">pela chave</text>
+  <path class="cartao q" d="M629 96 H1063 a9 9 0 0 1 9 9 V223 a9 9 0 0 1 -9 9 H629 Z"/>
+  <path class="barra q" d="M629 96 H624 a4 4 0 0 0 -4 4 V228 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(645 104) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="36" cy="48" r="26"/>
     <circle cx="60" cy="48" r="26"/>
     <path d="M48 24.9A26 26 0 0 1 48 71.1A26 26 0 0 1 48 24.9Z" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="703" y="146">resultado</text>
-  <text class="t glosa" x="703" y="172">God of War · PlayStation 5</text>
-  <text class="t glosa" x="703" y="196">Zelda · Nintendo Switch</text>
+  <text class="t nome" x="699" y="142">resultado</text>
+  <text class="t glosa" x="699" y="176">7 · Ana Souza · 20/10</text>
+  <text class="t glosa" x="699" y="208">8 · Bruno Lima · 21/10</text>
 </svg>

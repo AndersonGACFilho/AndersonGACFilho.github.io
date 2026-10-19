@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1062 234" width="1062" height="234"
+     role="img" aria-label="Em ENDERECO a chave estrangeira id_cliente e marcada CE barra FK e UNICO: e o unico que impede o mesmo cliente de ter um segundo endereco, e e so isso que separa o 1 para 1 do 1 para N.">
+  <style>
+    /* @estilo-padrao */
+    /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
+     *
+     * POR QUE existe: SVG externo carregado por `img` não importa folha de estilo —
+     * nem `xml-stylesheet`, nem `@import`, nem `link`. Cada arquivo precisa carregar
+     * o próprio bloco. Copiar isto em 28 arquivos faria qualquer ajuste de paleta
+     * virar 28 edições, e uma ficaria para trás.
+     *
+     * Fonte única aqui; `scripts/estilo-diagrama.mjs` injeta entre os marcadores.
+     * Edite AQUI e rode `npm run diagramas:estilo`.
+     *
+     * ---------------------------------------------------------------------------
+     * A IDENTIDADE: a barra esquerda.
+     *
+     * O deck marca o que importa com uma régua laranja à esquerda e o canto direito
+     * arredondado — está no `.atencao` e no título de "mão na massa" do senac.css.
+     * O diagrama usa o mesmo gesto: toda caixa é um cartão com régua à esquerda,
+     * azul quando é conteúdo e laranja quando é o ponto do slide.
+     *
+     * O que veio antes era retângulo azul chapado com texto branco centrado: lia
+     * como fluxograma de ferramenta, não como material desta UC.
+     * ---------------------------------------------------------------------------
+     *
+     * As razões de contraste estão medidas em PADRAO-DIAGRAMA.md.
+     */
+
+    .lig { stroke-width: 1.6; fill: none; }
+    .lig-o { stroke-width: 1.6; }
+    .seta { stroke-width: 1.8; fill: none; }
+    .ent-borda { fill: none; stroke-width: 1.5; }
+    .caixa { stroke-width: 1.5; }
+
+    .t    { font-family: 'Raleway', 'Segoe UI', 'Noto Sans', system-ui, sans-serif; fill: #12243a; }
+    .mono { font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace; }
+
+    /* ---------- tipografia ----------
+       Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
+       Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
+
+    /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
+       sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
+       dentro de moldura e sujava o desenho. */
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
+    .regua   { stroke-width: 1; fill: none; }
+
+    /* ---------- cartões ----------
+       Largura igual entre irmãos é a razão de desenhar à mão: quem escreve a
+       geometria escreve o mesmo `width`, e não há motor de layout para discordar. */
+    /* O simbolo segue a cor do cartao: azul no comum, laranja no que carrega o
+       ponto do slide. Os icones da pasta `_comum/icones/mono` desenham com
+       `stroke: #FFFFFF`, e o embutidor troca por `currentColor` — dai o `color`
+       aqui mandar em todos eles. */
+
+    /* Caixa cheia: para dado, não para conceito. A tabelinha de células usa isto. */
+
+    /* ---------- notacao de DER ----------
+       A faixa do atributo e um retangulo de largura INTEIRA. O Mermaid pintava so
+       sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
+       coluninha nao acompanhava a faixa da linha dela. */
+
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
+
+    /* ---------- selo numerado ---------- */
+
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+
+    /*
+     * ---------- o relógio ----------
+     *
+     *    0s - 2s   repouso no estado final   -- e o quadro que o PDF pega
+     *    2s        RESET
+     *    2s -10s   ate quatro turnos de 2s
+     *   10s -12s   repouso no estado final
+     *
+     * Estado se marca por PORCENTAGEM nos keyframes de cada diagrama; atraso
+     * deslocaria o relogio inteiro e cada painel reiniciaria num instante
+     * diferente. O realce abaixo pode usar atraso porque nao guarda estado.
+     *
+     * Nenhuma animacao usa `animation-fill-mode`: durante o atraso o navegador
+     * mostra o estilo normal, que e o estado final. E por isso que o quadro zero
+     * -- o do PDF -- sai completo.
+     */
+    @keyframes acende-barra  { 0%, 16.6% { fill: #e85d00; } 16.7%, 100% { fill: #01337e; } }
+    @keyframes acende-cartao { 0%, 16.6% { fill: #fff1e6; } 16.7%, 100% { fill: #f2f6fa; } }
+    @keyframes acende-selo   { 0%, 16.6% { fill: #ff7809; } 16.7%, 100% { fill: #4a5f75; } }
+    @keyframes acende-numero { 0%, 16.6% { fill: #10161c; } 16.7%, 100% { fill: #ffffff; } }
+    @keyframes acende-tinta  { 0%, 16.6% { fill: #b34700; font-weight: 700; } 16.7%, 100% { fill: #12243a; font-weight: 400; } }
+    @keyframes acende-traco  { 0%, 16.6% { stroke: #e85d00; stroke-width: 3; } 16.7%, 100% { stroke: #7d8b99; stroke-width: 1.8; } }
+
+    .realce .barra  { animation: acende-barra 12s linear infinite; }
+    .realce .cartao { animation: acende-cartao 12s linear infinite; }
+    .realce .selo   { animation: acende-selo 12s linear infinite; }
+    .realce .numero { animation: acende-numero 12s linear infinite; }
+    .tinta          { animation: acende-tinta 12s linear infinite; }
+    .traco          { animation: acende-traco 12s linear infinite; }
+
+    /* O atraso precisa VENCER o atalho `animation` em especificidade: o atalho
+       reescreve `animation-delay` para zero. `.realce .barra` vale 0-2-0, entao um
+       seletor 0-1-0 e ignorado e todos os turnos acendem juntos. Foi o primeiro
+       defeito do primeiro diagrama animado. */
+    .realce.v1 .barra, .realce.v1 .cartao, .realce.v1 .selo, .realce.v1 .numero, .t1.tinta, .t1.traco { animation-delay: 2s; }
+    .realce.v2 .barra, .realce.v2 .cartao, .realce.v2 .selo, .realce.v2 .numero, .t2.tinta, .t2.traco { animation-delay: 4s; }
+    .realce.v3 .barra, .realce.v3 .cartao, .realce.v3 .selo, .realce.v3 .numero, .t3.tinta, .t3.traco { animation-delay: 6s; }
+    .realce.v4 .barra, .realce.v4 .cartao, .realce.v4 .selo, .realce.v4 .numero, .t4.tinta, .t4.traco { animation-delay: 8s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .realce .barra, .realce .cartao, .realce .selo, .realce .numero,
+      .tinta, .traco, .anima { animation: none; }
+    }
+    /* ===========================================================================
+       VARIANTE SOLTA: o diagrama direto sobre o slide, sem o cartao branco.
+       Vale so para o SVG cuja raiz tem class="solto".
+
+       POR QUE o painel e ESCURO. A primeira tentativa foi painel de branco a 10%:
+       integrava, mas media 1,24:1 contra o slide -- invisivel -- e ainda BAIXAVA o
+       contraste do texto, porque branco sobre aquele painel dava 6,03 enquanto
+       branco direto no azul dava 7,46.
+
+       Projetor emite luz: ele nao projeta escuro, o preto e a luz da sala. Modelando
+       a luz ambiente como um piso de luminancia (0 sala escura, 0,10 com luz, 0,25
+       sala clara ou projetor fraco), o painel claro reprovava em AA com a luz acesa:
+
+         painel claro, nome branco      6,03   4,01   2,67
+         painel escuro, nome branco    18,94   6,78   3,45
+         cartao branco (para comparar) 14,44   5,90   3,16
+
+       O painel escuro passa ate o cartao branco nas tres condicoes, e fica visivel
+       (2,54:1 contra o slide). Por isso ele, e nao o claro.
+       =========================================================================== */
+    .cartao   { fill: #01102a; }
+    .cartao.q { fill: #2b1708; }
+    .barra    { fill: #9cc9ff; }
+    .barra.q  { fill: #ffb065; }
+    .nome     { fill: #ffffff; }
+    .glosa,
+    .nota,
+    .dica,
+    .seta-rot { fill: #cfe0f5; }
+    .eyebrow  { fill: #ffc287; }
+    .regua    { stroke: rgba(255, 255, 255, 0.28); }
+    .seta     { stroke: #cfe0f5; }
+    .ico      { color: #9cc9ff; }
+    .q + .ico, .ico.q { color: #ffb065; }
+    .selo     { fill: rgba(255, 255, 255, 0.24); }
+    .numero   { fill: #ffffff; }
+    .caixa    { fill: #9cc9ff; stroke: #9cc9ff; }
+    .morta    { fill: rgba(255, 255, 255, 0.12); }
+    .rot,
+    .rot-min  { fill: #01102a; }
+
+    /* DER na variante solta */
+    .ent       { fill: #01102a; }
+    .ent-borda { stroke: rgba(255, 255, 255, 0.34); }
+    .faixa     { fill: rgba(255, 255, 255, 0.06); }
+    .cab       { fill: #9cc9ff; }
+    .cab-q     { fill: #ffb065; }
+    .ent-nome  { fill: #01102a; }
+    .ent-tipo  { fill: #8fb3d9; }
+    .ent-campo { fill: #ffffff; }
+    .ent-chave { fill: #ffc287; }
+    .lig       { stroke: #cfe0f5; }
+    .lig-o     { fill: none; stroke: #cfe0f5; }
+    .verbo     { fill: #cfe0f5; }
+    .verbo-bg  { fill: none; }
+    /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
+    .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+
+    @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
+    @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
+    .realce .barra  { animation: acende-barra-solta 12s linear infinite; }
+    .realce .cartao { animation: acende-cartao-solto 12s linear infinite; }
+    /* @fim */
+  </style>
+
+  <rect class="ent" x="16" y="40" width="380" height="154" rx="4"/>
+  <path class="cab" d="M20 40 H392 a4 4 0 0 1 4 4 V98 H16 V44 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="206" y="78">CLIENTE</text>
+  <text class="t ent-tipo" x="34" y="130">int</text>
+  <text class="t ent-campo" x="128" y="130">*id_cliente</text>
+  <rect class="faixa" x="17" y="146" width="378" height="48"/>
+  <text class="t ent-tipo" x="34" y="178">texto</text>
+  <text class="t ent-campo" x="128" y="178">nome</text>
+  <rect class="ent-borda" x="16" y="40" width="380" height="154" rx="4"/>
+  <rect class="ent" x="586" y="16" width="460" height="202" rx="4"/>
+  <path class="cab" d="M590 16 H1042 a4 4 0 0 1 4 4 V74 H586 V20 a4 4 0 0 1 4 -4 Z"/>
+  <text class="t ent-nome" x="816" y="54">ENDERECO</text>
+  <text class="t ent-tipo" x="604" y="106">int</text>
+  <text class="t ent-campo" x="698" y="106">*id_endereco</text>
+  <rect class="faixa" x="587" y="122" width="458" height="48"/>
+  <text class="t ent-tipo" x="604" y="154">int</text>
+  <text class="t ent-campo" x="698" y="154">id_cliente</text>
+  <text class="t ent-chave" x="1028" y="154">CE/FK UNICO</text>
+  <text class="t ent-tipo" x="604" y="202">texto</text>
+  <text class="t ent-campo" x="698" y="202">logradouro</text>
+  <rect class="ent-borda" x="586" y="16" width="460" height="202" rx="4"/>
+  <path class="lig" d="M413 102 V132"/>
+  <path class="lig" d="M427 102 V132"/>
+  <path class="lig" d="M569 102 V132"/>
+  <path class="lig" d="M555 102 V132"/>
+  <path class="lig" d="M440 117 H451.8"/>
+  <path class="lig" d="M530.2 117 H542"/>
+  <text class="t verbo" x="491" y="123">é de</text>
+</svg>

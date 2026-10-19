@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 226" width="1092" height="226"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 248" width="1092" height="248"
      role="img" aria-label="Na maquina do aluno ficam duas coisas: o pgAdmin, que e a janela que ele abre, e o PostgreSQL, que e o servidor em segundo plano na porta 5432 e e quem guarda os arquivos do banco no disco.">
   <style>
     /* @estilo-padrao */
@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -201,22 +206,22 @@
     </marker>
   </defs>
   <text class="t eyebrow" x="20" y="28">O QUE FICA NA SUA MÁQUINA</text>
-  <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao" d="M29 84 H331 a9 9 0 0 1 9 9 V187 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 84 H24 a4 4 0 0 0 -4 4 V192 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 92) scale(0.4167)">
+  <path class="regua" d="M20 43 H1072"/>
+  <path class="cartao" d="M29 78 H351 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 78 H24 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(45 80) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="10" y="18" width="76" height="60" rx="8"/>
     <path d="M10 34h76"/>
     <path d="M26 50l10 9-10 9M44 68h22" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="103" y="122">pgAdmin</text>
-  <text class="t glosa" x="103" y="148">o cliente — a janela</text>
-  <text class="t glosa" x="103" y="172">que você abre</text>
-  <path class="cartao q" d="M401 74 H703 a9 9 0 0 1 9 9 V197 a9 9 0 0 1 -9 9 H401 Z"/>
-  <path class="barra q" d="M401 74 H396 a4 4 0 0 0 -4 4 V202 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(417 92) scale(0.4167)">
+  <text class="t nome" x="99" y="118">pgAdmin</text>
+  <text class="t glosa" x="99" y="152">o cliente — a janela</text>
+  <text class="t glosa" x="99" y="184">que você abre</text>
+  <path class="cartao q" d="M421 68 H755 a9 9 0 0 1 9 9 V203 a9 9 0 0 1 -9 9 H421 Z"/>
+  <path class="barra q" d="M421 68 H416 a4 4 0 0 0 -4 4 V208 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(437 80) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="38" cy="22" rx="26" ry="9.5"/>
     <path d="M12 22v44c0 5.2 11.6 9.5 26 9.5 4 0 7.9-.3 11.3-.9"/>
@@ -225,12 +230,12 @@
     <path d="M69 47v7M69 76v7M87 65h-7M58 65h-7M81.7 52.3l-5 5M61.3 72.7l-5 5M81.7 77.7l-5-5M61.3 57.3l-5-5" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="475" y="122">PostgreSQL</text>
-  <text class="t glosa" x="475" y="148">o servidor, em segundo</text>
-  <text class="t glosa" x="475" y="172">plano, na porta 5432</text>
-  <path class="cartao" d="M773 84 H1063 a9 9 0 0 1 9 9 V187 a9 9 0 0 1 -9 9 H773 Z"/>
-  <path class="barra" d="M773 84 H768 a4 4 0 0 0 -4 4 V192 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(789 120) scale(0.4167)">
+  <text class="t nome" x="491" y="118">PostgreSQL</text>
+  <text class="t glosa" x="491" y="152">o servidor, em segundo</text>
+  <text class="t glosa" x="491" y="184">plano, na porta 5432</text>
+  <path class="cartao" d="M821 78 H1063 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H821 Z"/>
+  <path class="barra" d="M821 78 H816 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(837 114) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="8" y="26" width="80" height="44" rx="8"/>
     <circle cx="34" cy="48" r="14"/>
@@ -238,9 +243,9 @@
     <path d="M60 40h18M60 56h18" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="847" y="135">Arquivos do banco</text>
-  <text class="t glosa" x="847" y="161">no disco</text>
-  <path class="seta" d="M348 140 H384" marker-end="url(#ponta)"/>
-  <path class="seta" d="M720 140 H756" marker-end="url(#ponta)"/>
+  <text class="t nome" x="891" y="134">Arquivos</text>
+  <text class="t glosa" x="891" y="168">no disco</text>
+  <path class="seta" d="M368 140 H404" marker-end="url(#ponta)"/>
+  <path class="seta" d="M772 140 H804" marker-end="url(#ponta)"/>
   <text class="t seta-rot" x="366" y="64">pergunta</text>
 </svg>

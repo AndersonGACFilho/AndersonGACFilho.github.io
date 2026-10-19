@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -211,10 +216,10 @@
   <path class="regua" d="M20 54 H1072"/>
   <text class="t dica" x="20" y="82">Você escreve nesta ordem. O banco executa na de baixo.</text>
   <g class="realce v1">
-    <path class="cartao" d="M29 102 H259 a9 9 0 0 1 9 9 V325 a9 9 0 0 1 -9 9 H29 Z"/>
-    <path class="barra" d="M29 102 H24 a4 4 0 0 0 -4 4 V330 a4 4 0 0 0 4 4 Z"/>
-    <text class="t nome" x="49" y="213">FROM</text>
-    <text class="t glosa" x="49" y="239">pega a tabela inteira</text>
+    <path class="cartao" d="M25 102 H275 a9 9 0 0 1 9 9 V325 a9 9 0 0 1 -9 9 H25 Z"/>
+    <path class="barra" d="M25 102 H20 a4 4 0 0 0 -4 4 V330 a4 4 0 0 0 4 4 Z"/>
+    <text class="t nome" x="45" y="212">FROM</text>
+    <text class="t glosa" x="45" y="246">pega a tabela</text>
   </g>
   <rect class="caixa" x="42" y="200" width="62" height="26" rx="2"/>
   <rect class="caixa" x="111" y="200" width="62" height="26" rx="2"/>
@@ -229,10 +234,10 @@
   <rect class="caixa" x="111" y="299" width="62" height="26" rx="2"/>
   <rect class="caixa" x="180" y="299" width="62" height="26" rx="2"/>
   <g class="realce v2">
-    <path class="cartao" d="M297 102 H527 a9 9 0 0 1 9 9 V325 a9 9 0 0 1 -9 9 H297 Z"/>
-    <path class="barra" d="M297 102 H292 a4 4 0 0 0 -4 4 V330 a4 4 0 0 0 4 4 Z"/>
-    <text class="t nome" x="317" y="213">WHERE</text>
-    <text class="t glosa" x="317" y="239">joga linhas fora</text>
+    <path class="cartao" d="M293 102 H543 a9 9 0 0 1 9 9 V325 a9 9 0 0 1 -9 9 H293 Z"/>
+    <path class="barra" d="M293 102 H288 a4 4 0 0 0 -4 4 V330 a4 4 0 0 0 4 4 Z"/>
+    <text class="t nome" x="313" y="212">WHERE</text>
+    <text class="t glosa" x="313" y="246">joga linhas fora</text>
   </g>
   <rect class="caixa" x="310" y="200" width="62" height="26" rx="2"/>
   <rect class="caixa" x="379" y="200" width="62" height="26" rx="2"/>
@@ -247,10 +252,10 @@
   <rect class="morta descarte" x="379" y="299" width="62" height="26" rx="2"/>
   <rect class="morta descarte" x="448" y="299" width="62" height="26" rx="2"/>
   <g class="realce v3">
-    <path class="cartao" d="M565 102 H795 a9 9 0 0 1 9 9 V325 a9 9 0 0 1 -9 9 H565 Z"/>
-    <path class="barra" d="M565 102 H560 a4 4 0 0 0 -4 4 V330 a4 4 0 0 0 4 4 Z"/>
-    <text class="t nome" x="585" y="213">SELECT</text>
-    <text class="t glosa" x="585" y="239">joga colunas fora</text>
+    <path class="cartao" d="M561 102 H811 a9 9 0 0 1 9 9 V325 a9 9 0 0 1 -9 9 H561 Z"/>
+    <path class="barra" d="M561 102 H556 a4 4 0 0 0 -4 4 V330 a4 4 0 0 0 4 4 Z"/>
+    <text class="t nome" x="581" y="212">SELECT</text>
+    <text class="t glosa" x="581" y="246">joga colunas fora</text>
   </g>
   <rect class="caixa" x="578" y="200" width="62" height="26" rx="2"/>
   <text class="t rot-min" x="609" y="218">Zelda</text>
@@ -261,10 +266,10 @@
   <rect class="morta descarte" x="647" y="233" width="62" height="26" rx="2"/>
   <rect class="morta descarte" x="716" y="233" width="62" height="26" rx="2"/>
   <g class="realce v4">
-    <path class="cartao" d="M833 102 H1063 a9 9 0 0 1 9 9 V325 a9 9 0 0 1 -9 9 H833 Z"/>
-    <path class="barra" d="M833 102 H828 a4 4 0 0 0 -4 4 V330 a4 4 0 0 0 4 4 Z"/>
-    <text class="t nome" x="853" y="213">ORDER BY</text>
-    <text class="t glosa" x="853" y="239">remexe o que sobrou</text>
+    <path class="cartao" d="M829 102 H1079 a9 9 0 0 1 9 9 V325 a9 9 0 0 1 -9 9 H829 Z"/>
+    <path class="barra" d="M829 102 H824 a4 4 0 0 0 -4 4 V330 a4 4 0 0 0 4 4 Z"/>
+    <text class="t nome" x="849" y="212">ORDER BY</text>
+    <text class="t glosa" x="849" y="246">remexe o resto</text>
   </g>
   <rect class="caixa" x="846" y="200" width="62" height="26" rx="2"/>
   <text class="t rot-min" x="877" y="218">Celeste</text>

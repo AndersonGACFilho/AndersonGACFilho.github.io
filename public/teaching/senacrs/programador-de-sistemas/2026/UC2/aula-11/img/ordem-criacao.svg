@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 206" width="1092" height="206"
-     role="img" aria-label="A ordem de criacao: primeiro plataforma e cliente, que nao tem chave estrangeira; depois jogo, que aponta para plataforma; por fim emprestimo, que aponta para jogo e para cliente.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 432" width="1092" height="432"
+     role="img" aria-label="A ordem de criacao das sete tabelas: primeiro plataforma, cliente e jogo, que nao tem chave estrangeira; depois endereco e jogos_plataforma; depois emprestimo; e por fim item_emprestimo, que aponta para emprestimo e para jogo.">
   <style>
     /* @estilo-padrao */
     /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -201,28 +206,40 @@
     </marker>
   </defs>
   <text class="t eyebrow" x="20" y="28">EM QUE ORDEM AS TABELAS NASCEM</text>
-  <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao" d="M29 52 H257 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 52 H24 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="49" y="98">1 · plataforma</text>
-  <text class="t glosa" x="49" y="124">nenhuma chave</text>
-  <text class="t glosa" x="49" y="148">estrangeira</text>
-  <path class="seta" d="M274 116 H286" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M303 52 H531 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H303 Z"/>
-  <path class="barra" d="M303 52 H298 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="323" y="98">2 · cliente</text>
-  <text class="t glosa" x="323" y="124">nenhuma chave</text>
-  <text class="t glosa" x="323" y="148">estrangeira</text>
-  <path class="seta" d="M548 116 H560" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M577 52 H805 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H577 Z"/>
-  <path class="barra" d="M577 52 H572 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="597" y="98">3 · jogo</text>
-  <text class="t glosa" x="597" y="124">aponta para</text>
-  <text class="t glosa" x="597" y="148">plataforma</text>
-  <path class="seta" d="M822 116 H834" marker-end="url(#ponta)"/>
-  <path class="cartao q" d="M851 52 H1079 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H851 Z"/>
-  <path class="barra q" d="M851 52 H846 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="871" y="98">4 · emprestimo</text>
-  <text class="t glosa" x="871" y="124">aponta para jogo</text>
-  <text class="t glosa" x="871" y="148">e para cliente</text>
+  <path class="regua" d="M20 43 H1072"/>
+  <path class="cartao" d="M29 48 H353 a9 9 0 0 1 9 9 V155 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 48 H24 a4 4 0 0 0 -4 4 V160 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="84">1 · plataforma</text>
+  <text class="t glosa" x="49" y="118">nenhuma chave</text>
+  <text class="t glosa" x="49" y="150">estrangeira</text>
+  <path class="cartao" d="M391 48 H715 a9 9 0 0 1 9 9 V155 a9 9 0 0 1 -9 9 H391 Z"/>
+  <path class="barra" d="M391 48 H386 a4 4 0 0 0 -4 4 V160 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="411" y="84">2 · cliente</text>
+  <text class="t glosa" x="411" y="118">nenhuma chave</text>
+  <text class="t glosa" x="411" y="150">estrangeira</text>
+  <path class="cartao" d="M753 48 H1077 a9 9 0 0 1 9 9 V155 a9 9 0 0 1 -9 9 H753 Z"/>
+  <path class="barra" d="M753 48 H748 a4 4 0 0 0 -4 4 V160 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="773" y="84">3 · jogo</text>
+  <text class="t glosa" x="773" y="118">nenhuma chave</text>
+  <text class="t glosa" x="773" y="150">estrangeira</text>
+  <path class="cartao" d="M29 180 H353 a9 9 0 0 1 9 9 V287 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 180 H24 a4 4 0 0 0 -4 4 V292 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="216">4 · endereco</text>
+  <text class="t glosa" x="49" y="250">aponta para</text>
+  <text class="t glosa" x="49" y="282">cliente</text>
+  <path class="cartao" d="M391 180 H715 a9 9 0 0 1 9 9 V287 a9 9 0 0 1 -9 9 H391 Z"/>
+  <path class="barra" d="M391 180 H386 a4 4 0 0 0 -4 4 V292 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="411" y="216">5 · jogos_plataforma</text>
+  <text class="t glosa" x="411" y="250">aponta para jogo</text>
+  <text class="t glosa" x="411" y="282">e plataforma</text>
+  <path class="cartao" d="M753 180 H1077 a9 9 0 0 1 9 9 V287 a9 9 0 0 1 -9 9 H753 Z"/>
+  <path class="barra" d="M753 180 H748 a4 4 0 0 0 -4 4 V292 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="773" y="216">6 · emprestimo</text>
+  <text class="t glosa" x="773" y="250">aponta para</text>
+  <text class="t glosa" x="773" y="282">cliente</text>
+  <path class="cartao q" d="M29 312 H353 a9 9 0 0 1 9 9 V419 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra q" d="M29 312 H24 a4 4 0 0 0 -4 4 V424 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="348">7 · item_emprestimo</text>
+  <text class="t glosa" x="49" y="382">aponta para</text>
+  <text class="t glosa" x="49" y="414">emprestimo e jogo</text>
 </svg>

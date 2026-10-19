@@ -37,6 +37,14 @@ h1 {
   color: var(--dim);
   margin: 0 0 28px;
 }
+/* O link que sozinho ocupa uma linha e o controle principal dela, e nao um
+   link solto no meio de um paragrafo: a excecao de alvo de toque da WCAG nao
+   vale para ele. Media 344x19 antes; o padding leva a menor dimensao a 24. */
+.sub > a:only-child {
+  display: inline-block;
+  padding: 3px 2px;
+  min-height: 24px;
+}
 
 h2 {
   font-size: 1.1rem;

@@ -21,25 +21,27 @@
 
 
 -- ----------------------------------------------------------------------------
--- 1. "Me lista os jogos de PlayStation 5"
+-- 1. "Me lista os empréstimos da Ana Souza"
 -- ----------------------------------------------------------------------------
--- Você sabe o NOME da plataforma. A tabela jogo guarda o NÚMERO. E você não
+-- Você sabe o NOME da cliente. A tabela emprestimo guarda o NÚMERO. E você não
 -- quer ir ali olhar qual é o número — amanhã pode ser outro.
 --
--- Meu palpite — quantos jogos? ____
+-- Meu palpite — quantos empréstimos? ____
 --
 -- Sua consulta (sem JOIN; use uma consulta dentro da outra):
 
 
 
 -- ----------------------------------------------------------------------------
--- 2. "Só o que é de console, nada de PC"
+-- 2. "Quais jogos rodam em algum console?"
 -- ----------------------------------------------------------------------------
--- Console tem fabricante; o PC não tem — o fabricante dele é nulo.
+-- Console tem fabricante; o PC não tem — o fabricante dele é nulo. E agora a
+-- ligação jogo–plataforma mora na jogos_plataforma, então a sua subconsulta
+-- vai ter uma subconsulta dentro dela.
 --
--- Meu palpite — quantos jogos sobram? ____
+-- Meu palpite — quantos jogos sobram, dos doze? ____
 --
--- Sua consulta (a subconsulta agora devolve VÁRIAS plataformas, e isso muda o
+-- Sua consulta (a subconsulta agora devolve VÁRIOS jogos, e isso muda o
 -- operador que você usa):
 
 
@@ -61,9 +63,9 @@
 -- ----------------------------------------------------------------------------
 -- Rode de propósito, com = onde deveria ser outra coisa:
 --
---     SELECT titulo FROM jogo
---     WHERE  id_plataforma = (SELECT id_plataforma FROM plataforma
---                             WHERE fabricante IS NOT NULL);
+--     SELECT * FROM emprestimo
+--     WHERE  id_cliente = (SELECT id_cliente FROM cliente
+--                          WHERE ativo = TRUE);
 --
 -- Meu palpite — o que acontece?
 --   ( ) traz o primeiro que achar    ( ) traz todos
@@ -108,17 +110,25 @@
 -- ----------------------------------------------------------------------------
 -- Com a view do exercício 6 criada, insira um jogo novo:
 --
---     INSERT INTO jogo (titulo, genero, ano_lancamento, preco_diaria, id_plataforma)
---     VALUES ('Jogo de Teste', 'Ação', 2024, 9.00,
+--     INSERT INTO jogo (titulo, genero, ano_lancamento, preco_diaria)
+--     VALUES ('Jogo de Teste', 'Ação', 2024, 9.00) ON CONFLICT DO NOTHING;
+--
+--     INSERT INTO jogos_plataforma (id_jogo, id_plataforma)
+--     VALUES ((SELECT id_jogo FROM jogo WHERE titulo = 'Jogo de Teste'),
 --             (SELECT id_plataforma FROM plataforma WHERE nome = 'PC'))
 --     ON CONFLICT DO NOTHING;
+--
+-- Repare que são DOIS inserts: o jogo, e a ligação dele com a plataforma.
+-- Esse é o preço do N:N, e é o mesmo que vocês pagam no projeto de vocês.
 --
 -- Meu palpite — sem recriar a view, o total do PC muda?
 --   ( ) muda   ( ) não muda, a view guardou o resultado de antes
 --
 -- Rode SELECT * FROM v_jogos_por_plataforma; e veja.
 --
--- Depois desfaça:
+-- Depois desfaça, na ordem inversa da de inserir:
+--     DELETE FROM jogos_plataforma
+--      WHERE id_jogo = (SELECT id_jogo FROM jogo WHERE titulo = 'Jogo de Teste');
 --     DELETE FROM jogo WHERE titulo = 'Jogo de Teste';
 
 
@@ -155,26 +165,37 @@
 -- ============================================================================
 --
 --
--- 1) quatro jogos
+-- 1) três empréstimos
 --
---        SELECT titulo FROM jogo
---        WHERE  id_plataforma = (SELECT id_plataforma FROM plataforma
---                                WHERE  nome = 'PlayStation 5');
+--        SELECT * FROM emprestimo
+--        WHERE  id_cliente = (SELECT id_cliente FROM cliente
+--                             WHERE  nome = 'Ana Souza');
 --
 --    A consulta de dentro roda primeiro e devolve UM valor; a de fora usa
 --    esse valor. Você escreveu a pergunta na ordem em que ela é feita no
---    balcão: "o que é de PS5?" — e não "qual é o número do PS5, e o que tem
---    esse número?".
+--    balcão: "o que a Ana pegou?" — e não "qual é o número da Ana, e o que
+--    tem esse número?".
 --
 --
--- 2) nove jogos — os doze menos os três de PC
+-- 2) dez jogos — os doze menos os dois que só saem em PC
 --
 --        SELECT titulo FROM jogo
---        WHERE  id_plataforma IN (SELECT id_plataforma FROM plataforma
---                                 WHERE  fabricante IS NOT NULL);
+--        WHERE  id_jogo IN (
+--                 SELECT id_jogo FROM jogos_plataforma
+--                 WHERE  id_plataforma IN (SELECT id_plataforma FROM plataforma
+--                                          WHERE  fabricante IS NOT NULL));
 --
---    IN, e não =, porque a subconsulta agora devolve três linhas. A regra é
---    simples: um valor, =; vários valores, IN.
+--    IN, e não =, porque as duas subconsultas devolvem várias linhas. A regra
+--    é simples: um valor, =; vários valores, IN.
+--
+--    E repare no encaixe: a de dentro acha as plataformas que são console, a
+--    do meio acha os jogos ligados a elas, a de fora lista os títulos. Lê-se
+--    de dentro para fora, sempre.
+--
+--    Os dois que ficam de fora são o Baldur's Gate 3 e o Age of Empires IV —
+--    os únicos exclusivos de PC. Quem respondeu "nove" contou títulos de PC
+--    em vez de títulos SEM console, e os dois números são diferentes porque
+--    seis jogos saem nos dois lugares.
 --
 --
 -- 3) a média é exatamente 2021, e SEIS jogos ficam acima
@@ -224,10 +245,10 @@
 -- 6) quatro linhas — uma por plataforma
 --
 --        CREATE OR REPLACE VIEW v_jogos_por_plataforma AS
---        SELECT p.nome           AS plataforma,
---               COUNT(j.id_jogo) AS total_jogos
+--        SELECT p.nome            AS plataforma,
+--               COUNT(jp.id_jogo) AS total_jogos
 --        FROM   plataforma p
---        LEFT JOIN jogo j ON p.id_plataforma = j.id_plataforma
+--        LEFT JOIN jogos_plataforma jp ON p.id_plataforma = jp.id_plataforma
 --        GROUP BY p.nome;
 --
 --    LEFT JOIN, senão uma plataforma sem jogo nenhum sumiria do relatório —
@@ -263,14 +284,14 @@
 --    informação que não precisa. A LGPD tem nome para isso: minimização.
 --
 --
--- 9) sim, as mesmas quatro linhas
+-- 9) sim, os mesmos três empréstimos
 --
---        SELECT j.titulo FROM jogo j
---        INNER JOIN plataforma p ON j.id_plataforma = p.id_plataforma
---        WHERE  p.nome = 'PlayStation 5';
+--        SELECT e.* FROM emprestimo e
+--        INNER JOIN cliente c ON e.id_cliente = c.id_cliente
+--        WHERE  c.nome = 'Ana Souza';
 --
---    Quando você quer colunas das DUAS tabelas — título do jogo E nome da
---    plataforma —, é JOIN; a subconsulta não tem como devolver isso.
+--    Quando você quer colunas das DUAS tabelas — a data do empréstimo E o
+--    nome da cliente —, é JOIN; a subconsulta não tem como devolver isso.
 --
 --    Quando você só quer filtrar, e as colunas do resultado são todas de uma
 --    tabela só, a subconsulta costuma ler melhor: ela deixa explícito que a

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 370" width="1092" height="370"
-     role="img" aria-label="Passo 7 da legenda: as tres cardinalidades. TIME tem um ESCUDO, 1 para 1. PLATAFORMA possui varios JOGO, 1 para N. CLIENTE aluga varios JOGO e cada JOGO e alugado por varios CLIENTE, N para N.">
+     role="img" aria-label="Passo 7 da legenda: as tres cardinalidades. CLIENTE e de um ENDERECO, 1 para 1. CLIENTE faz varios EMPRESTIMO, 1 para N. PLATAFORMA roda varios JOGO e cada JOGO roda em varias PLATAFORMA, N para N.">
   <style>
     /* @estilo-padrao */
     /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -195,46 +200,45 @@
     /* @fim */
   </style>
 
-  <rect class="ent-so" x="16" y="16" width="300" height="84" rx="6"/>
-  <path class="barra" d="M25 16 H20 a4 4 0 0 0 -4 4 V96 a4 4 0 0 0 4 4 Z"/>
-  <text class="t ent-nome-so" x="170.5" y="66">TIME</text>
-  <rect class="ent-so" x="560" y="16" width="300" height="84" rx="6"/>
-  <path class="barra" d="M569 16 H564 a4 4 0 0 0 -4 4 V96 a4 4 0 0 0 4 4 Z"/>
-  <text class="t ent-nome-so" x="714.5" y="66">ESCUDO</text>
-  <path class="lig" d="M330 46 V70"/>
-  <path class="lig" d="M342 46 V70"/>
-  <path class="lig" d="M546 46 V70"/>
-  <path class="lig" d="M534 46 V70"/>
-  <path class="lig" d="M352 58 H411.1"/>
-  <path class="lig" d="M464.9 58 H524"/>
-  <text class="t verbo" x="438" y="64">tem</text>
-  <text class="t nota" x="880" y="65">1 para 1</text>
-  <rect class="ent-so" x="16" y="134" width="300" height="84" rx="6"/>
-  <path class="barra" d="M25 134 H20 a4 4 0 0 0 -4 4 V214 a4 4 0 0 0 4 4 Z"/>
-  <text class="t ent-nome-so" x="170.5" y="184">PLATAFORMA</text>
-  <rect class="ent-so" x="560" y="134" width="300" height="84" rx="6"/>
-  <path class="barra" d="M569 134 H564 a4 4 0 0 0 -4 4 V214 a4 4 0 0 0 4 4 Z"/>
-  <text class="t ent-nome-so" x="714.5" y="184">JOGO</text>
-  <path class="lig" d="M330 164 V188"/>
-  <path class="lig" d="M342 164 V188"/>
-  <path class="lig" d="M542 176 L560 164 M542 176 L560 176 M542 176 L560 188"/>
-  <circle class="lig-o" cx="532 " cy="176" r="6.5"/>
-  <path class="lig" d="M352 176 H398.2"/>
-  <path class="lig" d="M477.8 176 H524"/>
-  <text class="t verbo" x="438" y="182">possui</text>
-  <text class="t nota" x="880" y="183">1 para N</text>
-  <rect class="ent-so" x="16" y="252" width="300" height="84" rx="6"/>
-  <path class="barra" d="M25 252 H20 a4 4 0 0 0 -4 4 V332 a4 4 0 0 0 4 4 Z"/>
-  <text class="t ent-nome-so" x="170.5" y="302">CLIENTE</text>
-  <rect class="ent-so" x="560" y="252" width="300" height="84" rx="6"/>
-  <path class="barra" d="M569 252 H564 a4 4 0 0 0 -4 4 V332 a4 4 0 0 0 4 4 Z"/>
-  <text class="t ent-nome-so" x="714.5" y="302">JOGO</text>
-  <path class="lig" d="M334 294 L316 282 M334 294 L316 294 M334 294 L316 306"/>
-  <circle class="lig-o" cx="344 " cy="294" r="6.5"/>
-  <path class="lig" d="M542 294 L560 282 M542 294 L560 294 M542 294 L560 306"/>
-  <circle class="lig-o" cx="532 " cy="294" r="6.5"/>
-  <path class="lig" d="M352 294 H402.5"/>
-  <path class="lig" d="M473.5 294 H524"/>
-  <text class="t verbo" x="438" y="300">aluga</text>
-  <text class="t nota" x="880" y="301">N para N</text>
+  <rect class="ent-so" x="16" y="16" width="290" height="92" rx="6"/>
+  <path class="barra" d="M25 16 H20 a4 4 0 0 0 -4 4 V104 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="165.5" y="72">CLIENTE</text>
+  <rect class="ent-so" x="520" y="16" width="290" height="92" rx="6"/>
+  <path class="barra" d="M529 16 H524 a4 4 0 0 0 -4 4 V104 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="669.5" y="72">ENDERECO</text>
+  <path class="lig" d="M323 47 V77"/>
+  <path class="lig" d="M337 47 V77"/>
+  <path class="lig" d="M503 47 V77"/>
+  <path class="lig" d="M489 47 V77"/>
+  <path class="lig" d="M350 62 H373.8"/>
+  <path class="lig" d="M452.2 62 H476"/>
+  <text class="t verbo" x="413" y="68">é de</text>
+  <text class="t nota" x="840" y="70">1 para 1</text>
+  <rect class="ent-so" x="16" y="134" width="290" height="92" rx="6"/>
+  <path class="barra" d="M25 134 H20 a4 4 0 0 0 -4 4 V222 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="165.5" y="190">CLIENTE</text>
+  <rect class="ent-so" x="520" y="134" width="290" height="92" rx="6"/>
+  <path class="barra" d="M529 134 H524 a4 4 0 0 0 -4 4 V222 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="669.5" y="190">EMPRESTIMO</text>
+  <path class="lig" d="M323 165 V195"/>
+  <path class="lig" d="M337 165 V195"/>
+  <path class="lig" d="M498 180 L520 165 M498 180 L520 180 M498 180 L520 195"/>
+  <circle class="lig-o" cx="487 " cy="180" r="8"/>
+  <path class="lig" d="M350 180 H379.6"/>
+  <path class="lig" d="M446.4 180 H476"/>
+  <text class="t verbo" x="413" y="186">faz</text>
+  <text class="t nota" x="840" y="188">1 para N</text>
+  <rect class="ent-so" x="16" y="252" width="290" height="92" rx="6"/>
+  <path class="barra" d="M25 252 H20 a4 4 0 0 0 -4 4 V340 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="165.5" y="308">PLATAFORMA</text>
+  <rect class="ent-so" x="520" y="252" width="290" height="92" rx="6"/>
+  <path class="barra" d="M529 252 H524 a4 4 0 0 0 -4 4 V340 a4 4 0 0 0 4 4 Z"/>
+  <text class="t ent-nome-so" x="669.5" y="308">JOGO</text>
+  <path class="lig" d="M328 298 L306 283 M328 298 L306 298 M328 298 L306 313"/>
+  <circle class="lig-o" cx="339 " cy="298" r="8"/>
+  <path class="lig" d="M498 298 L520 283 M498 298 L520 298 M498 298 L520 313"/>
+  <circle class="lig-o" cx="487 " cy="298" r="8"/>
+  <path class="lig" d="M350 298 H476"/>
+  <text class="t verbo" x="413" y="266">roda em</text>
+  <text class="t nota" x="840" y="306">N para N</text>
 </svg>

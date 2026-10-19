@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -201,59 +206,59 @@
     </marker>
   </defs>
   <text class="t eyebrow" x="20" y="28">CADA UM VÊ SÓ O QUE PRECISA</text>
-  <path class="regua" d="M20 39 H488"/>
+  <path class="regua" d="M20 43 H488"/>
   <path class="cartao" d="M29 16 H479 a9 9 0 0 1 9 9 V91 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 16 H24 a4 4 0 0 0 -4 4 V96 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 38) scale(0.4167)">
+  <g class="ico" transform="translate(45 32) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="48" cy="30" r="15" stroke="currentColor"/>
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="103" y="53">Atendente</text>
-  <text class="t glosa" x="103" y="79">vê título, cliente, data</text>
+  <text class="t nome" x="99" y="52">Atendente</text>
+  <text class="t glosa" x="99" y="86">vê título, cliente, data</text>
   <path class="cartao" d="M29 118 H479 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 118 H24 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 140) scale(0.4167)">
+  <g class="ico" transform="translate(45 134) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="48" cy="30" r="15" stroke="currentColor"/>
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="103" y="155">Dono</text>
-  <text class="t glosa" x="103" y="181">vê o faturamento do mês</text>
+  <text class="t nome" x="99" y="154">Dono</text>
+  <text class="t glosa" x="99" y="188">vê o faturamento do mês</text>
   <path class="cartao" d="M29 220 H479 a9 9 0 0 1 9 9 V295 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 220 H24 a4 4 0 0 0 -4 4 V300 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 242) scale(0.4167)">
+  <g class="ico" transform="translate(45 236) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="48" cy="30" r="15" stroke="currentColor"/>
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="103" y="257">Estagiário</text>
-  <text class="t glosa" x="103" y="283">vê só o catálogo</text>
-  <path class="seta" d="M496 58 H514 Q524 58 524 68"/>
-  <path class="seta" d="M496 160 H524"/>
-  <path class="seta" d="M496 262 H514 Q524 262 524 252"/>
-  <path class="seta" d="M524 68 V252"/>
-  <path class="seta" d="M524 160 H564" marker-end="url(#ponta)"/>
-  <text class="t eyebrow" x="572" y="28">O QUE EXISTE DE VERDADE</text>
-  <path class="regua" d="M572 39 H1072"/>
-  <path class="cartao q" d="M581 64 H1063 a9 9 0 0 1 9 9 V143 a9 9 0 0 1 -9 9 H581 Z"/>
-  <path class="barra q" d="M581 64 H576 a4 4 0 0 0 -4 4 V148 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(597 88) scale(0.4167)">
+  <text class="t nome" x="99" y="256">Estagiário</text>
+  <text class="t glosa" x="99" y="290">vê só o catálogo</text>
+  <path class="seta" d="M496 58 H506 Q516 58 516 68"/>
+  <path class="seta" d="M496 160 H516"/>
+  <path class="seta" d="M496 262 H506 Q516 262 516 252"/>
+  <path class="seta" d="M516 68 V252"/>
+  <path class="seta" d="M516 160 H548" marker-end="url(#ponta)"/>
+  <text class="t eyebrow" x="556" y="28">O QUE EXISTE DE VERDADE</text>
+  <path class="regua" d="M556 43 H1072"/>
+  <path class="cartao q" d="M565 64 H1063 a9 9 0 0 1 9 9 V143 a9 9 0 0 1 -9 9 H565 Z"/>
+  <path class="barra q" d="M565 64 H560 a4 4 0 0 0 -4 4 V148 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(581 82) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M48 10 88 28 48 46 8 28 48 10Z" stroke="currentColor"/>
     <path d="M8 48l40 18 40-18"/>
     <path d="M8 68l40 18 40-18"/>
     </g>
   </g>
-  <text class="t nome" x="655" y="103">Nível conceitual</text>
-  <text class="t glosa" x="655" y="129">tabelas, colunas, e como elas se ligam</text>
-  <path class="seta" d="M822 156 V182" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M581 190 H1063 a9 9 0 0 1 9 9 V269 a9 9 0 0 1 -9 9 H581 Z"/>
-  <path class="barra" d="M581 190 H576 a4 4 0 0 0 -4 4 V274 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(597 214) scale(0.4167)">
+  <text class="t nome" x="635" y="102">Nível conceitual</text>
+  <text class="t glosa" x="635" y="136">tabelas, colunas, e como elas se ligam</text>
+  <path class="seta" d="M814 156 V182" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M565 190 H1063 a9 9 0 0 1 9 9 V269 a9 9 0 0 1 -9 9 H565 Z"/>
+  <path class="barra" d="M565 190 H560 a4 4 0 0 0 -4 4 V274 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(581 208) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="8" y="26" width="80" height="44" rx="8"/>
     <circle cx="34" cy="48" r="14"/>
@@ -261,6 +266,6 @@
     <path d="M60 40h18M60 56h18" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="655" y="229">Nível físico</text>
-  <text class="t glosa" x="655" y="255">bytes no disco, índices, arquivos</text>
+  <text class="t nome" x="635" y="228">Nível físico</text>
+  <text class="t glosa" x="635" y="262">bytes no disco, índices, arquivos</text>
 </svg>

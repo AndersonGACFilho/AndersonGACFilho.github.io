@@ -113,8 +113,8 @@ SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname LIKE 'oficina_%' ORDER B
 -- ----------------------------------------------------------------------------
 --     SET ROLE oficina_atendente;
 --     SELECT COUNT(*) FROM jogo;                                  -- (a)
---     INSERT INTO emprestimo (id_cliente, id_jogo, data_retirada, data_prevista)
---         VALUES (1, 1, '2026-11-03', '2026-11-06');              -- (b)
+--     INSERT INTO emprestimo (id_cliente, data_retirada, data_prevista)
+--         VALUES (1, '2026-11-03', '2026-11-06');                 -- (b)
 --     DELETE FROM emprestimo WHERE data_retirada = '2026-11-03';  -- (c)
 --     UPDATE jogo SET preco_diaria = 1.00;                        -- (d)
 --     RESET ROLE;

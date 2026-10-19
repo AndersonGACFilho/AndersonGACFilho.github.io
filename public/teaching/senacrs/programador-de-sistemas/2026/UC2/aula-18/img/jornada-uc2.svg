@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 302" width="1092" height="302"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 326" width="1092" height="326"
      role="img" aria-label="As dezoito aulas em seis etapas: fundamentos, modelagem, relacional, SGBD e SQL, gestao, e a entrega final.">
   <style>
     /* @estilo-padrao */
@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -201,38 +206,38 @@
     </marker>
   </defs>
   <text class="t eyebrow" x="20" y="28">DEZOITO AULAS, UMA CONSTRUÇÃO SÓ</text>
-  <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao" d="M29 52 H347 a9 9 0 0 1 9 9 V147 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 52 H24 a4 4 0 0 0 -4 4 V152 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="49" y="86">Aulas 1-2</text>
-  <text class="t glosa" x="49" y="112">FUNDAMENTOS</text>
-  <text class="t glosa" x="49" y="136">por que um SGBD existe</text>
-  <path class="seta" d="M364 104 H372" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M389 52 H707 a9 9 0 0 1 9 9 V147 a9 9 0 0 1 -9 9 H389 Z"/>
-  <path class="barra" d="M389 52 H384 a4 4 0 0 0 -4 4 V152 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="409" y="86">Aulas 3-6</text>
-  <text class="t glosa" x="409" y="112">MODELAGEM</text>
-  <text class="t glosa" x="409" y="136">minimundo → DER</text>
-  <path class="seta" d="M724 104 H732" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M749 52 H1067 a9 9 0 0 1 9 9 V147 a9 9 0 0 1 -9 9 H749 Z"/>
-  <path class="barra" d="M749 52 H744 a4 4 0 0 0 -4 4 V152 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="769" y="86">Aulas 7-9</text>
-  <text class="t glosa" x="769" y="112">RELACIONAL</text>
-  <text class="t glosa" x="769" y="136">DER → tabelas em 3FN</text>
-  <path class="cartao" d="M29 176 H347 a9 9 0 0 1 9 9 V271 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 176 H24 a4 4 0 0 0 -4 4 V276 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="49" y="210">Aulas 10-15</text>
-  <text class="t glosa" x="49" y="236">SGBD e SQL</text>
-  <text class="t glosa" x="49" y="260">banco real + CRUD</text>
-  <path class="seta" d="M364 228 H372" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M389 176 H707 a9 9 0 0 1 9 9 V271 a9 9 0 0 1 -9 9 H389 Z"/>
-  <path class="barra" d="M389 176 H384 a4 4 0 0 0 -4 4 V276 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="409" y="210">Aulas 16-17</text>
-  <text class="t glosa" x="409" y="236">GESTÃO</text>
-  <text class="t glosa" x="409" y="260">permissões e backup</text>
-  <path class="seta" d="M724 228 H732" marker-end="url(#ponta)"/>
-  <path class="cartao q" d="M749 176 H1067 a9 9 0 0 1 9 9 V271 a9 9 0 0 1 -9 9 H749 Z"/>
-  <path class="barra q" d="M749 176 H744 a4 4 0 0 0 -4 4 V276 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="769" y="223">Aula 18</text>
-  <text class="t glosa" x="769" y="249">ENTREGA</text>
+  <path class="regua" d="M20 43 H1072"/>
+  <path class="cartao" d="M29 52 H347 a9 9 0 0 1 9 9 V159 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 52 H24 a4 4 0 0 0 -4 4 V164 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="88">Aulas 1-2</text>
+  <text class="t glosa" x="49" y="122">FUNDAMENTOS</text>
+  <text class="t glosa" x="49" y="154">por que um SGBD existe</text>
+  <path class="seta" d="M364 110 H372" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M389 52 H707 a9 9 0 0 1 9 9 V159 a9 9 0 0 1 -9 9 H389 Z"/>
+  <path class="barra" d="M389 52 H384 a4 4 0 0 0 -4 4 V164 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="409" y="88">Aulas 3-6</text>
+  <text class="t glosa" x="409" y="122">MODELAGEM</text>
+  <text class="t glosa" x="409" y="154">minimundo → DER</text>
+  <path class="seta" d="M724 110 H732" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M749 52 H1067 a9 9 0 0 1 9 9 V159 a9 9 0 0 1 -9 9 H749 Z"/>
+  <path class="barra" d="M749 52 H744 a4 4 0 0 0 -4 4 V164 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="769" y="88">Aulas 7-9</text>
+  <text class="t glosa" x="769" y="122">RELACIONAL</text>
+  <text class="t glosa" x="769" y="154">DER → tabelas em 3FN</text>
+  <path class="cartao" d="M29 188 H347 a9 9 0 0 1 9 9 V295 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 188 H24 a4 4 0 0 0 -4 4 V300 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="224">Aulas 10-15</text>
+  <text class="t glosa" x="49" y="258">SGBD e SQL</text>
+  <text class="t glosa" x="49" y="290">banco real + CRUD</text>
+  <path class="seta" d="M364 246 H372" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M389 188 H707 a9 9 0 0 1 9 9 V295 a9 9 0 0 1 -9 9 H389 Z"/>
+  <path class="barra" d="M389 188 H384 a4 4 0 0 0 -4 4 V300 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="409" y="224">Aulas 16-17</text>
+  <text class="t glosa" x="409" y="258">GESTÃO</text>
+  <text class="t glosa" x="409" y="290">permissões e backup</text>
+  <path class="seta" d="M724 246 H732" marker-end="url(#ponta)"/>
+  <path class="cartao q" d="M749 188 H1067 a9 9 0 0 1 9 9 V295 a9 9 0 0 1 -9 9 H749 Z"/>
+  <path class="barra q" d="M749 188 H744 a4 4 0 0 0 -4 4 V300 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="769" y="240">Aula 18</text>
+  <text class="t glosa" x="769" y="274">ENTREGA</text>
 </svg>

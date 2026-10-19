@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 08 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 08 da UC2: as três anomalias, a dependência funcional e os dois vilões — a parcial e a transitiva.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 08 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 08</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-08', [
+  {
+    pergunta: 'Você apaga o único empréstimo do Bruno na tabela do crime. O que mais some?',
+    alternativas: [
+      'Nada — só aquela linha',
+      'O Bruno e o jogo que só aparecia naquela linha',
+      'Todos os empréstimos de outubro',
+      'O banco recusa o DELETE'
+    ],
+    certa: 1,
+    porque: 'É a anomalia de exclusão. Como não existe tabela de clientes nem de jogos, o único registro do Bruno e do Zelda TotK era aquela linha. Ninguém é avisado: o banco fez o que foi mandado. Volte à demonstração 1 e apague a linha dele.'
+  },
+  {
+    pergunta: 'Por que apagar uma linha da Ana NÃO faz a Ana sumir?',
+    alternativas: [
+      'Porque ela é a primeira da tabela',
+      'Porque ela aparece em outras linhas — quem o banco perde é quem tem uma linha só',
+      'Porque o nome dela está marcado como chave',
+      'Porque o banco guarda uma cópia'
+    ],
+    certa: 1,
+    porque: 'E é esse o detalhe cruel: o cliente que o banco perde é justamente o que alugou uma vez — o cliente novo, que a locadora mais quer manter.'
+  },
+  {
+    pergunta: '`id_emprestimo → data_retirada` quer dizer o quê, exatamente?',
+    alternativas: [
+      'Que a data vem depois do id na tabela',
+      'Que sabendo o id_emprestimo, a data é sempre a mesma',
+      'Que a data é chave estrangeira',
+      'Que os dois foram preenchidos juntos'
+    ],
+    certa: 1,
+    porque: 'Dependência funcional é isso e só isso: fixado o determinante, o valor não varia. O teste é procurar contraexemplo — dois empréstimos com o mesmo id e datas diferentes. Se não existe, a seta vale.'
+  },
+  {
+    pergunta: 'Na tabela do crime, `nome_cliente → id_cliente` vale?',
+    alternativas: [
+      'Vale, é a mesma coisa ao contrário',
+      'Não vale: pode haver duas clientes com o mesmo nome',
+      'Vale, porque nome é único',
+      'Só vale se o nome for chave primária'
+    ],
+    certa: 1,
+    porque: 'A seta tem direção. `id_cliente → nome_cliente` vale; o caminho inverso não, porque nome não identifica uma pessoa só. É o mesmo motivo que tira o nome de candidato a chave primária, lá na Aula 05.'
+  },
+  {
+    pergunta: 'A chave da tabela do crime é `id_emprestimo + id_jogo`. `titulo_jogo` depende de quê?',
+    alternativas: [
+      'Da chave inteira — é dependência total',
+      'Só de id_jogo — é dependência parcial',
+      'Só de id_emprestimo — é dependência parcial',
+      'De nada: é um atributo solto'
+    ],
+    certa: 1,
+    porque: 'O título do jogo não muda dependendo de qual empréstimo é. Depender de metade da chave é dependência parcial, e é o que a 2FN manda separar — o título vai para a tabela jogo.'
+  },
+  {
+    pergunta: 'E `preco_pago`, na mesma tabela?',
+    alternativas: [
+      'Só de id_jogo',
+      'Da chave inteira: o preço é daquele jogo NAQUELE empréstimo',
+      'Só de id_emprestimo',
+      'De id_cliente'
+    ],
+    certa: 1,
+    porque: 'É a única das colunas que precisa das duas partes, e por isso é a única que está no lugar certo. Guardar o preço cobrado (e não só o preço de hoje, que está em jogo.preco_diaria) é decisão de propósito: mudar a tabela de preços não pode reescrever o que já foi cobrado.'
+  },
+  {
+    pergunta: 'Vários empréstimos com `id_cliente = 1` é repetição ruim?',
+    alternativas: [
+      'Sim, toda repetição é defeito',
+      'Não: repetir a referência é como a ligação funciona. Ruim é repetir a informação',
+      'Sim, deveria haver uma linha por cliente',
+      'Depende do número de linhas'
+    ],
+    certa: 1,
+    porque: 'Repetir a chave estrangeira é normal e necessário — é assim que o lado do N aponta para o lado do 1. O que não pode repetir é o nome, o telefone, o título: a informação. Sem essa distinção, a turma sai da aula querendo normalizar tudo.'
+  },
+  {
+    pergunta: 'Qual forma normal cuida da dependência transitiva?',
+    alternativas: ['1FN', '2FN', '3FN', 'Nenhuma — é só um aviso'],
+    certa: 2,
+    porque: '1FN é a célula com mais de um valor; 2FN é a dependência parcial; 3FN é a transitiva — a coluna que chega na chave de carona, através de outra coluna. Amanhã, na Aula 09, cada uma vira um procedimento de conserto.'
+  }
+]);
+</script>
+</body>
+</html>

@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -201,27 +206,27 @@
     </marker>
   </defs>
   <text class="t eyebrow" x="20" y="28">QUEM DETERMINA QUEM</text>
-  <path class="regua" d="M20 39 H450"/>
+  <path class="regua" d="M20 43 H450"/>
   <path class="cartao" d="M29 98 H441 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 98 H24 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 130) scale(0.4167)">
+  <g class="ico" transform="translate(45 124) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="32" cy="46" r="18" stroke="currentColor"/>
     <path d="M45 33 78 22"/>
     <path d="M68 25.7l6 9M57 29.5l5 7.6"/>
     </g>
   </g>
-  <text class="t nome" x="103" y="145">id_jogo</text>
-  <text class="t glosa" x="103" y="171">o determinante</text>
-  <path class="cartao" d="M569 37 H801 a9 9 0 0 1 9 9 V94 a9 9 0 0 1 -9 9 H569 Z"/>
+  <text class="t nome" x="99" y="144">id_jogo</text>
+  <text class="t glosa" x="99" y="178">o determinante</text>
+  <path class="cartao" d="M569 37 H851 a9 9 0 0 1 9 9 V94 a9 9 0 0 1 -9 9 H569 Z"/>
   <path class="barra" d="M569 37 H564 a4 4 0 0 0 -4 4 V99 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="589" y="78">titulo</text>
-  <path class="cartao" d="M569 117 H801 a9 9 0 0 1 9 9 V174 a9 9 0 0 1 -9 9 H569 Z"/>
+  <text class="t nome" x="589" y="80">titulo</text>
+  <path class="cartao" d="M569 117 H851 a9 9 0 0 1 9 9 V174 a9 9 0 0 1 -9 9 H569 Z"/>
   <path class="barra" d="M569 117 H564 a4 4 0 0 0 -4 4 V179 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="589" y="158">genero</text>
-  <path class="cartao" d="M569 197 H801 a9 9 0 0 1 9 9 V254 a9 9 0 0 1 -9 9 H569 Z"/>
+  <text class="t nome" x="589" y="160">genero</text>
+  <path class="cartao" d="M569 197 H851 a9 9 0 0 1 9 9 V254 a9 9 0 0 1 -9 9 H569 Z"/>
   <path class="barra" d="M569 197 H564 a4 4 0 0 0 -4 4 V259 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="589" y="238">ano_lancamento</text>
+  <text class="t nome" x="589" y="240">ano_lancamento</text>
   <path class="seta" d="M458 150 C 500 150, 500 103, 552 103" marker-end="url(#ponta)"/>
   <path class="seta" d="M458 150 C 500 150, 500 183, 552 183" marker-end="url(#ponta)"/>
   <path class="seta" d="M458 150 C 500 150, 500 263, 552 263" marker-end="url(#ponta)"/>

@@ -23,12 +23,12 @@
 
 
 -- ----------------------------------------------------------------------------
--- 1. "Esse jogo é de qual console?"
+-- 1. "Esse jogo roda em qual console?"
 -- ----------------------------------------------------------------------------
--- A tabela jogo guarda id_plataforma: um número. Ninguém no balcão quer ouvir
--- "plataforma 2" — querem ouvir "Nintendo Switch".
+-- A tabela jogo NÃO guarda a plataforma: o mesmo título sai para PS5 e para PC,
+-- e quem guarda essas ligações é a jogos_plataforma. São três tabelas.
 --
--- Meu palpite — quantas linhas vêm? ____
+-- Meu palpite — quantas linhas vêm? Mais ou menos que os 12 jogos? ____
 --
 -- Sua consulta (título do jogo e nome da plataforma):
 
@@ -37,10 +37,11 @@
 -- ----------------------------------------------------------------------------
 -- 2. "Quem está com o quê?"
 -- ----------------------------------------------------------------------------
--- Agora são três tabelas: o empréstimo sabe quem e qual, mas só por número.
--- O nome está em cliente, o título está em jogo.
+-- Agora são QUATRO tabelas. O empréstimo sabe de quem é, mas não sabe quais
+-- jogos saíram nele: isso está em item_emprestimo, porque um empréstimo leva
+-- vários jogos. O nome está em cliente, o título está em jogo.
 --
--- Meu palpite — quantas linhas? ____
+-- Meu palpite — quantas linhas? Mais ou menos que os 7 empréstimos? ____
 --
 -- Sua consulta (cliente, jogo e data de retirada):
 
@@ -86,7 +87,9 @@
 -- ----------------------------------------------------------------------------
 -- 5. "Quantos jogos temos de cada console?"
 -- ----------------------------------------------------------------------------
--- Não é uma linha por jogo: é uma linha por console, com a contagem.
+-- Não é uma linha por jogo: é uma linha por console, com a contagem. Repare
+-- que a soma das contagens NÃO vai dar 12 — e pensar em por que é metade do
+-- exercício.
 --
 -- Meu palpite — quantas linhas no resultado? ____
 -- E qual console vem com o maior número? ____
@@ -96,7 +99,7 @@
 
 
 -- ----------------------------------------------------------------------------
--- 6. "Só os consoles com mais de dois jogos"
+-- 6. "Só os consoles com mais de três jogos"
 -- ----------------------------------------------------------------------------
 -- Agora o filtro não é sobre a linha da tabela: é sobre o GRUPO já contado.
 -- Tente com WHERE primeiro, de propósito, e leia a mensagem de erro — ela é
@@ -132,7 +135,7 @@
 -- Meu palpite — alguém está atrasado hoje? ____
 --
 -- Dica: CURRENT_DATE é a data de hoje, e o banco sabe qual é.
--- Cuidado com a primeira condição: "não devolveu" não é data_devolucao = 0
+-- Cuidado com a primeira condição: "não devolveu" não é data_entregue = 0
 -- nem = '', é ausência de data.
 --
 -- Sua consulta:
@@ -144,32 +147,42 @@
 -- ============================================================================
 --
 --
--- 1) doze linhas — uma por jogo
+-- 1) DEZOITO linhas — e não doze
 --
 --        SELECT j.titulo, p.nome
 --        FROM   jogo j
---        INNER JOIN plataforma p ON j.id_plataforma = p.id_plataforma;
+--        INNER JOIN jogos_plataforma jp ON j.id_jogo       = jp.id_jogo
+--        INNER JOIN plataforma       p  ON jp.id_plataforma = p.id_plataforma;
 --
---    O ON é onde você diz COMO as duas tabelas se encontram: o número que
---    está no jogo é o mesmo que identifica a plataforma. Esquecer o ON não dá
+--    São 12 jogos e 18 linhas porque seis títulos rodam em mais de um
+--    console: o Elden Ring sozinho aparece três vezes. Quem chutou 12 chutou
+--    a pergunta errada — a pergunta não é "quantos jogos", é "quantas
+--    ligações jogo-plataforma".
+--
+--    A tabela do meio não aparece no SELECT e mesmo assim é obrigatória: é
+--    ela que sabe quem casa com quem. Essa é a cara de todo N:N.
+--
+--    O ON é onde você diz COMO as tabelas se encontram. Esquecer o ON não dá
 --    erro de sintaxe em todo banco — dá resultado errado, cada jogo casado
 --    com cada plataforma, 48 linhas. Junção sem ON é multiplicação.
 --
---    O apelido (j, p) não muda nada no resultado; com três tabelas ele é o
---    que mantém a consulta legível.
 --
---
--- 2) sete linhas — uma por empréstimo
+-- 2) NOVE linhas — uma por jogo levado, e não uma por empréstimo
 --
 --        SELECT c.nome   AS "Cliente",
 --               j.titulo AS "Jogo",
 --               e.data_retirada
 --        FROM   emprestimo e
---        INNER JOIN cliente c ON e.id_cliente = c.id_cliente
---        INNER JOIN jogo    j ON e.id_jogo    = j.id_jogo;
+--        INNER JOIN cliente         c ON e.id_cliente    = c.id_cliente
+--        INNER JOIN item_emprestimo i ON e.id_emprestimo = i.id_emprestimo
+--        INNER JOIN jogo            j ON i.id_jogo       = j.id_jogo;
 --
---    Comece pela tabela do meio. emprestimo é quem aponta para as outras
---    duas, então é dela que saem as duas junções — uma para cada seta.
+--    São 7 empréstimos e 9 linhas: a Ana levou dois jogos de uma vez no dia
+--    05/10, e o Bruno, dois no dia 19/10. O empréstimo aparece repetido, uma
+--    vez por jogo — e é isso que o N:N faz.
+--
+--    Comece pelo emprestimo e vá seguindo as setas: cliente de um lado,
+--    item_emprestimo do outro, e do item para o jogo. Uma junção por seta.
 --
 --
 -- 3) com INNER JOIN vêm sete linhas, mas só TRÊS clientes: Ana, Bruno e
@@ -213,25 +226,34 @@
 --    ON. No WHERE, ela mata as linhas sem par.
 --
 --
--- 5) quatro linhas, e o PlayStation 5 lidera com quatro jogos
+-- 5) quatro linhas, e o PC lidera com sete jogos
 --
 --        SELECT p.nome, COUNT(*) AS total_jogos
 --        FROM   jogo j
---        INNER JOIN plataforma p ON j.id_plataforma = p.id_plataforma
+--        INNER JOIN jogos_plataforma jp ON j.id_jogo        = jp.id_jogo
+--        INNER JOIN plataforma       p  ON jp.id_plataforma = p.id_plataforma
 --        GROUP BY p.nome;
+--
+--        PC 7 · PlayStation 5 5 · Nintendo Switch 3 · Xbox Series X 3
+--
+--    7 + 5 + 3 + 3 = 18, e não 12. Não é erro: é o mesmo jogo contado em cada
+--    console em que ele roda. Se a pergunta fosse "quantos TÍTULOS diferentes
+--    temos", a resposta seria COUNT(DISTINCT j.id_jogo) sobre tudo, que dá 12.
+--    Duas perguntas parecidas, dois números certos.
 --
 --    Tudo que estiver no SELECT e não for função de agregação tem de estar no
 --    GROUP BY. Acrescente j.titulo ali e o banco recusa — com razão: você
 --    estaria pedindo um título por grupo, e o grupo tem vários.
 --
 --
--- 6) três — PlayStation 5 (4), Nintendo Switch (3) e PC (3)
+-- 6) dois — PC (7) e PlayStation 5 (5)
 --
 --        SELECT p.nome, COUNT(*) AS total
 --        FROM   jogo j
---        INNER JOIN plataforma p ON j.id_plataforma = p.id_plataforma
+--        INNER JOIN jogos_plataforma jp ON j.id_jogo        = jp.id_jogo
+--        INNER JOIN plataforma       p  ON jp.id_plataforma = p.id_plataforma
 --        GROUP BY p.nome
---        HAVING COUNT(*) > 2;
+--        HAVING COUNT(*) > 3;
 --
 --    Com WHERE COUNT(*) > 2 o banco responde "aggregate functions are not
 --    allowed in WHERE". Não é implicância: quando o WHERE roda, o grupo ainda
@@ -255,20 +277,22 @@
 --    um relatório que diz que todo mundo alugou pelo menos uma vez.
 --
 --
--- 8) sim — três pessoas, se hoje for depois de 26/10/2026
+-- 8) sim — três pessoas (quatro linhas, porque o Bruno está com dois jogos),
+--    se hoje for depois de 26/10/2026
 --
 --        SELECT c.nome, j.titulo, e.data_prevista,
 --               CURRENT_DATE - e.data_prevista AS "Dias de atraso"
 --        FROM   emprestimo e
---        INNER JOIN cliente c ON e.id_cliente = c.id_cliente
---        INNER JOIN jogo    j ON e.id_jogo    = j.id_jogo
---        WHERE  e.data_devolucao IS NULL
+--        INNER JOIN cliente         c ON e.id_cliente    = c.id_cliente
+--        INNER JOIN item_emprestimo i ON e.id_emprestimo = i.id_emprestimo
+--        INNER JOIN jogo            j ON i.id_jogo       = j.id_jogo
+--        WHERE  e.data_entregue IS NULL
 --          AND  e.data_prevista < CURRENT_DATE;
 --
 --    Aqui o INNER JOIN é o certo: você quer só quem tem empréstimo aberto,
 --    e não a lista de todo mundo.
 --
---    E data_devolucao IS NULL é a consulta que faz o nulo valer a pena. Se a
+--    E data_entregue IS NULL é a consulta que faz o nulo valer a pena. Se a
 --    coluna guardasse '1900-01-01' ou uma data qualquer para dizer "não
 --    devolveu", esta consulta teria de saber desse combinado — e alguém, um
 --    dia, não saberia. Nulo é ausência, e ausência é exatamente o que se

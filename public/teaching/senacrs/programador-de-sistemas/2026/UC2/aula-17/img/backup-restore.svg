@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 216" width="1092" height="216"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 248" width="1092" height="248"
      role="img" aria-label="O banco em producao vira um arquivo pelo pg_dump, o arquivo e guardado em outro lugar, e o pg_restore devolve o banco a partir dele.">
   <style>
     /* @estilo-padrao */
@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -201,34 +206,34 @@
     </marker>
   </defs>
   <text class="t eyebrow" x="20" y="28">O CAMINHO DE IDA E DE VOLTA</text>
-  <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao" d="M29 78 H223 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 78 H24 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 86) scale(0.4167)">
+  <path class="regua" d="M20 43 H1072"/>
+  <path class="cartao" d="M29 90 H259 a9 9 0 0 1 9 9 V205 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 90 H24 a4 4 0 0 0 -4 4 V210 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(45 92) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="48" cy="24" rx="30" ry="11"/>
     <path d="M18 24v48c0 6.1 13.4 11 30 11s30-4.9 30-11V24"/>
     <path d="M18 48c0 6.1 13.4 11 30 11s30-4.9 30-11" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="103" y="116">Banco</text>
-  <text class="t glosa" x="103" y="142">locadora,</text>
-  <text class="t glosa" x="103" y="166">em produção</text>
-  <path class="cartao" d="M313 78 H507 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H313 Z"/>
-  <path class="barra" d="M313 78 H308 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(329 86) scale(0.4167)">
+  <text class="t nome" x="99" y="130">Banco</text>
+  <text class="t glosa" x="99" y="164">locadora,</text>
+  <text class="t glosa" x="99" y="196">produção</text>
+  <path class="cartao" d="M305 90 H535 a9 9 0 0 1 9 9 V205 a9 9 0 0 1 -9 9 H305 Z"/>
+  <path class="barra" d="M305 90 H300 a4 4 0 0 0 -4 4 V210 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(321 92) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M24 8h32l18 18v62a6 6 0 0 1-6 6H24a6 6 0 0 1-6-6V14a6 6 0 0 1 6-6Z"/>
     <path d="M54 8v20h20"/>
     <path d="M30 50h36M30 62h36M30 74h22" stroke="currentColor" stroke-width="4.5"/>
     </g>
   </g>
-  <text class="t nome" x="387" y="116">Arquivo</text>
-  <text class="t glosa" x="387" y="142">.backup</text>
-  <text class="t glosa" x="387" y="166">via pg_dump</text>
-  <path class="cartao" d="M597 78 H791 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H597 Z"/>
-  <path class="barra" d="M597 78 H592 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(613 86) scale(0.4167)">
+  <text class="t nome" x="375" y="130">Arquivo</text>
+  <text class="t glosa" x="375" y="164">.backup,</text>
+  <text class="t glosa" x="375" y="196">pg_dump</text>
+  <path class="cartao" d="M581 90 H811 a9 9 0 0 1 9 9 V205 a9 9 0 0 1 -9 9 H581 Z"/>
+  <path class="barra" d="M581 90 H576 a4 4 0 0 0 -4 4 V210 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(597 92) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="8" y="26" width="80" height="44" rx="8"/>
     <circle cx="34" cy="48" r="14"/>
@@ -236,12 +241,12 @@
     <path d="M60 40h18M60 56h18" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="671" y="116">Guardado</text>
-  <text class="t glosa" x="671" y="142">fora do</text>
-  <text class="t glosa" x="671" y="166">servidor</text>
-  <path class="cartao q" d="M881 78 H1075 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H881 Z"/>
-  <path class="barra q" d="M881 78 H876 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(897 114) scale(0.4167)">
+  <text class="t nome" x="651" y="130">Cópia</text>
+  <text class="t glosa" x="651" y="164">fora do</text>
+  <text class="t glosa" x="651" y="196">servidor</text>
+  <path class="cartao q" d="M857 90 H1063 a9 9 0 0 1 9 9 V205 a9 9 0 0 1 -9 9 H857 Z"/>
+  <path class="barra q" d="M857 90 H852 a4 4 0 0 0 -4 4 V210 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(873 126) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="48" cy="16" rx="26" ry="9"/>
     <path d="M22 16v22c0 5 11.6 9 26 9s26-4 26-9V16"/>
@@ -250,12 +255,12 @@
     <path d="M14 88h68"/>
     </g>
   </g>
-  <text class="t nome" x="955" y="129">De volta</text>
-  <text class="t glosa" x="955" y="155">pg_restore</text>
-  <path class="seta traco t1" d="M240 134 H296" marker-end="url(#ponta)"/>
-  <path class="seta traco t2" d="M524 134 H580" marker-end="url(#ponta)"/>
-  <path class="seta traco t3" d="M808 134 H864" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="268" y="118">backup</text>
-  <text class="t seta-rot" x="552" y="118">copia</text>
-  <text class="t seta-rot" x="836" y="118">restore</text>
+  <text class="t nome" x="927" y="146">Volta</text>
+  <text class="t glosa" x="927" y="180">pg_restore</text>
+  <path class="seta traco t1" d="M276 152 H288" marker-end="url(#ponta)"/>
+  <path class="seta traco t2" d="M552 152 H564" marker-end="url(#ponta)"/>
+  <path class="seta traco t3" d="M828 152 H840" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="282" y="64">backup</text>
+  <text class="t seta-rot" x="558" y="64">cópia</text>
+  <text class="t seta-rot" x="834" y="64">restore</text>
 </svg>

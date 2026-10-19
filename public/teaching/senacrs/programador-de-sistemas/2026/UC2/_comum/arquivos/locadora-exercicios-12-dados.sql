@@ -151,16 +151,17 @@ SELECT * FROM oficina_catalogo ORDER BY id_item;
 -- Volte para as tabelas da locadora, e tente inserir um empréstimo de um
 -- cliente que ainda não existe:
 --
---     INSERT INTO emprestimo (id_cliente, id_jogo, data_retirada, data_prevista)
---     VALUES (99, 1, '2026-10-25', '2026-10-28');
+--     INSERT INTO emprestimo (id_cliente, data_retirada, data_prevista)
+--     VALUES (99, '2026-10-25', '2026-10-28');
 --
 -- O banco aceita?   ( ) sim   ( ) não
 --
 -- E agora a pergunta que interessa: isso quer dizer que existe uma ORDEM
--- obrigatória para popular um banco. Qual é a ordem, para as quatro tabelas
+-- obrigatória para popular um banco. Qual é a ordem, para as sete tabelas
 -- da locadora?
 --
 --   1. ____________  2. ____________  3. ____________  4. ____________
+--   5. ____________  6. ____________  7. ____________
 
 
 
@@ -271,17 +272,25 @@ SELECT * FROM oficina_catalogo ORDER BY id_item;
 --
 -- 8) recusa, e a ordem é:
 --
---        1. plataforma   (não depende de ninguém)
---        2. cliente      (não depende de ninguém)
---        3. jogo         (depende de plataforma)
---        4. emprestimo   (depende de cliente e de jogo)
+--        1. plataforma        (não depende de ninguém)
+--        2. cliente           (não depende de ninguém)
+--        3. jogo              (não depende de ninguém)
+--        4. endereco          (depende de cliente)
+--        5. jogos_plataforma  (depende de jogo e de plataforma)
+--        6. emprestimo        (depende de cliente)
+--        7. item_emprestimo   (depende de emprestimo e de jogo)
+--
+--    As três primeiras podem vir em qualquer ordem entre si: o que manda é
+--    que ninguém aponte para linha que ainda não existe. As duas tabelas do
+--    meio são sempre as últimas do grupo delas, porque dependem dos dois
+--    lados ao mesmo tempo.
 --
 --    A ordem não é convenção: é a mesma integridade referencial da Aula 11
 --    vista do lado dos dados. Você não consegue apontar para uma linha que
 --    ainda não existe.
 --
 --    E ela é a ordem INVERSA da de apagar: para esvaziar o banco, começa pelo
---    emprestimo. Quem tenta apagar plataforma primeiro toma o mesmo erro, de
+--    item_emprestimo. Quem tenta apagar plataforma primeiro toma o mesmo erro, de
 --    trás para frente.
 --
 --    No projeto do SEU grupo: desenhe a ordem de inserção das tabelas de

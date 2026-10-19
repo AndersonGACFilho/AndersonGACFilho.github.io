@@ -26,10 +26,10 @@
 
 
 -- ----------------------------------------------------------------------------
--- 1. O jogo de uma plataforma que não existe
+-- 1. O empréstimo de um cliente que não existe
 -- ----------------------------------------------------------------------------
---     INSERT INTO jogo (titulo, genero, id_plataforma)
---     VALUES ('Jogo Fantasma', 'Ação', 500);
+--     INSERT INTO emprestimo (id_cliente, data_retirada, data_prevista)
+--     VALUES (500, '2026-10-25', '2026-10-28');
 --
 -- O banco aceita?   ( ) sim   ( ) não
 -- Se recusar, qual palavra da mensagem você acha que vai aparecer? ________
@@ -69,8 +69,8 @@
 -- ----------------------------------------------------------------------------
 -- 4. A diária de menos dois reais
 -- ----------------------------------------------------------------------------
---     INSERT INTO jogo (titulo, genero, preco_diaria, id_plataforma)
---     VALUES ('Jogo Barato', 'Ação', -2.00, 1);
+--     INSERT INTO jogo (titulo, genero, preco_diaria)
+--     VALUES ('Jogo Barato', 'Ação', -2.00);
 --
 -- O banco aceita?   ( ) sim   ( ) não
 -- Qual constraint impede? ____________________
@@ -80,8 +80,8 @@
 -- ----------------------------------------------------------------------------
 -- 5. Devolver antes de retirar
 -- ----------------------------------------------------------------------------
---     INSERT INTO emprestimo (id_cliente, id_jogo, data_retirada, data_prevista)
---     VALUES (1, 1, '2026-10-20', '2026-10-15');
+--     INSERT INTO emprestimo (id_cliente, data_retirada, data_prevista)
+--     VALUES (1, '2026-10-20', '2026-10-15');
 --
 -- O banco aceita?   ( ) sim   ( ) não
 --
@@ -108,13 +108,13 @@
 
 
 -- ----------------------------------------------------------------------------
--- 7. Apagando uma plataforma que tem jogos
+-- 7. Apagando um cliente que tem empréstimos
 -- ----------------------------------------------------------------------------
---     DELETE FROM plataforma WHERE nome = 'PlayStation 5';
+--     DELETE FROM cliente WHERE nome = 'Ana Souza';
 --
 -- Meu palpite — o que acontece?
---   ( ) apaga a plataforma e os 4 jogos junto
---   ( ) apaga a plataforma e deixa os jogos sem plataforma
+--   ( ) apaga a cliente e os 3 empréstimos dela junto
+--   ( ) apaga a cliente e deixa os empréstimos sem dono
 --   ( ) recusa apagar
 --
 -- Rode SEM MEDO: uma das três respostas não estraga nada, e descobrir qual é
@@ -154,9 +154,9 @@
 -- Tente:
 --     UPDATE cliente SET ativo = FALSE WHERE nome = 'Diego Rocha';
 --
---     INSERT INTO emprestimo (id_cliente, id_jogo, data_retirada, data_prevista)
+--     INSERT INTO emprestimo (id_cliente, data_retirada, data_prevista)
 --     VALUES ((SELECT id_cliente FROM cliente WHERE nome = 'Diego Rocha'),
---             1, '2026-10-25', '2026-10-28');
+--             '2026-10-25', '2026-10-28');
 --
 -- O banco aceita?   ( ) sim   ( ) não
 --
@@ -178,16 +178,16 @@
 --
 -- 1) recusa
 --
---        ERROR: insert or update on table "jogo" violates foreign key
---        constraint "jogo_id_plataforma_fkey"
---        DETAIL: Key (id_plataforma)=(500) is not present in table "plataforma".
+--        ERROR: insert or update on table "emprestimo" violates foreign key
+--        constraint "emprestimo_id_cliente_fkey"
+--        DETAIL: Key (id_cliente)=(500) is not present in table "cliente".
 --
 --    É a integridade referencial fazendo exatamente o que prometeu na Aula
 --    01: o banco é um ponto único de manipulação, e ele não deixa passar
 --    ponteiro para o vazio — não importa se quem mandou foi o sistema, o
 --    estagiário ou você pelo pgAdmin.
 --
---    Repare no nome da constraint na mensagem: jogo_id_plataforma_fkey. O
+--    Repare no nome da constraint na mensagem: emprestimo_id_cliente_fkey. O
 --    Postgres batiza sozinho, no formato tabela_coluna_tipo. Quando a
 --    aplicação quebrar em produção, é esse nome que aparece no log.
 --
@@ -260,14 +260,14 @@
 --
 -- 7) RECUSA apagar
 --
---        ERROR: update or delete on table "plataforma" violates foreign key
---        constraint "jogo_id_plataforma_fkey" on table "jogo"
+--        ERROR: update or delete on table "cliente" violates foreign key
+--        constraint "emprestimo_id_cliente_fkey" on table "emprestimo"
 --
 --    É o ON DELETE RESTRICT, que é o comportamento padrão — o mesmo que a
 --    aula adotou de propósito. As outras opções existem:
 --
---      CASCADE   apagaria a plataforma E os quatro jogos junto
---      SET NULL  apagaria a plataforma e deixaria os jogos sem nenhuma
+--      CASCADE   apagaria a cliente E os três empréstimos dela junto
+--      SET NULL  apagaria a cliente e deixaria os empréstimos sem dono
 --
 --    CASCADE é conveniente e perigoso: um DELETE distraído leva meio banco.
 --    RESTRICT obriga você a decidir o que fazer com os filhos antes.

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 210" width="1092" height="210"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 218" width="1092" height="218"
      role="img" aria-label="Uma linha do tempo: backup na segunda as 23h; a terca inteira de trabalho; falha na terca as 18h; o restore volta para segunda as 23h; e o trabalho da terca inteira se perde.">
   <style>
     /* @estilo-padrao */
@@ -39,25 +39,30 @@
     /* ---------- tipografia ----------
        Hierarquia dentro do cartão: a primeira linha nomeia, as de baixo explicam.
        Antes era tudo do mesmo tamanho e da mesma cor, e nada se destacava. */
-    /* A escala saiu de uma medicao, nao do olho. O deck tem corpo de 28px e rodape
-       de 13,4px num slide de 1280x720. Com as fontes antigas o rotulo principal do
-       diagrama chegava a tela com 14,8px -- do tamanho do numero da pagina -- e a
-       glosa com 12,5px, MENOR que o rodape. Agora o nome chega a ~21px e a glosa a
-       ~16px, que e legivel de longe sem competir com o titulo do slide. */
-    .nome   { font-size: 23px; font-weight: 650; }
-    .glosa  { font-size: 18px; font-weight: 400; }
-    .nome-c { font-size: 23px; font-weight: 650; fill: #12243a; text-anchor: middle; }
-    .glosa-c{ font-size: 18px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
-    .rot    { font-size: 19px; fill: #ffffff; text-anchor: middle; }
-    .rot-min{ font-size: 15px; fill: #ffffff; text-anchor: middle; }
-    .nota   { font-size: 18px; }
-    .dica   { font-size: 19px; }
-    .seta-rot { font-size: 16px; text-anchor: middle; }
+    /* A escala saiu de uma medicao, nao do olho -- e da SEGUNDA medicao, porque a
+       primeira media o lugar errado.
+       Ela conferia o tamanho do glifo no monitor de 1280. Mas o projetor do
+       laboratorio e XGA, e o slide chega nele a 0,8; e o deck ainda exibia varios
+       diagramas encolhidos por um `w:` escrito a mao. Compostos os dois fatores, o
+       nome de entidade da `legenda-4-segunda-entidade` chegava ao vidro com 3,6px,
+       e nenhum diagrama da UC passava de 13,3.
+       O piso e 16px NO VIDRO. Exibido a 92% (1092 de desenho em 1010 de slide),
+       isso exige 22px aqui -- e por isso nenhuma classe abaixo desta linha pode
+       ficar menor que 22. Quem confere e o `npm run check:legibilidade`. */
+    .nome   { font-size: 30px; font-weight: 650; }
+    .glosa  { font-size: 24px; font-weight: 400; }
+    .nome-c { font-size: 30px; font-weight: 650; fill: #12243a; text-anchor: middle; }
+    .glosa-c{ font-size: 24px; font-weight: 400; fill: #4a5f75; text-anchor: middle; }
+    .rot    { font-size: 25px; fill: #ffffff; text-anchor: middle; }
+    .rot-min{ font-size: 22px; fill: #ffffff; text-anchor: middle; }
+    .nota   { font-size: 23px; }
+    .dica   { font-size: 24px; }
+    .seta-rot { font-size: 22px; text-anchor: middle; }
 
     /* O rótulo de grupo imita a sobrancelha do deck: pequena, espaçada, laranja,
        sobre uma régua fina. Sem caixa cinza em volta — a caixa empilhava moldura
        dentro de moldura e sujava o desenho. */
-    .eyebrow { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: 0.14em; }
     .regua   { stroke-width: 1; fill: none; }
 
     /* ---------- cartões ----------
@@ -75,16 +80,16 @@
        sob as colunas de tipo e nome e deixava a coluna das chaves branca: a
        coluninha nao acompanhava a faixa da linha dela. */
 
-    .ent-nome  { font-size: 19px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
-    .ent-tipo  { font-size: 16px; fill: #7d8b99; }
-    .ent-campo { font-size: 18px; fill: #12243a; }
-    .ent-chave { font-size: 15px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
+    .ent-nome  { font-size: 25px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-tipo  { font-size: 22px; fill: #7d8b99; }
+    .ent-campo { font-size: 24px; fill: #12243a; }
+    .ent-chave { font-size: 22px; font-weight: 800; fill: #b34700; text-anchor: end; letter-spacing: 0.03em; }
 
-    .verbo     { font-size: 17px; fill: #12243a; text-anchor: middle; }
+    .verbo     { font-size: 23px; fill: #12243a; text-anchor: middle; }
 
     /* ---------- selo numerado ---------- */
 
-    .numero { font-size: 16px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .numero { font-size: 22px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
 
     /*
      * ---------- o relógio ----------
@@ -186,7 +191,7 @@
     .verbo-bg  { fill: none; }
     /* Entidade sem atributo: caixa inteira, nao cabecalho solto. */
     .ent-so      { fill: #01102a; stroke: rgba(255, 255, 255, 0.34); stroke-width: 1.5; }
-    .ent-nome-so { font-size: 20px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
+    .ent-nome-so { font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: middle; letter-spacing: 0.04em; }
 
     @keyframes acende-barra-solta  { 0%, 16.6% { fill: #ffb065; } 16.7%, 100% { fill: #9cc9ff; } }
     @keyframes acende-cartao-solto { 0%, 16.6% { fill: #2b1708; } 16.7%, 100% { fill: #01102a; } }
@@ -212,31 +217,31 @@
     </marker>
   </defs>
   <text class="t eyebrow" x="20" y="28">O QUE CABE ENTRE DOIS BACKUPS</text>
-  <path class="regua" d="M20 39 H1072"/>
-  <path class="cartao" d="M29 52 H207 a9 9 0 0 1 9 9 V175 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 52 H24 a4 4 0 0 0 -4 4 V180 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="49" y="113">Backup</text>
-  <text class="t glosa" x="49" y="139">segunda, 23h</text>
-  <path class="seta" d="M224 118 H236" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M253 52 H431 a9 9 0 0 1 9 9 V175 a9 9 0 0 1 -9 9 H253 Z"/>
-  <path class="barra" d="M253 52 H248 a4 4 0 0 0 -4 4 V180 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="273" y="100">Terça</text>
-  <text class="t glosa" x="273" y="126">o dia inteiro</text>
-  <text class="t glosa" x="273" y="150">de trabalho</text>
-  <path class="seta" d="M448 118 H460" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M477 52 H655 a9 9 0 0 1 9 9 V175 a9 9 0 0 1 -9 9 H477 Z"/>
-  <path class="barra" d="M477 52 H472 a4 4 0 0 0 -4 4 V180 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="497" y="113">Falha</text>
-  <text class="t glosa" x="497" y="139">terça, 18h</text>
-  <path class="seta" d="M672 118 H684" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M701 52 H879 a9 9 0 0 1 9 9 V175 a9 9 0 0 1 -9 9 H701 Z"/>
-  <path class="barra" d="M701 52 H696 a4 4 0 0 0 -4 4 V180 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="721" y="100">Restore</text>
-  <text class="t glosa" x="721" y="126">volta para</text>
-  <text class="t glosa" x="721" y="150">segunda, 23h</text>
-  <path class="seta" d="M916 118 H922" marker-end="url(#ponta)"/>
-  <path class="cartao perda" d="M931 52 H1063 a9 9 0 0 1 9 9 V175 a9 9 0 0 1 -9 9 H931 Z"/>
-  <path class="barra perda" d="M931 52 H926 a4 4 0 0 0 -4 4 V180 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="951" y="113">Perdido</text>
-  <text class="t glosa" x="951" y="139">tudo da terça</text>
+  <path class="regua" d="M20 43 H1072"/>
+  <path class="cartao" d="M29 52 H203 a9 9 0 0 1 9 9 V183 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 52 H24 a4 4 0 0 0 -4 4 V188 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="116">Backup</text>
+  <text class="t glosa" x="49" y="150">segunda, 23h</text>
+  <path class="seta" d="M220 122 H228" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M245 52 H419 a9 9 0 0 1 9 9 V183 a9 9 0 0 1 -9 9 H245 Z"/>
+  <path class="barra" d="M245 52 H240 a4 4 0 0 0 -4 4 V188 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="265" y="100">Terça</text>
+  <text class="t glosa" x="265" y="134">o dia inteiro</text>
+  <text class="t glosa" x="265" y="166">de trabalho</text>
+  <path class="seta" d="M436 122 H444" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M461 52 H635 a9 9 0 0 1 9 9 V183 a9 9 0 0 1 -9 9 H461 Z"/>
+  <path class="barra" d="M461 52 H456 a4 4 0 0 0 -4 4 V188 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="481" y="116">Falha</text>
+  <text class="t glosa" x="481" y="150">terça, 18h</text>
+  <path class="seta" d="M652 122 H660" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M677 52 H851 a9 9 0 0 1 9 9 V183 a9 9 0 0 1 -9 9 H677 Z"/>
+  <path class="barra" d="M677 52 H672 a4 4 0 0 0 -4 4 V188 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="697" y="100">Restore</text>
+  <text class="t glosa" x="697" y="134">volta para</text>
+  <text class="t glosa" x="697" y="166">segunda, 23h</text>
+  <path class="seta" d="M848 122 H872" marker-end="url(#ponta)"/>
+  <path class="cartao perda" d="M889 52 H1063 a9 9 0 0 1 9 9 V183 a9 9 0 0 1 -9 9 H889 Z"/>
+  <path class="barra perda" d="M889 52 H884 a4 4 0 0 0 -4 4 V188 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="909" y="116">Perdido</text>
+  <text class="t glosa" x="909" y="150">tudo da terça</text>
 </svg>

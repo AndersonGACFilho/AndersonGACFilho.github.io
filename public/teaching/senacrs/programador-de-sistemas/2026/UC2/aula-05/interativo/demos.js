@@ -174,8 +174,8 @@
   /* ================= 3. de que lado fica a chave estrangeira ================= */
   //
   // A pergunta que o slide faz. A resposta se enxerga quando a chave esta no
-  // lado errado: a plataforma passa a precisar de uma linha por jogo, e o
-  // nome da plataforma se repete em todas.
+  // lado errado: o cliente passa a precisar de uma linha por emprestimo, e o
+  // nome dele se repete em todas.
 
   (function () {
     var lado = $('a5-lado');
@@ -188,17 +188,17 @@
       t1.textContent = ''; t2.textContent = '';
 
       if (!errado) {
-        [['#1', 'PlayStation 5'], ['#2', 'Nintendo Switch']].forEach(function (l) {
+        [['#1', 'Ana Souza'], ['#2', 'Bruno Lima']].forEach(function (l) {
           t1.appendChild(linha(l[0], l[1]));
         });
-        [['Elden Ring', 'plataforma_id = 1'], ['Hades', 'plataforma_id = 2'], ['Celeste', 'plataforma_id = 2']]
+        [['20/10', 'cliente_id = 1'], ['21/10', 'cliente_id = 2'], ['22/10', 'cliente_id = 1']]
           .forEach(function (l) { t2.appendChild(linha(l[0], l[1], 'entrou')); });
         $('a5-t1-selo').textContent = '2 linhas';
         $('a5-t2-selo').textContent = 'a chave mora aqui';
       } else {
-        [['#1 PlayStation 5', 'jogo_id = 10'], ['#1 PlayStation 5', '?? e o segundo jogo'], ['#2 Nintendo Switch', 'jogo_id = 20']]
+        [['#1 Ana Souza', 'emprestimo_id = 7'], ['#1 Ana Souza', '?? e o segundo empréstimo'], ['#2 Bruno Lima', 'emprestimo_id = 8']]
           .forEach(function (l, i) { t1.appendChild(linha(l[0], l[1], i === 1 ? 'sumiu' : '')); });
-        [['Elden Ring', '—'], ['Hades', '—'], ['Celeste', '—']].forEach(function (l) {
+        [['20/10', '—'], ['21/10', '—'], ['22/10', '—']].forEach(function (l) {
           t2.appendChild(linha(l[0], l[1]));
         });
         $('a5-t1-selo').textContent = 'não cabe';
@@ -208,8 +208,8 @@
       $('a5-painel-t1').classList.toggle('ruim', errado);
       $('a5-painel-t2').classList.toggle('bom', !errado);
       $('a5-fk-legenda').textContent = errado
-        ? 'A plataforma teria de repetir a linha inteira uma vez por jogo, e o nome "PlayStation 5" junto. A regra sai sozinha: a chave estrangeira fica no lado do N — no lado de muitos.'
-        : 'Cada jogo aponta para a sua plataforma. A plataforma não precisa saber nada: quem guarda a ligação é o lado que tem muitos.';
+        ? 'O cliente teria de repetir a linha inteira uma vez por empréstimo, e o nome "Ana Souza" junto. A regra sai sozinha: a chave estrangeira fica no lado do N — no lado de muitos.'
+        : 'Cada empréstimo aponta para o seu cliente. O cliente não precisa saber nada: quem guarda a ligação é o lado que tem muitos.';
       lado.textContent = errado ? 'Pôr a chave do lado certo' : 'Pôr a chave do outro lado';
     }
 
@@ -229,30 +229,30 @@
         nome: '1:1',
         c1: '1', c2: '1',
         forma: 'a chave vai num dos dois lados',
-        tabelas: [['cliente', 'id, nome'], ['cartao', 'id, numero, cliente_id ↗']],
+        tabelas: [['cliente', 'id, nome'], ['endereco', 'id, logradouro, cliente_id ↗ ÚNICO']],
         selo: '2 tabelas',
         legenda:
-          'Um cliente tem um cartão de sócio, e o cartão é de um cliente só. Duas tabelas, e a chave cabe em qualquer lado — escolha o que pode faltar: nem todo cliente tem cartão.',
+          'Um cliente tem um endereço, e aquele endereço é de um cliente só. A chave vai no lado que pode faltar — nem todo cliente dá endereço — e o ÚNICO nela é o que impede o segundo. Sem o ÚNICO, isto seria um 1:N.',
       },
       {
         id: '1-n',
         nome: '1:N',
         c1: '1', c2: 'N',
         forma: 'uma chave estrangeira no lado do N',
-        tabelas: [['plataforma', 'id, nome'], ['jogo', 'id, titulo, plataforma_id ↗']],
+        tabelas: [['cliente', 'id, nome'], ['emprestimo', 'id, data, cliente_id ↗']],
         selo: '2 tabelas',
         legenda:
-          'Uma plataforma tem muitos jogos; um jogo é de uma plataforma. A chave fica no lado de muitos, sempre — é o caso mais comum de todos.',
+          'Um cliente faz muitos empréstimos; cada empréstimo é de um cliente. A chave fica no lado de muitos, sempre — é o caso mais comum de todos.',
       },
       {
         id: 'n-n',
         nome: 'N:N',
         c1: 'N', c2: 'N',
         forma: 'uma tabela no meio, com as duas chaves',
-        tabelas: [['cliente', 'id, nome'], ['jogo', 'id, titulo'], ['emprestimo', 'cliente_id ↗, jogo_id ↗, data']],
+        tabelas: [['emprestimo', 'id, data'], ['jogo', 'id, titulo'], ['item_emprestimo', 'emprestimo_id ↗, jogo_id ↗, preco_pago']],
         selo: '3 tabelas',
         legenda:
-          'Um cliente aluga muitos jogos, e um jogo é alugado por muitos clientes. Não cabe chave em nenhum dos dois lados: nasce uma terceira tabela — e é nela que a data do empréstimo vai morar.',
+          'Um empréstimo leva muitos jogos, e um jogo entra em muitos empréstimos. Não cabe chave em nenhum dos dois lados: nasce uma terceira tabela — e é nela que o preço cobrado vai morar.',
       },
     ];
 

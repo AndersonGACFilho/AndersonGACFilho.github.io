@@ -40,9 +40,9 @@
         regra: 'Regra 1 — mesma coisa, outra entidade.',
       },
       {
-        col: 'jogo.id_plataforma',
-        origem: [['no DER', 'PLATAFORMA 1 : N JOGO']],
-        regra: 'Regra 2 — o relacionamento 1:N virou coluna, no lado do N. Nenhuma tabela nova.',
+        col: 'jogos_plataforma.id_plataforma',
+        origem: [['no DER', 'PLATAFORMA N : N JOGO']],
+        regra: 'Regra 3 — o N:N não vira coluna, vira TABELA. Esta é uma das duas chaves dela.',
       },
       {
         col: 'cliente.telefone',
@@ -52,17 +52,17 @@
       {
         col: 'emprestimo.data_retirada',
         origem: [['no DER', 'atributo de EMPRESTIMO']],
-        regra: 'Era o atributo que não cabia em CLIENTE nem em JOGO, na Aula 06. Agora tem tabela própria.',
+        regra: 'Regra 1 — EMPRESTIMO é entidade de verdade no DER, com atributos próprios.',
       },
       {
         col: 'emprestimo.id_cliente',
         origem: [['no DER', 'CLIENTE 1 : N EMPRESTIMO']],
-        regra: 'Regra 2 de novo. Uma das duas chaves estrangeiras que marcam a entidade do meio.',
+        regra: 'Regra 2 — o 1:N virou coluna, no lado do N. Nenhuma tabela nova.',
       },
       {
-        col: 'emprestimo.id_jogo',
-        origem: [['no DER', 'JOGO 1 : N EMPRESTIMO']],
-        regra: 'A outra. Toda entidade que nasceu de um N:N tem exatamente duas.',
+        col: 'item_emprestimo.preco_pago',
+        origem: [['no DER', 'atributo de JOGO N : N EMPRESTIMO']],
+        regra: 'Regra 3 — o atributo do relacionamento mora na tabela do meio. É o que separa esta associativa da jogos_plataforma, que não tem nenhum.',
       },
       {
         col: 'cliente.pontos_fidelidade',
@@ -152,45 +152,45 @@
       {
         id: 'certo',
         nome: 'apontando para a chave primária',
-        sql: 'CREATE TABLE jogo (\n  id_jogo SERIAL PRIMARY KEY,\n  titulo VARCHAR(120),\n  id_plataforma INT\n    REFERENCES plataforma(id_plataforma)\n);',
-        selo: 'plataforma existe, id_plataforma é a PK',
+        sql: 'CREATE TABLE emprestimo (\n  id_emprestimo SERIAL PRIMARY KEY,\n  data_retirada DATE,\n  id_cliente INT\n    REFERENCES cliente(id_cliente)\n);',
+        selo: 'cliente existe, id_cliente é a PK',
         resposta: 'CREATE TABLE',
         seloR: 'aceito',
         marcaR: 'bom',
         legenda:
-          'É o que a seta da notação promete. Na lista de tabelas isso se escreve id_plataforma CE/FK → plataforma — e a seta é literalmente o REFERENCES.',
+          'É o que a seta da notação promete. Na lista de tabelas isso se escreve id_cliente CE/FK → cliente — e a seta é literalmente o REFERENCES.',
         registro: { ator: 'banco', texto: 'aceitou: o destino existe e identifica uma linha só', marca: 'bom' },
       },
       {
         id: 'sem-tabela',
         nome: 'a tabela de destino não existe',
-        sql: 'CREATE TABLE jogo (\n  id_jogo SERIAL PRIMARY KEY,\n  titulo VARCHAR(120),\n  id_plataforma INT\n    REFERENCES plataforma(id_plataforma)\n);\n-- e a tabela plataforma nunca foi criada',
-        selo: 'plataforma não existe',
-        resposta: 'ERROR:  relation "plataforma" does not exist',
+        sql: 'CREATE TABLE emprestimo (\n  id_emprestimo SERIAL PRIMARY KEY,\n  data_retirada DATE,\n  id_cliente INT\n    REFERENCES cliente(id_cliente)\n);\n-- e a tabela cliente nunca foi criada',
+        selo: 'cliente não existe',
+        resposta: 'ERROR:  relation "cliente" does not exist',
         seloR: 'recusado',
         marcaR: 'ruim',
         legenda:
-          'A tabela apontada precisa existir ANTES. É o erro que mais aparece na Aula 11, e quase sempre por ordem: o script cria jogo antes de plataforma. Se você não consegue escrever o destino da seta, a chave estrangeira está errada.',
+          'A tabela apontada precisa existir ANTES. É o erro que mais aparece na Aula 11, e quase sempre por ordem: o script cria emprestimo antes de cliente. Se você não consegue escrever o destino da seta, a chave estrangeira está errada.',
         registro: { ator: 'banco', texto: 'recusou: o destino da seta não existe', marca: 'ruim' },
       },
       {
         id: 'sem-chave',
         nome: 'apontando para uma coluna comum',
-        sql: 'CREATE TABLE jogo (\n  id_jogo SERIAL PRIMARY KEY,\n  titulo VARCHAR(120),\n  fabricante VARCHAR(60)\n    REFERENCES plataforma(fabricante)\n);',
-        selo: 'fabricante não é chave',
-        resposta: 'ERROR:  there is no unique constraint matching given keys for\n        referenced table "plataforma"',
+        sql: 'CREATE TABLE emprestimo (\n  id_emprestimo SERIAL PRIMARY KEY,\n  nome_cliente VARCHAR(100)\n    REFERENCES cliente(nome)\n);',
+        selo: 'nome não é chave',
+        resposta: 'ERROR:  there is no unique constraint matching given keys for\n        referenced table "cliente"',
         seloR: 'recusado',
         marcaR: 'ruim',
         legenda:
-          'A tabela existe, a coluna existe — e mesmo assim não serve. Uma chave estrangeira precisa apontar para algo que identifique UMA linha, e “Sony” identifica várias. É a Aula 05 cobrando: chave primária é o que não repete.',
+          'A tabela existe, a coluna existe — e mesmo assim não serve. Uma chave estrangeira precisa apontar para algo que identifique UMA linha, e “Ana Souza” pode ser duas clientes. É a Aula 05 cobrando: chave primária é o que não repete.',
         registro: { ator: 'banco', texto: 'recusou: o destino não identifica uma linha só', marca: 'ruim' },
       },
       {
         id: 'tipo',
         nome: 'com o tipo trocado',
-        sql: 'CREATE TABLE jogo (\n  id_jogo SERIAL PRIMARY KEY,\n  id_plataforma VARCHAR(10)\n    REFERENCES plataforma(id_plataforma)\n);',
+        sql: 'CREATE TABLE emprestimo (\n  id_emprestimo SERIAL PRIMARY KEY,\n  id_cliente VARCHAR(10)\n    REFERENCES cliente(id_cliente)\n);',
         selo: 'VARCHAR apontando para INT',
-        resposta: 'ERROR:  foreign key constraint "jogo_id_plataforma_fkey" cannot be implemented\nDETAIL:  Key columns "id_plataforma" and "id_plataforma" are of\n         incompatible types: character varying and integer.',
+        resposta: 'ERROR:  foreign key constraint "emprestimo_id_cliente_fkey" cannot be implemented\nDETAIL:  Key columns "id_cliente" and "id_cliente" are of\n         incompatible types: character varying and integer.',
         seloR: 'recusado',
         marcaR: 'ruim',
         legenda:
@@ -217,7 +217,7 @@
       $('a7-fk-legenda').textContent = c.legenda;
 
       log.escrever([
-        { hora: 'Aula 07', ator: 'voce', texto: 'escreve a seta: id_plataforma CE/FK → plataforma' },
+        { hora: 'Aula 07', ator: 'voce', texto: 'escreve a seta: id_cliente CE/FK → cliente' },
         { hora: 'Aula 11', ator: c.registro.ator, texto: c.registro.texto, marca: c.registro.marca },
       ]);
     });
@@ -226,9 +226,12 @@
   /* ================= 3. quantas tabelas o seu DER vai gerar ================= */
   //
   // A nota de orador do "DER de partida" manda perguntar isso a turma. A
-  // resposta e 4, e o interessante e POR QUE: tres relacionamentos e nenhuma
-  // tabela nova. Duas das cinco regras nao criam tabela — e e justamente essa
-  // a parte que some quando o mapeamento e decorado como lista de regras.
+  // resposta e 7 para 5 entidades, e o interessante e POR QUE: so os dois N:N
+  // criam tabela. O 1:N e o 1:1 viram coluna — e e justamente essa a parte que
+  // some quando o mapeamento e decorado como lista de regras.
+  //
+  // A regra 3 deixou de ser a que "nao faz nada aqui", que era o caso no
+  // modelo antigo: agora ela e a unica que muda a conta, e duas vezes.
 
   (function () {
     var passo = $('a7-regra-passo');
@@ -240,88 +243,91 @@
     var REGRAS = [
       {
         tit: 'Regra 1 — cada entidade vira uma tabela',
-        selo: '4 tabelas',
+        selo: '5 tabelas',
         marca: '',
         esquema:
           'plataforma (id_plataforma*, nome, fabricante)\n' +
-          'jogo       (id_jogo*, titulo, genero)\n' +
+          'jogo       (id_jogo*, titulo, genero, preco_diaria)\n' +
           'cliente    (id_cliente*, nome, telefone)\n' +
+          'endereco   (id_endereco*, logradouro, cidade, cep)\n' +
           'emprestimo (id_emprestimo*, data_retirada, data_prevista)',
-        nota: 'Quatro entidades no DER, quatro tabelas. Ainda sem nenhuma ligação entre elas.',
+        nota: 'Cinco entidades no DER, cinco tabelas. Ainda sem nenhuma ligação entre elas.',
         legenda:
-          'A regra mais simples, e a única que é uma correspondência de um para um. O resto do mapeamento é decidir o que fazer com as linhas do desenho.',
-        registro: { ator: 'voce', texto: '4 entidades viraram 4 tabelas', marca: '' },
+          'A regra mais simples, e a única que é uma correspondência de um para um. O resto do mapeamento é decidir o que fazer com as LINHAS do desenho.',
+        registro: { ator: 'voce', texto: '5 entidades viraram 5 tabelas', marca: '' },
       },
       {
         tit: 'Regra 2 — o relacionamento 1:N vira chave estrangeira',
-        selo: '4 tabelas',
+        selo: '5 tabelas',
         marca: '',
         esquema:
           'plataforma (id_plataforma*, nome, fabricante)\n' +
-          'jogo       (id_jogo*, titulo, genero,\n' +
-          '            id_plataforma CE/FK → plataforma)\n' +
+          'jogo       (id_jogo*, titulo, genero, preco_diaria)\n' +
           'cliente    (id_cliente*, nome, telefone)\n' +
+          'endereco   (id_endereco*, logradouro, cidade, cep)\n' +
           'emprestimo (id_emprestimo*, data_retirada, data_prevista,\n' +
-          '            id_jogo CE/FK → jogo,\n' +
           '            id_cliente CE/FK → cliente)',
-        nota: 'Três relacionamentos, três colunas novas — e nenhuma tabela nova. A coluna entra sempre do lado do N.',
+        nota: 'Um relacionamento 1:N, uma coluna nova — e nenhuma tabela nova. A coluna entra sempre do lado do N.',
         legenda:
-          'Aqui a conta não muda, e é o que surpreende. Relacionamento 1:N não é tabela: é uma coluna na tabela do lado que tem muitos. EMPRESTIMO ficou com duas, que é a marca de quem nasceu de um N:N.',
-        registro: { ator: 'voce', texto: '3 relacionamentos 1:N viraram 3 colunas, 0 tabelas', marca: '' },
+          'Aqui a conta não muda, e é o que surpreende. Relacionamento 1:N não é tabela: é uma coluna na tabela do lado que tem muitos. E repare no que esta regra NÃO conseguiu fazer: os dois N:N continuam sem lugar.',
+        registro: { ator: 'voce', texto: '1 relacionamento 1:N virou 1 coluna, 0 tabelas', marca: '' },
       },
       {
         tit: 'Regra 3 — o relacionamento N:N vira uma tabela nova',
-        selo: '4 tabelas',
-        marca: '',
-        esquema:
-          'plataforma (id_plataforma*, nome, fabricante)\n' +
-          'jogo       (id_jogo*, titulo, genero,\n' +
-          '            id_plataforma CE/FK → plataforma)\n' +
-          'cliente    (id_cliente*, nome, telefone)\n' +
-          'emprestimo (id_emprestimo*, data_retirada, data_prevista,\n' +
-          '            id_jogo CE/FK → jogo,\n' +
-          '            id_cliente CE/FK → cliente)\n' +
-          '-- nenhum N:N sobrou para mapear',
-        nota: 'A regra 3 não fez nada aqui: o N:N entre CLIENTE e JOGO já tinha virado EMPRESTIMO, uma aula antes.',
-        legenda:
-          'A tabela que a regra 3 criaria já está na lista desde o passo 1 — porque quem a criou foi você, no desenho da Aula 06. Grupo que ainda tem N:N no DER de hoje ganha uma tabela aqui.',
-        registro: { ator: 'voce', texto: 'nenhum N:N sobrou: a entidade do meio foi feita na Aula 06', marca: '' },
-      },
-      {
-        tit: 'Regra 4 — o relacionamento 1:1, e a escolha é sua',
-        selo: '4 ou 5 tabelas',
-        marca: '',
-        esquema:
-          'plataforma (id_plataforma*, nome, fabricante)\n' +
-          'jogo       (id_jogo*, titulo, genero,\n' +
-          '            id_plataforma CE/FK → plataforma)\n' +
-          'cliente    (id_cliente*, nome, telefone)\n' +
-          'emprestimo (id_emprestimo*, data_retirada, data_prevista,\n' +
-          '            id_jogo CE/FK → jogo,\n' +
-          '            id_cliente CE/FK → cliente)\n' +
-          '\n' +
-          '-- separando (poucos clientes têm, e é dado sensível):\n' +
-          'dados_bancarios (id_dados*, banco, agencia, conta,\n' +
-          '            id_cliente CE/FK → cliente, ÚNICA)',
-        nota: 'Juntar tudo em cliente dá 4 tabelas; separar dá 5. Separando, a chave estrangeira precisa ser ÚNICA — senão dois registros apontariam para o mesmo cliente, e aí já não seria 1:1.',
-        legenda:
-          'É a única regra que não decide por você. Separar faz sentido aqui porque poucos clientes têm dados bancários, e porque é dado sensível que vai merecer permissão própria na Aula 16.',
-        registro: { ator: 'voce', texto: '1:1 separado: +1 tabela, e a FK tem de ser ÚNICA', marca: '' },
-      },
-      {
-        tit: 'Regra 5 — atributo multivalorado vira tabela',
-        selo: '5 ou 6 tabelas',
+        selo: '7 tabelas',
         marca: 'bom',
         esquema:
           'plataforma (id_plataforma*, nome, fabricante)\n' +
-          'jogo       (id_jogo*, titulo, genero,\n' +
-          '            id_plataforma CE/FK → plataforma)\n' +
-          'cliente    (id_cliente*, nome)\n' +
+          'jogo       (id_jogo*, titulo, genero, preco_diaria)\n' +
+          'cliente    (id_cliente*, nome, telefone)\n' +
+          'endereco   (id_endereco*, logradouro, cidade, cep)\n' +
           'emprestimo (id_emprestimo*, data_retirada, data_prevista,\n' +
-          '            id_jogo CE/FK → jogo,\n' +
           '            id_cliente CE/FK → cliente)\n' +
-          'dados_bancarios (id_dados*, banco, agencia, conta,\n' +
-          '            id_cliente CE/FK → cliente, ÚNICA)\n' +
+          'jogos_plataforma (id_jogo* CE/FK → jogo,\n' +
+          '            id_plataforma* CE/FK → plataforma)\n' +
+          'item_emprestimo  (id_emprestimo* CE/FK → emprestimo,\n' +
+          '            id_jogo* CE/FK → jogo, preco_pago)',
+        nota: 'Dois N:N, duas tabelas novas. As duas têm uma chave estrangeira por lado, e as duas juntas formam a chave primária.',
+        legenda:
+          'A diferença entre as duas é o preco_pago. A jogos_plataforma é a forma PURA da regra: ela só diz quem casa com quem. A item_emprestimo carrega um dado que não cabia em nenhum dos dois lados — e é por isso que ela existia no DER desde a Aula 06.',
+        registro: { ator: 'voce', texto: '2 relacionamentos N:N viraram 2 tabelas', marca: 'bom' },
+      },
+      {
+        tit: 'Regra 4 — o relacionamento 1:1, e o ÚNICO que o define',
+        selo: '7 tabelas',
+        marca: '',
+        esquema:
+          'plataforma (id_plataforma*, nome, fabricante)\n' +
+          'jogo       (id_jogo*, titulo, genero, preco_diaria)\n' +
+          'cliente    (id_cliente*, nome, telefone)\n' +
+          'endereco   (id_endereco*, logradouro, cidade, cep,\n' +
+          '            id_cliente CE/FK → cliente, ÚNICO)\n' +
+          'emprestimo (id_emprestimo*, data_retirada, data_prevista,\n' +
+          '            id_cliente CE/FK → cliente)\n' +
+          'jogos_plataforma (id_jogo* CE/FK → jogo,\n' +
+          '            id_plataforma* CE/FK → plataforma)\n' +
+          'item_emprestimo  (id_emprestimo* CE/FK → emprestimo,\n' +
+          '            id_jogo* CE/FK → jogo, preco_pago)',
+        nota: 'Nenhuma tabela nova: a chave estrangeira entra em endereco, e o ÚNICO nela é o que faz o 1:1.',
+        legenda:
+          'Compare esta linha com a do emprestimo: as duas apontam para cliente, as duas são CE/FK, e a única diferença é a palavra ÚNICO. Sem ela, nada impede o mesmo cliente de ter dois endereços — e aí seria 1:N. A chave vai no lado que PODE FALTAR: nem todo cliente dá endereço.',
+        registro: { ator: 'voce', texto: '1:1: a FK vai no lado opcional, e precisa ser ÚNICA', marca: '' },
+      },
+      {
+        tit: 'Regra 5 — atributo multivalorado vira tabela',
+        selo: '8 tabelas',
+        marca: 'bom',
+        esquema:
+          'plataforma (id_plataforma*, nome, fabricante)\n' +
+          'jogo       (id_jogo*, titulo, genero, preco_diaria)\n' +
+          'cliente    (id_cliente*, nome)\n' +
+          'endereco   (id_endereco*, logradouro, cidade, cep,\n' +
+          '            id_cliente CE/FK → cliente, ÚNICO)\n' +
+          'emprestimo (id_emprestimo*, data_retirada, data_prevista,\n' +
+          '            id_cliente CE/FK → cliente)\n' +
+          'jogos_plataforma (id_jogo* CE/FK, id_plataforma* CE/FK)\n' +
+          'item_emprestimo  (id_emprestimo* CE/FK, id_jogo* CE/FK,\n' +
+          '            preco_pago)\n' +
           'telefone_cliente (id_telefone*, numero, tipo,\n' +
           '            id_cliente CE/FK → cliente)',
         nota: 'Repare que a coluna telefone SAIU de cliente. O cliente com dois telefones, da Aula 04, não cabia numa célula.',
