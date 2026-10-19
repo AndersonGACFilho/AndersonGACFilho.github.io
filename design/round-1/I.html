@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I</title>
+<style>
+@font-face {
+  font-family: 'League Mono';
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/league-mono@5.3.0/files/league-mono-latin-300-normal.woff2') format('woff2');
+  font-weight: 300; font-display: block;
+}
+@font-face {
+  font-family: 'League Mono';
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/league-mono@5.3.0/files/league-mono-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-display: block;
+}
+@font-face {
+  font-family: 'League Mono';
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/league-mono@5.3.0/files/league-mono-latin-800-normal.woff2') format('woff2');
+  font-weight: 800; font-display: block;
+}
+
+/* uma unidade de corpo por projeto: o tamanho do nome de cada frente é a
+   contagem dela, e não uma escolha de hierarquia */
+:root { --u: min(3.8vw, 2.6rem); }
+
+html {
+  background: #ffffff;
+  color: #0a0a0a;
+  font-family: 'League Mono', ui-monospace, monospace;
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  padding: clamp(1.5rem, 5vh, 3.5rem) clamp(1rem, 4vw, 3rem) 5rem;
+}
+
+p, h1, h2 { margin: 0; }
+
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 22rem) minmax(0, 40rem);
+  column-gap: clamp(1.5rem, 5vw, 5rem);
+  row-gap: 1.2rem;
+  align-items: start;
+}
+
+h1 { font-weight: 800; font-size: 1rem; line-height: 1.35; }
+.role { font-weight: 400; font-size: 1rem; line-height: 1.35; }
+.para { grid-column: 2; grid-row: 1 / span 3; font-weight: 300; font-size: 1rem; }
+.place { font-weight: 300; }
+
+.tracks { margin-top: clamp(3rem, 12vh, 8rem); }
+.track { margin-bottom: clamp(1.5rem, 5vh, 3rem); }
+.track h2 {
+  font-weight: 800;
+  font-size: calc(var(--u) * var(--n));
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #0038d1;
+}
+.track p {
+  max-width: 46ch;
+  font-weight: 300;
+  margin-top: 0.4rem;
+}
+.track .count { margin-top: 0; font-weight: 400; }
+
+@media (max-width: 720px) {
+  .head { display: block; }
+  .role { margin-top: 0.2rem; }
+  .para { margin-top: 1.4rem; }
+  .place { margin-top: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<main>
+  <div class="head">
+    <h1>Anderson Gonçalves</h1>
+    <p class="role">Programador de gameplay e engenheiro full stack, mestrando na UFRGS</p>
+    <p class="place">Porto Alegre. Aberto a trabalho remoto.</p>
+    <p class="para">Metade do meu trabalho tem orçamento medido por quadro: sistemas de gameplay em Unity e Unreal, alguns jogáveis nesta página. A outra metade tem de ficar de pé, e hoje isso é uma plataforma de compliance e logística em Python e Angular com mais de mil testes automatizados. O mestrado na UFRGS fica entre as duas. É sobre controle e tomada de decisão, e o NPC é a bancada de teste.</p>
+  </div>
+
+  <div class="tracks">
+    <section class="track" style="--n: 2">
+      <h2>Fullstack</h2>
+      <p>APIs, backends orientados a eventos e o front em cima, em Python, Java e Angular.</p>
+      <p class="count">2 projetos</p>
+    </section>
+    <section class="track" style="--n: 4">
+      <h2>Game Dev</h2>
+      <p>Sistemas de gameplay em Unity e Unreal, ferramentas e protótipos publicados.</p>
+      <p class="count">4 projetos</p>
+    </section>
+    <section class="track" style="--n: 2">
+      <h2>Pesquisa em IA</h2>
+      <p>Controle e tomada de decisão com HTN, GOAP e RL multiobjetivo, testados em NPC.</p>
+      <p class="count">2 projetos</p>
+    </section>
+  </div>
+</main>
+</body>
+</html>

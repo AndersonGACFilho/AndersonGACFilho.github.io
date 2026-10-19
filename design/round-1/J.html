@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>J</title>
+<style>
+@font-face {
+  font-family: 'Cooper Hewitt';
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/cooper-hewitt@5.3.0/files/cooper-hewitt-latin-800-normal.woff2') format('woff2');
+  font-weight: 800; font-display: block;
+}
+@font-face {
+  font-family: 'Junicode';
+  src: url('https://cdn.jsdelivr.net/gh/psb1558/Junicode-font@master/webfiles/JunicodeVF-Roman.woff2') format('woff2');
+  font-weight: 300 700; font-stretch: 75% 125%; font-style: normal; font-display: block;
+}
+@font-face {
+  font-family: 'Junicode';
+  src: url('https://cdn.jsdelivr.net/gh/psb1558/Junicode-font@master/webfiles/JunicodeVF-Italic.woff2') format('woff2');
+  font-weight: 300 700; font-stretch: 75% 125%; font-style: italic; font-display: block;
+}
+
+html {
+  background: #3a0e10;
+  color: #fbeee8;
+  font-family: 'Junicode', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.45;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  min-height: 100svh;
+  overflow: clip;
+}
+
+/* atrás: o que sustenta, repetido até encher a página */
+.back {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0 0 0 1vw;
+  font-family: 'Cooper Hewitt', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(4.5rem, 13vw, 13rem);
+  line-height: 0.84;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #5c2124;
+  word-spacing: 0.1em;
+  overflow: clip;
+  user-select: none;
+}
+
+/* na frente: o que se vê, por cima */
+main {
+  position: relative;
+  max-width: 31rem;
+  margin: 0 clamp(1rem, 7vw, 8rem) 0 auto;
+  padding: clamp(3rem, 14vh, 10rem) 0 6rem;
+}
+
+p, h1, h2 { margin: 0; }
+
+h1 {
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: 92%;
+  font-size: clamp(2.4rem, 4.6vw, 4.2rem);
+  line-height: 1;
+  color: #ffb38a;
+}
+
+.role {
+  margin-top: 0.9rem;
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.para {
+  margin-top: 2.2rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.tracks { margin-top: 3.2rem; }
+.track { margin-bottom: 1.8rem; }
+.track h2 {
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: 92%;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  color: #ffb38a;
+}
+.track p { font-size: 1rem; }
+.track .count { margin-top: 0.25rem; font-style: italic; }
+
+.place { margin-top: 2.6rem; font-style: italic; }
+
+@media (max-width: 720px) {
+  main { margin: 0 1rem; }
+}
+</style>
+</head>
+<body>
+<p class="back" aria-hidden="true">Python Java APIs backends Python Java APIs backends Python Java APIs backends Python Java APIs backends Python Java APIs backends Python Java APIs backends Python Java APIs backends Python Java APIs backends Python Java APIs backends Python Java APIs backends</p>
+<main>
+  <h1>Anderson Gonçalves</h1>
+  <p class="role">Programador de gameplay e engenheiro full stack, mestrando na UFRGS</p>
+
+  <p class="para">Metade do meu trabalho tem orçamento medido por quadro: sistemas de gameplay em Unity e Unreal, alguns jogáveis nesta página. A outra metade tem de ficar de pé, e hoje isso é uma plataforma de compliance e logística em Python e Angular com mais de mil testes automatizados. O mestrado na UFRGS fica entre as duas. É sobre controle e tomada de decisão, e o NPC é a bancada de teste.</p>
+
+  <div class="tracks">
+    <section class="track">
+      <h2>Fullstack</h2>
+      <p>APIs, backends orientados a eventos e o front em cima, em Python, Java e Angular.</p>
+      <p class="count">2 projetos</p>
+    </section>
+    <section class="track">
+      <h2>Game Dev</h2>
+      <p>Sistemas de gameplay em Unity e Unreal, ferramentas e protótipos publicados.</p>
+      <p class="count">4 projetos</p>
+    </section>
+    <section class="track">
+      <h2>Pesquisa em IA</h2>
+      <p>Controle e tomada de decisão com HTN, GOAP e RL multiobjetivo, testados em NPC.</p>
+      <p class="count">2 projetos</p>
+    </section>
+  </div>
+
+  <p class="place">Porto Alegre. Aberto a trabalho remoto.</p>
+</main>
+</body>
+</html>

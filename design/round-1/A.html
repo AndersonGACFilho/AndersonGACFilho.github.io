@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A</title>
+<style>
+@font-face {
+  font-family: 'Commit Mono';
+  src: url('https://cdn.jsdelivr.net/gh/eigilnikolajsen/commit-mono@main/src/fonts/fontlab/CommitMonoV143-VF.woff2') format('woff2');
+  font-weight: 200 700;
+  font-display: block;
+}
+
+html {
+  background: #d5d9dc;
+  color: #12161a;
+  font-family: 'Commit Mono', ui-monospace, monospace;
+  font-size: clamp(14px, 0.55vw + 11px, 17px);
+  line-height: 1.5;
+  font-weight: 400;
+  font-feature-settings: 'kern' 1;
+}
+
+body {
+  margin: 0;
+  padding: 3lh 2ch 6lh max(2ch, 16vw);
+}
+
+main {
+  max-width: 62ch;
+}
+
+p, h1, h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+h1 { font-weight: 700; }
+
+.role { margin-bottom: 1lh; }
+
+.para { margin-bottom: 3lh; }
+
+.track { margin-bottom: 1lh; }
+.track h2 { font-weight: 700; }
+
+.place { margin-top: 3lh; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Anderson Gonçalves</h1>
+  <p class="role">Programador de gameplay e engenheiro full stack, mestrando na UFRGS</p>
+
+  <p class="para">Metade do meu trabalho tem orçamento medido por quadro: sistemas de gameplay em Unity e Unreal, alguns jogáveis nesta página. A outra metade tem de ficar de pé, e hoje isso é uma plataforma de compliance e logística em Python e Angular com mais de mil testes automatizados. O mestrado na UFRGS fica entre as duas. É sobre controle e tomada de decisão, e o NPC é a bancada de teste.</p>
+
+  <section class="track">
+    <h2>Fullstack</h2>
+    <p>APIs, backends orientados a eventos e o front em cima, em Python, Java e Angular.</p>
+    <p>2 projetos</p>
+  </section>
+
+  <section class="track">
+    <h2>Game Dev</h2>
+    <p>Sistemas de gameplay em Unity e Unreal, ferramentas e protótipos publicados.</p>
+    <p>4 projetos</p>
+  </section>
+
+  <section class="track">
+    <h2>Pesquisa em IA</h2>
+    <p>Controle e tomada de decisão com HTN, GOAP e RL multiobjetivo, testados em NPC.</p>
+    <p>2 projetos</p>
+  </section>
+
+  <p class="place">Porto Alegre. Aberto a trabalho remoto.</p>
+</main>
+</body>
+</html>

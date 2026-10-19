@@ -34,7 +34,7 @@ const groups: [keyof typeof section, Entry[]][] = [
 ---
 
 <div class="cv" data-focus="all">
-  <PageHeader kicker={t('kicker.cv')} title="Anderson Gonçalves" accent="var(--cv-accent)">
+  <PageHeader kicker={t('kicker.cv')} title="Anderson Gonçalves">
     <div class="focus-switch chip-row" role="group" aria-label={t('label.focus')}>
       {
         CV_FOCUSES.map((focus) => (
@@ -83,7 +83,9 @@ const groups: [keyof typeof section, Entry[]][] = [
               <div class="when">
                 <span class="period">{pick(entry.period, lang)}</span>
                 <span class="place">{pick(entry.place, lang)}</span>
-                {entry.track && <span class="entry-track">{t(trackLabelKey(entry.track))}</span>}
+                {[entry.track, ...(entry.alsoTracks ?? [])].filter(Boolean).map((track) => (
+                  <span class="entry-track" data-track={track}>{t(trackLabelKey(track!))}</span>
+                ))}
               </div>
               <div class="what">
                 <h3>{pick(entry.role, lang)}</h3>
@@ -97,7 +99,7 @@ const groups: [keyof typeof section, Entry[]][] = [
                   ))}
                 </ul>
                 {entry.tech && (
-                  <div class="badge-row">
+                  <div class="tag-row">
                     {entry.tech.map((item) => (
                       <span class="tag">{item}</span>
                     ))}
@@ -139,7 +141,7 @@ const groups: [keyof typeof section, Entry[]][] = [
         skills.map((group) => (
           <div data-group={group.group}>
             <dt>{pick(group.label, lang)}</dt>
-            <dd class="badge-row">
+            <dd class="tag-row">
               {group.items.map((item) => (
                 <span class="tag">{item}</span>
               ))}
@@ -163,53 +165,44 @@ const groups: [keyof typeof section, Entry[]][] = [
 </div>
 
 <style>
-  /* A cor do kicker acompanha o foco. Passa por variável porque o kicker
-     mora no PageHeader, que tem outro escopo de estilo. */
-  .cv { --cv-accent: var(--accent); }
-  .cv[data-focus='gamedev'] { --cv-accent: var(--gamedev); }
-  .cv[data-focus='fullstack'] { --cv-accent: var(--fullstack); }
-
   /* Sem JavaScript a página fica no estado "Tudo", que já é um currículo
      completo e equilibrado. O chip em si vem de `controls.css`. */
   .focus-switch { margin-bottom: 16px; }
 
   .headline { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 10px; }
   .links { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.92rem; margin-bottom: 20px; }
-  .links a { color: var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
-  .profile { color: var(--text-dim); }
+  .links a { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent); text-underline-offset: 0.2em; }
   .availability {
-    color: var(--text-faint);
-    font-size: 0.9rem;
-    border-left: 2px solid var(--border);
-    padding-left: 12px;
+    font-size: 0.88rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
   }
   .kind { color: var(--text-faint); font-size: 0.85rem; }
   .kind::before { content: '·'; margin-inline: 6px; }
 
   .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 30px; }
   .timeline > li { display: grid; gap: 4px 28px; grid-template-columns: minmax(0, 190px) 1fr; }
-  .when { font-family: var(--display); font-size: 0.78rem; color: var(--text-faint); display: grid; align-content: start; gap: 2px; padding-top: 4px; }
-  /* O traço colorido diz de longe qual metade da carreira é qual. A cor não
-     carrega sozinha a informação: o nome da trilha vai escrito ao lado. */
-  .what { border-left: 2px solid var(--entry, var(--border)); padding-left: 16px; }
-  .what h3 { margin: 0; font-size: 1.05rem; }
+  .when { font-family: var(--display); font-size: 0.88rem; font-weight: 300; letter-spacing: 0.04em; color: var(--text-faint); display: grid; align-content: start; gap: 2px; padding-top: 3px; }
+  .what h3 { margin: 0; font-size: 1.15rem; }
   .org { margin: 2px 0 8px; color: var(--text-dim); font-size: 0.95rem; }
-  .what ul { margin: 0 0 10px; padding-left: 18px; color: var(--text-dim); font-size: 0.93rem; }
+  .what ul { margin: 0 0 10px; padding-left: 18px; color: var(--text-dim); font-size: 0.95rem; }
   .what li + li { margin-top: 3px; }
-  .entry-track { color: var(--entry); font-weight: 600; }
+  /* A trilha de cada entrada vai escrita, na tinta dos nomes. Era também um
+     traço colorido à esquerda do texto, o mesmo filete que saiu do índice. */
+  .entry-track { color: var(--entry); font-weight: 700; letter-spacing: 0; }
 
-  /* Com um foco escolhido, a experiência do outro lado perde a cor mas não
-     perde contraste: o texto segue igual e a entrada continua na lista.
-     Apaga-se a propriedade, e não o `--entry`: a variável vem no atributo
-     style da `li`, e estilo inline ganha de qualquer regra daqui. */
-  .cv[data-focus='gamedev'] .timeline > li[data-track='fullstack'] .what,
-  .cv[data-focus='fullstack'] .timeline > li[data-track='gamedev'] .what { border-left-color: var(--border); }
-  .cv[data-focus='gamedev'] .timeline > li[data-track='fullstack'] .entry-track,
-  .cv[data-focus='fullstack'] .timeline > li[data-track='gamedev'] .entry-track { color: var(--text-faint); }
+  /* Com um foco escolhido, o rótulo da trilha do outro lado perde a tinta
+     dos nomes mas não perde contraste: o texto segue igual e a entrada
+     continua na lista. Cada rótulo responde pela própria trilha, e não pela
+     da entrada, porque uma entrada pode ter mais de uma: a pesquisa da UFRGS
+     é Game Dev e AI Research, e no foco full stack só o Game Dev apaga.
+     Pesquisa não apaga em foco nenhum. */
+  .cv[data-focus='gamedev'] .entry-track[data-track='fullstack'],
+  .cv[data-focus='fullstack'] .entry-track[data-track='gamedev'] { color: var(--text-faint); font-weight: 300; }
 
   .skills { margin: 0; display: grid; gap: 14px; }
   .skills > div { display: grid; gap: 6px 28px; grid-template-columns: minmax(0, 190px) 1fr; align-items: start; }
-  .skills dt { font-family: var(--display); font-size: 0.78rem; color: var(--text-faint); padding-top: 3px; }
+  .skills dt { font-family: var(--display); font-size: 0.92rem; font-weight: 700; padding-top: 1px; }
   .skills dd { margin: 0; }
   /* Só a ordem visual muda; cada grupo se identifica pelo próprio dt, então a
      ordem de leitura do código continua fazendo sentido para o leitor de tela. */
@@ -226,11 +219,10 @@ const groups: [keyof typeof section, Entry[]][] = [
     font-size: 0.95rem;
     line-height: 1.6;
   }
-  .rec blockquote::before { content: '\201C'; color: var(--fullstack); font-size: 1.6rem; line-height: 0; vertical-align: -0.35em; margin-right: 2px; }
-  .rec figcaption { display: grid; gap: 2px; margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); }
+  .rec figcaption { display: grid; gap: 2px; margin-top: auto; padding-top: 6px; }
   .rec figcaption a { font-weight: 600; }
   .rec-role { color: var(--text-dim); font-size: 0.85rem; }
-  .rec-rel { color: var(--text-faint); font-family: var(--display); font-size: 0.72rem; }
+  .rec-rel { color: var(--text-faint); font-size: 0.85rem; font-weight: 300; letter-spacing: 0.04em; }
 
   .closing h2 { font-size: 1.05rem; }
   .closing ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 0.93rem; }
