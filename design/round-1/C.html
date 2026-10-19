@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C</title>
+<style>
+@font-face {
+  font-family: 'Junicode';
+  src: url('https://cdn.jsdelivr.net/gh/psb1558/Junicode-font@master/webfiles/JunicodeVF-Roman.woff2') format('woff2');
+  font-weight: 300 700;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Junicode';
+  src: url('https://cdn.jsdelivr.net/gh/psb1558/Junicode-font@master/webfiles/JunicodeVF-Italic.woff2') format('woff2');
+  font-weight: 300 700;
+  font-stretch: 75% 125%;
+  font-style: italic;
+  font-display: block;
+}
+
+html {
+  background: #c7cbc0;
+  font-family: 'Junicode', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.45;
+  font-variant-numeric: oldstyle-nums;
+}
+
+body {
+  margin: 0;
+  padding: clamp(2.5rem, 9vh, 7rem) clamp(1rem, 4vw, 4rem) 6rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(11rem, 15rem) minmax(0, 1fr);
+  grid-template-areas:
+    'first  role  last'
+    'half1  mid   half2'
+    'game   res   full'
+    '.      place .';
+  column-gap: clamp(1.25rem, 3.5vw, 3.5rem);
+  row-gap: clamp(2.5rem, 7vh, 5rem);
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
+/* o lado do jogo, à esquerda, puxa para o centro */
+.g { color: #4a1c0c; text-align: right; font-stretch: 116%; }
+/* o lado que fica de pé, à direita, puxa para o centro */
+.f { color: #0f2c45; text-align: left; font-stretch: 116%; }
+/* o que fica entre os dois */
+.r { color: #4b1240; text-align: center; font-stretch: 75%; }
+
+h1 { display: contents; }
+.first, .last {
+  font-size: clamp(2.6rem, 6.4vw, 6.2rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.005em;
+  align-self: end;
+}
+.first { grid-area: first; }
+.last { grid-area: last; }
+
+.role {
+  grid-area: role;
+  margin: 0;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.35;
+  align-self: end;
+}
+
+p { margin: 0; }
+
+.half1 { grid-area: half1; font-size: 1.12rem; font-weight: 400; }
+.half2 { grid-area: half2; font-size: 1.12rem; font-weight: 400; }
+.mid { grid-area: mid; font-size: 1.12rem; font-weight: 500; }
+
+.track h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  font-weight: 600;
+}
+.track p { font-size: 1rem; }
+.track .count {
+  margin-top: 0.35rem;
+  font-style: italic;
+}
+.full { grid-area: full; }
+.game { grid-area: game; }
+.res { grid-area: res; }
+
+.place {
+  grid-area: place;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 760px) {
+  main {
+    display: block;
+  }
+  .g, .f, .r { text-align: left; }
+  h1 { display: block; margin: 0 0 0.6rem; }
+  .first, .last { display: block; }
+  .role { margin-bottom: 2.5rem; }
+  .half1, .half2, .mid { margin-bottom: 1.1rem; }
+  .mid { margin-bottom: 3rem; }
+  .track { margin-bottom: 2rem; }
+  .place { margin-top: 3rem; }
+}
+</style>
+</head>
+<body>
+<main>
+  <h1><span class="first g">Anderson</span> <span class="last f">Gonçalves</span></h1>
+  <p class="role r">Programador de gameplay e engenheiro full stack, mestrando na UFRGS</p>
+
+  <p class="half1 g">Metade do meu trabalho tem orçamento medido por quadro: sistemas de gameplay em Unity e Unreal, alguns jogáveis nesta página.</p>
+  <p class="half2 f">A outra metade tem de ficar de pé, e hoje isso é uma plataforma de compliance e logística em Python e Angular com mais de mil testes automatizados.</p>
+  <p class="mid r">O mestrado na UFRGS fica entre as duas. É sobre controle e tomada de decisão, e o NPC é a bancada de teste.</p>
+
+  <section class="track full f">
+    <h2>Fullstack</h2>
+    <p>APIs, backends orientados a eventos e o front em cima, em Python, Java e Angular.</p>
+    <p class="count">2 projetos</p>
+  </section>
+
+  <section class="track game g">
+    <h2>Game Dev</h2>
+    <p>Sistemas de gameplay em Unity e Unreal, ferramentas e protótipos publicados.</p>
+    <p class="count">4 projetos</p>
+  </section>
+
+  <section class="track res r">
+    <h2>Pesquisa em IA</h2>
+    <p>Controle e tomada de decisão com HTN, GOAP e RL multiobjetivo, testados em NPC.</p>
+    <p class="count">2 projetos</p>
+  </section>
+
+  <p class="place r">Porto Alegre. Aberto a trabalho remoto.</p>
+</main>
+</body>
+</html>

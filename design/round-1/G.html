@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G</title>
+<style>
+@font-face {
+  font-family: 'Monaspace Neon';
+  src: url('https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.400/fonts/Web%20Fonts/Variable%20Web%20Fonts/Monaspace%20Neon/Monaspace%20Neon%20Var.woff2') format('woff2');
+  font-weight: 200 800;
+  font-stretch: 100% 125%;
+  font-style: oblique 0deg 11deg;
+  font-display: block;
+}
+
+html {
+  background: #14110f;
+  color: #f2efe9;
+  font-family: 'Monaspace Neon', ui-monospace, monospace;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  padding: clamp(2rem, 9vh, 6rem) clamp(1rem, 4vw, 3rem) 7rem;
+}
+
+p, h1, h2 { margin: 0; }
+
+/* empuxo no começo; depois cada bloco anda menos que o anterior e vai
+   endireitando, até parar */
+.b0 { margin-left: 0;       font-stretch: 125%; font-style: oblique 11deg; font-weight: 800; }
+.b1 { margin-left: 7vw;     font-stretch: 121%; font-style: oblique 8deg;  font-weight: 640; }
+.b2 { margin-left: 12vw;    font-stretch: 114%; font-style: oblique 5deg;  font-weight: 480; }
+.b3 { margin-left: 15.5vw;  font-stretch: 108%; font-style: oblique 3deg;  font-weight: 400; }
+.b4 { margin-left: 17.5vw;  font-stretch: 104%; font-style: oblique 1.5deg; font-weight: 340; }
+.b5 { margin-left: 18.5vw;  font-stretch: 101%; font-style: oblique 0.5deg; font-weight: 300; }
+.b6 { margin-left: 19vw;    font-stretch: 100%; font-style: normal;        font-weight: 300; }
+
+h1 {
+  font-size: clamp(2.1rem, 6vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #ff6a3d;
+}
+
+.role {
+  margin-top: 1.4rem;
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  line-height: 1.35;
+  color: #a49c92;
+  max-width: 44ch;
+}
+
+.s {
+  max-width: 60ch;
+  font-size: 1.05rem;
+}
+.s.b2 { margin-top: 3.5rem; }
+.s.b3, .s.b4, .s.b5 { margin-top: 0.6rem; }
+
+.tracks { margin-top: 4.5rem; }
+.track { margin-bottom: 2rem; max-width: 52ch; }
+.track h2 { font-size: 1.25rem; font-weight: 500; line-height: 1.3; }
+.track p { font-size: 0.98rem; }
+.track .count { color: #a49c92; }
+
+.place { margin-top: 3.5rem; color: #a49c92; }
+</style>
+</head>
+<body>
+<main>
+  <h1 class="b0">Anderson Gonçalves</h1>
+  <p class="role b1">Programador de gameplay e engenheiro full stack, mestrando na UFRGS</p>
+
+  <p class="s b2">Metade do meu trabalho tem orçamento medido por quadro: sistemas de gameplay em Unity e Unreal, alguns jogáveis nesta página.</p>
+  <p class="s b3">A outra metade tem de ficar de pé, e hoje isso é uma plataforma de compliance e logística em Python e Angular com mais de mil testes automatizados.</p>
+  <p class="s b4">O mestrado na UFRGS fica entre as duas.</p>
+  <p class="s b5">É sobre controle e tomada de decisão, e o NPC é a bancada de teste.</p>
+
+  <div class="tracks b6">
+    <section class="track">
+      <h2>Fullstack</h2>
+      <p>APIs, backends orientados a eventos e o front em cima, em Python, Java e Angular.</p>
+      <p class="count">2 projetos</p>
+    </section>
+    <section class="track">
+      <h2>Game Dev</h2>
+      <p>Sistemas de gameplay em Unity e Unreal, ferramentas e protótipos publicados.</p>
+      <p class="count">4 projetos</p>
+    </section>
+    <section class="track">
+      <h2>Pesquisa em IA</h2>
+      <p>Controle e tomada de decisão com HTN, GOAP e RL multiobjetivo, testados em NPC.</p>
+      <p class="count">2 projetos</p>
+    </section>
+    <p class="place">Porto Alegre. Aberto a trabalho remoto.</p>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H</title>
+<style>
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('https://cdn.jsdelivr.net/gh/rektdeckard/departure-mono@main/public/assets/DepartureMono-Regular.woff2') format('woff2');
+  font-weight: 400; font-display: block;
+}
+@font-face {
+  font-family: 'CMU Serif';
+  src: url('https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/font/Serif/cmunrm.woff') format('woff');
+  font-weight: 400; font-style: normal; font-display: block;
+}
+@font-face {
+  font-family: 'CMU Serif';
+  src: url('https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/font/Serif/cmunti.woff') format('woff');
+  font-weight: 400; font-style: italic; font-display: block;
+}
+
+/* o desenho da pixelada é feito em 11px: só múltiplos inteiros de 11 mantêm
+   o pixel inteiro, e o espaço vertical anda no mesmo passo */
+:root { --px: 11px; }
+
+html {
+  background: #1f3a33;
+  color: #f3efe4;
+  font-family: 'CMU Serif', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+body {
+  margin: 0;
+  padding: calc(var(--px) * 8) 1rem calc(var(--px) * 12);
+  text-align: center;
+}
+
+main { max-width: 34em; margin: 0 auto; }
+
+p, h1, h2 { margin: 0; }
+
+.pix {
+  font-family: 'Departure Mono', ui-monospace, monospace;
+  font-weight: 400;
+  color: #8fe3c4;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  letter-spacing: 0;
+}
+
+h1.pix {
+  font-size: calc(var(--px) * 8);
+  line-height: calc(var(--px) * 8);
+}
+h1 span { display: block; }
+
+.role {
+  margin-top: calc(var(--px) * 3);
+  font-style: italic;
+  font-size: 1.15rem;
+}
+
+.para {
+  margin-top: calc(var(--px) * 6);
+  text-align: justify;
+  text-align-last: center;
+  hyphens: auto;
+  font-size: 1.05rem;
+}
+
+.tracks { margin-top: calc(var(--px) * 8); }
+.track { margin-bottom: calc(var(--px) * 5); }
+.track h2.pix {
+  font-size: calc(var(--px) * 3);
+  line-height: calc(var(--px) * 4);
+}
+.track p { font-style: italic; max-width: 26em; margin: 0 auto; }
+.track .count.pix {
+  margin-top: var(--px);
+  font-style: normal;
+  font-size: calc(var(--px) * 2);
+  line-height: calc(var(--px) * 3);
+}
+
+.place.pix {
+  margin-top: calc(var(--px) * 8);
+  font-size: calc(var(--px) * 2);
+  line-height: calc(var(--px) * 3);
+}
+
+@media (max-width: 760px) {
+  h1.pix { font-size: calc(var(--px) * 5); line-height: calc(var(--px) * 5); }
+  html { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+<main>
+  <h1 class="pix"><span>Anderson</span> <span>Gonçalves</span></h1>
+  <p class="role">Programador de gameplay e engenheiro full stack, mestrando na UFRGS</p>
+
+  <p class="para">Metade do meu trabalho tem orçamento medido por quadro: sistemas de gameplay em Unity e Unreal, alguns jogáveis nesta página. A outra metade tem de ficar de pé, e hoje isso é uma plataforma de compliance e logística em Python e Angular com mais de mil testes automatizados. O mestrado na UFRGS fica entre as duas. É sobre controle e tomada de decisão, e o NPC é a bancada de teste.</p>
+
+  <div class="tracks">
+    <section class="track">
+      <h2 class="pix">Fullstack</h2>
+      <p>APIs, backends orientados a eventos e o front em cima, em Python, Java e Angular.</p>
+      <p class="count pix">2 projetos</p>
+    </section>
+    <section class="track">
+      <h2 class="pix">Game Dev</h2>
+      <p>Sistemas de gameplay em Unity e Unreal, ferramentas e protótipos publicados.</p>
+      <p class="count pix">4 projetos</p>
+    </section>
+    <section class="track">
+      <h2 class="pix">Pesquisa em IA</h2>
+      <p>Controle e tomada de decisão com HTN, GOAP e RL multiobjetivo, testados em NPC.</p>
+      <p class="count pix">2 projetos</p>
+    </section>
+  </div>
+
+  <p class="place pix">Porto Alegre. Aberto a trabalho remoto.</p>
+</main>
+</body>
+</html>

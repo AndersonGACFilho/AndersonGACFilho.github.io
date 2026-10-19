@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B</title>
+<style>
+@font-face {
+  font-family: 'Martian Mono Condensed';
+  src: url('https://cdn.jsdelivr.net/gh/evilmartians/mono@main/fonts/webfonts/MartianMonoCondensed-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Cooper Hewitt';
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/cooper-hewitt@5.3.0/files/cooper-hewitt-latin-300-normal.woff2') format('woff2');
+  font-weight: 300;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Cooper Hewitt';
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/cooper-hewitt@5.3.0/files/cooper-hewitt-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Cooper Hewitt';
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/cooper-hewitt@5.3.0/files/cooper-hewitt-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-display: block;
+}
+
+html {
+  background: #0f1a13;
+  color: #eaf0e8;
+  font-family: 'Cooper Hewitt', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: auto minmax(0, 33rem);
+  column-gap: clamp(1rem, 5vw, 5rem);
+  align-items: end;
+  padding: 0 clamp(1rem, 4vw, 3rem) 0 clamp(0.5rem, 2vw, 2rem);
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0;
+  writing-mode: vertical-rl;
+  writing-mode: sideways-lr;
+  font-family: 'Martian Mono Condensed', ui-monospace, monospace;
+  font-weight: 800;
+  font-size: min(8.6svh, 19vw);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  color: #8ccf86;
+  white-space: nowrap;
+  align-self: end;
+  padding-bottom: 2svh;
+}
+
+main {
+  padding: 18svh 0 2svh;
+}
+
+.role {
+  margin: 0 0 1.75rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  max-width: 26rem;
+}
+
+.para {
+  margin: 0 0 3.5rem;
+  font-weight: 400;
+  font-size: 1.06rem;
+  line-height: 1.55;
+  hyphens: auto;
+}
+
+.track {
+  margin: 0 0 1.6rem;
+}
+.track h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #8ccf86;
+}
+.track p {
+  margin: 0.3rem 0 0;
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+.track .count {
+  margin-top: 0.15rem;
+  font-weight: 300;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+}
+
+.place {
+  margin: 3rem 0 0;
+  font-weight: 300;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+}
+</style>
+</head>
+<body>
+<h1>Anderson Gonçalves</h1>
+<main>
+  <p class="role">Programador de gameplay e engenheiro full stack, mestrando na UFRGS</p>
+
+  <p class="para">Metade do meu trabalho tem orçamento medido por quadro: sistemas de gameplay em Unity e Unreal, alguns jogáveis nesta página. A outra metade tem de ficar de pé, e hoje isso é uma plataforma de compliance e logística em Python e Angular com mais de mil testes automatizados. O mestrado na UFRGS fica entre as duas. É sobre controle e tomada de decisão, e o NPC é a bancada de teste.</p>
+
+  <section class="track">
+    <h2>Fullstack</h2>
+    <p>APIs, backends orientados a eventos e o front em cima, em Python, Java e Angular.</p>
+    <p class="count">2 projetos</p>
+  </section>
+
+  <section class="track">
+    <h2>Game Dev</h2>
+    <p>Sistemas de gameplay em Unity e Unreal, ferramentas e protótipos publicados.</p>
+    <p class="count">4 projetos</p>
+  </section>
+
+  <section class="track">
+    <h2>Pesquisa em IA</h2>
+    <p>Controle e tomada de decisão com HTN, GOAP e RL multiobjetivo, testados em NPC.</p>
+    <p class="count">2 projetos</p>
+  </section>
+
+  <p class="place">Porto Alegre. Aberto a trabalho remoto.</p>
+</main>
+</body>
+</html>
