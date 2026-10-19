@@ -26,6 +26,11 @@ export type Entry = {
   place: Bi;
   /** Trilha da vaga a que a experiência responde; só a lista de experiência usa. */
   track?: Track;
+  /**
+   * Outras trilhas que a experiência também cobre. Só rotulam: a chave de
+   * foco do /cv lê `track`, e estas não a mudam.
+   */
+  alsoTracks?: Track[];
   tech?: string[];
   bullets: { en: string[]; pt: string[] };
 };
@@ -66,6 +71,7 @@ export const experience: Entry[] = [
     org: 'Universidade Federal do Rio Grande do Sul',
     kind: { en: 'Fixed term', pt: 'Temporário' },
     track: 'gamedev',
+    alsoTracks: ['research'],
     period: { en: 'Mar 2026 – present', pt: 'mar 2026 – o momento' },
     place: { en: 'Porto Alegre, BR · Remote', pt: 'Porto Alegre, RS · Remoto' },
     tech: ['Reinforcement Learning', 'HTN', 'GOAP', 'Multi-agent', 'Python'],
