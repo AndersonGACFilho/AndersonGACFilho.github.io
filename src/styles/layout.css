@@ -8,9 +8,9 @@
  * nome ocupa todas as linhas da grade e é `sticky`, então fica parado
  * enquanto cabeçalho, conteúdo e rodapé rolam ao lado dele.
  *
- * O CONTEÚDO ENCOSTA NO NOME, e não no centro da tela. Em tela larga sobra
- * vazio à direita, de propósito: o que segura a página é a coluna, não a
- * simetria.
+ * O CONTEÚDO FICA NO MEIO DO ESPAÇO AO LADO DO NOME. Encostado no nome,
+ * sobrava um vazio do tamanho de meia tela à direita em monitor largo; no
+ * meio, o vazio se divide nos dois lados e a coluna preenche a tela.
  */
 body {
   display: grid;
@@ -22,6 +22,7 @@ body > :not(.spine):not(.skip-link) { grid-column: 2; }
 
 .wrap {
   max-width: var(--maxw);
+  margin-inline: auto;
   padding-inline: var(--gutter) clamp(var(--gutter), 4vw, 3rem);
 }
 

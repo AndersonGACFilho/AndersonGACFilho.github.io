@@ -21,7 +21,12 @@
   align-items: center;
   gap: 12px 24px;
   flex-wrap: wrap;
-  padding: 18px clamp(var(--gutter), 3vw, 3rem) 0 var(--gutter);
+  /* mesma caixa do `.wrap`: a navegação começa onde o texto começa, e os
+     controles terminam onde ele termina */
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 18px clamp(var(--gutter), 4vw, 3rem) 0 var(--gutter);
 }
 .site-nav { display: flex; gap: 6px 20px; flex-wrap: wrap; font-size: 0.95rem; margin-right: auto; }
 .site-nav a {
