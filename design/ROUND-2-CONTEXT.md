@@ -41,8 +41,9 @@ do herói da home ("Metade do meu trabalho tem orçamento medido por quadro…")
   (`sideways-lr`, com `vertical-rl` de reserva). Na home ele é o `h1`; nas
   outras páginas, um link para a home. No celular ele deita, quebra em duas
   linhas e rola junto; quem gruda no topo é só a faixa de navegação.
-- **Conteúdo encosta no nome**, não no centro. Em tela larga sobra vazio à
-  direita, como na B.
+- ~~Conteúdo encosta no nome~~. **Revogado pelo Anderson em 2026-10-19**
+  ("podia centralizar a coluna do meio para preencher mais"): conteúdo e
+  barra ficam centrados no espaço ao lado do nome, com a mesma caixa.
 - ~~A primeira tela da home assenta no pé~~. **Revogado pelo Anderson em
   2026-10-19** ("tem um espaço gigantesco acima"): em monitor alto o vazio no
   topo virava buraco. Agora a home e os cabeçalhos de página começam logo
@@ -83,7 +84,6 @@ do herói da home ("Metade do meu trabalho tem orçamento medido por quadro…")
 - Voltar a cor por trilha, filete à esquerda, etiqueta com contorno, kicker
   acima do título, caixa com fundo elevado para conteúdo paralelo.
 - Pôr a condensada em título de página ou em interface.
-- Centralizar a página.
 
 ## O que ficou pendente
 
