@@ -71,7 +71,7 @@
   --radius-sm: 2px;
   /* a tela jogável não é um cartão: canto vivo, como um monitor */
   --radius-none: 0px;
-  --maxw: 1080px;
+  --maxw: 72rem;
   --gutter: 20px;
 
   /* Uma família para ler e para a interface; a condensada só no nome em pé. */

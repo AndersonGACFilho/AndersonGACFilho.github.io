@@ -43,8 +43,15 @@ do herói da home ("Metade do meu trabalho tem orçamento medido por quadro…")
   linhas e rola junto; quem gruda no topo é só a faixa de navegação.
 - **Conteúdo encosta no nome**, não no centro. Em tela larga sobra vazio à
   direita, como na B.
-- **A primeira tela da home assenta no pé**: papel, texto, botões e as três
-  frentes descem até o fim da tela.
+- ~~A primeira tela da home assenta no pé~~. **Revogado pelo Anderson em
+  2026-10-19** ("tem um espaço gigantesco acima"): em monitor alto o vazio no
+  topo virava buraco. Agora a home e os cabeçalhos de página começam logo
+  abaixo da navegação, com respiro de `clamp(32px, 6svh, 72px)`.
+- **Tela larga** (pedido dele, "não está legal no navegador" em 2000px): o
+  corpo cresce de 1rem a 1,25rem entre 1280 e 2160px, `--maxw` é 72rem e
+  cresce junto, os controles da barra vão para a borda direita, e a partir
+  de 1200px a home põe as frentes ao lado do texto e os índices abrem em
+  duas colunas.
 - **As três trilhas têm a mesma tinta**, a dos nomes. `--fullstack`,
   `--gamedev` e `--research` continuam existindo (o `tracks.ts` as injeta),
   valendo `var(--accent)`. A trilha se lê pela palavra.
@@ -68,7 +75,6 @@ do herói da home ("Metade do meu trabalho tem orçamento medido por quadro…")
 ## Invariantes
 
 - O nome em pé, sempre à esquerda no desktop.
-- Peso no chão: topo de página vazio, cabeçalho assentando mais embaixo.
 - Duas tintas; o verde só em nome e nos sinais de interação.
 - Uma família de leitura (Cooper Hewitt); a condensada só no nome.
 

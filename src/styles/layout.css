@@ -105,6 +105,11 @@ section { margin-block: 72px; }
   display: grid;
   gap: 40px;
 }
+/* Em tela larga o índice abre em duas colunas: cada entrada já tem a medida
+   de leitura dela (64ch), e uma coluna só deixava metade da tela vazia. */
+@media (min-width: 1200px) {
+  .index { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 4rem; }
+}
 
 /* ---------- grade ----------
  *
