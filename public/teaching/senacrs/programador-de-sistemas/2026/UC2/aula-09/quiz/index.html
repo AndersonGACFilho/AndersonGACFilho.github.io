@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 09 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 09 da UC2: as três formas normais, o que cada uma conserta e por que a ordem entre elas importa.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 09 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 09</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-09', [
+  {
+    pergunta: 'A coluna `generos` guarda "Ação, Aventura" numa célula só. Qual é o defeito concreto?',
+    alternativas: [
+      'Ocupa mais espaço em disco',
+      'A busca erra: a igualdade não acha e o LIKE acha demais',
+      'O banco recusa o INSERT',
+      'Nenhum — é só questão de organização'
+    ],
+    certa: 1,
+    porque: 'É o que a demonstração 1 executa. `WHERE genero = \'Ação\'` não acha, porque o valor guardado é a string inteira; `LIKE \'%Ação%\'` acha, e traz junto o que não devia. O banco aceita a célula sem reclamar — por isso o defeito demora a aparecer.'
+  },
+  {
+    pergunta: 'Qual é o conserto da 1FN para essa coluna?',
+    alternativas: [
+      'Separar com ponto e vírgula em vez de vírgula',
+      'Uma linha por gênero, numa tabela `jogo_genero`',
+      'Criar as colunas `genero1`, `genero2` e `genero3`',
+      'Guardar os gêneros em ordem alfabética'
+    ],
+    certa: 1,
+    porque: 'Trocar o separador não muda nada: continua sendo um valor com dois dentro. `genero1, genero2, genero3` é pior ainda — vira três colunas para procurar em todas, e o quarto gênero não cabe. A tabela com uma linha por gênero é a única que responde "quais jogos são de aventura" com um WHERE só.'
+  },
+  {
+    pergunta: 'Por que a 2FN só faz sentido quando a chave é composta?',
+    alternativas: [
+      'Porque é a regra da norma',
+      'Porque dependência parcial é depender de PARTE da chave — e chave de uma coluna só não tem parte',
+      'Porque chave simples já está em 3FN',
+      'Porque o banco só aceita chave composta em tabela do meio'
+    ],
+    certa: 1,
+    porque: 'Dependência parcial precisa de uma metade para depender. Com chave de uma coluna só, ou a coluna depende da chave inteira ou não depende dela — não existe meio termo. É por isso que `item_emprestimo`, com chave `id_emprestimo + id_jogo`, é onde a 2FN tem o que fazer.'
+  },
+  {
+    pergunta: '`titulo_jogo` saiu da tabela do meio na 2FN. O que ficou no lugar dele?',
+    alternativas: [
+      'Nada — a coluna simplesmente sumiu',
+      '`id_jogo`, que já estava lá: é a referência para a tabela jogo',
+      'Uma cópia do título, só que menor',
+      'O `preco_diaria`'
+    ],
+    certa: 1,
+    porque: 'A referência já existia — `id_jogo` é metade da chave. Normalizar não acrescenta coluna nova aqui: tira a informação repetida e deixa o ponteiro que já estava. É por isso que o passo não custa nada em espaço, e economiza muito.'
+  },
+  {
+    pergunta: 'Qual é a diferença entre o que a 2FN e a 3FN consertam?',
+    alternativas: [
+      '2FN é para texto, 3FN é para número',
+      '2FN tira o que depende de parte da chave; 3FN tira o que depende de outra coluna comum',
+      '2FN é obrigatória e 3FN é opcional',
+      'São a mesma coisa com nomes diferentes'
+    ],
+    certa: 1,
+    porque: 'As duas têm o mesmo sintoma — repetição — e caminhos diferentes. Na parcial a coluna sai de metade da chave; na transitiva ela sai de uma coluna que não é chave nenhuma, e essa sim sai da chave. O caminho é o que as separa, e é o que a demonstração 3 da Aula 08 desenha.'
+  },
+  {
+    pergunta: 'Na 3FN, `id_cliente` desceu de `item_emprestimo` para `emprestimo`. Por quê?',
+    alternativas: [
+      'Para a tabela do meio ficar menor',
+      'Porque quem tem dono é o empréstimo inteiro, não cada jogo dele',
+      'Porque `id_cliente` é texto',
+      'Porque o PostgreSQL exige'
+    ],
+    certa: 1,
+    porque: 'É uma decisão de modelo, não de arrumação. Todos os jogos de um mesmo empréstimo são do mesmo cliente — guardar o cliente por item seria repetir, e abriria a porta para dois itens do mesmo empréstimo saírem com donos diferentes. Na locadora isso não existe.'
+  },
+  {
+    pergunta: 'Normalizar sempre aumenta o número de tabelas. Isso é um custo?',
+    alternativas: [
+      'Não, nunca',
+      'Sim: mais tabelas significam mais JOIN nas consultas — e é um preço que se paga de propósito',
+      'Sim, e por isso se deve parar na 1FN',
+      'Não, porque JOIN é automático'
+    ],
+    certa: 1,
+    porque: 'É honesto reconhecer o custo. Cruzar cinco tabelas dá mais trabalho que ler uma. O que se compra em troca: a informação escrita uma vez só, nenhuma anomalia de inclusão, exclusão ou alteração, e busca confiável. Na Aula 14 você aprende o JOIN que paga essa conta.'
+  },
+  {
+    pergunta: 'Uma tabela está em 3FN. Ela pode ainda ter defeito?',
+    alternativas: [
+      'Não: 3FN é o fim',
+      'Pode — existem BCNF, 4FN e 5FN, mas 3FN resolve a quase totalidade dos casos reais',
+      'Pode, e por isso 3FN não serve',
+      'Só se tiver chave composta'
+    ],
+    certa: 1,
+    porque: 'As formas acima da 3FN tratam casos raros, e a maioria dos bancos em produção para na 3FN de propósito. Saber que existem evita a surpresa; achar que 3FN é lei da natureza é o engano oposto. Para a locadora, 3FN é o suficiente e é onde a UC para.'
+  }
+]);
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 13 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 13 da UC2: SELECT e WHERE, operadores de comparação, AND e OR, LIKE e ORDER BY.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 13 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 13</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-13', [
+  {
+    pergunta: 'Qual é a divisão de trabalho entre `SELECT` e `WHERE`?',
+    alternativas: [
+      'SELECT escolhe a tabela, WHERE escolhe as colunas',
+      'SELECT escolhe COLUNAS, WHERE escolhe LINHAS',
+      'Os dois filtram linhas',
+      'WHERE é opcional, SELECT também'
+    ],
+    certa: 1,
+    porque: 'É a confusão mais comum da primeira consulta. Um corta na vertical, o outro na horizontal. Saber disso resolve na hora a pergunta "onde eu ponho o preço?": se é para mostrar, no SELECT; se é para filtrar, no WHERE; se é para os dois, nos dois.'
+  },
+  {
+    pergunta: 'Dá para filtrar por uma coluna que não está no `SELECT`?',
+    alternativas: [
+      'Não',
+      'Dá: o WHERE enxerga a tabela inteira, não só o que você pediu para ver',
+      'Só se usar AS',
+      'Só com SELECT *'
+    ],
+    certa: 1,
+    porque: '`SELECT titulo FROM jogo WHERE preco_diaria < 12` é perfeitamente válido. O WHERE é avaliado sobre a linha original; o SELECT só decide o que sai. É por isso que a ordem em que você escreve não é a ordem em que o banco executa.'
+  },
+  {
+    pergunta: 'Por que `SELECT *` é desaconselhado em código de verdade?',
+    alternativas: [
+      'É mais lento sempre',
+      'Porque ele muda sozinho quando alguém acrescenta uma coluna, e o programa que lia aquilo quebra',
+      'Porque não funciona com WHERE',
+      'Porque o PostgreSQL não recomenda'
+    ],
+    certa: 1,
+    porque: 'No Query Tool, explorando, ele é ótimo. Dentro de um programa é uma promessa que você não controla: no dia em que a tabela ganhar uma coluna, o resultado muda de formato sem ninguém ter tocado no código.'
+  },
+  {
+    pergunta: '`WHERE titulo LIKE \'god%\'` não traz "God of War". Por quê?',
+    alternativas: [
+      'O % está no lugar errado',
+      'O LIKE do PostgreSQL diferencia maiúscula de minúscula',
+      'Falta espaço no padrão',
+      'O título tem acento'
+    ],
+    certa: 1,
+    porque: 'Quem procura minúsculo e não acha nada conclui que o jogo não está no catálogo. Para ignorar a caixa existe o `ILIKE`, que é uma extensão do PostgreSQL — em outros bancos se usa `LOWER(titulo) LIKE \'god%\'`.'
+  },
+  {
+    pergunta: 'Qual é a diferença entre `%` e `_` no LIKE?',
+    alternativas: [
+      'Nenhuma',
+      '`%` casa qualquer quantidade, inclusive nenhuma; `_` casa exatamente um caractere',
+      '`%` é para texto, `_` é para número',
+      '`_` casa espaço'
+    ],
+    certa: 1,
+    porque: '`FIFA __` acha "FIFA 25" e não acha "FIFA 2" nem "FIFA 2025" — são dois caracteres, nem um nem três. O `_` é o curinga que quase ninguém usa, e é exatamente o que serve para formato fixo: placa, CEP, código.'
+  },
+  {
+    pergunta: '`WHERE genero = \'Ação\' OR genero = \'Aventura\' AND preco_diaria < 10`. O que vem?',
+    alternativas: [
+      'Jogos de ação ou aventura, todos abaixo de 10',
+      'Todos os de ação, mais os de aventura abaixo de 10 — porque AND é avaliado antes de OR',
+      'Erro de sintaxe',
+      'Nenhuma linha'
+    ],
+    certa: 1,
+    porque: 'O `AND` tem precedência sobre o `OR`, como `×` sobre `+`. Quem quer o primeiro resultado precisa de parênteses: `WHERE (genero = \'Ação\' OR genero = \'Aventura\') AND preco_diaria < 10`. Este é um erro que não dá mensagem nenhuma — só número errado.'
+  },
+  {
+    pergunta: 'O `ORDER BY` muda quais linhas vêm?',
+    alternativas: [
+      'Muda: ele filtra também',
+      'Não: muda só a ORDEM. Quem escolhe as linhas é o WHERE',
+      'Muda se tiver LIMIT',
+      'Depende da coluna'
+    ],
+    certa: 1,
+    porque: 'Cada parte da consulta responde a uma pergunta só, e é isso que torna a linguagem previsível. O ORDER BY responde "em que ordem". Com LIMIT a combinação muda o que você VÊ, mas quem escolheu as linhas continua sendo o WHERE.'
+  },
+  {
+    pergunta: 'Sem `ORDER BY`, em que ordem as linhas vêm?',
+    alternativas: [
+      'Sempre na ordem em que foram inseridas',
+      'Na ordem que o banco achar mais barata — e ela pode mudar entre duas execuções',
+      'Sempre por chave primária',
+      'Em ordem alfabética'
+    ],
+    certa: 1,
+    porque: 'Não há promessa nenhuma. Costuma sair na ordem de inserção enquanto a tabela é pequena, e é aí que a armadilha se arma: o programa passa a depender disso sem ninguém notar, e um dia o banco escolhe outro plano. Se a ordem importa, escreva o ORDER BY.'
+  }
+]);
+</script>
+</body>
+</html>

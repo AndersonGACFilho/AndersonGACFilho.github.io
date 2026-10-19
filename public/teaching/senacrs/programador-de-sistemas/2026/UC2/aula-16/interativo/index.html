@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 16 — veja acontecer · UC2</title>
+<meta name="description" content="Conectar como cada role e tentar as mesmas operações, lendo o permission denied; e conceder e retirar um privilégio vendo a mesma tentativa mudar de resposta.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 16 — veja acontecer</h1>
+  <p class="sub">Permissão só se entende tentando o que não se pode. Entre como cada pessoa da locadora, tente as mesmas quatro coisas, e depois conceda e retire privilégios vendo a resposta mudar. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas duas, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. a matriz, executada ============ -->
+  <section class="demo">
+    <h2>1 · Entre como cada um e tente</h2>
+    <p class="intro">Escolha quem está conectado. As quatro operações são sempre as mesmas — o que muda é quem manda.</p>
+
+    <div class="camadas" id="a16-quem" role="group" aria-label="Conectado como"></div>
+
+    <div class="palco duplo">
+      <div class="painel" id="a16-painel-pode">
+        <h3><span>o que esta pessoa consegue</span><span class="selo" id="a16-selo-pode"></span></h3>
+        <ol class="testes" id="a16-pode"></ol>
+      </div>
+      <div class="painel" id="a16-painel-porque">
+        <h3><span>por que, no negócio</span><span class="selo" id="a16-selo-porque"></span></h3>
+        <div id="a16-porque"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a16-legenda"></p>
+
+    <div class="registro">
+      <h3>A tentativa, e a resposta do servidor</h3>
+      <ol class="log" id="a16-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. GRANT e REVOKE ============ -->
+  <section class="demo">
+    <h2>2 · Conceda, e tente de novo</h2>
+    <p class="intro">O estagiário está conectado e acabou de levar <code>permission denied</code> na tabela <code>jogo</code>. Conceda o privilégio e <strong>diga antes</strong> o que ele vai conseguir fazer.</p>
+
+    <div class="palco duplo afastado">
+      <div class="painel" id="a16-painel-grants">
+        <h3><span>o que o estagiário tem agora</span><span class="selo" id="a16-selo-grants"></span></h3>
+        <div id="a16-grants"></div>
+        <p class="nota-painel">Começa sem nada: no PostgreSQL o padrão é negar.</p>
+      </div>
+      <div class="painel" id="a16-painel-tenta">
+        <h3><span>a mesma tentativa de sempre</span><span class="selo" id="a16-selo-tenta"></span></h3>
+        <div id="a16-tenta"></div>
+      </div>
+    </div>
+
+    <div class="controles" id="a16-grant-botoes" role="group" aria-label="Conceder e retirar privilégios"></div>
+    <p class="legenda" id="a16-grant-legenda"></p>
+
+    <div class="registro">
+      <h3>Os comandos que você deu</h3>
+      <ol class="log" id="a16-grant-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 16</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

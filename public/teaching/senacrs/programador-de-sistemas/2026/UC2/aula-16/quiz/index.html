@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 16 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 16 da UC2: roles, GRANT e REVOKE, privilégio mínimo, view como proteção e LGPD.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 16 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 16</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-16', [
+  {
+    pergunta: 'Você acabou de rodar `CREATE ROLE estagiario LOGIN PASSWORD \'...\'`. O que ele já consegue fazer?',
+    alternativas: [
+      'Ler todas as tabelas',
+      'Nada: no PostgreSQL uma role nasce sem acesso a nada',
+      'Tudo no banco que ele criar',
+      'Depende da versão'
+    ],
+    certa: 1,
+    porque: 'O padrão é negar, e isso é uma boa notícia: não é preciso revogar nada antes de começar. O privilégio mínimo é o ponto de partida da ferramenta — quem sai dele é quem digita `ALL PRIVILEGES`.'
+  },
+  {
+    pergunta: 'O atendente tenta `DELETE FROM cliente` e leva `permission denied`. Isso é desconfiança dele?',
+    alternativas: [
+      'Sim, é controle sobre o funcionário',
+      'Não: apagar cliente nunca foi tarefa do balcão — a permissão só reflete o trabalho real',
+      'Sim, e por isso é melhor dar acesso total',
+      'Não, é limitação técnica do PostgreSQL'
+    ],
+    certa: 1,
+    porque: 'Privilégio mínimo não é sobre confiar menos nas pessoas: é sobre reduzir o estrago de um engano. O atendente mais competente da locadora também digita errado às vezes, e a permissão é o que impede que o erro vire perda.'
+  },
+  {
+    pergunta: 'O que `GRANT SELECT ON jogo TO estagiario` concede, exatamente?',
+    alternativas: [
+      'Leitura em todas as tabelas',
+      'Leitura numa tabela só, e só leitura',
+      'Leitura e escrita em jogo',
+      'Acesso ao banco inteiro'
+    ],
+    certa: 1,
+    porque: 'Cada GRANT vale para UMA tabela e UM verbo. É essa granularidade que torna o privilégio mínimo possível de escrever: dá para conceder exatamente o recorte que o trabalho exige, sem sobra.'
+  },
+  {
+    pergunta: 'Qual é o problema de `GRANT ALL PRIVILEGES`?',
+    alternativas: [
+      'Nenhum, é mais prático',
+      'Inclui DELETE, TRUNCATE e mais — e você passa a autorizar coisas que nem pensou em autorizar',
+      'É mais lento',
+      'Não funciona em views'
+    ],
+    certa: 1,
+    porque: 'É o que a demonstração 2 mostra: concedido só para o estagiário consultar, e ele passa a poder apagar o catálogo. O argumento "depois a gente ajusta" é a parte que nunca acontece — ninguém volta para apertar uma permissão que está funcionando.'
+  },
+  {
+    pergunta: 'Por que `role` é uma palavra só para usuário e grupo?',
+    alternativas: [
+      'Foi um erro de tradução',
+      'Porque são a mesma coisa no PostgreSQL: uma role com LOGIN é usuário, e uma role pode conter outras',
+      'Porque grupo foi descontinuado',
+      'Para simplificar a documentação'
+    ],
+    certa: 1,
+    porque: 'A consequência prática é boa: cria-se uma role `balcao` com os privilégios do balcão e concedem-se eles uma vez; depois cada atendente novo só precisa de `GRANT balcao TO fulano`. Mudou a regra do balcão, muda num lugar só.'
+  },
+  {
+    pergunta: 'O estagiário tem `SELECT` na view `catalogo_publico` e nada na tabela `jogo`. Ele vê o preço de custo?',
+    alternativas: [
+      'Vê, porque a view lê a tabela',
+      'Não: a coluna não existe na view, e ele não tem acesso à tabela',
+      'Vê, se usar SELECT *',
+      'Depende do dono da view'
+    ],
+    certa: 1,
+    porque: 'São duas proteções empilhadas, e isso é de propósito. A view recorta as colunas (Aula 15); a permissão impede o desvio pela tabela original. Qualquer uma sozinha deixaria uma porta — a view sem a permissão deixaria ele consultar `jogo` direto.'
+  },
+  {
+    pergunta: 'O que a LGPD tem a ver com `GRANT`?',
+    alternativas: [
+      'Nada, são assuntos separados',
+      'A lei exige acesso limitado ao necessário — e o GRANT é como isso se escreve num banco',
+      'A LGPD proíbe guardar telefone',
+      'Só se aplica a empresas grandes'
+    ],
+    certa: 1,
+    porque: 'Nome, telefone e CPF de cliente são dados pessoais. "Acesso limitado ao necessário" é a mesma frase do privilégio mínimo, escrita por um legislador — e quem trabalha com banco de dados responde por ela.'
+  },
+  {
+    pergunta: 'Por que não trabalhar o dia inteiro com o usuário `postgres`?',
+    alternativas: [
+      'Porque é mais lento',
+      'Porque ele pode tudo em todos os bancos — qualquer engano de digitação vira estrago grande',
+      'Porque a senha expira',
+      'Porque o pgAdmin não permite'
+    ],
+    certa: 1,
+    porque: 'É o mesmo motivo de não navegar na internet como administrador do Windows. E é o que vocês vinham fazendo até esta aula — de propósito, para aprender sem obstáculo. A partir daqui, cada papel com a sua conta.'
+  }
+]);
+</script>
+</body>
+</html>

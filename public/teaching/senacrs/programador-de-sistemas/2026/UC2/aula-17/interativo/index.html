@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 17 — veja acontecer · UC2</title>
+<meta name="description" content="Escolher a frequência do backup e o momento da falha para medir, em horas de trabalho, o que se perde; e restaurar por cima de um banco que não foi limpo, lendo o erro de chave duplicada.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 17 — veja acontecer</h1>
+  <p class="sub">A pergunta da política de backup não é “com que frequência”, é “quanto trabalho você aceita perder”. Meça aqui. Depois, o erro que aparece na hora de restaurar — e que faz todo mundo achar que o backup estava corrompido. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas duas, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. a janela de perda ============ -->
+  <section class="demo">
+    <h2>1 · Quanto trabalho você aceita perder?</h2>
+    <p class="intro">Uma terça-feira na locadora, das 8h às 20h, com um empréstimo registrado por hora. Escolha a política e o momento da falha.</p>
+
+    <div class="camadas" id="a17-politicas" role="group" aria-label="Qual política de backup"></div>
+
+    <div class="palco duplo">
+      <div class="painel" id="a17-painel-dia">
+        <h3><span>o dia, hora a hora</span><span class="selo" id="a17-selo-dia"></span></h3>
+        <div id="a17-dia"></div>
+      </div>
+      <div class="painel" id="a17-painel-conta">
+        <h3><span>a conta da falha</span><span class="selo" id="a17-selo-conta"></span></h3>
+        <div id="a17-conta"></div>
+        <p class="nota-painel">O restore devolve o estado do último backup. Tudo o que veio depois não existe mais.</p>
+      </div>
+    </div>
+
+    <div class="controles" id="a17-horas" role="group" aria-label="A que horas a falha aconteceu"></div>
+    <p class="legenda" id="a17-legenda"></p>
+
+    <div class="registro">
+      <h3>A linha do tempo do desastre</h3>
+      <ol class="log" id="a17-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. restaurar por cima ============ -->
+  <section class="demo">
+    <h2>2 · Restaurar por cima, sem limpar</h2>
+    <p class="intro">O banco não está vazio: ele tem as linhas de hoje. Tente restaurar o backup de ontem por cima e <strong>diga antes</strong> o que acontece.</p>
+
+    <div class="palco duplo afastado">
+      <div class="painel" id="a17-painel-banco">
+        <h3><span>o banco agora</span><span class="selo" id="a17-selo-banco"></span></h3>
+        <div id="a17-banco"></div>
+      </div>
+      <div class="painel" id="a17-painel-arquivo">
+        <h3><span>o arquivo de backup</span><span class="selo" id="a17-selo-arquivo"></span></h3>
+        <div id="a17-arquivo"></div>
+        <p class="nota-painel">Um backup é uma lista de comandos: CREATE TABLE e INSERT, um por linha guardada.</p>
+      </div>
+    </div>
+
+    <div class="controles" id="a17-restore" role="group" aria-label="Como restaurar"></div>
+    <p class="legenda" id="a17-rs-legenda"></p>
+
+    <div class="registro">
+      <h3>O que o restore tentou fazer</h3>
+      <ol class="log" id="a17-rs-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 17</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 10 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 10 da UC2: servidor e cliente, a senha da instalação, a árvore do pgAdmin e o primeiro CREATE TABLE.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 10 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 10</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-10', [
+  {
+    pergunta: 'Você fecha a janela do pgAdmin. O que acontece com os seus dados?',
+    alternativas: [
+      'São apagados',
+      'Nada: o servidor continua rodando e o disco está intacto',
+      'Ficam travados até reabrir',
+      'Vão para a lixeira do Windows'
+    ],
+    certa: 1,
+    porque: 'O pgAdmin não guarda dado nenhum — ele pergunta e mostra a resposta. Quem guarda é o servidor, que roda sem janela e começa junto com o computador. Fechar a janela é como desligar o monitor.'
+  },
+  {
+    pergunta: '`could not connect to server: Connection refused`. O que essa mensagem diz?',
+    alternativas: [
+      'A senha está errada',
+      'O servidor não está rodando, ou não está na porta esperada',
+      'A tabela não existe',
+      'Falta permissão'
+    ],
+    certa: 1,
+    porque: 'Repare no que ela NÃO fala: não fala de senha, nem de tabela, nem de permissão. Fala de conexão. Senha errada tem mensagem própria (`password authentication failed`), e tabela inexistente também. Ler qual é a mensagem poupa meia hora.'
+  },
+  {
+    pergunta: 'Por que a instalação pede uma senha, e por que ela importa tanto?',
+    alternativas: [
+      'É a senha do Windows',
+      'É a senha do usuário `postgres`, o dono do servidor — e não há como recuperá-la pelo pgAdmin',
+      'É opcional, pode deixar em branco',
+      'Serve só para o primeiro acesso'
+    ],
+    certa: 1,
+    porque: 'O `postgres` é o superusuário do servidor: pode tudo, em todos os bancos. Esquecer essa senha significa mexer em arquivo de configuração para entrar de novo — por isso o slide manda anotar antes de clicar em avançar.'
+  },
+  {
+    pergunta: 'São dois programas. Qual é a divisão de trabalho?',
+    alternativas: [
+      'pgAdmin guarda, PostgreSQL mostra',
+      'PostgreSQL guarda e responde; pgAdmin pergunta e mostra',
+      'Os dois guardam, para ter cópia',
+      'PostgreSQL é a versão paga do pgAdmin'
+    ],
+    certa: 1,
+    porque: 'É a mesma divisão cliente/servidor da Aula 01. Dá para trocar o pgAdmin por outro cliente — DBeaver, psql, um programa em Python — e o banco não muda. O contrário não vale: sem o servidor, nenhum cliente faz nada.'
+  },
+  {
+    pergunta: 'Na árvore do pgAdmin, qual é o caminho até uma tabela?',
+    alternativas: [
+      'Servers → Tables',
+      'Servers → servidor → Databases → seu banco → Schemas → public → Tables → a tabela',
+      'Databases → Tables → Schemas',
+      'Depende da tabela'
+    ],
+    certa: 1,
+    porque: 'São sete cliques, sempre os mesmos. O nível que mais confunde é Schemas: quase sempre há um só (`public`), ele parece supérfluo, e é justamente onde o `CREATE TABLE` põe a sua tabela sem você pedir.'
+  },
+  {
+    pergunta: 'O que é o banco chamado `postgres`, que aparece ao lado do seu?',
+    alternativas: [
+      'Uma cópia de segurança do seu banco',
+      'O banco de manutenção, que nasce com a instalação — não é o seu projeto',
+      'Onde ficam as tabelas de todos os bancos',
+      'Um banco de exemplo que pode ser apagado'
+    ],
+    certa: 1,
+    porque: 'Ele existe porque o cliente precisa se conectar a ALGUM banco para poder criar outro. Não guarda nada seu, e apagá-lo quebra o pgAdmin. Os bancos são isolados: a locadora não enxerga o que está nele, nem o contrário.'
+  },
+  {
+    pergunta: 'Você digita `CREATE TABLE jogo (...)` no Query Tool sem escolher o schema. Onde a tabela vai parar?',
+    alternativas: [
+      'Em lugar nenhum — dá erro',
+      'Em `public`, o schema padrão',
+      'Num schema novo chamado `jogo`',
+      'No banco `postgres`'
+    ],
+    certa: 1,
+    porque: 'O `search_path` do PostgreSQL aponta para `public` por padrão. É por isso que o schema passa despercebido o curso inteiro — ele funciona sem ninguém mexer. Saber que ele está lá importa no dia em que a tabela "sumiu": ela está noutra gaveta.'
+  },
+  {
+    pergunta: 'O Query Tool está aberto no banco `postgres` e você roda o `CREATE TABLE` do projeto. O que acontece?',
+    alternativas: [
+      'O pgAdmin pergunta em qual banco você quer',
+      'A tabela é criada no banco errado, sem aviso nenhum',
+      'Dá erro de permissão',
+      'A tabela é criada nos dois'
+    ],
+    certa: 1,
+    porque: 'Nenhum aviso: o comando é válido e o banco obedece. Este é o erro mais comum do primeiro dia, e o sintoma aparece depois — "minhas tabelas sumiram". Confira sempre o nome do banco na aba do Query Tool antes de executar.'
+  }
+]);
+</script>
+</body>
+</html>

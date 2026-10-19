@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 13 — veja acontecer · UC2</title>
+<meta name="description" content="Montar a consulta peça por peça e ver o resultado mudar a cada decisão; e digitar um padrão de LIKE para descobrir, letra a letra, o que o % e o _ realmente casam.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 13 — veja acontecer</h1>
+  <p class="sub">Uma consulta tem quatro partes, e cada uma responde a uma pergunta diferente. Monte a sua peça por peça e veja o resultado mudar; depois descubra o que o <code>LIKE</code> realmente casa. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas duas, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. montar a consulta ============ -->
+  <section class="demo">
+    <h2>1 · As quatro partes, uma de cada vez</h2>
+    <p class="intro">A tabela <code>jogo</code> inteira está à esquerda. Cada decisão sua aparece no comando e no resultado — <code>SELECT</code> escolhe colunas, <code>WHERE</code> escolhe linhas.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="a13-painel-tabela">
+        <h3><span>a tabela jogo</span><span class="selo" id="a13-selo-tabela"></span></h3>
+        <div id="a13-tabela"></div>
+      </div>
+      <div class="painel" id="a13-painel-saida">
+        <h3><span>o que a consulta devolve</span><span class="selo" id="a13-selo-saida"></span></h3>
+        <div id="a13-saida"></div>
+        <p class="nota-painel">O resultado é uma tabela nova. A tabela original não muda.</p>
+      </div>
+    </div>
+
+    <div class="camadas" id="a13-where" role="group" aria-label="Qual condição do WHERE"></div>
+    <div class="controles" id="a13-pecas" role="group" aria-label="Colunas e ordenação"></div>
+    <p class="legenda" id="a13-legenda"></p>
+
+    <div class="registro">
+      <h3>A consulta que você montou</h3>
+      <ol class="log" id="a13-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. o LIKE ============ -->
+  <section class="demo">
+    <h2>2 · <code>LIKE</code> — o que o <code>%</code> e o <code>_</code> casam</h2>
+    <p class="intro">Digite um padrão. O campo de busca vem antes do palco porque ele <strong>é</strong> a coisa demonstrada: é onde você digitaria.</p>
+
+    <!-- `.controles.antes`: o campo de busca E a coisa demonstrada, e precisa
+         estar onde a pessoa digitaria. É a única exceção à regra de o controle
+         vir depois do palco. -->
+    <div class="controles antes">
+      <input class="busca" id="a13-padrao" type="text" value="%of%"
+             autocomplete="off" spellcheck="false" aria-label="Padrão do LIKE">
+    </div>
+
+    <div class="palco duplo afastado">
+      <div class="painel" id="a13-painel-casou">
+        <h3><span>casou</span><span class="selo" id="a13-selo-casou"></span></h3>
+        <div id="a13-casou"></div>
+      </div>
+      <div class="painel" id="a13-painel-fora">
+        <h3><span>não casou</span><span class="selo" id="a13-selo-fora"></span></h3>
+        <div id="a13-fora"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a13-like-legenda"></p>
+
+    <div class="controles" id="a13-exemplos" role="group" aria-label="Padrões de exemplo"></div>
+
+    <div class="registro">
+      <h3>O padrão, traduzido para português</h3>
+      <ol class="log" id="a13-like-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 13</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

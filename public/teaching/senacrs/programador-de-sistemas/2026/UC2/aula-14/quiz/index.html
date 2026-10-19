@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 14 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 14 da UC2: INNER JOIN, LEFT JOIN, apelidos de tabela, GROUP BY e as funções de agregação.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 14 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 14</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-14', [
+  {
+    pergunta: 'O que a condição `ON e.id_cliente = c.id_cliente` faz?',
+    alternativas: [
+      'Filtra as linhas, como um WHERE',
+      'Diz quais linhas de um lado casam com quais do outro',
+      'Ordena o resultado',
+      'Junta as colunas das duas tabelas'
+    ],
+    certa: 1,
+    porque: 'Sem o ON, o banco combinaria cada linha de uma tabela com TODAS as da outra — quatro empréstimos e quatro clientes dariam dezesseis linhas. O ON é o que faz o resultado ter quatro: ele diz quais pares existem de verdade.'
+  },
+  {
+    pergunta: 'Por que o JOIN é necessário, se antes estava tudo numa tabela só?',
+    alternativas: [
+      'Porque o PostgreSQL exige',
+      'Porque normalizar espalhou a informação de propósito — e o JOIN é a conta que se paga por isso',
+      'Porque é mais rápido',
+      'Porque a tabela única não cabia em disco'
+    ],
+    certa: 1,
+    porque: 'É honesto ver os dois lados. A Aula 09 separou para a informação ficar escrita uma vez só; o preço disso é precisar remontá-la na hora de ler. O JOIN é barato e a anomalia é cara — por isso a troca compensa.'
+  },
+  {
+    pergunta: 'A Carla é cliente e nunca alugou nada. Em qual JOIN ela aparece?',
+    alternativas: [
+      'Nos dois',
+      'Só no LEFT JOIN',
+      'Só no INNER JOIN',
+      'Em nenhum'
+    ],
+    certa: 1,
+    porque: 'O INNER só devolve quem tem par dos dois lados. Um relatório de clientes feito com INNER simplesmente não lista os clientes que ainda não compraram — e são justamente eles que o setor comercial quer ver.'
+  },
+  {
+    pergunta: 'Num `LEFT JOIN`, qual é a diferença entre `count(*)` e `count(e.id_emprestimo)`?',
+    alternativas: [
+      'Nenhuma',
+      '`count(*)` conta a linha de NULL e diz 1 para a Carla; `count(e.id_emprestimo)` ignora NULL e diz 0',
+      '`count(*)` é mais rápido',
+      '`count(*)` não funciona com GROUP BY'
+    ],
+    certa: 1,
+    porque: 'É o erro clássico do LEFT JOIN com contagem, e ele não dá mensagem nenhuma — dá número errado. `count(*)` conta LINHAS; `count(coluna)` conta valores não nulos daquela coluna. A Carla tem uma linha no resultado, com NULL dentro.'
+  },
+  {
+    pergunta: 'Para que servem os apelidos (`FROM cliente c`)?',
+    alternativas: [
+      'Para o banco ficar mais rápido',
+      'Para escrever menos e, com três tabelas, deixar claro de qual vem cada coluna',
+      'São obrigatórios no JOIN',
+      'Para renomear a coluna no resultado'
+    ],
+    certa: 1,
+    porque: 'Renomear coluna no resultado é o `AS`. O apelido de tabela resolve outro problema: com `emprestimo`, `item_emprestimo` e `jogo` na mesma consulta, `id_jogo` existe em duas delas — sem o prefixo, o banco não sabe qual você quer, e diz `column reference is ambiguous`.'
+  },
+  {
+    pergunta: 'Depois de `GROUP BY c.nome`, por que não dá para pedir `e.data_retirada` no SELECT?',
+    alternativas: [
+      'Dá, sem problema',
+      'Porque o grupo da Ana tem quatro datas — e o banco não tem como escolher uma',
+      'Porque data não é número',
+      'Porque falta ORDER BY'
+    ],
+    certa: 1,
+    porque: 'Depois do GROUP BY a linha de detalhe não existe mais: existe o grupo. Ou você pede a coluna que define o grupo, ou uma função que resuma as outras — `min`, `max`, `count`, `sum`. O PostgreSQL recusa com `column must appear in the GROUP BY clause or be used in an aggregate function`.'
+  },
+  {
+    pergunta: 'Sete itens agrupados por empréstimo dão quantas linhas?',
+    alternativas: [
+      'Sete',
+      'Uma por empréstimo distinto',
+      'Uma só',
+      'Depende da ordem'
+    ],
+    certa: 1,
+    porque: 'O GROUP BY dobra as linhas: quantos grupos, tantas linhas. É por isso que o número de linhas do resultado quase nunca é o número de linhas da tabela — e é por isso que conferir esse número é a primeira coisa a fazer quando o relatório parece estranho.'
+  },
+  {
+    pergunta: 'Qual é a diferença entre `WHERE` e `HAVING`?',
+    alternativas: [
+      'Nenhuma, são sinônimos',
+      'WHERE filtra linhas ANTES de agrupar; HAVING filtra grupos DEPOIS',
+      'HAVING é mais rápido',
+      'WHERE só funciona sem GROUP BY'
+    ],
+    certa: 1,
+    porque: '"Só empréstimos de outubro" é WHERE — é sobre a linha. "Só clientes com mais de dois empréstimos" é HAVING — é sobre o grupo, e o número que ele filtra só existe depois de agrupar. Tentar pôr `count(*) > 2` no WHERE dá erro, porque naquele momento a contagem ainda não foi feita.'
+  }
+]);
+</script>
+</body>
+</html>

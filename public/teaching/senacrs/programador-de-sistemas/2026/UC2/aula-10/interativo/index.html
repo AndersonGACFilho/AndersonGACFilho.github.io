@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 10 — veja acontecer · UC2</title>
+<meta name="description" content="Desligar o servidor e ver o pgAdmin falhar, entendendo que são dois programas; e descer a árvore do pgAdmin até achar a tabela, errando o caminho sem quebrar nada.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 10 — veja acontecer</h1>
+  <p class="sub">São dois programas, e quase todo problema do laboratório vem de confundir os dois. Desligue o servidor e veja o pgAdmin falhar; depois desça a árvore até achar a tabela. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas duas, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. dois programas, não um ============ -->
+  <section class="demo">
+    <h2>1 · Desligue o servidor e veja quem reclama</h2>
+    <p class="intro">O pgAdmin é a janela; o PostgreSQL é quem guarda. <strong>Diga antes</strong> o que acontece com os seus dados quando o servidor é desligado.</p>
+
+    <div class="palco tres">
+      <div class="painel" id="a10-painel-servidor">
+        <h3><span>PostgreSQL — o servidor</span><span class="selo" id="a10-selo-servidor"></span></h3>
+        <div id="a10-servidor"></div>
+        <p class="nota-painel">Roda sozinho, sem janela. Começa junto com o computador.</p>
+      </div>
+      <div class="painel" id="a10-painel-pgadmin">
+        <h3><span>pgAdmin — a janela</span><span class="selo" id="a10-selo-pgadmin"></span></h3>
+        <div id="a10-pgadmin"></div>
+        <p class="nota-painel">Não guarda dado nenhum: ele pergunta e mostra a resposta.</p>
+      </div>
+      <div class="painel" id="a10-painel-disco">
+        <h3><span>o disco</span><span class="selo" id="a10-selo-disco"></span></h3>
+        <div id="a10-disco"></div>
+        <p class="nota-painel">Os arquivos do banco. Eles não somem porque um programa fechou.</p>
+      </div>
+    </div>
+
+    <div class="controles" id="a10-botoes" role="group" aria-label="Ligar e desligar os programas"></div>
+    <p class="legenda" id="a10-legenda"></p>
+
+    <div class="registro">
+      <h3>O que você mandou, e o que apareceu na tela</h3>
+      <ol class="log" id="a10-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. a árvore do pgAdmin ============ -->
+  <section class="demo">
+    <h2>2 · Ache a tabela <code>jogo</code></h2>
+    <p class="intro">Esta é a árvore da barra esquerda do pgAdmin. Clique no nível seguinte até chegar na tabela. Errar aqui não quebra nada — e é como se aprende onde cada coisa mora.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="a10-painel-caminho">
+        <h3><span>onde você está</span><span class="selo" id="a10-selo-caminho"></span></h3>
+        <div id="a10-caminho"></div>
+      </div>
+      <div class="painel" id="a10-painel-explica">
+        <h3><span>o que este nível é</span><span class="selo" id="a10-selo-explica"></span></h3>
+        <div id="a10-explica"></div>
+      </div>
+    </div>
+
+    <div class="controles" id="a10-filhos" role="group" aria-label="Próximo nível da árvore"></div>
+    <p class="legenda" id="a10-arvore-legenda"></p>
+
+    <div class="registro">
+      <h3>O caminho percorrido</h3>
+      <ol class="log" id="a10-arvore-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 10</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

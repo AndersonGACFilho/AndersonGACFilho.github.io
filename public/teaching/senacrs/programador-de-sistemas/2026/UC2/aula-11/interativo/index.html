@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 11 — veja acontecer · UC2</title>
+<meta name="description" content="Mandar INSERT que viola cada constraint e ler a recusa do banco palavra por palavra; e apagar um cliente com empréstimos sob RESTRICT, CASCADE e SET NULL para ver os três desfechos.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 11 — veja acontecer</h1>
+  <p class="sub">A constraint só existe de verdade quando ela recusa alguma coisa. Mande linhas erradas e leia a recusa; depois apague um cliente que tem empréstimos e veja os três desfechos possíveis. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas duas, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. a constraint recusando ============ -->
+  <section class="demo">
+    <h2>1 · Mande a linha errada e leia o “não”</h2>
+    <p class="intro">Cada linha abaixo quebra uma constraint da tabela <code>emprestimo</code>. Escolha uma e <strong>diga antes</strong> qual das quatro vai recusar — e qual mensagem o banco vai dar.</p>
+
+    <div class="camadas" id="a11-linhas" role="group" aria-label="Qual linha tentar inserir"></div>
+
+    <div class="palco duplo">
+      <div class="painel" id="a11-painel-testes">
+        <h3><span>as quatro constraints, na ordem</span><span class="selo" id="a11-selo-testes"></span></h3>
+        <ol class="testes" id="a11-testes"></ol>
+      </div>
+      <div class="painel" id="a11-painel-tabela">
+        <h3><span>a tabela depois da tentativa</span><span class="selo" id="a11-selo-tabela"></span></h3>
+        <div id="a11-tabela"></div>
+        <p class="nota-painel">Uma recusa não deixa meia linha: ou entra inteira, ou não entra.</p>
+      </div>
+    </div>
+    <p class="legenda" id="a11-legenda"></p>
+
+    <div class="registro">
+      <h3>O comando, e a resposta do PostgreSQL</h3>
+      <ol class="log" id="a11-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. ON DELETE ============ -->
+  <section class="demo">
+    <h2>2 · Apague a Ana — ela tem dois empréstimos</h2>
+    <p class="intro">A mesma ordem, com a chave estrangeira declarada de três jeitos. <strong>Diga antes</strong> qual dos três você usaria na locadora.</p>
+
+    <div class="camadas" id="a11-modos" role="group" aria-label="Qual ON DELETE"></div>
+
+    <div class="palco duplo afastado">
+      <div class="painel" id="a11-painel-cliente">
+        <h3><span>tabela cliente</span><span class="selo" id="a11-selo-cliente"></span></h3>
+        <div id="a11-cliente"></div>
+      </div>
+      <div class="painel" id="a11-painel-emp">
+        <h3><span>tabela emprestimo</span><span class="selo" id="a11-selo-emp"></span></h3>
+        <div id="a11-emp"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a11-del-legenda"></p>
+
+    <div class="controles">
+      <button class="acao" type="button" id="a11-apagar">Executar o DELETE</button>
+      <button class="acao secundaria" type="button" id="a11-zerar">Começar de novo</button>
+    </div>
+
+    <div class="registro">
+      <h3>O que o banco fez com as linhas filhas</h3>
+      <ol class="log" id="a11-del-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 11</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

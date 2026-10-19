@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 15 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 15 da UC2: subconsultas, IN, agregação dentro de subconsulta, e o que uma view guarda de verdade.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 15 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 15</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-15', [
+  {
+    pergunta: 'Em que ordem o banco resolve `WHERE preco > (SELECT avg(preco) FROM jogo)`?',
+    alternativas: [
+      'De fora para dentro, como se lê em português',
+      'A de dentro primeiro: sem o valor dela, o WHERE não tem com o que comparar',
+      'As duas ao mesmo tempo',
+      'Depende do tamanho da tabela'
+    ],
+    certa: 1,
+    porque: 'A subconsulta devolve um valor, e esse valor toma o lugar dela no comando. Depois disso sobrou uma consulta comum, igual às da Aula 13 — subconsulta não é uma construção especial, é um jeito de escrever um número que você ainda não sabe.'
+  },
+  {
+    pergunta: 'Por que não escrever direto `WHERE preco_diaria > 11.00`?',
+    alternativas: [
+      'Porque é mais lento',
+      'Porque amanhã entra um jogo novo, a média muda, e o 11,00 escrito à mão fica errado em silêncio',
+      'Porque o PostgreSQL não aceita número solto',
+      'Porque não dá para comparar numeric'
+    ],
+    certa: 1,
+    porque: 'É a diferença entre responder a pergunta e responder a resposta de ontem. A consulta com subconsulta continua certa depois de qualquer INSERT; a com o número cravado vira uma mentira que ninguém percebe.'
+  },
+  {
+    pergunta: 'Quando usar `IN` em vez de `=` com uma subconsulta?',
+    alternativas: [
+      'Sempre, é mais moderno',
+      'Quando a subconsulta devolve VÁRIAS linhas — com `=` o banco recusa',
+      'Quando a subconsulta devolve texto',
+      'Nunca: são a mesma coisa'
+    ],
+    certa: 1,
+    porque: '`= (subconsulta)` exige exatamente um valor; com dois, o erro é `more than one row returned by a subquery used as an expression`. O `IN` aceita a lista. A escolha não é de estilo: é sobre quantas linhas a de dentro devolve.'
+  },
+  {
+    pergunta: 'O que uma view guarda?',
+    alternativas: [
+      'Uma cópia das linhas, atualizada de tempos em tempos',
+      'Só o comando SELECT — nenhuma linha',
+      'Os dados comprimidos',
+      'Um índice da tabela'
+    ],
+    certa: 1,
+    porque: 'É o que a demonstração 2 mostra: mudar a tabela muda a view no mesmo instante, porque a view executa o comando dela a cada consulta. Se fosse cópia, haveria um intervalo em que as duas discordam — e não há.'
+  },
+  {
+    pergunta: 'Então uma view pode ficar desatualizada?',
+    alternativas: [
+      'Pode, se ninguém atualizar',
+      'Não: não há cópia para ficar velha',
+      'Pode, depois de 24 horas',
+      'Só se a tabela for grande'
+    ],
+    certa: 1,
+    porque: 'Existe sim uma construção que guarda cópia — a MATERIALIZED VIEW, que precisa de `REFRESH` e que a UC não usa. A view comum não tem esse problema, e também não tem o ganho de velocidade que a cópia daria.'
+  },
+  {
+    pergunta: 'Para que serve uma view, na prática da locadora?',
+    alternativas: [
+      'Para deixar o banco mais rápido',
+      'Para dar nome a uma consulta que se repete, e para RECORTAR o que cada um pode ver',
+      'Para fazer backup',
+      'Para criar tabelas temporárias'
+    ],
+    certa: 1,
+    porque: 'Os dois usos aparecem na UC. O nome evita reescrever o mesmo JOIN de três tabelas toda semana; o recorte é o que permite dar ao estagiário acesso ao catálogo sem dar acesso ao preço de custo nem ao dado de cliente — que é a Aula 16.'
+  },
+  {
+    pergunta: 'A view `catalogo_publico` não tem a coluna `custo`. Dá para o estagiário ver o custo por ela?',
+    alternativas: [
+      'Dá, pedindo a coluna no SELECT',
+      'Não: a coluna não existe na view, e pedir dá erro',
+      'Dá, com SELECT *',
+      'Depende da permissão dele na view'
+    ],
+    certa: 1,
+    porque: '`SELECT *` numa view devolve as colunas DA VIEW, não as da tabela. O recorte é estrutural: o que não está no SELECT da definição não existe para quem consulta. É isso que torna a view uma ferramenta de segurança e não só de conveniência.'
+  },
+  {
+    pergunta: 'As quatro operações do CRUD correspondem a quais comandos?',
+    alternativas: [
+      'CREATE, READ, UPDATE, DELETE — todos DDL',
+      'INSERT, SELECT, UPDATE, DELETE',
+      'CREATE TABLE, SELECT, ALTER, DROP',
+      'GRANT, SELECT, REVOKE, DELETE'
+    ],
+    certa: 1,
+    porque: 'O C de CRUD é "create" no sentido de criar um REGISTRO, e o comando é `INSERT` — não `CREATE TABLE`, que cria estrutura. Essa confusão entre criar linha e criar tabela é a mesma distinção entre DML e DDL da Aula 12.'
+  }
+]);
+</script>
+</body>
+</html>

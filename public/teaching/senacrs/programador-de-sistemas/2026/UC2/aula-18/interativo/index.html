@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 18 — veja acontecer · UC2</title>
+<meta name="description" content="Percorrer as dezoito aulas vendo o banco da locadora ser construído peça por peça, e conferir no fim que a pergunta do primeiro dia agora tem resposta em SQL.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 18 — veja acontecer</h1>
+  <p class="sub">Dezoito aulas, uma construção só. Avance aula por aula e veja o banco da locadora nascer — e, no fim, a pergunta que abriu o primeiro dia sendo respondida com o que você aprendeu. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de percorrer, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. o banco sendo construído ============ -->
+  <section class="demo">
+    <h2>1 · O banco, aula por aula</h2>
+    <p class="intro">Avance e acompanhe: cada aula acrescentou uma peça, e nenhuma delas fazia sentido sozinha.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="a18-painel-aula">
+        <h3><span>o que esta aula acrescentou</span><span class="selo" id="a18-selo-aula"></span></h3>
+        <div id="a18-aula"></div>
+      </div>
+      <div class="painel" id="a18-painel-banco">
+        <h3><span>o banco, até aqui</span><span class="selo" id="a18-selo-banco"></span></h3>
+        <div id="a18-banco"></div>
+        <p class="nota-painel">As sete tabelas aparecem quando a aula que as justifica chega — não antes.</p>
+      </div>
+    </div>
+    <p class="legenda" id="a18-legenda"></p>
+
+    <div class="controles">
+      <button class="acao" type="button" id="a18-passo">Próxima aula</button>
+      <button class="acao secundaria" type="button" id="a18-zerar">Voltar ao primeiro dia</button>
+    </div>
+
+    <div class="registro">
+      <h3>A construção, em ordem</h3>
+      <ol class="log" id="a18-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. a pergunta do primeiro dia ============ -->
+  <section class="demo">
+    <h2>2 · A pergunta do primeiro dia</h2>
+    <p class="intro">Na Aula 01 a planilha da locadora não conseguiu responder isto. Escolha a pergunta e veja o SQL que hoje a responde — e qual aula deu cada pedaço dele.</p>
+
+    <div class="camadas" id="a18-perguntas" role="group" aria-label="Qual pergunta do balcão"></div>
+
+    <div class="palco duplo afastado">
+      <div class="painel" id="a18-painel-sql">
+        <h3><span>a resposta, em SQL</span><span class="selo" id="a18-selo-sql"></span></h3>
+        <div id="a18-sql"></div>
+      </div>
+      <div class="painel" id="a18-painel-pecas">
+        <h3><span>de onde veio cada pedaço</span><span class="selo" id="a18-selo-pecas"></span></h3>
+        <div id="a18-pecas"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a18-p-legenda"></p>
+
+    <div class="registro">
+      <h3>Por que a planilha não dava conta</h3>
+      <ol class="log" id="a18-p-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 18</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

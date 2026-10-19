@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 09 — veja acontecer · UC2</title>
+<meta name="description" content="Procurar um telefone dentro de uma célula com dois valores e ver a busca errar, e aplicar 1FN, 2FN e 3FN na tabela do crime vendo cada coluna sair para a tabela a que ela pertence.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 09 — veja acontecer</h1>
+  <p class="sub">Primeiro procure um telefone que está dentro de uma célula com dois, e veja o banco errar. Depois aplique as três formas normais na tabela do crime e acompanhe cada coluna saindo para onde ela pertence. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas duas, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. a célula com dois valores ============ -->
+  <section class="demo">
+    <h2>1 · Procure o telefone 98888-2222</h2>
+    <p class="intro">A tabela de cima guarda os telefones separados por vírgula, numa célula só. A de baixo guarda um telefone por linha. A mesma pergunta vai para as duas — <strong>diga antes</strong> qual você acha que acerta.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="a9-painel-fora">
+        <h3><span>fora da 1FN — telefones numa célula</span><span class="selo" id="a9-selo-fora"></span></h3>
+        <div id="a9-fora"></div>
+      </div>
+      <div class="painel" id="a9-painel-dentro">
+        <h3><span>na 1FN — um telefone por linha</span><span class="selo" id="a9-selo-dentro"></span></h3>
+        <div id="a9-dentro"></div>
+      </div>
+    </div>
+
+    <div class="camadas" id="a9-buscas" role="group" aria-label="Qual busca executar"></div>
+    <p class="legenda" id="a9-legenda"></p>
+
+    <div class="registro">
+      <h3>A mesma pergunta, nas duas tabelas</h3>
+      <ol class="log" id="a9-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. as três formas, uma de cada vez ============ -->
+  <section class="demo">
+    <h2>2 · Aplique 1FN, 2FN e 3FN e veja as colunas saírem</h2>
+    <p class="intro">A tabela do crime da Aula 08, com uma coluna a mais fora da 1FN. Avance uma forma por vez: a cada passo uma coluna sai daqui e vai para a tabela a que ela pertence.</p>
+
+    <div class="palco duplo afastado">
+      <div class="painel" id="a9-painel-restou">
+        <h3><span>o que sobrou na tabela do meio</span><span class="selo" id="a9-selo-restou"></span></h3>
+        <div id="a9-restou"></div>
+        <p class="nota-painel">Esta é a tabela que guarda o fato “este jogo, neste empréstimo, por este preço”.</p>
+      </div>
+      <div class="painel" id="a9-painel-saiu">
+        <h3><span>as tabelas que nasceram</span><span class="selo" id="a9-selo-saiu"></span></h3>
+        <div id="a9-saiu"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a9-fn-legenda"></p>
+
+    <div class="controles">
+      <button class="acao" type="button" id="a9-fn-passo">Aplicar a próxima forma</button>
+      <button class="acao secundaria" type="button" id="a9-fn-zerar">Começar de novo</button>
+    </div>
+
+    <div class="registro">
+      <h3>Cada forma, e o que ela mandou embora</h3>
+      <ol class="log" id="a9-fn-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 09</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

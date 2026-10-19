@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 11 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 11 da UC2: integridade referencial, as constraints, ON DELETE e a ordem de criação das tabelas.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 11 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 11</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-11', [
+  {
+    pergunta: '`Key (id_cliente)=(99) is not present in table "cliente"`. O que o banco está dizendo?',
+    alternativas: [
+      'Que a tabela cliente não existe',
+      'Que você tentou apontar para um cliente que não existe — e ele recusou',
+      'Que falta permissão na tabela cliente',
+      'Que o id_cliente deveria ser texto'
+    ],
+    certa: 1,
+    porque: 'É a integridade referencial trabalhando. Sem a chave estrangeira essa linha entraria sem reclamar, e o empréstimo ficaria apontando para o nada — o defeito só apareceria meses depois, num relatório que não fecha.'
+  },
+  {
+    pergunta: 'Você não informa `data_retirada` no INSERT. O que acontece?',
+    alternativas: [
+      'A coluna fica com a data de hoje',
+      'Vale como NULL, e o NOT NULL recusa a linha',
+      'A linha entra com a coluna vazia',
+      'O banco pergunta o valor'
+    ],
+    certa: 1,
+    porque: 'Omitir a coluna é o mesmo que informar NULL — a não ser que haja DEFAULT. É o erro mais comum de quem escolhe as colunas no INSERT: faltar uma obrigatória não dá nenhum aviso enquanto você escreve, só na hora de rodar.'
+  },
+  {
+    pergunta: 'Uma linha viola duas constraints ao mesmo tempo. Quantos erros aparecem?',
+    alternativas: [
+      'Dois, um para cada',
+      'Um só: o banco para na primeira que falha',
+      'Nenhum, porque elas se cancelam',
+      'Depende da ordem das colunas'
+    ],
+    certa: 1,
+    porque: 'É o que a demonstração 1 mostra com a coluna "nem chegou a rodar". Consertar o primeiro erro e rodar de novo pode revelar um segundo — o que não significa que você causou um problema novo, só que o banco parou de contar no primeiro.'
+  },
+  {
+    pergunta: 'Para que serve o `CHECK`, se a aplicação já valida?',
+    alternativas: [
+      'Para nada, é redundante',
+      'Porque a regra fica no banco e vale para TODO programa que o use, inclusive os que ainda não existem',
+      'Porque é mais rápido que validar na aplicação',
+      'Porque a aplicação não consegue comparar datas'
+    ],
+    certa: 1,
+    porque: 'Validação na aplicação protege aquela aplicação. O banco costuma sobreviver a várias — o sistema web, o script de importação, o estagiário no pgAdmin. Regra escrita no banco é a única que ninguém contorna por esquecimento.'
+  },
+  {
+    pergunta: '`ON DELETE CASCADE` na FK de empréstimo. Você apaga a Ana. O que acontece?',
+    alternativas: [
+      'O banco recusa',
+      'A Ana e os dois empréstimos dela somem, sem aviso',
+      'Os empréstimos ficam sem dono',
+      'Só a Ana some'
+    ],
+    certa: 1,
+    porque: 'Sem pergunta e sem aviso — o comando é válido e o banco obedece. Por isso o curso usa `RESTRICT`, que é o padrão: ele obriga quem apaga a decidir antes o que fazer com as linhas filhas.'
+  },
+  {
+    pergunta: 'Por que `SET NULL` é pior que `CASCADE` para a locadora?',
+    alternativas: [
+      'Porque é mais lento',
+      'Porque guarda o empréstimo e joga fora de quem ele era — o fato fica, o sentido some',
+      'Porque não é suportado pelo PostgreSQL',
+      'Porque apaga mais linhas'
+    ],
+    certa: 1,
+    porque: 'Com CASCADE pelo menos a informação some inteira e de forma consistente. Com SET NULL sobram linhas que afirmam que houve um empréstimo e não dizem de quem — e nenhum relatório consegue usar isso. Além disso, só funciona se a coluna aceitar NULL, o que contradiz o NOT NULL que você provavelmente quer ali.'
+  },
+  {
+    pergunta: 'Em que ordem as sete tabelas da locadora têm de ser criadas?',
+    alternativas: [
+      'Alfabética',
+      'Primeiro as que não têm chave estrangeira, depois as que apontam para elas',
+      'Primeiro a maior',
+      'Tanto faz: o PostgreSQL resolve'
+    ],
+    certa: 1,
+    porque: '`REFERENCES cliente` só funciona se `cliente` já existir. São três níveis: plataforma, cliente e jogo não dependem de ninguém; endereco, jogos_plataforma e emprestimo apontam para uma; item_emprestimo aponta para duas, e por isso é a última.'
+  },
+  {
+    pergunta: 'Você esqueceu o `NOT NULL` numa coluna e a tabela já tem dados. Precisa recomeçar?',
+    alternativas: [
+      'Sim, apagar e criar de novo',
+      'Não: `ALTER TABLE ... ALTER COLUMN ... SET NOT NULL` — desde que nenhuma linha existente seja nula',
+      'Não, mas só funciona com a tabela vazia',
+      'Sim, o PostgreSQL não permite alterar coluna'
+    ],
+    certa: 1,
+    porque: 'O `ALTER TABLE` existe exatamente para isso, e o medo de não ter ele é o que faz gente apagar o banco e recomeçar. A condição é razoável: o banco confere as linhas que já estão lá antes de aceitar a promessa nova, e diz qual linha impede.'
+  }
+]);
+</script>
+</body>
+</html>

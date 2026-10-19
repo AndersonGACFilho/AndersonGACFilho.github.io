@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 17 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 17 da UC2: janela de perda, política de backup, restore, e o ciclo de vida de um banco.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 17 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 17</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-17', [
+  {
+    pergunta: 'Qual é a pergunta que define a política de backup?',
+    alternativas: [
+      'Quanto espaço em disco eu tenho?',
+      'Quanto trabalho eu aceito perder?',
+      'Com que frequência o banco muda?',
+      'Quantos usuários existem?'
+    ],
+    certa: 1,
+    porque: 'A frequência é a RESPOSTA, não a pergunta. Quem aceita perder um dia faz backup diário; quem aceita perder uma hora faz de hora em hora. Sem responder a pergunta primeiro, a frequência vira chute — e o chute só é testado no dia do desastre.'
+  },
+  {
+    pergunta: 'Backup diário às 23h, falha na terça às 18h. O que se perde?',
+    alternativas: [
+      'Nada',
+      'A terça inteira de trabalho',
+      'Só a última hora',
+      'Os dados de segunda'
+    ],
+    certa: 1,
+    porque: 'O último backup é o de segunda 23h, antes de a terça começar. O restore devolve exatamente aquele estado — tudo o que foi registrado na terça deixa de existir. É um dia inteiro de empréstimos sem registro: a locadora não sabe quem está com o quê.'
+  },
+  {
+    pergunta: 'Por que não fazer backup de minuto em minuto, então?',
+    alternativas: [
+      'O PostgreSQL não permite',
+      'Porque backup custa disco, tempo de servidor e atenção — a política é uma troca, não um máximo',
+      'Porque corrompe o banco',
+      'Porque só funciona com o banco parado'
+    ],
+    certa: 1,
+    porque: 'Toda política é um acordo entre o custo de guardar e o custo de perder. Para a locadora, perder um dia é grave e perder uma hora é contornável com as fichas de papel — e é essa conversa, não a tecnologia, que decide a frequência.'
+  },
+  {
+    pergunta: 'Você restaura um backup num banco que não está vazio. O que acontece?',
+    alternativas: [
+      'As linhas são substituídas',
+      'Erro de chave duplicada — e o restore para',
+      'As linhas novas são ignoradas',
+      'Funciona normalmente'
+    ],
+    certa: 1,
+    porque: 'Um backup é uma lista de comandos, e os INSERT dele tentam inserir linhas que já estão lá. A mensagem fala de chave duplicada, e é aí que se conclui errado que "o backup está corrompido" — ele não está. O banco é que não estava vazio.'
+  },
+  {
+    pergunta: 'Qual é o jeito certo de restaurar por cima?',
+    alternativas: [
+      'Rodar o restore duas vezes',
+      'Fazer um backup do estado atual, apagar o banco, recriar e então restaurar',
+      'Apagar as linhas duplicadas na mão',
+      'Usar a opção --force'
+    ],
+    certa: 1,
+    porque: 'O backup do estado atual é a parte que todo mundo pula, e é a que salva: restaurar é voltar no tempo, e o que aconteceu depois do backup antigo volta a não existir. Se você descobrir que restaurou o arquivo errado, sem essa cópia não há volta.'
+  },
+  {
+    pergunta: 'Um backup que nunca foi restaurado é um backup?',
+    alternativas: [
+      'Sim, o arquivo existe',
+      'Não dá para afirmar: só o restore prova que o arquivo serve',
+      'Sim, se o comando não deu erro',
+      'Depende do tamanho'
+    ],
+    certa: 1,
+    porque: 'Arquivo truncado, versão incompatível, senha do dump esquecida — nenhuma dessas coisas aparece na hora de gravar. Testar o restore num banco de teste, de vez em quando, é o que transforma um arquivo em uma garantia.'
+  },
+  {
+    pergunta: 'Qual é a fase mais longa do ciclo de vida de um banco?',
+    alternativas: [
+      'Planejar',
+      'Operar',
+      'Implantar',
+      'Desativar'
+    ],
+    certa: 1,
+    porque: 'Planejar e implantar levam semanas; operar leva anos. É por isso que backup, monitoração e permissões — que parecem assunto secundário num curso — são o trabalho real de quem cuida de banco de dados depois que o sistema entra no ar.'
+  },
+  {
+    pergunta: 'O que `pg_dump` produz?',
+    alternativas: [
+      'Uma cópia binária dos arquivos do disco',
+      'Um arquivo com os comandos necessários para reconstruir o banco',
+      'Uma imagem do servidor',
+      'Um relatório do estado do banco'
+    ],
+    certa: 1,
+    porque: 'É por isso que um dump de texto dá para abrir e ler: tem `CREATE TABLE`, tem `INSERT`. E é por isso que ele funciona entre versões e até entre máquinas diferentes — o que se guarda são instruções, não bytes de disco.'
+  }
+]);
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 14 — veja acontecer · UC2</title>
+<meta name="description" content="Acompanhar o JOIN parear linha por linha, comparar INNER com LEFT na mesma consulta e ver quem desaparece, e assistir ao GROUP BY dobrar muitas linhas em uma por grupo.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 14 — veja acontecer</h1>
+  <p class="sub">Normalizar espalhou a informação em sete tabelas. Agora o JOIN traz de volta — e aqui ele acontece linha por linha, na sua frente. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas três, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. o JOIN por dentro ============ -->
+  <section class="demo">
+    <h2>1 · O <code>JOIN</code> pareando, uma linha por vez</h2>
+    <p class="intro">Avance e acompanhe: para cada linha de <code>emprestimo</code>, o banco procura em <code>cliente</code> a linha com o mesmo <code>id_cliente</code>.</p>
+
+    <div class="palco tres">
+      <div class="painel" id="a14-painel-esq">
+        <h3><span>emprestimo</span><span class="selo" id="a14-selo-esq"></span></h3>
+        <div id="a14-esq"></div>
+      </div>
+      <div class="painel" id="a14-painel-dir">
+        <h3><span>cliente</span><span class="selo" id="a14-selo-dir"></span></h3>
+        <div id="a14-dir"></div>
+      </div>
+      <div class="painel" id="a14-painel-res">
+        <h3><span>o resultado do JOIN</span><span class="selo" id="a14-selo-res"></span></h3>
+        <div id="a14-res"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a14-legenda"></p>
+
+    <div class="controles">
+      <button class="acao" type="button" id="a14-passo">Parear a próxima linha</button>
+      <button class="acao secundaria" type="button" id="a14-zerar">Começar de novo</button>
+    </div>
+
+    <div class="registro">
+      <h3>O que o banco fez em cada passo</h3>
+      <ol class="log" id="a14-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. INNER contra LEFT ============ -->
+  <section class="demo">
+    <h2>2 · Quem some no <code>INNER</code></h2>
+    <p class="intro">A mesma pergunta — “quantos empréstimos cada cliente fez?” — com os dois JOIN. <strong>Diga antes</strong> em qual deles a Carla aparece. Ela ainda não alugou nada.</p>
+
+    <div class="camadas" id="a14-tipos" role="group" aria-label="Qual tipo de JOIN"></div>
+
+    <div class="palco duplo">
+      <div class="painel" id="a14-painel-saida">
+        <h3><span>o que a consulta devolve</span><span class="selo" id="a14-selo-saida"></span></h3>
+        <div id="a14-saida"></div>
+      </div>
+      <div class="painel" id="a14-painel-fora">
+        <h3><span>quem ficou de fora</span><span class="selo" id="a14-selo-fora"></span></h3>
+        <div id="a14-fora"></div>
+        <p class="nota-painel">Ninguém é avisado de que faltou gente: a consulta devolve menos linhas, e só.</p>
+      </div>
+    </div>
+    <p class="legenda" id="a14-lr-legenda"></p>
+
+    <div class="registro">
+      <h3>As duas consultas, lado a lado</h3>
+      <ol class="log" id="a14-lr-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 3. GROUP BY ============ -->
+  <section class="demo">
+    <h2>3 · O <code>GROUP BY</code> dobrando as linhas</h2>
+    <p class="intro">Sete itens de empréstimo viram uma linha por grupo. Escolha por qual coluna agrupar e veja quantas linhas cada grupo comeu.</p>
+
+    <div class="camadas" id="a14-grupos" role="group" aria-label="Agrupar por qual coluna"></div>
+
+    <div class="palco duplo afastado">
+      <div class="painel" id="a14-painel-detalhe">
+        <h3><span>as linhas de detalhe</span><span class="selo" id="a14-selo-detalhe"></span></h3>
+        <div id="a14-detalhe"></div>
+      </div>
+      <div class="painel" id="a14-painel-resumo">
+        <h3><span>o resumo</span><span class="selo" id="a14-selo-resumo"></span></h3>
+        <div id="a14-resumo"></div>
+        <p class="nota-painel">Depois do GROUP BY, a linha de detalhe não existe mais para quem lê.</p>
+      </div>
+    </div>
+    <p class="legenda" id="a14-gb-legenda"></p>
+
+    <div class="registro">
+      <h3>A consulta, e o que cada parte fez</h3>
+      <ol class="log" id="a14-gb-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 14</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

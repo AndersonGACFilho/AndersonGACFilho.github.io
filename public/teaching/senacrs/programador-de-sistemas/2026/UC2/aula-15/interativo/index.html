@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 15 — veja acontecer · UC2</title>
+<meta name="description" content="Rodar a subconsulta de dentro primeiro e ver o resultado dela ocupar o lugar no comando de fora; e mudar a tabela para descobrir que a view não guarda dado nenhum.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 15 — veja acontecer</h1>
+  <p class="sub">Uma consulta dentro da outra: a de dentro roda primeiro, e o resultado dela ocupa o lugar. Depois, a pergunta que separa quem entendeu view de quem decorou: onde é que a view guarda os dados? Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas duas, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. a de dentro roda primeiro ============ -->
+  <section class="demo">
+    <h2>1 · A de dentro roda primeiro</h2>
+    <p class="intro">Pergunta do balcão: <em>quais jogos custam mais que a média do catálogo?</em> Avance e veja o comando se resolver de dentro para fora.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="a15-painel-comando">
+        <h3><span>o comando, como está agora</span><span class="selo" id="a15-selo-comando"></span></h3>
+        <div id="a15-comando"></div>
+      </div>
+      <div class="painel" id="a15-painel-tabela">
+        <h3><span>a tabela jogo</span><span class="selo" id="a15-selo-tabela"></span></h3>
+        <div id="a15-tabela"></div>
+      </div>
+    </div>
+    <p class="legenda" id="a15-legenda"></p>
+
+    <div class="controles">
+      <button class="acao" type="button" id="a15-passo">Resolver o próximo pedaço</button>
+      <button class="acao secundaria" type="button" id="a15-zerar">Começar de novo</button>
+    </div>
+
+    <div class="registro">
+      <h3>A ordem em que o banco resolve</h3>
+      <ol class="log" id="a15-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. onde a view guarda os dados ============ -->
+  <section class="demo">
+    <h2>2 · Onde a view guarda os dados?</h2>
+    <p class="intro">A view <code>catalogo_publico</code> já está criada. Mude a tabela <code>jogo</code> e <strong>diga antes</strong> o que vai acontecer com a view.</p>
+
+    <div class="palco tres">
+      <div class="painel" id="a15-painel-jogo">
+        <h3><span>tabela jogo</span><span class="selo" id="a15-selo-jogo"></span></h3>
+        <div id="a15-jogo"></div>
+        <p class="nota-painel">Aqui moram os dados, e o preço de custo que o estagiário não pode ver.</p>
+      </div>
+      <div class="painel" id="a15-painel-def">
+        <h3><span>a definição da view</span><span class="selo" id="a15-selo-def"></span></h3>
+        <div id="a15-def"></div>
+        <p class="nota-painel">É isto que a view guarda — e só isto.</p>
+      </div>
+      <div class="painel" id="a15-painel-view">
+        <h3><span>SELECT * FROM catalogo_publico</span><span class="selo" id="a15-selo-view"></span></h3>
+        <div id="a15-view"></div>
+      </div>
+    </div>
+
+    <div class="controles" id="a15-mexer" role="group" aria-label="Mudar a tabela jogo"></div>
+    <p class="legenda" id="a15-view-legenda"></p>
+
+    <div class="registro">
+      <h3>O que você mexeu, e o que a view passou a mostrar</h3>
+      <ol class="log" id="a15-view-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 15</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

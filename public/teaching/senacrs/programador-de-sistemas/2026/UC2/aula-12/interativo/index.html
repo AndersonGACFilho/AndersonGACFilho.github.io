@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 12 — veja acontecer · UC2</title>
+<meta name="description" content="Rodar UPDATE e DELETE com e sem WHERE na mesma tabela e contar as linhas afetadas; e montar um INSERT decidindo as aspas de cada valor, lendo o erro quando elas estão erradas.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 12 — veja acontecer</h1>
+  <p class="sub">Dois comandos quase iguais, com dois desfechos muito diferentes: um deles muda uma linha, o outro muda todas. Depois, as aspas — a regra que mais dá erro no primeiro INSERT. Nada aqui vale nota e ninguém vê o seu resultado.</p>
+  <p class="sub"><a href="../quiz/">Depois de mexer nas duas, confira nas 8 perguntas.</a></p>
+
+  <!-- ============ 1. o WHERE esquecido ============ -->
+  <section class="demo">
+    <h2>1 · O <code>WHERE</code> que faltou</h2>
+    <p class="intro">A tabela <code>jogo</code>, com cinco linhas. Escolha um comando e <strong>diga antes</strong> quantas linhas ele vai mudar.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="a12-painel-antes">
+        <h3><span>antes</span><span class="selo" id="a12-selo-antes"></span></h3>
+        <div id="a12-antes"></div>
+      </div>
+      <div class="painel" id="a12-painel-depois">
+        <h3><span>depois</span><span class="selo" id="a12-selo-depois"></span></h3>
+        <div id="a12-depois"></div>
+        <p class="nota-painel">Não há desfazer: o comando já rodou quando você percebe.</p>
+      </div>
+    </div>
+
+    <div class="camadas" id="a12-comandos" role="group" aria-label="Qual comando executar"></div>
+    <p class="legenda" id="a12-legenda"></p>
+
+    <div class="registro">
+      <h3>O comando, e quantas linhas ele pegou</h3>
+      <ol class="log" id="a12-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. as aspas ============ -->
+  <section class="demo">
+    <h2>2 · Monte o <code>INSERT</code> e decida as aspas</h2>
+    <p class="intro">Quatro valores, e para cada um uma decisão: com aspas simples ou sem? Clique num valor para trocar, e veja o comando sendo recusado ou aceito.</p>
+
+    <div class="palco duplo afastado">
+      <div class="painel" id="a12-painel-valores">
+        <h3><span>os quatro valores</span><span class="selo" id="a12-selo-valores"></span></h3>
+        <div id="a12-valores"></div>
+        <p class="nota-painel">Texto e data vão entre aspas simples. Número e palavra-chave do SQL, não.</p>
+      </div>
+      <div class="painel" id="a12-painel-comando">
+        <h3><span>o comando montado</span><span class="selo" id="a12-selo-comando"></span></h3>
+        <div id="a12-comando"></div>
+      </div>
+    </div>
+
+    <div class="controles" id="a12-trocas" role="group" aria-label="Trocar as aspas de cada valor"></div>
+    <p class="legenda" id="a12-aspas-legenda"></p>
+
+    <div class="registro">
+      <h3>O que o PostgreSQL responde</h3>
+      <ol class="log" id="a12-aspas-log"></ol>
+    </div>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 12</a>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

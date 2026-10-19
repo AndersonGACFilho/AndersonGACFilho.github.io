@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 18 — 8 perguntas · UC2</title>
+<meta name="description" content="Oito perguntas de autocorreção que atravessam a UC2 inteira: do minimundo ao backup, passando pelo DER, pela normalização, pelo SQL e pelas permissões.">
+<meta name="theme-color" content="#13110e">
+<link rel="icon" href="../../_comum/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../../_comum/tokens.css">
+<link rel="stylesheet" href="../../_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 18 — oito perguntas da UC inteira</h1>
+  <p class="sub">Estas atravessam as dezoito aulas. A resposta aparece assim que você escolhe. Não vale nota e ninguém vê o resultado.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 18</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../_comum/interativo/demo-kit.js"></script>
+<script src="../../_comum/interativo/autocorrecao.js"></script>
+<script>
+montarExercicios('aula-18', [
+  {
+    pergunta: 'Por que a locadora precisa de `item_emprestimo`, se já tem `emprestimo` e `jogo`?',
+    alternativas: [
+      'Para o banco ficar mais rápido',
+      'Porque um empréstimo leva vários jogos e um jogo entra em vários empréstimos — e esse N:N não cabe em duas tabelas',
+      'Porque o PostgreSQL exige tabela do meio',
+      'Para guardar o histórico'
+    ],
+    certa: 1,
+    porque: 'É a regra da Aula 07: todo N:N vira uma TABELA. E ela ganhou uma coluna própria, `preco_pago`, que não é de nenhum dos dois lados — é do encontro entre eles. Tabela do meio que ganha coluna própria deixa de ser detalhe técnico e vira entidade.'
+  },
+  {
+    pergunta: 'Por que `preco_pago` fica no item, e não em `jogo.preco_diaria`?',
+    alternativas: [
+      'Para economizar espaço',
+      'Por rastreabilidade: o preço cobrado não pode mudar quando a tabela de preços mudar',
+      'Porque jogo já tem muitas colunas',
+      'Porque é mais fácil de consultar'
+    ],
+    certa: 1,
+    porque: '`jogo.preco_diaria` é o preço de HOJE; `item_emprestimo.preco_pago` é o preço daquele aluguel. Sem a segunda coluna, um reajuste reescreveria o faturamento do mês passado — e nenhum relatório antigo poderia ser conferido.'
+  },
+  {
+    pergunta: 'A dependência funcional `id_cliente → nome_cliente` numa tabela de itens é qual defeito?',
+    alternativas: [
+      'Dependência parcial, 2FN',
+      'Dependência transitiva, 3FN',
+      'Violação da 1FN',
+      'Nenhum: é normal'
+    ],
+    certa: 1,
+    porque: '`id_cliente` não é a chave nem pedaço dela — então o nome chega na chave de carona, passando por ele. Esse caminho com estação no meio é o que define a transitiva, e é o que a 3FN manda separar.'
+  },
+  {
+    pergunta: 'Em que ordem as sete tabelas da locadora são criadas?',
+    alternativas: [
+      'Alfabética',
+      'Por nível de dependência: primeiro as sem FK, por último a que aponta para duas',
+      'Pela ordem do DER',
+      'Tanto faz'
+    ],
+    certa: 1,
+    porque: 'São três níveis. Nível 1: plataforma, cliente, jogo. Nível 2: endereco, jogos_plataforma, emprestimo. Nível 3: item_emprestimo, sozinho — porque é a tabela do meio de um N:N, e aponta para duas.'
+  },
+  {
+    pergunta: 'Um relatório de clientes feito com `INNER JOIN emprestimo` tem qual defeito?',
+    alternativas: [
+      'Nenhum',
+      'Some quem nunca alugou — e são justamente os que o comercial quer ver',
+      'Fica lento',
+      'Mostra linhas repetidas'
+    ],
+    certa: 1,
+    porque: 'E o defeito não dá erro: dá número errado. Com `LEFT JOIN` o cliente aparece com NULL do outro lado — e aí vale lembrar que `count(*)` contaria essa linha como 1, enquanto `count(e.id_emprestimo)` diz 0, que é a resposta certa.'
+  },
+  {
+    pergunta: 'Qual é a relação entre a view da Aula 15 e o GRANT da Aula 16?',
+    alternativas: [
+      'Nenhuma',
+      'A view recorta as colunas e o GRANT impede o desvio pela tabela original — as duas juntas é que protegem',
+      'A view substitui o GRANT',
+      'O GRANT cria a view'
+    ],
+    certa: 1,
+    porque: 'São duas proteções empilhadas, e qualquer uma sozinha deixa porta aberta. View sem permissão: o estagiário consulta `jogo` direto. Permissão sem view: ou ele vê a tabela inteira, com preço de custo, ou não vê nada.'
+  },
+  {
+    pergunta: 'Backup diário às 23h. Falha às 18h de terça. O que se perde?',
+    alternativas: [
+      'Nada',
+      'A terça inteira de trabalho',
+      'Uma hora',
+      'Os dados de segunda'
+    ],
+    certa: 1,
+    porque: 'A janela de perda é o intervalo entre o último backup e a falha — e a política não se escolhe pela frequência, mas pela resposta a "quanto trabalho eu aceito perder". A frequência é consequência dessa resposta.'
+  },
+  {
+    pergunta: 'Qual foi a decisão que tornou tudo isso possível, lá na Aula 03?',
+    alternativas: [
+      'Escolher o PostgreSQL',
+      'Decidir a borda do minimundo: o que entra no modelo e o que fica de fora',
+      'Aprender SQL',
+      'Instalar o pgAdmin'
+    ],
+    certa: 1,
+    porque: 'Tudo o que veio depois — tabelas, chaves, consultas, permissões — está dentro de uma borda que foi decidida por pessoas, não pela tecnologia. Na UC3 vocês vão testar um sistema; na UC4, construir um. A borda continua sendo a primeira pergunta.'
+  }
+]);
+</script>
+</body>
+</html>
