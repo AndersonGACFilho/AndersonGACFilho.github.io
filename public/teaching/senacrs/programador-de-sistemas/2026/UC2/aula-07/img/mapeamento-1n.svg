@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 376" width="1092" height="376"
-     role="img" aria-label="O relacionamento 1 para N do desenho vira duas tabelas: plataforma e jogo, com a chave estrangeira id_plataforma dentro de jogo, que e o lado do N. Nenhuma tabela nova.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 394" width="1092" height="394"
+     role="img" aria-label="O relacionamento 1 para N do desenho vira duas tabelas: cliente e emprestimo, com a chave estrangeira id_cliente dentro de emprestimo, que e o lado do N. Nenhuma tabela nova.">
   <style>
     /* @estilo-padrao */
     /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
@@ -207,33 +207,33 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">NO DESENHO</text>
   <path class="regua" d="M20 43 H1072"/>
-  <path class="cartao" d="M259 52 H481 a9 9 0 0 1 9 9 V127 a9 9 0 0 1 -9 9 H259 Z"/>
-  <path class="barra" d="M259 52 H254 a4 4 0 0 0 -4 4 V132 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="279" y="88">PLATAFORMA</text>
-  <text class="t glosa" x="279" y="122">lado do 1</text>
-  <path class="cartao" d="M611 52 H833 a9 9 0 0 1 9 9 V127 a9 9 0 0 1 -9 9 H611 Z"/>
-  <path class="barra" d="M611 52 H606 a4 4 0 0 0 -4 4 V132 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="631" y="88">JOGO</text>
-  <text class="t glosa" x="631" y="122">lado do N</text>
-  <path class="seta" d="M498 94 H596" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="547" y="78">possui</text>
-  <text class="t eyebrow" x="20" y="180">NAS TABELAS</text>
-  <path class="regua" d="M20 195 H1072"/>
-  <path class="cartao" d="M29 204 H511 a9 9 0 0 1 9 9 V319 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 204 H24 a4 4 0 0 0 -4 4 V324 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 206) scale(0.5417)">
+  <path class="cartao" d="M259 56 H481 a9 9 0 0 1 9 9 V131 a9 9 0 0 1 -9 9 H259 Z"/>
+  <path class="barra" d="M259 56 H254 a4 4 0 0 0 -4 4 V136 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="279" y="92">CLIENTE</text>
+  <text class="t glosa" x="279" y="126">lado do 1</text>
+  <path class="cartao" d="M611 56 H833 a9 9 0 0 1 9 9 V131 a9 9 0 0 1 -9 9 H611 Z"/>
+  <path class="barra" d="M611 56 H606 a4 4 0 0 0 -4 4 V136 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="631" y="92">EMPRESTIMO</text>
+  <text class="t glosa" x="631" y="126">lado do N</text>
+  <path class="seta" d="M498 98 H596" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="547" y="82">faz</text>
+  <text class="t eyebrow" x="20" y="192">NAS TABELAS</text>
+  <path class="regua" d="M20 207 H1072"/>
+  <path class="cartao" d="M29 220 H511 a9 9 0 0 1 9 9 V335 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 220 H24 a4 4 0 0 0 -4 4 V340 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(45 222) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="12" y="18" width="72" height="60" rx="7"/>
     <path d="M12 38h72" stroke="currentColor"/>
     <path d="M12 58h72M40 38v40M62 38v40"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="244">tabela plataforma</text>
-  <text class="t glosa" x="99" y="278">id_plataforma (PK)</text>
-  <text class="t glosa" x="99" y="310">nome</text>
-  <path class="cartao q" d="M581 204 H1063 a9 9 0 0 1 9 9 V319 a9 9 0 0 1 -9 9 H581 Z"/>
-  <path class="barra q" d="M581 204 H576 a4 4 0 0 0 -4 4 V324 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(597 206) scale(0.5417)">
+  <text class="t nome" x="107" y="260">cliente</text>
+  <text class="t glosa" x="107" y="294">id_cliente (PK)</text>
+  <text class="t glosa" x="107" y="326">nome</text>
+  <path class="cartao q" d="M581 220 H1063 a9 9 0 0 1 9 9 V335 a9 9 0 0 1 -9 9 H581 Z"/>
+  <path class="barra q" d="M581 220 H576 a4 4 0 0 0 -4 4 V340 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(597 222) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="4" y="16" width="36" height="30" rx="5"/>
     <path d="M4 28h36"/>
@@ -243,9 +243,9 @@
     <path d="M54 54l8 9-10 4" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="651" y="244">tabela jogo</text>
-  <text class="t glosa" x="651" y="278">id_jogo (PK) · titulo</text>
-  <text class="t glosa" x="651" y="310">id_plataforma (FK)</text>
-  <path class="seta" d="M528 266 H564" marker-end="url(#ponta)"/>
-  <text class="t nota" x="20" y="356">O relacionamento não virou tabela: virou uma coluna na tabela do lado do N.</text>
+  <text class="t nome" x="659" y="260">emprestimo</text>
+  <text class="t glosa" x="659" y="294">id_emprestimo (PK) · data</text>
+  <text class="t glosa" x="659" y="326">id_cliente (FK)</text>
+  <path class="seta" d="M528 282 H564" marker-end="url(#ponta)"/>
+  <text class="t nota" x="20" y="374">O relacionamento não virou tabela: virou uma coluna na tabela do lado do N.</text>
 </svg>

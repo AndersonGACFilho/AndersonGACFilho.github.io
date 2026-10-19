@@ -228,9 +228,9 @@
     <path d="M74 62v16M66 70h16" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="150">INSERT em</text>
-  <text class="t glosa" x="99" y="184">emprestimo com</text>
-  <text class="t glosa" x="99" y="216">id_cliente = 7</text>
+  <text class="t nome" x="107" y="150">INSERT em</text>
+  <text class="t glosa" x="107" y="184">emprestimo com</text>
+  <text class="t glosa" x="107" y="216">id_cliente = 7</text>
   <path class="cartao q" d="M389 110 H681 a9 9 0 0 1 9 9 V225 a9 9 0 0 1 -9 9 H389 Z"/>
   <path class="barra q" d="M389 110 H384 a4 4 0 0 0 -4 4 V230 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(405 146) scale(0.5417)">
@@ -240,8 +240,8 @@
     <circle cx="48" cy="62" r="3.5" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="459" y="166">Existe cliente</text>
-  <text class="t glosa" x="459" y="200">com id 7?</text>
+  <text class="t nome" x="467" y="166">Existe cliente</text>
+  <text class="t glosa" x="467" y="200">com id 7?</text>
   <path class="cartao" d="M741 52 H1063 a9 9 0 0 1 9 9 V147 a9 9 0 0 1 -9 9 H741 Z"/>
   <path class="barra" d="M741 52 H736 a4 4 0 0 0 -4 4 V152 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(757 78) scale(0.5417)">
@@ -250,8 +250,8 @@
     <path d="m33 46 11 11 21-21" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="811" y="98">Linha gravada</text>
-  <text class="t glosa" x="811" y="132">a referência existia</text>
+  <text class="t nome" x="819" y="98">Linha gravada</text>
+  <text class="t glosa" x="819" y="132">a referência existia</text>
   <path class="cartao recusa" d="M741 180 H1063 a9 9 0 0 1 9 9 V287 a9 9 0 0 1 -9 9 H741 Z"/>
   <path class="barra recusa" d="M741 180 H736 a4 4 0 0 0 -4 4 V292 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(757 178) scale(0.5417)">
@@ -261,9 +261,9 @@
     <circle cx="48" cy="70" r="3.5" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="811" y="216">ERRO</text>
-  <text class="t glosa" x="811" y="250">violates foreign key</text>
-  <text class="t glosa" x="811" y="282">constraint</text>
+  <text class="t nome" x="819" y="216">ERRO</text>
+  <text class="t glosa" x="819" y="250">violates foreign key</text>
+  <text class="t glosa" x="819" y="282">constraint</text>
   <path class="seta" d="M348 172 H372" marker-end="url(#ponta)"/>
   <path class="seta" d="M698 154 C 716 154, 716 104, 724 104" marker-end="url(#ponta)"/>
   <path class="seta" d="M698 190 C 716 190, 716 238, 724 238" marker-end="url(#ponta)"/>

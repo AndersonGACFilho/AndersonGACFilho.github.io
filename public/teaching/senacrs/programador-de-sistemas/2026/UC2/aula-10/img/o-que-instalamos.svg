@@ -216,12 +216,12 @@
     <path d="M26 50l10 9-10 9M44 68h22" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="118">pgAdmin</text>
-  <text class="t glosa" x="99" y="152">o cliente — a janela</text>
-  <text class="t glosa" x="99" y="184">que você abre</text>
-  <path class="cartao q" d="M421 68 H755 a9 9 0 0 1 9 9 V203 a9 9 0 0 1 -9 9 H421 Z"/>
-  <path class="barra q" d="M421 68 H416 a4 4 0 0 0 -4 4 V208 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(437 80) scale(0.5417)">
+  <text class="t nome" x="107" y="118">pgAdmin</text>
+  <text class="t glosa" x="107" y="152">o cliente — a janela</text>
+  <text class="t glosa" x="107" y="184">que você abre</text>
+  <path class="cartao q" d="M417 68 H761 a9 9 0 0 1 9 9 V203 a9 9 0 0 1 -9 9 H417 Z"/>
+  <path class="barra q" d="M417 68 H412 a4 4 0 0 0 -4 4 V208 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(433 80) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="38" cy="22" rx="26" ry="9.5"/>
     <path d="M12 22v44c0 5.2 11.6 9.5 26 9.5 4 0 7.9-.3 11.3-.9"/>
@@ -230,12 +230,12 @@
     <path d="M69 47v7M69 76v7M87 65h-7M58 65h-7M81.7 52.3l-5 5M61.3 72.7l-5 5M81.7 77.7l-5-5M61.3 57.3l-5-5" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="491" y="118">PostgreSQL</text>
-  <text class="t glosa" x="491" y="152">o servidor, em segundo</text>
-  <text class="t glosa" x="491" y="184">plano, na porta 5432</text>
-  <path class="cartao" d="M821 78 H1063 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H821 Z"/>
-  <path class="barra" d="M821 78 H816 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(837 114) scale(0.5417)">
+  <text class="t nome" x="495" y="118">PostgreSQL</text>
+  <text class="t glosa" x="495" y="152">o servidor, em segundo</text>
+  <text class="t glosa" x="495" y="184">plano, na porta 5432</text>
+  <path class="cartao" d="M825 78 H1063 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H825 Z"/>
+  <path class="barra" d="M825 78 H820 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(841 114) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="8" y="26" width="80" height="44" rx="8"/>
     <circle cx="34" cy="48" r="14"/>
@@ -243,9 +243,9 @@
     <path d="M60 40h18M60 56h18" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="891" y="134">Arquivos</text>
-  <text class="t glosa" x="891" y="168">no disco</text>
-  <path class="seta" d="M368 140 H404" marker-end="url(#ponta)"/>
-  <path class="seta" d="M772 140 H804" marker-end="url(#ponta)"/>
+  <text class="t nome" x="903" y="134">Arquivos</text>
+  <text class="t glosa" x="903" y="168">no disco</text>
+  <path class="seta" d="M368 140 H400" marker-end="url(#ponta)"/>
+  <path class="seta" d="M778 140 H808" marker-end="url(#ponta)"/>
   <text class="t seta-rot" x="366" y="64">pergunta</text>
 </svg>

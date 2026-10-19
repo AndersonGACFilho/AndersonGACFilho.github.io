@@ -215,8 +215,8 @@
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="52">Atendente</text>
-  <text class="t glosa" x="99" y="86">vê título, cliente, data</text>
+  <text class="t nome" x="107" y="52">Atendente</text>
+  <text class="t glosa" x="107" y="86">vê título, cliente, data</text>
   <path class="cartao" d="M29 118 H479 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 118 H24 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 134) scale(0.5417)">
@@ -225,8 +225,8 @@
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="154">Dono</text>
-  <text class="t glosa" x="99" y="188">vê o faturamento do mês</text>
+  <text class="t nome" x="107" y="154">Dono</text>
+  <text class="t glosa" x="107" y="188">vê o faturamento do mês</text>
   <path class="cartao" d="M29 220 H479 a9 9 0 0 1 9 9 V295 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 220 H24 a4 4 0 0 0 -4 4 V300 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 236) scale(0.5417)">
@@ -235,18 +235,18 @@
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="256">Estagiário</text>
-  <text class="t glosa" x="99" y="290">vê só o catálogo</text>
-  <path class="seta" d="M496 58 H506 Q516 58 516 68"/>
-  <path class="seta" d="M496 160 H516"/>
-  <path class="seta" d="M496 262 H506 Q516 262 516 252"/>
-  <path class="seta" d="M516 68 V252"/>
-  <path class="seta" d="M516 160 H548" marker-end="url(#ponta)"/>
-  <text class="t eyebrow" x="556" y="28">O QUE EXISTE DE VERDADE</text>
-  <path class="regua" d="M556 43 H1072"/>
-  <path class="cartao q" d="M565 64 H1063 a9 9 0 0 1 9 9 V143 a9 9 0 0 1 -9 9 H565 Z"/>
-  <path class="barra q" d="M565 64 H560 a4 4 0 0 0 -4 4 V148 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(581 82) scale(0.5417)">
+  <text class="t nome" x="107" y="256">Estagiário</text>
+  <text class="t glosa" x="107" y="290">vê só o catálogo</text>
+  <path class="seta" d="M496 58 H502 Q512 58 512 68"/>
+  <path class="seta" d="M496 160 H512"/>
+  <path class="seta" d="M496 262 H502 Q512 262 512 252"/>
+  <path class="seta" d="M512 68 V252"/>
+  <path class="seta" d="M512 160 H540" marker-end="url(#ponta)"/>
+  <text class="t eyebrow" x="548" y="28">O QUE EXISTE DE VERDADE</text>
+  <path class="regua" d="M548 43 H1072"/>
+  <path class="cartao q" d="M557 64 H1063 a9 9 0 0 1 9 9 V143 a9 9 0 0 1 -9 9 H557 Z"/>
+  <path class="barra q" d="M557 64 H552 a4 4 0 0 0 -4 4 V148 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(573 82) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M48 10 88 28 48 46 8 28 48 10Z" stroke="currentColor"/>
     <path d="M8 48l40 18 40-18"/>
@@ -255,10 +255,10 @@
   </g>
   <text class="t nome" x="635" y="102">Nível conceitual</text>
   <text class="t glosa" x="635" y="136">tabelas, colunas, e como elas se ligam</text>
-  <path class="seta" d="M814 156 V182" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M565 190 H1063 a9 9 0 0 1 9 9 V269 a9 9 0 0 1 -9 9 H565 Z"/>
-  <path class="barra" d="M565 190 H560 a4 4 0 0 0 -4 4 V274 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(581 208) scale(0.5417)">
+  <path class="seta" d="M810 156 V182" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M557 190 H1063 a9 9 0 0 1 9 9 V269 a9 9 0 0 1 -9 9 H557 Z"/>
+  <path class="barra" d="M557 190 H552 a4 4 0 0 0 -4 4 V274 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(573 208) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="8" y="26" width="80" height="44" rx="8"/>
     <circle cx="34" cy="48" r="14"/>

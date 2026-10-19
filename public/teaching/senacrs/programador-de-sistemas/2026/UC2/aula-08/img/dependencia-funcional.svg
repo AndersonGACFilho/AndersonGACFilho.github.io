@@ -216,8 +216,8 @@
     <path d="M68 25.7l6 9M57 29.5l5 7.6"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="144">id_jogo</text>
-  <text class="t glosa" x="99" y="178">o determinante</text>
+  <text class="t nome" x="107" y="144">id_jogo</text>
+  <text class="t glosa" x="107" y="178">o determinante</text>
   <path class="cartao" d="M569 37 H851 a9 9 0 0 1 9 9 V94 a9 9 0 0 1 -9 9 H569 Z"/>
   <path class="barra" d="M569 37 H564 a4 4 0 0 0 -4 4 V99 a4 4 0 0 0 4 4 Z"/>
   <text class="t nome" x="589" y="80">titulo</text>

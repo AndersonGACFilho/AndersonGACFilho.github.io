@@ -216,9 +216,9 @@
     <path d="M12 58h72M40 38v40M62 38v40"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="126">6 empréstimos</text>
-  <text class="t glosa" x="99" y="160">3 da Ana, 2 do Bruno</text>
-  <text class="t glosa" x="99" y="192">1 da Carla</text>
+  <text class="t nome" x="107" y="126">6 empréstimos</text>
+  <text class="t glosa" x="107" y="160">3 da Ana, 2 do Bruno</text>
+  <text class="t glosa" x="107" y="192">1 da Carla</text>
   <path class="cartao q" d="M409 82 H681 a9 9 0 0 1 9 9 V205 a9 9 0 0 1 -9 9 H409 Z"/>
   <path class="barra q" d="M409 82 H404 a4 4 0 0 0 -4 4 V210 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(425 88) scale(0.5417)">
@@ -231,9 +231,9 @@
     <rect x="58" y="31" width="34" height="34" rx="6"/>
     </g>
   </g>
-  <text class="t nome" x="479" y="126">GROUP BY</text>
-  <text class="t glosa" x="479" y="160">junta as linhas</text>
-  <text class="t glosa" x="479" y="192">de cada grupo</text>
+  <text class="t nome" x="487" y="126">GROUP BY</text>
+  <text class="t glosa" x="487" y="160">junta as linhas</text>
+  <text class="t glosa" x="487" y="192">de cada grupo</text>
   <path class="cartao" d="M739 76 H1063 a9 9 0 0 1 9 9 V211 a9 9 0 0 1 -9 9 H739 Z"/>
   <path class="barra" d="M739 76 H734 a4 4 0 0 0 -4 4 V216 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(755 88) scale(0.5417)">
@@ -244,9 +244,9 @@
     <rect x="70" y="20" width="14" height="64" rx="3"/>
     </g>
   </g>
-  <text class="t nome" x="809" y="126">3 linhas</text>
-  <text class="t glosa" x="809" y="160">Ana · 3, Bruno · 2</text>
-  <text class="t glosa" x="809" y="192">Carla · 1</text>
+  <text class="t nome" x="817" y="126">3 linhas</text>
+  <text class="t glosa" x="817" y="160">Ana · 3, Bruno · 2</text>
+  <text class="t glosa" x="817" y="192">Carla · 1</text>
   <path class="seta traco t1" d="M368 148 H392" marker-end="url(#ponta)"/>
   <path class="seta traco t2" d="M698 148 H722" marker-end="url(#ponta)"/>
 </svg>

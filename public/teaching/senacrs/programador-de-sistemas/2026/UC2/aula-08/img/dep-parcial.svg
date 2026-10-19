@@ -216,7 +216,7 @@
     <path d="M68 25.7l6 9M57 29.5l5 7.6"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="107">id_emprestimo</text>
+  <text class="t nome" x="107" y="107">id_emprestimo</text>
   <path class="cartao" d="M29 159 H351 a9 9 0 0 1 9 9 V238 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 159 H24 a4 4 0 0 0 -4 4 V243 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 177) scale(0.5417)">
@@ -226,7 +226,7 @@
     <path d="M68 25.7l6 9M57 29.5l5 7.6"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="213">id_jogo</text>
+  <text class="t nome" x="107" y="213">id_jogo</text>
   <path class="cartao q" d="M499 60 H781 a9 9 0 0 1 9 9 V139 a9 9 0 0 1 -9 9 H499 Z"/>
   <path class="barra q" d="M499 60 H494 a4 4 0 0 0 -4 4 V144 a4 4 0 0 0 4 4 Z"/>
   <text class="t nome" x="519" y="98">data_retirada</text>

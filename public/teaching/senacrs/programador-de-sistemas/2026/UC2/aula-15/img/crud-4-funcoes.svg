@@ -219,8 +219,8 @@
     <path d="M74 62v16M66 70h16" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="56">criar_jogo()</text>
-  <text class="t glosa" x="99" y="90">INSERT + commit</text>
+  <text class="t nome" x="107" y="56">criar_jogo()</text>
+  <text class="t glosa" x="107" y="90">INSERT + commit</text>
   <path class="cartao" d="M29 115 H441 a9 9 0 0 1 9 9 V192 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 115 H24 a4 4 0 0 0 -4 4 V197 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 132) scale(0.5417)">
@@ -230,8 +230,8 @@
     <path d="M32 42h20M42 32v20" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="152">listar_jogos()</text>
-  <text class="t glosa" x="99" y="186">SELECT + fetchall</text>
+  <text class="t nome" x="107" y="152">listar_jogos()</text>
+  <text class="t glosa" x="107" y="186">SELECT + fetchall</text>
   <path class="cartao" d="M29 211 H441 a9 9 0 0 1 9 9 V288 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 211 H24 a4 4 0 0 0 -4 4 V293 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 228) scale(0.5417)">
@@ -244,8 +244,8 @@
     <path d="M76 26v13H63" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="248">atualizar_jogo()</text>
-  <text class="t glosa" x="99" y="282">UPDATE + commit</text>
+  <text class="t nome" x="107" y="248">atualizar_jogo()</text>
+  <text class="t glosa" x="107" y="282">UPDATE + commit</text>
   <path class="cartao" d="M29 307 H441 a9 9 0 0 1 9 9 V384 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 307 H24 a4 4 0 0 0 -4 4 V389 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 324) scale(0.5417)">
@@ -256,24 +256,24 @@
     <path d="M40 43v33M56 43v33" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="344">apagar_jogo()</text>
-  <text class="t glosa" x="99" y="378">DELETE + commit</text>
+  <text class="t nome" x="107" y="344">apagar_jogo()</text>
+  <text class="t glosa" x="107" y="378">DELETE + commit</text>
   <path class="seta" d="M458 62 H590 Q600 62 600 72"/>
   <path class="seta" d="M458 158 H590 Q600 158 600 168"/>
   <path class="seta" d="M458 254 H590 Q600 254 600 244"/>
   <path class="seta" d="M458 350 H590 Q600 350 600 340"/>
   <path class="seta" d="M600 72 V340"/>
-  <path class="seta" d="M600 206 H740" marker-end="url(#ponta)"/>
-  <path class="cartao q" d="M757 146 H1063 a9 9 0 0 1 9 9 V257 a9 9 0 0 1 -9 9 H757 Z"/>
-  <path class="barra q" d="M757 146 H752 a4 4 0 0 0 -4 4 V262 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(773 146) scale(0.5417)">
+  <path class="seta" d="M600 206 H734" marker-end="url(#ponta)"/>
+  <path class="cartao q" d="M751 146 H1063 a9 9 0 0 1 9 9 V257 a9 9 0 0 1 -9 9 H751 Z"/>
+  <path class="barra q" d="M751 146 H746 a4 4 0 0 0 -4 4 V262 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(767 146) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="48" cy="24" rx="30" ry="11"/>
     <path d="M18 24v48c0 6.1 13.4 11 30 11s30-4.9 30-11V24"/>
     <path d="M18 48c0 6.1 13.4 11 30 11s30-4.9 30-11" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="827" y="184">Banco locadora</text>
-  <text class="t glosa" x="827" y="218">uma conexão só,</text>
-  <text class="t glosa" x="827" y="250">quatro comandos</text>
+  <text class="t nome" x="829" y="184">Banco locadora</text>
+  <text class="t glosa" x="829" y="218">uma conexão só,</text>
+  <text class="t glosa" x="829" y="250">quatro comandos</text>
 </svg>

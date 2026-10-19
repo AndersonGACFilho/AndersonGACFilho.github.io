@@ -207,7 +207,7 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">A DEPENDÊNCIA QUE PASSA POR OUTRA</text>
   <path class="regua" d="M20 43 H1072"/>
-  <path class="cartao" d="M29 84 H323 a9 9 0 0 1 9 9 V187 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao" d="M29 84 H335 a9 9 0 0 1 9 9 V187 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 84 H24 a4 4 0 0 0 -4 4 V192 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 114) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -216,11 +216,11 @@
     <path d="M68 25.7l6 9M57 29.5l5 7.6"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="134">id_emprestimo</text>
-  <text class="t glosa" x="99" y="168">a chave primária</text>
-  <path class="cartao q" d="M409 84 H701 a9 9 0 0 1 9 9 V187 a9 9 0 0 1 -9 9 H409 Z"/>
-  <path class="barra q" d="M409 84 H404 a4 4 0 0 0 -4 4 V192 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(425 114) scale(0.5417)">
+  <text class="t nome" x="107" y="134">id_emprestimo</text>
+  <text class="t glosa" x="107" y="168">a chave primária</text>
+  <path class="cartao q" d="M413 84 H701 a9 9 0 0 1 9 9 V187 a9 9 0 0 1 -9 9 H413 Z"/>
+  <path class="barra q" d="M413 84 H408 a4 4 0 0 0 -4 4 V192 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(429 114) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="4" y="16" width="36" height="30" rx="5"/>
     <path d="M4 28h36"/>
@@ -230,9 +230,9 @@
     <path d="M54 54l8 9-10 4" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="479" y="134">id_cliente</text>
-  <text class="t glosa" x="479" y="168">depende da chave</text>
-  <path class="seta" d="M340 140 H392" marker-end="url(#ponta)"/>
+  <text class="t nome" x="491" y="134">id_cliente</text>
+  <text class="t glosa" x="491" y="168">depende da chave</text>
+  <path class="seta" d="M352 140 H396" marker-end="url(#ponta)"/>
   <path class="cartao" d="M779 56 H1063 a9 9 0 0 1 9 9 V127 a9 9 0 0 1 -9 9 H779 Z"/>
   <path class="barra" d="M779 56 H774 a4 4 0 0 0 -4 4 V132 a4 4 0 0 0 4 4 Z"/>
   <text class="t nome" x="799" y="106">nome_cliente</text>

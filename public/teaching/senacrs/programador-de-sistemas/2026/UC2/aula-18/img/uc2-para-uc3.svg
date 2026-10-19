@@ -219,8 +219,8 @@
     <path d="M48 52h30M48 66h20"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="99">crud.ipynb</text>
-  <text class="t glosa" x="99" y="133">4 funções em Python</text>
+  <text class="t nome" x="107" y="99">crud.ipynb</text>
+  <text class="t glosa" x="107" y="133">4 funções em Python</text>
   <path class="cartao" d="M29 171 H463 a9 9 0 0 1 9 9 V258 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 171 H24 a4 4 0 0 0 -4 4 V263 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 193) scale(0.5417)">
@@ -230,8 +230,8 @@
     <path d="M18 48c0 6.1 13.4 11 30 11s30-4.9 30-11" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="213">banco PostgreSQL</text>
-  <text class="t glosa" x="99" y="247">tabelas em 3FN</text>
+  <text class="t nome" x="107" y="213">banco PostgreSQL</text>
+  <text class="t glosa" x="107" y="247">tabelas em 3FN</text>
   <path class="seta" d="M480 105 H500 Q510 105 510 115"/>
   <path class="seta" d="M480 219 H500 Q510 219 510 209"/>
   <path class="seta" d="M510 115 V209"/>
@@ -244,8 +244,8 @@
     <path d="m33 46 11 11 21-21" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="639" y="92">pytest</text>
-  <text class="t glosa" x="639" y="126">testa as 4 funções</text>
+  <text class="t nome" x="647" y="92">pytest</text>
+  <text class="t glosa" x="647" y="126">testa as 4 funções</text>
   <path class="cartao" d="M569 156 H1063 a9 9 0 0 1 9 9 V239 a9 9 0 0 1 -9 9 H569 Z"/>
   <path class="barra" d="M569 156 H564 a4 4 0 0 0 -4 4 V244 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(585 176) scale(0.5417)">
@@ -258,8 +258,8 @@
     <path d="M66 54v12l8 6" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="639" y="196">Git</text>
-  <text class="t glosa" x="639" y="230">versiona o código</text>
+  <text class="t nome" x="647" y="196">Git</text>
+  <text class="t glosa" x="647" y="230">versiona o código</text>
   <path class="cartao" d="M569 260 H1063 a9 9 0 0 1 9 9 V343 a9 9 0 0 1 -9 9 H569 Z"/>
   <path class="barra" d="M569 260 H564 a4 4 0 0 0 -4 4 V348 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(585 280) scale(0.5417)">
@@ -270,6 +270,6 @@
     <path d="M54 38h18M54 62h18"/>
     </g>
   </g>
-  <text class="t nome" x="639" y="300">plano de teste</text>
-  <text class="t glosa" x="639" y="334">e manutenção</text>
+  <text class="t nome" x="647" y="300">plano de teste</text>
+  <text class="t glosa" x="647" y="334">e manutenção</text>
 </svg>

@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 394" width="1092" height="394"
-     role="img" aria-label="O relacionamento N para N do desenho vira tres tabelas: cliente, jogo, e emprestimo no meio guardando as duas chaves estrangeiras e a data da retirada. O N:N some e no lugar ficam dois 1:N.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 420" width="1092" height="420"
+     role="img" aria-label="O relacionamento N para N do desenho vira tres tabelas: emprestimo, jogo, e item_emprestimo no meio guardando as duas chaves estrangeiras, que juntas sao a chave dele, e o preco pago. O N:N some e no lugar ficam dois 1:N.">
   <style>
     /* @estilo-padrao */
     /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
@@ -207,33 +207,33 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">NO DESENHO</text>
   <path class="regua" d="M20 43 H1072"/>
-  <path class="cartao" d="M259 52 H481 a9 9 0 0 1 9 9 V127 a9 9 0 0 1 -9 9 H259 Z"/>
-  <path class="barra" d="M259 52 H254 a4 4 0 0 0 -4 4 V132 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="279" y="88">CLIENTE</text>
-  <text class="t glosa" x="279" y="122">lado do N</text>
-  <path class="cartao" d="M611 52 H833 a9 9 0 0 1 9 9 V127 a9 9 0 0 1 -9 9 H611 Z"/>
-  <path class="barra" d="M611 52 H606 a4 4 0 0 0 -4 4 V132 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="631" y="88">JOGO</text>
-  <text class="t glosa" x="631" y="122">lado do N</text>
-  <path class="seta" d="M498 94 H596" marker-end="url(#ponta)"/>
-  <text class="t seta-rot" x="547" y="78">aluga</text>
-  <text class="t eyebrow" x="20" y="172">NAS TABELAS — AGORA SÃO TRÊS</text>
-  <path class="regua" d="M20 187 H1072"/>
-  <path class="cartao" d="M29 192 H341 a9 9 0 0 1 9 9 V333 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 192 H24 a4 4 0 0 0 -4 4 V338 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="49" y="261">tabela cliente</text>
-  <text class="t glosa" x="49" y="295">id_cliente (PK)</text>
-  <path class="cartao q" d="M399 192 H711 a9 9 0 0 1 9 9 V333 a9 9 0 0 1 -9 9 H399 Z"/>
-  <path class="barra q" d="M399 192 H394 a4 4 0 0 0 -4 4 V338 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="419" y="229">tabela emprestimo</text>
-  <text class="t glosa" x="419" y="263">id_emprestimo (PK)</text>
-  <text class="t glosa" x="419" y="295">id_cliente e id_jogo (FK)</text>
-  <text class="t glosa" x="419" y="327">data_retirada</text>
-  <path class="cartao" d="M769 192 H1063 a9 9 0 0 1 9 9 V333 a9 9 0 0 1 -9 9 H769 Z"/>
-  <path class="barra" d="M769 192 H764 a4 4 0 0 0 -4 4 V338 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="789" y="261">tabela jogo</text>
-  <text class="t glosa" x="789" y="295">id_jogo (PK)</text>
-  <path class="seta" d="M358 267 H382" marker-end="url(#ponta)"/>
-  <path class="seta" d="M752 267 H728" marker-end="url(#ponta)"/>
-  <text class="t nota" x="20" y="372">O N:N sumiu: no lugar dele ficaram dois 1:N, e o preço pago mora na tabela do meio.</text>
+  <path class="cartao" d="M239 56 H471 a9 9 0 0 1 9 9 V131 a9 9 0 0 1 -9 9 H239 Z"/>
+  <path class="barra" d="M239 56 H234 a4 4 0 0 0 -4 4 V136 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="259" y="92">EMPRESTIMO</text>
+  <text class="t glosa" x="259" y="126">lado do N</text>
+  <path class="cartao" d="M621 56 H853 a9 9 0 0 1 9 9 V131 a9 9 0 0 1 -9 9 H621 Z"/>
+  <path class="barra" d="M621 56 H616 a4 4 0 0 0 -4 4 V136 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="641" y="92">JOGO</text>
+  <text class="t glosa" x="641" y="126">lado do N</text>
+  <path class="seta" d="M488 98 H606" marker-end="url(#ponta)"/>
+  <text class="t seta-rot" x="547" y="82">leva</text>
+  <text class="t eyebrow" x="20" y="192">NAS TABELAS — AGORA SÃO TRÊS</text>
+  <path class="regua" d="M20 207 H1072"/>
+  <path class="cartao" d="M29 220 H291 a9 9 0 0 1 9 9 V361 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 220 H24 a4 4 0 0 0 -4 4 V366 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="289">emprestimo</text>
+  <text class="t glosa" x="49" y="323">id_emprestimo (PK)</text>
+  <path class="cartao q" d="M369 220 H711 a9 9 0 0 1 9 9 V361 a9 9 0 0 1 -9 9 H369 Z"/>
+  <path class="barra q" d="M369 220 H364 a4 4 0 0 0 -4 4 V366 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="389" y="257">item_emprestimo</text>
+  <text class="t glosa" x="389" y="291">id_emprestimo e id_jogo</text>
+  <text class="t glosa" x="389" y="323">as duas são a chave (FK)</text>
+  <text class="t glosa" x="389" y="355">preco_pago</text>
+  <path class="cartao" d="M793 220 H1063 a9 9 0 0 1 9 9 V361 a9 9 0 0 1 -9 9 H793 Z"/>
+  <path class="barra" d="M793 220 H788 a4 4 0 0 0 -4 4 V366 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="813" y="289">jogo</text>
+  <text class="t glosa" x="813" y="323">id_jogo (PK)</text>
+  <path class="seta" d="M308 295 H352" marker-end="url(#ponta)"/>
+  <path class="seta" d="M776 295 H728" marker-end="url(#ponta)"/>
+  <text class="t nota" x="20" y="400">O N:N sumiu: no lugar dele ficaram dois 1:N, e o preço pago mora na tabela do meio.</text>
 </svg>

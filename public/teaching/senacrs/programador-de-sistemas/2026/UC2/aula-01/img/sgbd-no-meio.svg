@@ -205,7 +205,7 @@
       <polygon points="0,0 9,4.5 0,9" fill="#cfe0f5"/>
     </marker>
   </defs>
-  <path class="cartao" d="M29 18 H367 a9 9 0 0 1 9 9 V97 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao" d="M29 18 H373 a9 9 0 0 1 9 9 V97 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 18 H24 a4 4 0 0 0 -4 4 V102 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 36) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -213,8 +213,8 @@
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="72">Atendente Ana</text>
-  <path class="cartao" d="M29 124 H367 a9 9 0 0 1 9 9 V203 a9 9 0 0 1 -9 9 H29 Z"/>
+  <text class="t nome" x="107" y="72">Atendente Ana</text>
+  <path class="cartao" d="M29 124 H373 a9 9 0 0 1 9 9 V203 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 124 H24 a4 4 0 0 0 -4 4 V208 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 142) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -222,8 +222,8 @@
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="178">Atendente Bruno</text>
-  <path class="cartao" d="M29 230 H367 a9 9 0 0 1 9 9 V309 a9 9 0 0 1 -9 9 H29 Z"/>
+  <text class="t nome" x="107" y="178">Atendente Bruno</text>
+  <path class="cartao" d="M29 230 H373 a9 9 0 0 1 9 9 V309 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 230 H24 a4 4 0 0 0 -4 4 V314 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 248) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -235,15 +235,15 @@
     <path d="M92 72c0-7.7-6.3-14-14-14"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="284">Dono da locadora</text>
-  <path class="seta" d="M384 62 H386 Q396 62 396 72"/>
-  <path class="seta" d="M384 168 H396"/>
-  <path class="seta" d="M384 274 H386 Q396 274 396 264"/>
-  <path class="seta" d="M396 72 V264"/>
-  <path class="seta" d="M396 168 H408" marker-end="url(#ponta)"/>
-  <path class="cartao q" d="M425 78 H773 a9 9 0 0 1 9 9 V249 a9 9 0 0 1 -9 9 H425 Z"/>
-  <path class="barra q" d="M425 78 H420 a4 4 0 0 0 -4 4 V254 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(441 76) scale(0.5417)">
+  <text class="t nome" x="107" y="284">Dono da locadora</text>
+  <path class="seta" d="M390 62 H390 Q400 62 400 72"/>
+  <path class="seta" d="M390 168 H400"/>
+  <path class="seta" d="M390 274 H390 Q400 274 400 264"/>
+  <path class="seta" d="M400 72 V264"/>
+  <path class="seta" d="M400 168 H410" marker-end="url(#ponta)"/>
+  <path class="cartao q" d="M427 78 H781 a9 9 0 0 1 9 9 V249 a9 9 0 0 1 -9 9 H427 Z"/>
+  <path class="barra q" d="M427 78 H422 a4 4 0 0 0 -4 4 V254 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(443 76) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <ellipse cx="38" cy="22" rx="26" ry="9.5"/>
     <path d="M12 22v44c0 5.2 11.6 9.5 26 9.5 4 0 7.9-.3 11.3-.9"/>
@@ -252,14 +252,14 @@
     <path d="M69 47v7M69 76v7M87 65h-7M58 65h-7M81.7 52.3l-5 5M61.3 72.7l-5 5M81.7 77.7l-5-5M61.3 57.3l-5-5" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="495" y="114">SGBD · PostgreSQL</text>
-  <text class="t glosa" x="495" y="148">concorrência</text>
-  <text class="t glosa" x="495" y="180">integridade</text>
-  <text class="t glosa" x="495" y="212">persistência</text>
-  <text class="t glosa" x="495" y="244">segurança</text>
-  <path class="seta" d="M782 168 H812" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M829 112 H1083 a9 9 0 0 1 9 9 V215 a9 9 0 0 1 -9 9 H829 Z"/>
-  <path class="barra" d="M829 112 H824 a4 4 0 0 0 -4 4 V220 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="849" y="162">Banco locadora</text>
-  <text class="t glosa" x="849" y="196">os dados no disco</text>
+  <text class="t nome" x="505" y="114">SGBD · PostgreSQL</text>
+  <text class="t glosa" x="505" y="148">concorrência</text>
+  <text class="t glosa" x="505" y="180">integridade</text>
+  <text class="t glosa" x="505" y="212">persistência</text>
+  <text class="t glosa" x="505" y="244">segurança</text>
+  <path class="seta" d="M790 168 H814" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M831 112 H1083 a9 9 0 0 1 9 9 V215 a9 9 0 0 1 -9 9 H831 Z"/>
+  <path class="barra" d="M831 112 H826 a4 4 0 0 0 -4 4 V220 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="851" y="162">Banco locadora</text>
+  <text class="t glosa" x="851" y="196">os dados no disco</text>
 </svg>

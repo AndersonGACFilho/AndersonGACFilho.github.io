@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 432" width="1092" height="432"
-     role="img" aria-label="A ordem de criacao das sete tabelas: primeiro plataforma, cliente e jogo, que nao tem chave estrangeira; depois endereco e jogos_plataforma; depois emprestimo; e por fim item_emprestimo, que aponta para emprestimo e para jogo.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 540" width="1092" height="540"
+     role="img" aria-label="A ordem de criacao das sete tabelas, em tres niveis de dependencia: primeiro plataforma, cliente e jogo, que nao dependem de ninguem; depois endereco, jogos_plataforma e emprestimo, que apontam para uma; por fim item_emprestimo, que aponta para duas.">
   <style>
     /* @estilo-padrao */
     /* diagrama.css — o estilo de TODO diagrama de aula, numa fonte só.
@@ -205,41 +205,45 @@
       <polygon points="0,0 9,4.5 0,9" fill="#cfe0f5"/>
     </marker>
   </defs>
-  <text class="t eyebrow" x="20" y="28">EM QUE ORDEM AS TABELAS NASCEM</text>
-  <path class="regua" d="M20 43 H1072"/>
-  <path class="cartao" d="M29 48 H353 a9 9 0 0 1 9 9 V155 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 48 H24 a4 4 0 0 0 -4 4 V160 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="49" y="84">1 · plataforma</text>
-  <text class="t glosa" x="49" y="118">nenhuma chave</text>
-  <text class="t glosa" x="49" y="150">estrangeira</text>
-  <path class="cartao" d="M391 48 H715 a9 9 0 0 1 9 9 V155 a9 9 0 0 1 -9 9 H391 Z"/>
-  <path class="barra" d="M391 48 H386 a4 4 0 0 0 -4 4 V160 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="411" y="84">2 · cliente</text>
-  <text class="t glosa" x="411" y="118">nenhuma chave</text>
-  <text class="t glosa" x="411" y="150">estrangeira</text>
-  <path class="cartao" d="M753 48 H1077 a9 9 0 0 1 9 9 V155 a9 9 0 0 1 -9 9 H753 Z"/>
-  <path class="barra" d="M753 48 H748 a4 4 0 0 0 -4 4 V160 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="773" y="84">3 · jogo</text>
-  <text class="t glosa" x="773" y="118">nenhuma chave</text>
-  <text class="t glosa" x="773" y="150">estrangeira</text>
-  <path class="cartao" d="M29 180 H353 a9 9 0 0 1 9 9 V287 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 180 H24 a4 4 0 0 0 -4 4 V292 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="49" y="216">4 · endereco</text>
-  <text class="t glosa" x="49" y="250">aponta para</text>
-  <text class="t glosa" x="49" y="282">cliente</text>
-  <path class="cartao" d="M391 180 H715 a9 9 0 0 1 9 9 V287 a9 9 0 0 1 -9 9 H391 Z"/>
-  <path class="barra" d="M391 180 H386 a4 4 0 0 0 -4 4 V292 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="411" y="216">5 · jogos_plataforma</text>
-  <text class="t glosa" x="411" y="250">aponta para jogo</text>
-  <text class="t glosa" x="411" y="282">e plataforma</text>
-  <path class="cartao" d="M753 180 H1077 a9 9 0 0 1 9 9 V287 a9 9 0 0 1 -9 9 H753 Z"/>
-  <path class="barra" d="M753 180 H748 a4 4 0 0 0 -4 4 V292 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="773" y="216">6 · emprestimo</text>
-  <text class="t glosa" x="773" y="250">aponta para</text>
-  <text class="t glosa" x="773" y="282">cliente</text>
-  <path class="cartao q" d="M29 312 H353 a9 9 0 0 1 9 9 V419 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra q" d="M29 312 H24 a4 4 0 0 0 -4 4 V424 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="49" y="348">7 · item_emprestimo</text>
-  <text class="t glosa" x="49" y="382">aponta para</text>
-  <text class="t glosa" x="49" y="414">emprestimo e jogo</text>
+  <text class="t eyebrow" x="20" y="48">NÍVEL 1 — NÃO DEPENDEM DE NINGUÉM</text>
+  <path class="regua" d="M20 63 H1072"/>
+  <path class="cartao" d="M29 72 H353 a9 9 0 0 1 9 9 V179 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 72 H24 a4 4 0 0 0 -4 4 V184 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="108">1 · plataforma</text>
+  <text class="t glosa" x="49" y="142">nenhuma chave</text>
+  <text class="t glosa" x="49" y="174">estrangeira</text>
+  <path class="cartao" d="M391 72 H715 a9 9 0 0 1 9 9 V179 a9 9 0 0 1 -9 9 H391 Z"/>
+  <path class="barra" d="M391 72 H386 a4 4 0 0 0 -4 4 V184 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="411" y="108">2 · cliente</text>
+  <text class="t glosa" x="411" y="142">nenhuma chave</text>
+  <text class="t glosa" x="411" y="174">estrangeira</text>
+  <path class="cartao" d="M753 72 H1077 a9 9 0 0 1 9 9 V179 a9 9 0 0 1 -9 9 H753 Z"/>
+  <path class="barra" d="M753 72 H748 a4 4 0 0 0 -4 4 V184 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="773" y="108">3 · jogo</text>
+  <text class="t glosa" x="773" y="142">nenhuma chave</text>
+  <text class="t glosa" x="773" y="174">estrangeira</text>
+  <text class="t eyebrow" x="20" y="220">NÍVEL 2 — APONTAM PARA UMA</text>
+  <path class="regua" d="M20 235 H1072"/>
+  <path class="cartao" d="M29 244 H353 a9 9 0 0 1 9 9 V351 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 244 H24 a4 4 0 0 0 -4 4 V356 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="280">4 · endereco</text>
+  <text class="t glosa" x="49" y="314">aponta para</text>
+  <text class="t glosa" x="49" y="346">cliente</text>
+  <path class="cartao" d="M391 244 H715 a9 9 0 0 1 9 9 V351 a9 9 0 0 1 -9 9 H391 Z"/>
+  <path class="barra" d="M391 244 H386 a4 4 0 0 0 -4 4 V356 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="411" y="280">5 · jogos_plataforma</text>
+  <text class="t glosa" x="411" y="314">aponta para jogo</text>
+  <text class="t glosa" x="411" y="346">e plataforma</text>
+  <path class="cartao" d="M753 244 H1077 a9 9 0 0 1 9 9 V351 a9 9 0 0 1 -9 9 H753 Z"/>
+  <path class="barra" d="M753 244 H748 a4 4 0 0 0 -4 4 V356 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="773" y="280">6 · emprestimo</text>
+  <text class="t glosa" x="773" y="314">aponta para</text>
+  <text class="t glosa" x="773" y="346">cliente</text>
+  <text class="t eyebrow" x="20" y="392">NÍVEL 3 — APONTA PARA DUAS</text>
+  <path class="regua" d="M20 407 H1072"/>
+  <path class="cartao q" d="M29 416 H353 a9 9 0 0 1 9 9 V523 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra q" d="M29 416 H24 a4 4 0 0 0 -4 4 V528 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="49" y="452">7 · item_emprestimo</text>
+  <text class="t glosa" x="49" y="486">aponta para</text>
+  <text class="t glosa" x="49" y="518">emprestimo e jogo</text>
 </svg>

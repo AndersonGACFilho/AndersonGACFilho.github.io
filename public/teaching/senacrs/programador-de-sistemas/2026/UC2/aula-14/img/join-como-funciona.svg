@@ -218,9 +218,9 @@
     <path d="M12 58h72M40 38v40M62 38v40"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="73">tabela emprestimo</text>
-  <text class="t glosa" x="99" y="107">7 · cliente 1 · 20/10</text>
-  <text class="t glosa" x="99" y="139">8 · cliente 2 · 21/10</text>
+  <text class="t nome" x="107" y="73">tabela emprestimo</text>
+  <text class="t glosa" x="107" y="107">7 · cliente 1 · 20/10</text>
+  <text class="t glosa" x="107" y="139">8 · cliente 2 · 21/10</text>
   <path class="cartao" d="M29 173 H463 a9 9 0 0 1 9 9 V284 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 173 H24 a4 4 0 0 0 -4 4 V289 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 173) scale(0.5417)">
@@ -230,9 +230,9 @@
     <path d="M12 58h72M40 38v40M62 38v40"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="211">tabela cliente</text>
-  <text class="t glosa" x="99" y="245">1 · Ana Souza</text>
-  <text class="t glosa" x="99" y="277">2 · Bruno Lima</text>
+  <text class="t nome" x="107" y="211">tabela cliente</text>
+  <text class="t glosa" x="107" y="245">1 · Ana Souza</text>
+  <text class="t glosa" x="107" y="277">2 · Bruno Lima</text>
   <path class="seta" d="M480 95 H518 Q528 95 528 105"/>
   <path class="seta" d="M480 233 H518 Q528 233 528 223"/>
   <path class="seta" d="M528 105 V223"/>
@@ -247,7 +247,7 @@
     <path d="M48 24.9A26 26 0 0 1 48 71.1A26 26 0 0 1 48 24.9Z" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="699" y="142">resultado</text>
-  <text class="t glosa" x="699" y="176">7 · Ana Souza · 20/10</text>
-  <text class="t glosa" x="699" y="208">8 · Bruno Lima · 21/10</text>
+  <text class="t nome" x="707" y="142">resultado</text>
+  <text class="t glosa" x="707" y="176">7 · Ana Souza · 20/10</text>
+  <text class="t glosa" x="707" y="208">8 · Bruno Lima · 21/10</text>
 </svg>

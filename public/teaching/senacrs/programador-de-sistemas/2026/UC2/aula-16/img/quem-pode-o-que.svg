@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 424" width="1092" height="424"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 541" width="1092" height="541"
      role="img" aria-label="A matriz de permissoes: admin_locadora pode tudo, atendente pode SELECT e INSERT, estagiario so SELECT. Cada GRANT vale para uma tabela e um verbo. O estagiario so enxerga a view catalogo_publico.">
   <style>
     /* @estilo-padrao */
@@ -206,68 +206,75 @@
     </marker>
   </defs>
   <text class="t eyebrow" x="20" y="28">QUEM</text>
-  <path class="regua" d="M20 43 H320"/>
-  <text class="t eyebrow" x="408" y="28">PODE O QUÊ</text>
-  <path class="regua" d="M408 43 H638"/>
-  <text class="t eyebrow" x="760" y="28">ONDE</text>
-  <path class="regua" d="M760 43 H1072"/>
-  <path class="cartao" d="M29 46 H346 a9 9 0 0 1 9 9 V125 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 46 H24 a4 4 0 0 0 -4 4 V130 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 64) scale(0.5417)">
+  <path class="regua" d="M20 43 H355"/>
+  <text class="t eyebrow" x="426" y="28">PODE O QUÊ</text>
+  <path class="regua" d="M426 43 H666"/>
+  <text class="t eyebrow" x="706" y="28">ONDE</text>
+  <path class="regua" d="M706 43 H1072"/>
+  <path class="cartao" d="M29 142 H346 a9 9 0 0 1 9 9 V221 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 142 H24 a4 4 0 0 0 -4 4 V226 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(45 160) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M48 8 82 20v26c0 20.6-14 34.8-34 42-20-7.2-34-21.4-34-42V20L48 8Z"/>
     <path d="m33 46 11 11 21-21" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="84">admin_locadora</text>
-  <text class="t glosa" x="99" y="118">tudo</text>
-  <path class="cartao" d="M29 152 H346 a9 9 0 0 1 9 9 V231 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra" d="M29 152 H24 a4 4 0 0 0 -4 4 V236 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 170) scale(0.5417)">
+  <text class="t nome" x="107" y="180">admin_locadora</text>
+  <text class="t glosa" x="107" y="214">tudo</text>
+  <path class="cartao" d="M29 248 H346 a9 9 0 0 1 9 9 V327 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra" d="M29 248 H24 a4 4 0 0 0 -4 4 V332 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(45 266) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="48" cy="30" r="15" stroke="currentColor"/>
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="190">atendente</text>
-  <text class="t glosa" x="99" y="224">SELECT, INSERT</text>
-  <path class="cartao q" d="M29 258 H346 a9 9 0 0 1 9 9 V337 a9 9 0 0 1 -9 9 H29 Z"/>
-  <path class="barra q" d="M29 258 H24 a4 4 0 0 0 -4 4 V342 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(45 276) scale(0.5417)">
+  <text class="t nome" x="107" y="286">atendente</text>
+  <text class="t glosa" x="107" y="320">SELECT, INSERT</text>
+  <path class="cartao q" d="M29 354 H346 a9 9 0 0 1 9 9 V433 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="barra q" d="M29 354 H24 a4 4 0 0 0 -4 4 V438 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(45 372) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="48" cy="30" r="15" stroke="currentColor"/>
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="296">estagiário</text>
-  <text class="t glosa" x="99" y="330">só SELECT</text>
-  <path class="seta" d="M363 90 H418" marker-end="url(#ponta)"/>
-  <path class="seta" d="M363 196 H418" marker-end="url(#ponta)"/>
-  <path class="seta" d="M363 302 H418" marker-end="url(#ponta)"/>
-  <path class="cartao" d="M435 138 H657 a9 9 0 0 1 9 9 V245 a9 9 0 0 1 -9 9 H435 Z"/>
-  <path class="barra" d="M435 138 H430 a4 4 0 0 0 -4 4 V250 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(451 136) scale(0.5417)">
+  <text class="t nome" x="107" y="392">estagiário</text>
+  <text class="t glosa" x="107" y="426">só SELECT</text>
+  <path class="seta" d="M363 186 H418" marker-end="url(#ponta)"/>
+  <path class="seta" d="M363 292 H418" marker-end="url(#ponta)"/>
+  <path class="seta" d="M363 398 H418" marker-end="url(#ponta)"/>
+  <path class="cartao" d="M435 234 H657 a9 9 0 0 1 9 9 V341 a9 9 0 0 1 -9 9 H435 Z"/>
+  <path class="barra" d="M435 234 H430 a4 4 0 0 0 -4 4 V346 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(451 232) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="18" y="42" width="60" height="44" rx="9"/>
     <path d="M32 42V29a16 16 0 0 1 32 0v13"/>
     <path d="M48 58v13" stroke="currentColor" stroke-width="7"/>
     </g>
   </g>
-  <text class="t nome" x="505" y="174">GRANT</text>
-  <text class="t glosa" x="505" y="208">só a tabela</text>
-  <text class="t glosa" x="505" y="240">e só o verbo</text>
-  <path class="cartao" d="M715 22 H1063 a9 9 0 0 1 9 9 V91 a9 9 0 0 1 -9 9 H715 Z"/>
-  <path class="barra" d="M715 22 H710 a4 4 0 0 0 -4 4 V96 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="735" y="71">tabela emprestimo</text>
-  <path class="cartao" d="M715 112 H1063 a9 9 0 0 1 9 9 V181 a9 9 0 0 1 -9 9 H715 Z"/>
-  <path class="barra" d="M715 112 H710 a4 4 0 0 0 -4 4 V186 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="735" y="161">tabela jogo</text>
-  <path class="cartao" d="M715 202 H1063 a9 9 0 0 1 9 9 V271 a9 9 0 0 1 -9 9 H715 Z"/>
-  <path class="barra" d="M715 202 H710 a4 4 0 0 0 -4 4 V276 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="735" y="251">tabela cliente</text>
-  <path class="cartao q" d="M715 292 H1063 a9 9 0 0 1 9 9 V361 a9 9 0 0 1 -9 9 H715 Z"/>
-  <path class="barra q" d="M715 292 H710 a4 4 0 0 0 -4 4 V366 a4 4 0 0 0 4 4 Z"/>
-  <text class="t nome" x="735" y="341">view catalogo_publico</text>
-  <path class="seta" d="M674 196 H698" marker-end="url(#ponta)"/>
-  <text class="t nota" x="20" y="404">O estagiário só enxerga a view: ela é o recorte público do catálogo, sem dado de cliente.</text>
+  <text class="t nome" x="513" y="270">GRANT</text>
+  <text class="t glosa" x="513" y="304">só a tabela</text>
+  <text class="t glosa" x="513" y="336">e só o verbo</text>
+  <path class="cartao" d="M715 51 H1063 a9 9 0 0 1 9 9 V158 a9 9 0 0 1 -9 9 H715 Z"/>
+  <path class="barra" d="M715 51 H710 a4 4 0 0 0 -4 4 V163 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="735" y="87">catálogo</text>
+  <text class="t glosa" x="735" y="121">jogo · plataforma</text>
+  <text class="t glosa" x="735" y="153">jogos_plataforma</text>
+  <path class="cartao" d="M715 173 H1063 a9 9 0 0 1 9 9 V280 a9 9 0 0 1 -9 9 H715 Z"/>
+  <path class="barra" d="M715 173 H710 a4 4 0 0 0 -4 4 V285 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="735" y="209">movimento</text>
+  <text class="t glosa" x="735" y="243">emprestimo</text>
+  <text class="t glosa" x="735" y="275">item_emprestimo</text>
+  <path class="cartao" d="M715 295 H1063 a9 9 0 0 1 9 9 V402 a9 9 0 0 1 -9 9 H715 Z"/>
+  <path class="barra" d="M715 295 H710 a4 4 0 0 0 -4 4 V407 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="735" y="331">pessoas</text>
+  <text class="t glosa" x="735" y="365">cliente · endereco</text>
+  <text class="t glosa" x="735" y="397">o que a LGPD protege</text>
+  <path class="cartao q" d="M715 417 H1063 a9 9 0 0 1 9 9 V524 a9 9 0 0 1 -9 9 H715 Z"/>
+  <path class="barra q" d="M715 417 H710 a4 4 0 0 0 -4 4 V529 a4 4 0 0 0 4 4 Z"/>
+  <text class="t nome" x="735" y="453">view catalogo_publico</text>
+  <text class="t glosa" x="735" y="487">título, gênero e preço;</text>
+  <text class="t glosa" x="735" y="519">nenhum dado de cliente</text>
+  <path class="seta" d="M674 292 H698" marker-end="url(#ponta)"/>
 </svg>

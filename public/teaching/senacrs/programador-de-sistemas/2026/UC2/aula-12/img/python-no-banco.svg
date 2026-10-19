@@ -227,9 +227,9 @@
     <path d="M48 52h30M48 66h20"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="138">Notebook</text>
-  <text class="t glosa" x="99" y="172">a célula do</text>
-  <text class="t glosa" x="99" y="204">crud.ipynb</text>
+  <text class="t nome" x="107" y="138">Notebook</text>
+  <text class="t glosa" x="107" y="172">a célula do</text>
+  <text class="t glosa" x="107" y="204">crud.ipynb</text>
   <path class="cartao" d="M439 98 H657 a9 9 0 0 1 9 9 V213 a9 9 0 0 1 -9 9 H439 Z"/>
   <path class="barra" d="M439 98 H434 a4 4 0 0 0 -4 4 V218 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(455 134) scale(0.5417)">
@@ -242,8 +242,8 @@
     <path d="M50 40l6 6-6 6" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="509" y="154">psycopg2</text>
-  <text class="t glosa" x="509" y="188">o tradutor</text>
+  <text class="t nome" x="517" y="154">psycopg2</text>
+  <text class="t glosa" x="517" y="188">o tradutor</text>
   <path class="cartao q" d="M785 98 H1063 a9 9 0 0 1 9 9 V213 a9 9 0 0 1 -9 9 H785 Z"/>
   <path class="barra q" d="M785 98 H780 a4 4 0 0 0 -4 4 V218 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(801 100) scale(0.5417)">
@@ -255,9 +255,9 @@
     <path d="M69 47v7M69 76v7M87 65h-7M58 65h-7M81.7 52.3l-5 5M61.3 72.7l-5 5M81.7 77.7l-5-5M61.3 57.3l-5-5" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="855" y="138">PostgreSQL</text>
-  <text class="t glosa" x="855" y="172">o servidor, com o</text>
-  <text class="t glosa" x="855" y="204">banco locadora</text>
+  <text class="t nome" x="863" y="138">PostgreSQL</text>
+  <text class="t glosa" x="863" y="172">o servidor, com o</text>
+  <text class="t glosa" x="863" y="204">banco locadora</text>
   <path class="seta ida i1" d="M328 136 H422" marker-end="url(#ponta)"/>
   <path class="seta ida i2" d="M674 136 H768" marker-end="url(#ponta)"/>
   <path class="seta volta v1" d="M768 186 H674" marker-end="url(#ponta)"/>
@@ -275,7 +275,7 @@
     <path d="M26 50l10 9-10 9M44 68h22" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="306">pgAdmin</text>
-  <text class="t glosa" x="99" y="340">a outra janela</text>
+  <text class="t nome" x="107" y="306">pgAdmin</text>
+  <text class="t glosa" x="107" y="340">a outra janela</text>
   <path class="seta" d="M328 312 C 520 312, 660 276, 776 226" marker-end="url(#ponta)"/>
 </svg>

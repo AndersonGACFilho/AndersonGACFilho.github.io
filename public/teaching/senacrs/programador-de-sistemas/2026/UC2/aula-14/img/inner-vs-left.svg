@@ -218,8 +218,8 @@
     <path d="M48 24.9A26 26 0 0 1 48 71.1A26 26 0 0 1 48 24.9Z" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="85">Ana · 2 empréstimos</text>
-  <text class="t glosa" x="99" y="119">aparece 2x</text>
+  <text class="t nome" x="107" y="85">Ana · 2 empréstimos</text>
+  <text class="t glosa" x="107" y="119">aparece 2x</text>
   <path class="cartao" d="M585 48 H1063 a9 9 0 0 1 9 9 V125 a9 9 0 0 1 -9 9 H585 Z"/>
   <path class="barra" d="M585 48 H580 a4 4 0 0 0 -4 4 V130 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(601 65) scale(0.5417)">
@@ -229,8 +229,8 @@
     <circle cx="60" cy="48" r="26"/>
     </g>
   </g>
-  <text class="t nome" x="655" y="85">Ana · 2 empréstimos</text>
-  <text class="t glosa" x="655" y="119">aparece 2x</text>
+  <text class="t nome" x="663" y="85">Ana · 2 empréstimos</text>
+  <text class="t glosa" x="663" y="119">aparece 2x</text>
   <path class="cartao" d="M29 144 H527 a9 9 0 0 1 9 9 V221 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 144 H24 a4 4 0 0 0 -4 4 V226 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 161) scale(0.5417)">
@@ -240,8 +240,8 @@
     <path d="M48 24.9A26 26 0 0 1 48 71.1A26 26 0 0 1 48 24.9Z" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="181">Bruno · 1 empréstimo</text>
-  <text class="t glosa" x="99" y="215">aparece 1x</text>
+  <text class="t nome" x="107" y="181">Bruno · 1 empréstimo</text>
+  <text class="t glosa" x="107" y="215">aparece 1x</text>
   <path class="cartao" d="M585 144 H1063 a9 9 0 0 1 9 9 V221 a9 9 0 0 1 -9 9 H585 Z"/>
   <path class="barra" d="M585 144 H580 a4 4 0 0 0 -4 4 V226 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(601 161) scale(0.5417)">
@@ -251,8 +251,8 @@
     <circle cx="60" cy="48" r="26"/>
     </g>
   </g>
-  <text class="t nome" x="655" y="181">Bruno · 1 empréstimo</text>
-  <text class="t glosa" x="655" y="215">aparece 1x</text>
+  <text class="t nome" x="663" y="181">Bruno · 1 empréstimo</text>
+  <text class="t glosa" x="663" y="215">aparece 1x</text>
   <path class="cartao q" d="M29 240 H527 a9 9 0 0 1 9 9 V317 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra q" d="M29 240 H24 a4 4 0 0 0 -4 4 V322 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 257) scale(0.5417)">
@@ -262,8 +262,8 @@
     <path d="M48 24.9A26 26 0 0 1 48 71.1A26 26 0 0 1 48 24.9Z" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="277">Carla · nenhum</text>
-  <text class="t glosa" x="99" y="311">NÃO aparece</text>
+  <text class="t nome" x="107" y="277">Carla · nenhum</text>
+  <text class="t glosa" x="107" y="311">NÃO aparece</text>
   <path class="cartao q" d="M585 240 H1063 a9 9 0 0 1 9 9 V317 a9 9 0 0 1 -9 9 H585 Z"/>
   <path class="barra q" d="M585 240 H580 a4 4 0 0 0 -4 4 V322 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(601 257) scale(0.5417)">
@@ -273,6 +273,6 @@
     <circle cx="60" cy="48" r="26"/>
     </g>
   </g>
-  <text class="t nome" x="655" y="277">Carla · nenhum</text>
-  <text class="t glosa" x="655" y="311">aparece com NULL</text>
+  <text class="t nome" x="663" y="277">Carla · nenhum</text>
+  <text class="t glosa" x="663" y="311">aparece com NULL</text>
 </svg>

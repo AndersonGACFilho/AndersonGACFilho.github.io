@@ -215,8 +215,8 @@
     <path d="M14 86c0-18.8 15.2-34 34-34s34 15.2 34 34"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="140">Nova pessoa</text>
-  <text class="t glosa" x="99" y="174">na equipe</text>
+  <text class="t nome" x="107" y="140">Nova pessoa</text>
+  <text class="t glosa" x="107" y="174">na equipe</text>
   <path class="cartao" d="M355 90 H682 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H355 Z"/>
   <path class="barra" d="M355 90 H350 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(371 120) scale(0.5417)">
@@ -226,19 +226,19 @@
     <path d="M48 58v13" stroke="currentColor" stroke-width="7"/>
     </g>
   </g>
-  <text class="t nome" x="425" y="140">Comece com</text>
-  <text class="t glosa" x="425" y="174">NENHUMA permissão</text>
-  <path class="cartao q" d="M732 90 H912 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H732 Z"/>
-  <path class="barra q" d="M732 90 H727 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(748 120) scale(0.5417)">
+  <text class="t nome" x="433" y="140">Comece com</text>
+  <text class="t glosa" x="433" y="174">NENHUMA permissão</text>
+  <path class="cartao q" d="M725 90 H913 a9 9 0 0 1 9 9 V193 a9 9 0 0 1 -9 9 H725 Z"/>
+  <path class="barra q" d="M725 90 H720 a4 4 0 0 0 -4 4 V198 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(741 120) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M48 8c22 0 40 16 40 36S70 80 48 80c-4 0-8-.4-11.6-1.3L14 88l5-18C13.9 63.8 8 54.6 8 44 8 24 26 8 48 8Z"/>
     <path d="M38 36a10 10 0 1 1 13 9.6c-2 .7-3 2.5-3 4.6v3" stroke="currentColor"/>
     <circle cx="48" cy="62" r="3.5" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="802" y="140">Precisa</text>
-  <text class="t glosa" x="802" y="174">disso?</text>
+  <text class="t nome" x="803" y="140">Precisa</text>
+  <text class="t glosa" x="803" y="174">disso?</text>
   <path class="cartao" d="M955 52 H1083 a9 9 0 0 1 9 9 V127 a9 9 0 0 1 -9 9 H955 Z"/>
   <path class="barra" d="M955 52 H950 a4 4 0 0 0 -4 4 V132 a4 4 0 0 0 4 4 Z"/>
   <text class="t nome" x="975" y="104">GRANT</text>
@@ -246,7 +246,7 @@
   <path class="barra" d="M955 156 H950 a4 4 0 0 0 -4 4 V236 a4 4 0 0 0 4 4 Z"/>
   <text class="t nome" x="975" y="208">Não</text>
   <path class="seta" d="M318 146 H338" marker-end="url(#ponta)"/>
-  <path class="seta" d="M699 146 H715" marker-end="url(#ponta)"/>
+  <path class="seta" d="M699 146 H708" marker-end="url(#ponta)"/>
   <path class="seta" d="M929 128 C 938 128, 938 94, 938 94" marker-end="url(#ponta)"/>
   <path class="seta" d="M929 164 C 938 164, 938 198, 938 198" marker-end="url(#ponta)"/>
   <text class="t seta-rot" x="930" y="40">sim</text>

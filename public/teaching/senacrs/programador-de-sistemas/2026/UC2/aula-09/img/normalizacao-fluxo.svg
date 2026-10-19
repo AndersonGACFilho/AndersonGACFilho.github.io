@@ -207,7 +207,7 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">TRÊS PERGUNTAS, EM ORDEM</text>
   <path class="regua" d="M20 43 H1072"/>
-  <path class="cartao" d="M29 52 H737 a9 9 0 0 1 9 9 V135 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao" d="M29 52 H727 a9 9 0 0 1 9 9 V135 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 52 H24 a4 4 0 0 0 -4 4 V140 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 72) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -216,19 +216,19 @@
     <circle cx="48" cy="62" r="3.5" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="92">1ª — a célula guarda mais de um valor?</text>
-  <text class="t glosa" x="99" y="126">se sim, separe</text>
-  <path class="seta" d="M754 98 H790" marker-end="url(#ponta)"/>
-  <path class="cartao q" d="M807 52 H1063 a9 9 0 0 1 9 9 V135 a9 9 0 0 1 -9 9 H807 Z"/>
-  <path class="barra q" d="M807 52 H802 a4 4 0 0 0 -4 4 V140 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(823 72) scale(0.5417)">
+  <text class="t nome" x="107" y="92">1ª — a célula guarda mais de um valor?</text>
+  <text class="t glosa" x="107" y="126">se sim, separe</text>
+  <path class="seta" d="M744 98 H780" marker-end="url(#ponta)"/>
+  <path class="cartao q" d="M797 52 H1063 a9 9 0 0 1 9 9 V135 a9 9 0 0 1 -9 9 H797 Z"/>
+  <path class="barra q" d="M797 52 H792 a4 4 0 0 0 -4 4 V140 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(813 72) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M8 26V14a6 6 0 0 1 6-6h12M88 26V14a6 6 0 0 0-6-6H70M8 70v12a6 6 0 0 0 6 6h12M88 70v12a6 6 0 0 1-6 6H70"/>
     <rect x="28" y="30" width="40" height="36" rx="6" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="877" y="108">Chega à 1FN</text>
-  <path class="cartao" d="M29 160 H737 a9 9 0 0 1 9 9 V243 a9 9 0 0 1 -9 9 H29 Z"/>
+  <text class="t nome" x="875" y="108">Chega à 1FN</text>
+  <path class="cartao" d="M29 160 H727 a9 9 0 0 1 9 9 V243 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 160 H24 a4 4 0 0 0 -4 4 V248 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 180) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -237,19 +237,19 @@
     <circle cx="48" cy="62" r="3.5" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="200">2ª — depende de só um pedaço da chave?</text>
-  <text class="t glosa" x="99" y="234">se sim, separe</text>
-  <path class="seta" d="M754 206 H790" marker-end="url(#ponta)"/>
-  <path class="cartao q" d="M807 160 H1063 a9 9 0 0 1 9 9 V243 a9 9 0 0 1 -9 9 H807 Z"/>
-  <path class="barra q" d="M807 160 H802 a4 4 0 0 0 -4 4 V248 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(823 180) scale(0.5417)">
+  <text class="t nome" x="107" y="200">2ª — depende de só um pedaço da chave?</text>
+  <text class="t glosa" x="107" y="234">se sim, separe</text>
+  <path class="seta" d="M744 206 H780" marker-end="url(#ponta)"/>
+  <path class="cartao q" d="M797 160 H1063 a9 9 0 0 1 9 9 V243 a9 9 0 0 1 -9 9 H797 Z"/>
+  <path class="barra q" d="M797 160 H792 a4 4 0 0 0 -4 4 V248 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(813 180) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M8 26V14a6 6 0 0 1 6-6h12M88 26V14a6 6 0 0 0-6-6H70M8 70v12a6 6 0 0 0 6 6h12M88 70v12a6 6 0 0 1-6 6H70"/>
     <rect x="28" y="30" width="40" height="36" rx="6" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="877" y="216">Chega à 2FN</text>
-  <path class="cartao" d="M29 268 H737 a9 9 0 0 1 9 9 V351 a9 9 0 0 1 -9 9 H29 Z"/>
+  <text class="t nome" x="875" y="216">Chega à 2FN</text>
+  <path class="cartao" d="M29 268 H727 a9 9 0 0 1 9 9 V351 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 268 H24 a4 4 0 0 0 -4 4 V356 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 288) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -258,16 +258,16 @@
     <circle cx="48" cy="62" r="3.5" fill="currentColor" stroke="none"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="308">3ª — depende de outro atributo comum?</text>
-  <text class="t glosa" x="99" y="342">se sim, separe</text>
-  <path class="seta" d="M754 314 H790" marker-end="url(#ponta)"/>
-  <path class="cartao q" d="M807 268 H1063 a9 9 0 0 1 9 9 V351 a9 9 0 0 1 -9 9 H807 Z"/>
-  <path class="barra q" d="M807 268 H802 a4 4 0 0 0 -4 4 V356 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(823 288) scale(0.5417)">
+  <text class="t nome" x="107" y="308">3ª — depende de outro atributo comum?</text>
+  <text class="t glosa" x="107" y="342">se sim, separe</text>
+  <path class="seta" d="M744 314 H780" marker-end="url(#ponta)"/>
+  <path class="cartao q" d="M797 268 H1063 a9 9 0 0 1 9 9 V351 a9 9 0 0 1 -9 9 H797 Z"/>
+  <path class="barra q" d="M797 268 H792 a4 4 0 0 0 -4 4 V356 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(813 288) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M8 26V14a6 6 0 0 1 6-6h12M88 26V14a6 6 0 0 0-6-6H70M8 70v12a6 6 0 0 0 6 6h12M88 70v12a6 6 0 0 1-6 6H70"/>
     <rect x="28" y="30" width="40" height="36" rx="6" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="877" y="324">Chega à 3FN</text>
+  <text class="t nome" x="875" y="324">Chega à 3FN</text>
 </svg>

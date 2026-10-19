@@ -218,8 +218,8 @@
     <path d="M26 58h44M26 68h28"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="112">tabela jogo</text>
-  <text class="t glosa" x="99" y="146">id_jogo · titulo · genero</text>
+  <text class="t nome" x="107" y="112">tabela jogo</text>
+  <text class="t glosa" x="107" y="146">id_jogo · titulo · genero</text>
   <path class="cartao q" d="M569 56 H1063 a9 9 0 0 1 9 9 V171 a9 9 0 0 1 -9 9 H569 Z"/>
   <path class="barra q" d="M569 56 H564 a4 4 0 0 0 -4 4 V176 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(585 58) scale(0.5417)">
@@ -229,9 +229,9 @@
     <path d="M12 58h72M40 38v40M62 38v40"/>
     </g>
   </g>
-  <text class="t nome" x="639" y="96">2 linhas hoje</text>
-  <text class="t glosa" x="639" y="130">1 · God of War · Ação</text>
-  <text class="t glosa" x="639" y="162">2 · Zelda · Aventura</text>
+  <text class="t nome" x="647" y="96">2 linhas hoje</text>
+  <text class="t glosa" x="647" y="130">1 · God of War · Ação</text>
+  <text class="t glosa" x="647" y="162">2 · Zelda · Aventura</text>
   <path class="seta" d="M496 118 H552" marker-end="url(#ponta)"/>
   <path class="cartao" d="M29 200 H479 a9 9 0 0 1 9 9 V315 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra" d="M29 200 H24 a4 4 0 0 0 -4 4 V320 a4 4 0 0 0 4 4 Z"/>
@@ -242,8 +242,8 @@
     <path d="M26 58h44M26 68h28"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="256">tabela cliente</text>
-  <text class="t glosa" x="99" y="290">id_cliente · nome · telefone</text>
+  <text class="t nome" x="107" y="256">tabela cliente</text>
+  <text class="t glosa" x="107" y="290">id_cliente · nome · telefone</text>
   <path class="cartao" d="M569 200 H1063 a9 9 0 0 1 9 9 V315 a9 9 0 0 1 -9 9 H569 Z"/>
   <path class="barra" d="M569 200 H564 a4 4 0 0 0 -4 4 V320 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(585 202) scale(0.5417)">
@@ -253,8 +253,8 @@
     <path d="M12 58h72M40 38v40M62 38v40"/>
     </g>
   </g>
-  <text class="t nome" x="639" y="240">2 linhas hoje</text>
-  <text class="t glosa" x="639" y="274">1 · Ana Souza · 99999-1111</text>
-  <text class="t glosa" x="639" y="306">2 · Bruno Lima · 99999-2222</text>
+  <text class="t nome" x="647" y="240">2 linhas hoje</text>
+  <text class="t glosa" x="647" y="274">1 · Ana Souza · 99999-1111</text>
+  <text class="t glosa" x="647" y="306">2 · Bruno Lima · 99999-2222</text>
   <path class="seta" d="M496 262 H552" marker-end="url(#ponta)"/>
 </svg>

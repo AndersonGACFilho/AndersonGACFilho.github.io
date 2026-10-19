@@ -207,7 +207,7 @@
   </defs>
   <text class="t eyebrow" x="20" y="28">A DE DENTRO RODA PRIMEIRO</text>
   <path class="regua" d="M20 43 H1072"/>
-  <path class="cartao q" d="M29 78 H405 a9 9 0 0 1 9 9 V229 a9 9 0 0 1 -9 9 H29 Z"/>
+  <path class="cartao q" d="M29 78 H415 a9 9 0 0 1 9 9 V229 a9 9 0 0 1 -9 9 H29 Z"/>
   <path class="barra q" d="M29 78 H24 a4 4 0 0 0 -4 4 V234 a4 4 0 0 0 4 4 Z"/>
   <g class="ico" transform="translate(45 82) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
@@ -216,36 +216,36 @@
     <path d="M32 42h20M42 32v20" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="99" y="120">1 · a subconsulta</text>
-  <text class="t glosa" x="99" y="154">SELECT id_cliente</text>
-  <text class="t glosa" x="99" y="186">FROM cliente</text>
-  <text class="t glosa" x="99" y="218">WHERE nome = 'Ana Souza'</text>
-  <path class="cartao" d="M459 78 H801 a9 9 0 0 1 9 9 V229 a9 9 0 0 1 -9 9 H459 Z"/>
-  <path class="barra" d="M459 78 H454 a4 4 0 0 0 -4 4 V234 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(475 82) scale(0.5417)">
+  <text class="t nome" x="107" y="120">1 · a subconsulta</text>
+  <text class="t glosa" x="107" y="154">SELECT id_cliente</text>
+  <text class="t glosa" x="107" y="186">FROM cliente</text>
+  <text class="t glosa" x="107" y="218">WHERE nome = 'Ana Souza'</text>
+  <path class="cartao" d="M461 78 H811 a9 9 0 0 1 9 9 V229 a9 9 0 0 1 -9 9 H461 Z"/>
+  <path class="barra" d="M461 78 H456 a4 4 0 0 0 -4 4 V234 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(477 82) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M8 16h80L58 54v30l-20 8V54L8 16Z"/>
     <circle cx="74" cy="70" r="16" stroke="currentColor"/>
     <path d="m67 70 5 5 10-11" stroke="currentColor"/>
     </g>
   </g>
-  <text class="t nome" x="529" y="120">2 · a de fora</text>
-  <text class="t glosa" x="529" y="154">SELECT data_retirada</text>
-  <text class="t glosa" x="529" y="186">FROM emprestimo</text>
-  <text class="t glosa" x="529" y="218">WHERE id_cliente = 1</text>
-  <path class="cartao" d="M841 98 H1063 a9 9 0 0 1 9 9 V209 a9 9 0 0 1 -9 9 H841 Z"/>
-  <path class="barra" d="M841 98 H836 a4 4 0 0 0 -4 4 V214 a4 4 0 0 0 4 4 Z"/>
-  <g class="ico" transform="translate(857 98) scale(0.5417)">
+  <text class="t nome" x="539" y="120">2 · a de fora</text>
+  <text class="t glosa" x="539" y="154">SELECT data_retirada</text>
+  <text class="t glosa" x="539" y="186">FROM emprestimo</text>
+  <text class="t glosa" x="539" y="218">WHERE id_cliente = 1</text>
+  <path class="cartao" d="M831 98 H1063 a9 9 0 0 1 9 9 V209 a9 9 0 0 1 -9 9 H831 Z"/>
+  <path class="barra" d="M831 98 H826 a4 4 0 0 0 -4 4 V214 a4 4 0 0 0 4 4 Z"/>
+  <g class="ico" transform="translate(847 98) scale(0.5417)">
     <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
     <rect x="12" y="18" width="72" height="60" rx="7"/>
     <path d="M12 38h72" stroke="currentColor"/>
     <path d="M12 58h72M40 38v40M62 38v40"/>
     </g>
   </g>
-  <text class="t nome" x="911" y="136">Resultado</text>
-  <text class="t glosa" x="911" y="170">20/10/2026</text>
-  <text class="t glosa" x="911" y="202">27/10/2026</text>
-  <path class="seta traco t1" d="M422 158 H442" marker-end="url(#ponta)"/>
+  <text class="t nome" x="909" y="136">Resultado</text>
+  <text class="t glosa" x="909" y="170">20/10/2026</text>
+  <text class="t glosa" x="909" y="202">27/10/2026</text>
+  <path class="seta traco t1" d="M432 158 H444" marker-end="url(#ponta)"/>
   <text class="t seta-rot" x="432" y="62">devolve 1</text>
-  <path class="seta traco t2" d="M818 158 H824" marker-end="url(#ponta)"/>
+  <path class="seta traco t2" d="M820 158 H814" marker-end="url(#ponta)"/>
 </svg>
