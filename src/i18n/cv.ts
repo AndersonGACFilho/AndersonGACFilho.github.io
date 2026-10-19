@@ -4,8 +4,19 @@
  * Phone number deliberately left out — the site is public.
  */
 import type { Lang } from './ui';
+import type { Track } from '../lib/tracks';
 
 type Bi = { en: string; pt: string };
+
+/**
+ * O currículo serve duas candidaturas diferentes com o mesmo histórico. O
+ * foco troca headline, perfil, disponibilidade e a ordem das competências;
+ * nenhuma experiência é escondida — a lista é a mesma nos três estados.
+ */
+export const CV_FOCUSES = ['all', 'gamedev', 'fullstack'] as const;
+export type CvFocus = (typeof CV_FOCUSES)[number];
+type ByFocus<T> = Record<CvFocus, T>;
+
 export type Entry = {
   role: Bi;
   org: string;
@@ -13,39 +24,62 @@ export type Entry = {
   url?: string;
   period: Bi;
   place: Bi;
+  /** Trilha da vaga a que a experiência responde; só a lista de experiência usa. */
+  track?: Track;
   tech?: string[];
   bullets: { en: string[]; pt: string[] };
 };
 
-export const headline: Bi = {
-  en: 'Gameplay Programmer · Unreal Engine 5/C++ & Unity/C# · Game AI, gameplay systems and multiplayer',
-  pt: 'Gameplay Programmer · Unreal Engine 5/C++ e Unity/C# · IA para jogos, sistemas de gameplay e multiplayer',
+export const headline: ByFocus<Bi> = {
+  all: {
+    en: 'Gameplay Programmer and Full Stack Engineer · Unreal Engine 5/C++, Unity/C# · Python/FastAPI, Java, Angular · MSc at UFRGS on control and decision-making',
+    pt: 'Gameplay Programmer e Engenheiro Full Stack · Unreal Engine 5/C++, Unity/C# · Python/FastAPI, Java, Angular · mestrado na UFRGS em controle e tomada de decisão',
+  },
+  gamedev: {
+    en: 'Gameplay Programmer · Unreal Engine 5/C++ & Unity/C# · Game AI, gameplay systems and multiplayer',
+    pt: 'Gameplay Programmer · Unreal Engine 5/C++ e Unity/C# · IA para jogos, sistemas de gameplay e multiplayer',
+  },
+  fullstack: {
+    en: 'Full Stack Engineer · Python/FastAPI & Java/Spring Boot · Angular and React · DDD, event-driven systems, observability',
+    pt: 'Engenheiro Full Stack · Python/FastAPI e Java/Spring Boot · Angular e React · DDD, sistemas orientados a eventos, observabilidade',
+  },
 };
 
-export const profile: Bi = {
-  en: 'Gameplay programmer and Game AI researcher building modular, data-driven systems in Unity/C# and Unreal Engine 5/C++. MSc candidate at UFRGS researching adaptive NPC behaviour with reinforcement learning, HTN and GOAP. Four-plus years of professional software engineering — Python, FastAPI, Java, PostgreSQL, Redis, RabbitMQ, Docker, automated testing and CI/CD — shape how I write gameplay code: clear ownership, maintainable architecture, reliable integrations and performance awareness.',
-  pt: 'Programador de gameplay e pesquisador de IA para jogos, construindo sistemas modulares e data-driven em Unity/C# e Unreal Engine 5/C++. Mestrando na UFRGS pesquisando comportamento adaptativo de NPC com aprendizado por reforço, HTN e GOAP. Mais de quatro anos de engenharia de software — Python, FastAPI, Java, PostgreSQL, Redis, RabbitMQ, Docker, testes automatizados e CI/CD — moldam como escrevo código de gameplay: responsabilidade clara, arquitetura sustentável, integrações confiáveis e atenção a desempenho.',
+export const profile: ByFocus<Bi> = {
+  all: {
+    en: 'I write gameplay code and the services behind it. Four years of production engineering came first (Python, FastAPI, Java, PostgreSQL, RabbitMQ, Docker, CI/CD), and that is why my Unity and Unreal projects get architected instead of improvised. The week splits three ways today: a production platform in Python and Angular, solo Unity releases under the Vertex Shift label, and an MSc at UFRGS on control and decision-making, where HTN, GOAP and reinforcement learning get tried out on NPCs.',
+    pt: 'Escrevo código de gameplay e os serviços que ficam atrás dele. Quatro anos de engenharia em produção vieram primeiro (Python, FastAPI, Java, PostgreSQL, RabbitMQ, Docker, CI/CD), e é por isso que meus projetos em Unity e Unreal nascem arquitetados em vez de improvisados. Hoje a semana se divide em três: uma plataforma de produção em Python e Angular, lançamentos solo em Unity sob o selo Vertex Shift, e o mestrado na UFRGS em controle e tomada de decisão, onde HTN, GOAP e aprendizado por reforço são testados em NPCs.',
+  },
+  gamedev: {
+    en: 'Gameplay programmer and Game AI researcher building data-driven systems in Unity/C# and Unreal Engine 5/C++. At UFRGS I work on control and decision-making with reinforcement learning, HTN and GOAP, and the NPC is where I test it: a game gives an agent partial information, a deadline per frame and a human watching, which is a hard bench to pass. Under the Vertex Shift label I ship the prototypes solo, from enemy state machines to wave spawning and dynamic difficulty, and at LabTIME/UFG I wrote gameplay systems in C++ including a plugin reused across projects. The four years of backend engineering before that are the reason gameplay code of mine comes with an architecture, tests and numbers I can defend.',
+    pt: 'Programador de gameplay e pesquisador de IA para jogos, construindo sistemas data-driven em Unity/C# e Unreal Engine 5/C++. Na UFRGS trabalho com controle e tomada de decisão usando aprendizado por reforço, HTN e GOAP, e o NPC é onde eu testo: o jogo dá ao agente informação parcial, prazo por quadro e um humano olhando, o que é uma bancada difícil de passar. Sob o selo Vertex Shift publico os protótipos sozinho, de máquinas de estado de inimigo a ondas e dificuldade dinâmica, e no LabTIME/UFG escrevi sistemas de gameplay em C++, incluindo um plugin reaproveitado entre projetos. Os quatro anos de backend antes disso são a razão de o meu código de gameplay vir com arquitetura, testes e números que eu sei defender.',
+  },
+  fullstack: {
+    en: 'Full stack engineer, four-plus years in production: asynchronous REST APIs in Python and FastAPI, ERP modules in Java and Spring Boot, Angular and React on the front end. I currently build econtrole, a platform for environmental compliance, tax and logistics, restructured with DDD and a modular-monolith-first strategy, with 1,000+ automated tests green and tracing that follows one request across asynchronous flows. At TOTVS Brasil Central I shipped an internal RAG assistant indexing 10+ GitLab repositories. The MSc I am taking at UFRGS is on control and decision-making under partial information, tested on NPCs because a game is an unforgiving bench for it. The gameplay work further down this CV is the same discipline applied where the budget is measured per frame.',
+    pt: 'Engenheiro full stack, mais de quatro anos em produção: APIs REST assíncronas em Python e FastAPI, módulos de ERP em Java e Spring Boot, Angular e React no front. Hoje construo o econtrole, plataforma de compliance ambiental, fiscal e logística, reestruturada com DDD e estratégia de monólito modular primeiro, com mais de mil testes automatizados passando e tracing que segue uma requisição pelos fluxos assíncronos. Na TOTVS Brasil Central entreguei um assistente interno com RAG indexando mais de 10 repositórios GitLab. O mestrado que faço na UFRGS é sobre controle e tomada de decisão com informação parcial, testado em NPC porque o jogo é uma bancada que não perdoa. O trabalho de gameplay mais abaixo neste currículo é a mesma disciplina aplicada onde o orçamento se mede por quadro.',
+  },
 };
 
 export const experience: Entry[] = [
   {
-    role: { en: 'Game AI Researcher — gameplay AI & NPC behaviour', pt: 'Pesquisador de IA para Jogos — IA de gameplay e comportamento de NPC' },
+    role: { en: 'Researcher — control and decision-making for autonomous agents', pt: 'Pesquisador — controle e tomada de decisão para agentes autônomos' },
     org: 'Universidade Federal do Rio Grande do Sul',
     kind: { en: 'Fixed term', pt: 'Temporário' },
+    track: 'gamedev',
     period: { en: 'Mar 2026 – present', pt: 'mar 2026 – o momento' },
     place: { en: 'Porto Alegre, BR · Remote', pt: 'Porto Alegre, RS · Remoto' },
     tech: ['Reinforcement Learning', 'HTN', 'GOAP', 'Multi-agent', 'Python'],
     bullets: {
       en: [
-        'Research and implement adaptive NPC decision-making with reinforcement learning, hierarchical task networks and goal-oriented action planning.',
+        'Research and implement decision-making and control for agents acting under partial information, with reinforcement learning, hierarchical task networks and goal-oriented action planning.',
         'Design hybrid architectures where HTN handles strategic decomposition, GOAP handles contextual goal selection and multi-objective RL improves execution policies.',
-        'Build simulated environments and controlled experiments measuring responsiveness, adaptability, computational cost, scalability and behavioural interpretability.',
+        'Build simulated environments and controlled experiments on NPCs, measuring responsiveness, adaptability, computational cost, scalability and behavioural interpretability.',
         'Translate research into modular architectures and implementation patterns fit for commercial engines.',
       ],
       pt: [
-        'Pesquiso e implemento tomada de decisão adaptativa de NPC com aprendizado por reforço, redes hierárquicas de tarefas e planejamento orientado a objetivos.',
+        'Pesquiso e implemento tomada de decisão e controle de agentes que agem com informação parcial, usando aprendizado por reforço, redes hierárquicas de tarefas e planejamento orientado a objetivos.',
         'Projeto arquiteturas híbridas em que o HTN cuida da decomposição estratégica, o GOAP da seleção contextual de objetivos e o RL multiobjetivo melhora as políticas de execução.',
-        'Construo ambientes simulados e experimentos controlados medindo responsividade, adaptabilidade, custo computacional, escalabilidade e interpretabilidade do comportamento.',
+        'Construo ambientes simulados e experimentos controlados em NPC, medindo responsividade, adaptabilidade, custo computacional, escalabilidade e interpretabilidade do comportamento.',
         'Traduzo a pesquisa em arquiteturas modulares e padrões de implementação viáveis em engines comerciais.',
       ],
     },
@@ -55,6 +89,7 @@ export const experience: Entry[] = [
     org: 'Vertex Shift',
     kind: { en: 'Self-employed', pt: 'Autônomo' },
     url: 'https://vertex-shift.itch.io',
+    track: 'gamedev',
     period: { en: 'Nov 2025 – present', pt: 'nov 2025 – o momento' },
     place: { en: 'Remote', pt: 'Remoto' },
     tech: ['Unity', 'C#', 'Game Architecture', 'Data-driven Design'],
@@ -77,6 +112,7 @@ export const experience: Entry[] = [
     kind: { en: 'Freelance', pt: 'Freelance' },
     period: { en: 'Nov 2025 – present', pt: 'nov 2025 – o momento' },
     place: { en: 'Remote', pt: 'Remoto' },
+    track: 'fullstack',
     tech: ['Python', 'FastAPI', 'Angular', 'PostgreSQL', 'Redis', 'RabbitMQ', 'Docker', 'Grafana', 'Jaeger'],
     bullets: {
       en: [
@@ -99,6 +135,7 @@ export const experience: Entry[] = [
     role: { en: 'Mid Level Backend Software Engineer', pt: 'Engenheiro de Software Backend Pleno' },
     org: 'Centro de Excelência em Inteligência Artificial (CEIA)',
     kind: { en: 'Full time', pt: 'Tempo integral' },
+    track: 'fullstack',
     period: { en: 'Apr 2025 – Apr 2026', pt: 'abr 2025 – abr 2026' },
     place: { en: 'Goiânia, BR · Remote', pt: 'Goiânia, GO · Remoto' },
     tech: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Hexagonal Architecture', 'TDD'],
@@ -121,6 +158,7 @@ export const experience: Entry[] = [
     role: { en: 'Mid Level Fullstack Developer', pt: 'Desenvolvedor Full Stack Pleno' },
     org: 'TOTVS Brasil Central',
     kind: { en: 'Full time', pt: 'Tempo integral' },
+    track: 'fullstack',
     period: { en: 'Nov 2024 – Apr 2025', pt: 'nov 2024 – abr 2025' },
     place: { en: 'Goiânia, BR · Hybrid', pt: 'Goiânia, GO · Híbrido' },
     tech: ['Python', 'Java', 'TypeScript', 'Angular', 'React', 'Spring Boot', 'MongoDB', 'n8n'],
@@ -140,6 +178,7 @@ export const experience: Entry[] = [
   {
     role: { en: 'Game Developer — Unreal Engine / C++', pt: 'Desenvolvedor de Jogos — Unreal Engine / C++' },
     org: 'LabTIME / UFG',
+    track: 'gamedev',
     period: { en: 'Nov 2023 – Nov 2024', pt: 'nov 2023 – nov 2024' },
     place: { en: 'Goiânia, BR', pt: 'Goiânia, GO' },
     tech: ['Unreal Engine 5', 'C++', 'Plugins'],
@@ -157,6 +196,7 @@ export const experience: Entry[] = [
   {
     role: { en: 'Full Stack Software Engineering Intern', pt: 'Estagiário de Engenharia de Software Full Stack' },
     org: 'TOTVS',
+    track: 'fullstack',
     period: { en: 'Oct 2021 – Aug 2023', pt: 'out 2021 – ago 2023' },
     place: { en: 'Goiânia, BR', pt: 'Goiânia, GO' },
     tech: ['Java', 'Spring Boot', 'Angular', 'SQL Server', 'Python', 'Node.js', 'GCP', 'Terraform'],
@@ -211,11 +251,11 @@ export const education: Entry[] = [
     bullets: {
       en: [
         'Institute of Informatics, track: Planning, Multi-Agent Systems and Robotics, supervised by Prof. Lucas N. Alegre.',
-        'Research: reinforcement learning combined with GOAP and HTN for believable NPC behaviour and modular gameplay architectures.',
+        'Research: control and decision-making under partial information, combining reinforcement learning with GOAP and HTN. The NPC is the test bench, and believable behaviour is the pass mark the game imposes.',
       ],
       pt: [
         'Instituto de Informática, linha de Planejamento, Sistemas Multiagentes e Robótica, sob orientação do Prof. Lucas N. Alegre.',
-        'Pesquisa: aprendizado por reforço combinado a GOAP e HTN para comportamento crível de NPC e arquiteturas modulares de gameplay.',
+        'Pesquisa: controle e tomada de decisão com informação parcial, combinando aprendizado por reforço a GOAP e HTN. O NPC é a bancada de teste, e comportamento crível é a nota de corte que o jogo impõe.',
       ],
     },
   },
@@ -253,14 +293,21 @@ export const languages: Bi[] = [
   { en: 'English — advanced (C1, professional use)', pt: 'Inglês — avançado (C1, uso profissional)' },
 ];
 
-export const skills: { label: Bi; items: string[] }[] = [
-  { label: { en: 'Games', pt: 'Jogos' }, items: ['Unity', 'Unreal Engine 5', 'C#', 'C++', 'Gameplay Ability System', 'State Machines', 'Data-driven Design'] },
-  { label: { en: 'Game AI', pt: 'IA para jogos' }, items: ['HTN', 'GOAP', 'Behavior Trees', 'Reinforcement Learning', 'Multi-agent', 'Pathfinding'] },
-  { label: { en: 'Backend', pt: 'Backend' }, items: ['Python', 'FastAPI', 'Java', 'Spring Boot', 'REST APIs', 'RabbitMQ', 'Redis'] },
-  { label: { en: 'Frontend', pt: 'Frontend' }, items: ['TypeScript', 'Angular', 'React'] },
-  { label: { en: 'Data', pt: 'Dados' }, items: ['PostgreSQL', 'SQL Server', 'MongoDB'] },
-  { label: { en: 'Architecture', pt: 'Arquitetura' }, items: ['DDD', 'Clean Architecture', 'Hexagonal', 'SOLID', 'Event-driven', 'TDD'] },
-  { label: { en: 'DevOps', pt: 'DevOps' }, items: ['Git', 'Docker', 'CI/CD', 'GCP', 'Azure DevOps', 'Terraform', 'Grafana', 'Jaeger'] },
+/**
+ * `group` ordena a lista conforme o foco escolhido: o grupo do foco sobe,
+ * `core` fica no meio por valer para as duas vagas, o outro desce. Nada é
+ * removido — só a ordem muda, e em CSS.
+ */
+export type SkillGroup = 'gamedev' | 'core' | 'fullstack';
+
+export const skills: { label: Bi; group: SkillGroup; items: string[] }[] = [
+  { label: { en: 'Games', pt: 'Jogos' }, group: 'gamedev', items: ['Unity', 'Unreal Engine 5', 'C#', 'C++', 'Gameplay Ability System', 'State Machines', 'Data-driven Design'] },
+  { label: { en: 'Game AI', pt: 'IA para jogos' }, group: 'gamedev', items: ['HTN', 'GOAP', 'Behavior Trees', 'Reinforcement Learning', 'Multi-agent', 'Pathfinding'] },
+  { label: { en: 'Backend', pt: 'Backend' }, group: 'fullstack', items: ['Python', 'FastAPI', 'Java', 'Spring Boot', 'REST APIs', 'RabbitMQ', 'Redis'] },
+  { label: { en: 'Frontend', pt: 'Frontend' }, group: 'fullstack', items: ['TypeScript', 'Angular', 'React'] },
+  { label: { en: 'Data', pt: 'Dados' }, group: 'fullstack', items: ['PostgreSQL', 'SQL Server', 'MongoDB'] },
+  { label: { en: 'Architecture', pt: 'Arquitetura' }, group: 'core', items: ['DDD', 'Clean Architecture', 'Hexagonal', 'SOLID', 'Event-driven', 'TDD'] },
+  { label: { en: 'DevOps', pt: 'DevOps' }, group: 'core', items: ['Git', 'Docker', 'CI/CD', 'GCP', 'Azure DevOps', 'Terraform', 'Grafana', 'Jaeger'] },
 ];
 
 export const links = [
@@ -270,9 +317,19 @@ export const links = [
   { label: 'E-mail', url: 'mailto:andersonfilho09@gmail.com' },
 ];
 
-export const availability: Bi = {
-  en: 'Based in Porto Alegre, Brazil (UTC−3). Open to remote contracts and relocation, targeting gameplay programmer and Game AI roles.',
-  pt: 'Baseado em Porto Alegre (UTC−3). Aberto a contratos remotos e mudança de cidade ou país, mirando vagas de gameplay programmer e IA para jogos.',
+export const availability: ByFocus<Bi> = {
+  all: {
+    en: 'Based in Porto Alegre, Brazil (UTC−3). Open to remote contracts and to relocation, for gameplay programming as much as for backend and full stack roles.',
+    pt: 'Baseado em Porto Alegre (UTC−3). Aberto a contratos remotos e a mudança de cidade ou país, tanto para gameplay quanto para vagas de backend e full stack.',
+  },
+  gamedev: {
+    en: 'Based in Porto Alegre, Brazil (UTC−3). Open to remote contracts and relocation, targeting gameplay programmer and Game AI roles.',
+    pt: 'Baseado em Porto Alegre (UTC−3). Aberto a contratos remotos e mudança de cidade ou país, mirando vagas de gameplay programmer e IA para jogos.',
+  },
+  fullstack: {
+    en: 'Based in Porto Alegre, Brazil (UTC−3). Open to remote contracts and relocation, targeting backend, full stack and software architecture roles.',
+    pt: 'Baseado em Porto Alegre (UTC−3). Aberto a contratos remotos e mudança de cidade ou país, mirando vagas de backend, full stack e arquitetura de software.',
+  },
 };
 
 /**

@@ -1,6 +1,6 @@
 /* Responsabilidade: os controles clicáveis que atravessam páginas. Controle
-   que existe numa página só mora no `<style>` daquele componente -- o filtro
-   de trilha, por exemplo, é da ProjectsPage. */
+   que existe numa página só mora no `<style>` daquele componente -- o modo
+   cinema, por exemplo, é do GameFrame. */
 
 /* ---------- botões ----------
  *
@@ -41,3 +41,39 @@
    claro, e clarear 6% ali não se via. */
 .btn-primary:hover { background: var(--gamedev); border-color: var(--text); color: var(--on-gamedev); }
 .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- chip: o botão que escolhe um recorte ----------
+ *
+ * Mora aqui porque atravessa páginas: filtra os projetos por trilha em
+ * /projects e troca o foco do currículo em /cv. Os dois leem `.chip` e
+ * `aria-pressed` no JavaScript, então o nome da classe e o atributo são
+ * contrato, não decoração.
+ *
+ * O MARCADO NÃO É PÍLULA TINGIDA. Ganhava fundo na cor da trilha, que é a
+ * mesma forma do badge de cada cartão — três pílulas coloridas no topo e
+ * mais três por linha abaixo. Agora o marcado se anuncia pelo traço embaixo,
+ * igual à página atual na navegação: é a mesma ideia ("você está aqui") e
+ * passa a ter a mesma forma. O traço não é o único sinal: a cor e o peso
+ * mudam junto, e o estado real está no `aria-pressed`, que é o que o leitor
+ * de tela anuncia.
+ */
+.chip {
+  font-family: var(--display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--border-strong); color: var(--text); }
+.chip[aria-pressed='true'] {
+  border-color: var(--border-strong);
+  color: var(--track, var(--text));
+  font-weight: 600;
+  box-shadow: inset 0 -2px 0 0 var(--track, var(--text));
+}
+/* Fileira de chips: o filtro de projetos e a chave de foco do currículo. */
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; }

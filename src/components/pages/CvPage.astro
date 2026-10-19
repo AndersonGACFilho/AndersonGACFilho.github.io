@@ -1,15 +1,20 @@
 ---
 import PageHeader from '../PageHeader.astro';
 import { useTranslations, type Lang } from '../../i18n/ui';
+import { trackColor, trackLabelKey } from '../../lib/tracks';
 import {
-  headline, profile, experience, teaching, education,
+  CV_FOCUSES, headline, profile, experience, teaching, education,
   certifications, languages, skills, links, availability,
-  recommendations, recommendationsNote, pick, type Entry,
+  recommendations, recommendationsNote, pick, type CvFocus, type Entry,
 } from '../../i18n/cv';
 
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+/** O chip "Tudo" não é trilha, então empresta o rótulo e a cor do site. */
+const focusLabel = (focus: CvFocus) => t(focus === 'all' ? 'label.all' : trackLabelKey(focus));
+const focusColor = (focus: CvFocus) => (focus === 'all' ? 'var(--accent)' : trackColor[focus]);
 
 const section = {
   experience: { en: 'Experience', pt: 'Experiência' },
@@ -28,103 +33,146 @@ const groups: [keyof typeof section, Entry[]][] = [
 ];
 ---
 
-<PageHeader kicker={t('kicker.cv')} title="Anderson Gonçalves" accent="var(--gamedev)">
-  <p class="headline">{pick(headline, lang)}</p>
-  <p class="links">
-    {links.map((link) => <a href={link.url}>{link.label}</a>)}
-  </p>
-  <p class="profile">{pick(profile, lang)}</p>
-  <p class="availability">{pick(availability, lang)}</p>
-</PageHeader>
+<div class="cv" data-focus="all">
+  <PageHeader kicker={t('kicker.cv')} title="Anderson Gonçalves" accent="var(--cv-accent)">
+    <div class="focus-switch chip-row" role="group" aria-label={t('label.focus')}>
+      {
+        CV_FOCUSES.map((focus) => (
+          <button
+            class="chip"
+            type="button"
+            data-focus-to={focus}
+            aria-pressed={String(focus === 'all')}
+            style={`--track: ${focusColor(focus)}`}
+          >
+            {focusLabel(focus)}
+          </button>
+        ))
+      }
+    </div>
 
-{
-  groups.map(([key, entries]) => (
-    <section>
-      <div class="section-head"><h2>{pick(section[key], lang)}</h2></div>
-      <ol class="timeline">
-        {entries.map((entry) => (
-          <li>
-            <div class="when">
-              <span class="period">{pick(entry.period, lang)}</span>
-              <span class="place">{pick(entry.place, lang)}</span>
-            </div>
-            <div class="what">
-              <h3>{pick(entry.role, lang)}</h3>
-              <p class="org">
-                {entry.url ? <a href={entry.url}>{entry.org}</a> : entry.org}
-                {entry.kind && <span class="kind">{pick(entry.kind, lang)}</span>}
-              </p>
-              <ul>
-                {pick(entry.bullets, lang).map((bullet) => (
-                  <li>{bullet}</li>
-                ))}
-              </ul>
-              {entry.tech && (
-                <div class="badge-row">
-                  {entry.tech.map((item) => (
-                    <span class="tag">{item}</span>
-                  ))}
-                </div>
-              )}
-            </div>
-          </li>
-        ))}
-      </ol>
-    </section>
-  ))
-}
-
-<section>
-  <div class="section-head">
-    <h2>{pick(section.recommendations, lang)}</h2>
-    <span class="section-nota">{pick(recommendationsNote, lang)}</span>
-  </div>
-  <div class="grid recs">
     {
-      recommendations.map((rec) => (
-        <figure class="card rec" style="--track: var(--fullstack)">
-          <blockquote>{pick(rec.text, lang)}</blockquote>
-          <figcaption>
-            <a href={rec.url}>{rec.author}</a>
-            <span class="rec-role">{pick(rec.role, lang)}</span>
-            <span class="rec-rel">{pick(rec.relation, lang)} · {pick(rec.date, lang)}</span>
-          </figcaption>
-        </figure>
+      CV_FOCUSES.map((focus) => (
+        <p class="headline" data-panel={focus} hidden={focus !== 'all'}>
+          {pick(headline[focus], lang)}
+        </p>
       ))
     }
-  </div>
-</section>
 
-<section>
-  <div class="section-head"><h2>{pick(section.skills, lang)}</h2></div>
-  <dl class="skills">
+    <p class="links">
+      {links.map((link) => <a href={link.url}>{link.label}</a>)}
+    </p>
+
     {
-      skills.map((group) => (
-        <div>
-          <dt>{pick(group.label, lang)}</dt>
-          <dd class="badge-row">
-            {group.items.map((item) => (
-              <span class="tag">{item}</span>
-            ))}
-          </dd>
+      CV_FOCUSES.map((focus) => (
+        <div data-panel={focus} hidden={focus !== 'all'}>
+          <p class="profile">{pick(profile[focus], lang)}</p>
+          <p class="availability">{pick(availability[focus], lang)}</p>
         </div>
       ))
     }
-  </dl>
-</section>
+  </PageHeader>
 
-<section class="grid grid-3 closing">
-  <div>
-    <h2>{pick(section.certifications, lang)}</h2>
-    <ul>{certifications.map((item) => <li>{pick(item, lang)}</li>)}</ul>
-  </div>
-  <div>
-    <h2>{pick(section.languages, lang)}</h2>
-    <ul>{languages.map((item) => <li>{pick(item, lang)}</li>)}</ul>
-  </div>
-</section>
+  {
+    groups.map(([key, entries]) => (
+      <section>
+        <div class="section-head"><h2>{pick(section[key], lang)}</h2></div>
+        <ol class="timeline">
+          {entries.map((entry) => (
+            <li data-track={entry.track} style={entry.track && `--entry: ${trackColor[entry.track]}`}>
+              <div class="when">
+                <span class="period">{pick(entry.period, lang)}</span>
+                <span class="place">{pick(entry.place, lang)}</span>
+                {entry.track && <span class="entry-track">{t(trackLabelKey(entry.track))}</span>}
+              </div>
+              <div class="what">
+                <h3>{pick(entry.role, lang)}</h3>
+                <p class="org">
+                  {entry.url ? <a href={entry.url}>{entry.org}</a> : entry.org}
+                  {entry.kind && <span class="kind">{pick(entry.kind, lang)}</span>}
+                </p>
+                <ul>
+                  {pick(entry.bullets, lang).map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+                {entry.tech && (
+                  <div class="badge-row">
+                    {entry.tech.map((item) => (
+                      <span class="tag">{item}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+
+  <section>
+    <div class="section-head">
+      <h2>{pick(section.recommendations, lang)}</h2>
+      <span class="section-nota">{pick(recommendationsNote, lang)}</span>
+    </div>
+    <div class="grid recs">
+      {
+        recommendations.map((rec) => (
+          <figure class="card rec" style="--track: var(--fullstack)">
+            <blockquote>{pick(rec.text, lang)}</blockquote>
+            <figcaption>
+              <a href={rec.url}>{rec.author}</a>
+              <span class="rec-role">{pick(rec.role, lang)}</span>
+              <span class="rec-rel">{pick(rec.relation, lang)} · {pick(rec.date, lang)}</span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>{pick(section.skills, lang)}</h2></div>
+    <dl class="skills">
+      {
+        skills.map((group) => (
+          <div data-group={group.group}>
+            <dt>{pick(group.label, lang)}</dt>
+            <dd class="badge-row">
+              {group.items.map((item) => (
+                <span class="tag">{item}</span>
+              ))}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="grid grid-3 closing">
+    <div>
+      <h2>{pick(section.certifications, lang)}</h2>
+      <ul>{certifications.map((item) => <li>{pick(item, lang)}</li>)}</ul>
+    </div>
+    <div>
+      <h2>{pick(section.languages, lang)}</h2>
+      <ul>{languages.map((item) => <li>{pick(item, lang)}</li>)}</ul>
+    </div>
+  </section>
+</div>
 
 <style>
+  /* A cor do kicker acompanha o foco. Passa por variável porque o kicker
+     mora no PageHeader, que tem outro escopo de estilo. */
+  .cv { --cv-accent: var(--accent); }
+  .cv[data-focus='gamedev'] { --cv-accent: var(--gamedev); }
+  .cv[data-focus='fullstack'] { --cv-accent: var(--fullstack); }
+
+  /* Sem JavaScript a página fica no estado "Tudo", que já é um currículo
+     completo e equilibrado. O chip em si vem de `controls.css`. */
+  .focus-switch { margin-bottom: 16px; }
+
   .headline { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 10px; }
   .links { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.92rem; margin-bottom: 20px; }
   .links a { color: var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
@@ -141,15 +189,34 @@ const groups: [keyof typeof section, Entry[]][] = [
   .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 30px; }
   .timeline > li { display: grid; gap: 4px 28px; grid-template-columns: minmax(0, 190px) 1fr; }
   .when { font-family: var(--display); font-size: 0.78rem; color: var(--text-faint); display: grid; align-content: start; gap: 2px; padding-top: 4px; }
+  /* O traço colorido diz de longe qual metade da carreira é qual. A cor não
+     carrega sozinha a informação: o nome da trilha vai escrito ao lado. */
+  .what { border-left: 2px solid var(--entry, var(--border)); padding-left: 16px; }
   .what h3 { margin: 0; font-size: 1.05rem; }
   .org { margin: 2px 0 8px; color: var(--text-dim); font-size: 0.95rem; }
   .what ul { margin: 0 0 10px; padding-left: 18px; color: var(--text-dim); font-size: 0.93rem; }
   .what li + li { margin-top: 3px; }
+  .entry-track { color: var(--entry); font-weight: 600; }
+
+  /* Com um foco escolhido, a experiência do outro lado perde a cor mas não
+     perde contraste: o texto segue igual e a entrada continua na lista.
+     Apaga-se a propriedade, e não o `--entry`: a variável vem no atributo
+     style da `li`, e estilo inline ganha de qualquer regra daqui. */
+  .cv[data-focus='gamedev'] .timeline > li[data-track='fullstack'] .what,
+  .cv[data-focus='fullstack'] .timeline > li[data-track='gamedev'] .what { border-left-color: var(--border); }
+  .cv[data-focus='gamedev'] .timeline > li[data-track='fullstack'] .entry-track,
+  .cv[data-focus='fullstack'] .timeline > li[data-track='gamedev'] .entry-track { color: var(--text-faint); }
 
   .skills { margin: 0; display: grid; gap: 14px; }
   .skills > div { display: grid; gap: 6px 28px; grid-template-columns: minmax(0, 190px) 1fr; align-items: start; }
   .skills dt { font-family: var(--display); font-size: 0.78rem; color: var(--text-faint); padding-top: 3px; }
   .skills dd { margin: 0; }
+  /* Só a ordem visual muda; cada grupo se identifica pelo próprio dt, então a
+     ordem de leitura do código continua fazendo sentido para o leitor de tela. */
+  .cv[data-focus='gamedev'] .skills > [data-group='core'],
+  .cv[data-focus='fullstack'] .skills > [data-group='core'] { order: 2; }
+  .cv[data-focus='gamedev'] .skills > [data-group='fullstack'],
+  .cv[data-focus='fullstack'] .skills > [data-group='gamedev'] { order: 3; }
 
   .recs { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
   .rec { margin: 0; gap: 14px; }
@@ -170,6 +237,29 @@ const groups: [keyof typeof section, Entry[]][] = [
 
   @media (max-width: 640px) {
     .timeline > li, .skills > div { grid-template-columns: 1fr; }
-    .when { flex-direction: row; display: flex; gap: 10px; padding-top: 0; }
+    .when { flex-direction: row; display: flex; flex-wrap: wrap; gap: 10px; padding-top: 0; }
   }
 </style>
+
+<script>
+  const cv = document.querySelector<HTMLElement>('.cv');
+  const chips = cv?.querySelectorAll<HTMLButtonElement>('[data-focus-to]') ?? [];
+  const panels = cv?.querySelectorAll<HTMLElement>('[data-panel]') ?? [];
+
+  function apply(focus: string) {
+    if (!cv) return;
+    cv.dataset.focus = focus;
+    chips.forEach((chip) => chip.setAttribute('aria-pressed', String(chip.dataset.focusTo === focus)));
+    panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== focus; });
+    history.replaceState(null, '', focus === 'all' ? location.pathname : `#${focus}`);
+  }
+
+  chips.forEach((chip) => chip.addEventListener('click', () => apply(chip.dataset.focusTo ?? 'all')));
+
+  // /cv#gamedev e /cv#fullstack abrem já no foco certo, para mandar o link
+  // em candidatura sem que o recrutador tenha de clicar. A lista de focos
+  // válidos sai dos próprios chips, para não duplicar a de `i18n/cv.ts`
+  // (importar de lá traria o texto inteiro do currículo para o bundle).
+  const initial = location.hash.replace('#', '');
+  if (initial && [...chips].some((chip) => chip.dataset.focusTo === initial)) apply(initial);
+</script>

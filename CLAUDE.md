@@ -30,6 +30,13 @@ variável CSS não é pego por ninguém. Intocáveis:
   `#fullstack`/`#gamedev`/`#research`, e no `GameFrame` `.game`,
   `.game-stage`, `[data-play]`, `[data-cinema]`, `[data-cinema-close]`,
   `[data-fullscreen]` e o título lido de `root.querySelector('strong')`;
+- **a chave de foco do currículo**: `/cv` serve candidatura de gameplay e de
+  full stack na mesma página. O script da `CvPage` lê `.cv`, `[data-focus-to]`
+  e `[data-panel]`, e escreve `data-focus` na `.cv`; o CSS da mesma página
+  depende de `data-focus`, `[data-track]` nas `li` da experiência e
+  `[data-group]` nos grupos de competências. Os deep-links `/cv#gamedev` e
+  `/cv#fullstack` vão em candidatura e não podem quebrar. O estado sem
+  JavaScript é `all`, que já é um currículo completo;
 - **`src/styles/tokens.css` é a fonte dos tokens para os dois sites**. O
   publicador do material lê este arquivo e o copia para lá; divergiu, a
   publicação aborta dizendo qual token mudou.
