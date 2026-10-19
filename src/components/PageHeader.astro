@@ -18,9 +18,7 @@ const { kicker, title, intro, accent = 'var(--text)' } = Astro.props;
 </header>
 
 <style>
-  /* O topo da página fica vazio e o cabeçalho assenta mais embaixo: o peso
-     está no chão, como o nome em pé ao lado. */
-  .page-head { margin-block: clamp(40px, 12svh, 140px) 48px; max-width: 46rem; }
+  .page-head { margin-block: clamp(32px, 6svh, 72px) 48px; max-width: 46rem; }
   .page-head h1 { margin-bottom: 14px; text-wrap: balance; }
   /* O KICKER VEIO PARA BAIXO DO TÍTULO. Em cima de todo título ele era a
      moldura de template mais reconhecível do site. Embaixo, em caixa alta

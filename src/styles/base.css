@@ -19,6 +19,11 @@
 *::after { box-sizing: border-box; }
 
 html {
+  /* O CORPO CRESCE COM A TELA LARGA. Até 1280px vale o 1rem da pessoa; daí
+     até 2160px sobe devagar até 1,25rem. Em monitor grande o texto de 17px
+     ficava pequeno para a distância de leitura, e a página uma faixa estreita
+     no canto. Tudo que se mede em rem cresce junto, inclusive a largura. */
+  font-size: clamp(1rem, 0.4545vw + 0.636rem, 1.25rem);
   scroll-behavior: smooth;
   /* tira o atraso de 300ms do toque duplo no celular */
   touch-action: manipulation;
@@ -29,7 +34,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }

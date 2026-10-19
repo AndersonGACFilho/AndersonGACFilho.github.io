@@ -22,9 +22,10 @@ const trackCount = (track: string) =>
     também serve candidatura de backend e full stack (o /cv tem uma chave de
     foco para isso), então a primeira tela é quem eu sou e as três frentes.
 
-    A PRIMEIRA TELA ASSENTA NO CHÃO. O nome em pé, que aqui é o h1 (ver
-    `Base.astro`), ocupa a coluna da esquerda; papel, texto e frentes descem
-    para o pé da tela, encostados nele. */}
+    O nome em pé, que aqui é o h1 (ver `Base.astro`), ocupa a coluna da
+    esquerda; papel, texto e frentes começam logo abaixo da navegação. Eles já
+    desceram até o pé da tela, e em monitor alto isso deixava um buraco em
+    cima. */}
 <section class="hero">
   <p class="hero-role">{t('hero.role')}</p>
   <p class="hero-blurb">{t('hero.blurb')}</p>
@@ -96,17 +97,19 @@ const trackCount = (track: string) =>
 </section>
 
 <style>
-  .hero { max-width: 33rem; margin-block: 32px 96px; }
-  /* No desktop a primeira tela inteira é do topo, e o conteúdo dela desce até
-     o pé: tira-se a altura da navegação e o respiro do `main`. */
-  @media (min-width: 761px) {
+  .hero { max-width: 33rem; margin-block: clamp(32px, 6svh, 72px) 96px; }
+
+  /* Em tela larga as frentes sobem para o lado do texto, as duas colunas
+     começando na mesma altura. */
+  @media (min-width: 1200px) {
     .hero {
-      min-height: calc(100svh - 150px);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      margin-top: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 33rem) minmax(0, 30rem);
+      column-gap: clamp(3rem, 5vw, 6rem);
+      align-items: start;
+      max-width: none;
     }
+    .hero > .trilhas { grid-column: 2; grid-row: 1 / span 3; margin: 0; }
   }
 
   .hero-role {
