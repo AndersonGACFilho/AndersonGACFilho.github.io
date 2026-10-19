@@ -3,7 +3,7 @@
 # `date` set to the date of the proceedings if it differs from the event.
 title: 'HTN Method Selection Guided by Multi-Objective Reinforcement Learning and Dynamic Preferences'
 date: 2026-11-12
-summary: Paper in the graduate track of ERAMIA-RS 2026. An HTN keeps the agent inside what the domain allows, and a preference-conditioned multi-objective RL policy picks among the valid methods according to the priorities of the moment. The paper has the formulation and the evaluation protocol, and no experimental results yet.
+summary: Four-page paper in the graduate track of ERAMIA-RS 2026, and the first version of this work. An HTN keeps the agent inside what the domain allows, and a preference-conditioned multi-objective RL policy picks among the valid methods according to the priorities of the moment. It has the formulation and the evaluation protocol. The experiments, and the full paper, come in 2027.
 tracks: [research]
 tags: [decision-making, planning, reinforcement-learning]
 translationOf: eramia-rs
@@ -16,7 +16,7 @@ pdf: /papers/eramia-rs.pdf
 ---
 
 Anderson G. A. C. Filho, Anderson R. Tavares and Lucas N. Alegre, Instituto de Informática, UFRGS.
-Four pages, in English. The [final version is here as a PDF](/papers/eramia-rs.pdf).
+Four pages, in English. The [version in the proceedings is here as a PDF](/papers/eramia-rs.pdf).
 
 ## Abstract
 
@@ -39,6 +39,8 @@ cases.
 
 ## Where it stands
 
-The paper describes the method and how it will be evaluated. The experiments come next, in a
-controlled game-like environment, against first-applicable and heuristic HTN selection and two
-scalar RL baselines. The [research page](/research) has the longer explanation and the poster.
+This is the first version of the work. It describes the method and how it will be evaluated, and
+stops there. The experiments come next, in a controlled game-like environment, against
+first-applicable and heuristic HTN selection and two scalar RL baselines. With results in hand, the
+full paper goes to a conference in 2027. The [research page](/research) has the longer explanation
+and the poster.

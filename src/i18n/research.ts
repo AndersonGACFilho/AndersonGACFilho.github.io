@@ -2,9 +2,9 @@
  * Copy for the research page. It lives apart from ui.ts because this is prose,
  * not interface labels — and because both languages must stay side by side.
  *
- * Source: the paper "HTN Method Selection Guided by Multi-Objective
- * Reinforcement Learning and Dynamic Preferences", accepted at ERAMIA-RS 2026,
- * and the poster presented at ECOA 2026.
+ * Source: the ERAMIA-RS 2026 paper "HTN Method Selection Guided by
+ * Multi-Objective Reinforcement Learning and Dynamic Preferences" and the
+ * ECOA 2026 poster. Both are the first version; the full paper is for 2027.
  */
 import type { Lang } from './ui';
 
@@ -81,7 +81,7 @@ export const research: Record<Lang, Copy> = {
       'Poster for ECOA 2026, the IV Escola de Computação Avançada at UFRGS: architecture, hierarchical credit assignment and the planned experiments.',
     materials: 'Materials',
     materialsIntro:
-      'The ERAMIA-RS paper is in the proceedings and its final version is here. The poster went to ECOA 2026. Both have the formulation and the evaluation protocol, and the experiments are the next step.',
+      'The ERAMIA-RS paper is in the proceedings and the PDF is here. The poster went to ECOA 2026. Both are a first version, with the formulation and the evaluation protocol. The experiments come next, and the full paper with them in 2027.',
     posterLabel: 'Poster (PDF)',
     posterMeta: 'ECOA 2026 · UFRGS · 1.1 MB',
     paperLabel: 'ERAMIA-RS paper',
@@ -129,7 +129,7 @@ export const research: Record<Lang, Copy> = {
       'Pôster da ECOA 2026, a IV Escola de Computação Avançada da UFRGS: arquitetura, atribuição hierárquica de crédito e os experimentos propostos.',
     materials: 'Materiais',
     materialsIntro:
-      'O artigo do ERAMIA-RS está nos anais e a versão final está aqui. O pôster foi para a ECOA 2026. Os dois trazem a formulação e o protocolo de avaliação, e os experimentos são o próximo passo.',
+      'O artigo do ERAMIA-RS está nos anais e o PDF está aqui. O pôster foi para a ECOA 2026. Os dois são uma primeira versão, com a formulação e o protocolo de avaliação. Os experimentos vêm agora, e o artigo completo com eles em 2027.',
     posterLabel: 'Pôster (PDF)',
     posterMeta: 'ECOA 2026 · UFRGS · 1,1 MB',
     paperLabel: 'Artigo do ERAMIA-RS',
