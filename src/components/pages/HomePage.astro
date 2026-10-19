@@ -17,20 +17,15 @@ const trackCount = (track: string) =>
   projects.filter((p) => (p.data.tracks as string[]).includes(track)).length;
 ---
 
-{/* O BUILD É O TOPO DA PÁGINA. Antes ele vinha depois do nome, da descrição,
-    de dois botões e de um cabeçalho de seção — quatro blocos de texto antes
-    da única coisa que nenhum outro portfólio tem, que é um jogo rodando ali
-    mesmo. Agora são duas linhas de identificação e a tela.
-
-    O cabeçalho "Play in your browser" saiu junto, com o subtítulo dele: um
-    jogo visível com um botão de jogar em cima não precisa de uma frase
-    dizendo que dá para jogar. */}
+{/* O JOGO DESCEU DO TOPO. Ele era a primeira coisa da página, logo abaixo
+    do nome, e com ele ali a home se lia como portfólio só de jogos. O site
+    também serve candidatura de backend e full stack (o /cv tem uma chave de
+    foco para isso), então a primeira tela agora é quem eu sou e as três
+    frentes. O jogo vem logo depois, como a primeira prova. */}
 <header class="hero">
   <h1>Anderson Gonçalves</h1>
   <p class="hero-role">{t('hero.role')}</p>
 </header>
-
-{game && <GameFrame game={game} lang={lang} />}
 
 <section class="hero-pe">
   <p class="hero-blurb">{t('hero.blurb')}</p>
@@ -61,6 +56,18 @@ const trackCount = (track: string) =>
     }
   </ul>
 </section>
+
+{
+  game && (
+    <section>
+      <div class="section-head">
+        <h2>{t('section.game')}</h2>
+        <a class="more" href={localize('/games', lang)}>{t('cta.all.games')}</a>
+      </div>
+      <GameFrame game={game} lang={lang} />
+    </section>
+  )
+}
 
 <section>
   <div class="section-head">
@@ -109,7 +116,7 @@ const trackCount = (track: string) =>
 
   /* O pé do topo divide a linha com os dois links: o texto não precisa da
      largura inteira, e os links sobem para a altura dele em vez de empilhar
-     mais um bloco entre a tela e o índice. */
+     mais um bloco entre a apresentação e as trilhas. */
   .hero-pe {
     display: flex;
     flex-wrap: wrap;
