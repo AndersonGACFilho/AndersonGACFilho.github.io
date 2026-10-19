@@ -1,8 +1,8 @@
 ---
-# In the proceedings. Still missing: the `url` of the paper on SBC OpenLib, and
-# `date` set to the date of the proceedings if it differs from the event.
+# In the proceedings. `date` is the first day of the event (9 to 11 November
+# 2026, Porto Alegre). Still missing: the `url` of the paper on SBC OpenLib.
 title: 'HTN Method Selection Guided by Multi-Objective Reinforcement Learning and Dynamic Preferences'
-date: 2026-11-12
+date: 2026-11-09
 summary: Four-page paper in the graduate track of ERAMIA-RS 2026, and the first version of this work. An HTN keeps the agent inside what the domain allows, and a preference-conditioned multi-objective RL policy picks among the valid methods according to the priorities of the moment. It has the formulation and the evaluation protocol. The experiments, and the full paper, come in 2027.
 tracks: [research]
 tags: [decision-making, planning, reinforcement-learning]

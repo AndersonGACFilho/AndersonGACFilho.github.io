@@ -78,7 +78,7 @@ export const research: Record<Lang, Copy> = {
       },
     ],
     posterCaption:
-      'Poster for ECOA 2026, the IV Escola de Computação Avançada at UFRGS: architecture, hierarchical credit assignment and the planned experiments.',
+      'Poster for ECOA 2026, the IV Escola de Computação Avançada at UFRGS, on 21 and 22 October: architecture, hierarchical credit assignment and the planned experiments.',
     materials: 'Materials',
     materialsIntro:
       'The ERAMIA-RS paper is in the proceedings and the PDF is here. The poster went to ECOA 2026. Both are a first version, with the formulation and the evaluation protocol. The experiments come next, and the full paper with them in 2027.',
@@ -126,7 +126,7 @@ export const research: Record<Lang, Copy> = {
       },
     ],
     posterCaption:
-      'Pôster da ECOA 2026, a IV Escola de Computação Avançada da UFRGS: arquitetura, atribuição hierárquica de crédito e os experimentos propostos.',
+      'Pôster da ECOA 2026, a IV Escola de Computação Avançada da UFRGS, em 21 e 22 de outubro: arquitetura, atribuição hierárquica de crédito e os experimentos propostos.',
     materials: 'Materiais',
     materialsIntro:
       'O artigo do ERAMIA-RS está nos anais e o PDF está aqui. O pôster foi para a ECOA 2026. Os dois são uma primeira versão, com a formulação e o protocolo de avaliação. Os experimentos vêm agora, e o artigo completo com eles em 2027.',

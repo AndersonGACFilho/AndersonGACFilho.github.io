@@ -1,8 +1,8 @@
 ---
-# Nos anais. Falta a `url` do artigo na SBC OpenLib e, se for diferente da
-# data do evento, a `date` dos anais.
+# Nos anais. `date` é o primeiro dia do evento (9 a 11 de novembro de 2026,
+# Porto Alegre). Falta a `url` do artigo na SBC OpenLib.
 title: 'HTN Method Selection Guided by Multi-Objective Reinforcement Learning and Dynamic Preferences'
-date: 2026-11-12
+date: 2026-11-09
 summary: Artigo de quatro páginas na trilha de pós-graduação do ERAMIA-RS 2026, e a primeira versão deste trabalho. O HTN mantém o agente dentro do que o domínio permite, e uma política de aprendizado por reforço multiobjetivo, condicionada a preferências, escolhe entre os métodos válidos conforme as prioridades do momento. Ele traz a formulação e o protocolo de avaliação. Os experimentos, e o artigo completo, ficam para 2027.
 tracks: [research]
 tags: [tomada-de-decisao, planejamento, aprendizado-por-reforco]
