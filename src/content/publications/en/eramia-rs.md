@@ -1,16 +1,16 @@
 ---
-# Accepted, not yet in the proceedings. When it is: `status: published`, the
-# `url` of the paper on SBC OpenLib, and `date` set to the date of the proceedings.
+# In the proceedings. Still missing: the `url` of the paper on SBC OpenLib, and
+# `date` set to the date of the proceedings if it differs from the event.
 title: 'HTN Method Selection Guided by Multi-Objective Reinforcement Learning and Dynamic Preferences'
 date: 2026-11-12
-summary: Accepted in the graduate track of ERAMIA-RS 2026. An HTN keeps the agent inside what the domain allows, and a preference-conditioned multi-objective RL policy picks among the valid methods according to the priorities of the moment. The paper has the formulation and the evaluation protocol, and no experimental results yet.
+summary: Paper in the graduate track of ERAMIA-RS 2026. An HTN keeps the agent inside what the domain allows, and a preference-conditioned multi-objective RL policy picks among the valid methods according to the priorities of the moment. The paper has the formulation and the evaluation protocol, and no experimental results yet.
 tracks: [research]
 tags: [decision-making, planning, reinforcement-learning]
 translationOf: eramia-rs
 venue:
   name: ERAMIA-RS 2026
   full: II Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (SBC)
-  status: accepted
+  status: published
   # url: https://sol.sbc.org.br/index.php/eramiars/article/view/<id>
 pdf: /papers/eramia-rs.pdf
 ---

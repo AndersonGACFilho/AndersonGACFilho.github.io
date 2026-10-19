@@ -1,16 +1,16 @@
 ---
-# Aceito, ainda fora dos anais. Quando sair: `status: published`, a `url` do
-# artigo na SBC OpenLib e `date` com a data dos anais.
+# Nos anais. Falta a `url` do artigo na SBC OpenLib e, se for diferente da
+# data do evento, a `date` dos anais.
 title: 'HTN Method Selection Guided by Multi-Objective Reinforcement Learning and Dynamic Preferences'
 date: 2026-11-12
-summary: Aceito na trilha de pós-graduação do ERAMIA-RS 2026. O HTN mantém o agente dentro do que o domínio permite, e uma política de aprendizado por reforço multiobjetivo, condicionada a preferências, escolhe entre os métodos válidos conforme as prioridades do momento. O artigo traz a formulação e o protocolo de avaliação, e ainda nenhum resultado experimental.
+summary: Artigo na trilha de pós-graduação do ERAMIA-RS 2026. O HTN mantém o agente dentro do que o domínio permite, e uma política de aprendizado por reforço multiobjetivo, condicionada a preferências, escolhe entre os métodos válidos conforme as prioridades do momento. O artigo traz a formulação e o protocolo de avaliação, e ainda nenhum resultado experimental.
 tracks: [research]
 tags: [tomada-de-decisao, planejamento, aprendizado-por-reforco]
 translationOf: eramia-rs
 venue:
   name: ERAMIA-RS 2026
   full: II Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (SBC)
-  status: accepted
+  status: published
   # url: https://sol.sbc.org.br/index.php/eramiars/article/view/<id>
 pdf: /papers/eramia-rs.pdf
 ---

@@ -4,7 +4,7 @@
  *
  * Source: the paper "HTN Method Selection Guided by Multi-Objective
  * Reinforcement Learning and Dynamic Preferences", accepted at ERAMIA-RS 2026,
- * and the poster that came before it.
+ * and the poster presented at ECOA 2026.
  */
 import type { Lang } from './ui';
 
@@ -78,12 +78,12 @@ export const research: Record<Lang, Copy> = {
       },
     ],
     posterCaption:
-      'Poster: architecture, hierarchical credit assignment and the planned experiments.',
+      'Poster for ECOA 2026, the IV Escola de Computação Avançada at UFRGS: architecture, hierarchical credit assignment and the planned experiments.',
     materials: 'Materials',
     materialsIntro:
-      'The ERAMIA-RS paper was accepted and its final version is here, next to the poster. It has the formulation and the evaluation protocol. The experiments are the next step.',
+      'The ERAMIA-RS paper is in the proceedings and its final version is here. The poster went to ECOA 2026. Both have the formulation and the evaluation protocol, and the experiments are the next step.',
     posterLabel: 'Poster (PDF)',
-    posterMeta: 'UFRGS · 1.1 MB',
+    posterMeta: 'ECOA 2026 · UFRGS · 1.1 MB',
     paperLabel: 'ERAMIA-RS paper',
     codeLabel: 'Prototype',
     codeNote:
@@ -126,12 +126,12 @@ export const research: Record<Lang, Copy> = {
       },
     ],
     posterCaption:
-      'Pôster: arquitetura, atribuição hierárquica de crédito e os experimentos propostos.',
+      'Pôster da ECOA 2026, a IV Escola de Computação Avançada da UFRGS: arquitetura, atribuição hierárquica de crédito e os experimentos propostos.',
     materials: 'Materiais',
     materialsIntro:
-      'O artigo do ERAMIA-RS foi aceito e a versão final está aqui, junto do pôster. Ele traz a formulação e o protocolo de avaliação. Os experimentos são o próximo passo.',
+      'O artigo do ERAMIA-RS está nos anais e a versão final está aqui. O pôster foi para a ECOA 2026. Os dois trazem a formulação e o protocolo de avaliação, e os experimentos são o próximo passo.',
     posterLabel: 'Pôster (PDF)',
-    posterMeta: 'UFRGS · 1,1 MB',
+    posterMeta: 'ECOA 2026 · UFRGS · 1,1 MB',
     paperLabel: 'Artigo do ERAMIA-RS',
     codeLabel: 'Protótipo',
     codeNote:
