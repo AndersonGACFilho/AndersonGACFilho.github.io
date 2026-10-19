@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "sync": "astro sync",
     "refresh:github": "node scripts/refresh-github-cache.mjs",
-    "check:contrast": "node scripts/check-contrast.mjs"
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "render:og": "node scripts/render-og-cover.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
