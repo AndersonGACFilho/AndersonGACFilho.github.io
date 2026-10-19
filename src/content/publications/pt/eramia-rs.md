@@ -5,7 +5,7 @@ title: 'Título do artigo — ERAMIA-RS'
 date: 2026-11-12
 summary: Resumo de um parágrafo em linguagem direta — o que o artigo pergunta, o que ele faz e o que saiu disso.
 tracks: [research]
-tags: [ia-para-jogos, planejamento, aprendizado-por-reforco]
+tags: [tomada-de-decisao, planejamento, aprendizado-por-reforco]
 draft: true
 translationOf: eramia-rs
 venue:

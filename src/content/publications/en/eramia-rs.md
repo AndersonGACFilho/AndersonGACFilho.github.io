@@ -5,7 +5,7 @@ title: 'Paper title — ERAMIA-RS'
 date: 2026-11-12
 summary: One-paragraph abstract in plain language — what the paper asks, what it does and what came out of it.
 tracks: [research]
-tags: [game-ai, planning, reinforcement-learning]
+tags: [decision-making, planning, reinforcement-learning]
 draft: true
 translationOf: eramia-rs
 venue:
