@@ -97,7 +97,7 @@ const groups: [keyof typeof section, Entry[]][] = [
                   ))}
                 </ul>
                 {entry.tech && (
-                  <div class="badge-row">
+                  <div class="tag-row">
                     {entry.tech.map((item) => (
                       <span class="tag">{item}</span>
                     ))}
@@ -139,7 +139,7 @@ const groups: [keyof typeof section, Entry[]][] = [
         skills.map((group) => (
           <div data-group={group.group}>
             <dt>{pick(group.label, lang)}</dt>
-            <dd class="badge-row">
+            <dd class="tag-row">
               {group.items.map((item) => (
                 <span class="tag">{item}</span>
               ))}
