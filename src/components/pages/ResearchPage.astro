@@ -9,11 +9,12 @@ const t = useTranslations(lang);
 const copy = research[lang];
 const evaluation = experiments[lang];
 
-// The ERAMIA entry is a reserved draft until the paper is out: link it only
-// once it is published, and otherwise show where it stands.
+// Link the ERAMIA entry only while it is not a draft, and always say where
+// the paper stands: accepted and published read differently on a CV.
 const eramia = (await getCollection('publications')).find((entry) => entry.id === `${lang}/eramia-rs`);
 const eramiaLive = eramia && !eramia.data.draft;
 const eramiaStatus = eramia?.data.venue?.status ?? 'in-preparation';
+const eramiaVenue = eramia?.data.venue?.name ?? 'ERAMIA-RS';
 ---
 
 <header class="head">
@@ -91,14 +92,13 @@ const eramiaStatus = eramia?.data.venue?.status ?? 'in-preparation';
     <li>
       {
         eramiaLive ? (
-          <a href={localize('/publications/eramia-rs', lang)}>{copy.paperPending}</a>
+          <a href={localize('/publications/eramia-rs', lang)}>{copy.paperLabel}</a>
         ) : (
-          <>
-            <span>{copy.paperPending}</span>
-            <span class="muted">{t(`venue.${eramiaStatus}` as UIKey)} ERAMIA-RS</span>
-          </>
+          <span>{copy.paperLabel}</span>
         )
       }
+      <span class="muted">{t(`venue.${eramiaStatus}` as UIKey)} {eramiaVenue}</span>
+      {eramiaLive && eramia.data.pdf && <a href={eramia.data.pdf}>PDF</a>}
     </li>
     <li>
       <span>{copy.codeLabel}</span>

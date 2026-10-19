@@ -2,8 +2,9 @@
  * Copy for the research page. It lives apart from ui.ts because this is prose,
  * not interface labels — and because both languages must stay side by side.
  *
- * Source: the poster "HTN Method Selection Guided by Multi-Objective
- * Reinforcement Learning and Dynamic Preferences" (UFRGS).
+ * Source: the paper "HTN Method Selection Guided by Multi-Objective
+ * Reinforcement Learning and Dynamic Preferences", accepted at ERAMIA-RS 2026,
+ * and the poster that came before it.
  */
 import type { Lang } from './ui';
 
@@ -11,13 +12,14 @@ export const paperTitle =
   'HTN Method Selection Guided by Multi-Objective Reinforcement Learning and Dynamic Preferences';
 
 export const authors = [
-  { name: 'Anderson G. Alves', self: true },
-  { name: 'Lucas N. Alegre', url: 'https://lucasalegre.github.io' },
+  // Name and order as printed in the accepted paper.
+  { name: 'Anderson G. A. C. Filho', self: true },
   // http, not https: the certificate served on 443 does not cover this
   // hostname, so the browser stops visitors with a full-page security
   // warning. Plain http answers cleanly. Revisit if the site gets a
   // valid certificate.
   { name: 'Anderson R. Tavares', url: 'http://andertavares.net' },
+  { name: 'Lucas N. Alegre', url: 'https://lucasalegre.github.io' },
 ];
 
 export const affiliation = 'Instituto de Informática, Universidade Federal do Rio Grande do Sul';
@@ -33,7 +35,7 @@ type Copy = {
   materialsIntro: string;
   posterLabel: string;
   posterMeta: string;
-  paperPending: string;
+  paperLabel: string;
   codeLabel: string;
   codeNote: string;
 };
@@ -65,6 +67,7 @@ export const research: Record<Lang, Copy> = {
         heading: 'Preferences: what matters, right now',
         body: [
           'The weight vector carries the current trade-off between mission, safety, resources and time. Changing it changes which method gets selected while the HTN domain stays as written, so adapting to a new priority costs no re-authoring.',
+          'With two objectives, progress and survival, and estimated returns of [0.8, 0.2] for one method and [0.5, 0.5] for another, the weights [0.8, 0.2] pick the first. Move them to [0.2, 0.8] and the agent picks the second.',
         ],
       },
       {
@@ -78,10 +81,10 @@ export const research: Record<Lang, Copy> = {
       'Poster: architecture, hierarchical credit assignment and the planned experiments.',
     materials: 'Materials',
     materialsIntro:
-      'The full paper is not published here. What is available is the poster and, once it is out, the ERAMIA-RS paper.',
+      'The ERAMIA-RS paper was accepted and its final version is here, next to the poster. It has the formulation and the evaluation protocol. The experiments are the next step.',
     posterLabel: 'Poster (PDF)',
     posterMeta: 'UFRGS · 1.1 MB',
-    paperPending: 'ERAMIA-RS paper',
+    paperLabel: 'ERAMIA-RS paper',
     codeLabel: 'Prototype',
     codeNote:
       'Grid-world prototype with HTN execution, sensing, navigation and replanning. Vector rewards, conflicting objectives and dynamic preferences are next. The repository is private while the work is in progress.',
@@ -112,6 +115,7 @@ export const research: Record<Lang, Copy> = {
         heading: 'Preferências: o que importa, agora',
         body: [
           'O vetor de pesos carrega o trade-off atual entre missão, segurança, recursos e tempo. Mudá-lo muda o método selecionado sem tocar no domínio HTN, então se adaptar a uma prioridade nova não exige reescrever nada.',
+          'Com dois objetivos, progresso e sobrevivência, e retornos estimados de [0,8; 0,2] para um método e [0,5; 0,5] para outro, os pesos [0,8; 0,2] escolhem o primeiro. Mudando para [0,2; 0,8], o agente escolhe o segundo.',
         ],
       },
       {
@@ -125,17 +129,17 @@ export const research: Record<Lang, Copy> = {
       'Pôster: arquitetura, atribuição hierárquica de crédito e os experimentos propostos.',
     materials: 'Materiais',
     materialsIntro:
-      'O artigo principal não está publicado aqui. O que está disponível é o pôster e, quando sair, o artigo do ERAMIA-RS.',
+      'O artigo do ERAMIA-RS foi aceito e a versão final está aqui, junto do pôster. Ele traz a formulação e o protocolo de avaliação. Os experimentos são o próximo passo.',
     posterLabel: 'Pôster (PDF)',
     posterMeta: 'UFRGS · 1,1 MB',
-    paperPending: 'Artigo do ERAMIA-RS',
+    paperLabel: 'Artigo do ERAMIA-RS',
     codeLabel: 'Protótipo',
     codeNote:
       'Protótipo em grid world com execução HTN, sensoriamento, navegação e replanejamento. Recompensas vetoriais, objetivos conflitantes e preferências dinâmicas são o próximo passo. O repositório é privado enquanto o trabalho está em andamento.',
   },
 };
 
-/** Planned evaluation, straight from the poster. */
+/** Planned evaluation, as the accepted paper describes it. */
 export const experiments: Record<Lang, { heading: string; columns: { title: string; items: string[] }[] }> = {
   en: {
     heading: 'How it will be evaluated',
@@ -144,16 +148,19 @@ export const experiments: Record<Lang, { heading: string; columns: { title: stri
         title: 'Compare',
         items: [
           'First-applicable HTN',
-          'Heuristic HTN',
-          'Scalar HTN-RL',
+          'Fixed heuristic HTN',
+          'Scalar RL for task–method values',
           'Contextual scalar RL + HTN mask',
           'HTN + preference-conditioned MORL',
         ],
       },
-      { title: 'Stress', items: ['Dynamic preferences', 'Novel context', 'Unseen preferences'] },
+      {
+        title: 'Stress',
+        items: ['Preferences switched at set decisions', 'Held-out preference vectors', 'Held-out initial states'],
+      },
       {
         title: 'Measure',
-        items: ['Performance', 'Adaptation', 'Generalization', 'Semantic validity', 'Latency'],
+        items: ['Adaptation after a switch', 'Generalization', 'Semantic validity', 'Decision latency'],
       },
     ],
   },
@@ -164,16 +171,19 @@ export const experiments: Record<Lang, { heading: string; columns: { title: stri
         title: 'Comparar',
         items: [
           'HTN por primeiro aplicável',
-          'HTN heurístico',
-          'HTN-RL escalar',
+          'HTN com heurística fixa',
+          'RL escalar para valores tarefa–método',
           'RL escalar contextual + máscara HTN',
           'HTN + MORL condicionado a preferências',
         ],
       },
-      { title: 'Estressar', items: ['Preferências dinâmicas', 'Contexto inédito', 'Preferências não vistas'] },
+      {
+        title: 'Estressar',
+        items: ['Preferências trocadas em decisões marcadas', 'Vetores de preferência não vistos', 'Estados iniciais não vistos'],
+      },
       {
         title: 'Medir',
-        items: ['Desempenho', 'Adaptação', 'Generalização', 'Validade semântica', 'Latência'],
+        items: ['Adaptação depois da troca', 'Generalização', 'Validade semântica', 'Latência de decisão'],
       },
     ],
   },
