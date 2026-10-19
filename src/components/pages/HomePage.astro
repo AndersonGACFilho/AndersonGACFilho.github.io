@@ -21,7 +21,8 @@ const trackCount = (track: string) =>
     do nome, e com ele ali a home se lia como portfólio só de jogos. O site
     também serve candidatura de backend e full stack (o /cv tem uma chave de
     foco para isso), então a primeira tela agora é quem eu sou e as três
-    frentes. O jogo vem logo depois, como a primeira prova. */}
+    frentes. O jogo vem logo depois, como a primeira prova, e o botão de
+    jogar do topo virou o do currículo: o ▶ já está na tela do jogo. */}
 <header class="hero">
   <h1>Anderson Gonçalves</h1>
   <p class="hero-role">{t('hero.role')}</p>
@@ -30,8 +31,8 @@ const trackCount = (track: string) =>
 <section class="hero-pe">
   <p class="hero-blurb">{t('hero.blurb')}</p>
   <div class="btn-row">
-    <a class="btn" href={localize('/games', lang)}>▶ {t('hero.cta.play')}</a>
     <a class="btn" href={localize('/projects', lang)}>{t('hero.cta.projects')}</a>
+    <a class="btn" href={localize('/cv', lang)}>{t('hero.cta.cv')}</a>
   </div>
 </section>
 
