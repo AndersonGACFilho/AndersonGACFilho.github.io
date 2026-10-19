@@ -4,35 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plano de Ensino — UC2: Implementar Banco de Dados</title>
-<style>
-  :root { color-scheme: dark light; --bg:#0b0d12; --card:#12151d; --line:#242a38; --fg:#e7eaf2; --dim:#9aa3b8; --accent:#38bdf8; }
-  @media (prefers-color-scheme: light) { :root { --bg:#fbfbfd; --card:#fff; --line:#e1e5ee; --fg:#131722; --dim:#525a6e; --accent:#0284c7; } }
-  * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; }
-  .wrap { max-width:840px; margin-inline:auto; padding:48px 20px 80px; }
-  h1 { font-size:clamp(1.7rem,4vw,2.2rem); letter-spacing:-.02em; margin:0 0 24px; }
-  h2 { font-size:1.35rem; margin:44px 0 12px; padding-top:16px; border-top:1px solid var(--line); }
-  h3 { font-size:1.08rem; margin:28px 0 8px; }
-  h4 { font-size:.95rem; margin:20px 0 6px; color:var(--dim); text-transform:uppercase; letter-spacing:.06em; }
-  a { color:var(--accent); }
-  p, li { overflow-wrap:break-word; }
-  ul, ol { padding-left:1.3em; }
-  li { margin:.3em 0; }
-  code { font:.88em/1.5 'JetBrains Mono',ui-monospace,monospace; background:var(--card); border:1px solid var(--line); border-radius:5px; padding:.1em .35em; }
-  pre { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; overflow-x:auto; }
-  pre code { background:none; border:none; padding:0; }
-  blockquote { margin:18px 0; padding:2px 0 2px 18px; border-left:3px solid var(--accent); color:var(--dim); }
-  .tabela { overflow-x:auto; margin:18px 0; }
-  table { border-collapse:collapse; width:100%; font-size:.9rem; }
-  th, td { text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
-  th { background:var(--card); font-weight:600; white-space:nowrap; }
-  tbody tr:hover td { background:var(--card); }
-  hr { border:none; border-top:1px solid var(--line); margin:36px 0; }
-  .back { margin-top:48px; color:var(--dim); font-size:.9rem; }
-</style>
+<meta name="description" content="Plano de Ensino — UC2: Implementar Banco de Dados — material da UC2, Programador de Sistemas, Senac RS.">
+<meta name="theme-color" content="#06142e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap">
+<link rel="stylesheet" href="_comum/tokens.css">
+<link rel="stylesheet" href="_comum/curso.css">
+<script>
+  /* sem piscada: roda antes da primeira pintura, e é síncrono de propósito */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
 </head>
 <body>
-<main class="wrap">
+<main class="dentro leitura" id="conteudo">
 <h1>Plano de Ensino — UC2: Implementar Banco de Dados</h1>
 <blockquote>
 <p>Referência única da distribuição de conteúdo, datas e indicadores da UC2.
@@ -604,7 +593,7 @@ conceituais registrados no <a href="../../README.md#livro-texto-de-apoio">README
 <p><em>Última atualização: distribuição inicial proposta pelo docente — revisar e
 ajustar conforme o ritmo real da turma nas primeiras aulas.</em></p>
 
-<p class="back">← <a href="./index.html">Slides da UC2</a></p>
+<p class="volta-doc">← <a href="./index.html">Material da UC2</a></p>
 </main>
 </body>
 </html>

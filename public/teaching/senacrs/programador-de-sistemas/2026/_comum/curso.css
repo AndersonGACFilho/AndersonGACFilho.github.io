@@ -1,13 +1,117 @@
 /* curso.css — visual das páginas de material da UC.
  *
- * Consome os mesmos tokens do site pessoal (tokens.css), em vez de repetir
- * cor à mão. Antes eram dois conjuntos, e já tinham derivado: largura 900 vs
- * 1080, fundo claro #f4f5f8 vs #fbfbfd, superfícies e raios diferentes.
+ * Herda a ESTRUTURA do site pessoal (tokens.css): largura, raio, medida,
+ * fonte. Antes eram dois conjuntos de tokens e já tinham derivado — largura
+ * 900 vs 1080, fundo claro #f4f5f8 vs #fbfbfd, superfícies e raios diferentes.
+ *
+ * Mas a COR aqui é outra, e de propósito. O site pessoal tem chão de cinza
+ * neutro porque o argumento dele é que a única coisa cromática acima da dobra
+ * é o build do jogo. O material de aula não tem esse argumento: ele tem o
+ * deck, que a turma vê projetado em azul Senac com laranja, e a página era a
+ * mesma coisa em cinza. Aluno que sai do slide e cai no índice via dois
+ * cursos diferentes.
  *
  * A forma é a de uma página de curso no Moodle, que é a que esta turma
  * conhece das outras UCs: tópicos que abrem na própria página, atividades com
  * ícone por espécie, e marcação de concluído.
  */
+
+/* ---------- a paleta Senac, a mesma do deck ----------
+ *
+ * Os valores saem de `themes/senac.css`, não de um olho novo: azul, laranja,
+ * verde, céu e magenta são os que já estão projetados na parede.
+ *
+ * O CAMPO É MARINHO, NÃO O AZUL DO SLIDE. O slide usa #014dbf de fundo, e
+ * sobre ele o laranja vivo #ff7809 dá 2,6:1 — reprova como texto. Num slide
+ * isso não importa, porque lá o laranja é filete e preenchimento; numa página
+ * de ler, o acento vira link e rótulo. Escurecer o campo para #06142e sobe o
+ * mesmo laranja para 7,00:1, e é o que deixa a cor VIVA em vez de pastel:
+ * sobre o azul claro do slide, todo acento legível teria de ser lavado.
+ *
+ * Contraste medido, piso 4,5:1 para texto e 3:1 para contorno de controle.
+ * Confere com `npm run check:contraste`, que falha com o número.
+ */
+:root {
+  --bg: #06142e;
+  --bg-elev: #0b1f42;
+  --bg-hover: #143257;
+  --border: #21406f;
+  --border-strong: #6b94d0;
+
+  --text: #f2f6fc;
+  --text-dim: #bdd0ea;
+  --text-faint: #a6bcdd;
+
+  /* o laranja do deck, inteiro */
+  --accent: #ff7809;
+  --feito: #4fe0a6;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 84%, var(--feito) 16%);
+  --erro: #ff8f7a;
+
+  /* espécie de atividade: quatro cores do deck, não quatro tons de uma */
+  --esp-pagina: #9cc9ff;
+  --esp-quiz: #4fe0a6;
+  --esp-tarefa: #c89bf0;
+  --esp-arquivo: #ffb065;
+
+  /* preenchimento com texto claro por cima — aqui o azul do slide volta */
+  --senac-cheio: #014dbf;
+}
+
+/* segue o sistema — mas só até a pessoa escolher escuro à mão */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --bg: #eaf0fa;
+    --bg-elev: #ffffff;
+    --bg-hover: #dce6f7;
+    --border: #c2d2ea;
+    --border-strong: #5c7ba8;
+
+    --text: #0a1a33;
+    --text-dim: #3a5375;
+    --text-faint: #46618a;
+
+    /* No claro o laranja vivo dá 2,4:1 e não pode ser texto. Este é o mesmo
+       laranja queimado, e continua laranja — o vivo segue usado em filete e
+       preenchimento, onde o piso é 3:1. */
+    --accent: #9a4a00;
+    --feito: #0e7a4e;
+    --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
+    --erro: #b02d14;
+
+    --esp-pagina: #0b4fbe;
+    --esp-quiz: #0e7a4e;
+    --esp-tarefa: #6b3fa0;
+    --esp-arquivo: #8a5200;
+
+    --senac-cheio: #014dbf;
+  }
+}
+
+/* escolha explícita ganha da preferência do sistema, nos dois sentidos */
+:root[data-theme='light'] {
+  --bg: #eaf0fa;
+  --bg-elev: #ffffff;
+  --bg-hover: #dce6f7;
+  --border: #c2d2ea;
+  --border-strong: #5c7ba8;
+
+  --text: #0a1a33;
+  --text-dim: #3a5375;
+  --text-faint: #46618a;
+
+  --accent: #9a4a00;
+  --feito: #0e7a4e;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
+  --erro: #b02d14;
+
+  --esp-pagina: #0b4fbe;
+  --esp-quiz: #0e7a4e;
+  --esp-tarefa: #6b3fa0;
+  --esp-arquivo: #8a5200;
+
+  --senac-cheio: #014dbf;
+}
 
 * { box-sizing: border-box; }
 
@@ -245,3 +349,69 @@ summary:hover .titulo { color: var(--accent); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- página de leitura: o plano de ensino ----------
+ *
+ * Estes estilos moravam dentro do publish-slides.mjs, junto com uma paleta
+ * propria — fundo #0b0d12, acento #38bdf8, fonte Inter. Eram TRÊS identidades
+ * no mesmo material: o cinza do site no índice, o azul Senac no deck e esta
+ * terceira só aqui. Agora o plano fala pelos mesmos tokens do resto.
+ *
+ * A medida é 860px, e não os 1080 do `.dentro`: o plano é texto corrido com
+ * dez tabelas, e linha de 1080px em serifada passa de 100 caracteres.
+ */
+.dentro.leitura { max-width: 860px; padding-block: 44px 80px; }
+
+.leitura h1 { font-size: clamp(1.7rem, 4vw, 2.3rem); letter-spacing: -0.02em; margin: 0 0 24px; }
+.leitura h2 {
+  font-size: 1.35rem;
+  margin: 46px 0 12px;
+  padding-top: 18px;
+  /* a régua da seção é o laranja do deck, o mesmo que marca bloco no slide */
+  border-top: 2px solid var(--accent);
+}
+.leitura h3 { font-size: 1.08rem; margin: 28px 0 8px; }
+.leitura h4 { font-size: 0.95rem; margin: 20px 0 6px; color: var(--text-dim); }
+.leitura p, .leitura li { overflow-wrap: break-word; }
+.leitura ul, .leitura ol { padding-left: 1.3em; }
+.leitura li { margin: 0.3em 0; }
+.leitura strong { color: var(--text); }
+
+.leitura code {
+  font: 0.88em/1.5 var(--mono);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.35em;
+}
+.leitura pre {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  overflow-x: auto;
+}
+.leitura pre code { background: none; border: none; padding: 0; }
+
+.leitura blockquote {
+  margin: 18px 0;
+  padding: 10px 0 10px 18px;
+  border-left: 4px solid var(--accent);
+  color: var(--text-dim);
+}
+
+/* o wrapper e quem rola: a tabela do cronograma tem oito colunas e, sem isto,
+   empurra o corpo inteiro do documento na horizontal */
+.leitura .tabela { overflow-x: auto; margin: 18px 0; }
+.leitura table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.leitura th, .leitura td {
+  text-align: left;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.leitura th { background: var(--bg-elev); font-weight: 600; white-space: nowrap; }
+.leitura tbody tr:hover td { background: var(--bg-hover); }
+.leitura hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+.volta-doc { margin-top: 48px; color: var(--text-dim); font-size: 0.9rem; }
