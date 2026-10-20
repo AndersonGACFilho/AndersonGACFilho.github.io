@@ -111,7 +111,7 @@ legend {
   gap: 12px;
   align-items: baseline;
   padding: 0 0 12px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .numero {
@@ -122,7 +122,7 @@ legend {
   background: var(--card);
   border: 1px solid var(--line);
   color: var(--dim);
-  font: 600 0.78rem/1.7em var(--display);
+  font: 700 0.78rem/1.7em var(--display);
   text-align: center;
 }
 
@@ -171,7 +171,7 @@ legend {
 .letra {
   flex: none;
   color: var(--dim);
-  font: 600 0.82rem/1.5 var(--display);
+  font: 700 0.82rem/1.5 var(--display);
   text-transform: uppercase;
 }
 
@@ -196,7 +196,7 @@ legend {
 
 .veredito {
   margin: 0 0 6px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .porque.acertou .veredito {
@@ -215,7 +215,7 @@ legend {
 .refazer {
   margin-top: 12px;
   padding: 7px 13px;
-  font: 500 0.84rem/1 inherit;
+  font: 400 0.84rem/1 inherit;
   color: var(--accent);
   background: none;
   border: 1px solid var(--line);
@@ -231,7 +231,7 @@ legend {
 
 /* o voltar principal ganha peso: e o caminho de volta para a pagina da aula,
    de onde a pessoa chegou aqui */
-.rodape .voltar { color: var(--fg); font-weight: 600; font-family: var(--display); }
+.rodape .voltar { color: var(--fg); font-weight: 700; font-family: var(--display); }
 .rodape .voltar:hover { color: var(--accent); }
 
 .rodape {
@@ -248,7 +248,7 @@ legend {
 
 #recomecar {
   padding: 7px 13px;
-  font: 500 0.84rem/1 inherit;
+  font: 400 0.84rem/1 inherit;
   color: var(--dim);
   background: none;
   border: 1px solid var(--line);
@@ -333,7 +333,7 @@ legend {
   align-items: center;
   justify-content: space-between;
   margin: 0 0 10px;
-  font: 600 0.74rem/1.4 var(--display);
+  font: 700 0.74rem/1.4 var(--display);
   color: var(--dim);
   text-transform: uppercase;
   letter-spacing: 0.07em;
@@ -403,7 +403,7 @@ legend {
 
 .acao {
   padding: 9px 16px;
-  font: 600 0.87rem/1 inherit;
+  font: 700 0.87rem/1 inherit;
   /* o texto acompanha o tema. Fixo em #08131b, media 10.3:1 no escuro e so
      3.8:1 no claro — reprovava em AA no botao mais clicado da pagina. Com
      var(--bg) da 10.4 e 4.6. */
@@ -423,7 +423,7 @@ legend {
   color: var(--dim);
   background: none;
   border: 1px solid var(--line);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .acao.secundaria:hover:not(:disabled) {
@@ -464,7 +464,7 @@ legend {
   padding: 5px 10px;
   border: 1px solid var(--line);
   border-radius: 99px;
-  font: 600 0.74rem/1 var(--display);
+  font: 700 0.74rem/1 var(--display);
   color: var(--dim);
   white-space: nowrap;
 }
@@ -561,7 +561,7 @@ legend {
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  font: 600 0.85rem/1 var(--display);
+  font: 700 0.85rem/1 var(--display);
   color: var(--dim);
   background: none;
   border: 1px solid var(--border-strong);
@@ -651,12 +651,12 @@ legend {
   border: 1px solid color-mix(in srgb, var(--cor) 38%, transparent);
 }
 .etiqueta .ico svg { width: 18px; height: 18px; }
-.etiqueta .qual { font-weight: 600; letter-spacing: -0.01em; }
+.etiqueta .qual { font-weight: 700; letter-spacing: -0.01em; }
 .etiqueta .tipo {
   margin-left: auto;
   color: var(--dim);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 400;
   white-space: nowrap;
 }
 
@@ -716,7 +716,7 @@ legend {
 
 /* caixas e ligacoes */
 .diagrama .no rect { fill: var(--bg); stroke: var(--border-strong); stroke-width: 1; }
-.diagrama .no text { fill: var(--fg); font: 600 12px var(--display); text-anchor: middle; }
+.diagrama .no text { fill: var(--fg); font: 700 12px var(--display); text-anchor: middle; }
 .diagrama .lig line { stroke: var(--border-strong); stroke-width: 1.4; fill: none; }
 /* O autorrelacionamento da Aula 06 e uma curva, nao um segmento: a ligacao sai
    da caixa e volta para ela mesma. Sem esta regra o <path> herda o padrao do
@@ -728,14 +728,14 @@ legend {
 .diagrama .tabela rect { fill: var(--bg); stroke: var(--border-strong); stroke-width: 1; }
 .diagrama .tabela line { stroke: var(--line); stroke-width: 1; }
 .diagrama .tabela.destaque rect { stroke: var(--accent); }
-.diagrama .cab { fill: var(--dim); font: 600 10px var(--display); text-anchor: middle; letter-spacing: 0.04em; }
+.diagrama .cab { fill: var(--dim); font: 700 10px var(--display); text-anchor: middle; letter-spacing: 0.04em; }
 .diagrama .cel { fill: var(--fg); font: 400 12px var(--mono); text-anchor: middle; }
-.diagrama .cel.chave { fill: var(--accent); font-weight: 600; }
-.diagrama .nome-tab { fill: var(--dim); font: 600 11px var(--display); text-anchor: middle; }
+.diagrama .cel.chave { fill: var(--accent); font-weight: 700; }
+.diagrama .nome-tab { fill: var(--dim); font: 700 11px var(--display); text-anchor: middle; }
 
 /* rotulos */
 .diagrama .rotulo { fill: var(--dim); font: 400 11px var(--display); text-anchor: middle; }
-.diagrama .rotulo-lig { fill: var(--fg); font: 600 10px var(--display); text-anchor: middle; }
+.diagrama .rotulo-lig { fill: var(--fg); font: 700 10px var(--display); text-anchor: middle; }
 /* o uso concreto de cada formato: e o que tira o diagrama do abstrato */
 .diagrama .uso { fill: var(--dim); font: 400 9px var(--display); text-anchor: middle; }
 
@@ -887,16 +887,16 @@ legend {
 
 .marco .ano {
   display: block;
-  font: 600 0.76rem/1.6 var(--display);
+  font: 700 0.76rem/1.6 var(--display);
   color: var(--dim);
 }
-.marco .nome { display: block; font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; }
+.marco .nome { display: block; font-family: var(--display); font-weight: 700; letter-spacing: -0.01em; }
 .marco .ex { display: block; margin-top: 3px; color: var(--dim); font-size: 0.8rem; }
 
 /* a legenda dos marcos vira tres verbetes, nao um paragrafo corrido */
 .verbete { margin: 0 0 7px; }
 .verbete:last-child { margin-bottom: 0; }
-.verbete b { color: var(--fg); font-family: var(--display); font-weight: 600; }
+.verbete b { color: var(--fg); font-family: var(--display); font-weight: 700; }
 
 /* ---------- registro de operacoes ---------- */
 /*
@@ -917,7 +917,7 @@ legend {
 .registro h3 {
   margin: 0 0 10px;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--dim);
 }
 
@@ -946,7 +946,7 @@ legend {
   justify-self: start;
   padding: 2px 8px;
   border-radius: 999px;
-  font: 600 0.72rem/1.5 var(--display);
+  font: 700 0.72rem/1.5 var(--display);
   color: color-mix(in srgb, var(--quem) var(--tinta-chip), #000);
   background: color-mix(in srgb, var(--quem) 14%, transparent);
   border: 1px solid color-mix(in srgb, var(--quem) 40%, transparent);
@@ -962,7 +962,7 @@ legend {
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--dim);
-  font: 500 0.76rem/1.6 var(--display);
+  font: 400 0.76rem/1.6 var(--display);
   white-space: nowrap;
 }
 .log .planilha { --quem: var(--esp-arquivo); }
@@ -1151,7 +1151,7 @@ legend {
 .frase-alvo { margin: 0 0 16px; font-size: 1.05rem; line-height: 2.1; }
 .verbo {
   padding: 3px 10px;
-  font: 600 1rem/1 var(--display);
+  font: 700 1rem/1 var(--display);
   color: var(--accent);
   background: color-mix(in srgb, var(--accent) 12%, transparent);
   border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
@@ -1163,9 +1163,9 @@ legend {
 
 /* notacao MER: retangulo e entidade, losango e relacionamento */
 .diagrama .entidade rect { fill: var(--bg); stroke: var(--fg); stroke-width: 1.4; }
-.diagrama .entidade text { fill: var(--fg); font: 600 12px var(--display); text-anchor: middle; }
+.diagrama .entidade text { fill: var(--fg); font: 700 12px var(--display); text-anchor: middle; }
 .diagrama .relacionamento polygon { fill: var(--bg); stroke: var(--accent); stroke-width: 1.4; }
-.diagrama .relacionamento text { fill: var(--accent); font: 600 11px var(--display); text-anchor: middle; }
+.diagrama .relacionamento text { fill: var(--accent); font: 700 11px var(--display); text-anchor: middle; }
 /* a cardinalidade fica na ponta da ligacao, e e o que muda quando se escolhe */
 .diagrama .card { fill: var(--esp-quiz); font: 700 13px var(--mono); text-anchor: middle; }
 
