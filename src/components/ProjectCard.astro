@@ -12,6 +12,17 @@ const t = useTranslations(lang);
 
 // Live numbers come from GitHub; the description in the .md stays the human pitch.
 const meta = await repoInfo(d.repo);
+
+// Para onde vai o clique no cartão: o jogo, se roda aqui; senão o código, que
+// sai do site e por isso abre noutra aba depois de perguntar. `detail` só
+// entra quando não há nem um nem outro (projeto de repositório privado).
+const target = d.play
+  ? { href: localize(`/play/${d.play}`, lang), external: false }
+  : d.repo
+    ? { href: repoUrl(d.repo), external: true }
+    : d.detail
+      ? { href: localize(d.detail, lang), external: false }
+      : undefined;
 ---
 
 {/* DOIS BLOCOS, DOIS PAPÉIS. Em cima o que se lê de ponta a ponta — o
@@ -23,7 +34,26 @@ const meta = await repoInfo(d.repo);
     projeto se falava. */}
 <article class="card" style={`--track: ${trackColor[d.tracks[0]]}`} data-tracks={d.tracks.join(' ')}>
   <div class="card-main">
-    <h3>{d.title}{d.status && <span class="status">{t(`status.${d.status}` as UIKey)}</span>}</h3>
+    <h3>
+      {target ? (
+        target.external ? (
+          <a
+            class="card-link"
+            href={target.href}
+            target="_blank"
+            rel="noopener"
+            data-confirm={t('confirm.repo').replace('{title}', d.title)}
+          >
+            {d.title}<span aria-hidden="true"> ↗</span><span class="so-leitor"> ({t('label.newtab')})</span>
+          </a>
+        ) : (
+          <a class="card-link" href={target.href}>{d.title}</a>
+        )
+      ) : (
+        d.title
+      )}
+      {d.status && <span class="status">{t(`status.${d.status}` as UIKey)}</span>}
+    </h3>
     <p>{pick(d.summary, lang)}</p>
 
     {
@@ -95,3 +125,14 @@ const meta = await repoInfo(d.repo);
     white-space: nowrap;
   }
 </style>
+
+<script>
+  // Sair do site pede confirmação. Um listener só, no documento, porque o
+  // cartão se repete na home e em /projects. Ctrl/Cmd/Shift-clique já é quem
+  // escolheu abrir noutra aba: não pergunta.
+  document.addEventListener('click', (event) => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey) return;
+    const link = (event.target as Element).closest<HTMLAnchorElement>('a[data-confirm]');
+    if (link && !confirm(link.dataset.confirm)) event.preventDefault();
+  });
+</script>

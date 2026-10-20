@@ -60,6 +60,21 @@
 }
 .index .card h3 a:hover { color: var(--text); }
 
+/* O cartão inteiro clica. Quem recebe o clique é o link do título, esticado
+   por um `::after` sobre a entrada toda: continua um link só, com nome, para
+   teclado e leitor de tela, em vez de um `onclick` no `article`. Os links da
+   fila sobem de camada para não serem engolidos. O custo: selecionar o texto
+   do resumo com o mouse deixa de funcionar. */
+.card:has(.card-link) { position: relative; }
+.card-link::after { content: ''; position: absolute; inset: 0; }
+.card:has(.card-link) .link-row a { position: relative; z-index: 1; }
+.card-link:focus-visible { outline: none; }
+.card-link:focus-visible::after {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
 .card-main { display: flex; flex-direction: column; gap: 8px; min-width: 0; max-width: 64ch; }
 .card-side { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 22px; }
 
