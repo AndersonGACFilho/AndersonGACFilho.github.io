@@ -80,7 +80,7 @@ export const ensino: Instituicao[] = [
                 codigo: 'UC3',
                 nome: { en: 'Testing and maintaining the system', pt: 'Realizar testes e manutenção do sistema' },
                 ch: '36h',
-                situacao: 'preparando',
+                situacao: 'no-ar',
               },
               {
                 codigo: 'UC4',
