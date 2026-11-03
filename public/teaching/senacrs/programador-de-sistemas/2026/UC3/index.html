@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC3 · Realizar testes e manutenção do sistema de informação</title>
+<meta name="description" content="Slides, exercícios e entregas da UC3 (Realizar testes e manutenção do sistema de informação) do curso Programador de Sistemas, Senac RS.">
+<meta name="theme-color" content="#0f1a13">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../_comum/tokens.css">
+<link rel="stylesheet" href="../_comum/curso.css">
+<script>
+  /* sem piscada: roda antes da primeira pintura, e é síncrono de propósito */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo">
+  <div class="dentro">
+    <div class="topo-linha">
+      <nav class="trilha" aria-label="Trilha de navegação">
+        <a href="https://andersongacfilho.github.io/pt/teaching">Ensino</a><span class="sep">/</span>Senac RS<span class="sep">/</span><a href="../">Programador de Sistemas</a><span class="sep">/</span>2026<span class="sep">/</span>UC3
+      </nav>
+      <button type="button" class="pill tema" id="tema" hidden
+        data-troca="Tema" data-system="Sistema" data-light="Claro" data-dark="Escuro">
+        <span class="marca" aria-hidden="true"></span><span class="dizer"></span>
+      </button>
+    </div>
+    <h1>Realizar testes e manutenção do sistema de informação</h1>
+    <p class="curso">Programador de Sistemas · Senac RS · 6 aulas</p>
+    <div class="medidor">
+      <span class="trilho"><span class="cheio" id="cheio"></span></span>
+      <p class="conta" id="conta" data-modelo="{n} de {total} concluídas">0 de 22 concluídas</p>
+    </div>
+    <p class="acoes">
+      <a class="botao" href="plano-de-ensino.html" target="_blank" rel="noopener">Plano de ensino<span class="so-leitor"> (abre em nova aba)</span></a>
+      <button type="button" class="botao" id="todas" data-expandir="Expandir tudo" data-recolher="Recolher tudo">Recolher tudo</button>
+    </p>
+  </div>
+</header>
+
+<main class="dentro" id="conteudo">
+  <ol class="topicos">
+    <li><details class="topico" data-n="01" data-data="2026-11-04">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 01</span>
+          <h2 class="titulo">Testes de Unidade</h2>
+          <span class="sumario">Aula 01 — O teste que o print não fez</span>
+        </span>
+        <span class="lado">
+          <span class="quando">04/11/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-01/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-01/slides.html" target="_blank" rel="noopener">Slides da aula<span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/UEiDJqvhYpHamzM4A">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/UEiDJqvhYpHamzM4A" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/Y33iC2TNdxSbw8eN9">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/Y33iC2TNdxSbw8eN9" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/vNF7tomdSNkPn7tB6">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/vNF7tomdSNkPn7tB6" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="_comum/arquivos/relatorio.py">
+          <span class="icone arquivo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v10.5"/><path d="M8 10.5 12 14.5l4-4"/><path d="M5 18.5h14"/></svg></span>
+          <span class="corpo">
+            <a href="_comum/arquivos/relatorio.py" download>O relatório do mês da locadora — o código que vocês vão testar<span class="so-leitor"> (baixa o arquivo)</span></a>
+            <span class="especie">Arquivo</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="02" data-data="2026-11-05">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 02</span>
+          <h2 class="titulo">Casos Especiais e Regressão</h2>
+          <span class="sumario">Aula 02 — O teste passou. E daí?</span>
+        </span>
+        <span class="lado">
+          <span class="quando">05/11/2026</span>
+          <span class="placar" data-placar>0/2</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-02/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-02/slides.html" target="_blank" rel="noopener">Slides da aula<span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="_comum/arquivos/multa.py">
+          <span class="icone arquivo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v10.5"/><path d="M8 10.5 12 14.5l4-4"/><path d="M5 18.5h14"/></svg></span>
+          <span class="corpo">
+            <a href="_comum/arquivos/multa.py" download>As regras do balcão — multa e valor do aluguel, para testar a fronteira<span class="so-leitor"> (baixa o arquivo)</span></a>
+            <span class="especie">Arquivo</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="03" data-data="2026-11-06">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 03</span>
+          <h2 class="titulo">Teste antes do código</h2>
+          <span class="sumario">Aula 03 — TDD: vermelho, verde, refatora</span>
+        </span>
+        <span class="lado">
+          <span class="quando">06/11/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-03/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-03/slides.html" target="_blank" rel="noopener">Slides da aula<span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/rT66vgb8aNEvGTjx8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/rT66vgb8aNEvGTjx8" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/i166rwZTDejWwR8z5">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/i166rwZTDejWwR8z5" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/WHHiFX3daZeZJtLbA">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/WHHiFX3daZeZJtLbA" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="_comum/arquivos/emprestimo.py">
+          <span class="icone arquivo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v10.5"/><path d="M8 10.5 12 14.5l4-4"/><path d="M5 18.5h14"/></svg></span>
+          <span class="corpo">
+            <a href="_comum/arquivos/emprestimo.py" download>O empréstimo da locadora — as regras novas nascem por TDD<span class="so-leitor"> (baixa o arquivo)</span></a>
+            <span class="especie">Arquivo</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="04" data-data="2026-11-10">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 04</span>
+          <h2 class="titulo">Mock Objects</h2>
+          <span class="sumario">Aula 04 — Testar sem o banco, sem o WhatsApp e sem o calendário</span>
+        </span>
+        <span class="lado">
+          <span class="quando">10/11/2026</span>
+          <span class="placar" data-placar>0/5</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-04/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-04/slides.html" target="_blank" rel="noopener">Slides da aula<span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/D2fc8bxz915QFtJq5">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/D2fc8bxz915QFtJq5" target="_blank" rel="noopener">Checagem do Bloco 1<span class="fora" aria-hidden="true">↗</span><span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/f2LLRNJiDgfgx6mw8">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/f2LLRNJiDgfgx6mw8" target="_blank" rel="noopener">Checagem do Bloco 2<span class="fora" aria-hidden="true">↗</span><span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="https://forms.gle/BnbxP66x53NPP3EW9">
+          <span class="icone quiz" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 2.9 2.45V14"/><path d="M12.5 17.3h-.01"/></svg></span>
+          <span class="corpo">
+            <a href="https://forms.gle/BnbxP66x53NPP3EW9" target="_blank" rel="noopener">Checagem do Bloco 3<span class="fora" aria-hidden="true">↗</span><span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Questionário</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="_comum/arquivos/cobranca.py">
+          <span class="icone arquivo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v10.5"/><path d="M8 10.5 12 14.5l4-4"/><path d="M5 18.5h14"/></svg></span>
+          <span class="corpo">
+            <a href="_comum/arquivos/cobranca.py" download>A cobrança de atrasos — o código difícil de testar, ponto de partida dos mocks<span class="so-leitor"> (baixa o arquivo)</span></a>
+            <span class="especie">Arquivo</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="05" data-data="2026-11-11">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 05</span>
+          <h2 class="titulo">Testes de Integração</h2>
+          <span class="sumario">Aula 05 — O banco de verdade</span>
+        </span>
+        <span class="lado">
+          <span class="quando">11/11/2026</span>
+          <span class="placar" data-placar>0/3</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-05/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-05/slides.html" target="_blank" rel="noopener">Slides da aula<span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="_comum/arquivos/crud_jogo.py">
+          <span class="icone arquivo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v10.5"/><path d="M8 10.5 12 14.5l4-4"/><path d="M5 18.5h14"/></svg></span>
+          <span class="corpo">
+            <a href="_comum/arquivos/crud_jogo.py" download>O CRUD de jogo fora do notebook — para testar no banco de verdade<span class="so-leitor"> (baixa o arquivo)</span></a>
+            <span class="especie">Arquivo</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="_comum/arquivos/conftest.py">
+          <span class="icone arquivo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v10.5"/><path d="M8 10.5 12 14.5l4-4"/><path d="M5 18.5h14"/></svg></span>
+          <span class="corpo">
+            <a href="_comum/arquivos/conftest.py" download>A conexão com o banco de teste, limpa antes de cada teste (troque a senha)<span class="so-leitor"> (baixa o arquivo)</span></a>
+            <span class="especie">Arquivo</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+    <li><details class="topico" data-n="06" data-data="2026-11-12">
+      <summary>
+        <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <span class="cabeca">
+          <span class="ordem">Aula 06</span>
+          <h2 class="titulo">Plano de Teste e Registro</h2>
+          <span class="sumario">Aula 06 — Mostrar o que foi testado</span>
+        </span>
+        <span class="lado">
+          <span class="quando">12/11/2026</span>
+          <span class="placar" data-placar>0/2</span>
+        </span>
+      </summary>
+      <ul class="atividades">
+        <li class="atividade" data-id="aula-06/slides.html">
+          <span class="icone pagina" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6"/><path d="M9 16.5h4"/></svg></span>
+          <span class="corpo">
+            <a href="aula-06/slides.html" target="_blank" rel="noopener">Slides da aula<span class="so-leitor"> (abre em nova aba)</span></a>
+            <span class="especie">Página</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+        <li class="atividade" data-id="_comum/arquivos/plano-de-teste-modelo.xlsx">
+          <span class="icone arquivo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v10.5"/><path d="M8 10.5 12 14.5l4-4"/><path d="M5 18.5h14"/></svg></span>
+          <span class="corpo">
+            <a href="_comum/arquivos/plano-de-teste-modelo.xlsx" download>Planilha modelo — plano, casos de teste, defeitos e resumo<span class="so-leitor"> (baixa o arquivo)</span></a>
+            <span class="especie">Arquivo</span>
+          </span>
+          <button type="button" class="feito" aria-pressed="false" data-marcar="Marcar como feito" data-feito="Feito"><span class="marca" aria-hidden="true">✓</span><span class="dizer">Marcar como feito</span></button>
+        </li>
+      </ul>
+    </details></li>
+  </ol>
+
+  <div class="rodape">
+    <p class="nota">As marcações de concluído ficam só neste navegador — não há login e ninguém mais vê.</p>
+    <p><a href="https://andersongacfilho.github.io/pt/teaching">Voltar para andersongacfilho.github.io</a></p>
+  </div>
+</main>
+<script src="../_comum/curso.js"></script>
+</body>
+</html>

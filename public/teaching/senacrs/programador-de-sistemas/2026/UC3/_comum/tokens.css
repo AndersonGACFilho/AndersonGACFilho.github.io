@@ -1,0 +1,178 @@
+/* ---------- tokens ----------
+ *
+ * Fonte única das cores, raios, medidas e fontes do site. Vive à parte do
+ * global.css porque o material de ensino, publicado como HTML estático em
+ * public/teaching/, consome este mesmo arquivo: os tokens estavam duplicados
+ * nos dois lados e já tinham derivado (largura, raio, fundo do modo claro e as
+ * superfícies elevadas, todos diferentes).
+ *
+ * TEMA EM TRÊS ESTADOS. Escuro é o padrão em :root. Claro entra por preferência
+ * do sistema, mas só enquanto ninguém escolheu escuro à mão — daí o
+ * :not([data-theme='dark']). Escolha explícita, gravada em data-theme pelo
+ * script do Base.astro, ganha das duas.
+ *
+ * DUAS TINTAS, E O VERDE SÓ EM NOME PRÓPRIO. A direção veio de uma frase da
+ * home: a outra metade do trabalho "tem de ficar de pé". O nome fica em pé,
+ * na vertical, numa coluna à esquerda; o resto assenta embaixo dela. A tinta
+ * de leitura é um quase-branco esverdeado sobre verde quase preto; a segunda
+ * tinta, verde-folha, marca só o que é nome: o meu, o de cada frente, o de
+ * cada projeto. Tom de texto secundário (--text-dim, --text-faint) é a mesma
+ * tinta de leitura, mais apagada, e não uma terceira cor.
+ *
+ * AS TRÊS TRILHAS TÊM A MESMA TINTA. Os três tons pastel em cima de cinza
+ * eram a assinatura mais reconhecível do visual gerado. `--fullstack`,
+ * `--gamedev` e `--research` continuam existindo porque `tracks.ts` os
+ * injeta pelo nome, mas valem o verde dos nomes: a trilha se lê pela palavra
+ * escrita, que sempre esteve lá, e não pela cor.
+ *
+ * O MATERIAL DE ENSINO PRECISA DE QUATRO TIPOS DISTINTOS de atividade, então
+ * `--esp-*` deixou de apontar para as trilhas e tem valor próprio.
+ *
+ * NADA AQUI SE MEDE NO OLHO: `npm run check:contrast` confere todos os pares
+ * que a interface realmente pinta, nos dois temas, e falha com o número.
+ */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0f1a13;
+  --bg-elev: #15231a;
+  --bg-hover: #1b2d21;
+  --border: #2a3d30;
+  /* contorno de controle: separado do --border decorativo porque precisa de
+     3:1 para ser a fronteira visível de um botão ou campo */
+  --border-strong: #6e8a74;
+
+  --text: #eaf0e8;
+  --text-dim: #bfcbbf;
+  --text-faint: #9fb09f;
+
+  /* a tinta dos nomes */
+  --accent: #8ccf86;
+  --fullstack: var(--accent);
+  --gamedev: var(--accent);
+  --research: var(--accent);
+  /* texto sobre o botao primario: vira com o tema */
+  --on-gamedev: #0f1a13;
+
+  /* material de ensino */
+  --feito: #7fc99b;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 86%, var(--feito) 14%);
+  --esp-pagina: #9fc4de;
+  --esp-quiz: var(--feito);
+  --esp-tarefa: #c4b8e8;
+  --esp-arquivo: #dcc07e;
+  --erro: #e59595;
+
+  /* Canto vivo é decisão de identidade, não descuido: a página é a moldura de
+     uma tela, e tela não tem canto redondo. O que sobra de raio existe só
+     para o pixel da borda não serrilhar. */
+  --radius: 3px;
+  --radius-sm: 2px;
+  /* a tela jogável não é um cartão: canto vivo, como um monitor */
+  --radius-none: 0px;
+  --maxw: 72rem;
+  --gutter: 20px;
+
+  /* Uma família para ler e para a interface; a condensada só no nome em pé. */
+  --display: 'Cooper Hewitt', 'Helvetica Neue', Arial, sans-serif;
+  --font: 'Cooper Hewitt', 'Helvetica Neue', Arial, sans-serif;
+  --spine: 'Martian Mono Condensed', ui-monospace, monospace;
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* segue o sistema — mas só até a pessoa escolher escuro à mão */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    color-scheme: light;
+
+    --bg: #eef2ec;
+    --bg-elev: #f8faf7;
+    --bg-hover: #e2e8df;
+    --border: #c8d1c5;
+    --border-strong: #66756a;
+
+    --text: #0f1a13;
+    --text-dim: #384a3d;
+    --text-faint: #4b5d50;
+
+    --accent: #2c6a2a;
+  --fullstack: var(--accent);
+  --gamedev: var(--accent);
+  --research: var(--accent);
+    --fullstack: var(--accent);
+    --gamedev: var(--accent);
+    --research: var(--accent);
+    --on-gamedev: #f8faf7;
+
+    /* material de ensino */
+    --feito: #2d6b45;
+    --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
+    --esp-pagina: #2f5d80;
+    --esp-quiz: var(--feito);
+    --esp-tarefa: #5b4a8c;
+    --esp-arquivo: #7a5712;
+    --erro: #a33434;
+  }
+}
+
+/* escolha explícita ganha da preferência do sistema, nos dois sentidos */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #eef2ec;
+  --bg-elev: #f8faf7;
+  --bg-hover: #e2e8df;
+  --border: #c8d1c5;
+  --border-strong: #66756a;
+
+  --text: #0f1a13;
+  --text-dim: #384a3d;
+  --text-faint: #4b5d50;
+
+  --accent: #2c6a2a;
+  --fullstack: var(--accent);
+  --gamedev: var(--accent);
+  --research: var(--accent);
+  --on-gamedev: #f8faf7;
+
+  /* material de ensino */
+  --feito: #2d6b45;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 90%, var(--feito) 10%);
+  --esp-pagina: #2f5d80;
+  --esp-quiz: var(--feito);
+  --esp-tarefa: #5b4a8c;
+  --esp-arquivo: #7a5712;
+  --erro: #a33434;
+
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #0f1a13;
+  --bg-elev: #15231a;
+  --bg-hover: #1b2d21;
+  --border: #2a3d30;
+  --border-strong: #6e8a74;
+
+  --text: #eaf0e8;
+  --text-dim: #bfcbbf;
+  --text-faint: #9fb09f;
+
+  --accent: #8ccf86;
+  --fullstack: var(--accent);
+  --gamedev: var(--accent);
+  --research: var(--accent);
+  --on-gamedev: #0f1a13;
+
+  /* material de ensino */
+  --feito: #7fc99b;
+  --feito-fundo: color-mix(in srgb, var(--bg-elev) 86%, var(--feito) 14%);
+  --esp-pagina: #9fc4de;
+  --esp-quiz: var(--feito);
+  --esp-tarefa: #c4b8e8;
+  --esp-arquivo: #dcc07e;
+  --erro: #e59595;
+
+}

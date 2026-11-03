@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano de Ensino — UC3: Realizar Testes e Manutenção do Sistema de Informação</title>
+<meta name="description" content="Plano de Ensino — UC3: Realizar Testes e Manutenção do Sistema de Informação — material da UC3, Programador de Sistemas, Senac RS.">
+<meta name="theme-color" content="#0f1a13">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="_comum/fontes/fontes.css">
+<link rel="stylesheet" href="_comum/tokens.css">
+<link rel="stylesheet" href="_comum/curso.css">
+<script>
+  /* sem piscada: roda antes da primeira pintura, e é síncrono de propósito */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="dentro leitura" id="conteudo">
+<h1>Plano de Ensino — UC3: Realizar Testes e Manutenção do Sistema de Informação</h1>
+<blockquote>
+<p>Referência única da distribuição de conteúdo, datas e indicadores da UC3.
+Construído a partir do plano de curso do Senac RS, do cronograma oficial da turma
+(versão de 22/09/2026) e do livro-texto da bibliografia básica.</p>
+</blockquote>
+<h2>1. Identificação</h2>
+<div class="tabela"><table>
+
+<tbody>
+<tr>
+<td>Curso</td>
+<td>Programador de Sistemas — Qualificação Profissional (Senac RS)</td>
+</tr>
+<tr>
+<td>Unidade Curricular</td>
+<td>UC3 — Realizar testes e manutenção do sistema de informação</td>
+</tr>
+<tr>
+<td>Carga horária</td>
+<td>36 horas (9 aulas × 4h)</td>
+</tr>
+<tr>
+<td>Período</td>
+<td>04/11/2026 a 17/11/2026</td>
+</tr>
+<tr>
+<td>Turno</td>
+<td>Noite, 18h–22h, segunda a sexta</td>
+</tr>
+<tr>
+<td>Docente</td>
+<td>Anderson Gonçalves (<code>anderson.goncalves@inf.ufrgs.br</code>)</td>
+</tr>
+<tr>
+<td>Não letivo no período</td>
+<td>09/11</td>
+</tr>
+</tbody>
+</table></div>
+<h2>2. Competência da UC e indicadores</h2>
+<p><strong>Competência:</strong> realizar testes e manutenção do sistema de informação.</p>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>Nº</th>
+<th>Indicador</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1</td>
+<td>Utiliza diferentes metodologias de testes, de acordo com a funcionalidade do sistema.</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>Tabula o resultado, de acordo com as informações obtidas no teste realizado.</td>
+</tr>
+<tr>
+<td>I3</td>
+<td>Realiza ajustes e ações corretivas, conforme a análise do resultado coletado.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>3. Conteúdo programático (conhecimentos do plano de curso)</h2>
+<p>Plano de teste (metodologias, especificações do teste, defeito, falha, registros de teste) ·
+Controle de versão (conceito, segurança da informação, instalação e configuração; ramificação,
+histórico, marcações, resgate e versões estáveis) · Política de recuperação de dados (backup e
+restore) · Ciclo de vida do sistema (planejamento de atualização e correções).</p>
+<h2>4. Metodologia</h2>
+<p><strong>A mesma estrutura da UC2.</strong> Quatro blocos de ~50 minutos; os três primeiros fecham com uma
+checagem que é exercício, e o quarto é prática no projeto.</p>
+<p><strong>Nenhuma aula abre com definição.</strong> Cada uma abre com um código que roda, imprime um
+resultado que parece certo e está errado — e o conceito chega como resposta à pergunta &quot;como
+eu teria sabido?&quot;. O teste é apresentado como o jeito de achar a entrada que faz o defeito
+aparecer, não como burocracia depois do código.</p>
+<p><strong>O código vem do livro, traduzido para a locadora.</strong> O livro-texto (Aniche) usa um sistema
+de leilão em Java. Os exemplos foram reescritos em Python, na locadora de jogos que a turma
+conhece desde a UC2, preservando o defeito de cada capítulo linha por linha:</p>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>no livro</th>
+<th>na UC3</th>
+<th>aula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Avaliador</code> — maior e menor lance</td>
+<td><code>RelatorioDoMes</code> — aluguel mais caro e mais barato</td>
+<td>01, 02</td>
+</tr>
+<tr>
+<td>o salário ≥ 2000</td>
+<td>a multa a partir do 3º dia de atraso</td>
+<td>02</td>
+</tr>
+<tr>
+<td>as regras novas do <code>Leilao</code></td>
+<td>as regras do <code>Emprestimo</code></td>
+<td>03</td>
+</tr>
+<tr>
+<td><code>EncerradorDeLeilao</code>, DAO e e-mail</td>
+<td><code>CobradorDeAtrasos</code>, repositório e WhatsApp</td>
+<td>04</td>
+</tr>
+<tr>
+<td>o DAO do Hibernate</td>
+<td>o CRUD em psycopg2 do grupo</td>
+<td>05</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cada aula entrega um arquivo <code>.py</code> com defeitos <strong>plantados</strong>. A turma não recebe a lista
+deles: recebe a regra de negócio, escreve os testes, e são os testes que acham.</p>
+<p><strong>O minimundo de cada grupo continua.</strong> A parte B de toda prática é uma regra do sistema do
+próprio grupo, e na Aula 05 o alvo é o CRUD que cada grupo entregou na UC2.</p>
+<p><strong>pytest, sem terminal.</strong> A turma roda os testes pelo painel <em>Testing</em> do VS Code — o ▶ e o
+verde/vermelho — e instala o pytest por uma célula <code>%pip install pytest</code>, como instalou o
+<code>psycopg2</code> na Aula 12 da UC2. A decisão da UC2 vale aqui: o terminal foi o maior tropeço da
+UC1, e nada nesta UC precisa dele. O <code>unittest.mock</code>, da Aula 04, já vem com o Python.</p>
+<h2>5. Avaliação</h2>
+<p>O modelo é o mesmo da UC2, e o plano de ensino da UC2 (§5) detalha cada regra:</p>
+<ul>
+<li>menção por indicador (A / PA / NA durante o processo; A ou NA ao final) e menção final da
+UC (D / ND), com frequência mínima de 75%; um indicador NA ao final reprova a UC;</li>
+<li>recuperação imediata, na aula seguinte, dentro do bloco de prática;</li>
+<li>a checagem de bloco <strong>conta por ter sido feita</strong>: respondeu, fica registrado, e errar não
+tira nada.</li>
+</ul>
+<p>Instrumento principal: a <strong>suíte de testes e o plano de teste do sistema do próprio grupo</strong>,
+construídos aula a aula — a regra do grupo nas Aulas 01 a 04, o CRUD na Aula 05, e o plano
+com o registro tabulado na Aula 06.</p>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>indicador</th>
+<th>primeira evidência</th>
+<th>aula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1 — metodologias de teste</td>
+<td>testes de unidade por classe de equivalência</td>
+<td>01</td>
+</tr>
+<tr>
+<td>I3 — ajustes e ações corretivas</td>
+<td>o registro &quot;que teste achou que defeito, e o que mudou&quot;</td>
+<td>02</td>
+</tr>
+<tr>
+<td>I2 — tabulação do resultado</td>
+<td>a tabela do ciclo do TDD</td>
+<td>03</td>
+</tr>
+</tbody>
+</table></div>
+<h2>6. Distribuição das aulas</h2>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>Aula</th>
+<th>Data</th>
+<th>Dia</th>
+<th>Tema</th>
+<th>Livro (Aniche)</th>
+<th>Indicador(es)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>04/11</td>
+<td>qua</td>
+<td>Testes de unidade: o defeito que o <code>print</code> não mostrou</td>
+<td>cap. 1, §1.1–1.9</td>
+<td>I1</td>
+</tr>
+<tr>
+<td>02</td>
+<td>05/11</td>
+<td>qui</td>
+<td>Casos especiais, fronteira, regressão e exceção</td>
+<td>cap. 1, §1.10–1.21</td>
+<td>I1, I3</td>
+</tr>
+<tr>
+<td>03</td>
+<td>06/11</td>
+<td>sex</td>
+<td>TDD: o teste antes do código</td>
+<td>cap. 2</td>
+<td>I1, I2</td>
+</tr>
+<tr>
+<td>—</td>
+<td>09/11</td>
+<td>seg</td>
+<td><strong>não letivo</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>04</td>
+<td>10/11</td>
+<td>ter</td>
+<td>Mock objects: testar sem o banco, sem o WhatsApp e sem o calendário</td>
+<td>cap. 3</td>
+<td>I1</td>
+</tr>
+<tr>
+<td>05</td>
+<td>11/11</td>
+<td>qua</td>
+<td>Teste de integração no CRUD do grupo</td>
+<td>cap. 4</td>
+<td>I1, I3</td>
+</tr>
+<tr>
+<td>06</td>
+<td>12/11</td>
+<td>qui</td>
+<td>Níveis de teste, plano de teste e registro tabulado</td>
+<td>cap. 7 (5 e 6 em panorama)</td>
+<td>I1, I2, I3</td>
+</tr>
+<tr>
+<td>07</td>
+<td>13/11</td>
+<td>sex</td>
+<td>Controle de versão com Git — <em>a escrever</em></td>
+<td>—</td>
+<td>I3</td>
+</tr>
+<tr>
+<td>08</td>
+<td>16/11</td>
+<td>seg</td>
+<td>Manutenção e ciclo de vida — <em>a escrever</em></td>
+<td>—</td>
+<td>I3</td>
+</tr>
+<tr>
+<td>09</td>
+<td>17/11</td>
+<td>ter</td>
+<td>Entrega da UC — <em>a escrever</em></td>
+<td>—</td>
+<td>I1, I2, I3</td>
+</tr>
+</tbody>
+</table></div>
+<p>As Aulas 07 a 09 cobrem o que o livro não cobre: controle de versão, política de recuperação
+e ciclo de vida. A Aula 06 fecha com a pergunta que abre a 07 — &quot;o teste achou o defeito,
+vocês corrigiram, e quebrou outra coisa: como voltar à versão que funcionava?&quot;.</p>
+<h2>7. Bibliografia</h2>
+<p><strong>Básica (plano de curso)</strong></p>
+<ul>
+<li>ANICHE, Maurício. <em>Testes automatizados de software: um guia prático</em>. São Paulo: Casa do
+Código, 2015. — o livro-texto das Aulas 01 a 06.</li>
+<li>MOLINARI, Leonardo. <em>Testes de software: produzindo sistemas melhores e mais confiáveis</em>.
+São Paulo: Érica, 2010.</li>
+</ul>
+<p><strong>Complementar (plano de curso)</strong></p>
+<ul>
+<li>BRAGA, P. H. C. <em>Testes de software</em>. São Paulo: Pearson Education do Brasil, 2016.</li>
+<li>GALOTTI, G. M. A. <em>Qualidade de software</em>. São Paulo: Pearson Education do Brasil, 2016.</li>
+<li>SOMMERVILLE, I. <em>Engenharia de software</em>. São Paulo: Pearson Education do Brasil, 2018.</li>
+</ul>
+<p>Os termos engano, defeito e falha seguem o glossário do ISTQB, que é o vocabulário das vagas
+de teste de software.</p>
+<p><em>Última atualização: 02/11/2026.</em></p>
+
+<p class="volta-doc">← <a href="./index.html">Material da UC3</a></p>
+</main>
+</body>
+</html>
