@@ -86,7 +86,7 @@ export const ensino: Instituicao[] = [
                 codigo: 'UC4',
                 nome: { en: 'Capstone project', pt: 'Projeto Integrador' },
                 ch: '20h',
-                situacao: 'preparando',
+                situacao: 'no-ar',
               },
             ],
           },
