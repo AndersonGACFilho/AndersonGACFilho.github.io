@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano de Ensino — UC4: Projeto Integrador</title>
+<meta name="description" content="Plano de Ensino — UC4: Projeto Integrador — material da UC4, Programador de Sistemas, Senac RS.">
+<meta name="theme-color" content="#0f1a13">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="_comum/fontes/fontes.css">
+<link rel="stylesheet" href="_comum/tokens.css">
+<link rel="stylesheet" href="_comum/curso.css">
+<script>
+  /* sem piscada: roda antes da primeira pintura, e é síncrono de propósito */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="dentro leitura" id="conteudo">
+<h1>Plano de Ensino — UC4: Projeto Integrador</h1>
+<blockquote>
+<p>Referência única da distribuição de conteúdo, datas e indicadores da UC4.
+Construído a partir do plano de curso do Senac RS, do cronograma oficial da turma
+(versão de 22/09/2026) e do Sommerville, <em>Engenharia de Software</em>, 9ª ed.</p>
+</blockquote>
+<h2>1. Identificação</h2>
+<div class="tabela"><table>
+
+<tbody>
+<tr>
+<td>Curso</td>
+<td>Programador de Sistemas — Qualificação Profissional (Senac RS)</td>
+</tr>
+<tr>
+<td>Unidade Curricular</td>
+<td>UC4 — Projeto Integrador em Programador de Sistemas</td>
+</tr>
+<tr>
+<td>Carga horária</td>
+<td>20 horas (5 aulas × 4h)</td>
+</tr>
+<tr>
+<td>Período</td>
+<td>18/11/2026 a 25/11/2026</td>
+</tr>
+<tr>
+<td>Turno</td>
+<td>Noite, 18h–22h</td>
+</tr>
+<tr>
+<td>Docente</td>
+<td>Anderson Gonçalves (<code>anderson.goncalves@inf.ufrgs.br</code>)</td>
+</tr>
+<tr>
+<td>Não letivo no período</td>
+<td>20/11 (feriado)</td>
+</tr>
+</tbody>
+</table></div>
+<h2>2. A natureza da UC e os indicadores</h2>
+<p>O Projeto Integrador é uma unidade de natureza diferenciada, na metodologia
+<strong>ação-reflexão-ação</strong>: a turma resolve uma situação-problema do campo
+profissional, articulando as competências das outras UCs, em três etapas —
+<strong>problematização</strong>, <strong>desenvolvimento</strong> e <strong>síntese</strong>.</p>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>Nº</th>
+<th>Indicador</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1</td>
+<td>Cumpre as atividades previstas no plano de ação, conforme o desafio identificado.</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>Apresenta resultados ou soluções, de acordo com as problemáticas e os objetivos do Projeto Integrador.</td>
+</tr>
+<tr>
+<td>I3</td>
+<td>Mobiliza as Marcas Formativas na proposição de estratégias e soluções, de acordo com o contexto e os desafios apresentados.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>3. A situação-problema</h2>
+<p>O plano de curso sugere dois temas. A turma trabalha no primeiro, <strong>demandas de
+organização e controle em sistemas de informação</strong>: cada grupo escolhe um
+problema de controle do <strong>próprio negócio</strong> — o minimundo que vem da UC2 — e o
+resolve com um módulo do sistema que já existe.</p>
+<p>Não há sistema novo em cinco aulas. O que o Projeto Integrador pede, aqui, é
+<strong>organizar e integrar</strong>: o CRUD da UC2, os testes e o repositório da UC3 e uma
+interface, num projeto só, que outra pessoa consegue clonar, usar e manter.</p>
+<blockquote>
+<p>O plano do Senac chama a situação-problema de &quot;tema gerador&quot;. O material não
+usa a expressão: em Freire ela significa outra coisa, como explica o
+<code>DIDATICA.md</code>.</p>
+</blockquote>
+<h2>4. Metodologia</h2>
+<p><strong>Cada aula é um ciclo curto.</strong> Abre com cinco minutos de reunião em pé (o que
+terminei, o que trava, o que faço hoje), tem três blocos curtos com checagem e
+fecha com uma prática longa no projeto do grupo.</p>
+<p><strong>O plano mora no GitHub.</strong> As histórias do usuário viram issues, com rótulo de
+camada, responsável e um milestone por aula. É esse quadro que mostra o
+Indicador 1.</p>
+<p><strong>As camadas são o centro técnico.</strong> Interface, regras e dados, cada uma só
+falando com a de baixo — a arquitetura em camadas do Sommerville (cap. 6). A
+interface é uma janela em <strong>Tkinter</strong>: vem com o Python, roda pelo ▶ do VS Code
+e não exige terminal nem instalação, a decisão que vale desde a UC2.</p>
+<p><strong>O modelo é a locadora.</strong> O <code>locadora-integrada.zip</code> traz o projeto da locadora
+já organizado: as pastas, a janela, os testes por camada, o <code>.env</code>, o
+<code>pyproject.toml</code> e um arquivo de GitHub Actions. Os grupos fazem o mesmo com o
+próprio sistema.</p>
+<p><strong>O ORM é opcional.</strong> O projeto fecha com o psycopg2 que a turma já sabe; o
+Peewee aparece num slide de referência, com um vídeo, para quem quiser.</p>
+<h2>5. Avaliação</h2>
+<p>O modelo é o das outras UCs: menção por indicador (A / PA / NA durante o
+processo; A ou NA ao final), menção final D / ND, frequência mínima de 75%, e a
+checagem de bloco <strong>conta por ter sido feita</strong>.</p>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>indicador</th>
+<th>onde está a evidência</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1 — plano de ação</td>
+<td>o quadro de issues: o planejado, o que fechou, e o que saiu com motivo</td>
+</tr>
+<tr>
+<td>I2 — solução</td>
+<td>a demonstração, e o critério de &quot;como saber que resolveu&quot;</td>
+</tr>
+<tr>
+<td>I3 — Marcas Formativas</td>
+<td>o trabalho dividido, o teste cruzado, a seção O que aprendemos do README</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>A síntese é de mesa em mesa — decisão do docente.</strong> O plano de curso pede o
+compartilhamento dos resultados com a turma e a equipe pedagógica. Aqui a
+demonstração é na mesa do grupo, para o docente, e ninguém apresenta à frente
+da turma; o compartilhamento chega pelo repositório público e pelo README.</p>
+<p>Quando o resultado não atinge o objetivo, o plano de curso dispensa nova
+entrega e pede reflexão sobre o processo. É a seção <strong>O que aprendemos</strong>, que
+todos os grupos escrevem.</p>
+<h2>6. Distribuição das aulas</h2>
+<div class="tabela"><table>
+<thead>
+<tr>
+<th>Aula</th>
+<th>Data</th>
+<th>Dia</th>
+<th>Etapa</th>
+<th>Tema</th>
+<th>Indicador(es)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>18/11</td>
+<td>qua</td>
+<td>problematização</td>
+<td>O problema do negócio, as histórias e o plano de ação</td>
+<td>I1, I3</td>
+</tr>
+<tr>
+<td>02</td>
+<td>19/11</td>
+<td>qui</td>
+<td>desenvolvimento</td>
+<td>Organizar o projeto em camadas, o <code>.env</code></td>
+<td>I1, I3</td>
+</tr>
+<tr>
+<td>—</td>
+<td>20/11</td>
+<td>sex</td>
+<td><strong>feriado</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>03</td>
+<td>23/11</td>
+<td>seg</td>
+<td>desenvolvimento</td>
+<td>Integrar a interface (Tkinter) às regras e aos dados</td>
+<td>I2, I3</td>
+</tr>
+<tr>
+<td>04</td>
+<td>24/11</td>
+<td>ter</td>
+<td>desenvolvimento</td>
+<td>Teste com uma pessoa de fora, o plano revisto, a <code>v2.0.0</code>; menção ao CI</td>
+<td>I1, I2, I3</td>
+</tr>
+<tr>
+<td>05</td>
+<td>25/11</td>
+<td>qua</td>
+<td>síntese</td>
+<td>Demonstração de mesa em mesa e fechamento do curso</td>
+<td>I1, I2, I3</td>
+</tr>
+</tbody>
+</table></div>
+<h2>7. Bibliografia</h2>
+<p>O plano de curso não lista bibliografia para a UC4.</p>
+<ul>
+<li>SOMMERVILLE, I. <em>Engenharia de software</em>. 9. ed. São Paulo: Pearson, 2011 — da
+complementar da UC3: cap. 3 (desenvolvimento ágil: histórias, ciclos curtos,
+reunião diária), cap. 6 (arquitetura em camadas) e cap. 7 (implementação e
+reúso).</li>
+<li>Vídeo de apoio: <em>Tkinter — tutorial completo de telas com Python</em>, Hashtag
+Programação.</li>
+<li>Vídeo opcional: <em>Banco de Dados &amp; Peewee ORM em Python, em 10 minutos</em>,
+Programador Python.</li>
+</ul>
+<p><em>Última atualização: 03/11/2026.</em></p>
+
+<p class="volta-doc">← <a href="./index.html">Material da UC4</a></p>
+</main>
+</body>
+</html>

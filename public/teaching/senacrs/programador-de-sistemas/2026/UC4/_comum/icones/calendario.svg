@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="cronograma / datas">
+  <title>cronograma / datas</title>
+  <g fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="20" width="76" height="66" rx="8"/>
+    <path d="M10 40h76M30 10v18M66 10v18"/>
+    <rect x="26" y="52" width="14" height="12" rx="3" fill="#FF7809" stroke="none"/>
+  </g>
+</svg>
