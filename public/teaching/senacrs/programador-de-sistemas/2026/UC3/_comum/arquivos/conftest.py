@@ -22,8 +22,9 @@ BANCO_DE_TESTE = {
 def conexao():
     conexao = pg.connect(**BANCO_DE_TESTE)
     cursor = conexao.cursor()
-    # Limpa ANTES de cada teste, e não depois: se um teste quebrar no meio, o
-    # próximo ainda começa do zero. TRUNCATE e não rollback, porque as funções
+    # Limpa ANTES de cada teste, e não depois: assim cada um começa do zero,
+    # seja o que for que ficou no banco — uma execução parada no meio, um jogo
+    # cadastrado à mão no pgAdmin. TRUNCATE e não rollback, porque as funções
     # do CRUD dão commit() — e o que já foi gravado, o rollback não desfaz.
     # CASCADE esvazia junto as tabelas que apontam para jogo e plataforma;
     # RESTART IDENTITY volta o SERIAL para 1.
