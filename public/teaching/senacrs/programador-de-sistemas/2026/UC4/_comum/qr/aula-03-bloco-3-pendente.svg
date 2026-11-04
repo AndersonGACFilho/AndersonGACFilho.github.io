@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296 296" width="296" height="296" role="img" aria-label="formulário ainda sem link">
-  <title>formulário ainda sem link</title>
-  <rect width="296" height="296" fill="#ffffff"/>
-  <rect x="18" y="18" width="260" height="260" rx="14" fill="none" stroke="#c9ced6" stroke-width="6" stroke-dasharray="18 14"/>
-  <path d="M148 96v72" stroke="#d94f00" stroke-width="16" stroke-linecap="round"/>
-  <circle cx="148" cy="200" r="10" fill="#d94f00"/>
-  <text x="148" y="246" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#5b6771">SEM LINK AINDA</text>
-</svg>
