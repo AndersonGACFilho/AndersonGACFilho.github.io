@@ -49,6 +49,10 @@
     voce: 'você',
     campo: 'como campo',
     entidade: 'como entidade',
+    // os da UC3: quem roda o teste, quem guarda a versao, e o codigo testado
+    pytest: 'pytest',
+    git: 'git',
+    codigo: 'código',
   };
 
   /**
@@ -172,5 +176,51 @@
     escolher(itens[0]);
   }
 
-  raiz.DemoKit = { $: $, el: el, linha: linha, novoLog: novoLog, escolhas: escolhas };
+  /**
+   * Palpite antes de revelar: pílulas sem nenhuma acesa no começo.
+   *
+   * A fraqueza nº 1 do DIDATICA.md: nenhuma demonstração pedia previsão, e quem
+   * só assiste concorda com qualquer desfecho. O conflito cognitivo só trabalha
+   * quando a pessoa se compromete antes. Por isso é diferente de `escolhas()`,
+   * que acende o primeiro item ao abrir — aqui isso seria dar a resposta.
+   *
+   * A demonstração decide o que fazer com o palpite: `aoPalpitar(item)` roda a
+   * coisa e compara. `limpar()` devolve as pílulas ao estado sem escolha, para
+   * a pessoa palpitar de novo quando o caso muda.
+   *
+   * @param {string}   idCaixa     id do contêiner `.camadas`
+   * @param {Array}    opcoes      [{ id, nome }]
+   * @param {Function} aoPalpitar  recebe a opção escolhida
+   */
+  function palpite(idCaixa, opcoes, aoPalpitar) {
+    var caixa = $(idCaixa);
+    if (!caixa) return { limpar: function () {} };
+    var botoes = [];
+
+    opcoes.forEach(function (op) {
+      var b = el('button', 'camada-btn');
+      b.type = 'button';
+      b.dataset.id = op.id;
+      b.style.setProperty('--cor', 'var(--accent)');
+      b.setAttribute('aria-pressed', 'false');
+      b.appendChild(el('span', 'ponto'));
+      b.appendChild(el('span', null, op.nome));
+      b.addEventListener('click', function () {
+        botoes.forEach(function (x) {
+          x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+        });
+        aoPalpitar(op);
+      });
+      botoes.push(b);
+      caixa.appendChild(b);
+    });
+
+    return {
+      limpar: function () {
+        botoes.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      },
+    };
+  }
+
+  raiz.DemoKit = { $: $, el: el, linha: linha, novoLog: novoLog, escolhas: escolhas, palpite: palpite };
 })(window);

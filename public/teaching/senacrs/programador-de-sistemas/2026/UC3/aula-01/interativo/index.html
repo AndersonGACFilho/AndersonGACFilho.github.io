@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 01 — veja acontecer · UC3</title>
+<meta name="description" content="Palpitar o que o relatório do mês mostra, rodar o elif aluguel por aluguel e ver o menor virar infinito; depois montar a menor suíte de testes que pega o defeito.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 01 — veja acontecer</h1>
+  <p class="sub">O relatório do mês roda, imprime certo — e está errado. Palpite antes de rodar, veja o defeito aparecer, e depois monte a suíte que o pega. Leva uns 10 minutos, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="#u3a1-d1">1 · A ordem que esconde o defeito</a> · <a href="#u3a1-d2">2 · Quantos testes bastam</a> · <a href="../quiz/">as 8 perguntas</a></p>
+
+  <!-- ============ 1. a ordem que esconde o defeito ============ -->
+  <section class="demo" id="u3a1-d1">
+    <h2>1 · A ordem que esconde o defeito</h2>
+    <p class="intro">Escolha a ordem dos aluguéis e palpite o menor que o relatório vai mostrar. Depois rode, aluguel por aluguel.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a1-painel-lista">
+        <h3><span>os aluguéis, na ordem</span><span class="selo" id="u3a1-selo-lista"></span></h3>
+        <div id="u3a1-lista"></div>
+      </div>
+      <div class="painel" id="u3a1-painel-estado">
+        <h3><span>o RelatorioDoMes</span><span class="selo" id="u3a1-selo-estado"></span></h3>
+        <div id="u3a1-estado"></div>
+        <p class="nota-painel">O maior começa em −∞ e o menor em +∞: o primeiro aluguel tem de mudar os dois.</p>
+      </div>
+    </div>
+
+    <p class="intro afastado">A ordem em que os aluguéis chegam:</p>
+    <div class="camadas" id="u3a1-ordem" role="group" aria-label="A ordem dos aluguéis"></div>
+    <p class="intro afastado">Seu palpite: que <strong>menor</strong> o relatório vai mostrar no fim?</p>
+    <div class="camadas" id="u3a1-palpite" role="group" aria-label="Seu palpite"></div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="u3a1-passo">Próximo aluguel</button>
+      <button type="button" class="acao secundaria" id="u3a1-tudo">Rodar até o fim</button>
+      <button type="button" class="acao secundaria" id="u3a1-conserto">Trocar o elif por if</button>
+    </div>
+    <p class="legenda" id="u3a1-legenda"></p>
+
+    <div class="registro">
+      <h3>O que o código fez, linha a linha</h3>
+      <ol class="log" id="u3a1-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. quantos testes bastam ============ -->
+  <section class="demo" id="u3a1-d2">
+    <h2>2 · Quantos testes bastam?</h2>
+    <p class="intro">Seis testes possíveis para o relatório com o <code>elif</code>. Ligue os que você manteria na suíte. O objetivo: a <strong>menor</strong> suíte que ainda pega o defeito.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a1-painel-suite">
+        <h3><span>a sua suíte</span><span class="selo" id="u3a1-selo-suite"></span></h3>
+        <ul class="testes" id="u3a1-suite"></ul>
+      </div>
+      <div class="painel" id="u3a1-painel-classes">
+        <h3><span>as classes que ela cobre</span><span class="selo" id="u3a1-selo-classes"></span></h3>
+        <div id="u3a1-classes"></div>
+      </div>
+    </div>
+
+    <p class="intro afastado">Os seis testes possíveis — clique para ligar ou desligar:</p>
+    <div class="camadas" id="u3a1-candidatos" role="group" aria-label="Os testes da suíte"></div>
+    <p class="legenda" id="u3a1-legenda2"></p>
+
+    <div class="registro">
+      <h3>O pytest, rodando a sua suíte</h3>
+      <ol class="log" id="u3a1-log2"></ol>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>O que ficou</h2>
+    <ul>
+      <li>O defeito existia o tempo todo; ele só virou <strong>falha</strong> com a entrada certa — a lista em ordem crescente, ou com um aluguel só.</li>
+      <li>Rodar e olhar a tela testou uma ordem só. O <code>assert</code> confere sozinho, toda vez que alguém mexe no código.</li>
+      <li>Um teste por <strong>classe</strong>: mais testes da mesma classe não pegam nada novo, e custam para manter.</li>
+    </ul>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 01</a>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

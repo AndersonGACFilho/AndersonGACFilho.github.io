@@ -973,6 +973,10 @@ legend {
 .log .dcl { --quem: var(--esp-arquivo); }
 .log .voce { --quem: var(--accent); }
 .log .campo { --quem: var(--esp-arquivo); }
+/* os da UC3 */
+.log .pytest { --quem: var(--esp-quiz); }
+.log .git { --quem: var(--esp-pagina); }
+.log .codigo { --quem: var(--esp-arquivo); }
 .log .entidade { --quem: var(--esp-quiz); }
 .log .op code {
   display: inline-block;
