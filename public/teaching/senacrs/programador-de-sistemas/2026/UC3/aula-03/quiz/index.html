@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 03 — 8 perguntas · UC3</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 03 da UC3: o ciclo vermelho, verde, refatora; o teste que nunca ficou vermelho; passos pequenos; a fronteira dos 10 empréstimos e o método privado.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 03 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 03</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="../../../UC2/_comum/interativo/autocorrecao.js"></script>
+<script>
+/* Sem crase nas perguntas: o autocorrecao.js escreve o texto como esta, e a
+   crase apareceria literal na tela. O nome do codigo vai sem marcacao. */
+montarExercicios('uc3-aula-03', [
+  {
+    pergunta: 'Você escreveu o teste do jogo repetido antes de mexer no adicionar, rodou, e veio FAILED com DID NOT RAISE ValueError. O que esse vermelho conta?',
+    alternativas: [
+      'Que o teste foi escrito errado e precisa ser apagado',
+      'Que a regra ainda não existe, e que o teste é capaz de perceber isso',
+      'Que o pytest não está instalado direito',
+      'Nada: vermelho antes do código não significa coisa nenhuma'
+    ],
+    certa: 1,
+    porque: 'São duas notícias boas. A primeira todo mundo vê: falta a regra. A segunda é a que importa — o teste sabe ficar vermelho quando a regra falta, então o verde dele, depois, vai querer dizer alguma coisa. Reveja a demonstração 1 com o teste do pytest.raises.'
+  },
+  {
+    pergunta: 'Este teste adiciona "Zelda" duas vezes e confere assert "Zelda" in emprestimo.jogos. Contra o adicionar sem a regra, e depois com ela, ele fica…',
+    alternativas: [
+      'Vermelho sem a regra, verde com ela',
+      'Verde nos dois casos',
+      'Verde sem a regra, vermelho com ela',
+      'Vermelho nos dois casos'
+    ],
+    certa: 2,
+    porque: '"Zelda" in jogos é verdade com um Zelda e com dois, então ele passa sem a regra. Com a regra, o segundo adicionar levanta o erro e o teste quebra. Ele está de cabeça para baixo, e só quem o viu verde na hora errada percebe. Na demonstração 1, escreva o teste com in antes e depois do código.'
+  },
+  {
+    pergunta: 'O teste novo ficou verde na primeira rodada, sem nenhuma linha de código nova. O que você faz?',
+    alternativas: [
+      'Segue para o próximo: verde é o objetivo',
+      'Desconfia: ou a regra já existia, ou o teste não testa. Quebra o código de propósito e vê se ele percebe',
+      'Apaga o teste, porque ele não serviu para nada',
+      'Roda de novo até ficar vermelho'
+    ],
+    certa: 1,
+    porque: 'Verde de primeira é confirmação, não ciclo — anote assim na tabela. Para saber se o teste confere alguma coisa, quebre o código e veja se ele fica vermelho. Na demonstração 2, o teste dos 10 empréstimos nasce verde, e é o único que pega o >= quebrado.'
+  },
+  {
+    pergunta: 'Dois testes vermelhos: o do jogo repetido e o do limite de 3. Qual é o código mais simples para o próximo passo?',
+    alternativas: [
+      'Só o if jogo in self.jogos: raise ValueError(...). O limite fica vermelho até o ciclo dele',
+      'As duas regras de uma vez, já com _ja_tem e _lotado',
+      'Uma classe nova Regras, que valida tudo',
+      'Apagar o teste do limite, para ficar um vermelho só'
+    ],
+    certa: 0,
+    porque: 'Um ciclo por vez: o vermelho do limite está certo de continuar vermelho, porque o limite ainda não existe — é ele que vai pedir o código, no próximo ciclo. Os nomes _ja_tem e _lotado chegam depois, na refatoração, com tudo verde.'
+  },
+  {
+    pergunta: 'Na refatoração, um teste antigo ficou vermelho. Você conserta o teste ou o código?',
+    alternativas: [
+      'O teste: ele ficou desatualizado com o código novo',
+      'Os dois, para garantir',
+      'Nenhum: refatoração sempre quebra alguma coisa',
+      'O código: refatorar não muda o que ele faz, e o teste antigo é a régua'
+    ],
+    certa: 3,
+    porque: 'Se um teste de comportamento ficou vermelho, o comportamento mudou — e isso já não é refatorar. O caminho mais curto é desfazer e refatorar num passo menor. Na demonstração 1, refatore e rode: o verde é a prova, e não a sua leitura do código.'
+  },
+  {
+    pergunta: 'A regra do cliente fiel tem cinco testes na lista. Qual você escreve primeiro?',
+    alternativas: [
+      'O cliente fiel não leva o 5º jogo',
+      'O cliente novo continua levando 3',
+      'O cliente fiel continua barrado no jogo repetido',
+      'Tanto faz: no fim são os mesmos cinco'
+    ],
+    certa: 1,
+    porque: 'Ele fica vermelho por um motivo só — o limite_de_jogos ainda não existe — e pede uma mudança só. O do 5º jogo é o mais interessante, e por isso o reflexo é começar por ele: fica vermelho por três motivos ao mesmo tempo. Na demonstração 2, comece por ele e conte as mudanças.'
+  },
+  {
+    pergunta: 'A regra é “mais de 10 empréstimos leva 4”. Alguém escreveu >= 10 no lugar de > 10. Qual teste percebe?',
+    alternativas: [
+      'O do cliente com 11 empréstimos',
+      'O do cliente novo',
+      'O do cliente fiel que não leva o 5º',
+      'Só o do cliente com exatamente 10 empréstimos'
+    ],
+    certa: 3,
+    porque: 'É a fronteira da Aula 02 de novo: com 0 e com 11, o > e o >= dão o mesmo resultado; só em cima do 10 eles discordam. Na demonstração 2, escreva os cinco e use o botão “Quebrar de propósito”: um único vermelho aparece.'
+  },
+  {
+    pergunta: 'Um colega escreveu assert emprestimo._ja_tem("Zelda"). O que você diria a ele?',
+    alternativas: [
+      'Teste pelo adicionar, que é o que o balcão usa: renomear o _ja_tem quebraria este teste sem nada ter mudado de verdade',
+      'Ótimo: quanto mais métodos testados, melhor',
+      'Não funciona: o Python proíbe chamar método com _ de fora da classe',
+      'Está certo, desde que ele teste também o _lotado'
+    ],
+    certa: 0,
+    porque: 'O _ é convenção, não trava — o Python deixa chamar. O problema é amarrar o teste a um nome interno. Se der vontade de testar o privado sozinho, é sinal de que ele mora no lugar errado, como o limite que foi morar no Cliente.'
+  }
+]);
+</script>
+</body>
+</html>

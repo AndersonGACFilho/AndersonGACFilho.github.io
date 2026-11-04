@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 04 — veja acontecer · UC3</title>
+<meta name="description" content="Montar o for do CobradorDeAtrasos e ver o que o WhatsApp caindo no primeiro cliente faz com a cobrança e com o banco; depois procurar o dia da semana em que os dois testes ficam verdes, e passar o relógio pelo construtor.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 04 — veja acontecer</h1>
+  <p class="sub">O WhatsApp cai no meio da cobrança, e o teste roda num sábado. Monte o código, palpite antes de rodar, e veja o que o dublê deixa conferir. Leva uns 12 minutos, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="#u3a4-d1">1 · O WhatsApp caiu no primeiro cliente</a> · <a href="#u3a4-d2">2 · O teste que só passa no fim de semana</a> · <a href="../quiz/">as 8 perguntas</a></p>
+
+  <!-- ============ 1. o WhatsApp caiu no primeiro cliente ============ -->
+  <section class="demo" id="u3a4-d1">
+    <h2>1 · O WhatsApp caiu no primeiro cliente</h2>
+    <p class="intro">Terça, 10/11/2026. A Ana e o Bruno passaram do prazo. O dublê do WhatsApp estoura na primeira chamada e funciona na segunda. Monte o <code>for</code> do <code>cobrar()</code>, palpite, e rode.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a4-painel-zap">
+        <h3><span>o WhatsApp (dublê)</span><span class="selo">1ª chamada: erro</span></h3>
+        <div id="u3a4-zap"></div>
+      </div>
+      <div class="painel" id="u3a4-painel-banco">
+        <h3><span>o banco (dublê)</span><span class="selo" id="u3a4-selo-banco"></span></h3>
+        <div id="u3a4-banco"></div>
+      </div>
+    </div>
+    <div class="palco afastado">
+      <div class="painel" id="u3a4-painel-testes">
+        <h3><span>o cobrador e o pytest</span><span class="selo" id="u3a4-selo-testes"></span></h3>
+        <div id="u3a4-cobrador"></div>
+        <ul class="testes" id="u3a4-testes"></ul>
+      </div>
+    </div>
+
+    <p class="intro afastado">Dentro do <code>for</code>, o que vem primeiro?</p>
+    <div class="camadas" id="u3a4-ordem" role="group" aria-label="A ordem das linhas"></div>
+    <p class="intro afastado">E quando o <code>avisa()</code> estoura?</p>
+    <div class="camadas" id="u3a4-try" role="group" aria-label="O tratamento da falha"></div>
+    <pre class="consulta"><code id="u3a4-codigo"></code></pre>
+    <p class="intro afastado">Seu palpite: com este <code>for</code>, o Bruno recebe a mensagem?</p>
+    <div class="camadas" id="u3a4-palpite" role="group" aria-label="Seu palpite"></div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="u3a4-rodar">Rodar o cobrar()</button>
+    </div>
+    <p class="legenda" id="u3a4-legenda" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O que o cobrar() fez, chamada a chamada</h3>
+      <ol class="log" id="u3a4-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. o teste que só passa no fim de semana ============ -->
+  <section class="demo" id="u3a4-d2">
+    <h2>2 · O teste que só passa no fim de semana</h2>
+    <p class="intro">Dois testes do cobrador, com <code>date.today()</code> dentro do <code>cobrar()</code>. O empréstimo venceu em 01/11/2026. Troque o dia da semana e rode os dois.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a4-painel-hoje">
+        <h3><span>os dois testes, rodando hoje</span><span class="selo" id="u3a4-selo-hoje"></span></h3>
+        <pre class="consulta"><code id="u3a4-data-codigo"></code></pre>
+        <ul class="testes" id="u3a4-testes-hoje"></ul>
+      </div>
+      <div class="painel" id="u3a4-painel-semana">
+        <h3><span>a semana</span><span class="selo" id="u3a4-selo-semana"></span></h3>
+        <div id="u3a4-semana"></div>
+        <p class="nota-painel">Em cada dia, o teste do aviso e o do fim de semana. Dia verde é o que deixa os dois passarem.</p>
+      </div>
+    </div>
+
+    <p class="intro afastado">Seu palpite, antes de trocar o dia: existe um dia em que os <strong>dois</strong> ficam verdes?</p>
+    <div class="camadas" id="u3a4-palpite2" role="group" aria-label="Seu palpite"></div>
+    <p class="intro afastado">Hoje é…</p>
+    <div class="camadas" id="u3a4-dias" role="group" aria-label="O dia em que o teste roda"></div>
+
+    <div class="controles">
+      <button type="button" class="acao secundaria" id="u3a4-relogio">Passar o relógio pelo construtor</button>
+    </div>
+    <p class="legenda" id="u3a4-legenda2" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O que cada teste viu, hoje</h3>
+      <ol class="log" id="u3a4-log2"></ol>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>O que ficou</h2>
+    <ul>
+      <li>O dublê entra pelo construtor, e com ele o teste escolhe o mundo: o WhatsApp que cai na primeira chamada, o banco que só anota, o dia da semana.</li>
+      <li>O <code>side_effect</code> mostrou duas coisas que nenhum teste com o WhatsApp de verdade mostraria: a cobrança parando inteira, e o banco dizendo "avisado" de quem não recebeu nada.</li>
+      <li>Teste que muda de resultado sem o código mudar mede o calendário, não o código. A data também é uma dependência.</li>
+    </ul>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 04</a>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

@@ -11,7 +11,8 @@
  */
 (function (K) {
   'use strict';
-  var $ = K.$, el = K.el, linha = K.linha, novoLog = K.novoLog, escolhas = K.escolhas, palpite = K.palpite;
+  var $ = K.$, el = K.el, linha = K.linha, novoLog = K.novoLog, escolhas = K.escolhas, palpite = K.palpite,
+    alternancias = K.alternancias, itemTeste = K.itemTeste;
 
   var real = function (v) {
     if (v === Infinity) return '+∞';
@@ -37,6 +38,8 @@
       { id: 'menor', nome: 'o menor valor da lista' },
       { id: 'inf', nome: '+∞, infinito' },
     ], function (op) {
+      // depois do fim nao ha o que rodar: o palpite nunca seria conferido
+      if (i === ordem.valores.length) return false;
       aposta = op;
       $('u3a1-legenda').textContent = 'Palpite registrado. Agora rode: "Próximo aluguel", ou tudo de uma vez.';
     });
@@ -59,7 +62,8 @@
       });
       $('u3a1-selo-lista').textContent = i + ' de ' + ordem.valores.length + ' lidos';
       est.appendChild(linha('maior', real(maior)));
-      est.appendChild(linha('menor', real(menor), menor === Infinity && i === ordem.valores.length ? 'sumiu' : ''));
+      // vermelho sem risco: o +inf e o valor que o relatorio de fato mostra
+      est.appendChild(linha('menor', real(menor), menor === Infinity && i === ordem.valores.length ? 'velha' : ''));
       $('u3a1-selo-estado').textContent = consertado ? 'com dois if' : 'com elif';
 
       var fim = i === ordem.valores.length;
@@ -98,8 +102,8 @@
       var frase = menor === Infinity
         ? 'O menor ficou em +∞: nenhum aluguel entrou no elif. O defeito virou falha com esta entrada.'
         : 'O menor saiu ' + real(certo) + ', certo — com esta entrada o defeito não aparece, mesmo existindo.';
-      if (aposta) frase = (aposta.id === saiu ? 'Seu palpite bateu. ' : 'Seu palpite não bateu. ') + frase;
       if (consertado) frase = 'Com dois if, cada aluguel é perguntado as duas vezes: o menor sai ' + real(certo) + ' em qualquer ordem.';
+      if (aposta) frase = (aposta.id === saiu ? 'Seu palpite bateu. ' : 'Seu palpite não bateu. ') + frase;
       $('u3a1-legenda').textContent = frase;
     }
 
@@ -155,12 +159,8 @@
         var passou = obtido === esperado;
         if (!passou) pega = true;
         porClasse[t.classe] = (porClasse[t.classe] || 0) + 1;
-        var li = el('li', 'teste ' + (passou ? 'passou' : 'falhou'));
-        li.style.setProperty('--atraso', (k * 0.05) + 's');
-        li.appendChild(el('span', 'sinal', passou ? '✓' : '✕'));
-        li.appendChild(el('span', 'pergunta-teste', t.nome));
-        li.appendChild(el('span', 'resposta', t.classe + ' · ' + (passou ? 'passou' : 'esperava ' + esperado + ', veio ' + real(obtido))));
-        lista.appendChild(li);
+        lista.appendChild(itemTeste(t.nome, passou,
+          t.classe + ' · ' + (passou ? 'passou' : 'esperava ' + esperado + ', veio ' + real(obtido)), k));
         entradas.push({ ator: 'pytest', texto: 'assert menor == ' + esperado, sql: true,
           resultado: passou ? 'passou' : 'FALHOU' });
       });
@@ -176,7 +176,7 @@
 
       var redundantes = CLASSES.reduce(function (s, c) { return s + Math.max(0, (porClasse[c] || 0) - 1); }, 0);
       var cobertas = CLASSES.filter(function (c) { return porClasse[c]; }).length;
-      $('u3a1-selo-suite').textContent = escolhidos.length + ' testes';
+      $('u3a1-selo-suite').textContent = escolhidos.length === 1 ? '1 teste' : escolhidos.length + ' testes';
       $('u3a1-selo-classes').textContent = cobertas + ' de 4 classes';
       $('u3a1-painel-suite').classList.toggle('bom', pega);
       $('u3a1-painel-suite').classList.toggle('ruim', escolhidos.length > 0 && !pega);
@@ -184,36 +184,23 @@
       var frase;
       if (!escolhidos.length) frase = 'Ligue pelo menos um teste.';
       else if (!pega) frase = 'Tudo verde — e o defeito continua lá. Nenhum teste ligado é da classe que faz o elif falhar.';
-      else if (redundantes) frase = 'Pegou o defeito. Mas ' + redundantes + ' teste(s) repetem uma classe já coberta: dá para tirar sem perder nada.';
-      else if (cobertas < 4) frase = 'Pegou o defeito, sem repetição. Falta cobrir ' + (4 - cobertas) + ' classe(s): o próximo defeito pode morar nelas.';
+      else if (redundantes) frase = 'Pegou o defeito. Mas ' + (redundantes === 1 ? '1 teste repete' : redundantes + ' testes repetem') + ' uma classe já coberta: dá para tirar sem perder nada.';
+      else if (cobertas < 4) frase = 'Pegou o defeito, sem repetição. ' + (cobertas === 3 ? 'Falta cobrir 1 classe' : 'Faltam cobrir ' + (4 - cobertas) + ' classes') + ': o próximo defeito pode morar nelas.';
       else frase = 'Quatro testes, quatro classes, o defeito pego. É a suíte do slide: um por classe, nenhum sobrando.';
       $('u3a1-legenda2').textContent = frase;
       log.escrever(entradas, 'Nenhum teste rodou.');
     }
 
-    // Botoes de liga-desliga: varios acesos ao mesmo tempo, por isso nao e o
-    // escolhas() do kit, que acende um so.
-    var caixa = $('u3a1-candidatos');
-    TESTES.forEach(function (t) {
-      var b = el('button', 'camada-btn');
-      b.type = 'button';
-      b.style.setProperty('--cor', 'var(--accent)');
-      b.setAttribute('aria-pressed', 'false');
-      b.appendChild(el('span', 'ponto'));
-      b.appendChild(el('span', null, 'teste ' + t.nome));
-      b.addEventListener('click', function () {
-        ligados[t.id] = !ligados[t.id];
-        b.setAttribute('aria-pressed', ligados[t.id] ? 'true' : 'false');
-        desenhar();
-      });
-      caixa.appendChild(b);
+    var acender = alternancias('u3a1-candidatos', TESTES, function (t) { return 'teste ' + t.nome; }, function (t) {
+      ligados[t.id] = !ligados[t.id];
+      acender(ligado);
+      desenhar();
     });
+    function ligado(t) { return !!ligados[t.id]; }
     // Abre com a suite "do jeito que todo mundo faz": dois testes crescentes e
     // um decrescente — o painel nao nasce vazio, e ja mostra a repeticao.
     ['t1', 't2', 't3'].forEach(function (id) { ligados[id] = true; });
-    [].forEach.call(caixa.children, function (b, k) {
-      if (ligados[TESTES[k].id]) b.setAttribute('aria-pressed', 'true');
-    });
+    acender(ligado);
     desenhar();
   })();
 })(window.DemoKit);

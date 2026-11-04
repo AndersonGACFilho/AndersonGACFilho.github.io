@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 07 — 8 perguntas · UC3</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 07 da UC3: o que a pasta copiada não guarda, Git distribuído, configurar e gravar, achar o commit que quebrou, revert e restore, e a senha que fica no histórico.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit é um só para o curso e mora na UC2: as UCs são pastas irmãs no site
+     e no disco, e uma cópia por UC derivaria na primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 07 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 07</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="../../../UC2/_comum/interativo/autocorrecao.js"></script>
+<script>
+// A chave leva a UC: a UC2 tambem tem 'aula-07', e as respostas guardadas
+// de uma apareceriam na outra.
+// Sem crase nos textos: o autocorrecao.js nao formata codigo, e a crase
+// apareceria literal na tela.
+montarExercicios('uc3-aula-07', [
+  {
+    pergunta: 'O Git registra sozinho o que mudou, quando e quem mudou. E o porquê?',
+    alternativas: [
+      'Também, pelo diff',
+      'Só se a mensagem do commit disser — essa parte é do grupo',
+      'Pela data do commit',
+      'O GitHub preenche depois'
+    ],
+    certa: 1,
+    porque: 'O diff mostra o que mudou, nunca a razão. "ajustes" grava uma versão sem explicar nada; "Multa passa a cobrar a partir do 3o dia" explica. Daqui a um mês, é a mensagem que vocês vão ler procurando o commit que quebrou.'
+  },
+  {
+    pergunta: 'A internet do laboratório caiu. Dá para gravar versão com o Git?',
+    alternativas: [
+      'Não: o histórico fica no GitHub',
+      'Só se o repositório for privado',
+      'Dá: o histórico inteiro está na máquina; só o push precisa de internet',
+      'Dá, mas o commit se perde se não subir em uma hora'
+    ],
+    certa: 2,
+    porque: 'O Git é distribuído: cada cópia tem o histórico inteiro. O GitHub não é o Git — é mais uma cópia, num servidor que o grupo inteiro alcança. Por isso também o notebook queimado não leva o histórico junto, se ele já subiu.'
+  },
+  {
+    pergunta: 'Por que, no laboratório, o git config user.name vai sem o --global da UC1?',
+    alternativas: [
+      'Porque a máquina é de todos: com --global, os commits de quem sentar ali amanhã saem com o seu nome',
+      'Porque o --global só funciona no Linux',
+      'Porque sem --global o commit é mais rápido',
+      'Porque o VS Code não lê o --global'
+    ],
+    certa: 0,
+    porque: 'O --global vale para o usuário da máquina inteira, e no laboratório esse usuário é compartilhado. Sem ele, o nome fica só no repositório desta pasta. Confira com git config user.name dentro da pasta: pode estar lá o nome de quem sentou antes.'
+  },
+  {
+    pergunta: 'O commit "Desconto de metade da multa para cliente fiel" quebrou o teste do 3º dia. Por que a mensagem não ajudou a achar?',
+    alternativas: [
+      'Porque estava sem acento',
+      'Porque era curta demais',
+      'Porque o commit era do Bruno',
+      'Porque ela fala do desconto e não diz que a condição mudou de >= para >'
+    ],
+    certa: 3,
+    porque: 'A mensagem era razoável e escondeu o efeito colateral. Uma honesta teria denunciado o defeito: "a multa passa a valer só a partir do 4o dia". Na demonstração 1, palpite pelas mensagens e veja quantos dos seis commits parecem suspeitos.'
+  },
+  {
+    pergunta: 'O que o git log -p multa.py mostra?',
+    alternativas: [
+      'Só os commits que mexeram no multa.py, cada um com as linhas que mudaram',
+      'Todos os commits do repositório, com o multa.py inteiro em cada um',
+      'O multa.py como está agora',
+      'Quem abriu o multa.py por último'
+    ],
+    certa: 0,
+    porque: 'No locadora-historico são dois: o que criou o arquivo com >=, e o do desconto, que trocou para >. Em vez de abrir seis versões, você lê duas. Volte à demonstração 1 e aponte a linha no diff.'
+  },
+  {
+    pergunta: 'Depois do git revert do commit do desconto, quantos commits tem o locadora-historico?',
+    alternativas: [
+      'Cinco: o commit do desconto some',
+      'Seis: o revert troca o commit errado pelo certo',
+      'Sete: o do desconto continua lá, e um novo o desfaz',
+      'Depende de ter feito push'
+    ],
+    certa: 2,
+    porque: 'O revert desfaz com um commit novo, e o errado fica no histórico de propósito: ele explica o que aconteceu. O restore traz só o arquivo e pede um commit depois. E repare: o revert levou o desconto junto — o conserto honesto, aqui, é trocar o > por >=.'
+  },
+  {
+    pergunta: 'Um colega commitou a senha num repositório público e, no commit seguinte, apagou o arquivo. O que ele precisa fazer agora?',
+    alternativas: [
+      'Nada: o arquivo já foi apagado',
+      'Apagar o repositório no GitHub e publicar de novo',
+      'Pôr o arquivo no .gitignore',
+      'Trocar a senha — a que entrou no commit público está vazada'
+    ],
+    certa: 3,
+    porque: 'O commit que pôs a senha continua no histórico, e qualquer pessoa clona e roda git log -p -S "SENHA". Publicar de novo sobe o mesmo histórico; o .gitignore protege só o próximo. Na demonstração 2, tente as três e veja qual faz a senha velha parar de abrir o banco.'
+  },
+  {
+    pergunta: 'Por que o config_local.exemplo.py vai para o repositório, e o config_local.py não?',
+    alternativas: [
+      'O exemplo diz a quem clona que arquivo criar, sem a senha de ninguém; o real tem a senha desta máquina',
+      'Porque o exemplo é menor',
+      'Porque o .gitignore só aceita um arquivo por nome',
+      'Os dois podem ir, se o repositório for privado'
+    ],
+    certa: 0,
+    porque: 'Sem o exemplo, quem clona não sabe que arquivo falta, e a suíte não roda. Com o real, a senha vaza. E a ordem importa: o .gitignore entra antes do primeiro commit, senão a senha já está no histórico.'
+  }
+]);
+</script>
+</body>
+</html>

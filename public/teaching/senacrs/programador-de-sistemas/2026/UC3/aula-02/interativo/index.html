@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 02 — veja acontecer · UC3</title>
+<meta name="description" content="Escolher só três testes para a multa e ver o defeito morar no único dia que ninguém testou; depois rodar a suíte inteira e ver o teste de ontem pegar a regressão, enquanto o assert do tamanho deixa passar os três menores.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 02 — veja acontecer</h1>
+  <p class="sub">Dois jeitos de a suíte ficar verde com o código errado. Escolha os testes, palpite antes de rodar, e veja onde o defeito estava escondido. Leva uns 10 minutos, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="#u3a2-d1">1 · Três testes, só três</a> · <a href="#u3a2-d2">2 · O teste novo passou. E os antigos?</a> · <a href="../quiz/">as 8 perguntas</a></p>
+
+  <!-- ============ 1. tres testes, so tres ============ -->
+  <section class="demo" id="u3a2-d1">
+    <h2>1 · Três testes, só três</h2>
+    <p class="intro">O dono: “atrasou até 2 dias, eu perdoo; a partir do 3º dia, cobro R$ 5,00 por dia de atraso”. Você só pode escrever três testes para a <code>multa</code>. Escolha os dias.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a2-painel-suite">
+        <h3><span>a sua suíte</span><span class="selo" id="u3a2-selo-suite"></span></h3>
+        <ul class="testes" id="u3a2-suite"></ul>
+      </div>
+      <div class="painel" id="u3a2-painel-regua">
+        <h3><span>dia a dia: o dono e o código</span><span class="selo" id="u3a2-selo-regua"></span></h3>
+        <div id="u3a2-regua"></div>
+        <p class="nota-painel" id="u3a2-nota-codigo"></p>
+      </div>
+    </div>
+
+    <p class="intro afastado">Os dias que você testa — clique para ligar ou desligar, no máximo três:</p>
+    <div class="camadas" id="u3a2-dias" role="group" aria-label="Os dias de atraso testados"></div>
+    <p class="intro afastado">Seu palpite: rodando esses três testes, o pytest…</p>
+    <div class="camadas" id="u3a2-palpite" role="group" aria-label="Seu palpite"></div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="u3a2-rodar">Rodar o pytest</button>
+      <button type="button" class="acao secundaria" id="u3a2-conserto">Trocar o &gt; por &gt;=</button>
+    </div>
+    <p class="legenda" id="u3a2-legenda" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O que o código fez em cada teste</h3>
+      <ol class="log" id="u3a2-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. o teste novo passou. e os antigos? ============ -->
+  <section class="demo" id="u3a2-d2">
+    <h2>2 · O teste novo passou. E os antigos?</h2>
+    <p class="intro">O dono quer ver os três aluguéis mais caros do mês. Escolha a versão do código e o <code>assert</code> do teste novo, palpite, e rode a suíte <strong>inteira</strong> — os quatro testes de ontem continuam no arquivo.</p>
+
+    <div class="palco">
+      <div class="painel" id="u3a2-painel-codigo">
+        <h3><span>o avaliar, nesta versão</span><span class="selo" id="u3a2-selo-codigo"></span></h3>
+        <pre class="consulta"><code id="u3a2-codigo"></code></pre>
+        <div class="afastado" id="u3a2-saidas"></div>
+      </div>
+      <div class="painel" id="u3a2-painel-suite2">
+        <h3><span>a suíte inteira, test_relatorio.py</span><span class="selo" id="u3a2-selo-suite2"></span></h3>
+        <ul class="testes" id="u3a2-suite2"></ul>
+      </div>
+    </div>
+
+    <p class="intro afastado">A versão do código:</p>
+    <div class="camadas" id="u3a2-versao" role="group" aria-label="A versão do código"></div>
+    <p class="intro afastado">O <code>assert</code> que você escreve no teste novo:</p>
+    <div class="camadas" id="u3a2-assert" role="group" aria-label="O assert do teste novo"></div>
+    <p class="intro afastado">Seu palpite: rodando a suíte inteira…</p>
+    <div class="camadas" id="u3a2-palpite2" role="group" aria-label="Seu palpite"></div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="u3a2-rodar2">Rodar a suíte inteira</button>
+    </div>
+    <p class="legenda" id="u3a2-legenda2" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O pytest, rodando a suíte</h3>
+      <ol class="log" id="u3a2-log2"></ol>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>O que ficou</h2>
+    <ul>
+      <li>O defeito da multa mora num dia só, o da <strong>fronteira</strong>. Teste longe dela fica verde com <code>&gt;</code> e com <code>&gt;=</code>: ele não sabe a diferença. Por isso três testes — antes, em cima e depois.</li>
+      <li>Verde quer dizer que o <code>assert</code> foi atendido, não que o código está certo. Conferir o tamanho deixou passar os três <strong>menores</strong>; confira o conteúdo, e na ordem.</li>
+      <li>Quem pegou a <strong>regressão</strong> foi um teste de ontem, que ninguém mexeu. Por isso a suíte inteira roda a cada mudança, e não só o teste novo.</li>
+    </ul>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 02</a>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

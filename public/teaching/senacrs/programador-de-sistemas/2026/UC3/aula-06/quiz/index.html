@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 06 — 8 perguntas · UC3</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 06 da UC3: níveis e tipos de teste, quantos de cada, teste exploratório, plano e caso de teste, registro e relatório de defeito.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit é um só para o curso e mora na UC2: as UCs são pastas irmãs no site
+     e no disco, e uma cópia por UC derivaria na primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 06 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 06</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="../../../UC2/_comum/interativo/autocorrecao.js"></script>
+<script>
+// A chave leva a UC: a UC2 tambem tem 'aula-06', e as respostas guardadas
+// de uma apareceriam na outra.
+// Sem crase nos textos: o autocorrecao.js nao formata codigo, e a crase
+// apareceria literal na tela.
+montarExercicios('uc3-aula-06', [
+  {
+    pergunta: 'Um teste abre o sistema, cadastra um cliente pela tela e confere que ele aparece na lista — com o banco de verdade por trás. Em que nível ele está?',
+    alternativas: [
+      'Integração, porque tem banco no meio',
+      'Unidade, porque testa uma regra só',
+      'Sistema, porque entra pela tela, como o usuário usa',
+      'Unidade com dublê'
+    ],
+    certa: 2,
+    porque: 'O que decide o nível é por onde o teste entra, não o que há no caminho. Integração é o código conversando com o banco sem tela, como o criar_jogo da Aula 05. Na demonstração 1, os testes 4 e 6 são exatamente esta armadilha.'
+  },
+  {
+    pergunta: 'Por que a suíte deve ter poucos testes de sistema, e não um para cada regra?',
+    alternativas: [
+      'Porque são lentos e quebram quando a tela muda, mesmo sem defeito nenhum',
+      'Porque não acham defeito de verdade',
+      'Porque o pytest não roda teste de sistema',
+      'Porque teste de sistema é só para o fim do projeto'
+    ],
+    certa: 0,
+    porque: 'Eles acham defeito, sim — é por isso que existem. O custo é o tempo e a fragilidade: na demonstração 1, dois testes de sistema somaram 50 s de uma rodada de 50,2 s, e ficaram vermelhos só porque o menu mudou. Muitos de unidade, poucos de sistema, só no que não pode falhar.'
+  },
+  {
+    pergunta: 'O dono pergunta: "e se alguém digitar uma aspa no nome do cliente?". Que tipo de teste responde?',
+    alternativas: [
+      'Carga',
+      'Usabilidade',
+      'Unidade com dublê',
+      'Segurança'
+    ],
+    certa: 3,
+    porque: 'É a pergunta "dá para fazer o sistema obedecer quem não devia?". Uma aspa no lugar certo vira comando SQL — é o que o %s com tupla da Aula 15 da UC2 impede. Carga é muita gente ao mesmo tempo; usabilidade é a atendente nova achar o botão sozinha.'
+  },
+  {
+    pergunta: 'Com a suíte toda automatizada, ainda sobra trabalho para uma pessoa testando à mão?',
+    alternativas: [
+      'Não: automatizado substitui o manual',
+      'Sim: o teste exploratório, em que alguém tenta quebrar o sistema sem roteiro',
+      'Sim, mas só para conferir se os testes automatizados passaram',
+      'Só se a internet cair'
+    ],
+    certa: 1,
+    porque: 'A máquina repete melhor e mais barato; a pessoa pensa no que ninguém previu — campo vazio, data no passado, o mesmo jogo duas vezes. Foi o que vocês fizeram no notebook do professor no Bloco 3.'
+  },
+  {
+    pergunta: 'Um colega preencheu o caso de teste assim: "resultado esperado: o que a função multa devolver". Qual é o problema?',
+    alternativas: [
+      'Nenhum, desde que ele rode o teste antes',
+      'Falta o valor em reais',
+      'Se o esperado sai do código, o caso concorda com o defeito e fica verde',
+      'O esperado deveria ser escrito depois de rodar'
+    ],
+    certa: 2,
+    porque: 'O esperado sai da regra — o que o dono disse: a partir do 3º dia, R$ 5,00 por dia. Com o > da Aula 02, multa(3) devolve 0,00, e quem copiou do código escreveu 0,00. Na demonstração 2, escolha esse esperado e veja o Bruno fechar o relatório sem consertar nada.'
+  },
+  {
+    pergunta: 'O CT-09, da tela de devolução, não foi executado. O que vai no registro?',
+    alternativas: [
+      '"Não executado", escrito, com a linha mantida no registro',
+      'Nada: tira a linha, para o resumo não ficar feio',
+      '"Passou", porque não falhou',
+      'Nada, até alguém rodar: só se registra o que tem resultado'
+    ],
+    certa: 0,
+    porque: 'Registro que esconde o que ficou de fora mente para quem lê: o dono acha que a devolução foi testada. E "falhou" também se registra sem vergonha — é o teste fazendo o trabalho dele.'
+  },
+  {
+    pergunta: 'Qual é a pergunta que decide se um relatório de defeito está bom?',
+    alternativas: [
+      'Ele tem todos os campos preenchidos?',
+      'Alguém que nunca viu o sistema consegue fazer o defeito aparecer só com o que está escrito?',
+      'O título está em maiúsculas, para chamar atenção?',
+      'Ele já diz como consertar?'
+    ],
+    certa: 1,
+    porque: 'Campo preenchido com "deu errado" continua sem servir. E o conserto não substitui os passos: vai na ação corretiva, depois que alguém viu o defeito acontecer. Na demonstração 2, troque um campo por vez e veja em qual o Bruno trava.'
+  },
+  {
+    pergunta: 'O titlo no lugar de titulo se conserta em segundos. Então a severidade do defeito é baixa?',
+    alternativas: [
+      'Sim: severidade mede o trabalho de consertar',
+      'Depende de quem vai consertar',
+      'Sim, porque é um erro de digitação',
+      'Não: severidade é o estrago para quem usa, e a busca do balcão não acha jogo nenhum'
+    ],
+    certa: 3,
+    porque: 'Facilidade de conserto é outra coisa. Um caractere errado que derruba a busca inteira é alta; um texto torto num canto que ninguém lê é baixa, por mais trabalhoso que seja arrumar. Na demonstração 2, a severidade "baixa: conserta trocando um caractere" deixa a multa do balcão para sexta-feira.'
+  }
+]);
+</script>
+</body>
+</html>

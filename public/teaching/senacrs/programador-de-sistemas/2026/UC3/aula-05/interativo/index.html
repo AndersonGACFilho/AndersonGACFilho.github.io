@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 05 — veja acontecer · UC3</title>
+<meta name="description" content="Rodar a busca pelo título contra um cursor falso e contra o banco de teste, e escrever a coluna do WHERE até o banco aceitar; depois montar a fixture e rodar a suíte do CRUD duas vezes seguidas, com rollback e com TRUNCATE.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 05 — veja acontecer</h1>
+  <p class="sub">Um teste verde com o SQL errado, e uma suíte que só passa na primeira vez. Palpite antes de rodar, escreva o SQL, monte a fixture e rode duas vezes. Leva uns 12 minutos, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="#u3a5-d1">1 · O dublê não lê o SQL</a> · <a href="#u3a5-d2">2 · A segunda rodada</a> · <a href="../quiz/">as 8 perguntas</a></p>
+
+  <!-- ============ 1. o dublê não lê o SQL ============ -->
+  <section class="demo" id="u3a5-d1">
+    <h2>1 · O dublê não lê o SQL</h2>
+    <p class="intro">O balcão pediu a busca pelo título. Dois testes para a mesma função: um com o cursor falso da aula passada, outro no banco <code>locadora_teste</code>.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a5-painel-dubl">
+        <h3><span>com cursor falso</span><span class="selo" id="u3a5-selo-dubl"></span></h3>
+        <div id="u3a5-dubl"></div>
+        <ul class="testes" id="u3a5-teste-dubl"></ul>
+      </div>
+      <div class="painel" id="u3a5-painel-banco">
+        <h3><span>no banco de teste</span><span class="selo" id="u3a5-selo-banco"></span></h3>
+        <div id="u3a5-banco"></div>
+        <ul class="testes" id="u3a5-teste-banco"></ul>
+      </div>
+    </div>
+
+    <p class="intro afastado">A busca, no <code>buscar_por_titulo</code>:</p>
+    <pre class="consulta"><code id="u3a5-sql"></code></pre>
+    <p class="intro afastado">Seu palpite: com este SQL, o teste com cursor falso fica…</p>
+    <div class="camadas" id="u3a5-palpite" role="group" aria-label="Seu palpite"></div>
+
+    <div class="controles">
+      <label for="u3a5-coluna">A coluna do <code>WHERE</code>:</label>
+      <input class="busca" id="u3a5-coluna" type="text" value="titlo" spellcheck="false" autocomplete="off" autocapitalize="off">
+      <button type="button" class="acao" id="u3a5-rodar">Rodar os dois testes</button>
+    </div>
+    <p class="legenda" id="u3a5-legenda" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O que cada teste fez com o SQL</h3>
+      <ol class="log" id="u3a5-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. a segunda rodada ============ -->
+  <section class="demo" id="u3a5-d2">
+    <h2>2 · A segunda rodada</h2>
+    <p class="intro">Os nove testes de integração do <code>crud_jogo.py</code>, já com o <code>titlo</code> e o vínculo consertados. Todas as funções do CRUD dão <code>commit()</code>. Monte a fixture e rode a suíte duas vezes seguidas.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a5-painel-tabela">
+        <h3><span id="u3a5-nome-tabela">a tabela jogo</span><span class="selo" id="u3a5-selo-tabela"></span></h3>
+        <div id="u3a5-tabela"></div>
+      </div>
+      <div class="painel" id="u3a5-painel-rodadas">
+        <h3><span>rodada a rodada</span><span class="selo" id="u3a5-selo-rodadas"></span></h3>
+        <div id="u3a5-rodadas"></div>
+      </div>
+    </div>
+    <div class="palco afastado">
+      <div class="painel" id="u3a5-painel-suite">
+        <h3><span id="u3a5-nome-suite">a suíte</span><span class="selo" id="u3a5-selo-suite"></span></h3>
+        <ul class="testes" id="u3a5-suite"></ul>
+      </div>
+    </div>
+
+    <p class="intro afastado">Em que banco a fixture conecta?</p>
+    <div class="camadas" id="u3a5-banco-escolha" role="group" aria-label="O banco da fixture"></div>
+    <p class="intro afastado">E como ela limpa?</p>
+    <div class="camadas" id="u3a5-limpeza" role="group" aria-label="A limpeza da fixture"></div>
+    <pre class="consulta"><code id="u3a5-fixture"></code></pre>
+    <p class="intro afastado">Seu palpite: com esta fixture, a 2ª rodada dá o mesmo resultado da 1ª?</p>
+    <div class="camadas" id="u3a5-palpite2" role="group" aria-label="Seu palpite"></div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="u3a5-rodar2">Rodar a suíte</button>
+      <button type="button" class="acao secundaria" id="u3a5-recriar">Recriar o banco</button>
+    </div>
+    <p class="legenda" id="u3a5-legenda2" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O que a fixture e o CRUD fizeram no banco</h3>
+      <ol class="log" id="u3a5-log2"></ol>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>O que ficou</h2>
+    <ul>
+      <li>O dublê devolve o que o teste mandou, para qualquer SQL. Função cujo trabalho inteiro é falar com o banco só se prova falando com ele: teste de integração.</li>
+      <li>O <code>rollback</code> não desfaz o que o CRUD já gravou com <code>commit()</code>. Limpe <strong>antes</strong>, com <code>TRUNCATE</code>, e cada teste começa do zero.</li>
+      <li>A fixture certa no banco errado apaga os dados de vocês, e fica verde. Banco de teste, sempre — e a suíte rodada duas vezes seguidas antes de entregar.</li>
+    </ul>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 05</a>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

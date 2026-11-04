@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 08 — veja acontecer · UC3</title>
+<meta name="description" content="Palpitar o que o Git faz quando duas branches mudam a mesma linha, resolver o conflito do reajuste da multa e ver quem decide; depois numerar as versões da locadora a partir da v1.0.0.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 08 — veja acontecer</h1>
+  <p class="sub">O dono pediu à Ana uma multa de R$ 6,00 e ao Bruno uma de R$ 5,50. Palpite o que o Git faz com as duas, resolva o conflito, e depois numere as versões que o balcão recebe. Leva uns 12 minutos, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="#u3a8-d1">1 · Quem escolhe o valor da multa</a> · <a href="#u3a8-d2">2 · Que número tem a próxima versão</a> · <a href="../quiz/">as 8 perguntas</a></p>
+
+  <!-- ============ 1. quem escolhe o valor da multa ============ -->
+  <section class="demo" id="u3a8-d1">
+    <h2>1 · Quem escolhe o valor da multa?</h2>
+    <p class="intro">A Ana e o Bruno já fizeram o commit, cada um na sua branch. Faça os dois merges na <code>main</code> — e palpite antes do segundo.</p>
+
+    <div class="palco">
+      <div class="painel" id="u3a8-painel-ramos">
+        <h3><span>o que cada branch mudou</span><span class="selo" id="u3a8-selo-ramos"></span></h3>
+        <div id="u3a8-ramos"></div>
+      </div>
+      <div class="painel" id="u3a8-painel-main">
+        <h3><span>o multa.py na main</span><span class="selo" id="u3a8-selo-main"></span></h3>
+        <div id="u3a8-main"></div>
+      </div>
+    </div>
+
+    <p class="intro afastado">As duas mudanças:</p>
+    <div class="camadas" id="u3a8-caso" role="group" aria-label="Que mudanças as duas branches fazem"></div>
+    <p class="intro afastado" id="u3a8-pergunta"></p>
+    <div class="camadas" id="u3a8-palpite" role="group" aria-label="Seu palpite"></div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="u3a8-merge">Merge</button>
+      <button type="button" class="acao secundaria" id="u3a8-recomecar">Recomeçar</button>
+    </div>
+
+    <!-- So aparece com o conflito na tela: antes dele nao ha o que resolver, e
+         tres botoes mortos no meio da pagina so confundem. Fica antes da
+         legenda para a frase sobre a resolucao sair logo abaixo do botao
+         que a pessoa apertou. -->
+    <div id="u3a8-resolver-area" hidden>
+      <p class="intro afastado">O VS Code oferece três botões. Escolha um — ou pergunte antes a quem sabe:</p>
+      <div class="camadas" id="u3a8-resolver" role="group" aria-label="Como resolver o conflito"></div>
+      <div class="controles">
+        <button type="button" class="acao secundaria" id="u3a8-perguntar">Abrir uma issue e perguntar ao dono</button>
+      </div>
+    </div>
+    <p class="legenda" id="u3a8-legenda" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O que cada um rodou</h3>
+      <ol class="log" id="u3a8-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. que número tem a próxima versão ============ -->
+  <section class="demo" id="u3a8-d2">
+    <h2>2 · Que número tem a próxima versão?</h2>
+    <p class="intro">A <code>v1.0.0</code> está no balcão. Sete mudanças chegam depois dela: diga o tipo de cada uma e o número da tag que ela ganha.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a8-painel-tags">
+        <h3><span>as tags no GitHub</span><span class="selo" id="u3a8-selo-tags"></span></h3>
+        <div id="u3a8-tags"></div>
+        <p class="nota-painel" id="u3a8-conta"></p>
+      </div>
+      <div class="painel" id="u3a8-painel-vez">
+        <h3><span>a mudança da vez</span><span class="selo" id="u3a8-selo-vez"></span></h3>
+        <div id="u3a8-vez"></div>
+      </div>
+    </div>
+
+    <p class="intro afastado">Antes de começar: na vida de um sistema, para onde vai a <strong>maior parte</strong> do esforço de manutenção?</p>
+    <div class="camadas" id="u3a8-fatia" role="group" aria-label="Seu palpite sobre a manutenção"></div>
+    <div id="u3a8-perguntas">
+      <p class="intro afastado">Que tipo de mudança é esta?</p>
+      <div class="camadas" id="u3a8-tipo" role="group" aria-label="O tipo da mudança"></div>
+      <p class="intro afastado">Que tag ela ganha?</p>
+      <div class="camadas" id="u3a8-versao" role="group" aria-label="O número da próxima versão"></div>
+    </div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="u3a8-proxima">Próxima mudança</button>
+      <button type="button" class="acao secundaria" id="u3a8-recomecar2">Recomeçar</button>
+    </div>
+    <p class="legenda" id="u3a8-legenda2" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O que foi marcado no repositório</h3>
+      <ol class="log" id="u3a8-log2"></ol>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>O que ficou</h2>
+    <ul>
+      <li>O Git junta sozinho as mudanças que não se tocam. Quando duas tocam a <strong>mesma linha</strong>, ele para e pergunta: conflito é pergunta, não erro.</li>
+      <li>Os três botões do VS Code fazem o conflito sumir, e nenhum deles sabe o preço da multa. Quem decide é quem responde pelo sistema — e a issue guarda o pedido e o porquê.</li>
+      <li>A suíte ficou verde com 6,00, com 5,50 e com as duas linhas: o teste não sabe o valor que o dono quer.</li>
+      <li>A tag marca a versão que não muda. O número conta o tamanho da mudança: o do fim para correção, o do meio para funcionalidade nova — e o do fim volta a zero —, o primeiro quando quem usa precisa reaprender.</li>
+      <li>A maior parte da manutenção não é consertar defeito: é o sistema mudando porque o negócio mudou.</li>
+    </ul>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 08</a>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

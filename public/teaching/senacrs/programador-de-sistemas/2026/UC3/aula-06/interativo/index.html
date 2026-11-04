@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 06 — veja acontecer · UC3</title>
+<meta name="description" content="Classificar seis testes da locadora no nível certo e ver quanto cada nível custa; depois consertar um relatório de defeito até outra pessoa conseguir reproduzir.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 06 — veja acontecer</h1>
+  <p class="sub">"42 testes, todos verdes" não diz ao dono o que foi testado. Aqui você põe seis testes no nível certo e vê quanto cada um custa; depois conserta um relatório de defeito até outra pessoa conseguir ver o defeito acontecer. Leva uns 12 minutos, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="#u3a6-d1">1 · Em que nível está cada teste?</a> · <a href="#u3a6-d2">2 · O relatório que ninguém reproduz</a> · <a href="../quiz/">as 8 perguntas</a></p>
+
+  <!-- ============ 1. em que nivel esta cada teste ============ -->
+  <section class="demo" id="u3a6-d1">
+    <h2>1 · Em que nível está cada teste?</h2>
+    <p class="intro">Seis testes da locadora. Para cada um, diga o nível antes de ver a resposta. O painel da direita soma quanto a suíte demora.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a6-painel-testes">
+        <h3><span>os seis testes</span><span class="selo" id="u3a6-selo-testes"></span></h3>
+        <div id="u3a6-testes"></div>
+      </div>
+      <div class="painel" id="u3a6-painel-custo">
+        <h3><span>quanto a suíte demora</span><span class="selo" id="u3a6-selo-custo"></span></h3>
+        <div id="u3a6-custo"></div>
+        <p class="nota-painel">Tempo de uma rodada, por teste: unidade em milissegundos, integração em décimos de segundo, sistema em dezenas de segundos — o navegador abre e clica.</p>
+      </div>
+    </div>
+
+    <p class="intro afastado" id="u3a6-vez"></p>
+    <div class="camadas" id="u3a6-nivel" role="group" aria-label="O nível deste teste"></div>
+    <div class="controles">
+      <button type="button" class="acao" id="u3a6-proximo">Próximo teste</button>
+    </div>
+
+    <p class="intro afastado">Agora a atendente pediu, e o menu foi reorganizado: <strong>Buscar</strong> e <strong>Devolver</strong> trocaram de lugar. Nenhuma regra mudou. Palpite: rodando a suíte, quantos ficam vermelhos?</p>
+    <div class="camadas" id="u3a6-palpite-tela" role="group" aria-label="Seu palpite sobre a suíte"></div>
+    <div class="controles">
+      <button type="button" class="acao secundaria" id="u3a6-tela">Reorganizar o menu e rodar a suíte</button>
+      <button type="button" class="acao secundaria" id="u3a6-recomecar">Recomeçar</button>
+    </div>
+    <p class="legenda" id="u3a6-legenda" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O pytest, rodando a suíte</h3>
+      <ol class="log" id="u3a6-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. o relatorio que ninguem reproduz ============ -->
+  <section class="demo" id="u3a6-d2">
+    <h2>2 · O relatório que ninguém reproduz</h2>
+    <p class="intro">O CT-03 ficou vermelho, e alguém abriu este relatório. O Bruno vai consertar — mas só com o que está escrito. Troque os campos, palpite, e entregue.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a6-painel-relatorio">
+        <h3><span>o relatório DF-03</span><span class="selo" id="u3a6-selo-relatorio"></span></h3>
+        <div id="u3a6-relatorio"></div>
+      </div>
+      <div class="painel" id="u3a6-painel-bruno">
+        <h3><span>o Bruno, lendo só isso</span><span class="selo" id="u3a6-selo-bruno"></span></h3>
+        <div id="u3a6-bruno"></div>
+      </div>
+    </div>
+
+    <p class="intro afastado">Título:</p>
+    <div class="camadas" id="u3a6-campo-titulo" role="group" aria-label="O título do relatório"></div>
+    <p class="intro">Passos para reproduzir:</p>
+    <div class="camadas" id="u3a6-campo-passos" role="group" aria-label="Os passos para reproduzir"></div>
+    <p class="intro">Esperado × obtido:</p>
+    <div class="camadas" id="u3a6-campo-esperado" role="group" aria-label="O esperado e o obtido"></div>
+    <p class="intro">Severidade:</p>
+    <div class="camadas" id="u3a6-campo-severidade" role="group" aria-label="A severidade"></div>
+
+    <p class="intro afastado">Seu palpite: só com este relatório, o Bruno consegue fazer o defeito acontecer <strong>e</strong> saber que é defeito?</p>
+    <div class="camadas" id="u3a6-palpite-bruno" role="group" aria-label="Seu palpite sobre o relatório"></div>
+    <div class="controles">
+      <button type="button" class="acao" id="u3a6-entregar">Entregar ao Bruno</button>
+    </div>
+    <p class="legenda" id="u3a6-legenda2" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O Bruno, tentando reproduzir</h3>
+      <ol class="log" id="u3a6-log2"></ol>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>O que ficou</h2>
+    <ul>
+      <li>O nível é <strong>por onde o teste entra</strong>, não o que tem no meio: com banco no caminho, mas pela tela, é sistema.</li>
+      <li>Dois testes de sistema custaram mais que todos os outros juntos, e ficaram vermelhos sem defeito nenhum. Por isso são <strong>poucos</strong>, só no que não pode falhar.</li>
+      <li>Relatório de defeito bom é o que <strong>outra pessoa</strong> reproduz só com o que está escrito — com o esperado tirado da regra, não do código.</li>
+      <li>Severidade é o estrago para quem usa, não a dificuldade de consertar.</li>
+    </ul>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 06</a>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

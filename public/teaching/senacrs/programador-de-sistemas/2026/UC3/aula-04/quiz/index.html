@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 04 — 8 perguntas · UC3</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 04 da UC3: o teste contra o banco de verdade, o dublê pelo construtor, conferir a chamada, o spec, o side_effect, o relógio e o que não se mocka.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit é um só para o curso e mora na UC2: as UCs são pastas irmãs no site
+     e no disco, e uma cópia por UC derivaria na primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 04 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 04</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="../../../UC2/_comum/interativo/autocorrecao.js"></script>
+<script>
+// A chave leva a UC: a UC2 tambem tem 'aula-04', e as respostas guardadas
+// de uma apareceriam na outra. Sem crase nos textos: o autocorrecao.js
+// escreve com textContent, e a crase apareceria literal na tela.
+montarExercicios('uc3-aula-04', [
+  {
+    pergunta: 'O teste faz o INSERT do empréstimo da Ana no PostgreSQL e chama cobrar(). Passa. Logo em seguida, você roda de novo, sem mudar nada. O que acontece?',
+    alternativas: [
+      'Passa de novo: o código é o mesmo',
+      'Fica vermelho: o empréstimo da primeira rodada ficou no banco, e o teste encontra o que não montou',
+      'Fica vermelho porque o pytest guarda o resultado anterior',
+      'Passa, mas mais devagar'
+    ],
+    certa: 1,
+    porque: 'O cenário do teste mora no banco, e o banco não esquece entre uma rodada e outra. Na medição da aula, a segunda rodada nem chegou ao cobrar(): a UNIQUE recusou o mesmo empréstimo. E a Ana de verdade recebeu mensagem de um teste.'
+  },
+  {
+    pergunta: 'Você criou repositorio = Mock() com o return_value certo, mas o teste ainda tenta conectar no PostgreSQL. Por quê?',
+    alternativas: [
+      'O Mock precisa de spec para funcionar',
+      'Falta instalar o psycopg2',
+      'O cobrar() cria o próprio repositório lá dentro, e o dublê do teste não tem por onde entrar',
+      'O return_value só vale na segunda chamada'
+    ],
+    certa: 2,
+    porque: 'O dublê existe, mas ninguém o entrega à classe. O conserto é a classe receber o repositório pelo construtor: quem cria o cobrador decide se passa o banco ou o dublê. Teste difícil de escrever costuma ser código mal desenhado.'
+  },
+  {
+    pergunta: 'O teste confere assert cobrador.total_avisados == 1 e fica verde. Isso prova que a Ana foi avisada?',
+    alternativas: [
+      'Prova: o contador só sobe depois do aviso',
+      'Não prova: o contador subiu, mas só avisador.avisa.assert_called_once_with(atrasado) confere que a mensagem foi pedida, e para quem',
+      'Prova, desde que o Mock tenha spec',
+      'Não prova, porque o dublê nunca é chamado'
+    ],
+    certa: 1,
+    porque: 'Apague a linha do avisa() no cobrar() e o contador continua subindo: o teste do contador fica verde com o aviso sumido. Quem confere o efeito no mundo é a chamada ao dublê, com o argumento certo.'
+  },
+  {
+    pergunta: 'Alguém renomeia avisa() para enviar() na classe AvisadorPorWhatsApp, e o cobrador continua chamando avisa(). Com avisador = Mock(), sem spec, os testes ficam…',
+    alternativas: [
+      'vermelhos, porque o método não existe mais',
+      'verdes: o Mock aceita qualquer nome de método, e a produção quebra na primeira manhã',
+      'amarelos, com um aviso do pytest',
+      'vermelhos só no teste do side_effect'
+    ],
+    certa: 1,
+    porque: 'Um Mock sem molde inventa o método que você pedir. Com Mock(spec=AvisadorPorWhatsApp), o dublê só tem o que a classe de verdade tem, e o teste fica vermelho na hora em que o nome muda.'
+  },
+  {
+    pergunta: 'Na versão de partida do cobranca.py, o WhatsApp estoura no primeiro cliente (a Ana) e funciona no segundo (o Bruno). O que acontece?',
+    alternativas: [
+      'O Bruno é avisado, e a Ana fica para amanhã',
+      'O erro sobe, a cobrança para antes do Bruno, e o banco já registrou a Ana como avisada sem ela ter recebido nada',
+      'O erro sobe, mas o banco não registra nada',
+      'Nada: o Python ignora erro de conexão'
+    ],
+    certa: 1,
+    porque: 'São dois defeitos de uma vez. Sem try, o erro sai do for. E como o registrar_aviso e o atualiza vêm antes do avisa, o banco anotou "avisado" antes de a mensagem falhar. Na demonstração 1, deixe "grava, depois avisa" e "sem try" e rode.'
+  },
+  {
+    pergunta: 'No conserto, o try segura a falha do WhatsApp. Por que, além disso, o registrar_aviso e o atualiza passam para depois do avisa?',
+    alternativas: [
+      'Para o código ficar mais curto',
+      'Porque o banco só pode dizer "avisado" de quem de fato recebeu a mensagem',
+      'Porque o Mock exige essa ordem',
+      'Para o total_avisados contar certo'
+    ],
+    certa: 1,
+    porque: 'Com o try e a ordem antiga, o Bruno é avisado, mas a Ana aparece no banco como avisada, e o balcão nunca liga para ela. É o que o test_nao_registra_aviso_que_nao_saiu pega. Na demonstração 1, ligue o try e troque só a ordem.'
+  },
+  {
+    pergunta: 'Os testes do cobrador passam na terça, no laboratório. No sábado, em casa, sem mudar uma linha, quatro ficam vermelhos. Qual é o conserto?',
+    alternativas: [
+      'Rodar os testes só em dia útil',
+      'Mudar a data do computador antes de rodar',
+      'Apagar o teste do fim de semana',
+      'Passar o relógio pelo construtor, e no teste usar um dublê que diz sempre a mesma data'
+    ],
+    certa: 3,
+    porque: 'Com date.today() dentro do cobrar(), nenhum dia deixa o teste do aviso e o do fim de semana verdes juntos: o teste mede o calendário. Com o relógio dublê, cada teste escolhe o próprio dia, como o sábado 07/04/2012. Na demonstração 2, procure esse dia na semana, e depois ligue o relógio.'
+  },
+  {
+    pergunta: 'Para testar o cobrador, alguém troca o Emprestimo por Mock(spec=Emprestimo) com atrasado_em.return_value = True. O que se perde?',
+    alternativas: [
+      'Nada: o teste fica mais rápido',
+      'O spec deixa de valer',
+      'O teste deixa de pegar defeito na regra do prazo: se alguém trocar o > por >=, o dublê continua respondendo True',
+      'O cobrador passa a chamar o WhatsApp de verdade'
+    ],
+    certa: 2,
+    porque: 'Mocka-se o que é difícil de controlar — banco, mensagem, relógio —, não a regra que está sendo testada. Com o Emprestimo de verdade, o teste da fronteira (vence hoje ainda não é atraso) fica vermelho no mesmo dia do defeito.'
+  }
+]);
+</script>
+</body>
+</html>

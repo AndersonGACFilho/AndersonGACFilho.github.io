@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 08 — 8 perguntas · UC3</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 08 da UC3: branch e merge, o conflito e quem decide, a issue que fecha pelo commit, o número da versão, os tipos de manutenção e o backup dos dados.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 08 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 08</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="../../../UC2/_comum/interativo/autocorrecao.js"></script>
+<script>
+/* Sem crase em pergunta, alternativa ou porque: o autocorrecao.js escreve com
+   textContent, e a crase apareceria literal na tela. */
+montarExercicios('uc3-aula-08', [
+  {
+    pergunta: 'O Bruno leva três dias para fazer o teto da multa, e no meio do caminho o código dele não passa nos testes. Por que ele não trabalha direto na main?',
+    alternativas: [
+      'Porque o Git não deixa fazer commit na main',
+      'Porque a main é a versão que funciona e vai para o balcão: trabalho pela metade ali quebra quem está usando',
+      'Porque na main só a Ana pode mexer',
+      'Porque a main não tem histórico'
+    ],
+    certa: 1,
+    porque: 'O Git deixa, e é esse o perigo. A branch é uma linha que anda sozinha: o Bruno erra à vontade nela, e a regra só volta para a main no merge, quando está pronta e a suíte inteira está verde.'
+  },
+  {
+    pergunta: 'A Ana muda a fronteira da multa (o > vira >=) e o Bruno acrescenta o teto, em outras linhas do mesmo multa.py. O que acontece no merge da segunda branch?',
+    alternativas: [
+      'Fica só a mudança do último merge',
+      'O Git para em conflito, porque o arquivo é o mesmo',
+      'O Git junta as duas sozinho, porque elas não tocam as mesmas linhas',
+      'O merge apaga o histórico da primeira branch'
+    ],
+    certa: 2,
+    porque: 'Conflito é por trecho de linhas, não por arquivo. É o caso mais comum, e ninguém percebe que houve merge. Na demonstração 1, com "linhas diferentes", o multa.py da main mostra de quem veio cada linha.'
+  },
+  {
+    pergunta: 'Duas branches mudam a mesma linha: MULTA_POR_DIA = 6.00 numa, 5.50 na outra. No merge da segunda, o que o Git faz?',
+    alternativas: [
+      'Fica 5.50, porque o último merge vence',
+      'Fica 6.00, porque é o maior valor',
+      'Para, e escreve as duas versões no arquivo entre os marcadores de conflito',
+      'Faz a média, 5.75'
+    ],
+    certa: 2,
+    porque: 'O Git sabe juntar texto, não sabe a regra de negócio. Ele não escolhe: marca o trecho de HEAD (a main, já com a Ana) e o que vem da branch do Bruno, e espera alguém decidir. Se palpitou outra coisa, refaça a demonstração 1 com "a mesma linha".'
+  },
+  {
+    pergunta: 'No conflito da multa, alguém clica em Accept Current, roda a suíte, e ela fica verde. O conflito foi bem resolvido?',
+    alternativas: [
+      'Sim: a suíte verde prova que o valor está certo',
+      'Sim: o Current é sempre o lado certo',
+      'Não dá para saber: a suíte passa com 6,00 e com 5,50, e o valor certo quem sabe é o dono',
+      'Não: o certo seria sempre Accept Both'
+    ],
+    certa: 2,
+    porque: 'O teste não sabe o preço que o dono quer. Resolver no clique é deixar a decisão de negócio com quem estava com o teclado. E Accept Both deixa as duas linhas: o Python fica com a última, sem erro. Na demonstração 1, resolva sem perguntar e depois perguntando, e compare quem decidiu.'
+  },
+  {
+    pergunta: 'Qual mensagem de commit fecha a issue 4 sozinha quando chega na main do GitHub?',
+    alternativas: [
+      'Corrige #4 — reajuste da multa',
+      'Reajusta multa para R$ 6 (fixes #4)',
+      'Issue 4 resolvida',
+      'Qualquer mensagem que cite o número 4'
+    ],
+    certa: 1,
+    porque: 'O GitHub só reconhece a palavra em inglês antes do número: fixes, closes ou resolves. "Corrige #4" faz um link para a issue, mas não a fecha. E é a issue que guarda quem pediu, o que mudar e por quê.'
+  },
+  {
+    pergunta: 'A locadora está na v1.2.3 e entra o teto da multa: funcionalidade nova, e o que existia continua igual. Qual é a próxima tag?',
+    alternativas: [
+      'v1.2.4',
+      'v1.3.3',
+      'v1.3.0',
+      'v2.0.0'
+    ],
+    certa: 2,
+    porque: 'Funcionalidade nova sobe o número do meio, e o do fim volta a zero. A v1.2.4 seria só correção; a v2.0.0, uma mudança que obriga quem usa a reaprender. A demonstração 2 tem sete mudanças seguidas para treinar a regra.'
+  },
+  {
+    pergunta: 'Do esforço de manutenção de um sistema que está em uso, qual é a maior parte?',
+    alternativas: [
+      'Consertar defeito',
+      'Adaptar ao ambiente, como uma versão nova do PostgreSQL',
+      'Acrescentar funcionalidade, porque o negócio mudou',
+      'As três dividem igual'
+    ],
+    certa: 2,
+    porque: 'No levantamento que o livro cita, 65% vão para funcionalidade nova, 18% para adaptação e só 17% para consertar defeito. Sistema usado muda sempre — ou vai ficando menos útil. O fim da demonstração 2 compara a história da locadora com esses números.'
+  },
+  {
+    pergunta: 'Um grupo escreveu no RECUPERACAO.md: "o backup está no GitHub". Por que essa resposta está errada para os dados?',
+    alternativas: [
+      'Porque o GitHub apaga os arquivos depois de um mês',
+      'Porque o GitHub guarda o código, não o banco — e o banco nem pode ir para lá, porque tem dado de cliente',
+      'Porque o GitHub não aceita arquivos .sql',
+      'Não está errada: o git push copia o banco junto'
+    ],
+    certa: 1,
+    porque: 'O git push leva o repositório, e o banco não está nele. Os dados precisam do próprio pg_dump, guardado fora da máquina, com um nome responsável. E dado de cliente num repositório é vazamento, pelo mesmo argumento da senha da Aula 07.'
+  }
+]);
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 05 — 8 perguntas · UC3</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 05 da UC3: o dublê que não lê o SQL, unidade e integração, a conexão por parâmetro, o banco de teste, o TRUNCATE antes e o rollback que não limpa, e o banco recusando o que não pode.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit é um só para o curso e mora na UC2: as UCs são pastas irmãs no site
+     e no disco, e uma cópia por UC derivaria na primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 05 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 05</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="../../../UC2/_comum/interativo/autocorrecao.js"></script>
+<script>
+// A chave leva a UC: a UC2 tambem tem 'aula-05', e as respostas guardadas
+// de uma apareceriam na outra. Sem crase nos textos: o autocorrecao.js
+// escreve com textContent, e a crase apareceria literal na tela.
+montarExercicios('uc3-aula-05', [
+  {
+    pergunta: 'O buscar_por_titulo tem WHERE titlo = %s no SQL, e o teste com cursor falso passa. Por quê?',
+    alternativas: [
+      'O PostgreSQL corrige nomes de coluna parecidos',
+      'O cursor falso não executa SQL nenhum: devolve a tupla que o teste mandou devolver, para qualquer comando',
+      'O teste não chamou o buscar_por_titulo',
+      'O psycopg2 só confere o SQL na segunda chamada'
+    ],
+    certa: 1,
+    porque: 'O dublê conferiu a única coisa que não podia dar errado — montar o Jogo a partir de uma tupla pronta — e deixou passar a única que podia. Na demonstração 1, escreva banana na coluna do WHERE: o do cursor falso continua verde.'
+  },
+  {
+    pergunta: 'Qual destas funções pede teste de integração, com o banco de verdade?',
+    alternativas: [
+      'multa(dias_atraso), que faz uma conta',
+      'O CobradorDeAtrasos, que decide quem avisar',
+      'criar_jogo(conexao, ...), que faz o INSERT',
+      'Nenhuma: banco sempre se mocka'
+    ],
+    certa: 2,
+    porque: 'O critério é o que a função faz. Se ela decide, testa-se a decisão, com dublê no que é de fora. Se o trabalho inteiro dela é conversar com o banco, só a conversa de verdade prova que ela funciona.'
+  },
+  {
+    pergunta: 'No notebook da UC2, a conexão era criada numa célula e usada por todas as funções. Por que o crud_jogo.py recebe a conexão por parâmetro?',
+    alternativas: [
+      'Porque o psycopg2 não aceita conexão global',
+      'Para o teste poder entregar uma conexão com o banco de teste, e não com o do projeto',
+      'Para o código rodar mais rápido',
+      'Porque o pytest proíbe variável global'
+    ],
+    certa: 1,
+    porque: 'É o mesmo conserto do CobradorDeAtrasos na Aula 04: dependência criada por dentro não se troca. Com a conexão entrando pela porta da frente, quem chama escolhe o banco.'
+  },
+  {
+    pergunta: 'Uma colega aponta a fixture com o TRUNCATE para o banco do projeto, em vez do locadora_teste. Os testes…',
+    alternativas: [
+      'ficam vermelhos, porque o banco do projeto tem dados',
+      'ficam verdes — e os dados do projeto são apagados antes de cada teste',
+      'nem rodam: o PostgreSQL recusa TRUNCATE em banco com dados',
+      'ficam verdes, e o banco do projeto não muda'
+    ],
+    certa: 1,
+    porque: 'A fixture está certa; o banco é que não podia ser aquele. Verde não quer dizer seguro. Na demonstração 2, escolha o banco do projeto com o TRUNCATE e olhe a tabela depois da primeira rodada.'
+  },
+  {
+    pergunta: 'Todas as funções do CRUD dão commit(). A fixture faz rollback() no fim de cada teste. O que acontece ao rodar a suíte duas vezes seguidas?',
+    alternativas: [
+      'As duas rodadas iguais: o rollback limpa tudo',
+      'Vermelhos já na primeira, e mais na segunda: o rollback não desfaz o que já tinha sido gravado com commit()',
+      'A segunda rodada nem começa',
+      'Só o primeiro teste falha'
+    ],
+    certa: 1,
+    porque: 'O rollback desfaz só o que ainda não foi confirmado. O Zelda gravado num teste continua lá no seguinte, e o UNIQUE do título recusa o próximo — 3 vermelhos na 1ª rodada, 4 na 2ª. Na demonstração 2, rode duas vezes com o rollback.'
+  },
+  {
+    pergunta: 'Por que o TRUNCATE fica antes do yield, e não depois?',
+    alternativas: [
+      'Porque assim cada teste começa do zero, não importa o que ficou no banco antes dele',
+      'Porque depois do yield o pytest não deixa rodar SQL',
+      'Tanto faz a posição',
+      'Porque o TRUNCATE só funciona com a conexão nova'
+    ],
+    certa: 0,
+    porque: 'Limpando antes, o teste não depende de ninguém ter arrumado a casa: nem de uma rodada interrompida no meio, nem de um INSERT feito à mão no pgAdmin. E o RESTART IDENTITY volta o SERIAL para 1, para o id não mudar a cada rodada.'
+  },
+  {
+    pergunta: 'O deletar_jogo devolveu True. Por que o teste ainda confere com buscar_jogo, depois, que a busca devolve None?',
+    alternativas: [
+      'Para o teste ficar mais longo',
+      'Porque o True só diz o que a função acha que fez; quem prova que o jogo saiu é o banco, numa busca depois',
+      'Porque o True do psycopg2 não é confiável',
+      'Não precisa: o True basta'
+    ],
+    certa: 1,
+    porque: 'Teste de integração confere o efeito no sistema de verdade. O mesmo vale para o UPDATE: altera, e depois busca para ver o valor novo. É um dos itens do combinado da entrega.'
+  },
+  {
+    pergunta: 'O teste grava o Zelda, liga ele ao Switch em jogos_plataforma e chama deletar_jogo. No crud_jogo.py entregue, o que acontece?',
+    alternativas: [
+      'Apaga o jogo e o vínculo juntos',
+      'Apaga o jogo e deixa o vínculo sobrando',
+      'O banco recusa: a chave estrangeira de jogos_plataforma ainda cita o jogo, e a função devolve False',
+      'Apaga o Switch junto'
+    ],
+    certa: 2,
+    porque: 'O REFERENCES da Aula 11 da UC2 protege o vínculo. O conserto é apagar a linha de jogos_plataforma antes da do jogo. Esse defeito só aparece porque o cenário com plataforma foi montado no banco — com dublê, ninguém veria.'
+  }
+]);
+</script>
+</body>
+</html>

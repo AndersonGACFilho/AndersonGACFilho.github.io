@@ -35,6 +35,19 @@
     return l;
   }
 
+  /**
+   * Linha de painel com código à esquerda: o recuo do Python vira espaço que
+   * não encolhe, senão o HTML junta os espaços e o if aparece fora do def.
+   */
+  function linhaCodigo(codigo, nota, classe) {
+    var l = el('div', 'linha' + (classe ? ' ' + classe : ''));
+    var esq = el('span');
+    esq.appendChild(el('code', null, codigo.replace(/^ +/, function (b) { return b.replace(/ /g, '\u00a0'); })));
+    l.appendChild(esq);
+    l.appendChild(el('span', null, nota || ''));
+    return l;
+  }
+
   // Os atores do registro. Pessoas, lados de uma comparacao, e as familias de
   // comando — cada um com cor propria no CSS.
   var NOME_ATOR = {
@@ -53,6 +66,10 @@
     pytest: 'pytest',
     git: 'git',
     codigo: 'código',
+    // e os de fora que a UC3 troca por dubles
+    whatsapp: 'WhatsApp',
+    relogio: 'relógio',
+    duble: 'dublê',
   };
 
   /**
@@ -185,7 +202,8 @@
    * que acende o primeiro item ao abrir — aqui isso seria dar a resposta.
    *
    * A demonstração decide o que fazer com o palpite: `aoPalpitar(item)` roda a
-   * coisa e compara. `limpar()` devolve as pílulas ao estado sem escolha, para
+   * coisa e compara; se devolver `false`, o clique é recusado e as pílulas
+   * voltam ao que eram. `limpar()` devolve as pílulas ao estado sem escolha, para
    * a pessoa palpitar de novo quando o caso muda.
    *
    * @param {string}   idCaixa     id do contêiner `.camadas`
@@ -206,10 +224,16 @@
       b.appendChild(el('span', 'ponto'));
       b.appendChild(el('span', null, op.nome));
       b.addEventListener('click', function () {
+        var antes = botoes.map(function (x) { return x.getAttribute('aria-pressed'); });
         botoes.forEach(function (x) {
           x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
         });
-        aoPalpitar(op);
+        // A demo pode recusar o clique (palpite fora de hora, caso que ainda
+        // nao chegou). Sem devolver a pilula ao estado de antes, ela fica acesa
+        // e o painel diz outra coisa — a tela contradiz a si mesma.
+        if (aoPalpitar(op) === false) {
+          botoes.forEach(function (x, k) { x.setAttribute('aria-pressed', antes[k]); });
+        }
       });
       botoes.push(b);
       caixa.appendChild(b);
@@ -222,5 +246,62 @@
     };
   }
 
-  raiz.DemoKit = { $: $, el: el, linha: linha, novoLog: novoLog, escolhas: escolhas, palpite: palpite };
+  /**
+   * Pílulas de liga-desliga: várias acesas ao mesmo tempo.
+   *
+   * Existia copiado em três aulas da UC3 (montar a suíte, escolher os dias da
+   * fronteira, escolher o próximo teste). Quem decide o que fica aceso é a
+   * demonstração — uma limita a três, outra ignora o que já está na suíte —,
+   * por isso o clique só avisa, e `acender(aceso)` redesenha pelo estado dela.
+   *
+   * @param {string}   idCaixa   id do contêiner `.camadas`
+   * @param {Array}    itens     os objetos da demonstração, como ela os guarda
+   * @param {Function} rotulo    item → texto da pílula
+   * @param {Function} aoClicar  recebe o item clicado
+   * @returns {Function} acender(aceso), com aceso(item) → booleano
+   */
+  function alternancias(idCaixa, itens, rotulo, aoClicar) {
+    var caixa = $(idCaixa), botoes = [];
+    if (!caixa) return function () {};
+    itens.forEach(function (item) {
+      var b = el('button', 'camada-btn');
+      b.type = 'button';
+      b.style.setProperty('--cor', 'var(--accent)');
+      b.setAttribute('aria-pressed', 'false');
+      b.appendChild(el('span', 'ponto'));
+      b.appendChild(el('span', null, rotulo(item)));
+      b.addEventListener('click', function () { aoClicar(item); });
+      botoes.push(b);
+      caixa.appendChild(b);
+    });
+    return function acender(aceso) {
+      botoes.forEach(function (b, k) { b.setAttribute('aria-pressed', aceso(itens[k]) ? 'true' : 'false'); });
+    };
+  }
+
+  /**
+   * Um teste da suíte, para uma `ul.testes`: sinal, nome e resposta.
+   *
+   * Estava escrito à mão em seis aulas da UC3, cada uma com uma variação — e
+   * só duas quebravam o nome no `_`. Sem esse ponto de quebra, um nome de
+   * teste de 40 letras é uma palavra só e alarga o painel inteiro no celular.
+   *
+   * @param {string}       nome      nome do teste, ou o assert
+   * @param {boolean|null} passou    null quando ainda não rodou
+   * @param {string}       resposta  o que aparece à direita
+   * @param {number}       [k]       posição, para o atraso da entrada
+   */
+  function itemTeste(nome, passou, resposta, k) {
+    var li = el('li', 'teste ' + (passou == null ? 'nem-rodou' : passou ? 'passou' : 'falhou'));
+    li.style.setProperty('--atraso', ((k || 0) * 0.05) + 's');
+    li.appendChild(el('span', 'sinal', passou == null ? '·' : passou ? '✓' : '✕'));
+    li.appendChild(el('span', 'pergunta-teste', nome.replace(/_/g, '_\u200b')));
+    li.appendChild(el('span', 'resposta', resposta));
+    return li;
+  }
+
+  raiz.DemoKit = {
+    $: $, el: el, linha: linha, linhaCodigo: linhaCodigo, novoLog: novoLog,
+    escolhas: escolhas, palpite: palpite, alternancias: alternancias, itemTeste: itemTeste,
+  };
 })(window);

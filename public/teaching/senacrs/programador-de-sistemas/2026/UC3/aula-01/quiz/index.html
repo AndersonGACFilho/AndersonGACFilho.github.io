@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 01 — 8 perguntas · UC3</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 01 da UC3: engano, defeito e falha, as três partes de um teste, o assert e o pytest, e classes de equivalência.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit é um só para o curso e mora na UC2: as UCs são pastas irmãs no site
+     e no disco, e uma cópia por UC derivaria na primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 01 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 01</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="../../../UC2/_comum/interativo/autocorrecao.js"></script>
+<script>
+// A chave leva a UC: a UC2 tambem tem 'aula-01', e as respostas guardadas
+// de uma apareceriam na outra.
+montarExercicios('uc3-aula-01', [
+  {
+    pergunta: 'Você rodou o relatório com 30, 40 e 25, e ele imprimiu maior 40 e menor 25. O que isso prova?',
+    alternativas: [
+      'Que o relatório está certo',
+      'Que ele acerta com ESTA entrada — e só com ela',
+      'Nada: print não serve para testar',
+      'Que o elif está certo, porque o menor saiu'
+    ],
+    certa: 1,
+    porque: 'Os mesmos três valores em ordem crescente fazem o menor sair infinito. Uma execução é um teste de uma entrada só, e o defeito pode estar morando em outra. Na demonstração 1, troque só a ordem e rode de novo.'
+  },
+  {
+    pergunta: 'Com o elif, qual destas entradas faz o menor sair infinito?',
+    alternativas: [
+      '40, 30, 25 — decrescente',
+      '30, 40, 25 — fora de ordem',
+      '25, 30, 40 — crescente',
+      'Nenhuma: o defeito só aparece com lista vazia'
+    ],
+    certa: 2,
+    porque: 'Em ordem crescente, cada aluguel é maior que o anterior: o if sempre entra, e o elif, que só roda quando o if não entra, nunca é perguntado. Um aluguel só também faz isso. A demonstração 1 escreve no registro, aluguel por aluguel, qual ramo rodou.'
+  },
+  {
+    pergunta: 'Ligue cada palavra ao que ela é: engano, defeito, falha.',
+    alternativas: [
+      'Engano é o inf na tela; defeito é o elif; falha é a ideia errada de quem escreveu',
+      'Engano é a ideia errada de quem escreveu; defeito é o elif no código; falha é o inf na tela',
+      'Os três são sinônimos de bug',
+      'Engano e defeito são a mesma coisa; falha é quando o programa trava'
+    ],
+    certa: 1,
+    porque: 'São três lugares diferentes: a cabeça, o código e a tela. A separação importa porque o defeito existe mesmo quando ninguém vê a falha — com 30, 40, 25 o elif estava lá e a tela mostrava o certo.'
+  },
+  {
+    pergunta: 'Num teste, qual é a validação?',
+    alternativas: [
+      'A lista de aluguéis que o teste monta',
+      'A chamada relatorio.avaliar(alugueis)',
+      'O assert relatorio.menor == 25.0',
+      'O nome da função de teste'
+    ],
+    certa: 2,
+    porque: 'Cenário monta os dados, ação chama o código, validação confere o resultado. Sem validação, o teste roda o código e fica verde mesmo se o resultado vier errado — é o print de novo, só que sem ninguém olhando a tela.'
+  },
+  {
+    pergunta: 'O arquivo se chama relatorio_teste.py e tem uma função def test_ordem_crescente(). O que o painel do VS Code mostra?',
+    alternativas: [
+      'Um teste vermelho',
+      'Um teste verde',
+      'Nada: o pytest só procura arquivos que começam com test_, e este some em silêncio',
+      'Um erro dizendo que o nome está errado'
+    ],
+    certa: 2,
+    porque: 'O pytest acha pelo combinado de nome: arquivo test_*.py, função test_*. Fora disso, o teste não falha — ele não existe para o pytest. Por isso a conferência: o número de testes no painel bate com o número de funções que você escreveu?'
+  },
+  {
+    pergunta: 'A suíte tem testes com 25, 30, 40 e com 100, 200, 300 e com 1, 2, 3. O que ela tem de mais?',
+    alternativas: [
+      'Nada: quanto mais testes, mais segurança',
+      'Três testes da mesma classe: os três passam ou falham juntos, e dois deles não pegam nada que o primeiro não pegue',
+      'Os números são pequenos demais',
+      'Falta um teste com 1000'
+    ],
+    certa: 1,
+    porque: 'Os três são crescentes: fazem o mesmo caminho dentro do código. Custam para manter e não acrescentam nada. Na demonstração 2, ligue dois crescentes e veja o painel de classes dizer quantos sobram.'
+  },
+  {
+    pergunta: 'Qual suíte é a menor que pega o defeito do elif E cobre todas as classes?',
+    alternativas: [
+      'Um teste crescente só',
+      'Crescente, decrescente, fora de ordem e um aluguel só — um de cada',
+      'Dois crescentes e dois decrescentes',
+      'Seis testes, um com cada número de aluguéis de 1 a 6'
+    ],
+    certa: 1,
+    porque: 'Um crescente sozinho já fica vermelho, mas deixa três caminhos do código sem ninguém olhando — o próximo defeito pode morar num deles. Um por classe pega o defeito de hoje e vigia os outros caminhos. É o estado verde da demonstração 2.'
+  },
+  {
+    pergunta: 'Qual destes nomes ajuda mais quando o teste ficar vermelho daqui a um mês?',
+    alternativas: [
+      'test1',
+      'test_relatorio',
+      'test_um_aluguel_so_e_o_maior_e_o_menor',
+      'test_ok'
+    ],
+    certa: 2,
+    porque: 'O nome é a primeira coisa que alguém lê quando o painel fica vermelho. test1 falhou não diz nada; test_um_aluguel_so_e_o_maior_e_o_menor falhou já diz qual caso quebrou, antes de abrir o arquivo.'
+  }
+]);
+</script>
+</body>
+</html>

@@ -977,6 +977,9 @@ legend {
 .log .pytest { --quem: var(--esp-quiz); }
 .log .git { --quem: var(--esp-pagina); }
 .log .codigo { --quem: var(--esp-arquivo); }
+.log .whatsapp { --quem: var(--esp-pagina); }
+.log .relogio { --quem: var(--esp-tarefa); }
+.log .duble { --quem: var(--esp-arquivo); }
 .log .entidade { --quem: var(--esp-quiz); }
 .log .op code {
   display: inline-block;

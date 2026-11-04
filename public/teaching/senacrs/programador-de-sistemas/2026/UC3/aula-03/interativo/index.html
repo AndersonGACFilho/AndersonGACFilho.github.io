@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 03 — veja acontecer · UC3</title>
+<meta name="description" content="Escrever o teste antes do código e ver o vermelho chegar primeiro, inclusive o teste de cabeça para baixo que fica verde sem a regra; depois escolher a ordem dos testes do cliente fiel e quebrar a fronteira de propósito.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 03 — veja acontecer</h1>
+  <p class="sub">Hoje o teste vem antes do código. Escolha qual escrever, palpite se ele fica verde, e só então escreva o código. Leva uns 15 minutos, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="#u3a3-d1">1 · Vermelho antes do verde</a> · <a href="#u3a3-d2">2 · Por onde começar</a> · <a href="../quiz/">as 8 perguntas</a></p>
+
+  <!-- ============ 1. vermelho antes do verde ============ -->
+  <section class="demo" id="u3a3-d1">
+    <h2>1 · Vermelho antes do verde</h2>
+    <p class="intro">Chegaram duas regras do balcão: o mesmo jogo não entra duas vezes, e um empréstimo leva no máximo 3 jogos. O <code>adicionar</code> ainda não sabe nenhuma delas. Escreva um teste, palpite, rode.</p>
+
+    <div class="palco">
+      <div class="painel" id="u3a3-painel-testes">
+        <h3><span>test_emprestimo.py</span><span class="selo" id="u3a3-selo-testes"></span></h3>
+        <ul class="testes" id="u3a3-testes"></ul>
+      </div>
+      <div class="painel" id="u3a3-painel-codigo">
+        <h3><span>emprestimo.py, o adicionar</span><span class="selo" id="u3a3-selo-codigo"></span></h3>
+        <pre class="consulta"><code id="u3a3-codigo"></code></pre>
+      </div>
+    </div>
+
+    <p class="intro afastado">Escreva o próximo teste — clique de novo para apagá-lo:</p>
+    <div class="camadas" id="u3a3-candidatos" role="group" aria-label="Os testes que você pode escrever"></div>
+    <p class="intro afastado">Seu palpite: rodando agora, a suíte fica…</p>
+    <div class="camadas" id="u3a3-palpite" role="group" aria-label="Seu palpite"></div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="u3a3-rodar">Rodar o pytest</button>
+      <button type="button" class="acao secundaria" id="u3a3-codar">Escrever o código mais simples</button>
+      <button type="button" class="acao secundaria" id="u3a3-refatorar">Refatorar</button>
+      <button type="button" class="acao secundaria" id="u3a3-recomecar">Recomeçar</button>
+    </div>
+    <p class="legenda" id="u3a3-legenda" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>A tabela do ciclo</h3>
+      <ol class="log" id="u3a3-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. por onde comecar ============ -->
+  <section class="demo" id="u3a3-d2">
+    <h2>2 · Por onde começar</h2>
+    <p class="intro">Regra nova: quem já fez <strong>mais de 10</strong> empréstimos leva até 4 jogos. Os cinco testes estão na lista, fora de ordem. Escolha o próximo, um ciclo por vez, e veja quanto código cada vermelho pede.</p>
+
+    <div class="palco">
+      <div class="painel" id="u3a3-painel-fiel">
+        <h3><span>test_emprestimo.py</span><span class="selo" id="u3a3-selo-fiel"></span></h3>
+        <ul class="testes" id="u3a3-fiel"></ul>
+      </div>
+      <div class="painel" id="u3a3-painel-cod2">
+        <h3><span>emprestimo.py, o que importa aqui</span><span class="selo" id="u3a3-selo-cod2"></span></h3>
+        <pre class="consulta"><code id="u3a3-cod2"></code></pre>
+      </div>
+    </div>
+
+    <p class="intro afastado">A lista do Bloco 3 — escolha o próximo teste a escrever:</p>
+    <div class="camadas" id="u3a3-lista" role="group" aria-label="A lista de testes do cliente fiel"></div>
+    <p class="intro afastado">Seu palpite: rodando agora, a suíte fica…</p>
+    <div class="camadas" id="u3a3-palpite2" role="group" aria-label="Seu palpite"></div>
+
+    <div class="controles">
+      <button type="button" class="acao" id="u3a3-rodar2">Rodar o pytest</button>
+      <button type="button" class="acao secundaria" id="u3a3-codar2">Escrever o mínimo</button>
+      <button type="button" class="acao secundaria" id="u3a3-quebrar">Quebrar de propósito: &gt; vira &gt;=</button>
+      <button type="button" class="acao secundaria" id="u3a3-recomecar2">Recomeçar</button>
+    </div>
+    <p class="legenda" id="u3a3-legenda2" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>A tabela do ciclo</h3>
+      <ol class="log" id="u3a3-log2"></ol>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>O que ficou</h2>
+    <ul>
+      <li>O vermelho antes do verde é o <strong>teste do teste</strong>: ele mostra que a regra não existe e que o teste sabe perceber isso. O teste com <code>in</code> nunca ficou vermelho na hora certa — e estava de cabeça para baixo.</li>
+      <li>Verde de primeira é confirmação, não ciclo. Para saber se o teste confere alguma coisa, <strong>quebre o código de propósito</strong>: só o teste dos 10 empréstimos percebe o <code>&gt;=</code>.</li>
+      <li>Comece pelo teste mais simples. O mais interessante pede três mudanças de uma vez, e um vermelho com três motivos não diz qual consertar.</li>
+      <li>Refatorar é mudar o código sem mudar o que ele faz — e quem garante isso é rodar a suíte de novo, não olhar.</li>
+    </ul>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 03</a>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

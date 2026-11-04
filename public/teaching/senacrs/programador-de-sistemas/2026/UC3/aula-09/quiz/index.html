@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 09 — 8 perguntas · UC3</title>
+<meta name="description" content="Oito perguntas de autocorreção que atravessam a UC3 inteira: a entrada que revela o defeito, a fronteira, o TDD, o dublê, o banco de teste, o relatório de defeito, o histórico e a versão.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit é um só para o curso e mora na UC2: as UCs são pastas irmãs no site
+     e no disco, e uma cópia por UC derivaria na primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 09 — oito perguntas da UC inteira</h1>
+  <p class="sub">Uma por aula, da primeira noite até a versão. A resposta aparece assim que você escolhe, e nada aqui fica registrado: roda só no seu navegador. Leva uns 10 minutos.</p>
+  <p class="sub">Se travar em alguma, o porquê diz qual aula rever — cada uma tem demonstrações na página dela.</p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 09</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="../../../UC2/_comum/interativo/autocorrecao.js"></script>
+<script>
+// A chave leva a UC: a UC2 tambem numera as aulas a partir de 01, e as
+// respostas guardadas de uma apareceriam na outra.
+montarExercicios('uc3-aula-09', [
+  {
+    pergunta: 'Na primeira noite: "rodei, imprimiu certo — está testado?". O que você responde hoje?',
+    alternativas: [
+      'Está: se imprimiu certo, o código está certo',
+      'Não: uma execução prova uma entrada só, e o defeito pode morar em outra. O teste fica no arquivo e confere sozinho, toda vez',
+      'Só está testado se rodar três vezes',
+      'Está, desde que o print mostre todas as variáveis'
+    ],
+    certa: 1,
+    porque: 'O RelatorioDoMes acertava com 30, 40, 25 e mostrava infinito com os mesmos valores em ordem crescente. O defeito estava lá nas duas execuções; a falha só apareceu com uma. Reveja a Aula 01, demonstração 1.'
+  },
+  {
+    pergunta: 'O dono disse: "a partir do 3º dia, cobro". Você só pode escrever três testes para a multa. Quais dias?',
+    alternativas: [
+      '1, 10 e 100 — bem espalhados',
+      '2, 3 e 4 — antes, em cima e depois da fronteira',
+      '3, 3 e 3 — para ter certeza',
+      '0, 1 e 2'
+    ],
+    certa: 1,
+    porque: 'O código tinha > 3 onde devia ter >= 3. Com 2 e com 4 os dois acertam; só o 3, em cima da fronteira, mostra a diferença. Todo if com > ou >= pede os três testes. Reveja a Aula 02.'
+  },
+  {
+    pergunta: 'No TDD, qual é o primeiro teste a escrever para uma regra nova?',
+    alternativas: [
+      'O caso mais difícil, para resolver logo o problema todo',
+      'O caso mais simples que ainda não passa — e vê-lo ficar vermelho antes de escrever o código',
+      'Todos de uma vez, e depois o código',
+      'Nenhum: primeiro o código, depois o teste'
+    ],
+    certa: 1,
+    porque: 'O teste vermelho prova que ele sabe falhar; um teste que nunca foi visto vermelho pode estar passando por engano. E começar pelo simples deixa cada passo pequeno: se quebrar, você sabe onde. Reveja a Aula 03.'
+  },
+  {
+    pergunta: 'Os testes do CobradorDeAtrasos ficaram verdes na terça, no laboratório. No sábado, em casa, sem mudar nada no código, ficam vermelhos. Onde está o problema?',
+    alternativas: [
+      'No pytest, que não é confiável',
+      'O cobrador lê a data de hoje por dentro; o relógio precisa entrar de fora, para o teste fixar o dia',
+      'No sábado o computador de casa é mais lento',
+      'O teste precisa rodar só em dia útil'
+    ],
+    certa: 1,
+    porque: 'Um teste que depende do dia em que roda não é teste, é sorteio. Com o relógio recebido de fora, o teste passa um dublê que diz sempre a mesma data. É o mesmo movimento do repositório e do avisador. Reveja a Aula 04.'
+  },
+  {
+    pergunta: 'Os testes de integração ficaram verdes. Rodando de novo, três ficam vermelhos. O que mudou?',
+    alternativas: [
+      'Nada: o banco às vezes erra',
+      'O primeiro run deixou dados gravados, e o segundo esbarra neles. A limpeza precisa vir antes de cada teste',
+      'O pytest guarda cache dos resultados',
+      'É preciso reiniciar o PostgreSQL entre as rodadas'
+    ],
+    certa: 1,
+    porque: 'As funções do CRUD dão commit lá dentro, então o rollback no fim do teste não desfaz o que foi gravado. O TRUNCATE no começo de cada teste deixa o banco de teste vazio, rodada após rodada. Reveja a Aula 05.'
+  },
+  {
+    pergunta: 'Um relatório de defeito diz só: "a busca não funciona". O que falta para outra pessoa conseguir agir?',
+    alternativas: [
+      'Um título em letras maiúsculas',
+      'Os passos para reproduzir, o esperado e o obtido',
+      'O nome de quem achou',
+      'Nada: quem lê descobre sozinho'
+    ],
+    certa: 1,
+    porque: 'Quem conserta precisa ver a falha acontecer na máquina dela. Sem os passos, ela testa outra coisa, vê funcionar e fecha o defeito. Esperado e obtido dizem o que é certo, para ninguém discutir. Reveja a Aula 06.'
+  },
+  {
+    pergunta: 'Alguém gravou a senha do banco num commit e, vinte minutos depois, fez "Remove a senha do repositorio". O repositório é público. A senha está segura?',
+    alternativas: [
+      'Está: o arquivo não existe mais',
+      'Não: o commit antigo continua no histórico, e qualquer um que clonar lê a senha. A senha tem de ser trocada',
+      'Está, desde que ninguém tenha clonado antes',
+      'Só não está se o repositório tiver menos de vinte commits'
+    ],
+    certa: 1,
+    porque: 'O Git guarda todas as versões — é para isso que ele existe. Apagar o arquivo cria uma versão nova sem ele, mas a antiga fica lá, e o git log -p mostra. Senha vazada é senha trocada; o .gitignore impede a próxima. Reveja a Aula 07.'
+  },
+  {
+    pergunta: 'A versão é v1.0.0. Entra só a correção da fronteira da multa, e nada muda para quem usa. Qual é a próxima versão?',
+    alternativas: [
+      'v2.0.0',
+      'v1.1.0',
+      'v1.0.1',
+      'v1.0.0 de novo, porque é só um conserto'
+    ],
+    certa: 2,
+    porque: 'O último número sobe com correção de defeito; o do meio, com funcionalidade nova que não quebra o que existia; o primeiro, quando quem usa precisa reaprender. Uma versão já marcada não muda — por isso o conserto ganha número novo. Reveja a Aula 08.'
+  }
+]);
+</script>
+</body>
+</html>

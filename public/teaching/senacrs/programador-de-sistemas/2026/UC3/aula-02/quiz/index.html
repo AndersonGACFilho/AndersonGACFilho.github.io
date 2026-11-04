@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 02 — 8 perguntas · UC3</title>
+<meta name="description" content="Oito perguntas de autocorreção sobre a Aula 02 da UC3: fronteira, regressão, o assert que confere só o tamanho, pytest.raises, fixture e cobertura.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 02 — oito perguntas</h1>
+  <p class="sub">A resposta aparece assim que você escolhe, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="../interativo/">Se travar em alguma, volte para as demonstrações.</a></p>
+
+    <div id="progresso"></div>
+    <div id="exercicios"></div>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 02</a>
+    <button type="button" id="recomecar">Limpar respostas</button>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="../../../UC2/_comum/interativo/autocorrecao.js"></script>
+<script>
+/* Sem crase nas perguntas: o autocorrecao.js escreve o texto como esta, e a
+   crase apareceria literal na tela. O nome do codigo vai sem marcacao. */
+montarExercicios('uc3-aula-02', [
+  {
+    pergunta: 'O multa.py entregue tem if dias_atraso > 3. O dono disse “a partir do 3º dia, R$ 5,00 por dia”. Quanto o código cobra por 3 dias de atraso, e quanto o dono queria?',
+    alternativas: [
+      'O código cobra R$ 15,00, e o dono queria R$ 15,00',
+      'O código cobra R$ 0,00, e o dono queria R$ 15,00',
+      'O código cobra R$ 0,00, e o dono queria R$ 0,00',
+      'O código cobra R$ 20,00, e o dono queria R$ 15,00'
+    ],
+    certa: 1,
+    porque: 'Com 3, a conta 3 > 3 é falsa e a função devolve 0.0 — mas para o dono o 3º dia já cobra, 3 × 5 = 15. Em 2 e em 4 dias o código acerta: o defeito mora num dia só. Reveja a demonstração 1 com o dia 3 na suíte.'
+  },
+  {
+    pergunta: 'Regra nova: “quem aluga por 5 dias ou mais ganha 10% de desconto”. Você só pode escrever três testes. Qual trio pega quem escreveu > no lugar de >=?',
+    alternativas: [
+      '1, 10 e 30 dias',
+      '5, 10 e 15 dias',
+      '4, 5 e 6 dias',
+      '0, 1 e 2 dias'
+    ],
+    certa: 2,
+    porque: 'Antes, em cima e depois da fronteira. Só o 5 separa > de >=: com 4 e com 6 os dois operadores dão o mesmo resultado. O trio 5, 10 e 15 tem o 5, mas esquece o lado de antes. Na demonstração 1, tire o dia 3 da suíte e troque o operador: o verde não muda.'
+  },
+  {
+    pergunta: 'Você acrescentou os três maiores no avaliar. O teste novo passou, e o test_um_aluguel_so_e_o_maior_e_o_menor, de ontem, ficou vermelho com IndexError. O que aconteceu?',
+    alternativas: [
+      'O teste de ontem ficou desatualizado e deve ser apagado',
+      'Regressão: a mudança quebrou uma coisa que já funcionava',
+      'O pytest roda os testes fora de ordem e um atrapalhou o outro',
+      'O teste novo está errado, porque ele é quem mudou'
+    ],
+    certa: 1,
+    porque: 'Com um aluguel só, valores[1] não existe, e o erro derruba o avaliar inteiro — inclusive o maior e o menor, que funcionavam. O teste de ontem está certo; ele é a rede que pegou o efeito colateral. Reveja a demonstração 2 com a versão por índice.'
+  },
+  {
+    pergunta: 'Sem o reverse=True, o avaliar devolve os três maiores como [10.0, 20.0, 30.0]. O teste confere com assert len(relatorio.tres_maiores) == 3. O que o pytest mostra?',
+    alternativas: [
+      'Vermelho, porque os valores estão errados',
+      'Vermelho, com IndexError',
+      'Verde: são três valores, só que os três menores',
+      'O teste é pulado, porque a lista está em ordem crescente'
+    ],
+    certa: 2,
+    porque: 'O assert confere o tamanho, e o tamanho nunca esteve em dúvida. Para pegar o defeito, confira o conteúdo e a ordem: assert relatorio.tres_maiores == [40.0, 30.0, 20.0]. Na demonstração 2, escolha a versão sem o reverse e troque o assert.'
+  },
+  {
+    pergunta: 'Este teste roda contra um avaliar que NÃO levanta erro com a lista vazia: with pytest.raises(ValueError): relatorio.avaliar([]). O que acontece?',
+    alternativas: [
+      'Passa, porque não dar erro é bom sinal',
+      'O pytest pula o teste',
+      'Erro de sintaxe no with',
+      'Falha, com DID NOT RAISE'
+    ],
+    certa: 3,
+    porque: 'Dentro do with, o erro é o comportamento esperado. Se ele não acontece, o teste falha — e é exatamente o que tem de acontecer, porque o código seguiu em frente e imprimiu -inf e inf como se fossem valores.'
+  },
+  {
+    pergunta: 'Mês sem aluguel nenhum. Por que o avaliar deve recusar com ValueError em vez de devolver 0?',
+    alternativas: [
+      'Porque o Python não deixa devolver 0 de uma lista vazia',
+      'Porque 0 mente: o relatório diria que o menor aluguel do mês foi zero',
+      'Porque o pytest só sabe testar erro, não número',
+      'Porque 0 é mais lento de calcular'
+    ],
+    certa: 1,
+    porque: 'Devolver um número qualquer esconde o problema de quem lê o relatório. Recusar diz a verdade — “não há aluguéis no mês” — e quem chamou decide o que fazer. A lista vazia está na tabela dos casos especiais de sempre: vazia, com um item, com vários.'
+  },
+  {
+    pergunta: 'O RelatorioDoMes passou a pedir o mês no construtor. Com a fixture relatorio, quantos lugares da suíte você muda?',
+    alternativas: [
+      'Um: a fixture, que entrega um relatório novo para cada teste',
+      'Seis: um RelatorioDoMes() por teste',
+      'Nenhum: a fixture descobre o mês sozinha',
+      'Dois: a fixture e o teste mais antigo'
+    ],
+    certa: 0,
+    porque: 'O teste pede a fixture pelo nome do parâmetro, e o pytest roda a função antes de cada teste. O construtor mora num lugar só. E “novo para cada teste” importa: um relatório compartilhado levaria o maior de um teste para o outro.'
+  },
+  {
+    pergunta: 'Um colega diz: “temos 100% de cobertura, então não tem defeito”. O que você responde?',
+    alternativas: [
+      'Concordo: se toda linha rodou, toda linha foi conferida',
+      'Cobertura só vale com mais de 100 testes',
+      'Cobertura diz que a linha rodou, não que o resultado foi conferido',
+      'Cobertura só mede o código de teste, não o de produção'
+    ],
+    certa: 2,
+    porque: 'O total_do_cliente com = no lugar de += tinha cobertura completa: o teste de um aluguel executava a linha e ficava verde. A demonstração 2 mostra o mesmo de outro jeito — tudo verde, todas as linhas rodaram, e os três maiores saíram errados.'
+  }
+]);
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 07 — veja acontecer · UC3</title>
+<meta name="description" content="Achar no histórico do locadora-historico o commit que quebrou a multa, desfazê-lo sem apagar a história, e ver que a senha apagada continua no repositório.">
+<meta name="theme-color" content="#0f1a13">
+<!-- O kit das páginas interativas é um só para o curso e mora na UC2: as UCs
+     são pastas irmãs no site e no disco, e uma cópia por UC derivaria na
+     primeira correção. -->
+<link rel="icon" href="../../../UC2/_comum/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../UC2/_comum/fontes/fontes.css">
+<link rel="stylesheet" href="../../../UC2/_comum/tokens.css">
+<link rel="stylesheet" href="../../../UC2/_comum/interativo/pagina.css">
+<script>
+  /* sem piscada: a escolha de tema é a mesma do resto do site */
+  try {
+    var m = localStorage.getItem('site:theme');
+    if (m === 'light' || m === 'dark') document.documentElement.setAttribute('data-theme', m);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Aula 07 — veja acontecer</h1>
+  <p class="sub">O mesmo locadora-historico da aula: seis versões, de duas pessoas, e um teste vermelho. Ache o commit que quebrou, desfaça sem apagar a história, e veja onde foi parar a senha que a Ana apagou. Leva uns 12 minutos, e nada aqui fica registrado: roda só no seu navegador.</p>
+  <p class="sub"><a href="#u3a7-d1">1 · Qual commit quebrou a multa?</a> · <a href="#u3a7-d2">2 · A senha sumiu?</a> · <a href="../quiz/">as 8 perguntas</a></p>
+
+  <!-- ============ 1. qual commit quebrou a multa ============ -->
+  <section class="demo" id="u3a7-d1">
+    <h2>1 · Qual commit quebrou a multa?</h2>
+    <p class="intro">O teste do 3º dia está vermelho. À esquerda, as seis versões. Palpite pelas mensagens antes de abrir qualquer arquivo.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a7-painel-log">
+        <h3><span>git log --oneline</span><span class="selo" id="u3a7-selo-log"></span></h3>
+        <div id="u3a7-log-commits"></div>
+      </div>
+      <div class="painel" id="u3a7-painel-tela">
+        <h3><span id="u3a7-titulo-tela"></span><span class="selo" id="u3a7-selo-tela"></span></h3>
+        <div id="u3a7-tela"></div>
+      </div>
+    </div>
+
+    <p class="intro afastado">Seu palpite, só pelas mensagens: qual commit quebrou o teste?</p>
+    <div class="camadas" id="u3a7-palpite-commit" role="group" aria-label="Seu palpite de commit"></div>
+    <div class="controles">
+      <button type="button" class="acao" id="u3a7-log-p">git log -p multa.py</button>
+    </div>
+
+    <p class="intro afastado">No diff, qual linha nova faz <code>multa(3)</code> devolver 0?</p>
+    <div class="camadas" id="u3a7-palpite-linha" role="group" aria-label="A linha que quebrou"></div>
+
+    <p class="intro afastado">Agora desfaça. Palpite: depois do <code>git revert</code>, o commit do desconto…</p>
+    <div class="camadas" id="u3a7-palpite-revert" role="group" aria-label="Seu palpite sobre o revert"></div>
+    <div class="controles">
+      <button type="button" class="acao secundaria" id="u3a7-revert">git revert f8bb1d8</button>
+      <button type="button" class="acao secundaria" id="u3a7-restore">git restore --source=146a2e5 multa.py</button>
+      <button type="button" class="acao secundaria" id="u3a7-recomecar">Recomeçar</button>
+    </div>
+    <p class="legenda" id="u3a7-legenda" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O que foi digitado no Git Bash</h3>
+      <ol class="log" id="u3a7-log"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 2. a senha sumiu ============ -->
+  <section class="demo" id="u3a7-d2">
+    <h2>2 · A senha sumiu?</h2>
+    <p class="intro">No commit a0af081 a Ana gravou os dados do banco, senha junto; logo depois, o 146a2e5 apagou o arquivo. A pasta está limpa.</p>
+
+    <div class="palco duplo">
+      <div class="painel" id="u3a7-painel-pasta">
+        <h3><span>a pasta, no VS Code</span><span class="selo" id="u3a7-selo-pasta"></span></h3>
+        <div id="u3a7-pasta"></div>
+      </div>
+      <div class="painel" id="u3a7-painel-clone">
+        <h3><span>o que um estranho acha no clone</span><span class="selo" id="u3a7-selo-clone"></span></h3>
+        <div id="u3a7-clone"></div>
+      </div>
+    </div>
+
+    <p class="intro afastado">Palpite: se esse repositório fosse público no GitHub, a senha estaria segura?</p>
+    <div class="camadas" id="u3a7-palpite-senha" role="group" aria-label="Seu palpite sobre a senha"></div>
+    <div class="controles">
+      <button type="button" class="acao" id="u3a7-clonar">Clonar e rodar git log -p -S "SENHA"</button>
+    </div>
+
+    <p class="intro afastado">O repositório já foi público. O que a Ana faz agora? Tente, em qualquer ordem:</p>
+    <div class="controles">
+      <button type="button" class="acao secundaria" id="u3a7-republicar">Apagar o repositório no GitHub e publicar de novo</button>
+      <button type="button" class="acao secundaria" id="u3a7-ignorar">Pôr config_local.py no .gitignore</button>
+      <button type="button" class="acao secundaria" id="u3a7-trocar">Trocar a senha do banco</button>
+      <button type="button" class="acao secundaria" id="u3a7-recomecar2">Recomeçar</button>
+    </div>
+    <p class="legenda" id="u3a7-legenda2" aria-live="polite"></p>
+
+    <div class="registro">
+      <h3>O que aconteceu, em ordem</h3>
+      <ol class="log" id="u3a7-log2"></ol>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>O que ficou</h2>
+    <ul>
+      <li>A mensagem do commit é o que se lê procurando o defeito — e "Desconto de metade da multa" escondeu o <code>&gt;</code> que veio junto. O <code>git log -p</code> mostra a linha.</li>
+      <li><code>git revert</code> e <code>git restore</code> devolvem a versão que funcionava <strong>sem apagar</strong> a errada: o histórico guarda tudo, de propósito.</li>
+      <li>É essa mesma garantia que guarda a senha. Senha que entrou num commit público está vazada: o conserto é <strong>trocar a senha</strong>, e o <code>.gitignore</code> antes do primeiro commit é o que impede a próxima.</li>
+    </ul>
+  </section>
+
+  <p class="rodape">
+    <a class="voltar" href="../../">← todas as aulas</a>
+    <a href="../slides.html">Slides da Aula 07</a>
+  </p>
+</main>
+
+<script src="../../../UC2/_comum/interativo/demo-kit.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>
