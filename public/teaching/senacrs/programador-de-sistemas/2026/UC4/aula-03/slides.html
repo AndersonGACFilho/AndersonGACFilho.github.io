@@ -71,7 +71,7 @@ O Tkinter já vem com o Python: não tem nada para instalar. O ▶ no
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-header="UC4 · Projeto Integrador" data-footer="Aula 03 · 23/11/2026 · Indicadores 2, 3" data-theme="senac" lang="pt-BR" data-marpit-pagination="7" style="--paginate:true;--header:UC4 · Projeto Integrador;--footer:Aula 03 · 23/11/2026 · Indicadores 2, 3;--theme:senac;" data-marpit-pagination-total="28" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}">
 <header>UC4 · Projeto Integrador</header>
 <h2 id="icone-onde-a-gente-quer-chegar"><img src="../_comum/icones/mono/alvo.svg" alt="icone" /> Onde a gente quer chegar</h2>
-<p><img class="center" src="img/janela-locadora.png" alt="Janela da locadora feita em Tkinter: em cima, o quadro Cadastrar jogo com os campos Título, Gênero, Ano e Diária e o botão Cadastrar; embaixo, a tabela com os jogos cadastrados — FIFA 25, Mario Kart 8 e The Legend of Zelda, com gênero, ano e diária em reais — e o botão Apagar o selecionado" style="width:720px;" /></p>
+<p><img class="center" src="img/janela-locadora.png" alt="Janela da locadora feita em Tkinter: no alto, a faixa laranja com o nome e a data de hoje, e as abas Resumo, Jogos, Clientes, Aluguéis, Atrasados e Configurações; na aba Jogos, à esquerda, o formulário Cadastrar jogo com Título, Gênero, Ano e Diária e os botões Cadastrar, Salvar alteração e Limpar; à direita, a busca pelo título e a tabela com seis jogos, com gênero, ano e diária em reais, e o botão Apagar o selecionado" style="width:720px;" /></p>
 <p>É o <code>locadora-integrada.zip</code>: abram o <code>main.py</code> e ▶.</p>
 <footer>Aula 03 · 23/11/2026 · Indicadores 2, 3</footer>
 </section>
@@ -170,17 +170,18 @@ messagebox.showwarning(<span class="hljs-string">&quot;Confira os dados&quot;</s
 <header>UC4 · Projeto Integrador</header>
 <h2 id="icone-o-que-o-bot%C3%A3o-cadastrar-faz"><img src="../_comum/icones/mono/camadas.svg" alt="icone" /> O que o botão Cadastrar faz</h2>
 <pre><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">cadastrar</span>(<span class="hljs-params">self</span>):
-    texto = {chave: campo.get() <span class="hljs-keyword">for</span> chave, campo <span class="hljs-keyword">in</span> <span class="hljs-variable language_">self</span>.campos.items()}
-    problemas = regras.validar_jogo(texto[<span class="hljs-string">&quot;titulo&quot;</span>], texto[<span class="hljs-string">&quot;ano&quot;</span>], texto[<span class="hljs-string">&quot;preco&quot;</span>])
-    <span class="hljs-keyword">if</span> problemas:                                               <span class="hljs-comment"># 1. a regra confere</span>
+    problemas, campos = regras.preparar_jogo(<span class="hljs-variable language_">self</span>.campo_titulo.get(), <span class="hljs-variable language_">self</span>.campo_genero.get(),
+                                             <span class="hljs-variable language_">self</span>.campo_ano.get(), <span class="hljs-variable language_">self</span>.campo_preco.get())
+    <span class="hljs-keyword">if</span> problemas:                                           <span class="hljs-comment"># 1. a regra confere</span>
         messagebox.showwarning(<span class="hljs-string">&quot;Confira os dados&quot;</span>, <span class="hljs-string">&quot;\n&quot;</span>.join(problemas))
         <span class="hljs-keyword">return</span>
-    dados.criar_jogo(<span class="hljs-variable language_">self</span>.conexao, texto[<span class="hljs-string">&quot;titulo&quot;</span>], ...)        <span class="hljs-comment"># 2. os dados gravam</span>
-    <span class="hljs-variable language_">self</span>.atualizar_tabela()                                     <span class="hljs-comment"># 3. a tela mostra</span>
+    titulo, genero, ano, preco = campos
+    dados.criar_jogo(<span class="hljs-variable language_">self</span>.conexao, titulo, genero, ano, preco)   <span class="hljs-comment"># 2. os dados gravam</span>
+    <span class="hljs-variable language_">self</span>.atualizar()                                        <span class="hljs-comment"># 3. a tela mostra</span>
 </code></pre>
 <ul>
 <li data-marpit-fragment="1">A janela <strong>pede</strong>: à regra, que confira; aos dados, que gravem. Ela mesma não decide nada nem escreve SQL.</li>
-<li data-marpit-fragment="2">O <code>validar_jogo</code> devolve a lista de problemas <strong>em português</strong> — e se testa sem janela.</li>
+<li data-marpit-fragment="2">O <code>preparar_jogo</code> confere e converte o que foi digitado (&quot;8,50&quot; vira <code>8.50</code>), e devolve os problemas <strong>em português</strong> — e se testa sem janela.</li>
 </ul>
 <footer>Aula 03 · 23/11/2026 · Indicadores 2, 3</footer>
 </section>
@@ -193,7 +194,7 @@ messagebox.showwarning(<span class="hljs-string">&quot;Confira os dados&quot;</s
         conexao.rollback()
         <span class="hljs-keyword">raise</span>
 </code></pre>
-<pre><code class="language-python"><span class="hljs-comment"># janela.py — é aqui que se sabe o que dizer à pessoa</span>
+<pre><code class="language-python"><span class="hljs-comment"># aba_jogos.py — é aqui que se sabe o que dizer à pessoa</span>
     <span class="hljs-keyword">except</span> pg.errors.UniqueViolation:
         messagebox.showerror(<span class="hljs-string">&quot;Jogo repetido&quot;</span>, <span class="hljs-string">&quot;Já existe um jogo com esse título.&quot;</span>)
 </code></pre>
@@ -217,12 +218,12 @@ defeito existe — só ninguém fica sabendo.
 <header>UC4 · Projeto Integrador</header>
 <h2 id="icone-o-mainpy-liga-as-pe%C3%A7as"><img src="../_comum/icones/mono/ligacao.svg" alt="icone" /> O <code>main.py</code> liga as peças</h2>
 <pre><code class="language-python"><span class="hljs-keyword">from</span> locadora.conexao <span class="hljs-keyword">import</span> conectar
-<span class="hljs-keyword">from</span> locadora.janela <span class="hljs-keyword">import</span> JanelaDeJogos
+<span class="hljs-keyword">from</span> locadora.janela <span class="hljs-keyword">import</span> JanelaDaLocadora
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
     conexao = conectar()
     <span class="hljs-keyword">try</span>:
-        JanelaDeJogos(conexao).mainloop()
+        JanelaDaLocadora(conexao).mainloop()
     <span class="hljs-keyword">finally</span>:
         conexao.close()          <span class="hljs-comment"># fecha mesmo se algo der errado no meio</span>
 
@@ -230,7 +231,7 @@ defeito existe — só ninguém fica sabendo.
     main()
 </code></pre>
 <ul>
-<li data-marpit-fragment="1">A janela recebe a conexão pronta — como os dados recebem, desde a UC3.</li>
+<li data-marpit-fragment="1">A janela recebe a conexão pronta. O <code>terminal.py</code> só troca a janela pelo <code>Menu</code>.</li>
 </ul>
 <footer>Aula 03 · 23/11/2026 · Indicadores 2, 3</footer>
 </section>
@@ -323,7 +324,7 @@ defeito existe — só ninguém fica sabendo.
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-marpit-fragments="2" data-paginate="true" data-header="UC4 · Projeto Integrador" data-footer="Aula 03 · 23/11/2026 · Indicadores 2, 3" data-theme="senac" lang="pt-BR" data-marpit-pagination="22" style="--paginate:true;--header:UC4 · Projeto Integrador;--footer:Aula 03 · 23/11/2026 · Indicadores 2, 3;--theme:senac;" data-marpit-pagination-total="28" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;duration&quot;:&quot;200ms&quot;,&quot;builtinFallback&quot;:true}">
 <header>UC4 · Projeto Integrador</header>
 <h2 id="icone-opcional--o-mesmo-crud-com-um-orm"><img src="../_comum/icones/mono/banco-de-dados.svg" alt="icone" /> Opcional — o mesmo CRUD com um ORM</h2>
-<p>Um ORM escreve o SQL por vocês, a partir de uma classe Python:</p>
+<p>Um ORM escreve o SQL a partir de uma classe. No zip: <code>dados.py</code> × <code>dados_peewee.py</code>.</p>
 <pre><code class="language-python"><span class="hljs-keyword">from</span> peewee <span class="hljs-keyword">import</span> Model, CharField, DecimalField
 
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">Jogo</span>(<span class="hljs-title class_ inherited__">Model</span>):
