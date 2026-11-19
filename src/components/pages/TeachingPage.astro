@@ -41,7 +41,7 @@ const rotuloSituacao = {
               <div class="edicao-topo">
                 <p class="quando">
                   <strong>{ed.ano}</strong>
-                  <span>{ed.periodo}</span>
+                  <span>{pick(ed.periodo)}</span>
                   <span>{pick(ed.turno)}</span>
                 </p>
                 {ed.href && (

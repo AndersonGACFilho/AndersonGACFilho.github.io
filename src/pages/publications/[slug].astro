@@ -28,11 +28,13 @@ const { entry, altPath, translation } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Base title={`${entry.data.title} — Anderson Gonçalves`} description={entry.data.summary} lang={lang} altPath={altPath} translation={translation}>
+<Base title={`${entry.data.title} — Anderson Gonçalves`} description={entry.data.summary} lang={lang} altPath={altPath} translation={translation} ogType="article">
   <article class="prose">
     <p><a class="muted" href={localize('/publications', lang)}>← Publications</a></p>
     <div class="badge-row">
-      {entry.data.tracks.map((track) => <TrackBadge track={track} lang={lang} />)}
+      {/* O espaço entre os rótulos não aparece (a linha é flex), mas sem ele o
+          leitor de tela e a cópia de texto juntam tudo: "Game DevAI Research". */}
+      {entry.data.tracks.map((track) => <><TrackBadge track={track} lang={lang} />{' '}</>)}
     </div>
     <h1>{entry.data.title}</h1>
     <p class="muted mono">{formatDate(entry.data.date, lang)}</p>

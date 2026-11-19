@@ -7,8 +7,8 @@ date: 2026-05-20
 buildPath: starlight-protocol
 ratio: 16 / 9
 controls:
-  en: The mouse aims the ship, thrust moves it — inertia does the rest.
-  pt: O mouse mira a nave, o impulso move — a inércia faz o resto.
+  en: W thrusts, the mouse aims, left click fires.
+  pt: W dá impulso, o mouse mira, o botão esquerdo atira.
 itch: https://vertex-shift.itch.io/starlight-protocol
 repo: Starlight-Protocol
 about:

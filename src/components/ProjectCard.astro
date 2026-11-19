@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import TrackBadge from './TrackBadge.astro';
-import { useTranslations, localize, formatDate, type Lang, type UIKey } from '../i18n/ui';
+import { useTranslations, localize, type Lang, type UIKey } from '../i18n/ui';
 import { trackColor, pick } from '../lib/tracks';
 import { repoInfo, repoUrl } from '../lib/github';
 
@@ -69,13 +69,14 @@ const target = d.play
 
   <div class="card-side">
     <div class="badge-row">
-      {d.tracks.map((track) => <TrackBadge track={track} lang={lang} />)}
+      {/* O espaço entre os rótulos não aparece (a linha é flex), mas sem ele o
+          leitor de tela e a cópia de texto juntam tudo: "Game DevAI Research". */}
+      {d.tracks.map((track) => <><TrackBadge track={track} lang={lang} />{' '}</>)}
     </div>
 
     <div class="card-meta">
       {meta?.language && <span>{meta.language}</span>}
       {meta && meta.stars > 0 && <span>★ {meta.stars}</span>}
-      {meta && <span>{t('label.updated')} {formatDate(new Date(meta.pushedAt), lang)}</span>}
       {d.private && <span>{t('label.private')}</span>}
       {!meta && d.year && <span>{d.year}</span>}
     </div>

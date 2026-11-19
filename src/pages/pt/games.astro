@@ -3,6 +3,10 @@ import Base from '../../layouts/Base.astro';
 import GamesPage from '../../components/pages/GamesPage.astro';
 const lang = 'pt' as const;
 ---
-<Base title="Jogos — Anderson Gonçalves" lang={lang}>
+<Base
+  title="Jogos — Anderson Gonçalves"
+  description="Protótipos de jogos em Unity e C++, cinco deles jogáveis no navegador sem baixar nada. Também publicados na itch.io sob o selo Vertex Shift."
+  lang={lang}
+>
   <GamesPage lang={lang} />
 </Base>

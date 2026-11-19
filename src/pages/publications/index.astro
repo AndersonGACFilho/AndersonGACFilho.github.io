@@ -3,6 +3,10 @@ import Base from '../../layouts/Base.astro';
 import PublicationsPage from '../../components/pages/PublicationsPage.astro';
 const lang = 'en' as const;
 ---
-<Base title="Publications — Anderson Gonçalves" lang={lang}>
+<Base
+  title="Publications — Anderson Gonçalves"
+  description="Papers and notes on control and decision-making for game agents, starting with HTN method selection guided by multi-objective reinforcement learning (ERAMIA-RS 2026)."
+  lang={lang}
+>
   <PublicationsPage lang={lang} />
 </Base>

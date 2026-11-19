@@ -9,7 +9,7 @@ ratio: 16 / 9
 repo: Ashvault
 about:
   en: >-
-    Vertical exploration and recoverable risk are the design centre: falling
+    Vertical exploration and recoverable risk are the design center: falling
     deeper should cost you something you can still win back. A flatscreen build
     is the one that will land here, since the VR version needs a headset.
   pt: >-

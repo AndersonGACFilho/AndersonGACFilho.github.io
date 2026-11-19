@@ -1,6 +1,6 @@
 ---
 # In the proceedings. `date` is the first day of the event (9 to 11 November
-# 2026, Porto Alegre). Still missing: the `url` of the paper on SBC OpenLib.
+# 2026, Porto Alegre). Pages 13–16 of the proceedings, on SBC OpenLib.
 title: 'HTN Method Selection Guided by Multi-Objective Reinforcement Learning and Dynamic Preferences'
 date: 2026-11-09
 summary: Four-page paper in the graduate track of ERAMIA-RS 2026, and the first version of this work. An HTN keeps the agent inside what the domain allows, and a preference-conditioned multi-objective RL policy picks among the valid methods according to the priorities of the moment. It has the formulation and the evaluation protocol. The experiments, and the full paper, come in 2027.
@@ -11,12 +11,13 @@ venue:
   name: ERAMIA-RS 2026
   full: II Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (SBC)
   status: published
-  # url: https://sol.sbc.org.br/index.php/eramiars/article/view/<id>
+  url: https://sol.sbc.org.br/index.php/eramiars/article/view/47322
 pdf: /papers/eramia-rs.pdf
 ---
 
-Anderson G. A. C. Filho, Anderson R. Tavares and Lucas N. Alegre, Instituto de Informática, UFRGS.
-Four pages, in English. The [version in the proceedings is here as a PDF](/papers/eramia-rs.pdf).
+Anderson G. A. C. Filho (the name I sign papers with), Anderson R. Tavares and Lucas N. Alegre,
+Instituto de Informática, UFRGS. Four pages, in English. The [version in the proceedings is here as a
+PDF](/papers/eramia-rs.pdf), and so is the [poster from ECOA 2026](/research/poster-htn-morl.pdf).
 
 ## Abstract
 
@@ -44,3 +45,18 @@ stops there. The experiments come next, in a controlled game-like environment, a
 first-applicable and heuristic HTN selection and two scalar RL baselines. With results in hand, the
 full paper goes to a conference in 2027. The [research page](/research) has the longer explanation
 and the poster.
+
+## Cite
+
+```bibtex
+@inproceedings{filho2026htn,
+  author    = {Anderson G. A. C. Filho and Anderson R. Tavares and Lucas N. Alegre},
+  title     = {{HTN} Method Selection Guided by Multi-Objective Reinforcement Learning and Dynamic Preferences},
+  booktitle = {Anais da II Escola Regional de Aprendizado de M{\'a}quina e Intelig{\^e}ncia Artificial da Regi{\~a}o Sul (ERAMIA-RS)},
+  address   = {Porto Alegre, RS},
+  publisher = {SBC},
+  year      = {2026},
+  pages     = {13--16},
+  doi       = {10.5753/eramiars.2026.35023},
+}
+```

@@ -19,9 +19,11 @@ interface Props {
   translation?: string | null;
   /** Home only: the standing name is the page's h1 there, and a link elsewhere. */
   home?: boolean;
+  /** A paper page is an article to link preview crawlers; everything else is the site. */
+  ogType?: 'website' | 'article';
 }
 
-const { title, description, lang, altPath, translation, home = false } = Astro.props;
+const { title, description, lang, altPath, translation, home = false, ogType = 'website' } = Astro.props;
 const t = useTranslations(lang);
 // Link preview crawlers treat a short description as thin content;
 // LinkedIn warns below 100 characters. The tagline is kept short for
@@ -71,7 +73,7 @@ const ptHref = twin === null ? null : new URL(asDir(lang === 'pt' ? here : twin)
     }
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
@@ -114,7 +116,7 @@ const ptHref = twin === null ? null : new URL(asDir(lang === 'pt' ? here : twin)
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">{t('a11y.skip')}</a>
     {/* O NOME EM PÉ. No desktop é a coluna da esquerda, da altura da tela, e
         fica parado enquanto a página rola; no celular deita e abre a página.
         Na home ele é o próprio h1, porque lá não existe outro título. */}
@@ -126,7 +128,7 @@ const ptHref = twin === null ? null : new URL(asDir(lang === 'pt' ? here : twin)
       )
     }
     <header class="site-header">
-      <nav class="site-nav" aria-label="Main">
+      <nav class="site-nav" aria-label={t('nav.label')}>
         {
           nav.map((item) => (
             <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>

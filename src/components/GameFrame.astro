@@ -47,8 +47,10 @@ const ratioNum = Number.isFinite(ratioW / ratioH) ? ratioW / ratioH : 16 / 9;
             lang={lang}
           />
         )}
-        {/* So aparece em cinema, em aparelho de toque, com o aparelho em pe. */}
-        <p class="girar">{t('touch.girar')}</p>
+        {/* So aparece em cinema, em aparelho de toque, com o aparelho em pe.
+            E so em jogo com controle na tela: os que dependem de mouse ou
+            teclado nao ficam jogaveis por girar o aparelho. */}
+        {d.touch && <p class="girar">{t('touch.girar')}</p>}
       </div>
     ) : (
       <div class="game-stage game-stage-empty">

@@ -84,7 +84,7 @@ const groups: [keyof typeof section, Entry[]][] = [
                 <span class="period">{pick(entry.period, lang)}</span>
                 <span class="place">{pick(entry.place, lang)}</span>
                 {[entry.track, ...(entry.alsoTracks ?? [])].filter(Boolean).map((track) => (
-                  <span class="entry-track" data-track={track}>{t(trackLabelKey(track!))}</span>
+                  <><span class="entry-track" data-track={track}>{t(trackLabelKey(track!))}</span>{' '}</>
                 ))}
               </div>
               <div class="what">

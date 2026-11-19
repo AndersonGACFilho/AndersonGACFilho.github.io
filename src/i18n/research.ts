@@ -49,7 +49,7 @@ export const research: Record<Lang, Copy> = {
       'Dynamic preferences determine what matters now.',
     ],
     intro:
-      'I want an agent that stays inside the rules it was given and still follows priorities that change while it runs. A hierarchical task network handles the first part: the agent only ever does what the domain allows, so it is valid by construction. The cost is rigidity. When safety starts to matter more than speed, someone has to rewrite the domain. Letting a learner loose on the primitive actions removes the rigidity and throws the guarantee away with it. My MSc moves the learning to the choice of method. I test it on NPCs, where the agent works with partial information and a deadline per frame, and a player notices as soon as it does something odd.',
+      'I want an agent that stays inside the rules it was given and still follows priorities that change while it runs. A hierarchical task network handles the first part: the agent only ever does what the domain allows, so it is valid by construction. The cost is rigidity. When safety starts to matter more than speed, someone has to rewrite the domain. Letting a learner loose on the primitive actions removes the rigidity and throws the guarantee away with it. My MSc moves the learning to the choice of method. NPCs are the test bench: there the agent works with partial information and a deadline per frame, and a player notices as soon as it does something odd.',
     blocks: [
       {
         heading: 'Filtering: the domain says what is legal',
@@ -97,7 +97,7 @@ export const research: Record<Lang, Copy> = {
       'As preferências dinâmicas determinam o que importa agora.',
     ],
     intro:
-      'Quero um agente que fique dentro das regras que recebeu e ainda assim siga prioridades que mudam enquanto ele roda. Uma rede hierárquica de tarefas resolve a primeira parte: o agente só faz o que o domínio permite, então é válido por construção. O preço é a rigidez. Quando segurança passa a valer mais que velocidade, alguém precisa reescrever o domínio. Soltar um aprendiz sobre as ações primitivas tira a rigidez e leva a garantia junto. O meu mestrado move o aprendizado para a escolha do método. Eu testo em NPC, onde o agente trabalha com informação parcial e prazo por quadro, e o jogador percebe na hora quando ele faz alguma coisa estranha.',
+      'Quero um agente que fique dentro das regras que recebeu e ainda assim siga prioridades que mudam enquanto ele roda. Uma rede hierárquica de tarefas resolve a primeira parte: o agente só faz o que o domínio permite, então é válido por construção. O preço é a rigidez. Quando segurança passa a valer mais que velocidade, alguém precisa reescrever o domínio. Soltar um aprendiz sobre as ações primitivas tira a rigidez e leva a garantia junto. O meu mestrado move o aprendizado para a escolha do método. O NPC é a bancada de teste: ali o agente trabalha com informação parcial e prazo por quadro, e o jogador percebe na hora quando ele faz alguma coisa estranha.',
     blocks: [
       {
         heading: 'Filtragem: o domínio diz o que é legal',

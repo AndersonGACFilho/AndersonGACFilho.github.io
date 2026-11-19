@@ -79,7 +79,7 @@ export const experience: Entry[] = [
       en: [
         'Research and implement decision-making and control for agents acting under partial information, with reinforcement learning, hierarchical task networks and goal-oriented action planning.',
         'Design hybrid architectures where HTN handles strategic decomposition, GOAP handles contextual goal selection and multi-objective RL improves execution policies.',
-        'Build simulated environments and controlled experiments on NPCs, measuring responsiveness, adaptability, computational cost, scalability and behavioural interpretability.',
+        'Build simulated environments and controlled experiments on NPCs, measuring responsiveness, adaptability, computational cost, scalability and behavioral interpretability.',
         'Translate research into modular architectures and implementation patterns fit for commercial engines.',
       ],
       pt: [
@@ -102,7 +102,7 @@ export const experience: Entry[] = [
     bullets: {
       en: [
         'Ship independent game projects under the Vertex Shift label, from prototype to playable release.',
-        'Implement enemy behaviour, state machines, progression, inventory, combat, wave spawning and dynamic difficulty.',
+        'Implement enemy behavior, state machines, progression, inventory, combat, wave spawning and dynamic difficulty.',
         'Run the whole pipeline solo: design, architecture, testing, version control, builds, documentation and portfolio presentation.',
       ],
       pt: [
@@ -138,7 +138,7 @@ export const experience: Entry[] = [
     },
   },
   {
-    role: { en: 'Mid Level Backend Software Engineer', pt: 'Engenheiro de Software Backend Pleno' },
+    role: { en: 'Mid-Level Backend Software Engineer', pt: 'Engenheiro de Software Backend Pleno' },
     org: 'Centro de Excelência em Inteligência Artificial (CEIA)',
     kind: { en: 'Full time', pt: 'Tempo integral' },
     track: 'fullstack',
@@ -161,7 +161,7 @@ export const experience: Entry[] = [
     },
   },
   {
-    role: { en: 'Mid Level Fullstack Developer', pt: 'Desenvolvedor Full Stack Pleno' },
+    role: { en: 'Mid-Level Full Stack Developer', pt: 'Desenvolvedor Full Stack Pleno' },
     org: 'TOTVS Brasil Central',
     kind: { en: 'Full time', pt: 'Tempo integral' },
     track: 'fullstack',
@@ -171,8 +171,8 @@ export const experience: Entry[] = [
     bullets: {
       en: [
         'Built an internal RAG assistant indexing 10+ GitLab repositories into a MongoDB-backed vector database, for code discovery and onboarding.',
-        'Automated Jira time-entry synchronisation and recurring reporting with n8n, cutting manual work.',
-        'Developed licence-management tools and internal integrations across engineering and business operations.',
+        'Automated Jira time-entry synchronization and recurring reporting with n8n, cutting manual work.',
+        'Developed license-management tools and internal integrations across engineering and business operations.',
       ],
       pt: [
         'Construí um assistente interno com RAG indexando mais de 10 repositórios GitLab num banco vetorial sobre MongoDB, para busca de código e onboarding.',
@@ -209,7 +209,7 @@ export const experience: Entry[] = [
     bullets: {
       en: [
         'Maintained and evolved ERP modules on a legacy-heavy stack.',
-        'Built ETLs, optimised algorithms, documented legacy systems and automated pipelines with GCP, Terraform and Azure DevOps.',
+        'Built ETLs, optimized algorithms, documented legacy systems and automated pipelines with GCP, Terraform and Azure DevOps.',
       ],
       pt: [
         'Mantive e evoluí módulos de ERP numa stack com bastante legado.',
@@ -257,7 +257,7 @@ export const education: Entry[] = [
     bullets: {
       en: [
         'Institute of Informatics, track: Planning, Multi-Agent Systems and Robotics, supervised by Prof. Lucas N. Alegre.',
-        'Research: control and decision-making under partial information, combining reinforcement learning with GOAP and HTN. The NPC is the test bench, and believable behaviour is the pass mark the game imposes.',
+        'Research: control and decision-making under partial information, combining reinforcement learning with GOAP and HTN. The NPC is the test bench, and believable behavior is the pass mark the game imposes.',
       ],
       pt: [
         'Instituto de Informática, linha de Planejamento, Sistemas Multiagentes e Robótica, sob orientação do Prof. Lucas N. Alegre.',

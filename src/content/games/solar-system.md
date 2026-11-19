@@ -6,6 +6,9 @@ tagline:
 date: 2026-05-21
 buildPath: solar-system
 ratio: 16 / 9
+controls:
+  en: Click a planet to follow it; right click goes back to the default view.
+  pt: Clique num planeta para segui-lo; o botão direito volta à visão padrão.
 about:
   en: >-
     Coursework, and it shows in the best way: this came out of a Coursera

@@ -30,7 +30,7 @@ export interface Uc {
 
 export interface Edicao {
   ano: string;
-  periodo: string;
+  periodo: Bi;
   turno: Bi;
   /** Material publicado. Sem isto, a edição aparece sem link. */
   href?: string;
@@ -60,8 +60,8 @@ export const ensino: Instituicao[] = [
         edicoes: [
           {
             ano: '2026',
-            periodo: '08/09 — 25/11/2026',
-            turno: { en: 'Evenings, 6–10pm', pt: 'Noite, 18h às 22h' },
+            periodo: { en: '8 Sep – 25 Nov 2026', pt: '08/09 a 25/11/2026' },
+            turno: { en: 'Evenings, 6 to 10 pm', pt: 'Noite, 18h às 22h' },
             href: '/teaching/senacrs/programador-de-sistemas/2026/',
             ucs: [
               {

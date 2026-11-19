@@ -35,7 +35,9 @@ const venue = d.venue;
 
   <div class="card-side">
     <div class="badge-row">
-      {d.tracks.map((track) => <TrackBadge track={track} lang={lang} />)}
+      {/* O espaço entre os rótulos não aparece (a linha é flex), mas sem ele o
+          leitor de tela e a cópia de texto juntam tudo: "Game DevAI Research". */}
+      {d.tracks.map((track) => <><TrackBadge track={track} lang={lang} />{' '}</>)}
     </div>
 
     <div class="card-meta">

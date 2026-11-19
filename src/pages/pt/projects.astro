@@ -3,6 +3,10 @@ import Base from '../../layouts/Base.astro';
 import ProjectsPage from '../../components/pages/ProjectsPage.astro';
 const lang = 'pt' as const;
 ---
-<Base title="Projetos — Anderson Gonçalves" lang={lang}>
+<Base
+  title="Projetos — Anderson Gonçalves"
+  description="Projetos em gameplay, backend e pesquisa: protótipos em Unity que dá para jogar aqui, serviços em Python e Java, e o mestrado em planejamento HTN na UFRGS."
+  lang={lang}
+>
   <ProjectsPage lang={lang} />
 </Base>

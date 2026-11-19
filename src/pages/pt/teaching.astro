@@ -3,6 +3,10 @@ import Base from '../../layouts/Base.astro';
 import TeachingPage from '../../components/pages/TeachingPage.astro';
 const lang = 'pt' as const;
 ---
-<Base title="Aulas — Anderson Gonçalves" lang={lang}>
+<Base
+  title="Aulas — Anderson Gonçalves"
+  description="Material do curso Programador de Sistemas que dou no Senac RS, em Porto Alegre: slides, exercícios de autocorreção e formulários de entrega, abertos em HTML."
+  lang={lang}
+>
   <TeachingPage lang={lang} />
 </Base>
