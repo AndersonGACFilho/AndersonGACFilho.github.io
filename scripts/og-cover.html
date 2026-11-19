@@ -8,6 +8,11 @@
   relativo. Trocou um hex no tokens.css, roda `npm run render:og` e a capa
   acompanha.
 
+  Mesmo desenho da home: o nome na fonte da coluna em pé, na tinta dos nomes;
+  o papel em caixa alta; as frentes sem caixa nem filete, lidas pelo nome
+  verde. O nome fica deitado porque a prévia aparece pequena no feed, e em pé
+  ele vira um risco.
+
   Gameplay e full stack dividem a linha em duas colunas do mesmo tamanho,
   porque a mesma prévia vai em candidatura das duas. A pesquisa vem embaixo,
   como no hero.role, que põe o mestrado depois das duas funções.
@@ -20,16 +25,21 @@
 <meta charset="utf-8" />
 <link rel="stylesheet" href="../src/styles/tokens.css" />
 <style>
+  /* os mesmos arquivos do src/styles/fonts.css, só nos pesos que a capa usa */
   @font-face {
-    font-family: 'Archivo';
-    font-weight: 100 900;
-    font-stretch: 62% 125%;
-    src: url('../public/fonts/archivo-latin.woff2') format('woff2');
+    font-family: 'Cooper Hewitt';
+    font-weight: 400;
+    src: url('../public/fonts/cooper-hewitt-latin-400-normal.woff2') format('woff2');
   }
   @font-face {
-    font-family: 'Literata';
-    font-weight: 200 900;
-    src: url('../public/fonts/literata-latin.woff2') format('woff2');
+    font-family: 'Cooper Hewitt';
+    font-weight: 700;
+    src: url('../public/fonts/cooper-hewitt-latin-700-normal.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Martian Mono Condensed';
+    font-weight: 800;
+    src: url('../public/fonts/martian-mono-condensed-800.woff2') format('woff2');
   }
   @font-face {
     font-family: 'IBM Plex Mono';
@@ -53,40 +63,35 @@
   }
 
   h1 {
-    margin: 0 0 14px;
-    font-family: var(--display);
+    margin: 0 0 22px;
+    font-family: var(--spine);
     font-size: 84px;
-    font-stretch: 118%;
-    font-weight: 700;
-    letter-spacing: -0.015em;
-    line-height: 1.02;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--accent);
   }
   .role {
     margin: 0;
-    font-family: var(--display);
-    font-size: 31px;
-    font-weight: 500;
-    color: var(--text-dim);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
-  /* o mesmo filete de 3px das trilhas da home: canto vivo, cor da trilha */
   .tracks {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 40px;
-    margin-top: 64px;
+    gap: 0 56px;
+    margin-top: 56px;
   }
-  .track {
-    border-left: 3px solid var(--track);
-    padding: 4px 0 6px 20px;
-  }
+  .track { margin: 0; }
   .track strong {
     display: block;
-    margin-bottom: 6px;
-    font-family: var(--display);
-    font-size: 30px;
-    font-stretch: 108%;
-    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.1;
     color: var(--track);
   }
   .track span { font-size: 25px; line-height: 1.35; color: var(--text-dim); }
@@ -96,14 +101,14 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 40px;
+    gap: 32px;
     padding-top: 22px;
     border-top: 1px solid var(--border);
   }
-  /* uma linha só: quebrada, deixava "NPCs" sozinho embaixo */
-  .research { font-size: 22px; white-space: nowrap; color: var(--text-dim); }
-  .research b { font-weight: 600; color: var(--research); }
-  .url { font-family: var(--mono); font-size: 19px; white-space: nowrap; color: var(--text-faint); }
+  /* uma linha só: quebrada, deixava "bench" sozinho embaixo */
+  .research { font-size: 21px; white-space: nowrap; color: var(--text-dim); }
+  .research b { font-weight: 700; color: var(--research); }
+  .url { font-family: var(--mono); font-size: 17px; white-space: nowrap; color: var(--text-faint); }
 </style>
 </head>
 <body>
@@ -122,7 +127,7 @@
   </div>
 
   <div class="foot">
-    <span class="research"><b>MSc at UFRGS</b> on control and decision-making, tested on NPCs</span>
+    <span class="research"><b>MSc at UFRGS</b> on control and decision-making, with NPCs as the test bench</span>
     <span class="url">andersongacfilho.github.io</span>
   </div>
 </body>

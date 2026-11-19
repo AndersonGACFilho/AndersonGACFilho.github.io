@@ -21,8 +21,8 @@
  * ocupa o mesmo degrau da coluna. Arquivo da Evil Martians sem alteração
  * (`evilmartians/mono`, commit 8babba8); SIL OFL 1.1, em `OFL-martian-mono.txt`.
  *
- * Archivo e Literata continuam em `public/fonts/` só porque o
- * `scripts/og-cover.html` ainda desenha a imagem de prévia com elas.
+ * O `scripts/og-cover.html` lê estes mesmos arquivos para desenhar a imagem
+ * de prévia; trocou fonte aqui, troca lá e roda `npm run render:og`.
  *
  * Os nomes das famílias vêm do `tokens.css`, em `--display`, `--font` e
  * `--spine`.
