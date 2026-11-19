@@ -37,7 +37,8 @@ preferências, generalização, validade semântica e custo de inferência.
 
 Uma decisão com dois objetivos, progresso e sobrevivência, e dois métodos aplicáveis com retornos
 estimados de [0,8; 0,2] para m1 e [0,5; 0,5] para m2. Com os pesos [0,8; 0,2] o agente escolhe m1.
-Mudando os pesos para [0,2; 0,8], ele escolhe m2. O domínio HTN é o mesmo nos dois casos.
+Mudando os pesos para [0,2; 0,8], ele escolhe m2. O domínio HTN é o mesmo nos dois casos. Os números
+foram inventados para mostrar o mecanismo; nenhum experimento os produziu ainda.
 
 ## Em que pé está
 

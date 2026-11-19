@@ -36,7 +36,7 @@ cost.
 Take one decision with two objectives, progress and survival, and two applicable methods whose
 estimated returns are [0.8, 0.2] for m1 and [0.5, 0.5] for m2. With the weights [0.8, 0.2] the
 agent picks m1. Move the weights to [0.2, 0.8] and it picks m2. The HTN domain is the same in both
-cases.
+cases. The numbers are made up to show the mechanism; no experiment has produced them yet.
 
 ## Where it stands
 

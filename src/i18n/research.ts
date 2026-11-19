@@ -67,7 +67,7 @@ export const research: Record<Lang, Copy> = {
         heading: 'Preferences: what matters, right now',
         body: [
           'The weight vector carries the current trade-off between mission, safety, resources and time. Changing it changes which method gets selected while the HTN domain stays as written, so adapting to a new priority costs no re-authoring.',
-          'With two objectives, progress and survival, and estimated returns of [0.8, 0.2] for one method and [0.5, 0.5] for another, the weights [0.8, 0.2] pick the first. Move them to [0.2, 0.8] and the agent picks the second.',
+          'With two objectives, progress and survival, and estimated returns of [0.8, 0.2] for one method and [0.5, 0.5] for another, the weights [0.8, 0.2] pick the first. Move them to [0.2, 0.8] and the agent picks the second. The numbers are made up for the example.',
         ],
       },
       {
@@ -78,10 +78,10 @@ export const research: Record<Lang, Copy> = {
       },
     ],
     posterCaption:
-      'Poster for ECOA 2026, the IV Escola de Computação Avançada at UFRGS, on 21 and 22 October: architecture, hierarchical credit assignment and the planned experiments.',
+      'Poster presented at ECOA 2026, the IV Escola de Computação Avançada at UFRGS, on 21 and 22 October: architecture, hierarchical credit assignment and the planned experiments.',
     materials: 'Materials',
     materialsIntro:
-      'The ERAMIA-RS paper is in the proceedings and the PDF is here. The poster went to ECOA 2026. Both are a first version, with the formulation and the evaluation protocol. The experiments come next, and the full paper with them in 2027.',
+      'The ERAMIA-RS paper is in the proceedings and the PDF is here. The poster was presented at ECOA 2026, in October. Both are a first version, with the formulation and the evaluation protocol. The experiments come next, and the full paper with them in 2027.',
     posterLabel: 'Poster (PDF)',
     posterMeta: 'ECOA 2026 · UFRGS · 1.1 MB',
     paperLabel: 'ERAMIA-RS paper',
@@ -115,7 +115,7 @@ export const research: Record<Lang, Copy> = {
         heading: 'Preferências: o que importa, agora',
         body: [
           'O vetor de pesos carrega o trade-off atual entre missão, segurança, recursos e tempo. Mudá-lo muda o método selecionado sem tocar no domínio HTN, então se adaptar a uma prioridade nova não exige reescrever nada.',
-          'Com dois objetivos, progresso e sobrevivência, e retornos estimados de [0,8; 0,2] para um método e [0,5; 0,5] para outro, os pesos [0,8; 0,2] escolhem o primeiro. Mudando para [0,2; 0,8], o agente escolhe o segundo.',
+          'Com dois objetivos, progresso e sobrevivência, e retornos estimados de [0,8; 0,2] para um método e [0,5; 0,5] para outro, os pesos [0,8; 0,2] escolhem o primeiro. Mudando para [0,2; 0,8], o agente escolhe o segundo. Os números são inventados para o exemplo.',
         ],
       },
       {
@@ -126,10 +126,10 @@ export const research: Record<Lang, Copy> = {
       },
     ],
     posterCaption:
-      'Pôster da ECOA 2026, a IV Escola de Computação Avançada da UFRGS, em 21 e 22 de outubro: arquitetura, atribuição hierárquica de crédito e os experimentos propostos.',
+      'Pôster apresentado na ECOA 2026, a IV Escola de Computação Avançada da UFRGS, em 21 e 22 de outubro: arquitetura, atribuição hierárquica de crédito e os experimentos propostos.',
     materials: 'Materiais',
     materialsIntro:
-      'O artigo do ERAMIA-RS está nos anais e o PDF está aqui. O pôster foi para a ECOA 2026. Os dois são uma primeira versão, com a formulação e o protocolo de avaliação. Os experimentos vêm agora, e o artigo completo com eles em 2027.',
+      'O artigo do ERAMIA-RS está nos anais e o PDF está aqui. O pôster foi apresentado na ECOA 2026, em outubro. Os dois são uma primeira versão, com a formulação e o protocolo de avaliação. Os experimentos vêm agora, e o artigo completo com eles em 2027.',
     posterLabel: 'Pôster (PDF)',
     posterMeta: 'ECOA 2026 · UFRGS · 1,1 MB',
     paperLabel: 'Artigo do ERAMIA-RS',

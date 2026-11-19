@@ -72,7 +72,7 @@ export const experience: Entry[] = [
     kind: { en: 'Fixed term', pt: 'Temporário' },
     track: 'gamedev',
     alsoTracks: ['research'],
-    period: { en: 'Mar 2026 – present', pt: 'mar 2026 – o momento' },
+    period: { en: 'Mar 2026 – present', pt: 'mar 2026 – atual' },
     place: { en: 'Porto Alegre, BR · Remote', pt: 'Porto Alegre, RS · Remoto' },
     tech: ['Reinforcement Learning', 'HTN', 'GOAP', 'Multi-agent', 'Python'],
     bullets: {
@@ -96,7 +96,7 @@ export const experience: Entry[] = [
     kind: { en: 'Self-employed', pt: 'Autônomo' },
     url: 'https://vertex-shift.itch.io',
     track: 'gamedev',
-    period: { en: 'Nov 2025 – present', pt: 'nov 2025 – o momento' },
+    period: { en: 'Nov 2025 – present', pt: 'nov 2025 – atual' },
     place: { en: 'Remote', pt: 'Remoto' },
     tech: ['Unity', 'C#', 'Game Architecture', 'Data-driven Design'],
     bullets: {
@@ -116,7 +116,7 @@ export const experience: Entry[] = [
     role: { en: 'Full Stack Developer', pt: 'Desenvolvedor Full Stack' },
     org: 'econtrole — waste management software',
     kind: { en: 'Freelance', pt: 'Freelance' },
-    period: { en: 'Nov 2025 – present', pt: 'nov 2025 – o momento' },
+    period: { en: 'Nov 2025 – present', pt: 'nov 2025 – atual' },
     place: { en: 'Remote', pt: 'Remoto' },
     track: 'fullstack',
     tech: ['Python', 'FastAPI', 'Angular', 'PostgreSQL', 'Redis', 'RabbitMQ', 'Docker', 'Grafana', 'Jaeger'],
