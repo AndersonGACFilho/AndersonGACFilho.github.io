@@ -26,6 +26,14 @@ const section = {
   recommendations: { en: 'Recommendations', pt: 'Recomendações' },
 };
 
+/* O PDF de cada foco, gerado pelo `scripts/render-cv-pdf.mjs`, que monta os
+   mesmos nomes. Trocou aqui, troca lá. */
+const pdfHref = (focus: CvFocus) =>
+  `/files/anderson-goncalves-cv${focus === 'all' ? '' : `-${focus}`}${lang === 'pt' ? '-pt' : ''}.pdf`;
+
+/* No papel o link não clica: o endereço vai escrito ao lado do rótulo. */
+const printedUrl = (url: string) => url.replace(/^(mailto:|https?:\/\/)/, '');
+
 const groups: [keyof typeof section, Entry[]][] = [
   ['experience', experience],
   ['teaching', teaching],
@@ -60,7 +68,19 @@ const groups: [keyof typeof section, Entry[]][] = [
     }
 
     <p class="links">
-      {links.map((link) => <a href={link.url}>{link.label}</a>)}
+      {links.map((link) => (
+        <a href={link.url}>{link.label}<span class="so-papel"> {printedUrl(link.url)}</span></a>
+      ))}
+      {/* Um link por foco, e o script da página mostra o do foco escolhido
+          pelo mesmo `data-panel` dos textos acima. Sem JavaScript fica o de
+          "Tudo", que é o PDF do currículo completo. */}
+      {
+        CV_FOCUSES.map((focus) => (
+          <a class="pdf" href={pdfHref(focus)} download data-panel={focus} hidden={focus !== 'all'}>
+            {t('cv.pdf')}
+          </a>
+        ))
+      }
     </p>
 
     {
@@ -113,7 +133,7 @@ const groups: [keyof typeof section, Entry[]][] = [
     ))
   }
 
-  <section>
+  <section class="recs-section">
     <div class="section-head">
       <h2>{pick(section.recommendations, lang)}</h2>
       <span class="section-nota">{pick(recommendationsNote, lang)}</span>
@@ -172,6 +192,24 @@ const groups: [keyof typeof section, Entry[]][] = [
   .headline { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 10px; }
   .links { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.92rem; margin-bottom: 20px; }
   .links a { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent); text-underline-offset: 0.2em; }
+  .so-papel { display: none; }
+
+  @media print {
+    /* No PDF a escolha de foco já foi feita, e o link para ele mesmo sobra.
+       As recomendações sozinhas davam uma página inteira; no arquivo que vai
+       anexado à candidatura elas ficam de fora, e seguem aqui e no LinkedIn. */
+    .focus-switch, .pdf, .recs-section { display: none !important; }
+    .cv :global(.page-head) { margin-block: 0 4px; max-width: none; }
+    /* A medida de 68ch é de leitura em tela; no A4 ela deixava meia folha em branco. */
+    .cv p { max-width: none; }
+    .timeline { gap: 12px; }
+    .timeline > li, .skills > div { grid-template-columns: minmax(0, 140px) 1fr; }
+    .skills { gap: 6px; }
+    .so-papel { display: inline; color: var(--text-dim); }
+    .timeline > li, .rec, .skills > div { break-inside: avoid; }
+    .section-head { break-after: avoid; }
+  }
+
   .availability {
     font-size: 0.88rem;
     font-weight: 300;

@@ -1,0 +1,28 @@
+/* Responsabilidade: a página no papel, e no PDF que o `render:cv` gera.
+
+   Sai o cromo que só faz sentido na tela: o nome em pé, a navegação, o
+   rodapé e o atalho de teclado. A grade de duas colunas vira uma, senão o
+   conteúdo fica espremido na coluna da direita com a da esquerda vazia.
+
+   AS CORES NÃO MUDAM AQUI. O PDF é impresso por um Chromium headless, que
+   anuncia preferência clara, então já sai no tema claro do `tokens.css` sem
+   uma terceira cópia dos valores. */
+
+@media print {
+  @page { size: A4; margin: 12mm 13mm 14mm; }
+
+  html { font-size: 11px; }
+  /* Papel é branco; o fundo tingido do tema só gastaria tinta. */
+  html, body { display: block; min-height: 0; background: none; }
+
+  .spine,
+  .site-header,
+  .site-footer,
+  .skip-link { display: none !important; }
+
+  main { padding-block: 0; }
+  .wrap { max-width: none; padding-inline: 0; }
+  section { margin-block: 18px; }
+
+  a { text-decoration: none; }
+}

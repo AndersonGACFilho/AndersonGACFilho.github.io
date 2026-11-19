@@ -10,7 +10,8 @@
     "sync": "astro sync",
     "refresh:github": "node scripts/refresh-github-cache.mjs",
     "check:contrast": "node scripts/check-contrast.mjs",
-    "render:og": "node scripts/render-og-cover.mjs"
+    "render:og": "node scripts/render-og-cover.mjs",
+    "render:cv": "astro build && node scripts/render-cv-pdf.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
