@@ -52,8 +52,8 @@ export const headline: ByFocus<Bi> = {
 
 export const profile: ByFocus<Bi> = {
   all: {
-    en: 'I write gameplay code and the services behind it. Four years of production engineering came first (Python, FastAPI, Java, PostgreSQL, RabbitMQ, Docker, CI/CD), and that is why my Unity and Unreal projects get architected instead of improvised. The week splits three ways today: a production platform in Python and Angular, solo Unity releases under the Vertex Shift label, and an MSc at UFRGS on control and decision-making, where HTN, GOAP and reinforcement learning get tried out on NPCs.',
-    pt: 'Escrevo código de gameplay e os serviços que ficam atrás dele. Quatro anos de engenharia em produção vieram primeiro (Python, FastAPI, Java, PostgreSQL, RabbitMQ, Docker, CI/CD), e é por isso que meus projetos em Unity e Unreal nascem arquitetados em vez de improvisados. Hoje a semana se divide em três: uma plataforma de produção em Python e Angular, lançamentos solo em Unity sob o selo Vertex Shift, e o mestrado na UFRGS em controle e tomada de decisão, onde HTN, GOAP e aprendizado por reforço são testados em NPCs.',
+    en: 'I write gameplay code and the services behind it. Four years of production engineering came first (Python, FastAPI, Java, PostgreSQL, RabbitMQ, Docker, CI/CD), and that is why my Unity and Unreal projects get architected instead of improvised. The week splits three ways today: a production platform in Python and Angular, solo Unity releases under the Vertex Shift label, and an MSc at UFRGS on control and decision-making, where HTN, GOAP and reinforcement learning are studied with NPCs as the test bench.',
+    pt: 'Escrevo código de gameplay e os serviços que ficam atrás dele. Quatro anos de engenharia em produção vieram primeiro (Python, FastAPI, Java, PostgreSQL, RabbitMQ, Docker, CI/CD), e é por isso que meus projetos em Unity e Unreal nascem arquitetados em vez de improvisados. Hoje a semana se divide em três: uma plataforma de produção em Python e Angular, lançamentos solo em Unity sob o selo Vertex Shift, e o mestrado na UFRGS em controle e tomada de decisão, onde HTN, GOAP e aprendizado por reforço são estudados com o NPC como bancada de teste.',
   },
   gamedev: {
     en: 'Gameplay programmer and Game AI researcher building data-driven systems in Unity/C# and Unreal Engine 5/C++. At UFRGS I work on control and decision-making with reinforcement learning, HTN and GOAP, and the NPC is where I test it: a game gives an agent partial information, a deadline per frame and a human watching, which is a hard bench to pass. Under the Vertex Shift label I ship the prototypes solo, from enemy state machines to wave spawning and dynamic difficulty, and at LabTIME/UFG I wrote gameplay systems in C++ including a plugin reused across projects. The four years of backend engineering before that are the reason gameplay code of mine comes with an architecture, tests and numbers I can defend.',
@@ -187,14 +187,16 @@ export const experience: Entry[] = [
     track: 'gamedev',
     period: { en: 'Nov 2023 – Nov 2024', pt: 'nov 2023 – nov 2024' },
     place: { en: 'Goiânia, BR', pt: 'Goiânia, GO' },
-    tech: ['Unreal Engine 5', 'C++', 'Plugins'],
+    tech: ['Unreal Engine 5', 'C++', 'Gameplay Ability System', 'Behavior Trees', 'Plugins'],
     bullets: {
       en: [
-        'Wrote gameplay systems in C++/Unreal Engine 5, including a plugin built for modularity and reuse across projects.',
+        'Wrote gameplay systems in C++/Unreal Engine 5 on the Gameplay Ability System, including a plugin built for modularity and reuse across projects.',
+        'Worked on AI behavior with Unreal behavior trees.',
         'Took part in architecture, debugging, technical documentation and code review with a multidisciplinary team.',
       ],
       pt: [
-        'Escrevi sistemas de gameplay em C++/Unreal Engine 5, incluindo um plugin feito para modularidade e reuso entre projetos.',
+        'Escrevi sistemas de gameplay em C++/Unreal Engine 5 sobre o Gameplay Ability System, incluindo um plugin feito para modularidade e reuso entre projetos.',
+        'Trabalhei no comportamento de IA com behavior trees do Unreal.',
         'Participei de arquitetura, debugging, documentação técnica e revisão de código com equipe multidisciplinar.',
       ],
     },
