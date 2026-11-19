@@ -19,6 +19,7 @@ const venue = d.venue;
 <article class="card" style={`--track: ${trackColor[d.tracks[0]]}`}>
   <div class="card-main">
     <h3><a href={localize(`/publications/${slug}`, lang)}>{d.title}</a></h3>
+    {d.authors.length > 0 && <p class="authors">{d.authors.join(', ')}</p>}
 
     {
       venue && (
@@ -62,6 +63,7 @@ const venue = d.venue;
 </article>
 
 <style>
+  .authors { margin: 0; color: var(--text-dim); font-size: 0.88rem; }
   .venue { margin: 0; font-size: 0.88rem; }
   .venue-status { color: var(--text-faint); }
   .venue-full { display: block; color: var(--text-faint); font-size: 0.82rem; }

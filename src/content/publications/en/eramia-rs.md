@@ -4,6 +4,7 @@
 title: 'HTN Method Selection Guided by Multi-Objective Reinforcement Learning and Dynamic Preferences'
 date: 2026-11-09
 summary: Four-page paper in the graduate track of ERAMIA-RS 2026, and the first version of this work. An HTN keeps the agent inside what the domain allows, and a preference-conditioned multi-objective RL policy picks among the valid methods according to the priorities of the moment. It has the formulation and the evaluation protocol. The experiments, and the full paper, come in 2027.
+authors: [Anderson G. A. C. Filho, Anderson R. Tavares, Lucas N. Alegre]
 tracks: [research]
 tags: [decision-making, planning, reinforcement-learning]
 translationOf: eramia-rs

@@ -90,6 +90,9 @@ const publications = defineCollection({
     summary: z.string(),
     tracks: z.array(track).default(['research']),
     tags: z.array(z.string()).default([]),
+    // Na ordem impressa no artigo. Sem isto o cartão parecia dizer que o
+    // texto é só meu.
+    authors: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     // Presente quando o texto é um paper, ausente quando é nota. A lista da
     // página é única, então isto não separa mais seções: só faz o cartão

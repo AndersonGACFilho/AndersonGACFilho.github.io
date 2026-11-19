@@ -1,8 +1,8 @@
 ---
 title: Solar System
 tagline:
-  en: Interactive 3D solar simulation with planet tracking, orbital mechanics and real-time comets.
-  pt: Simulação 3D interativa do sistema solar, com rastreio de planetas, mecânica orbital e cometas em tempo real.
+  en: Interactive 3D solar simulation in Unity, with planet tracking, orbital mechanics and real-time comets.
+  pt: Simulação 3D interativa do sistema solar em Unity, com rastreio de planetas, mecânica orbital e cometas em tempo real.
 date: 2026-05-21
 buildPath: solar-system
 ratio: 16 / 9

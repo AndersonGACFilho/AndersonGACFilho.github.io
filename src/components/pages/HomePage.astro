@@ -10,11 +10,14 @@ interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-const projects = (await getProjects()).filter((p) => p.data.featured);
+const allProjects = await getProjects();
+const projects = allProjects.filter((p) => p.data.featured);
 const publications = (await getPublications(lang)).slice(0, 3);
 const game = await getFeaturedGame();
+// O cartão da trilha leva a /projects filtrado, que mostra todos os projetos
+// dela; contar só os destaques prometia um número e entregava outro.
 const trackCount = (track: string) =>
-  projects.filter((p) => (p.data.tracks as string[]).includes(track)).length;
+  allProjects.filter((p) => (p.data.tracks as string[]).includes(track)).length;
 ---
 
 {/* O JOGO DESCEU DO TOPO. Ele era a primeira coisa da página, logo abaixo
