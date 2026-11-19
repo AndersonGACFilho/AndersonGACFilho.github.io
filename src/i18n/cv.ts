@@ -187,16 +187,16 @@ export const experience: Entry[] = [
     track: 'gamedev',
     period: { en: 'Nov 2023 – Nov 2024', pt: 'nov 2023 – nov 2024' },
     place: { en: 'Goiânia, BR', pt: 'Goiânia, GO' },
-    tech: ['Unreal Engine 5', 'C++', 'Gameplay Ability System', 'Behavior Trees', 'Plugins'],
+    tech: ['Unreal Engine 5', 'C++', 'Gameplay Ability System', 'Behavior Trees', 'Utility AI', 'Plugins'],
     bullets: {
       en: [
         'Wrote gameplay systems in C++/Unreal Engine 5 on the Gameplay Ability System, including a plugin built for modularity and reuse across projects.',
-        'Worked on AI behavior with Unreal behavior trees.',
+        'Simulated the NPCs of the environment with Unreal behavior trees combined with needs-based (utility) AI.',
         'Took part in architecture, debugging, technical documentation and code review with a multidisciplinary team.',
       ],
       pt: [
         'Escrevi sistemas de gameplay em C++/Unreal Engine 5 sobre o Gameplay Ability System, incluindo um plugin feito para modularidade e reuso entre projetos.',
-        'Trabalhei no comportamento de IA com behavior trees do Unreal.',
+        'Simulei os NPCs do ambiente com behavior trees do Unreal combinadas a uma IA baseada em necessidades (utility AI).',
         'Participei de arquitetura, debugging, documentação técnica e revisão de código com equipe multidisciplinar.',
       ],
     },
@@ -310,7 +310,7 @@ export type SkillGroup = 'gamedev' | 'core' | 'fullstack';
 
 export const skills: { label: Bi; group: SkillGroup; items: string[] }[] = [
   { label: { en: 'Games', pt: 'Jogos' }, group: 'gamedev', items: ['Unity', 'Unreal Engine 5', 'C#', 'C++', 'Gameplay Ability System', 'State Machines', 'Data-driven Design'] },
-  { label: { en: 'Game AI', pt: 'IA para jogos' }, group: 'gamedev', items: ['HTN', 'GOAP', 'Behavior Trees', 'Reinforcement Learning', 'Multi-agent', 'Pathfinding'] },
+  { label: { en: 'Game AI', pt: 'IA para jogos' }, group: 'gamedev', items: ['HTN', 'GOAP', 'Behavior Trees', 'Utility AI', 'Reinforcement Learning', 'Multi-agent', 'Pathfinding'] },
   { label: { en: 'Backend', pt: 'Backend' }, group: 'fullstack', items: ['Python', 'FastAPI', 'Java', 'Spring Boot', 'REST APIs', 'RabbitMQ', 'Redis'] },
   { label: { en: 'Frontend', pt: 'Frontend' }, group: 'fullstack', items: ['TypeScript', 'Angular', 'React'] },
   { label: { en: 'Data', pt: 'Dados' }, group: 'fullstack', items: ['PostgreSQL', 'SQL Server', 'MongoDB'] },
